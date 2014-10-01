@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE JboProject SYSTEM "jbo_03_01.dtd">
+<!---->
+<JboProject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="DatabaseModel"
+  Version="12.1.3.10.8"
+  SeparateXMLFiles="true"
+  PackageName="com.lance"
+  ExportIntfPackage="">
+  <DesignTime>
+    <Attr Name="_jprName" Value="../../../DatabaseModel.jpr"/>
+    <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
+    <Attr Name="_NamedConnection" Value="lanceMySql"/>
+  </DesignTime>
+</JboProject>

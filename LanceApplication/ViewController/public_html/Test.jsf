@@ -1,0 +1,94 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="Test.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelFormLayout id="pfl1">
+                <af:inputText value="#{bindings.Uuid.inputValue}" label="#{bindings.Uuid.hints.label}"
+                              required="#{bindings.Uuid.hints.mandatory}" columns="#{bindings.Uuid.hints.displayWidth}"
+                              maximumLength="#{bindings.Uuid.hints.precision}"
+                              shortDesc="#{bindings.Uuid.hints.tooltip}" id="it1">
+                    <f:validator binding="#{bindings.Uuid.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Img.inputValue}" label="#{bindings.Img.hints.label}"
+                              required="#{bindings.Img.hints.mandatory}" columns="#{bindings.Img.hints.displayWidth}"
+                              maximumLength="#{bindings.Img.hints.precision}" shortDesc="#{bindings.Img.hints.tooltip}"
+                              id="it2">
+                    <f:validator binding="#{bindings.Img.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.UserName.inputValue}" label="#{bindings.UserName.hints.label}"
+                              required="#{bindings.UserName.hints.mandatory}"
+                              columns="#{bindings.UserName.hints.displayWidth}"
+                              maximumLength="#{bindings.UserName.hints.precision}"
+                              shortDesc="#{bindings.UserName.hints.tooltip}" id="it3">
+                    <f:validator binding="#{bindings.UserName.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Email.inputValue}" label="#{bindings.Email.hints.label}"
+                              required="#{bindings.Email.hints.mandatory}"
+                              columns="#{bindings.Email.hints.displayWidth}"
+                              maximumLength="#{bindings.Email.hints.precision}"
+                              shortDesc="#{bindings.Email.hints.tooltip}" id="it4">
+                    <f:validator binding="#{bindings.Email.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Password.inputValue}" label="#{bindings.Password.hints.label}"
+                              required="#{bindings.Password.hints.mandatory}"
+                              columns="#{bindings.Password.hints.displayWidth}"
+                              maximumLength="#{bindings.Password.hints.precision}"
+                              shortDesc="#{bindings.Password.hints.tooltip}" id="it5">
+                    <f:validator binding="#{bindings.Password.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.DisplayName.inputValue}" label="#{bindings.DisplayName.hints.label}"
+                              required="#{bindings.DisplayName.hints.mandatory}"
+                              columns="#{bindings.DisplayName.hints.displayWidth}"
+                              maximumLength="#{bindings.DisplayName.hints.precision}"
+                              shortDesc="#{bindings.DisplayName.hints.tooltip}" id="it6">
+                    <f:validator binding="#{bindings.DisplayName.validator}"/>
+                </af:inputText>
+                <af:selectOneChoice value="#{bindings.Country.inputValue}" label="#{bindings.Country.label}"
+                                    required="#{bindings.Country.hints.mandatory}"
+                                    shortDesc="#{bindings.Country.hints.tooltip}" id="soc1">
+                    <f:selectItems value="#{bindings.Country.items}" id="si1"/>
+                    <f:validator binding="#{bindings.Country.validator}"/>
+                </af:selectOneChoice>
+                <af:inputText value="#{bindings.TrueName.inputValue}" label="#{bindings.TrueName.hints.label}"
+                              required="#{bindings.TrueName.hints.mandatory}"
+                              columns="#{bindings.TrueName.hints.displayWidth}"
+                              maximumLength="#{bindings.TrueName.hints.precision}"
+                              shortDesc="#{bindings.TrueName.hints.tooltip}" id="it7">
+                    <f:validator binding="#{bindings.TrueName.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.AccountType.inputValue}" label="#{bindings.AccountType.hints.label}"
+                              required="#{bindings.AccountType.hints.mandatory}"
+                              columns="#{bindings.AccountType.hints.displayWidth}"
+                              maximumLength="#{bindings.AccountType.hints.precision}"
+                              shortDesc="#{bindings.AccountType.hints.tooltip}" id="it8">
+                    <f:validator binding="#{bindings.AccountType.validator}"/>
+                    <af:convertNumber groupingUsed="false" pattern="#{bindings.AccountType.format}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.CompanyName.inputValue}" label="#{bindings.CompanyName.hints.label}"
+                              required="#{bindings.CompanyName.hints.mandatory}"
+                              columns="#{bindings.CompanyName.hints.displayWidth}"
+                              maximumLength="#{bindings.CompanyName.hints.precision}"
+                              shortDesc="#{bindings.CompanyName.hints.tooltip}" id="it9">
+                    <f:validator binding="#{bindings.CompanyName.validator}"/>
+                </af:inputText>
+                <f:facet name="footer">
+                    <af:panelGroupLayout layout="vertical" id="pgl1">
+                        <af:panelGroupLayout layout="horizontal" id="pgl2">
+                            <af:button actionListener="#{bindings.First.execute}" text="First"
+                                       disabled="#{!bindings.First.enabled}" partialSubmit="true" id="b1"/>
+                            <af:button actionListener="#{bindings.Previous.execute}" text="Previous"
+                                       disabled="#{!bindings.Previous.enabled}" partialSubmit="true" id="b2"/>
+                            <af:button actionListener="#{bindings.Next.execute}" text="Next"
+                                       disabled="#{!bindings.Next.enabled}" partialSubmit="true" id="b3"/>
+                            <af:button actionListener="#{bindings.Last.execute}" text="Last"
+                                       disabled="#{!bindings.Last.enabled}" partialSubmit="true" id="b4"/>
+                        </af:panelGroupLayout>
+                        <af:button text="Submit" id="b5"/>
+                    </af:panelGroupLayout>
+                </f:facet>
+            </af:panelFormLayout>
+        </af:form>
+    </af:document>
+</f:view>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE AppModule SYSTEM "jbo_03_01.dtd">
+<!---->
+<AppModule
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LanceRestAM"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  ComponentClass="com.lance.model.LanceRestAMImpl"
+  ClearCacheOnRollback="true">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.lance.model.LanceRestAM_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewUsage
+    Name="Lancer1"
+    ViewObjectName="com.lance.model.vo.LancerVO"/>
+  <ViewUsage
+    Name="ClientUser1"
+    ViewObjectName="com.lance.model.vo.ClientUserVO"/>
+  <ViewUsage
+    Name="LoginUser1"
+    ViewObjectName="com.lance.model.vo.LoginUserVO"/>
+  <ViewUsage
+    Name="Company1"
+    ViewObjectName="com.lance.model.vo.CompanyVO"/>
+  <ViewUsage
+    Name="LocationCountryV2"
+    ViewObjectName="com.lance.model.vvo.LocationCountryVVO"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.lance.model.ModelBundle"/>
+  </ResourceBundle>
+</AppModule>

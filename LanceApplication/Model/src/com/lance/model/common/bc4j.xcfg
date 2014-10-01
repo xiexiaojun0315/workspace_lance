@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<BC4JConfig version="11.1" xmlns="http://xmlns.oracle.com/bc4j/configuration">
+   <AppModuleConfigBag ApplicationName="com.lance.model.RegisterAM"/>
+   <AppModuleConfigBag ApplicationName="com.lance.model.LanceRestAM">
+      <AppModuleConfig DeployPlatform="LOCAL" name="LanceRestAMLocal" ApplicationName="com.lance.model.LanceRestAM" jbo.project="com.lance.model.Model">
+         <Database jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="com.lance.model.LanceRestAM"/>
+         <Custom ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" ns0:JDBCDataSource="jdbc/lanceDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig jbo.project="com.lance.model.Model" ApplicationName="com.lance.model.LanceRestAM" DeployPlatform="LOCAL" name="LanceRestAMShared">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.resetnontransactionalstate="false" jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="com.lance.model.LanceRestAM"/>
+         <Custom ns0:JDBCDataSource="jdbc/lanceDS" ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
+</BC4JConfig>

@@ -1,0 +1,164 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LancerResumeEO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="LANCER_RESUME"
+  AliasName="LancerResumeEO"
+  BindingStyle="OracleName"
+  RowClass="com.zngh.platform.front.core.model.BaseEntityImpl"
+  CollClass="com.zngh.platform.front.core.model.BaseEntityCache">
+  <Attribute
+    Name="Uuid"
+    IsNotNull="true"
+    Precision="32"
+    ColumnName="UUID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_RESUME"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SkillATag"
+    Precision="1000"
+    ColumnName="SKILL_A_TAG"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_RESUME">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SkillBTag"
+    Precision="1000"
+    ColumnName="SKILL_B_TAG"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_RESUME">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SkillCTag"
+    Precision="1000"
+    ColumnName="SKILL_C_TAG"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_RESUME">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SkillTypeId"
+    Precision="32"
+    ColumnName="SKILL_TYPE_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_RESUME">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Brief"
+    Precision="2000"
+    ColumnName="BRIEF"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_RESUME">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="WorkExp"
+    IsQueriable="false"
+    ColumnName="WORK_EXP"
+    SQLType="CLOB"
+    Type="oracle.jbo.domain.ClobDomain"
+    ColumnType="CLOB"
+    TableName="LANCER_RESUME"/>
+  <Attribute
+    Name="EduExp"
+    IsQueriable="false"
+    ColumnName="EDU_EXP"
+    SQLType="CLOB"
+    Type="oracle.jbo.domain.ClobDomain"
+    ColumnType="CLOB"
+    TableName="LANCER_RESUME"/>
+  <Attribute
+    Name="LancerId"
+    Precision="32"
+    ColumnName="LANCER_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_RESUME">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Video"
+    Precision="200"
+    ColumnName="VIDEO"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_RESUME">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="Lancer"
+    Association="com.lance.model.as.LancerResumeLancerFk1AS"
+    AssociationEnd="com.lance.model.as.LancerResumeLancerFk1AS.Lancer"
+    AssociationOtherEnd="com.lance.model.as.LancerResumeLancerFk1AS.LancerResume"
+    Type="com.zngh.platform.front.core.model.BaseEntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="LanceExp"
+    Association="com.lance.model.as.LanceExpLancerResumeFk1AS"
+    AssociationEnd="com.lance.model.as.LanceExpLancerResumeFk1AS.LanceExp"
+    AssociationOtherEnd="com.lance.model.as.LanceExpLancerResumeFk1AS.LancerResume"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="LancerResumePk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="LANCER_RESUME_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.LancerResumeEO.Uuid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="LancerResumeLancerFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="LANCER_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="LANCER_RESUME_LANCER_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.LancerResumeEO.LancerId"/>
+    </AttrArray>
+  </Key>
+</Entity>

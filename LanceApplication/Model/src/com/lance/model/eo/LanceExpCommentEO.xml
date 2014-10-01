@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="LanceExpCommentEO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="LANCE_EXP_COMMENT"
+  AliasName="LanceExpCommentEO"
+  BindingStyle="OracleName"
+  RowClass="com.zngh.platform.front.core.model.BaseEntityImpl"
+  CollClass="com.zngh.platform.front.core.model.BaseEntityCache">
+  <Attribute
+    Name="Uuid"
+    IsNotNull="true"
+    Precision="32"
+    ColumnName="UUID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCE_EXP_COMMENT"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LanceExpId"
+    Precision="32"
+    ColumnName="LANCE_EXP_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCE_EXP_COMMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Text"
+    Precision="2000"
+    ColumnName="TEXT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCE_EXP_COMMENT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2000"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="LanceExp"
+    Association="com.lance.model.as.LanceExpCommentFk1AS"
+    AssociationEnd="com.lance.model.as.LanceExpCommentFk1AS.LanceExp"
+    AssociationOtherEnd="com.lance.model.as.LanceExpCommentFk1AS.LanceExpComment"
+    Type="com.zngh.platform.front.core.model.BaseEntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="LanceExpEvaluatePk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="LANCE_EXP_EVALUATE_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.LanceExpCommentEO.Uuid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="LanceExpCommentFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="LANCE_EXP_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="LANCE_EXP_COMMENT_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.LanceExpCommentEO.LanceExpId"/>
+    </AttrArray>
+  </Key>
+</Entity>

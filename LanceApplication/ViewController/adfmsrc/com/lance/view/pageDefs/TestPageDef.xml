@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="TestPageDef"
+                Package="com.lance.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="Lancer1" RangeSize="25" DataControl="LanceRestAMDataControl" id="Lancer1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="Lancer1Iterator" id="Uuid">
+      <AttrNames>
+        <Item Value="Uuid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Lancer1Iterator" id="Img">
+      <AttrNames>
+        <Item Value="Img"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Lancer1Iterator" id="UserName">
+      <AttrNames>
+        <Item Value="UserName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Lancer1Iterator" id="Email">
+      <AttrNames>
+        <Item Value="Email"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Lancer1Iterator" id="Password">
+      <AttrNames>
+        <Item Value="Password"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Lancer1Iterator" id="DisplayName">
+      <AttrNames>
+        <Item Value="DisplayName"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="Lancer1Iterator" StaticList="false" Uses="LOV_Country" id="Country" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="Lancer1Iterator" id="TrueName">
+      <AttrNames>
+        <Item Value="TrueName"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Lancer1Iterator" id="AccountType">
+      <AttrNames>
+        <Item Value="AccountType"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="Lancer1Iterator" id="CompanyName">
+      <AttrNames>
+        <Item Value="CompanyName"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="Lancer1Iterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="Lancer1Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="Lancer1Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="Lancer1Iterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+  </bindings>
+</pageDefinition>
