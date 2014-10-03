@@ -35,6 +35,27 @@
   <ViewUsage
     Name="SpreadHeardFrom1"
     ViewObjectName="com.lance.model.vo.SpreadHeardFromVO"/>
+  <ViewUsage
+    Name="LancerResume1"
+    ViewObjectName="com.lance.model.vo.LancerResumeVO"/>
+  <ViewUsage
+    Name="LancerSkill1"
+    ViewObjectName="com.lance.model.vo.LancerSkillVO"/>
+  <ViewUsage
+    Name="LancerEducation1"
+    ViewObjectName="com.lance.model.vo.LancerEducationVO"/>
+  <ViewLinkUsage
+    Name="LancerResume_SkillVL1"
+    ViewLinkObjectName="com.lance.model.vl.LancerResume_SkillVL"
+    SrcViewUsageName="com.lance.model.LanceRestAM.LancerResume1"
+    DstViewUsageName="com.lance.model.LanceRestAM.LancerSkill1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="LancerResume_EducationVL1"
+    ViewLinkObjectName="com.lance.model.vl.LancerResume_EducationVL"
+    SrcViewUsageName="com.lance.model.LanceRestAM.LancerResume1"
+    DstViewUsageName="com.lance.model.LanceRestAM.LancerEducation1"
+    Reversed="false"/>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.lance.model.ModelBundle"/>

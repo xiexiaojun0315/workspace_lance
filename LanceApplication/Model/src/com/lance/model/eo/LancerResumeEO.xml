@@ -27,82 +27,6 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="SkillATag"
-    Precision="1000"
-    ColumnName="SKILL_A_TAG"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LANCER_RESUME">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="1000"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="SkillBTag"
-    Precision="1000"
-    ColumnName="SKILL_B_TAG"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LANCER_RESUME">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="1000"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="SkillCTag"
-    Precision="1000"
-    ColumnName="SKILL_C_TAG"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LANCER_RESUME">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="1000"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="SkillTypeId"
-    Precision="32"
-    ColumnName="SKILL_TYPE_ID"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LANCER_RESUME">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="32"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="Brief"
-    Precision="2000"
-    ColumnName="BRIEF"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LANCER_RESUME">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="2000"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="WorkExp"
-    IsQueriable="false"
-    ColumnName="WORK_EXP"
-    SQLType="CLOB"
-    Type="oracle.jbo.domain.ClobDomain"
-    ColumnType="CLOB"
-    TableName="LANCER_RESUME"/>
-  <Attribute
-    Name="EduExp"
-    IsQueriable="false"
-    ColumnName="EDU_EXP"
-    SQLType="CLOB"
-    Type="oracle.jbo.domain.ClobDomain"
-    ColumnType="CLOB"
-    TableName="LANCER_RESUME"/>
-  <Attribute
     Name="LancerId"
     Precision="32"
     ColumnName="LANCER_ID"
@@ -124,6 +48,84 @@
     TableName="LANCER_RESUME">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Tagline"
+    Precision="150"
+    ColumnName="TAGLINE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_RESUME">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="150"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="HourlyRate"
+    ColumnName="HOURLY_RATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="LANCER_RESUME"/>
+  <Attribute
+    Name="ChargeRate"
+    ColumnName="CHARGE_RATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="LANCER_RESUME"/>
+  <Attribute
+    Name="VideoUrl"
+    Precision="500"
+    ColumnName="VIDEO_URL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_RESUME">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Overview"
+    Precision="3000"
+    ColumnName="OVERVIEW"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_RESUME">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="3000"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ServiceDescription"
+    IsQueriable="false"
+    ColumnName="SERVICE_DESCRIPTION"
+    SQLType="CLOB"
+    Type="oracle.jbo.domain.ClobDomain"
+    ColumnType="CLOB"
+    TableName="LANCER_RESUME"/>
+  <Attribute
+    Name="PaymentTerms"
+    IsQueriable="false"
+    ColumnName="PAYMENT_TERMS"
+    SQLType="CLOB"
+    Type="oracle.jbo.domain.ClobDomain"
+    ColumnType="CLOB"
+    TableName="LANCER_RESUME"/>
+  <Attribute
+    Name="Keywords"
+    Precision="1500"
+    ColumnName="KEYWORDS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_RESUME">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1500"/>
     </DesignTime>
   </Attribute>
   <AccessorAttribute

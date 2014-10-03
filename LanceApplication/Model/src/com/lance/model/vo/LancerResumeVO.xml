@@ -12,9 +12,17 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  RowClass="com.zngh.platform.front.core.model.BaseViewRowImpl"
-  ComponentClass="com.zngh.platform.front.core.model.BaseViewObjectImpl"
+  RowClass="com.lance.model.vo.LancerResumeVORowImpl"
+  ComponentClass="com.lance.model.vo.LancerResumeVOImpl"
   PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="pLancerId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <EntityUsage
     Name="LancerResumeEO"
     Entity="com.lance.model.eo.LancerResumeEO"/>
@@ -26,49 +34,23 @@
     EntityUsage="LancerResumeEO"
     AliasName="UUID"/>
   <ViewAttribute
-    Name="SkillATag"
+    Name="ChargeRate"
     PrecisionRule="true"
-    EntityAttrName="SkillATag"
+    EntityAttrName="ChargeRate"
     EntityUsage="LancerResumeEO"
-    AliasName="SKILL_A_TAG"/>
+    AliasName="CHARGE_RATE"/>
   <ViewAttribute
-    Name="SkillBTag"
+    Name="HourlyRate"
     PrecisionRule="true"
-    EntityAttrName="SkillBTag"
+    EntityAttrName="HourlyRate"
     EntityUsage="LancerResumeEO"
-    AliasName="SKILL_B_TAG"/>
+    AliasName="HOURLY_RATE"/>
   <ViewAttribute
-    Name="SkillCTag"
+    Name="Keywords"
     PrecisionRule="true"
-    EntityAttrName="SkillCTag"
+    EntityAttrName="Keywords"
     EntityUsage="LancerResumeEO"
-    AliasName="SKILL_C_TAG"/>
-  <ViewAttribute
-    Name="SkillTypeId"
-    PrecisionRule="true"
-    EntityAttrName="SkillTypeId"
-    EntityUsage="LancerResumeEO"
-    AliasName="SKILL_TYPE_ID"/>
-  <ViewAttribute
-    Name="Brief"
-    PrecisionRule="true"
-    EntityAttrName="Brief"
-    EntityUsage="LancerResumeEO"
-    AliasName="BRIEF"/>
-  <ViewAttribute
-    Name="WorkExp"
-    IsQueriable="false"
-    PrecisionRule="true"
-    EntityAttrName="WorkExp"
-    EntityUsage="LancerResumeEO"
-    AliasName="WORK_EXP"/>
-  <ViewAttribute
-    Name="EduExp"
-    IsQueriable="false"
-    PrecisionRule="true"
-    EntityAttrName="EduExp"
-    EntityUsage="LancerResumeEO"
-    AliasName="EDU_EXP"/>
+    AliasName="KEYWORDS"/>
   <ViewAttribute
     Name="LancerId"
     PrecisionRule="true"
@@ -76,14 +58,113 @@
     EntityUsage="LancerResumeEO"
     AliasName="LANCER_ID"/>
   <ViewAttribute
+    Name="Overview"
+    PrecisionRule="true"
+    EntityAttrName="Overview"
+    EntityUsage="LancerResumeEO"
+    AliasName="OVERVIEW"/>
+  <ViewAttribute
+    Name="PaymentTerms"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="PaymentTerms"
+    EntityUsage="LancerResumeEO"
+    AliasName="PAYMENT_TERMS"/>
+  <ViewAttribute
+    Name="ServiceDescription"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="ServiceDescription"
+    EntityUsage="LancerResumeEO"
+    AliasName="SERVICE_DESCRIPTION"/>
+  <ViewAttribute
+    Name="Tagline"
+    PrecisionRule="true"
+    EntityAttrName="Tagline"
+    EntityUsage="LancerResumeEO"
+    AliasName="TAGLINE"/>
+  <ViewAttribute
     Name="Video"
     PrecisionRule="true"
     EntityAttrName="Video"
     EntityUsage="LancerResumeEO"
     AliasName="VIDEO"/>
+  <ViewAttribute
+    Name="VideoUrl"
+    PrecisionRule="true"
+    EntityAttrName="VideoUrl"
+    EntityUsage="LancerResumeEO"
+    AliasName="VIDEO_URL"/>
+  <ViewAttribute
+    Name="PaymentTermsTxt"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="ServiceDescriptionTxt"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewCriteria
+    Name="FindByLancerIdVC"
+    ViewObjectName="com.lance.model.vo.LancerResumeVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="LancerResumeVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="LancerId"
+        ViewAttribute="LancerId"
+        Operator="="
+        Conjunction="AND"
+        Value=":pLancerId"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ViewLinkAccessor
     Name="LanceExp"
     ViewLink="com.lance.model.vl.LanceExpLancerResumeFk1VL"
     Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="LancerSkill"
+    ViewLink="com.lance.model.vl.LancerResume_SkillVL"
+    Type="oracle.jbo.Row"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="LancerEducation"
+    ViewLink="com.lance.model.vl.LancerResume_EducationVL"
+    Type="oracle.jbo.Row"
     IsUpdateable="false"/>
 </ViewObject>

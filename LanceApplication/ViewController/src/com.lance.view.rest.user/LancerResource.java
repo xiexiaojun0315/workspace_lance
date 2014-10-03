@@ -18,22 +18,20 @@ import javax.ws.rs.core.MediaType;
 
 import oracle.jbo.Row;
 
-import org.apache.commons.lang.StringUtils;
-
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
 /**
  * Lancer（独立工作者/供应商）
  * 包含注册，更新，删除，修改
- * 
+ *
  */
 @Path("user/lancer")
 public class LancerResource extends BaseRestResource {
 
     /**
      * 字段说明
-     * TrueName真名（不可修改）
+     * TrueName真名
      * DisplayName显示名（可修改）
      * Country国家（44中国）
      * AccountType账户类型：0独立，1供应商（可填写公司）
@@ -43,7 +41,8 @@ public class LancerResource extends BaseRestResource {
     public static final String[] ATTR_CREATE = {
         "UserName", "Email", "Password", "DisplayName", "Country", "TrueName", "AccountType", "CompanyName"
     };
-    public static final String[] ATTR_UPDATE = { "Email", "DisplayName", "Country", "AccountType", "CompanyName" };
+    public static final String[] ATTR_UPDATE = {
+        "Email", "DisplayName", "Country", "AccountType", "CompanyName", "TrueName" };
     public static final String[] ATTR_GET = {
         "Uuid", "UserName", "Email", "DisplayName", "Country", "TrueName", "AccountType", "CompanyId", "CompanyName"
     };
@@ -54,7 +53,7 @@ public class LancerResource extends BaseRestResource {
     /**
      * 新增Lancer 用户注册
      * POST: http://localhost:7101/lance/res/user/lancer
-     * 
+     *
      * AccountType：0 独立；1 公司
      * 当AccountType=1时，必须录入公司名
      * 公司名CompanyName，会在后台执行merge操作（不存在则创建）
@@ -96,15 +95,13 @@ public class LancerResource extends BaseRestResource {
         LoginUserVORowImpl loginUserRow = (LoginUserVORowImpl) loginUserVO.createRow();
         loginUserVO.insertRow(loginUserRow);
         loginUserRow.setUserName(json.getString("UserName"));
-        loginUserRow.setType(0);//0:Lancer/供应商  1：:需求方
+        loginUserRow.setType(0); //0:Lancer/供应商  1：:需求方
         loginUserRow.setUserId((String) lancerRow.getAttribute("Uuid"));
 
         //如果lancer属于供应商（公司），则merge（存在返回，不存在创建）该公司，并设置注册用户公司id
-        int accountType = (Integer) json.get("AccountType");//0独立，1供应商
+        int accountType = (Integer) json.get("AccountType"); //0独立，1供应商
         if (accountType == 1) {
-            JSONObject companyJson=new JSONObject();
-            companyJson.put("Name", json.get("CompanyName"));
-            String companyId = new CompanyResource().mergeCompanyByName(companyJson);
+            String companyId = new CompanyResource().mergeCompanyByName(json.getString("CompanyName"));
             lancerRow.setAttribute("CompanyId", companyId);
         }
 
@@ -115,7 +112,7 @@ public class LancerResource extends BaseRestResource {
     /**
      * 根据userId获取用户
      * GET http://localhost:7101/lance/res/user/lancer/{userId}
-     * 
+     *
      * @example
      *例子1
      GET http://localhost:7101/lance/res/user/lancer/unknowuserid
@@ -143,8 +140,13 @@ public class LancerResource extends BaseRestResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{userId}")
     public JSONObject findLancerById(@PathParam("userId") String userId) throws JSONException {
-        System.out.println("findLancerById:" + userId); //获取不到id？
         LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        return findLancerByIdFn(userId, am);
+    }
+
+    public JSONObject findLancerByIdFn(String userId, LanceRestAMImpl am) throws JSONException {
+        System.out.println("findLancerById:" + userId); //获取不到id？
+
         LancerVOImpl lancerVO = am.getLancer1();
         lancerVO.setApplyViewCriteriaName("FindByUuidVC");
         lancerVO.setpUuid(userId);
@@ -160,10 +162,11 @@ public class LancerResource extends BaseRestResource {
         return this.convertRowToJsonObject(lancerRow, ATTR_GET);
     }
 
+
     /**
      * 删除用户
      * POST http://localhost:7101/lance/res/user/lancer/delete/{userId}
-     * 
+     *
      * @param userId
      * @return ok 删除成功
      */
@@ -192,10 +195,10 @@ public class LancerResource extends BaseRestResource {
     /**
      * 更新用户
      * POST http://localhost:7101/lance/res/user/lancer/update/{userId}
-     * 
+     *
      * 修改公司时需要清除CompanyId,如果CompanyId为空程序会根据传入的CompanyName执行merge Company操作
      * AccountType为0时会清空Company信息，为1时才会处理Company
-     * 
+     *
      * @param userId
      * @param json
      * @return ok 更新成功
@@ -207,6 +210,14 @@ public class LancerResource extends BaseRestResource {
     public String updateLancer(@PathParam("userId") String userId, JSONObject json) throws JSONException {
         System.out.println("updateLancer:" + userId);
         LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        updateLancerFn(userId, json, am);
+        am.getDBTransaction().commit();
+        return "ok";
+    }
+
+
+    public String updateLancerFn(@PathParam("userId") String userId, JSONObject json,
+                                 LanceRestAMImpl am) throws JSONException {
         LancerVOImpl lancerVO = am.getLancer1();
         lancerVO.setApplyViewCriteriaName("FindByUuidVC");
         lancerVO.setpUuid(userId);
@@ -226,18 +237,13 @@ public class LancerResource extends BaseRestResource {
         }
 
         //如果lancer属于供应商（公司）,且公司ID被清除（修改过公司名），则merge（存在返回，不存在创建）该公司，并设置注册用户公司id
-        if (lancerRow.getAccountType() == 1 && json.isNull("CompanyId")  ) {
-            JSONObject companyJson=new JSONObject();
-            companyJson.put("Name", json.get("CompanyName"));
-            String companyId = new CompanyResource().mergeCompanyByName(companyJson);
+        if (lancerRow.getAccountType() == 1 && json.isNull("CompanyId")) {
+            String companyId = new CompanyResource().mergeCompanyByName(json.getString("CompanyName"));
             lancerRow.setAttribute("CompanyId", companyId);
         } else if (lancerRow.getAccountType() == 0) {
             lancerRow.setAttribute("CompanyId", null);
         }
-
-        am.getDBTransaction().commit();
         return "ok";
     }
-
 
 }

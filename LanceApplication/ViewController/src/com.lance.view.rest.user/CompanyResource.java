@@ -44,11 +44,23 @@ public class CompanyResource extends BaseRestResource {
     @Path("mergeByName")
     @Consumes(MediaType.APPLICATION_JSON)
     public String mergeCompanyByName(JSONObject json) throws JSONException {
+        String uuid = mergeCompanyByName(json.getString("Name"));
+        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        am.getDBTransaction().commit();
+        return uuid;
+    }
+
+    /**
+     * 同上，但不提交数据
+     * @param companyName
+     * @return
+     */
+    public String mergeCompanyByName(String companyName) {
         System.out.println("mergeCompanyByName");
         LanceRestAMImpl am = LanceRestUtil.findLanceAM();
         CompanyVOImpl vo = am.getCompany1();
         vo.setApplyViewCriteriaName("FindByNameVC");
-        vo.setpName(json.getString("Name"));
+        vo.setpName(companyName);
         vo.executeQuery();
         vo.setApplyViewCriteriaName(null);
 
@@ -57,8 +69,7 @@ public class CompanyResource extends BaseRestResource {
         } else {
             CompanyVORowImpl row = (CompanyVORowImpl) vo.createRow();
             vo.insertRow(row);
-            row.setName(json.getString("Name"));
-            am.getDBTransaction().commit();
+            row.setName(companyName);
             return (String) row.getAttribute("Uuid");
         }
     }
@@ -70,10 +81,10 @@ public class CompanyResource extends BaseRestResource {
      * 最多返回10条
      *
      * GET http://localhost:7101/lance/res/user/company/filter/name/{companyName}
-     * 
+     *
      * @example
      * GET http://localhost:7101/lance/res/user/company/filter/name/百度
-     * 
+     *
        @return
          [
             {
