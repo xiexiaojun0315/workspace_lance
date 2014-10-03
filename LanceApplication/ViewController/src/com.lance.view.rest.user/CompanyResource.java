@@ -64,15 +64,17 @@ public class CompanyResource extends BaseRestResource {
     }
 
     /**
-     * 查找公司名相近的公司，用于输入公司名时得快速提示功能
+     * 查找公司名相近的公司，用于输入公司名时的快速提示功能
      * 建议前台控制达到2个字符时再执行
      * 中间模糊匹配
+     * 最多返回10条
+     *
      * GET http://localhost:7101/lance/res/user/company/filter/name/{companyName}
      * 
      * @example
-     * GET http://localhost:7101/lance/res/user/company/filter/name/百
+     * GET http://localhost:7101/lance/res/user/company/filter/name/百度
      * 
-     return
+       @return
          [
             {
                 "Name" : "百度"

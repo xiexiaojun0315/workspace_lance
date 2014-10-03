@@ -37,108 +37,6 @@
       </properties>
     </column>
     <column>
-      <name>SKILL_A_TAG</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">1000</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>SKILL_A_TAG</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>LANCER_RESUME</name>
-              <identifier class="java.math.BigDecimal">27103</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>SKILL_B_TAG</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">1000</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>SKILL_B_TAG</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>LANCER_RESUME</name>
-              <identifier class="java.math.BigDecimal">27103</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>SKILL_C_TAG</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">1000</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>SKILL_C_TAG</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>LANCER_RESUME</name>
-              <identifier class="java.math.BigDecimal">27103</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
       <name>SKILL_TYPE_ID</name>
       <dataTypeUsage>
         <attributeValues>
@@ -430,6 +328,51 @@
     </column>
   </columns>
   <constraints>
+    <constraint class="oracle.javatools.db.PKConstraint">
+      <name>LANCER_RESUME_PK</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>UUID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>LANCER_RESUME</name>
+            <schemaName>LANCE</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>LANCE</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <indexID class="oracle.javatools.db.NameBasedID">
+        <name>LANCER_RESUME_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>LANCER_RESUME</name>
+          <schemaName>LANCE</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>LANCE</schemaName>
+        <type>INDEX</type>
+      </indexID>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>LANCER_RESUME_PK</name>
+            <childObjectNames>
+              <childObjectName>UUID</childObjectName>
+            </childObjectNames>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>LANCER_RESUME</name>
+              <identifier class="java.math.BigDecimal">27103</identifier>
+              <schemaName>LANCE</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <subType>PKConstraint</subType>
+            <type>CONSTRAINT</type>
+          </value>
+        </entry>
+      </properties>
+    </constraint>
     <constraint class="oracle.javatools.db.FKConstraint">
       <name>LANCER_RESUME_LANCER_FK1</name>
       <columnIDs>
@@ -475,51 +418,6 @@
         <schemaName>LANCE</schemaName>
         <type>CONSTRAINT</type>
       </referenceID>
-    </constraint>
-    <constraint class="oracle.javatools.db.PKConstraint">
-      <name>LANCER_RESUME_PK</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>UUID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>LANCER_RESUME</name>
-            <schemaName>LANCE</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>LANCE</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <indexID class="oracle.javatools.db.NameBasedID">
-        <name>LANCER_RESUME_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>LANCER_RESUME</name>
-          <schemaName>LANCE</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>LANCE</schemaName>
-        <type>INDEX</type>
-      </indexID>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>LANCER_RESUME_PK</name>
-            <childObjectNames>
-              <childObjectName>UUID</childObjectName>
-            </childObjectNames>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>LANCER_RESUME</name>
-              <identifier class="java.math.BigDecimal">27103</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <subType>PKConstraint</subType>
-            <type>CONSTRAINT</type>
-          </value>
-        </entry>
-      </properties>
     </constraint>
   </constraints>
   <indexes>

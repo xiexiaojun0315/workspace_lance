@@ -32,6 +32,9 @@
   <ViewUsage
     Name="LocationCountryV2"
     ViewObjectName="com.lance.model.vvo.LocationCountryVVO"/>
+  <ViewUsage
+    Name="SpreadHeardFrom1"
+    ViewObjectName="com.lance.model.vo.SpreadHeardFromVO"/>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.lance.model.ModelBundle"/>

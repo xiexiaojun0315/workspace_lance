@@ -5,6 +5,7 @@ import com.lance.model.vo.CompanyVOImpl;
 import com.lance.model.vo.LancerVOImpl;
 import com.lance.model.vo.LoginUserVOImpl;
 
+import com.lance.model.vo.SpreadHeardFromVOImpl;
 import com.lance.model.vvo.LocationCountryVVOImpl;
 
 import com.zngh.platform.front.core.model.BaseApplicationModuleImpl;
@@ -60,6 +61,14 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      */
     public LocationCountryVVOImpl getLocationCountryV2() {
         return (LocationCountryVVOImpl) findViewObject("LocationCountryV2");
+    }
+
+    /**
+     * Container's getter for SpreadHeardFrom1.
+     * @return SpreadHeardFrom1
+     */
+    public SpreadHeardFromVOImpl getSpreadHeardFrom1() {
+        return (SpreadHeardFromVOImpl) findViewObject("SpreadHeardFrom1");
     }
 }
 

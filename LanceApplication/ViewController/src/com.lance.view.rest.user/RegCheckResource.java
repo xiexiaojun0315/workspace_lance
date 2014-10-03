@@ -17,15 +17,14 @@ import org.codehaus.jettison.json.JSONException;
 @Path("user/check")
 public class RegCheckResource {
     
-//    @GET
-//    @Path("test/{userName}")
-//    public void test(@PathParam("userName") String userName){
-//    }
     
     /**
      * 检查用户UserName是否已存在
-     * @param userId
-     * @return
+     * 
+     * GET http://localhost:7101/lance/res/user/check/userName/{userName}
+     * 
+     * @param userName
+     * @return true:用户已存在，不能继续。false：用户不存在，可以继续
      * @throws JSONException
      */
     @GET
@@ -48,8 +47,11 @@ public class RegCheckResource {
 
     /**
      * 检查Email是否已存在
+     * 
+     * GET http://localhost:7101/lance/res/user/check/email/{email}
+     * 
      * @param userName
-     * @return
+     * @return true:email已存在，不能继续。false：email不存在，可以继续
      * @throws JSONException
      */
     @GET

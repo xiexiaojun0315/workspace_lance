@@ -66,7 +66,7 @@ public class LancerResource extends BaseRestResource {
             "DisplayName" : "疼讯",
             "Country" : "1",
             "TrueName" : "小疼",
-            "AccountType" : 1,
+            "AccountType" : 1,//为0时后台会忽略CompanyName
             "CompanyName" : "深圳腾讯"
         }
      *
