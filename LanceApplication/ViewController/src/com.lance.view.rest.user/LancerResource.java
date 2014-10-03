@@ -53,6 +53,7 @@ public class LancerResource extends BaseRestResource {
     /**
      * 新增Lancer 用户注册
      * POST: http://localhost:7101/lance/res/user/lancer
+     * 新增用户的ID不再使用32位UUID，改为与用户登录名相同
      *
      * AccountType：0 独立；1 公司
      * 当AccountType=1时，必须录入公司名
@@ -89,6 +90,9 @@ public class LancerResource extends BaseRestResource {
                 lancerRow.setAttribute(attr, json.get(attr));
             }
         }
+        
+        //新增用户的ID不再使用32位UUID，改为与用户登录名相同
+        lancerRow.setAttribute("Uuid", json.getString("UserName"));
 
         //创建登录信息
         LoginUserVOImpl loginUserVO = am.getLoginUser1();
