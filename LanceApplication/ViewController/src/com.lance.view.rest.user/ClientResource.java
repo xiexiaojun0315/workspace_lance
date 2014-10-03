@@ -67,7 +67,7 @@ public class ClientResource extends BaseRestResource {
         ClientUserVORowImpl row = (ClientUserVORowImpl) vo.createRow();
         vo.insertRow(row);
         for (String attr : ATTR_CREATE) {
-            if ("Password,CompanyName".indexOf(attr) > 0) {
+            if ("Password,CompanyName".indexOf(attr) > -1) {
                 continue;
             }
             if (json.has(attr)) {

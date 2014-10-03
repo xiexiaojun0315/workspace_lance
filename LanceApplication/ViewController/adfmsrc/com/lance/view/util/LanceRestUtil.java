@@ -4,8 +4,12 @@ import com.lance.model.LanceRestAMImpl;
 
 import com.zngh.platform.front.core.view.RestUtil;
 
+import oracle.jbo.Row;
 import oracle.jbo.server.RowImpl;
 import oracle.jbo.server.ViewObjectImpl;
+
+import org.codehaus.jettison.json.JSONException;
+import org.codehaus.jettison.json.JSONObject;
 
 
 public class LanceRestUtil {
@@ -29,5 +33,14 @@ public class LanceRestUtil {
         vo.insertRow(row);
         return row;
     }
+
+    public static void transJsonToRow(JSONObject json, Row row, String[] attrs) throws JSONException {
+        for (String attr : attrs) {
+            if (json.has(attr)) {
+                row.setAttribute(attr, json.get(attr));
+            }
+        }
+    }
+
 
 }

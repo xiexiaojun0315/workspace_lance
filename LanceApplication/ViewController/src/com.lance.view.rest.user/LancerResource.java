@@ -83,7 +83,7 @@ public class LancerResource extends BaseRestResource {
         Row lancerRow = lancerVO.createRow();
         lancerVO.insertRow(lancerRow);
         for (String attr : ATTR_CREATE) {
-            if ("Password,CompanyName".indexOf(attr) > 0) {
+            if ("Password,CompanyName".indexOf(attr) > -1) {
                 continue;
             }
             if (json.has(attr)) {
@@ -202,6 +202,20 @@ public class LancerResource extends BaseRestResource {
      *
      * 修改公司时需要清除CompanyId,如果CompanyId为空程序会根据传入的CompanyName执行merge Company操作
      * AccountType为0时会清空Company信息，为1时才会处理Company
+     * 
+     * @example
+     * POST http://localhost:7101/lance/res/user/lancer/update/92163f9001cc41ed8e572a5aa46934ce
+     * 
+     {
+        "UserName" : "muhongdi",
+        "Email" : "muhongdi@qq.com",
+        "DisplayName" : "天涯月",
+        "Country" : "44",
+        "TrueName" : "牟宏迪",
+        "AccountType" : 1,
+        "CompanyName" : "驻才网"
+     }
+
      *
      * @param userId
      * @param json

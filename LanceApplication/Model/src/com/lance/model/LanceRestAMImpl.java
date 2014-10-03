@@ -3,6 +3,7 @@ package com.lance.model;
 import com.lance.model.vo.ClientUserVOImpl;
 import com.lance.model.vo.CompanyVOImpl;
 import com.lance.model.vo.LancerResumeVOImpl;
+import com.lance.model.vo.LancerSkillVOImpl;
 import com.lance.model.vo.LancerVOImpl;
 import com.lance.model.vo.LoginUserVOImpl;
 
@@ -89,8 +90,8 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      * Container's getter for LancerSkill1.
      * @return LancerSkill1
      */
-    public BaseViewObjectImpl getLancerSkill1() {
-        return (BaseViewObjectImpl) findViewObject("LancerSkill1");
+    public LancerSkillVOImpl getLancerSkill1() {
+        return (LancerSkillVOImpl) findViewObject("LancerSkill1");
     }
 
     /**

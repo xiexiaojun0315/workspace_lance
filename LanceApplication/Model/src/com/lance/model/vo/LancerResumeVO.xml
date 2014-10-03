@@ -165,6 +165,6 @@
   <ViewLinkAccessor
     Name="LancerEducation"
     ViewLink="com.lance.model.vl.LancerResume_EducationVL"
-    Type="oracle.jbo.Row"
+    Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
 </ViewObject>
