@@ -2,6 +2,8 @@ package com.lance.model;
 
 import com.lance.model.vo.ClientUserVOImpl;
 import com.lance.model.vo.CompanyVOImpl;
+import com.lance.model.vo.JobTemplateVOImpl;
+import com.lance.model.vo.LancerLocationListVOImpl;
 import com.lance.model.vo.LancerResumeVOImpl;
 import com.lance.model.vo.LancerSkillVOImpl;
 import com.lance.model.vo.LancerVOImpl;
@@ -116,6 +118,78 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      */
     public ViewLinkImpl getLancerResume_EducationVL1() {
         return (ViewLinkImpl) findViewLink("LancerResume_EducationVL1");
+    }
+
+    /**
+     * Container's getter for LancerLocationList1.
+     * @return LancerLocationList1
+     */
+    public LancerLocationListVOImpl getLancerLocationList1() {
+        return (LancerLocationListVOImpl) findViewObject("LancerLocationList1");
+    }
+
+    /**
+     * Container's getter for Lancer_LocationListVL1.
+     * @return Lancer_LocationListVL1
+     */
+    public ViewLinkImpl getLancer_LocationListVL1() {
+        return (ViewLinkImpl) findViewLink("Lancer_LocationListVL1");
+    }
+
+    /**
+     * Container's getter for LancerSetting1.
+     * @return LancerSetting1
+     */
+    public BaseViewObjectImpl getLancerSetting1() {
+        return (BaseViewObjectImpl) findViewObject("LancerSetting1");
+    }
+
+    /**
+     * Container's getter for Lancer_LancerSettingVL1.
+     * @return Lancer_LancerSettingVL1
+     */
+    public ViewLinkImpl getLancer_LancerSettingVL1() {
+        return (ViewLinkImpl) findViewLink("Lancer_LancerSettingVL1");
+    }
+
+    /**
+     * Container's getter for JobCategory1.
+     * @return JobCategory1
+     */
+    public BaseViewObjectImpl getJobCategory1() {
+        return (BaseViewObjectImpl) findViewObject("JobCategory1");
+    }
+
+    /**
+     * Container's getter for JobSubCategory1.
+     * @return JobSubCategory1
+     */
+    public BaseViewObjectImpl getJobSubCategory1() {
+        return (BaseViewObjectImpl) findViewObject("JobSubCategory1");
+    }
+
+    /**
+     * Container's getter for JobCategory_SubCategoryVL1.
+     * @return JobCategory_SubCategoryVL1
+     */
+    public ViewLinkImpl getJobCategory_SubCategoryVL1() {
+        return (ViewLinkImpl) findViewLink("JobCategory_SubCategoryVL1");
+    }
+
+    /**
+     * Container's getter for JobTemplate1.
+     * @return JobTemplate1
+     */
+    public JobTemplateVOImpl getJobTemplate1() {
+        return (JobTemplateVOImpl) findViewObject("JobTemplate1");
+    }
+
+    /**
+     * Container's getter for JobTemplateJobCategoryFk1VL1.
+     * @return JobTemplateJobCategoryFk1VL1
+     */
+    public ViewLinkImpl getJobTemplateJobCategoryFk1VL1() {
+        return (ViewLinkImpl) findViewLink("JobTemplateJobCategoryFk1VL1");
     }
 }
 

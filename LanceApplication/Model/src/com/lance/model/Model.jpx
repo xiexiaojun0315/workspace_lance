@@ -13,6 +13,7 @@
     <Attr Name="_NamedConnection" Value="lance"/>
     <Attr Name="_appModuleNames0" Value="com.lance.model.LanceRestAM"/>
     <Attr Name="_domainNames0" Value="com.lance.model.vo.Type"/>
+    <Attr Name="_appModuleNames1" Value="com.lance.model.LanceAdminAM"/>
   </DesignTime>
   <Containee
     Name="as"

@@ -26,7 +26,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>UUID</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>CLIENT_COMPANY</name>
+              <name>COMPANY</name>
               <identifier class="java.math.BigDecimal">27194</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
@@ -60,7 +60,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>NAME</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>CLIENT_COMPANY</name>
+              <name>COMPANY</name>
               <identifier class="java.math.BigDecimal">27194</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
@@ -98,7 +98,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>ENTERPRISE_PROPERTY</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>CLIENT_COMPANY</name>
+              <name>COMPANY</name>
               <identifier class="java.math.BigDecimal">27194</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
@@ -126,7 +126,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>EMPLOYEE_NUMBER_GRADE</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>CLIENT_COMPANY</name>
+              <name>COMPANY</name>
               <identifier class="java.math.BigDecimal">27194</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
@@ -150,7 +150,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>FOUND_YEAR</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>CLIENT_COMPANY</name>
+              <name>COMPANY</name>
               <identifier class="java.math.BigDecimal">27194</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
@@ -184,7 +184,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>ABOUT_COMPANY</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>CLIENT_COMPANY</name>
+              <name>COMPANY</name>
               <identifier class="java.math.BigDecimal">27194</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
@@ -218,7 +218,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>SERVICE_DESC</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>CLIENT_COMPANY</name>
+              <name>COMPANY</name>
               <identifier class="java.math.BigDecimal">27194</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
@@ -252,7 +252,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>LOCATION</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>CLIENT_COMPANY</name>
+              <name>COMPANY</name>
               <identifier class="java.math.BigDecimal">27194</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
@@ -286,7 +286,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>VIDEO</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>CLIENT_COMPANY</name>
+              <name>COMPANY</name>
               <identifier class="java.math.BigDecimal">27194</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
@@ -320,7 +320,7 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>LOGO</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>CLIENT_COMPANY</name>
+              <name>COMPANY</name>
               <identifier class="java.math.BigDecimal">27194</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
@@ -366,7 +366,7 @@
               <childObjectName>UUID</childObjectName>
             </childObjectNames>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>CLIENT_COMPANY</name>
+              <name>COMPANY</name>
               <identifier class="java.math.BigDecimal">27194</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
@@ -394,7 +394,7 @@
                   <name>CLIENT_COMPANY_PK</name>
                   <identifier class="java.math.BigDecimal">27195</identifier>
                   <parent class="oracle.javatools.db.ReferenceID">
-                    <name>CLIENT_COMPANY</name>
+                    <name>COMPANY</name>
                     <identifier class="java.math.BigDecimal">27194</identifier>
                     <schemaName>LANCE</schemaName>
                     <type>TABLE</type>
@@ -417,7 +417,7 @@
             <name>CLIENT_COMPANY_PK</name>
             <identifier class="java.math.BigDecimal">27195</identifier>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>CLIENT_COMPANY</name>
+              <name>COMPANY</name>
               <identifier class="java.math.BigDecimal">27194</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
@@ -457,7 +457,7 @@
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
       <value class="oracle.javatools.db.ReferenceID">
-        <name>CLIENT_COMPANY</name>
+        <name>COMPANY</name>
         <identifier class="java.math.BigDecimal">27194</identifier>
         <schemaName>LANCE</schemaName>
         <type>TABLE</type>

@@ -5,7 +5,7 @@ import com.lance.model.vo.ClientUserVOImpl;
 import com.lance.model.vo.ClientUserVORowImpl;
 import com.lance.model.vo.LoginUserVOImpl;
 import com.lance.model.vo.LoginUserVORowImpl;
-import com.lance.view.util.LanceRestUtil;
+import com.lance.view.util.LUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;
 
@@ -28,12 +28,13 @@ public class ClientResource extends BaseRestResource {
      * 字段说明
      * TrueName真名（不可修改）
      * DisplayName显示名（可修改）
-     * Brief：简介
+     * JobTitle 头衔
+     * Description：简介
      * （开发注册页面时先忽略公司信息）
      */
     public static final String[] ATTR_CREATE = { "TrueName", "Email", "UserName", "DisplayName", "Password" };
-    public static final String[] ATTR_UPDATE = { "DisplayName" };
-    public static final String[] ATTR_GET = { "Uuid", "TrueName", "Email", "UserName", "DisplayName" };
+    public static final String[] ATTR_UPDATE = { "DisplayName", "TrueName","Description","JobTitle" };
+    public static final String[] ATTR_GET = { "Uuid", "TrueName", "Email", "UserName", "DisplayName","Description","JobTitle"  };
 
     public ClientResource() {
     }
@@ -62,7 +63,7 @@ public class ClientResource extends BaseRestResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public String createNewClient(JSONObject json) throws JSONException {
         System.out.println("createNewClient");
-        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        LanceRestAMImpl am = LUtil.findLanceAM();
         ClientUserVOImpl vo = am.getClientUser1();
         ClientUserVORowImpl row = (ClientUserVORowImpl) vo.createRow();
         vo.insertRow(row);
@@ -81,6 +82,7 @@ public class ClientResource extends BaseRestResource {
         loginUserRow.setUserName(json.getString("UserName"));
         loginUserRow.setType(1); //0:Lancer/供应商  1：:需求方
         loginUserRow.setUserId((String) row.getAttribute("Uuid"));
+        loginUserRow.setPassword(json.getString("Password"));
 
         am.getDBTransaction().commit();
         return (String) row.getAttribute("Uuid"); //返回新增记录的ID
@@ -110,7 +112,7 @@ public class ClientResource extends BaseRestResource {
     @Path("{userId}")
     public JSONObject findClientById(@PathParam("userId") String userId) throws JSONException {
         System.out.println("findClientById:" + userId);
-        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        LanceRestAMImpl am = LUtil.findLanceAM();
         ClientUserVOImpl vo = am.getClientUser1();
         vo.setApplyViewCriteriaName("FindByUuidVC");
         vo.setpUuid(userId);
@@ -142,7 +144,7 @@ public class ClientResource extends BaseRestResource {
     @Path("delete/{userId}")
     public String deleteClient(@PathParam("userId") String userId) {
         System.out.println("deleteClient:" + userId);
-        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        LanceRestAMImpl am = LUtil.findLanceAM();
         ClientUserVOImpl vo = am.getClientUser1();
         vo.setApplyViewCriteriaName("FindByUuidVC");
         vo.setpUuid(userId);
@@ -183,7 +185,7 @@ public class ClientResource extends BaseRestResource {
     @Path("update/{userId}")
     public String updateClient(@PathParam("userId") String userId, JSONObject json) throws JSONException {
         System.out.println("updateClient:" + userId);
-        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        LanceRestAMImpl am = LUtil.findLanceAM();
         ClientUserVOImpl vo = am.getClientUser1();
         vo.setApplyViewCriteriaName("FindByUuidVC");
         vo.setpUuid(userId);

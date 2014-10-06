@@ -28,17 +28,27 @@
     Name="LocationCountryVVO1"
     ViewObjectName="com.lance.model.vvo.LocationCountryVVO"
     RowLevelBinds="true"/>
-  <SQLQuery><![CDATA[SELECT LancerEO.UUID,       
-       LancerEO.COUNTRY,       
-       LancerEO.DISPLAY_NAME,       
-       LancerEO.EMAIL,       
-       LancerEO.IMG,       
-       LancerEO.TRUE_NAME,       
-       LancerEO.USER_NAME,       
-       LancerEO.ACCOUNT_TYPE,       
+  <SQLQuery><![CDATA[SELECT LancerEO.UUID,   
+       LancerEO.ACCOUNT_TYPE,   
        LancerEO.COMPANY_ID,   
-       CompanyEO.NAME COMPANY_NAME   
-FROM  LANCER LancerEO,COMPANY CompanyEO   
+       LancerEO.COUNTRY,   
+       LancerEO.DISPLAY_NAME,   
+       LancerEO.EMAIL,   
+       LancerEO.IM_NUMBER_A,   
+       LancerEO.IM_NUMBER_B,   
+       LancerEO.IM_NUMBER_C,   
+       LancerEO.IM_TYPE_A,   
+       LancerEO.IM_TYPE_B,   
+       LancerEO.IM_TYPE_C,   
+       LancerEO.IMG,   
+       LancerEO.PHONE_NUMBER,   
+       LancerEO.TRUE_NAME,   
+       LancerEO.USER_NAME,   
+       LancerEO.WEBSITE_URL,   
+       LancerEO.LOCATION_A,   
+       LancerEO.LOCATION_B, 
+       CompanyEO.NAME COMPANY_NAME 
+FROM  LANCER LancerEO,COMPANY CompanyEO    
 WHERE LancerEO.COMPANY_ID = CompanyEO.UUID(+)]]></SQLQuery>
   <EntityUsage
     Name="LancerEO"
@@ -50,6 +60,18 @@ WHERE LancerEO.COMPANY_ID = CompanyEO.UUID(+)]]></SQLQuery>
     EntityAttrName="Uuid"
     EntityUsage="LancerEO"
     AliasName="UUID"/>
+  <ViewAttribute
+    Name="AccountType"
+    PrecisionRule="true"
+    EntityAttrName="AccountType"
+    EntityUsage="LancerEO"
+    AliasName="ACCOUNT_TYPE"/>
+  <ViewAttribute
+    Name="CompanyId"
+    PrecisionRule="true"
+    EntityAttrName="CompanyId"
+    EntityUsage="LancerEO"
+    AliasName="COMPANY_ID"/>
   <ViewAttribute
     Name="Country"
     PrecisionRule="true"
@@ -69,11 +91,53 @@ WHERE LancerEO.COMPANY_ID = CompanyEO.UUID(+)]]></SQLQuery>
     EntityUsage="LancerEO"
     AliasName="EMAIL"/>
   <ViewAttribute
+    Name="ImNumberA"
+    PrecisionRule="true"
+    EntityAttrName="ImNumberA"
+    EntityUsage="LancerEO"
+    AliasName="IM_NUMBER_A"/>
+  <ViewAttribute
+    Name="ImNumberB"
+    PrecisionRule="true"
+    EntityAttrName="ImNumberB"
+    EntityUsage="LancerEO"
+    AliasName="IM_NUMBER_B"/>
+  <ViewAttribute
+    Name="ImNumberC"
+    PrecisionRule="true"
+    EntityAttrName="ImNumberC"
+    EntityUsage="LancerEO"
+    AliasName="IM_NUMBER_C"/>
+  <ViewAttribute
+    Name="ImTypeA"
+    PrecisionRule="true"
+    EntityAttrName="ImTypeA"
+    EntityUsage="LancerEO"
+    AliasName="IM_TYPE_A"/>
+  <ViewAttribute
+    Name="ImTypeB"
+    PrecisionRule="true"
+    EntityAttrName="ImTypeB"
+    EntityUsage="LancerEO"
+    AliasName="IM_TYPE_B"/>
+  <ViewAttribute
+    Name="ImTypeC"
+    PrecisionRule="true"
+    EntityAttrName="ImTypeC"
+    EntityUsage="LancerEO"
+    AliasName="IM_TYPE_C"/>
+  <ViewAttribute
     Name="Img"
     PrecisionRule="true"
     EntityAttrName="Img"
     EntityUsage="LancerEO"
     AliasName="IMG"/>
+  <ViewAttribute
+    Name="PhoneNumber"
+    PrecisionRule="true"
+    EntityAttrName="PhoneNumber"
+    EntityUsage="LancerEO"
+    AliasName="PHONE_NUMBER"/>
   <ViewAttribute
     Name="TrueName"
     PrecisionRule="true"
@@ -87,19 +151,26 @@ WHERE LancerEO.COMPANY_ID = CompanyEO.UUID(+)]]></SQLQuery>
     EntityUsage="LancerEO"
     AliasName="USER_NAME"/>
   <ViewAttribute
-    Name="AccountType"
+    Name="WebsiteUrl"
     PrecisionRule="true"
-    EntityAttrName="AccountType"
+    EntityAttrName="WebsiteUrl"
     EntityUsage="LancerEO"
-    AliasName="ACCOUNT_TYPE"/>
+    AliasName="WEBSITE_URL"/>
   <ViewAttribute
-    Name="CompanyId"
+    Name="LocationA"
     PrecisionRule="true"
-    EntityAttrName="CompanyId"
+    EntityAttrName="LocationA"
     EntityUsage="LancerEO"
-    AliasName="COMPANY_ID"/>
+    AliasName="LOCATION_A"/>
+  <ViewAttribute
+    Name="LocationB"
+    PrecisionRule="true"
+    EntityAttrName="LocationB"
+    EntityUsage="LancerEO"
+    AliasName="LOCATION_B"/>
   <ViewAttribute
     Name="CompanyName"
+    IsUpdateable="false"
     IsPersistent="false"
     PrecisionRule="true"
     Precision="100"
@@ -135,18 +206,6 @@ WHERE LancerEO.COMPANY_ID = CompanyEO.UUID(+)]]></SQLQuery>
           Value="Basic"/>
       </CustomProperties>
     </Properties>
-    <ViewCriteriaRow
-      Name="LancerVOCriteria_row_0"
-      UpperColumns="1">
-      <ViewCriteriaItem
-        Name="Email"
-        ViewAttribute="Email"
-        Operator="="
-        Conjunction="AND"
-        Value=":pEmail"
-        IsBindVarValue="true"
-        Required="Optional"/>
-    </ViewCriteriaRow>
   </ViewCriteria>
   <ViewCriteria
     Name="FindByUuidVC"
@@ -171,24 +230,21 @@ WHERE LancerEO.COMPANY_ID = CompanyEO.UUID(+)]]></SQLQuery>
           Value="Basic"/>
       </CustomProperties>
     </Properties>
-    <ViewCriteriaRow
-      Name="LancerVOCriteria_row_0"
-      UpperColumns="1">
-      <ViewCriteriaItem
-        Name="Uuid"
-        ViewAttribute="Uuid"
-        Operator="="
-        Conjunction="AND"
-        Value=":pUuid"
-        UpperColumns="0"
-        IsBindVarValue="true"
-        Required="Optional"/>
-    </ViewCriteriaRow>
   </ViewCriteria>
   <ViewLinkAccessor
     Name="LancerResume"
     ViewLink="com.lance.model.vl.LancerResumeLancerFk1VL"
     Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="LancerLocationList"
+    ViewLink="com.lance.model.vl.Lancer_LocationListVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="LancerSetting"
+    ViewLink="com.lance.model.vl.Lancer_LancerSettingVL"
+    Type="oracle.jbo.Row"
     IsUpdateable="false"/>
   <ResourceBundle>
     <PropertiesBundle

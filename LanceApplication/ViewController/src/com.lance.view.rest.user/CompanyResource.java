@@ -3,7 +3,7 @@ package com.lance.view.rest.user;
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.vo.CompanyVOImpl;
 import com.lance.model.vo.CompanyVORowImpl;
-import com.lance.view.util.LanceRestUtil;
+import com.lance.view.util.LUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;
 
@@ -45,7 +45,7 @@ public class CompanyResource extends BaseRestResource {
     @Consumes(MediaType.APPLICATION_JSON)
     public String mergeCompanyByName(JSONObject json) throws JSONException {
         String uuid = mergeCompanyByName(json.getString("Name"));
-        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        LanceRestAMImpl am = LUtil.findLanceAM();
         am.getDBTransaction().commit();
         return uuid;
     }
@@ -57,7 +57,7 @@ public class CompanyResource extends BaseRestResource {
      */
     public String mergeCompanyByName(String companyName) {
         System.out.println("mergeCompanyByName");
-        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        LanceRestAMImpl am = LUtil.findLanceAM();
         CompanyVOImpl vo = am.getCompany1();
         vo.setApplyViewCriteriaName("FindByNameVC");
         vo.setpName(companyName);
@@ -102,7 +102,7 @@ public class CompanyResource extends BaseRestResource {
     @GET
     @Path("filter/name/{name}")
     public JSONArray filterCompanyByName(@PathParam("name") String name) throws JSONException {
-        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        LanceRestAMImpl am = LUtil.findLanceAM();
         CompanyVOImpl vo = am.getCompany1();
         vo.setApplyViewCriteriaName("filterByNameVC");
         vo.setpName(name);

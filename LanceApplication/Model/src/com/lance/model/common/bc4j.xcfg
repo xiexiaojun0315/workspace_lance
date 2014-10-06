@@ -14,4 +14,17 @@
          <Custom ns0:JDBCDataSource="jdbc/lanceDS" ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
       </AppModuleConfig>
    </AppModuleConfigBag>
+   <AppModuleConfigBag ApplicationName="com.lance.model.LanceAdminAM">
+      <AppModuleConfig DeployPlatform="LOCAL" name="LanceAdminAMLocal" ApplicationName="com.lance.model.LanceAdminAM" jbo.project="com.lance.model.Model">
+         <Database jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="com.lance.model.LanceAdminAM"/>
+         <Custom ns0:JDBCDataSource="jdbc/lanceDS" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+      <AppModuleConfig jbo.project="com.lance.model.Model" ApplicationName="com.lance.model.LanceAdminAM" DeployPlatform="LOCAL" name="LanceAdminAMShared">
+         <AM-Pooling jbo.ampool.dynamicjdbccredentials="false" jbo.ampool.resetnontransactionalstate="false" jbo.ampool.maxpoolsize="1" jbo.ampool.isuseexclusive="false"/>
+         <Database jbo.TypeMapEntries="OracleApps"/>
+         <Security AppModuleJndiName="com.lance.model.LanceAdminAM"/>
+         <Custom ns0:JDBCDataSource="jdbc/lanceDS" ns0:ns0="http://xmlns.oracle.com/bc4j/configuration" xmlns:ns0="http://xmlns.oracle.com/bc4j/configuration"/>
+      </AppModuleConfig>
+   </AppModuleConfigBag>
 </BC4JConfig>

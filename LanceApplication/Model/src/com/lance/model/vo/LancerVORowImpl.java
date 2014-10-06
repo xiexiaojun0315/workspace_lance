@@ -5,6 +5,7 @@ import com.zngh.platform.front.core.model.BaseViewRowImpl;
 
 import java.math.BigDecimal;
 
+import oracle.jbo.Row;
 import oracle.jbo.RowIterator;
 import oracle.jbo.RowSet;
 // ---------------------------------------------------------------------
@@ -23,16 +24,28 @@ public class LancerVORowImpl extends BaseViewRowImpl {
      */
     public enum AttributesEnum {
         Uuid,
+        AccountType,
+        CompanyId,
         Country,
         DisplayName,
         Email,
+        ImNumberA,
+        ImNumberB,
+        ImNumberC,
+        ImTypeA,
+        ImTypeB,
+        ImTypeC,
         Img,
+        PhoneNumber,
         TrueName,
         UserName,
-        AccountType,
-        CompanyId,
+        WebsiteUrl,
+        LocationA,
+        LocationB,
         CompanyName,
         LancerResume,
+        LancerLocationList,
+        LancerSetting,
         LocationCountryVVO1;
         static AttributesEnum[] vals = null;
         ;
@@ -60,16 +73,28 @@ public class LancerVORowImpl extends BaseViewRowImpl {
 
 
     public static final int UUID = AttributesEnum.Uuid.index();
+    public static final int ACCOUNTTYPE = AttributesEnum.AccountType.index();
+    public static final int COMPANYID = AttributesEnum.CompanyId.index();
     public static final int COUNTRY = AttributesEnum.Country.index();
     public static final int DISPLAYNAME = AttributesEnum.DisplayName.index();
     public static final int EMAIL = AttributesEnum.Email.index();
+    public static final int IMNUMBERA = AttributesEnum.ImNumberA.index();
+    public static final int IMNUMBERB = AttributesEnum.ImNumberB.index();
+    public static final int IMNUMBERC = AttributesEnum.ImNumberC.index();
+    public static final int IMTYPEA = AttributesEnum.ImTypeA.index();
+    public static final int IMTYPEB = AttributesEnum.ImTypeB.index();
+    public static final int IMTYPEC = AttributesEnum.ImTypeC.index();
     public static final int IMG = AttributesEnum.Img.index();
+    public static final int PHONENUMBER = AttributesEnum.PhoneNumber.index();
     public static final int TRUENAME = AttributesEnum.TrueName.index();
     public static final int USERNAME = AttributesEnum.UserName.index();
-    public static final int ACCOUNTTYPE = AttributesEnum.AccountType.index();
-    public static final int COMPANYID = AttributesEnum.CompanyId.index();
+    public static final int WEBSITEURL = AttributesEnum.WebsiteUrl.index();
+    public static final int LOCATIONA = AttributesEnum.LocationA.index();
+    public static final int LOCATIONB = AttributesEnum.LocationB.index();
     public static final int COMPANYNAME = AttributesEnum.CompanyName.index();
     public static final int LANCERRESUME = AttributesEnum.LancerResume.index();
+    public static final int LANCERLOCATIONLIST = AttributesEnum.LancerLocationList.index();
+    public static final int LANCERSETTING = AttributesEnum.LancerSetting.index();
     public static final int LOCATIONCOUNTRYVVO1 = AttributesEnum.LocationCountryVVO1.index();
 
     /**
@@ -102,69 +127,37 @@ public class LancerVORowImpl extends BaseViewRowImpl {
         setAttributeInternal(UUID, value);
     }
 
+
     /**
-     * Gets the attribute value for IMG using the alias name Img.
-     * @return the IMG
+     * Gets the attribute value for ACCOUNT_TYPE using the alias name AccountType.
+     * @return the ACCOUNT_TYPE
      */
-    public String getImg() {
-        return (String) getAttributeInternal(IMG);
+    public Integer getAccountType() {
+        return (Integer) getAttributeInternal(ACCOUNTTYPE);
     }
 
     /**
-     * Sets <code>value</code> as attribute value for IMG using the alias name Img.
-     * @param value value to set the IMG
+     * Sets <code>value</code> as attribute value for ACCOUNT_TYPE using the alias name AccountType.
+     * @param value value to set the ACCOUNT_TYPE
      */
-    public void setImg(String value) {
-        setAttributeInternal(IMG, value);
+    public void setAccountType(Integer value) {
+        setAttributeInternal(ACCOUNTTYPE, value);
     }
 
     /**
-     * Gets the attribute value for USER_NAME using the alias name UserName.
-     * @return the USER_NAME
+     * Gets the attribute value for COMPANY_ID using the alias name CompanyId.
+     * @return the COMPANY_ID
      */
-    public String getUserName() {
-        return (String) getAttributeInternal(USERNAME);
+    public String getCompanyId() {
+        return (String) getAttributeInternal(COMPANYID);
     }
 
     /**
-     * Sets <code>value</code> as attribute value for USER_NAME using the alias name UserName.
-     * @param value value to set the USER_NAME
+     * Sets <code>value</code> as attribute value for COMPANY_ID using the alias name CompanyId.
+     * @param value value to set the COMPANY_ID
      */
-    public void setUserName(String value) {
-        setAttributeInternal(USERNAME, value);
-    }
-
-    /**
-     * Gets the attribute value for EMAIL using the alias name Email.
-     * @return the EMAIL
-     */
-    public String getEmail() {
-        return (String) getAttributeInternal(EMAIL);
-    }
-
-    /**
-     * Sets <code>value</code> as attribute value for EMAIL using the alias name Email.
-     * @param value value to set the EMAIL
-     */
-    public void setEmail(String value) {
-        setAttributeInternal(EMAIL, value);
-    }
-
-
-    /**
-     * Gets the attribute value for DISPLAY_NAME using the alias name DisplayName.
-     * @return the DISPLAY_NAME
-     */
-    public String getDisplayName() {
-        return (String) getAttributeInternal(DISPLAYNAME);
-    }
-
-    /**
-     * Sets <code>value</code> as attribute value for DISPLAY_NAME using the alias name DisplayName.
-     * @param value value to set the DISPLAY_NAME
-     */
-    public void setDisplayName(String value) {
-        setAttributeInternal(DISPLAYNAME, value);
+    public void setCompanyId(String value) {
+        setAttributeInternal(COMPANYID, value);
     }
 
     /**
@@ -184,6 +177,166 @@ public class LancerVORowImpl extends BaseViewRowImpl {
     }
 
     /**
+     * Gets the attribute value for DISPLAY_NAME using the alias name DisplayName.
+     * @return the DISPLAY_NAME
+     */
+    public String getDisplayName() {
+        return (String) getAttributeInternal(DISPLAYNAME);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for DISPLAY_NAME using the alias name DisplayName.
+     * @param value value to set the DISPLAY_NAME
+     */
+    public void setDisplayName(String value) {
+        setAttributeInternal(DISPLAYNAME, value);
+    }
+
+    /**
+     * Gets the attribute value for EMAIL using the alias name Email.
+     * @return the EMAIL
+     */
+    public String getEmail() {
+        return (String) getAttributeInternal(EMAIL);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for EMAIL using the alias name Email.
+     * @param value value to set the EMAIL
+     */
+    public void setEmail(String value) {
+        setAttributeInternal(EMAIL, value);
+    }
+
+    /**
+     * Gets the attribute value for IM_NUMBER_A using the alias name ImNumberA.
+     * @return the IM_NUMBER_A
+     */
+    public String getImNumberA() {
+        return (String) getAttributeInternal(IMNUMBERA);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for IM_NUMBER_A using the alias name ImNumberA.
+     * @param value value to set the IM_NUMBER_A
+     */
+    public void setImNumberA(String value) {
+        setAttributeInternal(IMNUMBERA, value);
+    }
+
+    /**
+     * Gets the attribute value for IM_NUMBER_B using the alias name ImNumberB.
+     * @return the IM_NUMBER_B
+     */
+    public String getImNumberB() {
+        return (String) getAttributeInternal(IMNUMBERB);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for IM_NUMBER_B using the alias name ImNumberB.
+     * @param value value to set the IM_NUMBER_B
+     */
+    public void setImNumberB(String value) {
+        setAttributeInternal(IMNUMBERB, value);
+    }
+
+    /**
+     * Gets the attribute value for IM_NUMBER_C using the alias name ImNumberC.
+     * @return the IM_NUMBER_C
+     */
+    public String getImNumberC() {
+        return (String) getAttributeInternal(IMNUMBERC);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for IM_NUMBER_C using the alias name ImNumberC.
+     * @param value value to set the IM_NUMBER_C
+     */
+    public void setImNumberC(String value) {
+        setAttributeInternal(IMNUMBERC, value);
+    }
+
+    /**
+     * Gets the attribute value for IM_TYPE_A using the alias name ImTypeA.
+     * @return the IM_TYPE_A
+     */
+    public String getImTypeA() {
+        return (String) getAttributeInternal(IMTYPEA);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for IM_TYPE_A using the alias name ImTypeA.
+     * @param value value to set the IM_TYPE_A
+     */
+    public void setImTypeA(String value) {
+        setAttributeInternal(IMTYPEA, value);
+    }
+
+    /**
+     * Gets the attribute value for IM_TYPE_B using the alias name ImTypeB.
+     * @return the IM_TYPE_B
+     */
+    public String getImTypeB() {
+        return (String) getAttributeInternal(IMTYPEB);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for IM_TYPE_B using the alias name ImTypeB.
+     * @param value value to set the IM_TYPE_B
+     */
+    public void setImTypeB(String value) {
+        setAttributeInternal(IMTYPEB, value);
+    }
+
+    /**
+     * Gets the attribute value for IM_TYPE_C using the alias name ImTypeC.
+     * @return the IM_TYPE_C
+     */
+    public String getImTypeC() {
+        return (String) getAttributeInternal(IMTYPEC);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for IM_TYPE_C using the alias name ImTypeC.
+     * @param value value to set the IM_TYPE_C
+     */
+    public void setImTypeC(String value) {
+        setAttributeInternal(IMTYPEC, value);
+    }
+
+    /**
+     * Gets the attribute value for IMG using the alias name Img.
+     * @return the IMG
+     */
+    public String getImg() {
+        return (String) getAttributeInternal(IMG);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for IMG using the alias name Img.
+     * @param value value to set the IMG
+     */
+    public void setImg(String value) {
+        setAttributeInternal(IMG, value);
+    }
+
+    /**
+     * Gets the attribute value for PHONE_NUMBER using the alias name PhoneNumber.
+     * @return the PHONE_NUMBER
+     */
+    public String getPhoneNumber() {
+        return (String) getAttributeInternal(PHONENUMBER);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for PHONE_NUMBER using the alias name PhoneNumber.
+     * @param value value to set the PHONE_NUMBER
+     */
+    public void setPhoneNumber(String value) {
+        setAttributeInternal(PHONENUMBER, value);
+    }
+
+    /**
      * Gets the attribute value for TRUE_NAME using the alias name TrueName.
      * @return the TRUE_NAME
      */
@@ -200,36 +353,67 @@ public class LancerVORowImpl extends BaseViewRowImpl {
     }
 
     /**
-     * Gets the attribute value for ACCOUNT_TYPE using the alias name AccountType.
-     * @return the ACCOUNT_TYPE
+     * Gets the attribute value for USER_NAME using the alias name UserName.
+     * @return the USER_NAME
      */
-    public Integer getAccountType() {
-        return (Integer) getAttributeInternal(ACCOUNTTYPE);
+    public String getUserName() {
+        return (String) getAttributeInternal(USERNAME);
     }
 
     /**
-     * Sets <code>value</code> as attribute value for ACCOUNT_TYPE using the alias name AccountType.
-     * @param value value to set the ACCOUNT_TYPE
+     * Sets <code>value</code> as attribute value for USER_NAME using the alias name UserName.
+     * @param value value to set the USER_NAME
      */
-    public void setAccountType(Integer value) {
-        setAttributeInternal(ACCOUNTTYPE, value);
-    }
-
-
-    /**
-     * Gets the attribute value for COMPANY_ID using the alias name CompanyId.
-     * @return the COMPANY_ID
-     */
-    public String getCompanyId() {
-        return (String) getAttributeInternal(COMPANYID);
+    public void setUserName(String value) {
+        setAttributeInternal(USERNAME, value);
     }
 
     /**
-     * Sets <code>value</code> as attribute value for COMPANY_ID using the alias name CompanyId.
-     * @param value value to set the COMPANY_ID
+     * Gets the attribute value for WEBSITE_URL using the alias name WebsiteUrl.
+     * @return the WEBSITE_URL
      */
-    public void setCompanyId(String value) {
-        setAttributeInternal(COMPANYID, value);
+    public String getWebsiteUrl() {
+        return (String) getAttributeInternal(WEBSITEURL);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for WEBSITE_URL using the alias name WebsiteUrl.
+     * @param value value to set the WEBSITE_URL
+     */
+    public void setWebsiteUrl(String value) {
+        setAttributeInternal(WEBSITEURL, value);
+    }
+
+    /**
+     * Gets the attribute value for LOCATION_A using the alias name LocationA.
+     * @return the LOCATION_A
+     */
+    public String getLocationA() {
+        return (String) getAttributeInternal(LOCATIONA);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for LOCATION_A using the alias name LocationA.
+     * @param value value to set the LOCATION_A
+     */
+    public void setLocationA(String value) {
+        setAttributeInternal(LOCATIONA, value);
+    }
+
+    /**
+     * Gets the attribute value for LOCATION_B using the alias name LocationB.
+     * @return the LOCATION_B
+     */
+    public String getLocationB() {
+        return (String) getAttributeInternal(LOCATIONB);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for LOCATION_B using the alias name LocationB.
+     * @param value value to set the LOCATION_B
+     */
+    public void setLocationB(String value) {
+        setAttributeInternal(LOCATIONB, value);
     }
 
     /**
@@ -241,18 +425,31 @@ public class LancerVORowImpl extends BaseViewRowImpl {
     }
 
     /**
-     * Sets <code>value</code> as the attribute value for the calculated attribute CompanyName.
-     * @param value value to set the  CompanyName
-     */
-    public void setCompanyName(String value) {
-        setAttributeInternal(COMPANYNAME, value);
-    }
-
-    /**
      * Gets the associated <code>RowIterator</code> using master-detail link LancerResume.
      */
     public RowIterator getLancerResume() {
         return (RowIterator) getAttributeInternal(LANCERRESUME);
+    }
+
+    /**
+     * Gets the associated <code>RowIterator</code> using master-detail link LancerLocationList.
+     */
+    public RowIterator getLancerLocationList() {
+        return (RowIterator) getAttributeInternal(LANCERLOCATIONLIST);
+    }
+
+    /**
+     * Gets the associated <code>Row</code> using master-detail link LancerSetting.
+     */
+    public Row getLancerSetting() {
+        return (Row) getAttributeInternal(LANCERSETTING);
+    }
+
+    /**
+     * Sets the master-detail link LancerSetting between this object and <code>value</code>.
+     */
+    public void setLancerSetting(Row value) {
+        setAttributeInternal(LANCERSETTING, value);
     }
 
     /**

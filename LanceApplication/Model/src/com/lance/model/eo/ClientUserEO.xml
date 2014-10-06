@@ -75,18 +75,6 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="Brief"
-    Precision="2000"
-    ColumnName="BRIEF"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="CLIENT_USER">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="2000"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="Attach"
     Precision="200"
     ColumnName="ATTACH"
@@ -159,19 +147,6 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="Password"
-    Precision="50"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="$none$"
-    IsQueriable="false"
-    IsPersistent="false">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="50"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="DisplayName"
     Precision="50"
     ColumnName="DISPLAY_NAME"
@@ -195,6 +170,14 @@
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="Description"
+    IsQueriable="false"
+    ColumnName="DESCRIPTION"
+    SQLType="CLOB"
+    Type="oracle.jbo.domain.ClobDomain"
+    ColumnType="CLOB"
+    TableName="CLIENT_USER"/>
   <AccessorAttribute
     Name="LanceExp"
     Association="com.lance.model.as.LanceExpClientFk1AS"
@@ -210,17 +193,6 @@
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.lance.model.eo.ClientUserEO.Uuid"/>
-    </AttrArray>
-  </Key>
-  <Key
-    Name="ClientUserFk1">
-    <DesignTime>
-      <Attr Name="_referencedKey" Value="CLIENT_COMPANY_PK"/>
-      <Attr Name="_isForeign" Value="true"/>
-      <Attr Name="_DBObjectName" Value="CLIENT_USER_FK1"/>
-    </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.lance.model.eo.ClientUserEO.CompanyId"/>
     </AttrArray>
   </Key>
 </Entity>

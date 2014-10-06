@@ -2,7 +2,7 @@ package com.lance.view.rest.location;
 
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.vvo.LocationCountryVVOImpl;
-import com.lance.view.util.LanceRestUtil;
+import com.lance.view.util.LUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;
 
@@ -49,7 +49,7 @@ public class CountryResource extends BaseRestResource {
     @GET
     @Path("list")
     public JSONArray getAllCountry() throws JSONException {
-        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        LanceRestAMImpl am = LUtil.findLanceAM();
         LocationCountryVVOImpl vo = am.getLocationCountryV2();
         return this.convertVoToJsonArray(vo, this.ATTR_GET);
     }

@@ -44,6 +44,21 @@
   <ViewUsage
     Name="LancerEducation1"
     ViewObjectName="com.lance.model.vo.LancerEducationVO"/>
+  <ViewUsage
+    Name="LancerLocationList1"
+    ViewObjectName="com.lance.model.vo.LancerLocationListVO"/>
+  <ViewUsage
+    Name="LancerSetting1"
+    ViewObjectName="com.lance.model.vo.LancerSettingVO"/>
+  <ViewUsage
+    Name="JobCategory1"
+    ViewObjectName="com.lance.model.vo.JobCategoryVO"/>
+  <ViewUsage
+    Name="JobSubCategory1"
+    ViewObjectName="com.lance.model.vo.JobSubCategoryVO"/>
+  <ViewUsage
+    Name="JobTemplate1"
+    ViewObjectName="com.lance.model.vo.JobTemplateVO"/>
   <ViewLinkUsage
     Name="LancerResume_SkillVL1"
     ViewLinkObjectName="com.lance.model.vl.LancerResume_SkillVL"
@@ -55,6 +70,30 @@
     ViewLinkObjectName="com.lance.model.vl.LancerResume_EducationVL"
     SrcViewUsageName="com.lance.model.LanceRestAM.LancerResume1"
     DstViewUsageName="com.lance.model.LanceRestAM.LancerEducation1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="Lancer_LocationListVL1"
+    ViewLinkObjectName="com.lance.model.vl.Lancer_LocationListVL"
+    SrcViewUsageName="com.lance.model.LanceRestAM.Lancer1"
+    DstViewUsageName="com.lance.model.LanceRestAM.LancerLocationList1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="Lancer_LancerSettingVL1"
+    ViewLinkObjectName="com.lance.model.vl.Lancer_LancerSettingVL"
+    SrcViewUsageName="com.lance.model.LanceRestAM.Lancer1"
+    DstViewUsageName="com.lance.model.LanceRestAM.LancerSetting1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="JobCategory_SubCategoryVL1"
+    ViewLinkObjectName="com.lance.model.vl.JobCategory_SubCategoryVL"
+    SrcViewUsageName="com.lance.model.LanceRestAM.JobCategory1"
+    DstViewUsageName="com.lance.model.LanceRestAM.JobSubCategory1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="JobTemplateJobCategoryFk1VL1"
+    ViewLinkObjectName="com.lance.model.vl.JobTemplateJobCategoryFk1VL"
+    SrcViewUsageName="com.lance.model.LanceRestAM.JobCategory1"
+    DstViewUsageName="com.lance.model.LanceRestAM.JobTemplate1"
     Reversed="false"/>
   <ResourceBundle>
     <PropertiesBundle

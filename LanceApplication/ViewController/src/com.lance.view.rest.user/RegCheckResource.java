@@ -4,7 +4,7 @@ import com.lance.model.LanceRestAMImpl;
 import com.lance.model.vo.ClientUserVOImpl;
 import com.lance.model.vo.LancerVOImpl;
 import com.lance.model.vo.LoginUserVOImpl;
-import com.lance.view.util.LanceRestUtil;
+import com.lance.view.util.LUtil;
 
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
@@ -32,7 +32,7 @@ public class RegCheckResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String existUserName(@PathParam("userName") String userName) throws JSONException {
         System.out.println("existUserName:" + userName);
-        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        LanceRestAMImpl am = LUtil.findLanceAM();
         LoginUserVOImpl logvo = am.getLoginUser1();
         logvo.setApplyViewCriteriaName("FindByUserNameVC");
         logvo.setpUserName(userName);
@@ -59,7 +59,7 @@ public class RegCheckResource {
     @Produces(MediaType.TEXT_PLAIN)
     public String existEmail(@PathParam("email") String email) throws JSONException {
         System.out.println("existEmail:" + email);
-        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        LanceRestAMImpl am = LUtil.findLanceAM();
         LancerVOImpl vo = am.getLancer1(); //todo add table index
         vo.setApplyViewCriteriaName("FindByEmailVC");
         vo.setpEmail(email);

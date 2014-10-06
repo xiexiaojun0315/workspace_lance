@@ -63,19 +63,6 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="Password"
-    Precision="100"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="$none$"
-    IsQueriable="false"
-    IsPersistent="false">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="100"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="DisplayName"
     Precision="20"
     ColumnName="DISPLAY_NAME"
@@ -119,22 +106,129 @@
     ColumnType="NUMBER"
     TableName="LANCER"/>
   <Attribute
-    Name="CompanyName"
-    Precision="50"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
+    Name="CompanyId"
+    Precision="32"
+    ColumnName="COMPANY_ID"
     SQLType="VARCHAR"
     Type="java.lang.String"
-    ColumnType="$none$"
-    IsQueriable="false"
-    IsPersistent="false">
+    ColumnType="VARCHAR2"
+    TableName="LANCER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="PhoneNumber"
+    Precision="20"
+    ColumnName="PHONE_NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="WebsiteUrl"
+    Precision="500"
+    ColumnName="WEBSITE_URL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ImNumberA"
+    Precision="50"
+    ColumnName="IM_NUMBER_A"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="CompanyId"
+    Name="ImTypeA"
+    Precision="20"
+    ColumnName="IM_TYPE_A"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ImNumberB"
+    Precision="50"
+    ColumnName="IM_NUMBER_B"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ImTypeB"
+    Precision="20"
+    ColumnName="IM_TYPE_B"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ImNumberC"
+    Precision="50"
+    ColumnName="IM_NUMBER_C"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ImTypeC"
+    Precision="20"
+    ColumnName="IM_TYPE_C"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationA"
     Precision="32"
-    ColumnName="COMPANY_ID"
+    ColumnName="LOCATION_A"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationB"
+    Precision="32"
+    ColumnName="LOCATION_B"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
@@ -158,17 +252,6 @@
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.lance.model.eo.LancerEO.Uuid"/>
-    </AttrArray>
-  </Key>
-  <Key
-    Name="LancerCompanyFk1">
-    <DesignTime>
-      <Attr Name="_referencedKey" Value="CLIENT_COMPANY_PK"/>
-      <Attr Name="_isForeign" Value="true"/>
-      <Attr Name="_DBObjectName" Value="LANCER_COMPANY_FK1"/>
-    </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.lance.model.eo.LancerEO.CompanyId"/>
     </AttrArray>
   </Key>
 </Entity>

@@ -12,9 +12,13 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  RowClass="com.zngh.platform.front.core.model.BaseViewRowImpl"
-  ComponentClass="com.zngh.platform.front.core.model.BaseViewObjectImpl"
+  RowClass="com.lance.model.vo.LancerLocationListVORowImpl"
+  ComponentClass="com.lance.model.vo.LancerLocationListVOImpl"
   PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <EntityUsage
     Name="LancerLocationListEO"
     Entity="com.lance.model.eo.LancerLocationListEO"/>
@@ -26,23 +30,11 @@
     EntityUsage="LancerLocationListEO"
     AliasName="UUID"/>
   <ViewAttribute
-    Name="RegionId"
+    Name="AreaId"
     PrecisionRule="true"
-    EntityAttrName="RegionId"
+    EntityAttrName="AreaId"
     EntityUsage="LancerLocationListEO"
-    AliasName="REGION_ID"/>
-  <ViewAttribute
-    Name="CountryId"
-    PrecisionRule="true"
-    EntityAttrName="CountryId"
-    EntityUsage="LancerLocationListEO"
-    AliasName="COUNTRY_ID"/>
-  <ViewAttribute
-    Name="ProvinceId"
-    PrecisionRule="true"
-    EntityAttrName="ProvinceId"
-    EntityUsage="LancerLocationListEO"
-    AliasName="PROVINCE_ID"/>
+    AliasName="AREA_ID"/>
   <ViewAttribute
     Name="CityId"
     PrecisionRule="true"
@@ -50,11 +42,11 @@
     EntityUsage="LancerLocationListEO"
     AliasName="CITY_ID"/>
   <ViewAttribute
-    Name="AreaId"
+    Name="CountryId"
     PrecisionRule="true"
-    EntityAttrName="AreaId"
+    EntityAttrName="CountryId"
     EntityUsage="LancerLocationListEO"
-    AliasName="AREA_ID"/>
+    AliasName="COUNTRY_ID"/>
   <ViewAttribute
     Name="CurrentIn"
     PrecisionRule="true"
@@ -62,11 +54,47 @@
     EntityUsage="LancerLocationListEO"
     AliasName="CURRENT_IN"/>
   <ViewAttribute
+    Name="FaxNumber"
+    PrecisionRule="true"
+    EntityAttrName="FaxNumber"
+    EntityUsage="LancerLocationListEO"
+    AliasName="FAX_NUMBER"/>
+  <ViewAttribute
     Name="LancerId"
     PrecisionRule="true"
     EntityAttrName="LancerId"
     EntityUsage="LancerLocationListEO"
     AliasName="LANCER_ID"/>
+  <ViewAttribute
+    Name="ProvinceId"
+    PrecisionRule="true"
+    EntityAttrName="ProvinceId"
+    EntityUsage="LancerLocationListEO"
+    AliasName="PROVINCE_ID"/>
+  <ViewAttribute
+    Name="RegionId"
+    PrecisionRule="true"
+    EntityAttrName="RegionId"
+    EntityUsage="LancerLocationListEO"
+    AliasName="REGION_ID"/>
+  <ViewAttribute
+    Name="Telphone"
+    PrecisionRule="true"
+    EntityAttrName="Telphone"
+    EntityUsage="LancerLocationListEO"
+    AliasName="TELPHONE"/>
+  <ViewAttribute
+    Name="ZipCode"
+    PrecisionRule="true"
+    EntityAttrName="ZipCode"
+    EntityUsage="LancerLocationListEO"
+    AliasName="ZIP_CODE"/>
+  <ViewAttribute
+    Name="DetailLoc"
+    PrecisionRule="true"
+    EntityAttrName="DetailLoc"
+    EntityUsage="LancerLocationListEO"
+    AliasName="DETAIL_LOC"/>
   <ViewLinkAccessor
     Name="LanceExp"
     ViewLink="com.lance.model.vl.LanceExpFk1VL"

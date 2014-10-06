@@ -28,7 +28,7 @@
   </Attribute>
   <Attribute
     Name="RegionId"
-    Precision="20"
+    Precision="32"
     ColumnName="REGION_ID"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -90,7 +90,7 @@
     Name="CurrentIn"
     ColumnName="CURRENT_IN"
     SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
+    Type="java.lang.Integer"
     ColumnType="NUMBER"
     TableName="LANCER_LOCATION_LIST"/>
   <Attribute
@@ -103,6 +103,54 @@
     TableName="LANCER_LOCATION_LIST">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Telphone"
+    Precision="20"
+    ColumnName="TELPHONE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_LOCATION_LIST">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="FaxNumber"
+    Precision="20"
+    ColumnName="FAX_NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_LOCATION_LIST">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ZipCode"
+    Precision="20"
+    ColumnName="ZIP_CODE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_LOCATION_LIST">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DetailLoc"
+    Precision="100"
+    ColumnName="DETAIL_LOC"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_LOCATION_LIST">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
   </Attribute>
   <AccessorAttribute

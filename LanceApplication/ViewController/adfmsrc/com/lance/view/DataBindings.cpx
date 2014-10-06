@@ -8,9 +8,11 @@
   </definitionFactories>
   <pageMap>
     <page path="/Test.jsf" usageId="com_lance_view_TestPageDef"/>
+    <page path="/AdminGroup/JOB_CATEGORY_ADMIN.jsf" usageId="com_lance_view_JOB_CATEGORY_ADMINPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_lance_view_TestPageDef" path="com.lance.view.pageDefs.TestPageDef"/>
+    <page id="com_lance_view_JOB_CATEGORY_ADMINPageDef" path="AdminGroup.JOB_CATEGORY_ADMINPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="RegisterAMDataControl" Package="com.lance.model"
@@ -22,6 +24,11 @@
                      FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
                      SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
                      SupportsSortCollection="true" Configuration="LanceRestAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+    <BC4JDataControl id="LanceAdminAMDataControl" Package="com.lance.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="LanceAdminAMLocal" syncMode="Immediate"
                      xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
   </dataControlUsages>
 </Application>

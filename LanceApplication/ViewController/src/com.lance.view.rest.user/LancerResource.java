@@ -5,7 +5,7 @@ import com.lance.model.vo.LancerVOImpl;
 import com.lance.model.vo.LancerVORowImpl;
 import com.lance.model.vo.LoginUserVOImpl;
 import com.lance.model.vo.LoginUserVORowImpl;
-import com.lance.view.util.LanceRestUtil;
+import com.lance.view.util.LUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;
 
@@ -25,6 +25,8 @@ import org.codehaus.jettison.json.JSONObject;
  * Lancer（独立工作者/供应商）
  * 包含注册，更新，删除，修改
  *
+ * update 2014年10月5日 为Lancer增加LocationA、LocationB两个字段；新增加Lancer时，会初始化setting和2个location表记录
+ *
  */
 @Path("user/lancer")
 public class LancerResource extends BaseRestResource {
@@ -42,9 +44,15 @@ public class LancerResource extends BaseRestResource {
         "UserName", "Email", "Password", "DisplayName", "Country", "TrueName", "AccountType", "CompanyName"
     };
     public static final String[] ATTR_UPDATE = {
-        "Email", "DisplayName", "Country", "AccountType", "CompanyName", "TrueName" };
+        "Email", "DisplayName", "Country", "AccountType", "CompanyName", "TrueName", "CompanyId", "LocationA",
+        "LocationB"
+    };
     public static final String[] ATTR_GET = {
         "Uuid", "UserName", "Email", "DisplayName", "Country", "TrueName", "AccountType", "CompanyId", "CompanyName"
+    };
+    public static final String[] ATTR_GET_A = {
+        "Uuid", "UserName", "Email", "DisplayName", "Country", "TrueName", "AccountType", "CompanyId", "CompanyName",
+        "LocationA", "LocationB"
     };
 
     public LancerResource() {
@@ -60,25 +68,25 @@ public class LancerResource extends BaseRestResource {
      * 公司名CompanyName，会在后台执行merge操作（不存在则创建）
      *
      * @example
-     *  {
-            "UserName" : "huateng",
-            "Email" : "tencent@qq.com",
-            "DisplayName" : "疼讯",
-            "Country" : "1",
-            "TrueName" : "小疼",
-            "AccountType" : 1,//为0时后台会忽略CompanyName
-            "CompanyName" : "深圳腾讯"
+        {
+         "UserName" : "muhongdi",
+         "Email" : "muhongdi@qq.com",
+         "DisplayName" : "天涯月",
+         "Country" : "44",
+         "TrueName" : "牟宏迪",
+         "AccountType" : 1,//为0时后台会忽略CompanyName
+         "CompanyName" : "驻才网"
         }
      *
      * @param json
-     * @return
+     * @return muhongdi
      * @throws JSONException
      */
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public String createNewLancer(JSONObject json) throws JSONException {
         System.out.println("createNewLancer");
-        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        LanceRestAMImpl am = LUtil.findLanceAM();
         LancerVOImpl lancerVO = am.getLancer1();
         Row lancerRow = lancerVO.createRow();
         lancerVO.insertRow(lancerRow);
@@ -90,9 +98,10 @@ public class LancerResource extends BaseRestResource {
                 lancerRow.setAttribute(attr, json.get(attr));
             }
         }
-        
+
         //新增用户的ID不再使用32位UUID，改为与用户登录名相同
-        lancerRow.setAttribute("Uuid", json.getString("UserName"));
+        String uuid = json.getString("UserName");
+        lancerRow.setAttribute("Uuid", uuid);
 
         //创建登录信息
         LoginUserVOImpl loginUserVO = am.getLoginUser1();
@@ -101,6 +110,7 @@ public class LancerResource extends BaseRestResource {
         loginUserRow.setUserName(json.getString("UserName"));
         loginUserRow.setType(0); //0:Lancer/供应商  1：:需求方
         loginUserRow.setUserId((String) lancerRow.getAttribute("Uuid"));
+        loginUserRow.setPassword(json.getString("Password"));
 
         //如果lancer属于供应商（公司），则merge（存在返回，不存在创建）该公司，并设置注册用户公司id
         int accountType = (Integer) json.get("AccountType"); //0独立，1供应商
@@ -108,6 +118,15 @@ public class LancerResource extends BaseRestResource {
             String companyId = new CompanyResource().mergeCompanyByName(json.getString("CompanyName"));
             lancerRow.setAttribute("CompanyId", companyId);
         }
+
+        //创建该用户的联系信息（地址）
+        //创建两条空地址信息
+        LancerLocationResource loc = new LancerLocationResource();
+        lancerRow.setAttribute("LocationA", loc.createLocationFn(uuid, new JSONObject(), am));
+        lancerRow.setAttribute("LocationB", loc.createLocationFn(uuid, new JSONObject(), am));
+
+        //创建个人设置记录
+        LUtil.createInsertRow(am.getLancerSetting1());
 
         am.getDBTransaction().commit();
         return (String) lancerRow.getAttribute("Uuid"); //返回新增记录的ID
@@ -120,20 +139,25 @@ public class LancerResource extends BaseRestResource {
      * @example
      *例子1
      GET http://localhost:7101/lance/res/user/lancer/unknowuserid
+     return
       {
             "err" : "找不到用户:unknowuserid"
       }
 
     例子2
-     GET: http://localhost:7101/lance/res/user/lancer/92163f9001cc41ed8e572a5aa46934ce
+     GET: http://localhost:7101/lance/res/user/lancer/muhongdi
+     
+     return
      {
-         "Uuid" : "92163f9001cc41ed8e572a5aa46934ce",
+         "Uuid" : "muhongdi",
          "UserName" : "muhongdi",
          "Email" : "muhongdi@qq.com",
          "DisplayName" : "天涯月",
-         "Country" : "1",
+         "Country" : "44",
          "TrueName" : "牟宏迪",
-         "AccountType" : 0
+         "AccountType" : 1,
+         "CompanyId" : "79fbae75257946e89d2a22a8d2d38031",
+         "CompanyName" : "驻才网"
      }
 
      * @param userId
@@ -144,7 +168,7 @@ public class LancerResource extends BaseRestResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("{userId}")
     public JSONObject findLancerById(@PathParam("userId") String userId) throws JSONException {
-        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        LanceRestAMImpl am = LUtil.findLanceAM();
         return findLancerByIdFn(userId, am);
     }
 
@@ -166,6 +190,30 @@ public class LancerResource extends BaseRestResource {
         return this.convertRowToJsonObject(lancerRow, ATTR_GET);
     }
 
+    public JSONObject findLancerWithLocationFn(String userId, LanceRestAMImpl am) throws JSONException {
+        System.out.println("findLancerById:" + userId); //获取不到id？
+
+        LancerVOImpl lancerVO = am.getLancer1();
+        lancerVO.setApplyViewCriteriaName("FindByUuidVC");
+        lancerVO.setpUuid(userId);
+        lancerVO.executeQuery();
+        lancerVO.setApplyViewCriteriaName(null);
+
+        if (lancerVO.first() == null) {
+            JSONObject res = new JSONObject();
+            res.put("err", "找不到用户:" + userId);
+            return res;
+        }
+        
+        //处理位置信息
+        Row lancerRow = lancerVO.first();
+        JSONObject json = this.convertRowToJsonObject(lancerRow, ATTR_GET_A);
+        LancerLocationResource loc = new LancerLocationResource();
+        json.put("LocationA", loc.findLocation(userId, json.getString("LocationA")));
+        json.put("LocationB", loc.findLocation(userId, json.getString("LocationB")));
+        return json;
+    }
+    
 
     /**
      * 删除用户
@@ -178,7 +226,7 @@ public class LancerResource extends BaseRestResource {
     @Path("delete/{userId}")
     public String deleteLancer(@PathParam("userId") String userId) {
         System.out.println("deleteLancer:" + userId);
-        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        LanceRestAMImpl am = LUtil.findLanceAM();
         LancerVOImpl lancerVO = am.getLancer1();
         lancerVO.setApplyViewCriteriaName("FindByUuidVC");
         lancerVO.setpUuid(userId);
@@ -202,10 +250,10 @@ public class LancerResource extends BaseRestResource {
      *
      * 修改公司时需要清除CompanyId,如果CompanyId为空程序会根据传入的CompanyName执行merge Company操作
      * AccountType为0时会清空Company信息，为1时才会处理Company
-     * 
+     *
      * @example
-     * POST http://localhost:7101/lance/res/user/lancer/update/92163f9001cc41ed8e572a5aa46934ce
-     * 
+     * POST http://localhost:7101/lance/res/user/lancer/update/muhongdi
+     *
      {
         "UserName" : "muhongdi",
         "Email" : "muhongdi@qq.com",
@@ -227,7 +275,7 @@ public class LancerResource extends BaseRestResource {
     @Path("update/{userId}")
     public String updateLancer(@PathParam("userId") String userId, JSONObject json) throws JSONException {
         System.out.println("updateLancer:" + userId);
-        LanceRestAMImpl am = LanceRestUtil.findLanceAM();
+        LanceRestAMImpl am = LUtil.findLanceAM();
         updateLancerFn(userId, json, am);
         am.getDBTransaction().commit();
         return "ok";
@@ -248,19 +296,31 @@ public class LancerResource extends BaseRestResource {
 
         LancerVORowImpl lancerRow = (LancerVORowImpl) lancerVO.first();
         for (String attr : ATTR_UPDATE) {
-
+            if ("CompanyId,CompanyName,LocationA,LocationB".indexOf(attr) != -1) {
+                continue;
+            }
             if (json.has(attr)) {
                 lancerRow.setAttribute(attr, json.get(attr));
             }
         }
 
         //如果lancer属于供应商（公司）,且公司ID被清除（修改过公司名），则merge（存在返回，不存在创建）该公司，并设置注册用户公司id
-        if (lancerRow.getAccountType() == 1 && json.isNull("CompanyId")) {
+        if (lancerRow.getAccountType() == 1 && json.isNull("CompanyId")  && json.has("CompanyName")) {
             String companyId = new CompanyResource().mergeCompanyByName(json.getString("CompanyName"));
             lancerRow.setAttribute("CompanyId", companyId);
         } else if (lancerRow.getAccountType() == 0) {
             lancerRow.setAttribute("CompanyId", null);
         }
+
+        //同时修改地址信息
+        LancerLocationResource loc = new LancerLocationResource();
+        if (json.has("LocationA")) {
+            loc.updateLocationFn(userId, json.getJSONObject("LocationA"), am);
+        }
+        if (json.has("LocationB")) {
+            loc.updateLocationFn(userId, json.getJSONObject("LocationB"), am);
+        }
+
         return "ok";
     }
 
