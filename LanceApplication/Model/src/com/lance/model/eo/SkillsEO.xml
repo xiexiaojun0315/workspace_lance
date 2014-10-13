@@ -40,7 +40,7 @@
   </Attribute>
   <Attribute
     Name="Name"
-    Precision="50"
+    Precision="120"
     ColumnName="NAME"
     SQLType="VARCHAR"
     Type="java.lang.String"
