@@ -1,0 +1,19 @@
+{
+    "status" : "success",
+    "errorMsgs" : null,
+    "errorIds" : null,
+    "stage" : "jobCatalog",
+    "data" : {
+        "results" : [
+            {
+                "id" : 2064,
+                "title" : "Lawyer",
+                "type" : "Position",
+                "description" : "Use this template to hire a paralegal or attorney to provide advice or represention. Choose from any number of legal fields (bankruptcy, contracts, estates, litigation and more)."
+            }
+        ]
+    },
+    "errorMsgsEl" : "jobCatalog",
+    "errorTitle" : null,
+    "token" : null
+}

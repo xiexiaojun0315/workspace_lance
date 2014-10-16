@@ -1,0 +1,1 @@
+mboxFactories.get('default').get('jobDescribe-q2promo-prod',0).setOffer(new mboxOfferDefault()).loaded();

@@ -1,0 +1,85 @@
+{
+    "status" : "success",
+    "errorMsgs" : null,
+    "errorIds" : null,
+    "stage" : "jobCatalog",
+    "data" : {
+        "results" : [
+            {
+                "id" : 1059,
+                "title" : "Content Moderator",
+                "type" : "Position",
+                "description" : "Hire a Content Moderator with this template to ensure that any user-generated content on your website meets your guidelines."
+            },
+            {
+                "id" : 1060,
+                "title" : "Customer Service Agent",
+                "type" : "Position",
+                "description" : "Staff up your Customer Service team flexibly by hiring agents with this template."
+            },
+            {
+                "id" : 2024,
+                "title" : "Data Entry Project",
+                "type" : "Project",
+                "description" : "This guide will help you complete a data entry project that will increase efficiency and improve your business."
+            },
+            {
+                "id" : 2052,
+                "title" : "Data Entry Specialist",
+                "type" : "Position",
+                "description" : "Data Entry Specialists can help you organize and manage your business' data assets with speed and accuracy. "
+            },
+            {
+                "id" : 2053,
+                "title" : "Email Handling",
+                "type" : "Position",
+                "description" : "Use this template to find an admin support expert who will organize, send, and handle all of your email communcations."
+            },
+            {
+                "id" : 1116,
+                "title" : "General Office Assistant",
+                "type" : "Position",
+                "description" : "Use this template to hire a General Office Assistant that can help by performing basic organizational tasks and projects to support your business."
+            },
+            {
+                "id" : 2055,
+                "title" : "Other Admin Support Project",
+                "type" : "Project",
+                "description" : "Use this template to find an expert for your other administrative support needs."
+            },
+            {
+                "id" : 2061,
+                "title" : "Researcher",
+                "type" : "Position",
+                "description" : "Find an expert to deliver high quality internet research, market research, or assist you with other research needs."
+            },
+            {
+                "id" : 2012,
+                "title" : "Telephone Receptionist",
+                "type" : "Position",
+                "description" : "Use this template to hire a Telephone Receptionist to effectively manage and handle your incoming calls."
+            },
+            {
+                "id" : 2054,
+                "title" : "Transcription Project",
+                "type" : "Project",
+                "description" : "Use this template to find a transcription expert to convert your audio files into text documents. "
+            },
+            {
+                "id" : 2013,
+                "title" : "Typist",
+                "type" : "Position",
+                "description" : "Hire a Typist with this template to quickly transcribe or input text into your systems."
+            },
+            {
+                "id" : 1018,
+                "title" : "Virtual Assistant ",
+                "type" : "Position",
+                "description" : "Hiring a Virtual Assistant can help you manage your incoming calls and emails, schedule your events and help you stay on top of all of your obligations, all from a remote location. "
+            }
+        ]
+    },
+    "errorMsgsEl" : "jobCatalog",
+    "errorTitle" : null,
+    "token" : null
+}

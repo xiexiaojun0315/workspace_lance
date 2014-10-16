@@ -1,0 +1,25 @@
+{
+    "status" : "success",
+    "errorMsgs" : null,
+    "errorIds" : null,
+    "stage" : "jobCatalog",
+    "data" : {
+        "results" : [
+            {
+                "id" : 2062,
+                "title" : "Engineer",
+                "type" : "Position",
+                "description" : "Use this template to hire an expert engineer. Choose from one of many fields (e.g. civil and structural engineering, mechanical, electrical and more)."
+            },
+            {
+                "id" : 2063,
+                "title" : "Manufacturing Project",
+                "type" : "Project",
+                "description" : "Use this template to find an expert to help you build a product for your company"
+            }
+        ]
+    },
+    "errorMsgsEl" : "jobCatalog",
+    "errorTitle" : null,
+    "token" : null
+}
