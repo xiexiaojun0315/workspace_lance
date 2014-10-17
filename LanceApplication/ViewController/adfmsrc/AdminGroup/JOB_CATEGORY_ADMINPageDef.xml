@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.10.8" id="JOB_CATEGORY_ADMINPageDef"
+                Package="AdminGroup">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="JobCategory1" RangeSize="25" DataControl="LanceAdminAMDataControl" id="JobCategory1Iterator"/>
+    <iterator Binds="JobTemplate2" RangeSize="25" DataControl="LanceAdminAMDataControl" id="JobTemplate2Iterator"/>
+    <iterator Binds="JobSubCategory1" RangeSize="25" DataControl="LanceAdminAMDataControl"
+              id="JobSubCategory1Iterator"/>
+  </executables>
+  <bindings>
+    <attributeValues IterBinding="JobCategory1Iterator" id="Uuid">
+      <AttrNames>
+        <Item Value="Uuid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobCategory1Iterator" id="NameEn">
+      <AttrNames>
+        <Item Value="NameEn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobCategory1Iterator" id="NameCn">
+      <AttrNames>
+        <Item Value="NameCn"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="JobCategory1Iterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="JobCategory1Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="JobCategory1Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="JobCategory1Iterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+    <attributeValues IterBinding="JobTemplate2Iterator" id="Uuid1">
+      <AttrNames>
+        <Item Value="Uuid"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate2Iterator" id="JobCategoryId">
+      <AttrNames>
+        <Item Value="JobCategoryId"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate2Iterator" id="NameEn1">
+      <AttrNames>
+        <Item Value="NameEn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate2Iterator" id="NameCn1">
+      <AttrNames>
+        <Item Value="NameCn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate2Iterator" id="Tips">
+      <AttrNames>
+        <Item Value="Tips"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="JobTemplate2Iterator" StaticList="false" Uses="LOV_Type" id="Type" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <action IterBinding="JobTemplate2Iterator" id="First1" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="JobTemplate2Iterator" id="Previous1" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="JobTemplate2Iterator" id="Next1" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="JobTemplate2Iterator" id="Last1" RequiresUpdateModel="true" Action="last"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="LanceAdminAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="LanceAdminAMDataControl"/>
+    <tree IterBinding="JobTemplate2Iterator" id="JobTemplate2">
+      <nodeDefinition DefName="com.lance.model.vo.JobTemplateVO" Name="JobTemplate20">
+        <AttrNames>
+          <Item Value="NameEn"/>
+          <Item Value="NameCn"/>
+          <Item Value="Type"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="JobTemplate2Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="JobCategory1Iterator" id="CreateInsert1" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="JobCategory1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <attributeValues IterBinding="JobTemplate2Iterator" id="DescriptionCnTxt">
+      <AttrNames>
+        <Item Value="DescriptionCnTxt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate2Iterator" id="DescriptionEnTxt">
+      <AttrNames>
+        <Item Value="DescriptionEnTxt"/>
+      </AttrNames>
+    </attributeValues>
+    <tree IterBinding="JobSubCategory1Iterator" id="JobSubCategory1">
+      <nodeDefinition DefName="com.lance.model.vo.JobSubCategoryVO" Name="JobSubCategory10">
+        <AttrNames>
+          <Item Value="Uuid"/>
+          <Item Value="CategoryId"/>
+          <Item Value="Name"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>
