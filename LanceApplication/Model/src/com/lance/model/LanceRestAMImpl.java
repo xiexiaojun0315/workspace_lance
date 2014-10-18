@@ -9,6 +9,7 @@ import com.lance.model.vo.LancerSkillVOImpl;
 import com.lance.model.vo.LancerVOImpl;
 import com.lance.model.vo.LoginUserVOImpl;
 
+import com.lance.model.vo.PostJobsVOImpl;
 import com.lance.model.vo.SkillsVOImpl;
 import com.lance.model.vo.SpreadHeardFromVOImpl;
 import com.lance.model.vvo.LocationCountryVVOImpl;
@@ -199,6 +200,14 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      */
     public SkillsVOImpl getSkills1() {
         return (SkillsVOImpl) findViewObject("Skills1");
+    }
+
+    /**
+     * Container's getter for PostJobs1.
+     * @return PostJobs1
+     */
+    public PostJobsVOImpl getPostJobs1() {
+        return (PostJobsVOImpl) findViewObject("PostJobs1");
     }
 }
 

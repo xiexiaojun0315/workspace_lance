@@ -90,56 +90,21 @@
     Name="Postform"
     ColumnName="POSTFORM"
     SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    TableName="POST_JOBS"/>
-  <Attribute
-    Name="HourlyRateGrade"
-    ColumnName="HOURLY_RATE_GRADE"
-    SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
+    Type="java.lang.Integer"
     ColumnType="NUMBER"
     TableName="POST_JOBS"/>
   <Attribute
     Name="WeeklyHours"
     ColumnName="WEEKLY_HOURS"
     SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    TableName="POST_JOBS"/>
-  <Attribute
-    Name="Duration"
-    ColumnName="DURATION"
-    SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    TableName="POST_JOBS"/>
-  <Attribute
-    Name="FixedBudget"
-    ColumnName="FIXED_BUDGET"
-    SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    TableName="POST_JOBS"/>
-  <Attribute
-    Name="Visibility"
-    ColumnName="VISIBILITY"
-    SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    TableName="POST_JOBS"/>
-  <Attribute
-    Name="SeoIndexField"
-    ColumnName="SEO_INDEX_FIELD"
-    SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
+    Type="java.lang.Integer"
     ColumnType="NUMBER"
     TableName="POST_JOBS"/>
   <Attribute
     Name="FixedLocation"
     ColumnName="FIXED_LOCATION"
     SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
+    Type="java.lang.Integer"
     ColumnType="NUMBER"
     TableName="POST_JOBS"/>
   <Attribute
@@ -166,6 +131,193 @@
       <Attr Name="_DisplaySize" Value="500"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="HourlyPayMin"
+    ColumnName="HOURLY_PAY_MIN"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="POST_JOBS"/>
+  <Attribute
+    Name="DurationMin"
+    ColumnName="DURATION_MIN"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="POST_JOBS"/>
+  <Attribute
+    Name="FixedPayMin"
+    ColumnName="FIXED_PAY_MIN"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="POST_JOBS"/>
+  <Attribute
+    Name="JobVisibility"
+    ColumnName="JOB_VISIBILITY"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="POST_JOBS"/>
+  <Attribute
+    Name="AllowSearchEngines"
+    ColumnName="ALLOW_SEARCH_ENGINES"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="POST_JOBS"/>
+  <Attribute
+    Name="WorkCategory"
+    Precision="32"
+    ColumnName="WORK_CATEGORY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SpecificSkillA"
+    Precision="32"
+    ColumnName="SPECIFIC_SKILL_A"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SpecificSkillB"
+    Precision="32"
+    ColumnName="SPECIFIC_SKILL_B"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SpecificSkillC"
+    Precision="32"
+    ColumnName="SPECIFIC_SKILL_C"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SpecificSkillD"
+    Precision="32"
+    ColumnName="SPECIFIC_SKILL_D"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SpecificSkillE"
+    Precision="32"
+    ColumnName="SPECIFIC_SKILL_E"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SpecificSkillF"
+    Precision="32"
+    ColumnName="SPECIFIC_SKILL_F"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="SpecificSkillG"
+    Precision="32"
+    ColumnName="SPECIFIC_SKILL_G"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="HourlyPayMax"
+    ColumnName="HOURLY_PAY_MAX"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="POST_JOBS"/>
+  <Attribute
+    Name="DayPayMax"
+    ColumnName="DAY_PAY_MAX"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="POST_JOBS"/>
+  <Attribute
+    Name="DayPayMin"
+    ColumnName="DAY_PAY_MIN"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="POST_JOBS"/>
+  <Attribute
+    Name="FixedPayMax"
+    ColumnName="FIXED_PAY_MAX"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="POST_JOBS"/>
+  <Attribute
+    Name="DurationMax"
+    ColumnName="DURATION_MAX"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="POST_JOBS"/>
+  <Attribute
+    Name="Status"
+    ColumnName="STATUS"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="POST_JOBS"/>
+  <Attribute
+    Name="PostJobDateStart"
+    ColumnName="POST_JOB_DATE_START"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="POST_JOBS"/>
+  <Attribute
+    Name="PostJobDateEnd"
+    ColumnName="POST_JOB_DATE_END"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="POST_JOBS"/>
   <Key
     Name="PostJobsPk"
     PrimaryKey="true">
