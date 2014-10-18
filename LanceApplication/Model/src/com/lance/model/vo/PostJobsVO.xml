@@ -12,9 +12,17 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  RowClass="com.zngh.platform.front.core.model.BaseViewRowImpl"
-  ComponentClass="com.zngh.platform.front.core.model.BaseViewObjectImpl"
+  RowClass="com.lance.model.vo.PostJobsVORowImpl"
+  ComponentClass="com.lance.model.vo.PostJobsVOImpl"
   PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="pUuid"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <EntityUsage
     Name="PostJobsEO"
     Entity="com.lance.model.eo.PostJobsEO"/>
@@ -26,17 +34,12 @@
     EntityUsage="PostJobsEO"
     AliasName="UUID"/>
   <ViewAttribute
-    Name="Name"
+    Name="AllowSearchEngines"
     PrecisionRule="true"
-    EntityAttrName="Name"
+    EntityAttrName="AllowSearchEngines"
     EntityUsage="PostJobsEO"
-    AliasName="NAME"/>
-  <ViewAttribute
-    Name="Brief"
-    PrecisionRule="true"
-    EntityAttrName="Brief"
-    EntityUsage="PostJobsEO"
-    AliasName="BRIEF"/>
+    AliasName="ALLOW_SEARCH_ENGINES"
+    DefaultValue="1"/>
   <ViewAttribute
     Name="Attach"
     PrecisionRule="true"
@@ -44,59 +47,35 @@
     EntityUsage="PostJobsEO"
     AliasName="ATTACH"/>
   <ViewAttribute
-    Name="WorkSubcategory"
+    Name="Brief"
     PrecisionRule="true"
-    EntityAttrName="WorkSubcategory"
+    EntityAttrName="Brief"
     EntityUsage="PostJobsEO"
-    AliasName="WORK_SUBCATEGORY"/>
+    AliasName="BRIEF"/>
   <ViewAttribute
-    Name="Skills"
+    Name="DayPayMax"
     PrecisionRule="true"
-    EntityAttrName="Skills"
+    EntityAttrName="DayPayMax"
     EntityUsage="PostJobsEO"
-    AliasName="SKILLS"/>
+    AliasName="DAY_PAY_MAX"/>
   <ViewAttribute
-    Name="Postform"
+    Name="DayPayMin"
     PrecisionRule="true"
-    EntityAttrName="Postform"
+    EntityAttrName="DayPayMin"
     EntityUsage="PostJobsEO"
-    AliasName="POSTFORM"/>
+    AliasName="DAY_PAY_MIN"/>
   <ViewAttribute
-    Name="HourlyRateGrade"
+    Name="DurationMax"
     PrecisionRule="true"
-    EntityAttrName="HourlyRateGrade"
+    EntityAttrName="DurationMax"
     EntityUsage="PostJobsEO"
-    AliasName="HOURLY_RATE_GRADE"/>
+    AliasName="DURATION_MAX"/>
   <ViewAttribute
-    Name="WeeklyHours"
+    Name="DurationMin"
     PrecisionRule="true"
-    EntityAttrName="WeeklyHours"
+    EntityAttrName="DurationMin"
     EntityUsage="PostJobsEO"
-    AliasName="WEEKLY_HOURS"/>
-  <ViewAttribute
-    Name="Duration"
-    PrecisionRule="true"
-    EntityAttrName="Duration"
-    EntityUsage="PostJobsEO"
-    AliasName="DURATION"/>
-  <ViewAttribute
-    Name="FixedBudget"
-    PrecisionRule="true"
-    EntityAttrName="FixedBudget"
-    EntityUsage="PostJobsEO"
-    AliasName="FIXED_BUDGET"/>
-  <ViewAttribute
-    Name="Visibility"
-    PrecisionRule="true"
-    EntityAttrName="Visibility"
-    EntityUsage="PostJobsEO"
-    AliasName="VISIBILITY"/>
-  <ViewAttribute
-    Name="SeoIndexField"
-    PrecisionRule="true"
-    EntityAttrName="SeoIndexField"
-    EntityUsage="PostJobsEO"
-    AliasName="SEO_INDEX_FIELD"/>
+    AliasName="DURATION_MIN"/>
   <ViewAttribute
     Name="FixedLocation"
     PrecisionRule="true"
@@ -104,15 +83,179 @@
     EntityUsage="PostJobsEO"
     AliasName="FIXED_LOCATION"/>
   <ViewAttribute
-    Name="LocationId"
+    Name="FixedPayMax"
     PrecisionRule="true"
-    EntityAttrName="LocationId"
+    EntityAttrName="FixedPayMax"
     EntityUsage="PostJobsEO"
-    AliasName="LOCATION_ID"/>
+    AliasName="FIXED_PAY_MAX"/>
+  <ViewAttribute
+    Name="FixedPayMin"
+    PrecisionRule="true"
+    EntityAttrName="FixedPayMin"
+    EntityUsage="PostJobsEO"
+    AliasName="FIXED_PAY_MIN"/>
+  <ViewAttribute
+    Name="HourlyPayMax"
+    PrecisionRule="true"
+    EntityAttrName="HourlyPayMax"
+    EntityUsage="PostJobsEO"
+    AliasName="HOURLY_PAY_MAX"/>
+  <ViewAttribute
+    Name="HourlyPayMin"
+    PrecisionRule="true"
+    EntityAttrName="HourlyPayMin"
+    EntityUsage="PostJobsEO"
+    AliasName="HOURLY_PAY_MIN"/>
+  <ViewAttribute
+    Name="JobVisibility"
+    PrecisionRule="true"
+    EntityAttrName="JobVisibility"
+    EntityUsage="PostJobsEO"
+    AliasName="JOB_VISIBILITY"/>
   <ViewAttribute
     Name="LocationDesc"
     PrecisionRule="true"
     EntityAttrName="LocationDesc"
     EntityUsage="PostJobsEO"
     AliasName="LOCATION_DESC"/>
+  <ViewAttribute
+    Name="LocationId"
+    PrecisionRule="true"
+    EntityAttrName="LocationId"
+    EntityUsage="PostJobsEO"
+    AliasName="LOCATION_ID"/>
+  <ViewAttribute
+    Name="Name"
+    PrecisionRule="true"
+    EntityAttrName="Name"
+    EntityUsage="PostJobsEO"
+    AliasName="NAME"/>
+  <ViewAttribute
+    Name="Postform"
+    PrecisionRule="true"
+    EntityAttrName="Postform"
+    EntityUsage="PostJobsEO"
+    AliasName="POSTFORM"/>
+  <ViewAttribute
+    Name="Skills"
+    PrecisionRule="true"
+    EntityAttrName="Skills"
+    EntityUsage="PostJobsEO"
+    AliasName="SKILLS"/>
+  <ViewAttribute
+    Name="SpecificSkillA"
+    PrecisionRule="true"
+    EntityAttrName="SpecificSkillA"
+    EntityUsage="PostJobsEO"
+    AliasName="SPECIFIC_SKILL_A"/>
+  <ViewAttribute
+    Name="SpecificSkillB"
+    PrecisionRule="true"
+    EntityAttrName="SpecificSkillB"
+    EntityUsage="PostJobsEO"
+    AliasName="SPECIFIC_SKILL_B"/>
+  <ViewAttribute
+    Name="SpecificSkillC"
+    PrecisionRule="true"
+    EntityAttrName="SpecificSkillC"
+    EntityUsage="PostJobsEO"
+    AliasName="SPECIFIC_SKILL_C"/>
+  <ViewAttribute
+    Name="SpecificSkillD"
+    PrecisionRule="true"
+    EntityAttrName="SpecificSkillD"
+    EntityUsage="PostJobsEO"
+    AliasName="SPECIFIC_SKILL_D"/>
+  <ViewAttribute
+    Name="SpecificSkillE"
+    PrecisionRule="true"
+    EntityAttrName="SpecificSkillE"
+    EntityUsage="PostJobsEO"
+    AliasName="SPECIFIC_SKILL_E"/>
+  <ViewAttribute
+    Name="SpecificSkillF"
+    PrecisionRule="true"
+    EntityAttrName="SpecificSkillF"
+    EntityUsage="PostJobsEO"
+    AliasName="SPECIFIC_SKILL_F"/>
+  <ViewAttribute
+    Name="SpecificSkillG"
+    PrecisionRule="true"
+    EntityAttrName="SpecificSkillG"
+    EntityUsage="PostJobsEO"
+    AliasName="SPECIFIC_SKILL_G"/>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="PostJobsEO"
+    AliasName="STATUS"
+    DefaultValue="0"/>
+  <ViewAttribute
+    Name="WeeklyHours"
+    PrecisionRule="true"
+    EntityAttrName="WeeklyHours"
+    EntityUsage="PostJobsEO"
+    AliasName="WEEKLY_HOURS"/>
+  <ViewAttribute
+    Name="WorkCategory"
+    PrecisionRule="true"
+    EntityAttrName="WorkCategory"
+    EntityUsage="PostJobsEO"
+    AliasName="WORK_CATEGORY"/>
+  <ViewAttribute
+    Name="WorkSubcategory"
+    PrecisionRule="true"
+    EntityAttrName="WorkSubcategory"
+    EntityUsage="PostJobsEO"
+    AliasName="WORK_SUBCATEGORY"/>
+  <ViewAttribute
+    Name="PostJobDateStart"
+    PrecisionRule="true"
+    EntityAttrName="PostJobDateStart"
+    EntityUsage="PostJobsEO"
+    AliasName="POST_JOB_DATE_START"/>
+  <ViewAttribute
+    Name="PostJobDateEnd"
+    PrecisionRule="true"
+    EntityAttrName="PostJobDateEnd"
+    EntityUsage="PostJobsEO"
+    AliasName="POST_JOB_DATE_END"/>
+  <ViewCriteria
+    Name="FindByIdVC"
+    ViewObjectName="com.lance.model.vo.PostJobsVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="PostJobsVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Uuid"
+        ViewAttribute="Uuid"
+        Operator="="
+        Conjunction="AND"
+        Value=":pUuid"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
 </ViewObject>
