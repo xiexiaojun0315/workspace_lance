@@ -59,6 +59,9 @@
   <ViewUsage
     Name="JobTemplate1"
     ViewObjectName="com.lance.model.vo.JobTemplateVO"/>
+  <ViewUsage
+    Name="Skills1"
+    ViewObjectName="com.lance.model.vo.SkillsVO"/>
   <ViewLinkUsage
     Name="LancerResume_SkillVL1"
     ViewLinkObjectName="com.lance.model.vl.LancerResume_SkillVL"

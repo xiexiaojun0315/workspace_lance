@@ -12,9 +12,17 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  RowClass="com.zngh.platform.front.core.model.BaseViewRowImpl"
-  ComponentClass="com.zngh.platform.front.core.model.BaseViewObjectImpl"
+  RowClass="com.lance.model.vo.SkillsVORowImpl"
+  ComponentClass="com.lance.model.vo.SkillsVOImpl"
   PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="pName"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <EntityUsage
     Name="SkillsEO"
     Entity="com.lance.model.eo.SkillsEO"/>
@@ -37,4 +45,41 @@
     EntityAttrName="Name"
     EntityUsage="SkillsEO"
     AliasName="NAME"/>
+  <ViewCriteria
+    Name="FilterByNameVC"
+    ViewObjectName="com.lance.model.vo.SkillsVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="SkillsVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="SkillsVOCriteria_SkillsVOCriteria_row_0_Name"
+        ViewAttribute="Name"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Value=":pName"
+        UpperColumns="1"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
 </ViewObject>
