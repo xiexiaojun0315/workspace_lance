@@ -24,22 +24,21 @@
     Name="pUuid"
     Kind="viewcriteria"
     Type="java.lang.String"/>
-  <SQLQuery><![CDATA[SELECT ClientUserEO.UUID,       
-       ClientUserEO.BRIEF,       
-       ClientUserEO.COMPANY_ID,       
-       ClientUserEO.DISPLAY_NAME,       
-       ClientUserEO.EMAIL,       
-       ClientUserEO.IMAGE,       
-       ClientUserEO.JOB_TITLE,       
-       ClientUserEO.MOBILE_PHONE,       
-       ClientUserEO.TELPHONE,       
-       ClientUserEO.TRUE_NAME,       
-       ClientUserEO.TRUST_CHECK,       
-       ClientUserEO.USER_NAME,       
-       ClientUserEO.VIDEO,       
-       ClientUserEO.ATTACH,    
-       CompanyEO.Name Company_Name       
-FROM  CLIENT_USER ClientUserEO,COMPANY CompanyEO        
+  <SQLQuery><![CDATA[SELECT ClientUserEO.UUID,         
+       ClientUserEO.COMPANY_ID,        
+       ClientUserEO.DISPLAY_NAME,        
+       ClientUserEO.EMAIL,        
+       ClientUserEO.IMAGE,        
+       ClientUserEO.JOB_TITLE,        
+       ClientUserEO.MOBILE_PHONE,        
+       ClientUserEO.TELPHONE,        
+       ClientUserEO.TRUE_NAME,        
+       ClientUserEO.TRUST_CHECK,        
+       ClientUserEO.USER_NAME,        
+       ClientUserEO.VIDEO,        
+       ClientUserEO.ATTACH,     
+       CompanyEO.Name Company_Name        
+FROM  CLIENT_USER ClientUserEO,COMPANY CompanyEO         
 WHERE ClientUserEO.COMPANY_ID = CompanyEO.UUID(+)]]></SQLQuery>
   <EntityUsage
     Name="ClientUserEO"
@@ -137,13 +136,6 @@ WHERE ClientUserEO.COMPANY_ID = CompanyEO.UUID(+)]]></SQLQuery>
       <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
   </ViewAttribute>
-  <ViewAttribute
-    Name="Description"
-    IsQueriable="false"
-    PrecisionRule="true"
-    EntityAttrName="Description"
-    EntityUsage="ClientUserEO"
-    AliasName="DESCRIPTION"/>
   <ViewCriteria
     Name="FindByEmailVC"
     ViewObjectName="com.lance.model.vo.ClientUserVO"
