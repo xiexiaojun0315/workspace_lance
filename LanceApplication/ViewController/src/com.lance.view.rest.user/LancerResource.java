@@ -75,6 +75,7 @@ public class LancerResource extends BaseRestResource {
          "Country" : "44",
          "TrueName" : "牟宏迪",
          "AccountType" : 1,//为0时后台会忽略CompanyName
+          "Password" : "welcome1",
          "CompanyName" : "驻才网"
         }
      *
