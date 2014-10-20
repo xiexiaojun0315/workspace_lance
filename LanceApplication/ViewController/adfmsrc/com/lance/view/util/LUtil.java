@@ -37,8 +37,11 @@ public class LUtil {
     }
 
     public static void transJsonToRow(JSONObject json, Row row, String[] attrs) throws JSONException {
+        System.out.println("transJsonToRow");
         for (String attr : attrs) {
+            System.out.println(attr);
             if (json.has(attr)) {
+                System.out.println("copy:" + attr + ":" + json.get(attr));
                 row.setAttribute(attr, json.get(attr));
             }
         }
@@ -63,5 +66,13 @@ public class LUtil {
         return row;
     }
 
+    public static boolean jsonHasNullAttrs(JSONObject json, String[] attrs) throws JSONException {
+        for (String attr : attrs) {
+            if ((!json.has(attr)) || (json.get(attr) == null)) {
+                return true;
+            }
+        }
+        return false;
+    }
 
 }
