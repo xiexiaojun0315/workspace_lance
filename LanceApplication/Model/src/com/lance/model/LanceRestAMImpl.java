@@ -14,7 +14,10 @@ import com.lance.model.vo.SkillsVOImpl;
 import com.lance.model.vo.SpreadHeardFromVOImpl;
 import com.lance.model.vvo.LocationCountryVVOImpl;
 
+import com.lance.model.vvo.PostJobsVVOImpl;
+
 import com.zngh.platform.front.core.model.BaseApplicationModuleImpl;
+
 
 import com.zngh.platform.front.core.model.BaseViewObjectImpl;
 
@@ -208,6 +211,39 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      */
     public PostJobsVOImpl getPostJobs1() {
         return (PostJobsVOImpl) findViewObject("PostJobs1");
+    }
+
+    /**
+     * Container's getter for LocationProvince1.
+     * @return LocationProvince1
+     */
+    public BaseViewObjectImpl getLocationProvince1() {
+        return (BaseViewObjectImpl) findViewObject("LocationProvince1");
+    }
+
+
+    /**
+     * Container's getter for LocationCity1.
+     * @return LocationCity1
+     */
+    public BaseViewObjectImpl getLocationCity1() {
+        return (BaseViewObjectImpl) findViewObject("LocationCity1");
+    }
+
+    /**
+     * Container's getter for LocationProvince_CityVL1.
+     * @return LocationProvince_CityVL1
+     */
+    public ViewLinkImpl getLocationProvince_CityVL1() {
+        return (ViewLinkImpl) findViewLink("LocationProvince_CityVL1");
+    }
+
+    /**
+     * Container's getter for PostJobsV1.
+     * @return PostJobsV1
+     */
+    public PostJobsVVOImpl getPostJobsV1() {
+        return (PostJobsVVOImpl) findViewObject("PostJobsV1");
     }
 }
 

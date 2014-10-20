@@ -45,6 +45,13 @@
       <Attr Name="_DisplaySize" Value="30"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="ShowOrder"
+    ColumnName="SHOW_ORDER"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="LOCATION_PROVINCE"/>
   <Key
     Name="LocationProvincePk"
     PrimaryKey="true">

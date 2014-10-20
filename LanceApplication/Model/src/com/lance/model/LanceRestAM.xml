@@ -65,6 +65,15 @@
   <ViewUsage
     Name="PostJobs1"
     ViewObjectName="com.lance.model.vo.PostJobsVO"/>
+  <ViewUsage
+    Name="LocationProvince1"
+    ViewObjectName="com.lance.model.vo.LocationProvinceVO"/>
+  <ViewUsage
+    Name="LocationCity1"
+    ViewObjectName="com.lance.model.vo.LocationCityVO"/>
+  <ViewUsage
+    Name="PostJobsV1"
+    ViewObjectName="com.lance.model.vvo.PostJobsVVO"/>
   <ViewLinkUsage
     Name="LancerResume_SkillVL1"
     ViewLinkObjectName="com.lance.model.vl.LancerResume_SkillVL"
@@ -100,6 +109,12 @@
     ViewLinkObjectName="com.lance.model.vl.JobTemplateJobCategoryFk1VL"
     SrcViewUsageName="com.lance.model.LanceRestAM.JobCategory1"
     DstViewUsageName="com.lance.model.LanceRestAM.JobTemplate1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="LocationProvince_CityVL1"
+    ViewLinkObjectName="com.lance.model.vl.LocationProvince_CityVL"
+    SrcViewUsageName="com.lance.model.LanceRestAM.LocationProvince1"
+    DstViewUsageName="com.lance.model.LanceRestAM.LocationCity1"
     Reversed="false"/>
   <ResourceBundle>
     <PropertiesBundle
