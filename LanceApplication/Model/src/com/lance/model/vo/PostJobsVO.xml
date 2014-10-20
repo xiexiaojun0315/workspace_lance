@@ -111,7 +111,8 @@
     PrecisionRule="true"
     EntityAttrName="JobVisibility"
     EntityUsage="PostJobsEO"
-    AliasName="JOB_VISIBILITY"/>
+    AliasName="JOB_VISIBILITY"
+    DefaultValue="1"/>
   <ViewAttribute
     Name="LocationDesc"
     PrecisionRule="true"
@@ -221,6 +222,59 @@
     EntityAttrName="PostJobDateEnd"
     EntityUsage="PostJobsEO"
     AliasName="POST_JOB_DATE_END"/>
+  <ViewAttribute
+    Name="LocationCity"
+    PrecisionRule="true"
+    EntityAttrName="LocationCity"
+    EntityUsage="PostJobsEO"
+    AliasName="LOCATION_CITY"/>
+  <ViewAttribute
+    Name="LocationCountry"
+    PrecisionRule="true"
+    EntityAttrName="LocationCountry"
+    EntityUsage="PostJobsEO"
+    AliasName="LOCATION_COUNTRY"/>
+  <ViewAttribute
+    Name="LocationProvince"
+    PrecisionRule="true"
+    EntityAttrName="LocationProvince"
+    EntityUsage="PostJobsEO"
+    AliasName="LOCATION_PROVINCE"/>
+  <ViewAttribute
+    Name="ModifiedBy"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedBy"
+    EntityUsage="PostJobsEO"
+    AliasName="MODIFIED_BY"/>
+  <ViewAttribute
+    Name="ModifiedOn"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="ModifiedOn"
+    EntityUsage="PostJobsEO"
+    AliasName="MODIFIED_ON"/>
+  <ViewAttribute
+    Name="CreateBy"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="CreateBy"
+    EntityUsage="PostJobsEO"
+    AliasName="CREATE_BY"/>
+  <ViewAttribute
+    Name="CreateOn"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="CreateOn"
+    EntityUsage="PostJobsEO"
+    AliasName="CREATE_ON"/>
+  <ViewAttribute
+    Name="Version"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Version"
+    EntityUsage="PostJobsEO"
+    AliasName="VERSION"/>
   <ViewCriteria
     Name="FindByIdVC"
     ViewObjectName="com.lance.model.vo.PostJobsVO"

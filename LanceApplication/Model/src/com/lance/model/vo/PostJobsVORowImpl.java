@@ -16,6 +16,7 @@ import oracle.jbo.domain.Date;
 // ---------------------------------------------------------------------
 public class PostJobsVORowImpl extends BaseViewRowImpl {
 
+
     public static final int ENTITY_POSTJOBSEO = 0;
 
     /**
@@ -53,7 +54,15 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
         WorkCategory,
         WorkSubcategory,
         PostJobDateStart,
-        PostJobDateEnd;
+        PostJobDateEnd,
+        LocationCity,
+        LocationCountry,
+        LocationProvince,
+        ModifiedBy,
+        ModifiedOn,
+        CreateBy,
+        CreateOn,
+        Version;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -77,6 +86,7 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
             return vals;
         }
     }
+
 
     public static final int UUID = AttributesEnum.Uuid.index();
     public static final int ALLOWSEARCHENGINES = AttributesEnum.AllowSearchEngines.index();
@@ -110,6 +120,14 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
     public static final int WORKSUBCATEGORY = AttributesEnum.WorkSubcategory.index();
     public static final int POSTJOBDATESTART = AttributesEnum.PostJobDateStart.index();
     public static final int POSTJOBDATEEND = AttributesEnum.PostJobDateEnd.index();
+    public static final int LOCATIONCITY = AttributesEnum.LocationCity.index();
+    public static final int LOCATIONCOUNTRY = AttributesEnum.LocationCountry.index();
+    public static final int LOCATIONPROVINCE = AttributesEnum.LocationProvince.index();
+    public static final int MODIFIEDBY = AttributesEnum.ModifiedBy.index();
+    public static final int MODIFIEDON = AttributesEnum.ModifiedOn.index();
+    public static final int CREATEBY = AttributesEnum.CreateBy.index();
+    public static final int CREATEON = AttributesEnum.CreateOn.index();
+    public static final int VERSION = AttributesEnum.Version.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -635,6 +653,94 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
      */
     public void setPostJobDateEnd(Date value) {
         setAttributeInternal(POSTJOBDATEEND, value);
+    }
+
+    /**
+     * Gets the attribute value for LOCATION_CITY using the alias name LocationCity.
+     * @return the LOCATION_CITY
+     */
+    public String getLocationCity() {
+        return (String) getAttributeInternal(LOCATIONCITY);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for LOCATION_CITY using the alias name LocationCity.
+     * @param value value to set the LOCATION_CITY
+     */
+    public void setLocationCity(String value) {
+        setAttributeInternal(LOCATIONCITY, value);
+    }
+
+    /**
+     * Gets the attribute value for LOCATION_COUNTRY using the alias name LocationCountry.
+     * @return the LOCATION_COUNTRY
+     */
+    public String getLocationCountry() {
+        return (String) getAttributeInternal(LOCATIONCOUNTRY);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for LOCATION_COUNTRY using the alias name LocationCountry.
+     * @param value value to set the LOCATION_COUNTRY
+     */
+    public void setLocationCountry(String value) {
+        setAttributeInternal(LOCATIONCOUNTRY, value);
+    }
+
+    /**
+     * Gets the attribute value for LOCATION_PROVINCE using the alias name LocationProvince.
+     * @return the LOCATION_PROVINCE
+     */
+    public String getLocationProvince() {
+        return (String) getAttributeInternal(LOCATIONPROVINCE);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for LOCATION_PROVINCE using the alias name LocationProvince.
+     * @param value value to set the LOCATION_PROVINCE
+     */
+    public void setLocationProvince(String value) {
+        setAttributeInternal(LOCATIONPROVINCE, value);
+    }
+
+    /**
+     * Gets the attribute value for MODIFIED_BY using the alias name ModifiedBy.
+     * @return the MODIFIED_BY
+     */
+    public String getModifiedBy() {
+        return (String) getAttributeInternal(MODIFIEDBY);
+    }
+
+    /**
+     * Gets the attribute value for MODIFIED_ON using the alias name ModifiedOn.
+     * @return the MODIFIED_ON
+     */
+    public Timestamp getModifiedOn() {
+        return (Timestamp) getAttributeInternal(MODIFIEDON);
+    }
+
+    /**
+     * Gets the attribute value for CREATE_BY using the alias name CreateBy.
+     * @return the CREATE_BY
+     */
+    public String getCreateBy() {
+        return (String) getAttributeInternal(CREATEBY);
+    }
+
+    /**
+     * Gets the attribute value for CREATE_ON using the alias name CreateOn.
+     * @return the CREATE_ON
+     */
+    public Timestamp getCreateOn() {
+        return (Timestamp) getAttributeInternal(CREATEON);
+    }
+
+    /**
+     * Gets the attribute value for VERSION using the alias name Version.
+     * @return the VERSION
+     */
+    public BigDecimal getVersion() {
+        return (BigDecimal) getAttributeInternal(VERSION);
     }
 }
 

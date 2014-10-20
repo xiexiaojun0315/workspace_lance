@@ -206,6 +206,18 @@ WHERE LancerEO.COMPANY_ID = CompanyEO.UUID(+)]]></SQLQuery>
           Value="Basic"/>
       </CustomProperties>
     </Properties>
+    <ViewCriteriaRow
+      Name="FindByEmailVC_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Email"
+        ViewAttribute="Email"
+        Operator="="
+        Conjunction="AND"
+        Value=":pEmail"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
   </ViewCriteria>
   <ViewCriteria
     Name="FindByUuidVC"
@@ -230,6 +242,18 @@ WHERE LancerEO.COMPANY_ID = CompanyEO.UUID(+)]]></SQLQuery>
           Value="Basic"/>
       </CustomProperties>
     </Properties>
+    <ViewCriteriaRow
+      Name="FindByUuidVC_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Uuid"
+        ViewAttribute="Uuid"
+        Operator="="
+        Conjunction="AND"
+        Value=":pUuid"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
   </ViewCriteria>
   <ViewLinkAccessor
     Name="LancerResume"

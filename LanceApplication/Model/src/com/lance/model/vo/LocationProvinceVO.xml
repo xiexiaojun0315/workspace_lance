@@ -37,4 +37,21 @@
     EntityAttrName="ProvinceName"
     EntityUsage="LocationProvinceEO"
     AliasName="PROVINCE_NAME"/>
+  <ViewAttribute
+    Name="ShowOrder"
+    PrecisionRule="true"
+    EntityAttrName="ShowOrder"
+    EntityUsage="LocationProvinceEO"
+    AliasName="SHOW_ORDER"/>
+  <ViewLinkAccessor
+    Name="LocationCity"
+    ViewLink="com.lance.model.vl.LocationProvince_CityVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <SortCriteria>
+    <Sort
+      Attribute="ShowOrder"/>
+    <Sort
+      Attribute="ProvinceName"/>
+  </SortCriteria>
 </ViewObject>
