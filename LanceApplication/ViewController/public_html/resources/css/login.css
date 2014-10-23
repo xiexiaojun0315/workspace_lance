@@ -1,0 +1,72 @@
+﻿#header{height:70px;border-bottom: 1px solid #939393;line-height:70px;}
+#header .help{font-size:12px;color:#333;font-weight:bold;}
+
+#header .question{margin-top:15px;}
+#header .question b{font-size:16px;float:left;line-height:14px;margin:5px 0 0 10px;}
+#header .question b span{font-size:12px;}
+#header .question p{float:right;font-size: 9px;color: #939393;line-height:15px;border-left:solid 1px #d7d7d7;padding-left:10px;margin-left:10px;}
+
+#content{margin-bottom:200px;overflow:hidden;}
+
+#content .welcome{width:570px;margin-top:30px;text-align:center;}
+#content .welcome h1{color: #50852C;font-family: Georgia;text-align: center;font-size: 36px;line-height:36px;}
+#content .welcome h4{color: #333;text-align: center;font-size: 16px;line-height:18px;}
+
+#content .login{float:left;margin-left:20px;border-left:solid 1px #ccc;margin-top:40px;padding-left:30px;height:450px;}
+#content .login h5{font-size: 25px;font-family: Georgia,Times New Roman;color: #50852C;}
+#content .login form{margin-top:30px;}
+#content .login form .tle{font-size:12px;color:#333;}
+#content .login .inp-txt{font-size: 14px;height: 28px;font-weight: bold;border: solid 1px #ccc;padding: 5px 2px 2px 2px;margin-top:2px;width:236px;}
+#content .login .forget{font-size:12px;margin-left:3px;}
+#content .login .rem-time{font-size:12px;color:#333;}
+#content .login .rem-time span{color:#939393;}
+#content .login .rem-time a{font-size:12px;}
+#content .login .sign-con{padding-top:6px;}
+
+#content .login .key{margin-left:20px;vertical-align:middle;position:relative;top:-2px;}
+
+#content .create{margin-top: 40px;padding-top: 20px;border-top: dotted 1px #ccc;}
+#content .create label{font-weight:normal;font-size:12px;color:#333;margin-left:5px;vertical-align:middle;}
+#content .create .btn-continue{margin-top:10px;}
+
+#select-con{text-align:left;padding-top:40px;padding-bottom:200px;}
+#select-con h1{color: #50852C;font-family: Georgia;font-size: 36px;line-height:36px;}
+#select-con .h2{font-size:18px;color:#333;}
+#select-con .h2 a{font-size:18px;}
+#select-con .sel-body{margin-top:50px;}
+#select-con .sel-body .rad-con{margin-top:20px;}
+#select-con .sel-body .rad-con .lbl-rad{font-size:17px;color:#333;font-weight:normal;line-height:20px;margin-left:5px;}
+#select-con .sel-body .btn-con{margin-top:50px;}
+
+#hire-con{margin-top:40px;position:relative;}
+#hire-con h1{color: #50852C;font-family: Georgia;font-size: 36px;line-height:36px;}
+#hire-con .h2{font-size:18px;color:#333;}
+
+#hire-con .form-reg{margin-top:30px;}
+#hire-con .form-reg .inp-txt{width:350px;height:24px;}
+#hire-con .form-reg .select{font-size: 15px;width: 351px;height: 23px;padding: 0;padding-left: 0;}
+#hire-con .form-reg p{height:55px;}
+#hire-con .form-reg p.special{height:70px;}
+#hire-con .form-reg p.sep-line{border-bottom: solid 1px #aaa;height:30px;}
+#hire-con .form-reg p .infor{font-size:12px;vertical-align:middle;font-weight:normal;}
+#hire-con .form-reg .error{color:#FF0000;font-size:11px;}
+#hire-con .form-reg .btns-con{margin-top:15px;}
+#hire-con .form-reg .btns-con span{font-size:11px;color:#929292;display:inline-block;margin-top:5px;}
+
+#hire-con .tip-win{padding: 20px;width: 297px;height: 217px;border: 1px solid #e6e6e6;position:absolute;top:125px;right:50px;}
+#hire-con .tip-win h5{font-size: 16px;font-family: Georgia,Times New Roman;color: #50852C;border-bottom: 1px solid #e6e6e6;padding-bottom: 10px;margin-bottom: 10px;}
+#hire-con .tip-win ul{text-align:left;list-style:disc;padding-left: 15px;margin-top:16px;}
+#hire-con .tip-win ul li{font-size: 13px;color: #6b6b6b;line-height: 24px;}
+
+
+#hire-con .right-infor{position:absolute;top:55px;right:50px;}
+#hire-con .right-infor .private{font-size:12px;text-align:right;line-height:12px;}
+#hire-con .right-infor .key{margin:0 0 0 8px;}
+#hire-con .right-infor .information{clear:both;background:url(../image/login/bg_infor.png) no-repeat 0 0;width:262px;height:232px;margin-top:60px;padding:15px;}
+#hire-con .right-infor .information .intro{font-size:13px;}
+#hire-con .right-infor .information .count{font-size:28px;font-weight:bold;}
+#hire-con .right-infor .information .date{float:left;margin:16px 0 0 13px;font-size:13px;}
+
+#hire-con .form-reg .tip{display:inline-block;position:relative;top:-33px;left:10px;}
+#hire-con .form-reg .tip .t-left{background:url(../image/login/tipleft.png) no-repeat 0 0;width:20px;height:36px;float:left;position:absolute;top:10px;display:none;}
+#hire-con .form-reg .tip .t-content{background:#dff1fe;padding:10px;width:250px;display:inline-block;position:absolute;left:20px;font-size:12px;color:#333;display:none;}

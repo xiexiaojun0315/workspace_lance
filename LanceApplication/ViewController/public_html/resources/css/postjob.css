@@ -1,0 +1,80 @@
+﻿.postjob{margin-top:25px;}
+.postjob .step{overflow:hidden;}
+.postjob .step .sp1{background:url(../image/hire/post_sprite.png) no-repeat right -7px;float:left;padding-right: 20px;height: 32px;margin-right: -13px;position: relative;z-index:8;}
+.postjob .step .sp1 .sp-left{background:url(../image/hire/post_sprite.png) no-repeat -555px 0;width: 10px;height: 32px;float:left;}
+.postjob .step .sp1 span{color:#fff;background:url(../image/hire/post_bg.png) repeat-x 0 -263px;text-shadow: 0 2px 1px #555;font-weight: bold;display:block;float:left;font-size:13px;line-height:30px;padding: 0 12px 2px 14px;}
+.postjob .step .sp2{background:url(../image/hire/post_sprite.png) no-repeat right -106px;float:left;padding-right: 20px;height: 32px;margin-right: -13px;position: relative;z-index:7;}
+.postjob .step .sp2 span{color:#fff;background:url(../image/hire/post_bg.png) repeat-x 0 -362px;color: #939393;text-shadow: 0 2px 1px #fff;float: left;display: block;line-height: 30px;padding: 0 12px 2px 24px;font-size: 13px;}
+.postjob .step .sp3{}
+
+
+
+.h1-title{font-size: 38px;font-weight: 400;padding-bottom: 6px;color:#50852C;clear:both;margin-top:55px;line-height:17px;}
+.font16-text{font-size: 16px;line-height: 21px;margin-bottom:25px;}
+
+.font16-bold{font-size:16px;font-weight:bold;}
+
+.postjob .pleft{width:580px;float:left;}
+
+.mod-post{width:550px;clear:both;margin-top:15px;overflow:hidden;}
+.mod-post .inp-text{font-size: 15px;border: solid 1px #939393;background-color: #fff;color: #333;width:550px;font-weight: bold;}
+.mod-post .last{font-size:11px;color:#939393;float:right;line-height:25px;}
+.mod-post .job-ta{height:200px;}
+.mod-post .sel-list{padding-right:15px;}
+.mod-post .btn-gray{padding:0 10px;font-size:11px;height:20px;position:relative;top:-1px;margin-left:10px;}
+.mod-post .tip{font-size: 11px;margin-bottom: 15px;color: #939393;}
+.mod-post .inp-file{font-size:11px;}
+.mod-post .option{font-size:16px;color:#939393;font-weight:400;}
+.mod-post .inp-stext{width:370px;height:23px;}
+.mod-post .post-container{width: 370px;border: solid 1px #939393;position: relative;height: 140px;top: -1px;background-color: #fff;padding:5px;overflow:auto;}
+.mod-post .post-container ul{list-style:none;margin:0px;padding:0px;}
+.mod-post .post-container ul li{cursor:pointer;}
+.mod-post .post-container ul li a{font-size:12px;}
+.mod-post .post-container ul li a:hover{text-decoration:none;}
+.mod-post .post-container ul li:hover{background-color:#DFEFBE;}
+
+.mod-post .selected-list{margin:-23px 10px 0 10px;}
+.mod-post .selected-list .blist{border-top:solid 1px #d7d7d7;margin-top:3px;width:150px;}
+.mod-post .extra-info{border: solid 1px #939393;padding: 12px 14px 10px 10px;width: 530px;margin-top: 5px;}
+.mod-post .extra-info .title{font-size:14px;font-weight:bold;margin-bottom:4px;}
+.mod-post .extra-info label{font-size:12px;font-weight:normal;}
+
+.postjob .btn-gray{width:200px;}
+
+#jpublic_chk{margin-left:20px;}
+
+
+.smlp .hw{margin-right:43px;}
+
+.wid210{width:210px;}
+.wid170{width:170px;}
+
+.mod-post .smlp{margin-top:15px;}
+.mod-post .sml-input{width:80px;}
+
+.bold-text{font-size:12px;display:block;}
+.bold-text .cls{float:right;color: #00468C;cursor: pointer;}
+
+.pright{float:right;}
+
+.tmp-box
+{
+    border: solid 1px #e5e5e5;
+    background: #FFFBE5;
+    background: -webkit-gradient(linear,left top,left bottom,from(#FFF3CE),to(#FFFBE5));
+    background: -moz-linear-gradient(top,#FFF3CE,#FFFBE5);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3CE',endColorstr='#FFFBE5');
+    -ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr='#FFF3CE', endColorstr='#FFFBE5')";
+    padding: 15px;
+    margin-bottom: 20px;
+    width: 265px;
+}
+.tmp-box .title{color: #50852C;font-size:16px;}
+.tmp-box p{font-size:12px;margin:15px 0;}
+.tmp-box .tmp{font-size:14px;font-weight:bold;}
+
+.information{clear:both;background:url(../image/login/bg_infor.png) no-repeat 0 0;width:262px;height:232px;margin-top:30px;padding:15px;}
+.information .intro{font-size:13px;}
+.information .count{font-size:28px;font-weight:bold;}
+.information .date{float:left;margin:16px 0 0 13px;font-size:13px;}
+

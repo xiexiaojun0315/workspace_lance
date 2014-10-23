@@ -1,0 +1,119 @@
+﻿.min-width{width:960px;margin:0 auto;min-width:960px;}
+
+.f-left{float:left;}
+.f-right{float:right;}
+.c-f{clear:both;}
+
+.vm{vertical-align:middle;}
+.vt{vertical-align:top;}
+
+a:focus{outline:none;}
+
+.alink{color:#00468C;}
+.alink:hover{color: #1B6CCD;}
+
+.ntext{font-size:12px;font-weight:normal;color:#333;}
+
+.load-gif{display:none;}
+.load-gif img{margin:0 3px;}
+
+.passBor{border:solid 1px #59B147;}
+.errBor{border:solid 1px #f00;}
+
+
+.btn-nsize{width:75px;height:27px;line-height:27px;}
+.btn-n2size{width:126px;height:27px;line-height:27px;}
+.btn-mid{width:160px;height:42px;line-height:42px;font-size:20px;font-weight:bold;}
+
+.btn-green
+{
+    color: #fff;
+    cursor: pointer;
+    text-decoration: none;
+    background: #59B147;
+    background: -moz-linear-gradient(top,#59B147 0%,#498636 100%);
+    background: -webkit-gradient(linear,left top,left bottom,color-stop(0%,#59B147),color-stop(100%,#498636));
+    background: -webkit-linear-gradient(top,#59B147 0%,#498636 100%);
+    background: -o-linear-gradient(top,#59B147 0%,#498636 100%);
+    background: -ms-linear-gradient(top,#59B147 0%,#498636 100%);
+    background: linear-gradient(top,#59B147 0%,#498636 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#59B147',endColorstr='#498636',GradientType=0);
+    display:inline-block;
+    text-align:center;
+}
+.btn-green:hover
+{
+    background: #004486;
+    color:#fff;
+    text-decoration:none;
+}
+.btn-green img{display:none;}
+
+.btn-gray
+{
+    color: #333;
+    cursor: pointer;
+    text-decoration: none;
+    background: #EBEBEB;
+    border: 1px solid #D3D3D3;
+    font-weight: normal;
+    display:inline-block;
+    text-align:center;
+}
+.btn-gray:hover
+{
+    background: #004486;
+    color:#fff;
+    text-decoration:none;
+}
+
+.btn-rad
+{
+    width: 170px;
+    height: 40px;
+    border-radius: 20px;
+    display: block;
+    color: #fff;
+    background: #669FDD;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 13px;
+    text-align:center;
+    line-height:40px;
+    margin:0 auto;
+}
+.btn-rad:hover{background-color:#00468C;text-decoration:none;color:#fff;}
+
+
+.triangle-left {
+    width: 0;
+    height: 0;
+    border-width:20px;  
+    line-height:0;
+    border-style:solid;  
+    border-color: transparent #dff1fe transparent transparent;  
+}
+
+
+
+.btn-load,.btn-load:hover{background:#eee;color:#aaa}
+.btn-load img{position:relative;left:-5px;display:inline;}
+
+
+
+
+
+
+#footer{background-color:#e6e6e6;overflow:hidden;clear:both;padding-bottom:20px;}
+#footer .ftop{background:url(../image/main/foot_top.png) repeat-x 0 0;width:100%;height:24px;margin-bottom:10px;}
+#footer .logo{float:left;}
+#footer .content{margin-left:150px;}
+
+#footer .content .links{overflow:hidden;}
+#footer .content .links .mod{float:left;width:20%;}
+#footer .content .links .mod dt{margin-bottom:10px;text-align:left}
+#footer .content .links .mod dd{text-align:left}
+#footer .content .links .mod a{font-size:12px;color:#333;}
+#footer .content .copyright{font-size:11px;color:#999;clear:both;}
