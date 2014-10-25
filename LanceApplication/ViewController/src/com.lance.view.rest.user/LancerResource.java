@@ -41,18 +41,21 @@ public class LancerResource extends BaseRestResource {
      * CompanyName 公司名
      */
     public static final String[] ATTR_CREATE = {
-        "UserName", "Email", "Password", "DisplayName", "Country", "TrueName", "AccountType", "CompanyName"
+        "UserName", "Email", "Password", "DisplayName", "Country", "TrueName", "AccountType", "CompanyName",
+        "PhoneNumber", "WebsiteUrl", "ImNumberA", "ImNumberB", "ImNumberC", "ImTypeA", "ImTypeB", "ImTypeC"
     };
     public static final String[] ATTR_UPDATE = {
         "Email", "DisplayName", "Country", "AccountType", "CompanyName", "TrueName", "CompanyId", "LocationA",
-        "LocationB"
+        "LocationB", "PhoneNumber", "WebsiteUrl", "ImNumberA", "ImNumberB", "ImNumberC", "ImTypeA", "ImTypeB", "ImTypeC"
     };
     public static final String[] ATTR_GET = {
-        "Uuid", "UserName", "Email", "DisplayName", "Country", "TrueName", "AccountType", "CompanyId", "CompanyName"
+        "Uuid", "UserName", "Email", "DisplayName", "Country", "TrueName", "AccountType", "CompanyId", "CompanyName",
+        "PhoneNumber", "WebsiteUrl", "ImNumberA", "ImNumberB", "ImNumberC", "ImTypeA", "ImTypeB", "ImTypeC"
     };
     public static final String[] ATTR_GET_A = {
         "Uuid", "UserName", "Email", "DisplayName", "Country", "TrueName", "AccountType", "CompanyId", "CompanyName",
-        "LocationA", "LocationB"
+        "LocationA", "LocationB", "PhoneNumber", "WebsiteUrl", "ImNumberA", "ImNumberB", "ImNumberC", "ImTypeA",
+        "ImTypeB", "ImTypeC"
     };
 
     public LancerResource() {
@@ -147,7 +150,7 @@ public class LancerResource extends BaseRestResource {
 
     例子2
      GET: http://localhost:7101/lance/res/user/lancer/muhongdi
-     
+
      return
      {
          "Uuid" : "muhongdi",
@@ -158,7 +161,15 @@ public class LancerResource extends BaseRestResource {
          "TrueName" : "牟宏迪",
          "AccountType" : 1,
          "CompanyId" : "79fbae75257946e89d2a22a8d2d38031",
-         "CompanyName" : "驻才网"
+         "CompanyName" : "驻才网",
+         "PhoneNumber" : "1xxxxxxxxxx",
+         "WebsiteUrl" : "www.xxx.ccc",
+         "ImNumberA" : "123456123",
+         "ImNumberB" : "sdfa231133",
+         "ImNumberC" : "lkjlsadofuo123123",
+         "ImTypeA" : "qq",
+         "ImTypeB" : "msn",
+         "ImTypeC" : "skypet"
      }
 
      * @param userId
@@ -205,7 +216,7 @@ public class LancerResource extends BaseRestResource {
             res.put("err", "找不到用户:" + userId);
             return res;
         }
-        
+
         //处理位置信息
         Row lancerRow = lancerVO.first();
         JSONObject json = this.convertRowToJsonObject(lancerRow, ATTR_GET_A);
@@ -214,7 +225,7 @@ public class LancerResource extends BaseRestResource {
         json.put("LocationB", loc.findLocation(userId, json.getString("LocationB")));
         return json;
     }
-    
+
 
     /**
      * 删除用户
@@ -256,13 +267,23 @@ public class LancerResource extends BaseRestResource {
      * POST http://localhost:7101/lance/res/user/lancer/update/muhongdi
      *
      {
-        "UserName" : "muhongdi",
-        "Email" : "muhongdi@qq.com",
-        "DisplayName" : "天涯月",
-        "Country" : "44",
-        "TrueName" : "牟宏迪",
-        "AccountType" : 1,
-        "CompanyName" : "驻才网"
+         "Uuid" : "muhongdi",
+         "UserName" : "muhongdi",
+         "Email" : "muhongdi@qq.com",
+         "DisplayName" : "天涯月",
+         "Country" : "44",
+         "TrueName" : "牟宏迪",
+         "AccountType" : 1,
+         "CompanyId" : "79fbae75257946e89d2a22a8d2d38031",
+         "CompanyName" : "驻才网",
+         "PhoneNumber" : "12323xxx",
+         "WebsiteUrl" : "www1233cc",
+         "ImNumberA" : "123456123",
+         "ImNumberB" : "sdfa231133",
+         "ImNumberC" : "111123123",
+         "ImTypeA" : "qq",
+         "ImTypeB" : "msn",
+         "ImTypeC" : "skypet"
      }
 
      *
@@ -306,7 +327,7 @@ public class LancerResource extends BaseRestResource {
         }
 
         //如果lancer属于供应商（公司）,且公司ID被清除（修改过公司名），则merge（存在返回，不存在创建）该公司，并设置注册用户公司id
-        if (lancerRow.getAccountType() == 1 && json.isNull("CompanyId")  && json.has("CompanyName")) {
+        if (lancerRow.getAccountType() == 1 && json.isNull("CompanyId") && json.has("CompanyName")) {
             String companyId = new CompanyResource().mergeCompanyByName(json.getString("CompanyName"));
             lancerRow.setAttribute("CompanyId", companyId);
         } else if (lancerRow.getAccountType() == 0) {
