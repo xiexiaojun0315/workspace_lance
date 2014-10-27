@@ -29,5 +29,21 @@ public class LoginUserVOImpl extends BaseViewObjectImpl {
     public void setpUserName(String value) {
         ensureVariableManager().setVariableValue("pUserName", value);
     }
+
+    /**
+     * Returns the variable value for pUserId.
+     * @return variable value for pUserId
+     */
+    public String getpUserId() {
+        return (String) ensureVariableManager().getVariableValue("pUserId");
+    }
+
+    /**
+     * Sets <code>value</code> for variable pUserId.
+     * @param value value to bind as pUserId
+     */
+    public void setpUserId(String value) {
+        ensureVariableManager().setVariableValue("pUserId", value);
+    }
 }
 
