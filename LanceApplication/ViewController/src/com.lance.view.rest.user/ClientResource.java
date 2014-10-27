@@ -53,7 +53,7 @@ public class ClientResource extends BaseRestResource {
              "Password" : "123456"
          }
      * Return
-     * 2b34c8b5e6944202a6a2b86f9e0d3e0e
+     * souhu
      *
      *
      * @param json
@@ -149,6 +149,7 @@ public class ClientResource extends BaseRestResource {
     public String deleteClient(@PathParam("userId") String userId) {
         System.out.println("deleteClient:" + userId);
         LanceRestAMImpl am = LUtil.findLanceAM();
+        //删除ClientUser用户表用户
         ClientUserVOImpl vo = am.getClientUser1();
         vo.setApplyViewCriteriaName("FindByUuidVC");
         vo.setpUuid(userId);
@@ -158,10 +159,21 @@ public class ClientResource extends BaseRestResource {
         if (vo.first() == null) {
             return "error:找不到用户:" + userId;
         }
-
+        
         Row row = vo.first();
         vo.setCurrentRow(row);
         vo.removeCurrentRow();
+        
+        //删除登陆表用户
+        LoginUserVOImpl vo2=am.getLoginUser1();
+        vo2.setpUserName(userId);
+        vo2.setApplyViewCriteriaName("FindByUserIdVC");
+        vo2.executeQuery();
+        vo2.removeApplyViewCriteriaName("FindByUserIdVC");
+        Row row2=vo2.first();
+        vo2.setCurrentRow(row2);
+        vo2.removeCurrentRow();
+        
         am.getDBTransaction().commit();
         return "ok";
     }

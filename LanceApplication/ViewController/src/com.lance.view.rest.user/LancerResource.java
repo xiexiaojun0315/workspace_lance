@@ -252,6 +252,17 @@ public class LancerResource extends BaseRestResource {
         Row lancerRow = lancerVO.first();
         lancerVO.setCurrentRow(lancerRow);
         lancerVO.removeCurrentRow();
+        
+        //删除登陆表用户
+        LoginUserVOImpl vo2=am.getLoginUser1();
+        vo2.setpUserName(userId);
+        vo2.setApplyViewCriteriaName("FindByUserIdVC");
+        vo2.executeQuery();
+        vo2.removeApplyViewCriteriaName("FindByUserIdVC");
+        Row row2=vo2.first();
+        vo2.setCurrentRow(row2);
+        vo2.removeCurrentRow();
+        
         am.getDBTransaction().commit();
         return "ok";
     }
