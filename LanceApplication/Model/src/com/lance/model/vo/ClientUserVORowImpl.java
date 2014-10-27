@@ -34,9 +34,10 @@ public class ClientUserVORowImpl extends BaseViewRowImpl {
         Video,
         Attach,
         Companyname,
+        Description,
+        DescriptionTxt,
         LanceExp;
-        static AttributesEnum[] vals = null;
-        ;
+        static AttributesEnum[] vals = null; ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -74,6 +75,8 @@ public class ClientUserVORowImpl extends BaseViewRowImpl {
     public static final int VIDEO = AttributesEnum.Video.index();
     public static final int ATTACH = AttributesEnum.Attach.index();
     public static final int COMPANYNAME = AttributesEnum.Companyname.index();
+    public static final int DESCRIPTION = AttributesEnum.Description.index();
+    public static final int DESCRIPTIONTXT = AttributesEnum.DescriptionTxt.index();
     public static final int LANCEEXP = AttributesEnum.LanceExp.index();
 
     /**
@@ -316,6 +319,44 @@ public class ClientUserVORowImpl extends BaseViewRowImpl {
         setAttributeInternal(COMPANYNAME, value);
     }
 
+
+    /**
+     * Gets the attribute value for DESCRIPTION using the alias name Description.
+     * @return the DESCRIPTION
+     */
+    public ClobDomain getDescription() {
+        return (ClobDomain) getAttributeInternal(DESCRIPTION);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for DESCRIPTION using the alias name Description.
+     * @param value value to set the DESCRIPTION
+     */
+    public void setDescription(ClobDomain value) {
+        setAttributeInternal(DESCRIPTION, value);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute DescriptionTxt.
+     * @return the DescriptionTxt
+     */
+    public String getDescriptionTxt() {
+        ClobDomain c = this.getDescription();
+        if (c != null)
+            return c.toString();
+        return (String) getAttributeInternal(DESCRIPTIONTXT);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute DescriptionTxt.
+     * @param value value to set the  DescriptionTxt
+     */
+    public void setDescriptionTxt(String value) {
+        //        setAttributeInternal(DESCRIPTIONTXT, value);
+        ClobDomain c = new ClobDomain(value);
+        this.setDescription(c);
+        setAttributeInternal(DESCRIPTIONTXT, value);
+    }
 
     /**
      * Gets the associated <code>RowIterator</code> using master-detail link LanceExp.
