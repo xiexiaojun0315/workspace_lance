@@ -33,8 +33,8 @@ public class ClientResource extends BaseRestResource {
      * （开发注册页面时先忽略公司信息）
      */
     public static final String[] ATTR_CREATE = { "TrueName", "Email", "UserName", "DisplayName", "Password" };
-    public static final String[] ATTR_UPDATE = { "DisplayName", "TrueName","Description","JobTitle" };
-    public static final String[] ATTR_GET = { "Uuid", "TrueName", "Email", "UserName", "DisplayName","Description","JobTitle"  };
+    public static final String[] ATTR_UPDATE = { "DisplayName", "TrueName","DescriptionTxt","JobTitle" };
+    public static final String[] ATTR_GET = { "Uuid", "TrueName", "Email", "UserName", "DisplayName","DescriptionTxt","JobTitle"  };
 
     public ClientResource() {
     }
@@ -49,7 +49,8 @@ public class ClientResource extends BaseRestResource {
              "TrueName" : "souhu",
              "Email" : "test@.souhu.com",
              "UserName" : "souhu",
-             "DisplayName" : "搜狐"
+             "DisplayName" : "搜狐",
+             "Password" : "123456"
          }
      * Return
      * 2b34c8b5e6944202a6a2b86f9e0d3e0e
@@ -75,6 +76,9 @@ public class ClientResource extends BaseRestResource {
                 row.setAttribute(attr, json.get(attr));
             }
         }
+        
+        //强制Uuid为UserName
+        row.setUuid(row.getUserName());
 
         LoginUserVOImpl loginUserVO = am.getLoginUser1();
         LoginUserVORowImpl loginUserRow = (LoginUserVORowImpl) loginUserVO.createRow();

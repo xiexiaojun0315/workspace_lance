@@ -26,7 +26,7 @@ public class LocationResource extends BaseRestResource {
     }
 
     /**
-     * 获取中国所有城市
+     * 获取中国所有省份
      * GET http://localhost:7101/lance/res/location/province
      * 
      *[
