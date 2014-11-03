@@ -402,7 +402,7 @@
     Name="Version"
     ColumnName="VERSION"
     SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
+    Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="POST_JOBS"
     HistoryColumn="VersionHistory"/>

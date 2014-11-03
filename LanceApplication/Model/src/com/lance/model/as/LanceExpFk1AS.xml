@@ -17,7 +17,6 @@
     <DesignTime>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="LancerLocationList"/>
-      <Attr Name="_foreignKey" Value="com.lance.model.eo.LancerLocationListEO.LocationCustomPk"/>
       <Attr Name="_isUpdateable" Value="true"/>
     </DesignTime>
     <AttrArray Name="Attributes">
@@ -31,7 +30,6 @@
     <DesignTime>
       <Attr Name="_aggregation" Value="0"/>
       <Attr Name="_finderName" Value="LanceExp"/>
-      <Attr Name="_foreignKey" Value="com.lance.model.eo.LanceExpEO.LanceExpFk1"/>
       <Attr Name="_isUpdateable" Value="true"/>
     </DesignTime>
     <AttrArray Name="Attributes">

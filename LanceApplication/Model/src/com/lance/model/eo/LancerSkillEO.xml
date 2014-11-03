@@ -78,6 +78,58 @@
       <Attr Name="_DisplaySize" Value="32"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="CreateBy"
+    Precision="32"
+    ColumnName="CREATE_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_SKILL"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreateOn"
+    ColumnName="CREATE_ON"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="LANCER_SKILL"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="ModifyBy"
+    Precision="32"
+    ColumnName="MODIFY_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LANCER_SKILL"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifyOn"
+    ColumnName="MODIFY_ON"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="LANCER_SKILL"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="Version"
+    ColumnName="VERSION"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="LANCER_SKILL"
+    HistoryColumn="VersionHistory"/>
   <Key
     Name="LancerSkillPk"
     PrimaryKey="true">
