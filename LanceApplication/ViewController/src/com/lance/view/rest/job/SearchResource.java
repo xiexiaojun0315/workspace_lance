@@ -11,7 +11,6 @@ import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
-import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -21,6 +20,17 @@ import org.codehaus.jettison.json.JSONObject;
  * GET http://localhost:7101/lance/res/search/postJob/latest?limit=5&start=1
  * start:1和start=0时都从第一条开始返回
  * limit=5&start=1 不传此参数时，默认返回1~25条
+ *
+ * http://localhost:7101/lance/res/search/postJob/latest 返回最近25条
+ * http://localhost:7101/lance/res/search/postJob/latest?limit=5&start=10 从第10条开始，返回5条
+ *
+ * 为空时返回
+ * {
+      "count" : 0,
+      "data" : [
+      ]
+   }
+ *
  */
 @Path("search")
 public class SearchResource extends BaseRestResource {
@@ -39,11 +49,73 @@ public class SearchResource extends BaseRestResource {
     }
 
     /**
-     * 近期提交
+     * 搜索近期发布的招聘信息
      * GET http://localhost:7101/lance/res/search/postJob/latest?limit=5&start=1
+     * @param
      * start:1和start=0时都从第一条开始返回
      * limit=5&start=1 不传此参数时，默认返回1~25条
      *
+     * http://localhost:7101/lance/res/search/postJob/latest 返回最近25条
+     * http://localhost:7101/lance/res/search/postJob/latest?limit=5&start=10 从第10条开始，返回5条
+     *
+     * 返回结果为空时返回
+     *
+     * {
+            "count" : 0,
+            "data" : [
+            ]
+        }
+
+
+     * {
+    "count" : 5,
+    "data" : [
+        {
+            "Uuid" : "test9",
+            "Brief" : "工作说明9",
+            "DurationMax" : 9,
+            "DurationMin" : 100,
+            "FixedLocation" : 1,
+            "FixedPayMax" : 200,
+            "FixedPayMin" : 100,
+            "HourlyPayMax" : 200,
+            "HourlyPayMin" : 100,
+            "Name" : "工作测试9",
+            "Postform" : 1,
+            "SpecificSkillA" : "DHTML",
+            "SpecificSkillB" : "DOS",
+            "SpecificSkillC" : "XML",
+            "SpecificSkillD" : "JAVA",
+            "SpecificSkillE" : "BPM",
+            "Status" : 1,
+            "WeeklyHours" : 100,
+            "WorkCategory" : "10183",
+            "WorkSubcategory" : "14174"
+        },
+        {
+            "Uuid" : "test10",
+            "Brief" : "工作说明10",
+            "DurationMax" : 9,
+            "DurationMin" : 100,
+            "FixedLocation" : 1,
+            "FixedPayMax" : 200,
+            "FixedPayMin" : 100,
+            "HourlyPayMax" : 200,
+            "HourlyPayMin" : 100,
+            "Name" : "工作测试10",
+            "Postform" : 1,
+            "SpecificSkillA" : "DHTML",
+            "SpecificSkillB" : "DOS",
+            "SpecificSkillC" : "XML",
+            "SpecificSkillD" : "JAVA",
+            "SpecificSkillE" : "BPM",
+            "Status" : 1,
+            "WeeklyHours" : 100,
+            "WorkCategory" : "10183",
+            "WorkSubcategory" : "14174"
+        }
+    ......
+     ]
      *
      * @return
      */
@@ -55,20 +127,29 @@ public class SearchResource extends BaseRestResource {
         vvo.setApplyViewCriteriaName("FindLatestPostedVC");
         vvo.executeQuery();
         vvo.removeApplyViewCriteriaName("FindLatestPostedVC");
-        return this.packViewObject(vvo, null, null);
+        return this.packViewObject(vvo, null, null, ATTR_SEARCH_JOB);
         //todo 分页返回
         //        return this.convertVoToJsonArray(vvo, ATTR_SEARCH_JOB);
     }
 
     /**
      * 根据关键词查询
+     * 关键词：工作名，简介，技能
+     * 附加条件：JobVisiable：1 可见，Status：2 已发布
+     * http://localhost:7101/lance/res/search/postJob/searchJob/{keyword}
+     * 
+     * http://localhost:7101/lance/res/search/postJob/searchJob/说明  
+     * http://localhost:7101/lance/res/search/postJob/searchJob/XML
+     * 
+     * 
+     * 
      * @param keyword
      * @return
      * @throws JSONException
      */
     @GET
     @Path("postJob/searchJob/{keyword}")
-    public JSONArray searchJobs(@PathParam("keyword") String keyword) throws JSONException {
+    public JSONObject searchJobs(@PathParam("keyword") String keyword) throws JSONException {
         LanceRestAMImpl am = LUtil.findLanceAM();
         PostJobsVVOImpl vvo = am.getPostJobsV1();
         vvo.setApplyViewCriteriaName("FindByKeywordVC");
@@ -77,9 +158,12 @@ public class SearchResource extends BaseRestResource {
         vvo.setpSkill(keyword);
         vvo.setpStatus(2); //已发布
         vvo.executeQuery();
+        System.out.println(keyword);
+        System.out.println(vvo.getQuery());
         vvo.removeApplyViewCriteriaName("FindByKeywordVC");
+        return this.packViewObject(vvo, null, null, ATTR_SEARCH_JOB);
         //todo 分页返回
-        return this.convertVoToJsonArray(vvo, ATTR_SEARCH_JOB);
+        //        return this.convertVoToJsonArray(vvo, ATTR_SEARCH_JOB);
     }
 
     /**
@@ -92,7 +176,7 @@ public class SearchResource extends BaseRestResource {
      */
     @GET
     @Path("lancer/searchLancer/{keyword}")
-    public JSONArray searchLancer(@PathParam("keyword") String keyword) throws JSONException {
+    public JSONObject searchLancer(@PathParam("keyword") String keyword) throws JSONException {
         if (keyword.length() < 2) {
             throw new RuntimeException("输入2个字符后开始查询");
         }
@@ -102,8 +186,9 @@ public class SearchResource extends BaseRestResource {
         vo.setpName(keyword);
         vo.executeQuery();
         vo.removeApplyViewCriteriaName("FindByNameVC");
+        return this.packViewObject(vo, null, null, ATTR_SEARCH_LANCER);
         //todo 分页返回
-        return this.convertVoToJsonArray(vo, ATTR_SEARCH_LANCER);
+        //        return this.convertVoToJsonArray(vo, ATTR_SEARCH_LANCER);
     }
 
 }

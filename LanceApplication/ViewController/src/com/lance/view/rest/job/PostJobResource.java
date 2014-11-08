@@ -128,7 +128,7 @@ public class PostJobResource extends BaseRestResource {
      * 保存草稿时，不验证非空字段
      */
     public static final String[] ATTR_POST_REQUIRED = {
-        "Uuid", "Name", "Brief", "WorkCategory", "WorkSubcategory", "Postform", "Status", "PostJobDateStart",
+        "Name", "Brief", "WorkCategory", "WorkSubcategory", "Postform", "Status", "PostJobDateStart",
         "PostJobDateEnd"
     };
 
