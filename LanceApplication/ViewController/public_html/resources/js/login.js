@@ -111,5 +111,39 @@
             }
         }
     });
+    
 
+    
 });
+
+     //点击登录时执行，todo
+     $("#login").click(function () {
+       var param={
+        name:"muhongdi",//todo
+        pass:"welcome1"//
+        }
+      
+                                        
+        if(param != null){
+            param = JSON.stringify(param);
+        }
+        $.ajax({
+            type: "post",
+            url: "/lance/login",
+            data: param,
+            dataType: "json",
+            timeout: 10000,
+            contentType: 'application/json',
+            success: function(data,o,s){
+                //todo 这里需要取到返回结果
+                //目前可能返回ok:/lance/pages/MyHome
+                //意思是跳转到/lance/pages/MyHome
+                //错误，返回error:name|pass
+                //提示用户名或密码错误
+            },
+            error: function(xhr, err, info){
+                
+            }
+        });
+        
+    });

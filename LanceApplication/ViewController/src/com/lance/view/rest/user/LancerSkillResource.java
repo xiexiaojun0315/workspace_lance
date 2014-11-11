@@ -161,6 +161,12 @@ public class LancerSkillResource extends BaseRestResource {
         LanceRestAMImpl am = LUtil.findLanceAM();
         return findLancerSkillsFn(lancerId, am);
     }
+    
+    public JSONArray findLancerSkills4CurUser() throws JSONException {
+        String n=this.findCurrentUserId();
+        System.out.println(n);
+        return findLancerSkills(n);
+    }
 
     public JSONArray findLancerSkillsFn(String lancerId, LanceRestAMImpl am) throws JSONException {
         new LancerResumeResource().findLancerResumeByLancerIdFn(lancerId, am);

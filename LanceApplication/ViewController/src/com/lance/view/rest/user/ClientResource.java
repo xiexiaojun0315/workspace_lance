@@ -3,6 +3,8 @@ package com.lance.view.rest.user;
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.vo.ClientUserVOImpl;
 import com.lance.model.vo.ClientUserVORowImpl;
+import com.lance.model.vo.LoginUserRoleGrantsVOImpl;
+import com.lance.model.vo.LoginUserRoleGrantsVORowImpl;
 import com.lance.model.vo.LoginUserVOImpl;
 import com.lance.model.vo.LoginUserVORowImpl;
 import com.lance.view.util.LUtil;
@@ -86,8 +88,14 @@ public class ClientResource extends BaseRestResource {
         loginUserVO.insertRow(loginUserRow);
         loginUserRow.setUserName(json.getString("UserName"));
         loginUserRow.setType(1); //0:Lancer/供应商  1：:需求方
-        loginUserRow.setUserId((String) row.getAttribute("Uuid"));
         loginUserRow.setPassword(json.getString("Password"));
+        
+        //授权角色
+        LoginUserRoleGrantsVOImpl grantsVo = am.getLoginUserRoleGrants1();
+        LoginUserRoleGrantsVORowImpl grantsRow = (LoginUserRoleGrantsVORowImpl) grantsVo.createRow();
+        grantsRow.setUserName(json.getString("UserName"));
+        grantsRow.setRoleName("client");
+        grantsVo.insertRow(grantsRow);
 
         am.getDBTransaction().commit();
         return (String) row.getAttribute("Uuid"); //返回新增记录的ID

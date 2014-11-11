@@ -3,6 +3,8 @@ package com.lance.view.rest.user;
 import com.lance.model.LanceRestAMImpl;
 import com.lance.view.util.LUtil;
 
+import com.zngh.platform.front.core.view.BaseRestResource;
+
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
@@ -20,7 +22,7 @@ import org.codehaus.jettison.json.JSONObject;
  * 3 查询、修改ContactInfo
  */
 @Path("user/lancer/profile")
-public class LancerProfileResource {
+public class LancerProfileResource extends BaseRestResource{
 
     public LancerProfileResource() {
     }
@@ -142,6 +144,12 @@ public class LancerProfileResource {
         return json;
     }
 
+    public JSONObject getBasicProfile4CurUser() throws JSONException {
+        String n=this.findCurrentUserId();
+        System.out.println(n);
+        return getBasicProfile(n);
+    }
+
 
     /**
      * 获取指定Lancer的全部个人Profile
@@ -221,6 +229,12 @@ public class LancerProfileResource {
         json.put("lancerSkills", new LancerSkillResource().findLancerSkillsFn(lancerId, am));
         return json;
     }
+    
+    public JSONObject findSelfProfile4CurUser() throws JSONException {
+        String n=this.findCurrentUserId();
+        System.out.println(n);
+        return findSelfProfile(n);
+    }
 
     /**
      * 查询联系信息ContactInfo
@@ -269,6 +283,12 @@ public class LancerProfileResource {
         json.put("lancer", new LancerResource().findLancerWithLocationFn(lancerId, am));
         json.put("setting", new SettingResource().getLancerSettingFn(lancerId, am));
         return json;
+    }
+    
+    public JSONObject findContactInfo4CurUser() throws JSONException {
+        String n=this.findCurrentUserId();
+        System.out.println(n);
+        return findContactInfo(n);
     }
 
     /**

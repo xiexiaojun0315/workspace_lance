@@ -3,6 +3,8 @@ package com.lance.view.rest.user;
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.vo.LancerVOImpl;
 import com.lance.model.vo.LancerVORowImpl;
+import com.lance.model.vo.LoginUserRoleGrantsVOImpl;
+import com.lance.model.vo.LoginUserRoleGrantsVORowImpl;
 import com.lance.model.vo.LoginUserVOImpl;
 import com.lance.model.vo.LoginUserVORowImpl;
 import com.lance.view.util.LUtil;
@@ -113,8 +115,21 @@ public class LancerResource extends BaseRestResource {
         loginUserVO.insertRow(loginUserRow);
         loginUserRow.setUserName(json.getString("UserName"));
         loginUserRow.setType(0); //0:Lancer/供应商  1：:需求方
-        loginUserRow.setUserId((String) lancerRow.getAttribute("Uuid"));
         loginUserRow.setPassword(json.getString("Password"));
+
+        //授权角色
+        LoginUserRoleGrantsVOImpl grantsVo = am.getLoginUserRoleGrants1();
+        LoginUserRoleGrantsVORowImpl grantsRow = (LoginUserRoleGrantsVORowImpl) grantsVo.createRow();
+        grantsRow.setUserName(json.getString("UserName"));
+        if ("0".equals(json.getString("AccountType"))) {
+            grantsRow.setRoleName("lancer");
+        } else if ("1".equals(json.getString("AccountType"))) {
+            grantsRow.setRoleName("company");
+        } else {
+            throw new RuntimeException("无法识别的AccountType：" + json.getString("AccountType"));
+        }
+
+        grantsVo.insertRow(grantsRow);
 
         //如果lancer属于供应商（公司），则merge（存在返回，不存在创建）该公司，并设置注册用户公司id
         int accountType = (Integer) json.get("AccountType"); //0独立，1供应商
@@ -252,17 +267,17 @@ public class LancerResource extends BaseRestResource {
         Row lancerRow = lancerVO.first();
         lancerVO.setCurrentRow(lancerRow);
         lancerVO.removeCurrentRow();
-        
+
         //删除登陆表用户
-        LoginUserVOImpl vo2=am.getLoginUser1();
+        LoginUserVOImpl vo2 = am.getLoginUser1();
         vo2.setpUserName(userId);
         vo2.setApplyViewCriteriaName("FindByUserIdVC");
         vo2.executeQuery();
         vo2.removeApplyViewCriteriaName("FindByUserIdVC");
-        Row row2=vo2.first();
+        Row row2 = vo2.first();
         vo2.setCurrentRow(row2);
         vo2.removeCurrentRow();
-        
+
         am.getDBTransaction().commit();
         return "ok";
     }

@@ -1,4 +1,4 @@
-var BASEURL = "http://localhost:7101/lance/res/";
+var BASEURL = "/lance/res/";
 
 function netWorkError(goPath){
     alert("网络错误，请稍后再试。");
