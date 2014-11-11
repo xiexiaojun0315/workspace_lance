@@ -13,6 +13,7 @@ import java.sql.Timestamp;
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
 public class LoginUserVORowImpl extends BaseViewRowImpl {
+
     public static final int ENTITY_LOGINUSEREO = 0;
 
     /**
@@ -22,9 +23,9 @@ public class LoginUserVORowImpl extends BaseViewRowImpl {
         UserName,
         Password,
         Type,
-        LastLoginTime,
-        UserId;
-        private static AttributesEnum[] vals = null;
+        LastLoginTime;
+        static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -46,11 +47,11 @@ public class LoginUserVORowImpl extends BaseViewRowImpl {
             return vals;
         }
     }
+
     public static final int USERNAME = AttributesEnum.UserName.index();
     public static final int PASSWORD = AttributesEnum.Password.index();
     public static final int TYPE = AttributesEnum.Type.index();
     public static final int LASTLOGINTIME = AttributesEnum.LastLoginTime.index();
-    public static final int USERID = AttributesEnum.UserId.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -130,20 +131,6 @@ public class LoginUserVORowImpl extends BaseViewRowImpl {
         setAttributeInternal(LASTLOGINTIME, value);
     }
 
-    /**
-     * Gets the attribute value for USER_ID using the alias name UserId.
-     * @return the USER_ID
-     */
-    public String getUserId() {
-        return (String) getAttributeInternal(USERID);
-    }
 
-    /**
-     * Sets <code>value</code> as attribute value for USER_ID using the alias name UserId.
-     * @param value value to set the USER_ID
-     */
-    public void setUserId(String value) {
-        setAttributeInternal(USERID, value);
-    }
 }
 

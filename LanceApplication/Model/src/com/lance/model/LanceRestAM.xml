@@ -74,6 +74,12 @@
     <ViewUsage
       Name="PostJobsV1"
       ViewObjectName="com.lance.model.vvo.PostJobsVVO"/>
+    <ViewUsage
+        Name="LoginUserRole1"
+        ViewObjectName="com.lance.model.vo.LoginUserRoleVO"/>
+    <ViewUsage
+        Name="LoginUserRoleGrants1"
+        ViewObjectName="com.lance.model.vo.LoginUserRoleGrantsVO"/>
     <ViewLinkUsage
       Name="LancerResume_SkillVL1"
       ViewLinkObjectName="com.lance.model.vl.LancerResume_SkillVL"

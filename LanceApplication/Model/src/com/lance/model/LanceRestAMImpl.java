@@ -7,6 +7,8 @@ import com.lance.model.vo.LancerLocationListVOImpl;
 import com.lance.model.vo.LancerResumeVOImpl;
 import com.lance.model.vo.LancerSkillVOImpl;
 import com.lance.model.vo.LancerVOImpl;
+import com.lance.model.vo.LoginUserRoleGrantsVOImpl;
+import com.lance.model.vo.LoginUserRoleVOImpl;
 import com.lance.model.vo.LoginUserVOImpl;
 
 import com.lance.model.vo.PostJobsVOImpl;
@@ -244,6 +246,22 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      */
     public PostJobsVVOImpl getPostJobsV1() {
         return (PostJobsVVOImpl) findViewObject("PostJobsV1");
+    }
+
+    /**
+     * Container's getter for LoginUserRole1.
+     * @return LoginUserRole1
+     */
+    public LoginUserRoleVOImpl getLoginUserRole1() {
+        return (LoginUserRoleVOImpl) findViewObject("LoginUserRole1");
+    }
+
+    /**
+     * Container's getter for LoginUserRoleGrants1.
+     * @return LoginUserRoleGrants1
+     */
+    public LoginUserRoleGrantsVOImpl getLoginUserRoleGrants1() {
+        return (LoginUserRoleGrantsVOImpl) findViewObject("LoginUserRoleGrants1");
     }
 }
 

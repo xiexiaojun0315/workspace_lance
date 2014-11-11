@@ -55,12 +55,6 @@
     EntityAttrName="LastLoginTime"
     EntityUsage="LoginUserEO"
     AliasName="LAST_LOGIN_TIME"/>
-  <ViewAttribute
-    Name="UserId"
-    PrecisionRule="true"
-    EntityAttrName="UserId"
-    EntityUsage="LoginUserEO"
-    AliasName="USER_ID"/>
   <ViewCriteria
     Name="FindByUserNameVC"
     ViewObjectName="com.lance.model.vo.LoginUserVO"
@@ -120,17 +114,5 @@
           Value="Basic"/>
       </CustomProperties>
     </Properties>
-    <ViewCriteriaRow
-      Name="LoginUserVOCriteria_row_0"
-      UpperColumns="1">
-      <ViewCriteriaItem
-        Name="UserId"
-        ViewAttribute="UserId"
-        Operator="="
-        Conjunction="AND"
-        Value=":pUserId"
-        IsBindVarValue="true"
-        Required="Optional"/>
-    </ViewCriteriaRow>
   </ViewCriteria>
 </ViewObject>

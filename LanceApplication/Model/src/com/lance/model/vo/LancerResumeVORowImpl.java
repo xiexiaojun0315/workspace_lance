@@ -40,8 +40,7 @@ public class LancerResumeVORowImpl extends BaseViewRowImpl {
         LanceExp,
         LancerSkill,
         LancerEducation;
-        static AttributesEnum[] vals = null;
-        ;
+        static AttributesEnum[] vals = null; ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -280,8 +279,8 @@ public class LancerResumeVORowImpl extends BaseViewRowImpl {
         ClobDomain c = this.getPaymentTerms();
         if (c != null)
             return c.toString();
-        return this.getPaymentTerms().toString();
-        //        return (String) getAttributeInternal(PAYMENTTERMSTXT);
+        //        return null;
+        return (String) getAttributeInternal(PAYMENTTERMSTXT);
     }
 
     /**
