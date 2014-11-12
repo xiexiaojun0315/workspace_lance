@@ -2,6 +2,7 @@ package com.lance.view.rest.user;
 
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.vo.LancerLocationListVOImpl;
+import com.lance.model.vo.LancerLocationListVORowImpl;
 import com.lance.view.util.LUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;
@@ -36,6 +37,7 @@ public class LancerLocationResource extends BaseRestResource {
         "Uuid", "AreaId", "CityId", "CountryId", "CurrentIn", "FaxNumber", "LancerId", "ProvinceId", "RegionId",
         "Telphone", "ZipCode", "DetailLoc"
     };
+    public static final String[] ATTR_GET_SIMPLE = { "CountryId", "ProvinceId", "CityId" };
     public static final String[] ATTR_UPDATE = {
         "AreaId", "CityId", "CountryId", "CurrentIn", "FaxNumber", "ProvinceId", "RegionId", "Telphone", "ZipCode",
         "DetailLoc"
@@ -113,5 +115,28 @@ public class LancerLocationResource extends BaseRestResource {
         Row row = vo.findByKey(new Key(new Object[] { locationId }), 1)[0];
         return this.convertRowToJsonObject(row, this.ATTR_GET);
     }
+
+    public JSONObject findLocationByIdFn(String locationId, LanceRestAMImpl am) throws JSONException {
+        System.out.println("findLocationByIdFn:" + locationId);
+        LancerLocationListVOImpl vo = am.getLancerLocationList2();
+        LancerLocationListVORowImpl row = (LancerLocationListVORowImpl) vo.findByKey(new Key(new Object[] {
+                                                                                             locationId }), 1)[0];
+        return convertLocationName(this.convertRowToJsonObject(row, this.ATTR_GET_SIMPLE));
+    }
+
+    public JSONObject convertLocationName(JSONObject locJson) throws JSONException {
+        System.out.println("convertLocationName:" + locJson);
+        if (locJson.has("CountryId")) {
+            locJson.put("CountryName", LUtil.getCountryById(locJson.getString("CountryId")));
+        }
+        if (locJson.has("ProvinceId")) {
+            locJson.put("ProvinceName", LUtil.getProvinceById(locJson.getString("ProvinceId")));
+        }
+        if (locJson.has("CityId")) {
+            locJson.put("CityName", LUtil.getCityById(locJson.getString("CityId")));
+        }
+        return locJson;
+    }
+
 
 }

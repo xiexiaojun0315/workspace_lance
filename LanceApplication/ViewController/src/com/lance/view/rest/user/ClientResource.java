@@ -18,6 +18,7 @@ import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.core.MediaType;
 
+import oracle.jbo.Key;
 import oracle.jbo.Row;
 
 import org.codehaus.jettison.json.JSONException;
@@ -89,6 +90,7 @@ public class ClientResource extends BaseRestResource {
         loginUserRow.setUserName(json.getString("UserName"));
         loginUserRow.setType(1); //0:Lancer/供应商  1：:需求方
         loginUserRow.setPassword(json.getString("Password"));
+        loginUserRow.setDisplayName(json.getString("DisplayName"));
         
         //授权角色
         LoginUserRoleGrantsVOImpl grantsVo = am.getLoginUserRoleGrants1();
@@ -231,6 +233,14 @@ public class ClientResource extends BaseRestResource {
             if (json.has(attr)) {
                 row.setAttribute(attr, json.get(attr));
             }
+        }
+        
+        //同时修改登录信息
+        if (json.has("DisplayName")) {
+            LoginUserVOImpl loginUserVO = am.getLoginUser1();
+            LoginUserVORowImpl loginUserRow = (LoginUserVORowImpl) loginUserVO.findByKey(new Key(new Object[] {
+                                                                                                 userId }), 1)[0];
+            loginUserRow.setDisplayName(json.getString("DisplayName"));
         }
 
         am.getDBTransaction().commit();
