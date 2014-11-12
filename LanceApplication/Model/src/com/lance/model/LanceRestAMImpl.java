@@ -7,6 +7,8 @@ import com.lance.model.vo.LancerLocationListVOImpl;
 import com.lance.model.vo.LancerResumeVOImpl;
 import com.lance.model.vo.LancerSkillVOImpl;
 import com.lance.model.vo.LancerVOImpl;
+import com.lance.model.vo.LocationCityVOImpl;
+import com.lance.model.vo.LocationProvinceVOImpl;
 import com.lance.model.vo.LoginUserRoleGrantsVOImpl;
 import com.lance.model.vo.LoginUserRoleVOImpl;
 import com.lance.model.vo.LoginUserVOImpl;
@@ -14,6 +16,7 @@ import com.lance.model.vo.LoginUserVOImpl;
 import com.lance.model.vo.PostJobsVOImpl;
 import com.lance.model.vo.SkillsVOImpl;
 import com.lance.model.vo.SpreadHeardFromVOImpl;
+import com.lance.model.vvo.LancerSearchVVOImpl;
 import com.lance.model.vvo.LocationCountryVVOImpl;
 
 import com.lance.model.vvo.PostJobsVVOImpl;
@@ -219,8 +222,8 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      * Container's getter for LocationProvince1.
      * @return LocationProvince1
      */
-    public BaseViewObjectImpl getLocationProvince1() {
-        return (BaseViewObjectImpl) findViewObject("LocationProvince1");
+    public LocationProvinceVOImpl getLocationProvince1() {
+        return (LocationProvinceVOImpl) findViewObject("LocationProvince1");
     }
 
 
@@ -228,8 +231,8 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      * Container's getter for LocationCity1.
      * @return LocationCity1
      */
-    public BaseViewObjectImpl getLocationCity1() {
-        return (BaseViewObjectImpl) findViewObject("LocationCity1");
+    public LocationCityVOImpl getLocationCity1() {
+        return (LocationCityVOImpl) findViewObject("LocationCity1");
     }
 
     /**
@@ -262,6 +265,30 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      */
     public LoginUserRoleGrantsVOImpl getLoginUserRoleGrants1() {
         return (LoginUserRoleGrantsVOImpl) findViewObject("LoginUserRoleGrants1");
+    }
+
+    /**
+     * Container's getter for LancerSearchV1.
+     * @return LancerSearchV1
+     */
+    public LancerSearchVVOImpl getLancerSearchV1() {
+        return (LancerSearchVVOImpl) findViewObject("LancerSearchV1");
+    }
+
+    /**
+     * Container's getter for LancerLocationList2.
+     * @return LancerLocationList2
+     */
+    public LancerLocationListVOImpl getLancerLocationList2() {
+        return (LancerLocationListVOImpl) findViewObject("LancerLocationList2");
+    }
+
+    /**
+     * Container's getter for LocationCity2.
+     * @return LocationCity2
+     */
+    public LocationCityVOImpl getLocationCity2() {
+        return (LocationCityVOImpl) findViewObject("LocationCity2");
     }
 }
 

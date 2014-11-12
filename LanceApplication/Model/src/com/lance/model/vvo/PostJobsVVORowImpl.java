@@ -17,22 +17,24 @@ public class PostJobsVVORowImpl extends BaseViewRowImpl {
      */
     public enum AttributesEnum {
         Uuid,
-        Name,
-        Brief,
-        Attach,
-        WorkSubcategory,
-        Skills,
-        Postform,
-        HourlyPayMin,
-        WeeklyHours,
-        DurationMin,
-        FixedPayMin,
-        JobVisibility,
         AllowSearchEngines,
+        Attach,
+        Brief,
+        DayPayMax,
+        DayPayMin,
+        DurationMax,
+        DurationMin,
         FixedLocation,
-        LocationId,
+        FixedPayMax,
+        FixedPayMin,
+        HourlyPayMax,
+        HourlyPayMin,
+        JobVisibility,
         LocationDesc,
-        WorkCategory,
+        LocationId,
+        Name,
+        Postform,
+        Skills,
         SpecificSkillA,
         SpecificSkillB,
         SpecificSkillC,
@@ -40,22 +42,21 @@ public class PostJobsVVORowImpl extends BaseViewRowImpl {
         SpecificSkillE,
         SpecificSkillF,
         SpecificSkillG,
-        HourlyPayMax,
-        DayPayMax,
-        DayPayMin,
-        FixedPayMax,
-        DurationMax,
         Status,
+        WeeklyHours,
+        WorkCategory,
+        WorkSubcategory,
         PostJobDateStart,
         PostJobDateEnd,
+        LocationCity,
         LocationCountry,
         LocationProvince,
-        LocationCity,
-        CreateBy,
-        CreateOn,
         ModifiedBy,
         ModifiedOn,
-        Version;
+        CreateBy,
+        CreateOn,
+        Version,
+        CreateByName;
         private static AttributesEnum[] vals = null;
         private static final int firstIndex = 0;
 
@@ -79,23 +80,26 @@ public class PostJobsVVORowImpl extends BaseViewRowImpl {
         }
     }
 
+
     public static final int UUID = AttributesEnum.Uuid.index();
-    public static final int NAME = AttributesEnum.Name.index();
-    public static final int BRIEF = AttributesEnum.Brief.index();
-    public static final int ATTACH = AttributesEnum.Attach.index();
-    public static final int WORKSUBCATEGORY = AttributesEnum.WorkSubcategory.index();
-    public static final int SKILLS = AttributesEnum.Skills.index();
-    public static final int POSTFORM = AttributesEnum.Postform.index();
-    public static final int HOURLYPAYMIN = AttributesEnum.HourlyPayMin.index();
-    public static final int WEEKLYHOURS = AttributesEnum.WeeklyHours.index();
-    public static final int DURATIONMIN = AttributesEnum.DurationMin.index();
-    public static final int FIXEDPAYMIN = AttributesEnum.FixedPayMin.index();
-    public static final int JOBVISIBILITY = AttributesEnum.JobVisibility.index();
     public static final int ALLOWSEARCHENGINES = AttributesEnum.AllowSearchEngines.index();
+    public static final int ATTACH = AttributesEnum.Attach.index();
+    public static final int BRIEF = AttributesEnum.Brief.index();
+    public static final int DAYPAYMAX = AttributesEnum.DayPayMax.index();
+    public static final int DAYPAYMIN = AttributesEnum.DayPayMin.index();
+    public static final int DURATIONMAX = AttributesEnum.DurationMax.index();
+    public static final int DURATIONMIN = AttributesEnum.DurationMin.index();
     public static final int FIXEDLOCATION = AttributesEnum.FixedLocation.index();
-    public static final int LOCATIONID = AttributesEnum.LocationId.index();
+    public static final int FIXEDPAYMAX = AttributesEnum.FixedPayMax.index();
+    public static final int FIXEDPAYMIN = AttributesEnum.FixedPayMin.index();
+    public static final int HOURLYPAYMAX = AttributesEnum.HourlyPayMax.index();
+    public static final int HOURLYPAYMIN = AttributesEnum.HourlyPayMin.index();
+    public static final int JOBVISIBILITY = AttributesEnum.JobVisibility.index();
     public static final int LOCATIONDESC = AttributesEnum.LocationDesc.index();
-    public static final int WORKCATEGORY = AttributesEnum.WorkCategory.index();
+    public static final int LOCATIONID = AttributesEnum.LocationId.index();
+    public static final int NAME = AttributesEnum.Name.index();
+    public static final int POSTFORM = AttributesEnum.Postform.index();
+    public static final int SKILLS = AttributesEnum.Skills.index();
     public static final int SPECIFICSKILLA = AttributesEnum.SpecificSkillA.index();
     public static final int SPECIFICSKILLB = AttributesEnum.SpecificSkillB.index();
     public static final int SPECIFICSKILLC = AttributesEnum.SpecificSkillC.index();
@@ -103,22 +107,21 @@ public class PostJobsVVORowImpl extends BaseViewRowImpl {
     public static final int SPECIFICSKILLE = AttributesEnum.SpecificSkillE.index();
     public static final int SPECIFICSKILLF = AttributesEnum.SpecificSkillF.index();
     public static final int SPECIFICSKILLG = AttributesEnum.SpecificSkillG.index();
-    public static final int HOURLYPAYMAX = AttributesEnum.HourlyPayMax.index();
-    public static final int DAYPAYMAX = AttributesEnum.DayPayMax.index();
-    public static final int DAYPAYMIN = AttributesEnum.DayPayMin.index();
-    public static final int FIXEDPAYMAX = AttributesEnum.FixedPayMax.index();
-    public static final int DURATIONMAX = AttributesEnum.DurationMax.index();
     public static final int STATUS = AttributesEnum.Status.index();
+    public static final int WEEKLYHOURS = AttributesEnum.WeeklyHours.index();
+    public static final int WORKCATEGORY = AttributesEnum.WorkCategory.index();
+    public static final int WORKSUBCATEGORY = AttributesEnum.WorkSubcategory.index();
     public static final int POSTJOBDATESTART = AttributesEnum.PostJobDateStart.index();
     public static final int POSTJOBDATEEND = AttributesEnum.PostJobDateEnd.index();
+    public static final int LOCATIONCITY = AttributesEnum.LocationCity.index();
     public static final int LOCATIONCOUNTRY = AttributesEnum.LocationCountry.index();
     public static final int LOCATIONPROVINCE = AttributesEnum.LocationProvince.index();
-    public static final int LOCATIONCITY = AttributesEnum.LocationCity.index();
-    public static final int CREATEBY = AttributesEnum.CreateBy.index();
-    public static final int CREATEON = AttributesEnum.CreateOn.index();
     public static final int MODIFIEDBY = AttributesEnum.ModifiedBy.index();
     public static final int MODIFIEDON = AttributesEnum.ModifiedOn.index();
+    public static final int CREATEBY = AttributesEnum.CreateBy.index();
+    public static final int CREATEON = AttributesEnum.CreateOn.index();
     public static final int VERSION = AttributesEnum.Version.index();
+    public static final int CREATEBYNAME = AttributesEnum.CreateByName.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -444,6 +447,14 @@ public class PostJobsVVORowImpl extends BaseViewRowImpl {
      */
     public BigDecimal getVersion() {
         return (BigDecimal) getAttributeInternal(VERSION);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute CreateByName.
+     * @return the CreateByName
+     */
+    public String getCreateByName() {
+        return (String) getAttributeInternal(CREATEBYNAME);
     }
 }
 

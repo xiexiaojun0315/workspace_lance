@@ -80,6 +80,15 @@
     <ViewUsage
         Name="LoginUserRoleGrants1"
         ViewObjectName="com.lance.model.vo.LoginUserRoleGrantsVO"/>
+    <ViewUsage
+        Name="LancerSearchV1"
+        ViewObjectName="com.lance.model.vvo.LancerSearchVVO"/>
+    <ViewUsage
+        Name="LancerLocationList2"
+        ViewObjectName="com.lance.model.vo.LancerLocationListVO"/>
+    <ViewUsage
+        Name="LocationCity2"
+        ViewObjectName="com.lance.model.vo.LocationCityVO"/>
     <ViewLinkUsage
       Name="LancerResume_SkillVL1"
       ViewLinkObjectName="com.lance.model.vl.LancerResume_SkillVL"

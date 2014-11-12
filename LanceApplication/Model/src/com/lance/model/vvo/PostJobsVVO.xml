@@ -38,49 +38,50 @@
     Name="pSkill"
     Kind="viewcriteria"
     Type="java.lang.String"/>
-  <SQLQuery><![CDATA[SELECT  
-    POST_JOBS.UUID UUID,  
-    POST_JOBS.NAME NAME,  
-    POST_JOBS.BRIEF BRIEF,  
-    POST_JOBS.ATTACH ATTACH,  
-    POST_JOBS.WORK_SUBCATEGORY WORK_SUBCATEGORY,  
-    POST_JOBS.SKILLS SKILLS,  
-    POST_JOBS.POSTFORM POSTFORM,  
-    POST_JOBS.HOURLY_PAY_MIN HOURLY_PAY_MIN,  
-    POST_JOBS.WEEKLY_HOURS WEEKLY_HOURS,  
-    POST_JOBS.DURATION_MIN DURATION_MIN,  
-    POST_JOBS.FIXED_PAY_MIN FIXED_PAY_MIN,  
-    POST_JOBS.JOB_VISIBILITY JOB_VISIBILITY,  
-    POST_JOBS.ALLOW_SEARCH_ENGINES ALLOW_SEARCH_ENGINES,  
-    POST_JOBS.FIXED_LOCATION FIXED_LOCATION,  
-    POST_JOBS.LOCATION_ID LOCATION_ID,  
-    POST_JOBS.LOCATION_DESC LOCATION_DESC,  
-    POST_JOBS.WORK_CATEGORY WORK_CATEGORY,  
-    POST_JOBS.SPECIFIC_SKILL_A SPECIFIC_SKILL_A,  
-    POST_JOBS.SPECIFIC_SKILL_B SPECIFIC_SKILL_B,  
-    POST_JOBS.SPECIFIC_SKILL_C SPECIFIC_SKILL_C,  
-    POST_JOBS.SPECIFIC_SKILL_D SPECIFIC_SKILL_D,  
-    POST_JOBS.SPECIFIC_SKILL_E SPECIFIC_SKILL_E,  
-    POST_JOBS.SPECIFIC_SKILL_F SPECIFIC_SKILL_F,  
-    POST_JOBS.SPECIFIC_SKILL_G SPECIFIC_SKILL_G,  
-    POST_JOBS.HOURLY_PAY_MAX HOURLY_PAY_MAX,  
-    POST_JOBS.DAY_PAY_MAX DAY_PAY_MAX,  
-    POST_JOBS.DAY_PAY_MIN DAY_PAY_MIN,  
-    POST_JOBS.FIXED_PAY_MAX FIXED_PAY_MAX,  
-    POST_JOBS.DURATION_MAX DURATION_MAX,  
-    POST_JOBS.STATUS STATUS,  
-    POST_JOBS.POST_JOB_DATE_START POST_JOB_DATE_START,  
-    POST_JOBS.POST_JOB_DATE_END POST_JOB_DATE_END,  
-    POST_JOBS.LOCATION_COUNTRY LOCATION_COUNTRY,  
-    POST_JOBS.LOCATION_PROVINCE LOCATION_PROVINCE,  
-    POST_JOBS.LOCATION_CITY LOCATION_CITY,  
-    POST_JOBS.CREATE_BY CREATE_BY,  
-    POST_JOBS.CREATE_ON CREATE_ON,  
-    POST_JOBS.MODIFIED_BY MODIFIED_BY,  
-    POST_JOBS.MODIFIED_ON MODIFIED_ON,  
-    POST_JOBS.VERSION VERSION  
-FROM  
-    POST_JOBS]]></SQLQuery>
+  <SQLQuery><![CDATA[SELECT PostJobsEO.UUID,               
+       PostJobsEO.ALLOW_SEARCH_ENGINES,               
+       PostJobsEO.ATTACH,               
+       PostJobsEO.BRIEF,               
+       PostJobsEO.DAY_PAY_MAX,               
+       PostJobsEO.DAY_PAY_MIN,               
+       PostJobsEO.DURATION_MAX,               
+       PostJobsEO.DURATION_MIN,               
+       PostJobsEO.FIXED_LOCATION,               
+       PostJobsEO.FIXED_PAY_MAX,               
+       PostJobsEO.FIXED_PAY_MIN,               
+       PostJobsEO.HOURLY_PAY_MAX,               
+       PostJobsEO.HOURLY_PAY_MIN,               
+       PostJobsEO.JOB_VISIBILITY,               
+       PostJobsEO.LOCATION_DESC,               
+       PostJobsEO.LOCATION_ID,               
+       PostJobsEO.NAME,               
+       PostJobsEO.POSTFORM,               
+       PostJobsEO.SKILLS,               
+       PostJobsEO.SPECIFIC_SKILL_A,               
+       PostJobsEO.SPECIFIC_SKILL_B,               
+       PostJobsEO.SPECIFIC_SKILL_C,               
+       PostJobsEO.SPECIFIC_SKILL_D,               
+       PostJobsEO.SPECIFIC_SKILL_E,               
+       PostJobsEO.SPECIFIC_SKILL_F,               
+       PostJobsEO.SPECIFIC_SKILL_G,               
+       PostJobsEO.STATUS,               
+       PostJobsEO.WEEKLY_HOURS,               
+       PostJobsEO.WORK_CATEGORY,               
+       PostJobsEO.WORK_SUBCATEGORY,               
+       PostJobsEO.POST_JOB_DATE_START,               
+       PostJobsEO.POST_JOB_DATE_END,               
+       PostJobsEO.LOCATION_CITY,               
+       PostJobsEO.LOCATION_COUNTRY,               
+       PostJobsEO.LOCATION_PROVINCE,               
+       PostJobsEO.MODIFIED_BY,               
+       PostJobsEO.MODIFIED_ON,               
+       PostJobsEO.CREATE_BY,               
+       PostJobsEO.CREATE_ON,               
+       PostJobsEO.VERSION,              
+       LoginUserEO.DISPLAY_NAME CREATE_BY_NAME        
+FROM  POST_JOBS PostJobsEO,LOGIN_USER LoginUserEO              
+WHERE PostJobsEO.CREATE_BY = LoginUserEO.USER_NAME      
+ORDER BY CREATE_ON DESC]]></SQLQuery>
   <ViewAttribute
     Name="Uuid"
     IsUpdateable="false"
@@ -91,6 +92,176 @@ FROM
     ColumnType="VARCHAR2"
     AliasName="UUID"
     Expression="UUID"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="AllowSearchEngines"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="ALLOW_SEARCH_ENGINES"
+    Expression="ALLOW_SEARCH_ENGINES"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="Attach"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="200"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ATTACH"
+    Expression="ATTACH"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="200"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Brief"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="2000"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="BRIEF"
+    Expression="BRIEF"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2000"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="DayPayMax"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DAY_PAY_MAX"
+    Expression="DAY_PAY_MAX"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DayPayMin"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DAY_PAY_MIN"
+    Expression="DAY_PAY_MIN"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DurationMax"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DURATION_MAX"
+    Expression="DURATION_MAX"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="DurationMin"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="DURATION_MIN"
+    Expression="DURATION_MIN"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="FixedLocation"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="FIXED_LOCATION"
+    Expression="FIXED_LOCATION"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="FixedPayMax"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="FIXED_PAY_MAX"
+    Expression="FIXED_PAY_MAX"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="FixedPayMin"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="FIXED_PAY_MIN"
+    Expression="FIXED_PAY_MIN"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="HourlyPayMax"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="HOURLY_PAY_MAX"
+    Expression="HOURLY_PAY_MAX"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="HourlyPayMin"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="HOURLY_PAY_MIN"
+    Expression="HOURLY_PAY_MIN"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="JobVisibility"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="JOB_VISIBILITY"
+    Expression="JOB_VISIBILITY"
+    SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="LocationDesc"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="500"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LOCATION_DESC"
+    Expression="LOCATION_DESC"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="LocationId"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LOCATION_ID"
+    Expression="LOCATION_ID"
     SQLType="VARCHAR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="32"/>
@@ -112,50 +283,15 @@ FROM
     </DesignTime>
   </ViewAttribute>
   <ViewAttribute
-    Name="Brief"
+    Name="Postform"
     IsUpdateable="false"
     IsPersistent="false"
     PrecisionRule="true"
-    Precision="2000"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="BRIEF"
-    Expression="BRIEF"
-    SQLType="VARCHAR">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="2000"/>
-    </DesignTime>
-  </ViewAttribute>
-  <ViewAttribute
-    Name="Attach"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Precision="200"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="ATTACH"
-    Expression="ATTACH"
-    SQLType="VARCHAR">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="200"/>
-    </DesignTime>
-  </ViewAttribute>
-  <ViewAttribute
-    Name="WorkSubcategory"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Precision="32"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="WORK_SUBCATEGORY"
-    Expression="WORK_SUBCATEGORY"
-    SQLType="VARCHAR">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="32"/>
-    </DesignTime>
-  </ViewAttribute>
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="POSTFORM"
+    Expression="POSTFORM"
+    SQLType="NUMERIC"/>
   <ViewAttribute
     Name="Skills"
     IsUpdateable="false"
@@ -169,131 +305,6 @@ FROM
     SQLType="VARCHAR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="1000"/>
-    </DesignTime>
-  </ViewAttribute>
-  <ViewAttribute
-    Name="Postform"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    AliasName="POSTFORM"
-    Expression="POSTFORM"
-    SQLType="NUMERIC"/>
-  <ViewAttribute
-    Name="HourlyPayMin"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    AliasName="HOURLY_PAY_MIN"
-    Expression="HOURLY_PAY_MIN"
-    SQLType="NUMERIC"/>
-  <ViewAttribute
-    Name="WeeklyHours"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    AliasName="WEEKLY_HOURS"
-    Expression="WEEKLY_HOURS"
-    SQLType="NUMERIC"/>
-  <ViewAttribute
-    Name="DurationMin"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    AliasName="DURATION_MIN"
-    Expression="DURATION_MIN"
-    SQLType="NUMERIC"/>
-  <ViewAttribute
-    Name="FixedPayMin"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    AliasName="FIXED_PAY_MIN"
-    Expression="FIXED_PAY_MIN"
-    SQLType="NUMERIC"/>
-  <ViewAttribute
-    Name="JobVisibility"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    AliasName="JOB_VISIBILITY"
-    Expression="JOB_VISIBILITY"
-    SQLType="NUMERIC"/>
-  <ViewAttribute
-    Name="AllowSearchEngines"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    AliasName="ALLOW_SEARCH_ENGINES"
-    Expression="ALLOW_SEARCH_ENGINES"
-    SQLType="NUMERIC"/>
-  <ViewAttribute
-    Name="FixedLocation"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    AliasName="FIXED_LOCATION"
-    Expression="FIXED_LOCATION"
-    SQLType="NUMERIC"/>
-  <ViewAttribute
-    Name="LocationId"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Precision="32"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="LOCATION_ID"
-    Expression="LOCATION_ID"
-    SQLType="VARCHAR">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="32"/>
-    </DesignTime>
-  </ViewAttribute>
-  <ViewAttribute
-    Name="LocationDesc"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Precision="500"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="LOCATION_DESC"
-    Expression="LOCATION_DESC"
-    SQLType="VARCHAR">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="500"/>
-    </DesignTime>
-  </ViewAttribute>
-  <ViewAttribute
-    Name="WorkCategory"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Precision="32"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="WORK_CATEGORY"
-    Expression="WORK_CATEGORY"
-    SQLType="VARCHAR">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="32"/>
     </DesignTime>
   </ViewAttribute>
   <ViewAttribute
@@ -402,56 +413,6 @@ FROM
     </DesignTime>
   </ViewAttribute>
   <ViewAttribute
-    Name="HourlyPayMax"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    AliasName="HOURLY_PAY_MAX"
-    Expression="HOURLY_PAY_MAX"
-    SQLType="NUMERIC"/>
-  <ViewAttribute
-    Name="DayPayMax"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    AliasName="DAY_PAY_MAX"
-    Expression="DAY_PAY_MAX"
-    SQLType="NUMERIC"/>
-  <ViewAttribute
-    Name="DayPayMin"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    AliasName="DAY_PAY_MIN"
-    Expression="DAY_PAY_MIN"
-    SQLType="NUMERIC"/>
-  <ViewAttribute
-    Name="FixedPayMax"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    AliasName="FIXED_PAY_MAX"
-    Expression="FIXED_PAY_MAX"
-    SQLType="NUMERIC"/>
-  <ViewAttribute
-    Name="DurationMax"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    AliasName="DURATION_MAX"
-    Expression="DURATION_MAX"
-    SQLType="NUMERIC"/>
-  <ViewAttribute
     Name="Status"
     IsUpdateable="false"
     IsPersistent="false"
@@ -460,7 +421,47 @@ FROM
     ColumnType="NUMBER"
     AliasName="STATUS"
     Expression="STATUS"
+    SQLType="INTEGER"/>
+  <ViewAttribute
+    Name="WeeklyHours"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    AliasName="WEEKLY_HOURS"
+    Expression="WEEKLY_HOURS"
     SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="WorkCategory"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="WORK_CATEGORY"
+    Expression="WORK_CATEGORY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="WorkSubcategory"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="WORK_SUBCATEGORY"
+    Expression="WORK_SUBCATEGORY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </ViewAttribute>
   <ViewAttribute
     Name="PostJobDateStart"
     IsUpdateable="false"
@@ -481,6 +482,21 @@ FROM
     AliasName="POST_JOB_DATE_END"
     Expression="POST_JOB_DATE_END"
     SQLType="DATE"/>
+  <ViewAttribute
+    Name="LocationCity"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="32"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="LOCATION_CITY"
+    Expression="LOCATION_CITY"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </ViewAttribute>
   <ViewAttribute
     Name="LocationCountry"
     IsUpdateable="false"
@@ -512,20 +528,30 @@ FROM
     </DesignTime>
   </ViewAttribute>
   <ViewAttribute
-    Name="LocationCity"
+    Name="ModifiedBy"
     IsUpdateable="false"
     IsPersistent="false"
     PrecisionRule="true"
     Precision="32"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    AliasName="LOCATION_CITY"
-    Expression="LOCATION_CITY"
+    AliasName="MODIFIED_BY"
+    Expression="MODIFIED_BY"
     SQLType="VARCHAR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="32"/>
     </DesignTime>
   </ViewAttribute>
+  <ViewAttribute
+    Name="ModifiedOn"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    AliasName="MODIFIED_ON"
+    Expression="MODIFIED_ON"
+    SQLType="DATE"/>
   <ViewAttribute
     Name="CreateBy"
     IsUpdateable="false"
@@ -552,31 +578,6 @@ FROM
     Expression="CREATE_ON"
     SQLType="DATE"/>
   <ViewAttribute
-    Name="ModifiedBy"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Precision="32"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="MODIFIED_BY"
-    Expression="MODIFIED_BY"
-    SQLType="VARCHAR">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="32"/>
-    </DesignTime>
-  </ViewAttribute>
-  <ViewAttribute
-    Name="ModifiedOn"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Type="java.sql.Timestamp"
-    ColumnType="DATE"
-    AliasName="MODIFIED_ON"
-    Expression="MODIFIED_ON"
-    SQLType="DATE"/>
-  <ViewAttribute
     Name="Version"
     IsUpdateable="false"
     IsPersistent="false"
@@ -586,6 +587,21 @@ FROM
     AliasName="VERSION"
     Expression="VERSION"
     SQLType="NUMERIC"/>
+  <ViewAttribute
+    Name="CreateByName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CREATE_BY_NAME"
+    Expression="CREATE_BY_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
   <ViewCriteria
     Name="FindLatestPostedVC"
     ViewObjectName="com.lance.model.vvo.PostJobsVVO"

@@ -198,4 +198,7 @@ order by SHOW_ORDER]]></SQLQuery>
     <PropertiesBundle
       PropertiesFile="com.lance.model.ModelBundle"/>
   </ResourceBundle>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Uuid"/>
+  </AttrArray>
 </ViewObject>

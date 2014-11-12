@@ -12,9 +12,13 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  RowClass="com.zngh.platform.front.core.model.BaseViewRowImpl"
-  ComponentClass="com.zngh.platform.front.core.model.BaseViewObjectImpl"
+  RowClass="com.lance.model.vo.LocationProvinceVORowImpl"
+  ComponentClass="com.lance.model.vo.LocationProvinceVOImpl"
   PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <EntityUsage
     Name="LocationProvinceEO"
     Entity="com.lance.model.eo.LocationProvinceEO"/>
@@ -48,6 +52,12 @@
     ViewLink="com.lance.model.vl.LocationProvince_CityVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <SortCriteria>
+    <Sort
+      Attribute="ShowOrder"/>
+    <Sort
+      Attribute="ProvinceName"/>
+  </SortCriteria>
   <SortCriteria>
     <Sort
       Attribute="ShowOrder"/>

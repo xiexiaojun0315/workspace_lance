@@ -136,7 +136,7 @@
   </Attribute>
   <Attribute
     Name="UserName"
-    Precision="50"
+    Precision="32"
     ColumnName="USER_NAME"
     SQLType="VARCHAR"
     Type="java.lang.String"

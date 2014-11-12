@@ -6,23 +6,68 @@
   Name="PostJobsVO"
   Version="12.1.3.10.8"
   InheritPersonalization="merge"
-  SelectListFlags="1"
-  FromListFlags="1"
-  WhereFlags="1"
   BindingStyle="OracleName"
-  CustomQuery="false"
-  SelectAllAttributes="false"
+  CustomQuery="true"
   RowClass="com.lance.model.vo.PostJobsVORowImpl"
   ComponentClass="com.lance.model.vo.PostJobsVOImpl"
   PageIterMode="Full">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
+    <Attr Name="_isExpertMode" Value="true"/>
   </DesignTime>
   <Variable
     Name="pUuid"
     Kind="viewcriteria"
     Type="java.lang.String"/>
+  <ViewAccessor
+    Name="ClientUserVO1"
+    ViewObjectName="com.lance.model.vo.ClientUserVO"
+    RowLevelBinds="true"/>
+  <SQLQuery><![CDATA[SELECT PostJobsEO.UUID,              
+       PostJobsEO.ALLOW_SEARCH_ENGINES,              
+       PostJobsEO.ATTACH,              
+       PostJobsEO.BRIEF,              
+       PostJobsEO.DAY_PAY_MAX,              
+       PostJobsEO.DAY_PAY_MIN,              
+       PostJobsEO.DURATION_MAX,              
+       PostJobsEO.DURATION_MIN,              
+       PostJobsEO.FIXED_LOCATION,              
+       PostJobsEO.FIXED_PAY_MAX,              
+       PostJobsEO.FIXED_PAY_MIN,              
+       PostJobsEO.HOURLY_PAY_MAX,              
+       PostJobsEO.HOURLY_PAY_MIN,              
+       PostJobsEO.JOB_VISIBILITY,              
+       PostJobsEO.LOCATION_DESC,              
+       PostJobsEO.LOCATION_ID,              
+       PostJobsEO.NAME,              
+       PostJobsEO.POSTFORM,              
+       PostJobsEO.SKILLS,              
+       PostJobsEO.SPECIFIC_SKILL_A,              
+       PostJobsEO.SPECIFIC_SKILL_B,              
+       PostJobsEO.SPECIFIC_SKILL_C,              
+       PostJobsEO.SPECIFIC_SKILL_D,              
+       PostJobsEO.SPECIFIC_SKILL_E,              
+       PostJobsEO.SPECIFIC_SKILL_F,              
+       PostJobsEO.SPECIFIC_SKILL_G,              
+       PostJobsEO.STATUS,              
+       PostJobsEO.WEEKLY_HOURS,              
+       PostJobsEO.WORK_CATEGORY,              
+       PostJobsEO.WORK_SUBCATEGORY,              
+       PostJobsEO.POST_JOB_DATE_START,              
+       PostJobsEO.POST_JOB_DATE_END,              
+       PostJobsEO.LOCATION_CITY,              
+       PostJobsEO.LOCATION_COUNTRY,              
+       PostJobsEO.LOCATION_PROVINCE,              
+       PostJobsEO.MODIFIED_BY,              
+       PostJobsEO.MODIFIED_ON,              
+       PostJobsEO.CREATE_BY,              
+       PostJobsEO.CREATE_ON,              
+       PostJobsEO.VERSION,             
+       LoginUserEO.DISPLAY_NAME CREATE_BY_NAME       
+FROM  POST_JOBS PostJobsEO,LOGIN_USER LoginUserEO             
+WHERE PostJobsEO.CREATE_BY = LoginUserEO.USER_NAME     
+ORDER BY CREATE_ON DESC]]></SQLQuery>
   <EntityUsage
     Name="PostJobsEO"
     Entity="com.lance.model.eo.PostJobsEO"/>
@@ -275,6 +320,21 @@
     EntityAttrName="Version"
     EntityUsage="PostJobsEO"
     AliasName="VERSION"/>
+  <ViewAttribute
+    Name="CreateByName"
+    IsUpdateable="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="CREATE_BY_NAME"
+    Expression="CREATE_BY_NAME"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </ViewAttribute>
   <ViewCriteria
     Name="FindByIdVC"
     ViewObjectName="com.lance.model.vo.PostJobsVO"

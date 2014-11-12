@@ -52,6 +52,18 @@
     Type="java.sql.Timestamp"
     ColumnType="DATE"
     TableName="LOGIN_USER"/>
+  <Attribute
+    Name="DisplayName"
+    Precision="50"
+    ColumnName="DISPLAY_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LOGIN_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
   <Key
     Name="LoginUserPk"
     PrimaryKey="true">

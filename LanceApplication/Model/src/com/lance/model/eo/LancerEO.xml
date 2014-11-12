@@ -40,7 +40,7 @@
   </Attribute>
   <Attribute
     Name="UserName"
-    Precision="100"
+    Precision="32"
     ColumnName="USER_NAME"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -64,7 +64,7 @@
   </Attribute>
   <Attribute
     Name="DisplayName"
-    Precision="20"
+    Precision="50"
     ColumnName="DISPLAY_NAME"
     SQLType="VARCHAR"
     Type="java.lang.String"

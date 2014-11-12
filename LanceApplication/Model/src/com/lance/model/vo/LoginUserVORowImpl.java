@@ -14,6 +14,7 @@ import java.sql.Timestamp;
 // ---------------------------------------------------------------------
 public class LoginUserVORowImpl extends BaseViewRowImpl {
 
+
     public static final int ENTITY_LOGINUSEREO = 0;
 
     /**
@@ -23,7 +24,8 @@ public class LoginUserVORowImpl extends BaseViewRowImpl {
         UserName,
         Password,
         Type,
-        LastLoginTime;
+        LastLoginTime,
+        DisplayName;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -48,10 +50,12 @@ public class LoginUserVORowImpl extends BaseViewRowImpl {
         }
     }
 
+
     public static final int USERNAME = AttributesEnum.UserName.index();
     public static final int PASSWORD = AttributesEnum.Password.index();
     public static final int TYPE = AttributesEnum.Type.index();
     public static final int LASTLOGINTIME = AttributesEnum.LastLoginTime.index();
+    public static final int DISPLAYNAME = AttributesEnum.DisplayName.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -129,6 +133,22 @@ public class LoginUserVORowImpl extends BaseViewRowImpl {
      */
     public void setLastLoginTime(Timestamp value) {
         setAttributeInternal(LASTLOGINTIME, value);
+    }
+
+    /**
+     * Gets the attribute value for DISPLAY_NAME using the alias name DisplayName.
+     * @return the DISPLAY_NAME
+     */
+    public String getDisplayName() {
+        return (String) getAttributeInternal(DISPLAYNAME);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for DISPLAY_NAME using the alias name DisplayName.
+     * @param value value to set the DISPLAY_NAME
+     */
+    public void setDisplayName(String value) {
+        setAttributeInternal(DISPLAYNAME, value);
     }
 
 

@@ -55,6 +55,12 @@
     EntityAttrName="LastLoginTime"
     EntityUsage="LoginUserEO"
     AliasName="LAST_LOGIN_TIME"/>
+  <ViewAttribute
+    Name="DisplayName"
+    PrecisionRule="true"
+    EntityAttrName="DisplayName"
+    EntityUsage="LoginUserEO"
+    AliasName="DISPLAY_NAME"/>
   <ViewCriteria
     Name="FindByUserNameVC"
     ViewObjectName="com.lance.model.vo.LoginUserVO"
