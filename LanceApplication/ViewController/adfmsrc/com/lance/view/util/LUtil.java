@@ -166,5 +166,6 @@ public class LUtil {
 
         LOCATION_INITED = true;
     }
+    
 
 }

@@ -13,6 +13,7 @@ import com.lance.model.vo.LoginUserRoleGrantsVOImpl;
 import com.lance.model.vo.LoginUserRoleVOImpl;
 import com.lance.model.vo.LoginUserVOImpl;
 
+import com.lance.model.vo.PostJobDiscussVOImpl;
 import com.lance.model.vo.PostJobsVOImpl;
 import com.lance.model.vo.SkillsVOImpl;
 import com.lance.model.vo.SpreadHeardFromVOImpl;
@@ -289,6 +290,22 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      */
     public LocationCityVOImpl getLocationCity2() {
         return (LocationCityVOImpl) findViewObject("LocationCity2");
+    }
+
+    /**
+     * Container's getter for PostJobDiscuss1.
+     * @return PostJobDiscuss1
+     */
+    public PostJobDiscussVOImpl getPostJobDiscuss1() {
+        return (PostJobDiscussVOImpl) findViewObject("PostJobDiscuss1");
+    }
+
+    /**
+     * Container's getter for PostJob_PostJobDiscussVL1.
+     * @return PostJob_PostJobDiscussVL1
+     */
+    public ViewLinkImpl getPostJob_PostJobDiscussVL1() {
+        return (ViewLinkImpl) findViewLink("PostJob_PostJobDiscussVL1");
     }
 }
 

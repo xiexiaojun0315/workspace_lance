@@ -8,6 +8,7 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import oracle.jbo.Key;
+import oracle.jbo.RowIterator;
 import oracle.jbo.RowSet;
 import oracle.jbo.domain.Date;
 import oracle.jbo.domain.Number;
@@ -67,6 +68,7 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
         CreateOn,
         Version,
         CreateByName,
+        PostJobDiscuss,
         ClientUserVO1;
         static AttributesEnum[] vals = null;
         ;
@@ -134,6 +136,7 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
     public static final int CREATEON = AttributesEnum.CreateOn.index();
     public static final int VERSION = AttributesEnum.Version.index();
     public static final int CREATEBYNAME = AttributesEnum.CreateByName.index();
+    public static final int POSTJOBDISCUSS = AttributesEnum.PostJobDiscuss.index();
     public static final int CLIENTUSERVO1 = AttributesEnum.ClientUserVO1.index();
 
     /**
@@ -757,6 +760,13 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
      */
     public String getCreateByName() {
         return (String) getAttributeInternal(CREATEBYNAME);
+    }
+
+    /**
+     * Gets the associated <code>RowIterator</code> using master-detail link PostJobDiscuss.
+     */
+    public RowIterator getPostJobDiscuss() {
+        return (RowIterator) getAttributeInternal(POSTJOBDISCUSS);
     }
 
     /**

@@ -372,4 +372,9 @@ ORDER BY CREATE_ON DESC]]></SQLQuery>
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
+  <ViewLinkAccessor
+    Name="PostJobDiscuss"
+    ViewLink="com.lance.model.vl.PostJob_PostJobDiscussVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
 </ViewObject>

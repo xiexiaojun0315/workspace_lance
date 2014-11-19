@@ -1,6 +1,7 @@
 package com.lance.view.rest.job;
 
 import com.lance.model.LanceRestAMImpl;
+import com.lance.model.vo.PostJobDiscussVOImpl;
 import com.lance.model.vo.PostJobsVOImpl;
 import com.lance.model.vo.PostJobsVORowImpl;
 import com.lance.view.util.LUtil;
@@ -33,7 +34,38 @@ public class PostJobResource extends BaseRestResource {
         "FixedLocation", "FixedPayMax", "FixedPayMin", "HourlyPayMax", "HourlyPayMin", "JobVisibility", "LocationDesc",
         "LocationId", "Name", "Postform", "Skills", "SpecificSkillA", "SpecificSkillB", "SpecificSkillC",
         "SpecificSkillD", "SpecificSkillE", "SpecificSkillF", "SpecificSkillG", "Status", "WeeklyHours", "WorkCategory",
-        "WorkSubcategory","CreateBy","CreateOn","ModifiedBy","ModifiedOn","Version"
+        "WorkSubcategory", "CreateBy", "CreateOn", "ModifiedBy", "ModifiedOn", "Version"
+    };
+
+    /**
+     * 讨论，申请Job相关字段
+     * 适用于乙方查看甲方发布的Job需求，并发布讨论或申请
+     *
+     * Content描述
+     * IsApply 申请：Y 讨论：N
+     * Postform 1时薪/2固定价格
+     * ParentDiscussId:适用于回复某内容，回复内容的DiscussId
+     *
+     * 选择时薪时可录入以下内容
+     * HourlyPay 每小时价格
+     * WeeklyHours 每周工作时间
+     * EnteryDate 可进入项目时间
+     *
+     * 选择固定价格时
+     * TotalPrice 总价格
+     *
+     * 此接口也适用于
+     * 只传入Uuid,IsApply=Y 代表某人申请某工作
+     *
+     */
+    public static final String[] DISCUSS_FIELD = {
+        "Content", "IsApply", "Postform", "HourlyPay", "WeeklyHours", "EnteryDate", "TotalPrice", "ParentDiscussId",
+        "ParentDiscussId"
+    };
+
+    public static final String[] DISCUSS_FIELD_READ = {
+        "Uuid", "PostJobId", "Content", "IsApply", "Postform", "HourlyPay", "WeeklyHours", "EnteryDate", "TotalPrice",
+        "ParentDiscussId", "ParentDiscussId"
     };
 
     //SpecificSkillG,SpecificSkillF为Vip用
@@ -68,13 +100,13 @@ public class PostJobResource extends BaseRestResource {
      *
      * 补充：
      * Location, Privacy and Other Options，默认显示即可，不需要Hide，但需要框起来
-     * 
-     * 
-     * 
+     *
+     *
+     *
      * 测试数据
      * 查询：GET http://localhost:7101/lance/res/user/client/postJob/3d0df8be66d54e25a49ed25e8ec82f45
      * 修改：POST http://localhost:7101/lance/res/user/client/postJob/3d0df8be66d54e25a49ed25e8ec82f45
-     * 
+     *
      * {
         "Uuid" : "3d0df8be66d54e25a49ed25e8ec82f45",
         "Name" : "工作测试",
@@ -112,7 +144,8 @@ public class PostJobResource extends BaseRestResource {
         "SpecificSkillC", "SpecificSkillD", "SpecificSkillE", "Postform", "HourlyPayMax", "HourlyPayMin", "WeeklyHours",
         "DurationMax", "DurationMin", "FixedPayMax", "FixedPayMin", "JobVisibility", "AllowSearchEngines",
         "FixedLocation", "LocationDesc", "LocationId", "Skills", "Status", "PostJobDateStart", "PostJobDateEnd",
-        "LocationCity", "LocationCountry", "LocationProvince" ,"CreateBy","CreateOn","ModifiedBy","ModifiedOn","Version"
+        "LocationCity", "LocationCountry", "LocationProvince", "CreateBy", "CreateOn", "ModifiedBy", "ModifiedOn",
+        "Version"
     };
 
     public static final String[] ATTR_UPDATE = {
@@ -128,8 +161,7 @@ public class PostJobResource extends BaseRestResource {
      * 保存草稿时，不验证非空字段
      */
     public static final String[] ATTR_POST_REQUIRED = {
-        "Name", "Brief", "WorkCategory", "WorkSubcategory", "Postform", "Status", "PostJobDateStart",
-        "PostJobDateEnd"
+        "Name", "Brief", "WorkCategory", "WorkSubcategory", "Postform", "Status", "PostJobDateStart", "PostJobDateEnd"
     };
 
 
@@ -144,10 +176,10 @@ public class PostJobResource extends BaseRestResource {
         PostJobsVOImpl vo = am.getPostJobs1();
         PostJobsVORowImpl row = (PostJobsVORowImpl) vo.createRow();
         vo.setCurrentRow(row);
-        
+
         //使用简短ID，1414408397908
-        row.setAttribute("Uuid", ""+System.currentTimeMillis());
-        
+        row.setAttribute("Uuid", "" + System.currentTimeMillis());
+
         updatePostJobFn(am, row, json);
         am.getDBTransaction().commit();
         return row.getUuid();
@@ -158,7 +190,7 @@ public class PostJobResource extends BaseRestResource {
     @Path("update/{postJobId}")
     @Consumes(MediaType.APPLICATION_JSON)
     public String updatePostJob(@PathParam("postJobId") String postJobId, JSONObject json) throws JSONException {
-        System.out.println("updatePostJob:"+postJobId);
+        System.out.println("updatePostJob:" + postJobId);
         LanceRestAMImpl am = LUtil.findLanceAM();
         PostJobsVOImpl vo = am.getPostJobs1();
         PostJobsVORowImpl row = (PostJobsVORowImpl) vo.getCurrentRow();
@@ -176,7 +208,7 @@ public class PostJobResource extends BaseRestResource {
     }
 
     public void updatePostJobFn(LanceRestAMImpl am, PostJobsVORowImpl row, JSONObject json) throws JSONException {
-        System.out.println("updatePostJobFn:"+json.get("Status"));
+        System.out.println("updatePostJobFn:" + json.get("Status"));
         if (json.get("Status").equals(1)) {
             System.out.println("只保存草稿");
             saveDraftPostJobFn(am, row, json);
@@ -185,7 +217,7 @@ public class PostJobResource extends BaseRestResource {
             sendPostJobFn(am, row, json);
         }
     }
-    
+
     public void saveDraftPostJobFn(LanceRestAMImpl am, PostJobsVORowImpl row, JSONObject json) throws JSONException {
         System.out.println("saveDraftPostJobFn");
         LUtil.transJsonToRow(json, row, ATTR_UPDATE);
@@ -247,7 +279,7 @@ public class PostJobResource extends BaseRestResource {
     /**
      *
      *Example
-     * 
+     *
      *
      * @param postJobId
      * @return
@@ -267,13 +299,69 @@ public class PostJobResource extends BaseRestResource {
 
         return this.convertRowToJsonObject(row, ATTR_GET);
     }
-    
-    public static void main(String[] args) {
-        System.out.println(System.currentTimeMillis());
-        System.out.println(Math.random());
-        SimpleDateFormat sdf=new SimpleDateFormat("yyyyMMddhhmmss");
-        System.out.println(sdf.format(new Date()));
-   }
+
+    /**
+     * 基于
+     * @param jobId
+     * @param json
+     * @return
+     * @throws JSONException
+     */
+    @POST
+    @Path("discuss/{postJobId}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String postDiscuss(@PathParam("postJobId") String jobId, JSONObject json) throws JSONException {
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        PostJobsVOImpl vo = am.getPostJobs1();
+        vo.setApplyViewCriteriaName("FindByIdVC");
+        vo.setpUuid(jobId);
+        vo.executeQuery();
+        vo.removeApplyViewCriteriaName("FindByIdVC");
+        vo.setCurrentRow(vo.first());
+
+        PostJobDiscussVOImpl vo2 = am.getPostJobDiscuss1();
+        Row row = vo2.createRow();
+        for (String attr : DISCUSS_FIELD) {
+            if (json.has(attr))
+                row.setAttribute(attr, json.get(attr));
+        }
+        vo2.insertRow(row);
+        am.getDBTransaction().commit();
+        return "ok";
+    }
+
+    /**
+     * 获取指定工作下的讨论信息
+     * （不含工作信息本身，乙方查看甲方发布的PostJob页面应该用异步方式加载讨论信息）
+     * 
+     * @param jobId
+     * @return
+     * @throws JSONException
+     */
+    @GET
+    @Path("discuss/{postJobId}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public JSONObject getJobDiscuss(@PathParam("postJobId") String jobId) throws JSONException {
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        PostJobsVOImpl vo = am.getPostJobs1();
+        vo.setApplyViewCriteriaName("FindByIdVC");
+        vo.setpUuid(jobId);
+        vo.executeQuery();
+        vo.removeApplyViewCriteriaName("FindByIdVC");
+        vo.setCurrentRow(vo.first());
+
+        PostJobDiscussVOImpl vo2 = am.getPostJobDiscuss1();
+        return this.packViewObject(vo2, null, null, DISCUSS_FIELD_READ);
+    }
+
+
+//    public static void main(String[] args) {
+//        System.out.println(System.currentTimeMillis());
+//        System.out.println(Math.random());
+//        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
+//        System.out.println(sdf.format(new Date()));
+//    }
 
 
 }
