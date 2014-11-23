@@ -116,11 +116,7 @@
             }
         }
     });
-
-
-});
-
-
+    
     var checkAddClient = function(){
         if(!emailOK){
             $("#inp_email").blur();
@@ -159,4 +155,48 @@
             }, "text");
         }
     });
+
+    $(".btn-go-regist").click(function(){
+        if($("#rad_hire")[0].checked){
+            window.location.href = 'ClientReg.htm';
+        }else{
+            window.location.href = 'FreeReg.htm';
+        }
+    });
+
+    
+    //点击登录时执行，todo
+     $("#login.clickable").click(function () {
+        var obj=$(this), lname = $("#inp_lgname").val(), lpass = $("#inp_lgpass").val();
+        var param={
+            name : lname,
+            pass : lpass
+        }
+        
+        if(lname == "" || lpass == ""){
+            $(".error-text").html("请输入用户名和密码");
+            return;
+        }else{
+            $(".error-text").html("");
+        }
+                               
+        if(param != null){
+            param = JSON.stringify(param);
+        }
+        
+        obj.removeClass("clickable").addClass("btn-load");
+        $.post("/lance/login", param, function(data){
+            if(data.indexOf("ok") >= 0){
+                window.location.href = data.split(":")[0];
+            }else{
+                $(".error-text").html("用户名或密码错误");
+            }
+            obj.addClass("clickable").removeClass("btn-load");
+        }, "text");
+        
+    });
+
 });
+
+
+    
