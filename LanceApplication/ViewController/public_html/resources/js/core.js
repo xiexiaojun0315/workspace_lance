@@ -10,8 +10,45 @@ function getDateFromTime(strTime){
     return strTime;
 }
 
-$.ae = function(err){
-    alert(err);
+$.ae = function(err, callback){
+    var option = {
+            title : "提示",
+            content : err,
+            buttons : ["确定", "取消"],
+            showBut : true
+        };
+    var str = '<div class="dialog_alert"><div class="title chfont">'+option.title+'</div><div class="body chfont">';
+    str += option.content + '<br /></div>';
+    if(option.showBut == true){           
+         str += '<div class="buttons chfont"><a class="btn-green btn-con">' + option.buttons[0];
+         str += '</a><a class="btn-gray btn-cel">' + option.buttons[1] + '</a></div>';
+    }
+    str += '</div>';
+    $(".container-fluid").append(str);
+    $(".dialog_alert").animate({"top" : "200px"}, 500).show();
+    
+    if(option.showBut){
+        $(".dialog_alert .btn-cel").click(function(){
+            $(".dialog_alert").animate({"top" : "-200px"}, 500, function(){
+                $(".dialog_alert").remove();
+            });
+            if(callback)
+                callback(false);
+        });
+        $(".dialog_alert .btn-con").click(function(){
+            $(".dialog_alert").animate({"top" : "-200px"}, 500, function(){
+                $(".dialog_alert").remove();
+            });
+            if(callback)
+                callback(true);
+        });
+    }else{
+        setTimeout(function(){
+            $(".dialog_alert").animate({"top" : "-200px"}, 500, function(){
+                $(".dialog_alert").remove();
+            });
+        }, 3000);
+    }
 };
 
 $.cf = function(str){
@@ -49,6 +86,29 @@ $.fn.limitWord = function(maxCount){
 };
 //end
 
+//post job input search
+$.fn.postInputSearch = function(callback){
+    var inter = 1000, tmpInter = null, obj = $(this), oldTex = "", curTex = "";
+    obj.focus(function(){
+        tmpInter = setInterval(function(){
+            curTex = obj.val();
+            if(curTex != oldTex && curTex != ""){
+                oldTex = curTex;
+                $.ax("get", "template/job/specificSkill/" + curTex, null, function(cdata){
+                    callback(cdata);
+                }, function(){
+                    callback(null);
+                });
+            }
+        }, inter);
+    }).blur(function(){
+        if(tmpInter != null){
+            clearInterval(tmpInter);
+        }
+    });
+};
+//end
+
 
 var Lancer = {
     profile :　{
@@ -65,6 +125,18 @@ var Lancer = {
         getSkillsInfo : function(callback, infor){
             $.ax("get", "user/lancer/skill/muhongdi", null, function(data){
                 callback(data, infor);
+            }, netWorkError);
+        },
+        getContactInfo : function(callback, infor){
+            $.ax("get", "user/lancer/profile/contactInfo/muhongdi", null, function(data){
+                callback(data, infor);
+            }, netWorkError);
+        }
+    },
+    client : {
+        getHeaderInfor : function(callback){
+            $.ax("get", "user/client/abcd", null, function(data){
+                callback(data);
             }, netWorkError);
         }
     }

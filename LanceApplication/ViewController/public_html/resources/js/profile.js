@@ -211,6 +211,145 @@ function initSkill(data, userInfo){
     });
     
 }
+
+function initContactInfo(data, userInfor){
+    var lancer = data.lancer, setting = data.setting;
+    $("#inp_dname").val(lancer.DisplayName);
+    $("#inp_mail").val(lancer.Email || "");
+    $("#inp_phone").val(lancer.PhoneNumber || "");
+    $("#inp_url").val(lancer.WebsiteUrl || "");
+    $("#inp_ima").val(lancer.ImNumberA || "");
+    $("#inp_imb").val(lancer.ImNumberB || "");
+    $("#inp_imc").val(lancer.ImNumberC || "");
+    
+    var addr_index = setting.AddressDisplay, con_index = setting.ContactInfo;
+    $(".address_rads input:eq(" + (addr_index - 1) + ")")[0].checked = true;
+    $(".contact_rads input:eq(" + (con_index - 1) + ")")[0].checked = true;
+    
+    var locA = lancer.LocationA, locB = lancer.LocationB;
+    
+    var getCity = function(selId, proId, CurrentSelId){
+        var cstr = "";
+        $("#" + selId).html('<option class="tmp" selected="selected">请稍候...</option>');
+        $.ax("get", "location/cityByProvince/" + proId, null, function(city_data){
+            len = city_data.length;
+            for(i=0;i<len;i++){
+                cstr += '<option value="' + city_data[i].Uuid + '">' + city_data[i].CityName + '</option>';
+            }
+            //$("#" + selId).find(".tmp").remove();
+            //$("#" + selId).find("option").not(".mod").remove();
+            $("#" + selId).html(cstr);
+            if(CurrentSelId){
+                $("#" + selId).val(CurrentSelId)
+            }
+        }, function(){
+            netWorkError();
+            $("#" + selId).find(".tmp").remove();
+        });
+    };
+    
+    $.ax("get", "location/province", null, function(cdata){
+        var len = cdata.length, i = 0, str = "", selCityId1 = null, selCityId2 = null;
+        for(i=0;i<len;i++){
+            str += '<option value="' + cdata[i].Uuid + '">' + cdata[i].ProvinceName + '</option>';
+        }
+        $("#sel_province,#sel_province2").append(str);//加载省
+        
+        if(locA.ProvinceId){
+            $("#sel_province").val(locA.ProvinceId);
+            selCityId1 = locA.CityId ? locA.CityId : null;
+            getCity("sel_city", locA.ProvinceId, selCityId1);
+        }
+        if(locB.ProvinceId){
+            $("#sel_province2").val(locB.ProvinceId);
+            selCityId2 = locB.CityId ? locB.CityId : null;
+            getCity("sel_city2", locB.ProvinceId, selCityId2);
+        }
+        if(locA.DetailLoc){
+            $("#inp_detail_addr").val(locA.DetailLoc)
+        }
+        if(locB.DetailLoc){
+            $("#inp_detail_addr2").val(locB.DetailLoc)
+        }
+        
+        
+        $("#sel_province,#sel_province2").change(function(){
+            var cid = $(this).attr("data-id"), id = $(this).val(), cstr = "";
+            if(id != -1){
+                getCity(cid, id, null);
+            }
+        });
+    }, function(){});
+    
+    //init click
+    $("#btn_save.clickable").click(function(){
+        var obj = $(this);
+        obj.removeClass("clickable").addClass("btn-load");
+        var con_param = {"lancer" :{
+            "Uuid" : lancer.Uuid,
+            "DisplayName" : $("#inp_dname").val()
+        }, "setting":{
+            "LancerId" : setting.LancerId,
+            "AddressDisplay" : $(".address_rads input:checked").val(),
+            "ContactInfo" : $(".contact_rads input:checked").val()
+        }};
+        if($("#inp_phone").val() != ""){
+            con_param.lancer.PhoneNumber = $("#inp_phone").val();
+        }
+        if($("#inp_url").val() != ""){
+            con_param.lancer.WebsiteUrl = $("#inp_url").val();
+        }
+        if($("#inp_ima").val() != ""){
+            con_param.lancer.ImNumberA = $("#inp_ima").val();
+        }
+        if($("#inp_imb").val() != ""){
+            con_param.lancer.ImNumberB = $("#inp_imb").val();
+        }
+        if($("#inp_imc").val() != ""){
+            con_param.lancer.ImNumberC = $("#inp_imc").val();
+        }
+        con_param.lancer.LocationA = {
+            "COUNTRY_ID" : $("#sel_country").val(),
+            "LancerId" : lancer.Uuid
+        };
+        if($("#sel_province").val() != -1){
+            con_param.lancer.LocationA.ProvinceId = $("#sel_province").val();
+        }
+        if($("#sel_city").val() != -1){
+            con_param.lancer.LocationA.CityId = $("#sel_city").val();
+        }
+        if($("#inp_detail_addr").val() != ""){
+            con_param.lancer.LocationA.DetailLoc = $("#inp_detail_addr").val();
+        }
+        if(lancer.LocationA.Uuid){
+            con_param.lancer.LocationA.Uuid = lancer.LocationA.Uuid;
+        }
+        
+        con_param.lancer.LocationB = {};
+        if($("#sel_province2").val() != -1){
+            con_param.lancer.LocationB.ProvinceId = $("#sel_province2").val();
+        }
+        if($("#sel_city2").val() != -1){
+            con_param.lancer.LocationB.CityId = $("#sel_city2").val();
+        }
+        if($("#inp_detail_addr2").val() != ""){
+            con_param.lancer.LocationB.DetailLoc = $("#inp_detail_addr2").val();
+        }
+        if(lancer.LocationB.Uuid){
+            con_param.lancer.LocationB.Uuid = lancer.LocationB.Uuid;
+        }
+        
+        $.ax("post", "user/lancer/profile/contactInfo/merge/muhongdi", con_param, function(cdata){
+            $.ae("保存成功");
+        }, function(){
+            netWorkError();
+            obj.removeClass("btn-load").addClass("clickable");
+        }, "text");
+        
+    });
+    
+}
+
 $(function () {
     $("#header .nav").click(function () {
         $(this).focus();

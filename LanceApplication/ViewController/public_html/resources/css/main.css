@@ -267,6 +267,9 @@
 #content .right-con .basic h2{font-size:24px;font-weight:bold;}
 #content .right-con .basic .mod{min-height:60px;}
 #content .right-con .basic .fixh{height:60px;}
+#content .right-con .basic .addr{height:90px;}
+#content .right-con .basic .addr select{margin-right:2px;}
+#content .right-con .basic .addr .inp-text{margin-top:5px;}
 #content .right-con .basic .mod label{font-size:12px;}
 #content .right-con .basic .mod .inp-text{width:300px;height:25px;}
 #content .right-con .basic .mod .lbl-chk{font-weight:normal;}
@@ -496,7 +499,10 @@
 .list-sort li:hover{background:#67ab3a;}
 .list-sort li:hover a{color:#fff;text-decoration:none;}
 
-.list-free{margin-top:15px;}
+.all-count{margin-top:35px;}
+.all-count .sml-font{font-size:11px;margin-left:10px;}
+
+.list-free{margin-top:35px;}
 .list-free .mod{margin-top:40px;}
 .list-free .first{margin-top:0px;}
 .list-free .mod .avatar{margin-top:5px;}
@@ -509,13 +515,21 @@
 .list-free .mod .infor .title .wlist-con:hover .hire-icon-watch{background-position:0 -32px;} 
 .list-free .mod .infor .title .wlist-con .btn-green{padding:3px 10px;float:right;}
 .list-free .mod .infor .asso{font-family: Georgia,Times New Roman,serif;font-size: 14px;margin-top:2px;}
-.list-free .mod .infor .jt{font-size:12px;}
+.list-free .mod .infor .jt{font-size:12px;margin-top:10px;}
 .list-free .mod .infor .jt span,.list-free .mod .infor .jt a{vertical-align:middle;}
 .list-free .mod .infor .jt .hire-icon-level{margin-left:6px;}
 .list-free .mod .infor .desc{margin:8px 0;}
 .list-free .mod .infor .bot-info span{vertical-align:middle;}
 .list-free .mod .infor .bot-info .txt{color:#939393;font-size:12px;}
 .list-free .mod .infor .bot-info .btn-gray{padding:1px 10px;font-size:12px;}
+
+.list-free .job .infor{margin-left:0px;}
+.list-free .job .btm{margin-top:10px;}
+.list-free .job .btm .btn-gray{padding:1px 10px;font-size:12px;margin-right:5px;}
+.list-free .job .btm tr{height:25px;}
+.list-free .job .normal-text span{color:#939393;}
+
+.search-key{display:none;margin-top:30px;height:50px;border-bottom:1px dotted #ccc;padding-bottom:16px;font-size:26px;color:#333;font-weight:bold;}
 
 .pages-list{border-top: 1px dotted #ccc;margin-top: 25px;padding-top:10px;}
 .pages-list ul{list-style:none;margin:0px;padding:0px;}
