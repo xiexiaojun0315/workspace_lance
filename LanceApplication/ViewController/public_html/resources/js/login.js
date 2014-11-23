@@ -8,13 +8,15 @@
                 obj.parent().find(".error").html("该邮箱已被注册，请选择其他邮箱。");
                 emailOK = false;
             }else{
-                obj.removeClass("errBor").removeClass("passBor").addClass("passrBor");
+                obj.removeClass("errBor").removeClass("passBor").addClass("passBor");
                 obj.parent().find(".error").html("");
                 emailOK = true;
             }
             obj.parent().find(".load-gif").hide();
         }, function(){
             obj.parent().find(".load-gif").hide();
+            obj.removeClass("errBor").removeClass("passBor").addClass("errBor");
+            obj.parent().find(".error").html("服务器无响应，请稍后再试。");
             emailOK = false;
         });
     });
@@ -35,7 +37,7 @@
                 obj.parent().find(".error").html("该用户名已被注册，请选择其他用户名。");
                 unameOK = false;
             }else{
-                obj.removeClass("errBor").removeClass("passBor").addClass("passrBor");
+                obj.removeClass("errBor").removeClass("passBor").addClass("passBor");
                 obj.parent().find(".error").html("");
                 unameOK = true;
             }
@@ -83,6 +85,7 @@
             $("#chk-tk").parent().find(".error").html("请阅读服务条款");
         }else {
             $("#chk-tk").parent().find(".error").html("");
+            checkAddClient();
             if(emailOK && dnameOK && unameOK && passOK && pass2OK){
                 var at = $("#invi")[0].checked ? 0 : 1;
                 if(at == 0 || (at == 1 && comOK)){
@@ -100,9 +103,11 @@
                     };
                     $.ax("post", "user/lancer", param, function(data){
                         obj.parent().find(".error").html("注册成功");
+                        $.ae("注册成功！跳转~");
                         obj.addClass("clickable").removeClass("btn-load");
                     }, function(xhr, err, info){
                          obj.parent().find(".error").html("注册失败，请稍后再试.");
+                        obj.parent().find(".error").html("注册失败，请稍后再试.");
                         obj.addClass("clickable").removeClass("btn-load");
                     });
                 }
@@ -111,39 +116,47 @@
             }
         }
     });
-    
 
-    
+
 });
 
-     //点击登录时执行，todo
-     $("#login").click(function () {
-       var param={
-        name:"muhongdi",//todo
-        pass:"welcome1"//
+
+    var checkAddClient = function(){
+        if(!emailOK){
+            $("#inp_email").blur();
         }
-      
-                                        
-        if(param != null){
-            param = JSON.stringify(param);
+        if(!dnameOK){
+            $("#inp_dname").blur();
         }
-        $.ajax({
-            type: "post",
-            url: "/lance/login",
-            data: param,
-            dataType: "json",
-            timeout: 10000,
-            contentType: 'application/json',
-            success: function(data,o,s){
-                //todo 这里需要取到返回结果
-                //目前可能返回ok:/lance/pages/MyHome
-                //意思是跳转到/lance/pages/MyHome
-                //错误，返回error:name|pass
-                //提示用户名或密码错误
-            },
-            error: function(xhr, err, info){
-                
-            }
-        });
-        
+        if(!unameOK){
+            $("#inp_uname").blur();
+        }
+        if(!passOK){
+            $("#inp_pass").blur();
+        }
+        if(!pass2OK){
+            $("#inp_rpass").blur();
+        }
+    };
+    $("#btnAddClient.clickable").click(function(){
+        var obj = $(this);
+        checkAddClient();
+        if(emailOK && dnameOK && unameOK && passOK && pass2OK){
+            obj.removeClass("clickable").addClass("btn-load");
+            var param = {
+                "TrueName" : $("#inp_dname").val(),
+                "DisplayName" : $("#inp_dname").val(),
+                "Email" : $("#inp_email").val(),
+                "UserName" : $("#inp_uname").val(),
+                "Password" : $("#inp_pass").val()
+            };
+            $.ax("post", "user/client", param, function(data){
+                $.ae("注册成功！跳转~");
+                obj.addClass("clickable").removeClass("btn-load");
+            }, function(){
+                netWorkError();
+                obj.addClass("clickable").removeClass("btn-load");
+            }, "text");
+        }
     });
+});
