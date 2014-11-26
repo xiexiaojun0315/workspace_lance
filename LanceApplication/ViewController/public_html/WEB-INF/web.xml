@@ -221,6 +221,10 @@
     <param-name>debug_mode</param-name>
     <param-value>true</param-value>
   </context-param>
+  <context-param>
+    <param-name>server.app.adf.container_id</param-name>
+    <param-value>com_lance_view_ContainerPageDef</param-value>
+  </context-param>
   <mime-mapping>
     <extension>swf</extension>
     <mime-type>application/x-shockwave-flash</mime-type>
@@ -237,6 +241,9 @@
   </listener>
   <listener>
     <listener-class>oracle.bc4j.mbean.BC4JConfigLifeCycleCallBack</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.zngh.platform.front.core.view.servlet.FrontCoreListener</listener-class>
   </listener>
   <welcome-file-list>
     <welcome-file>/pages/ToMyHome</welcome-file>

@@ -236,26 +236,6 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="CommonModel.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Commons-beanutils.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Commons-collections-3.2.1.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Commons-lang-2.4.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Commons-logging-1.1.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="Commons Beanutils 1.6"/>
             <value n="isJDK" v="false"/>
          </hash>
@@ -267,34 +247,24 @@
             <value n="id" v="Commons Logging 1.0.4"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <value n="id" v="CommonModel-1.4-SNAPSHOT.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Commons-lang-2.4.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
       <hash n="internalDefinitions">
          <list n="libraryDefinitions">
             <hash>
                <list n="classPath">
-                  <url path="../../DeployLibrary/CommonModel.jar" jar-entry=""/>
+                  <url path="../../DeployLibrary/CommonModel-1.4-SNAPSHOT.jar" jar-entry=""/>
                </list>
                <value n="deployedByDefault" v="true"/>
-               <value n="description" v="CommonModel.jar"/>
-               <value n="id" v="CommonModel.jar"/>
-               <value n="locked" v="true"/>
-            </hash>
-            <hash>
-               <list n="classPath">
-                  <url path="../../DeployLibrary/commons-beanutils.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Commons-beanutils.jar"/>
-               <value n="id" v="Commons-beanutils.jar"/>
-               <value n="locked" v="true"/>
-            </hash>
-            <hash>
-               <list n="classPath">
-                  <url path="../../DeployLibrary/commons-collections-3.2.1.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Commons-collections-3.2.1.jar"/>
-               <value n="id" v="Commons-collections-3.2.1.jar"/>
+               <value n="description" v="CommonModel-1.4-SNAPSHOT.jar"/>
+               <value n="id" v="CommonModel-1.4-SNAPSHOT.jar"/>
                <value n="locked" v="true"/>
             </hash>
             <hash>
@@ -304,15 +274,6 @@
                <value n="deployedByDefault" v="true"/>
                <value n="description" v="Commons-lang-2.4.jar"/>
                <value n="id" v="Commons-lang-2.4.jar"/>
-               <value n="locked" v="true"/>
-            </hash>
-            <hash>
-               <list n="classPath">
-                  <url path="../../DeployLibrary/commons-logging-1.1.jar" jar-entry=""/>
-               </list>
-               <value n="deployedByDefault" v="true"/>
-               <value n="description" v="Commons-logging-1.1.jar"/>
-               <value n="id" v="Commons-logging-1.1.jar"/>
                <value n="locked" v="true"/>
             </hash>
          </list>
@@ -355,26 +316,6 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <value n="id" v="CommonModel.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Commons-beanutils.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Commons-collections-3.2.1.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Commons-lang-2.4.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
-            <value n="id" v="Commons-logging-1.1.jar"/>
-            <value n="isJDK" v="false"/>
-         </hash>
-         <hash>
             <value n="id" v="Commons Beanutils 1.6"/>
             <value n="isJDK" v="false"/>
          </hash>
@@ -384,6 +325,14 @@
          </hash>
          <hash>
             <value n="id" v="Commons Logging 1.0.4"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="CommonModel-1.4-SNAPSHOT.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Commons-lang-2.4.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
