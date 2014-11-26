@@ -8,7 +8,5 @@
             var Data=${data};
         </script>
     </head>
-    <body>
-    CompanyOverview
-    </body>
+    <body></body>
 </html>

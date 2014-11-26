@@ -1,0 +1,44 @@
+.client-pro{}
+.client-pro .bt{font-size:18px;color:#50852C;}
+#content.client-pro  .right-con{border:none;}
+.client-pro .per-info{margin:0 0 0 15px;}
+.client-pro .per-info .per{float:left;width:457px;overflow:hidden;}
+.client-pro .per-info .per .avatar{overflow:hidden;}
+.client-pro .per-info .per .avatar p{margin:-5px 0 0 10px;}
+.client-pro .per-info .per .avatar p .name{font-size:22px;color:#50852C;font-weight:bold;}
+.client-pro .per-info .per .avatar p .company{font-size:22px;color:#50852C;}
+.client-pro .per-info .per .avatar p .title{font-size:14px;}
+
+.client-pro .per-info .per .desc{margin-top:88px;clear:both;overflow:hidden;}
+.client-pro .per-info .per .desc .title{font-size:20px;color:#50852C;}
+.client-pro .per-info .per .desc p{font-size:12px;margin-top:10px;}
+
+
+.client-pro .per-info .video{margin-left:460px;overflow:hidden;}
+.client-pro .per-info .video img{margin-top:5px;margin-left:30px;}
+
+.client-pro .per-info .video .identy{text-align:left;margin:20px 0 0 30px;overflow:hidden;}
+.client-pro .per-info .video .identy .title{font-size:20px;color:#50852C;}
+.client-pro .per-info .video .identy .zl p{font-size:12px;padding:8px 0 8px 0;margin:8px 0 0 0;border-bottom:dotted 1px #d7d7d7;overflow:hidden;}
+.client-pro .per-info .video .identy .zl p .key{width:40%;display:inline-block;}
+
+.client-pro .per-info .rating-info{clear:both;margin-top:65px;}
+.client-pro .per-info .rating-info .title{font-size:20px;color:#50852C;}
+.client-pro .per-info .rating-info .static{background:#FCF2CD;padding:10px 0;height:75px;margin-top:10px;}
+.client-pro .per-info .rating-info .static .mod{float: left;margin-left: 10px;padding-left: 10px;padding-top: 10px;width: 160px;height: 55px;border-left: dotted 1px #ccc;}
+.client-pro .per-info .rating-info .static .mod .number{text-align:right;margin-right:10px;font-size:12px;}
+.client-pro .per-info .rating-info .static .first{border-left:none;}
+
+.client-pro .per-info .list-relative{margin-top:30px;min-height:300px;}
+.client-pro .per-info .list-relative .link-combox{margin-right:40px;}
+.client-pro .per-info .list-relative .link-combox.f-right{margin-right:0px;}
+.client-pro .per-info .list-relative .result-con{border-bottom: 2px solid #D7D7D7;padding: 25px 10px;font-size: 14px;border-top: 2px solid #D7D7D7;}
+
+
+#dia-video{width:560px;margin-left:-280px;display:none;}
+#dia-video .title{font-weight:bold;font-size:18px;color:#333;}
+#dia-video .video-url{font-size:12px;}
+#dia-video .video-url img{margin-right:15px;}
+#dia-video .video-url input{width:200px;}
+#dia-video .buttons{margin:20px 0 0 0;text-align:right;}
+#dia-video .buttons a{padding:3px 15px;}

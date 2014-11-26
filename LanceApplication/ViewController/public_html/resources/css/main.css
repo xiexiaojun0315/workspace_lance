@@ -263,7 +263,7 @@
 
 
 #content .right-con .basic{margin-top:-23px;margin-left:20px;}
-#content .right-con .basic h3{font-size: 18px;font-family: Georgia,Times New Roman;color: #50852C;}
+#content .right-con .basic h3{font-size: 18px;color: #50852C;line-height:20px;}
 #content .right-con .basic h2{font-size:24px;font-weight:bold;}
 #content .right-con .basic .mod{min-height:60px;}
 #content .right-con .basic .fixh{height:60px;}
@@ -631,7 +631,7 @@
 .overlay{display:none;position: fixed;width:100%;height:100%;z-index:999;top: 0;left: 0;text-align: center;background-color: #000;opacity: 0.5;filter: alpha(opacity=50);}
 .dialog{padding: 20px 25px;background-color: #fff;border: 3px solid #ccc;text-align: left;z-index: 120000;position:absolute;left:50%;top:100px;}
 .dialog .dclose{cursor:pointer;position:absolute;right:-13px;top:-13px;}
-.dialog .title{margin: 4px 0px 0px 10px;color: #333333;font-family: Georgia;font-size: 28px;position:relative;top:-10px;}
+.dialog .title{margin: 4px 0px 0px 10px;color: #333333;font-size: 28px;position:relative;top:-10px;}
 
 #dia-verify{width:560px;margin-left:-280px;display:none;}
 #dia-verify .text{font-size:12px;color:#333;line-height:17px;}
@@ -661,3 +661,28 @@
 #dia-skill .result-search .mod{height:25px;line-height:25px;padding:0 0 0 10px;font-size:12px;cursor:pointer;}
 #dia-skill .result-search .mod:hover{background:#009900;color:#fff;}
 #dia-skill .new-add-skills .mod-skill{display:none;}
+
+.reg-success{margin-left:180px;min-height:400px;}
+.reg-success .title{font-size:30px;color:#50852C;}
+.reg-success .title span{color:#333;}
+.reg-success .desc{font-size:16px;padding-top:15px;}
+.reg-success .resend{margin-top:20px;border-bottom: 1px dotted lightgrey;border-top: 1px dotted lightgrey;font-size:13px;padding:20px 0 30px 0;}
+.reg-success .share{margin-top:20px;font-size:12px;}
+.reg-success .share iframe{margin-top:15px;}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

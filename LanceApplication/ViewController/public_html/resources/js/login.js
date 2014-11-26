@@ -187,13 +187,20 @@
         obj.removeClass("clickable").addClass("btn-load");
         $.post("/lance/login", param, function(data){
             if(data.indexOf("ok") >= 0){
-                window.location.href = data.split(":")[0];
+                var url = data.split(":")[1];
+                window.location.href = url;
             }else{
                 $(".error-text").html("用户名或密码错误");
             }
             obj.addClass("clickable").removeClass("btn-load");
         }, "text");
         
+    });
+
+    $(".login form").keydown(function(e){
+        if(e.keyCode == 13){
+            $("#login.clickable").click();
+        }
     });
 
 });
