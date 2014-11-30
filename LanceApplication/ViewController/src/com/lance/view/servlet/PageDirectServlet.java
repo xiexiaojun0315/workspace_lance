@@ -40,13 +40,12 @@ public class PageDirectServlet extends HttpServlet {
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType(CONTENT_TYPE);
         System.out.println(request.getRequestURL());
-        System.out.println(request.getRequestURI());
         String uri = request.getRequestURI();
         try {
             //检查用户类型
             String userType = findInitUserType();
             System.out.println(userType);
-                
+
             if ("client".equals(userType) || "company".equals(userType) || "lancer".equals(userType)) {
             } else {
                 response.sendRedirect("/lance/login.htm");
@@ -54,49 +53,29 @@ public class PageDirectServlet extends HttpServlet {
 
             if ("/lance/pages/ToMyHome".equals(uri)) {
                 //改变URL的跳转，无法携带Resquest
-                response.sendRedirect("/lance/pages/MyHome");
+                response.sendRedirect("/WEB-INF/home/MyHome");
 
-            } else if ("/lance/pages/MyHome".equals(uri)) {
+            } else if ("/lance/pages/DefaultPage".equals(uri)) {
+                JSONArray data=new JSONArray();
+                data.put(new SearchResource().getLatestPosted());
+                toPage(request, response, "/WEB-INF/search/Search.jsp", data);
 
-                if ("client".equals(userType)) {
-                    toPage(request, response, "/WEB-INF/home/ClientHome.jsp", new SearchResource().getLatestPosted());
-                } else if ("company".equals(userType)) {
-                    toPage(request, response, "/WEB-INF/home/LancerHome.jsp", new JSONObject());
-                } else if ("lancer".equals(userType)) {
-                    toPage(request, response, "/WEB-INF/home/LancerHome.jsp", new SearchResource().getLatestPosted());
-                }
             } else if ("/lance/pages/profile/Overview".equals(uri)) {
-                if ("client".equals(userType)) {
-                    toPage(request, response, "/WEB-INF/profile/ct/Overview.jsp",
-                           new SearchResource().getLatestPosted());
-                } else if ("company".equals(userType)) {
-                    toPage(request, response, "/WEB-INF/profile/lc/LancerHome.jsp",
-                           new LancerProfileResource().findSelfProfile4CurUser());
-                } else if ("lancer".equals(userType)) {
-                    toPage(request, response, "/WEB-INF/profile/lc/LancerHome.jsp",
-                           new LancerProfileResource().findSelfProfile4CurUser());
-                }
+                toPage(request, response, "/WEB-INF/profile/Overview.jsp",
+                       new LancerProfileResource().findSelfProfile4CurUser());
+
             } else if ("/lance/pages/profile/EditBasic".equals(uri)) {
-                if ("client".equals(userType)) {
-                } else if ("company".equals(userType)) {
-                } else if ("lancer".equals(userType)) {
-                    toPage(request, response, "/WEB-INF/profile/lc/EditBasic.jsp",
-                           new LancerProfileResource().getBasicProfile4CurUser());
-                }
+                toPage(request, response, "/WEB-INF/profile/EditBasic.jsp",
+                       new LancerProfileResource().getBasicProfile4CurUser());
+
             } else if ("/lance/pages/profile/EditContact".equals(uri)) {
-                if ("client".equals(userType)) {
-                } else if ("company".equals(userType)) {
-                } else if ("lancer".equals(userType)) {
-                    toPage(request, response, "/WEB-INF/profile/lc/EditContact.jsp",
-                           new LancerProfileResource().findContactInfo4CurUser());
-                }
+                toPage(request, response, "/WEB-INF/profile/EditContact.jsp",
+                       new LancerProfileResource().findContactInfo4CurUser());
+
             } else if ("/lance/pages/profile/EditSkill".equals(uri)) {
-                if ("client".equals(userType)) {
-                } else if ("company".equals(userType)) {
-                } else if ("lancer".equals(userType)) {
-                    toPage(request, response, "/WEB-INF/profile/lc/EditContact.jsp",
-                           new LancerSkillResource().findLancerSkills4CurUser());
-                }
+                toPage(request, response, "/WEB-INF/profile/lc/EditContact.jsp",
+                       new LancerSkillResource().findLancerSkills4CurUser());
+
             }
 
         } catch (Exception e) {
@@ -141,6 +120,7 @@ public class PageDirectServlet extends HttpServlet {
             arr.put(role);
         }
         res.put("user", user);
+        //todo DisplayName
         res.put("roles", arr);
         return res;
     }

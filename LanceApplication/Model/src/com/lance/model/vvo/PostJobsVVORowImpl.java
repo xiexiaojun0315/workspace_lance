@@ -57,7 +57,8 @@ public class PostJobsVVORowImpl extends BaseViewRowImpl {
         CreateOn,
         Version,
         CreateByName;
-        private static AttributesEnum[] vals = null;
+        static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -456,5 +457,6 @@ public class PostJobsVVORowImpl extends BaseViewRowImpl {
     public String getCreateByName() {
         return (String) getAttributeInternal(CREATEBYNAME);
     }
+
 }
 

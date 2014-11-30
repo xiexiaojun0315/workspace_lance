@@ -10,8 +10,12 @@
   DBObjectName="COMPANY"
   AliasName="CompanyEO"
   BindingStyle="OracleName"
-  RowClass="com.zngh.platform.front.core.model.BaseEntityImpl"
+  RowClass="com.lance.model.eo.CompanyEOImpl"
   CollClass="com.zngh.platform.front.core.model.BaseEntityCache">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Delete|Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <Attribute
     Name="Uuid"
     IsNotNull="true"

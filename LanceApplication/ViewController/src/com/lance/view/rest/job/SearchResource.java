@@ -57,7 +57,7 @@ public class SearchResource extends BaseRestResource {
         "UserCountry", "UserDisplayName", "UserImg", "UserLocationA", "UserLocationB"
     };
 
-    public static final String[] ATTR_SEARCH_LANCER_NAME = { "Uuid" };
+    public static final String[] ATTR_SEARCH_LANCER_NAME = { "Uuid","DisplayName" };
 
     public SearchResource() {
     }
@@ -141,7 +141,9 @@ public class SearchResource extends BaseRestResource {
         vvo.setApplyViewCriteriaName("FindLatestPostedVC");
         vvo.executeQuery();
         vvo.removeApplyViewCriteriaName("FindLatestPostedVC");
-        return this.packViewObject(vvo, null, null, ATTR_SEARCH_JOB);
+        JSONObject data = this.packViewObject(vvo, null, null, ATTR_SEARCH_JOB);
+        return data;
+
         //todo 分页返回ATTR_SEARCH_JOB
         //        return this.convertVoToJsonArray(vvo, ATTR_SEARCH_JOB);
     }
@@ -209,11 +211,11 @@ public class SearchResource extends BaseRestResource {
     /**
      * 根据Overview，Tagline，Keyword查询Lancer
      * 适用于Client根据技术查找Lancer
-     * 
+     *
      * GET http://localhost:7101/lance/res/search/lancer/searchLancer4Job/{keyword}
      * start:1和start=0时都从第一条开始返回
      * limit=5&start=1 不传此参数时，默认返回1~25条
-     * 
+     *
      * 例子：
      * 查询 Test overview
      * GET http://localhost:7101/lance/res/search/lancer/searchLancer4Job/Test%20overview

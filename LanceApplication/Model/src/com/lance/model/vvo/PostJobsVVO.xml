@@ -671,19 +671,19 @@ ORDER BY CREATE_ON DESC]]></SQLQuery>
       Name="PostJobsVVOCriteria_row_0"
       UpperColumns="1">
       <ViewCriteriaItem
-        Name="Name"
-        ViewAttribute="Name"
-        Operator="CONTAINS"
-        Conjunction="AND"
-        Value=":pName"
-        IsBindVarValue="true"
-        Required="Optional"/>
-      <ViewCriteriaItem
         Name="Brief"
         ViewAttribute="Brief"
         Operator="CONTAINS"
         Conjunction="OR"
         Value=":pBrief"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Name"
+        ViewAttribute="Name"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Value=":pName"
         IsBindVarValue="true"
         Required="Optional"/>
       <ViewCriteriaItem
@@ -764,6 +764,9 @@ ORDER BY CREATE_ON DESC]]></SQLQuery>
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Uuid"/>
+  </AttrArray>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.lance.model.ModelBundle"/>
