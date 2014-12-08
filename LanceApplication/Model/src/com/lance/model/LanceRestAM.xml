@@ -92,6 +92,9 @@
     <ViewUsage
         Name="PostJobDiscuss1"
         ViewObjectName="com.lance.model.vo.PostJobDiscussVO"/>
+    <ViewUsage
+        Name="UUser1"
+        ViewObjectName="com.lance.model.vo.UUserVO"/>
     <ViewLinkUsage
       Name="LancerResume_SkillVL1"
       ViewLinkObjectName="com.lance.model.vl.LancerResume_SkillVL"

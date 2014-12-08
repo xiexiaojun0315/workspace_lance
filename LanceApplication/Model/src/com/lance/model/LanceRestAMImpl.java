@@ -17,6 +17,7 @@ import com.lance.model.vo.PostJobDiscussVOImpl;
 import com.lance.model.vo.PostJobsVOImpl;
 import com.lance.model.vo.SkillsVOImpl;
 import com.lance.model.vo.SpreadHeardFromVOImpl;
+import com.lance.model.vo.UUserVOImpl;
 import com.lance.model.vvo.LancerSearchVVOImpl;
 import com.lance.model.vvo.LocationCountryVVOImpl;
 
@@ -306,6 +307,14 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      */
     public ViewLinkImpl getPostJob_PostJobDiscussVL1() {
         return (ViewLinkImpl) findViewLink("PostJob_PostJobDiscussVL1");
+    }
+
+    /**
+     * Container's getter for UUser1.
+     * @return UUser1
+     */
+    public UUserVOImpl getUUser1() {
+        return (UUserVOImpl) findViewObject("UUser1");
     }
 }
 

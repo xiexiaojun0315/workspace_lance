@@ -1,5 +1,7 @@
 package com.lance.model.vo;
 
+import com.lance.model.eo.CompanyEOImpl;
+
 import com.zngh.platform.front.core.model.BaseEntityImpl;
 import com.zngh.platform.front.core.model.BaseViewRowImpl;
 
@@ -12,6 +14,7 @@ import oracle.jbo.domain.Number;
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
 public class CompanyVORowImpl extends BaseViewRowImpl {
+
     public static final int ENTITY_COMPANYEO = 0;
 
     /**
@@ -28,7 +31,8 @@ public class CompanyVORowImpl extends BaseViewRowImpl {
         Location,
         Video,
         Logo;
-        private static AttributesEnum[] vals = null;
+        static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -50,6 +54,7 @@ public class CompanyVORowImpl extends BaseViewRowImpl {
             return vals;
         }
     }
+
     public static final int UUID = AttributesEnum.Uuid.index();
     public static final int NAME = AttributesEnum.Name.index();
     public static final int ENTERPRISEPROPERTY = AttributesEnum.EnterpriseProperty.index();
@@ -71,8 +76,8 @@ public class CompanyVORowImpl extends BaseViewRowImpl {
      * Gets CompanyEO entity object.
      * @return the CompanyEO
      */
-    public BaseEntityImpl getCompanyEO() {
-        return (BaseEntityImpl) getEntity(ENTITY_COMPANYEO);
+    public CompanyEOImpl getCompanyEO() {
+        return (CompanyEOImpl) getEntity(ENTITY_COMPANYEO);
     }
 
     /**

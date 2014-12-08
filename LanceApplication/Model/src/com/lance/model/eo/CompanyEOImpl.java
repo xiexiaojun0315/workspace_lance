@@ -59,6 +59,7 @@ public class CompanyEOImpl extends BaseEntityImpl {
             return vals;
         }
     }
+
     public static final int UUID = AttributesEnum.Uuid.index();
     public static final int NAME = AttributesEnum.Name.index();
     public static final int ENTERPRISEPROPERTY = AttributesEnum.EnterpriseProperty.index();
@@ -79,6 +80,13 @@ public class CompanyEOImpl extends BaseEntityImpl {
      * This is the default constructor (do not remove).
      */
     public CompanyEOImpl() {
+    }
+
+    /**
+     * @return the definition object for this instance class.
+     */
+    public static synchronized EntityDefImpl getDefinitionObject() {
+        return EntityDefImpl.findDefObject("com.lance.model.eo.CompanyEO");
     }
 
     /**
@@ -281,6 +289,7 @@ public class CompanyEOImpl extends BaseEntityImpl {
         return (BigDecimal) getAttributeInternal(VERSION);
     }
 
+
     /**
      * @param uuid key constituent
 
@@ -288,13 +297,6 @@ public class CompanyEOImpl extends BaseEntityImpl {
      */
     public static Key createPrimaryKey(String uuid) {
         return new Key(new Object[] { uuid });
-    }
-
-    /**
-     * @return the definition object for this instance class.
-     */
-    public static synchronized EntityDefImpl getDefinitionObject() {
-        return EntityDefImpl.findDefObject("com.lance.model.eo.CompanyEO");
     }
 
     /**
