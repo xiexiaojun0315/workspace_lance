@@ -445,26 +445,4 @@
       <Item Value="com.lance.model.eo.UUserEO.UserName"/>
     </AttrArray>
   </Key>
-  <Key
-    Name="UUserUserNameCheck">
-    <DesignTime>
-      <Attr Name="_isNotNull" Value="true"/>
-      <Attr Name="_DBObjectName" Value="UUSER_USER_NAME_CHECK"/>
-      <Attr Name="_checkCondition" Value='"USER_NAME" IS NOT NULL'/>
-      <Attr Name="_isCheck" Value="true"/>
-    </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.lance.model.eo.UUserEO.UserName"/>
-    </AttrArray>
-  </Key>
-  <Key
-    Name="UusereoPrimaryKey"
-    PrimaryKey="true">
-    <DesignTime>
-      <Attr Name="_DBObjectName" Value="UUSEREO_PRIMARY_KEY"/>
-    </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.lance.model.eo.UUserEO.UserName"/>
-    </AttrArray>
-  </Key>
 </Entity>

@@ -49,13 +49,32 @@ public class LUtil {
         }
         return null;
     }
+    
+//    public static JSONObject convertVoToJsonObject(ViewObjectImpl vo){
+//        
+//        }
+//    
+//    public static JSONObject convertRowToJsonObject(){
+//        
+//        }
 
     public static RowImpl createInsertRow(ViewObjectImpl vo) {
         RowImpl row = (RowImpl) vo.createRow();
         vo.insertRow(row);
         return row;
     }
-
+    
+    
+    public static void transJsonToRow(JSONObject json,ViewObjectImpl vo , Row row, String[] attrs) throws JSONException {
+        for (String attr : attrs) {
+            System.out.println(attr);
+            if (json.has(attr)) {
+                row.setAttribute(attr, json.get(attr));
+            }
+        }
+    }
+    
+    
     public static void transJsonToRow(JSONObject json, Row row, String[] attrs) throws JSONException {
         for (String attr : attrs) {
             System.out.println(attr);
