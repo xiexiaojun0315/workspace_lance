@@ -54,19 +54,19 @@ public class LancerLocationResource extends BaseRestResource {
      * @throws JSONException
      */
     @POST
-    @Path("{lancerId}")
+    @Path("{userName}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public String createLocation(@PathParam("lancerId") String lancerId, JSONObject json) throws JSONException {
+    public String createLocation(@PathParam("userName") String userName, JSONObject json) throws JSONException {
         LanceRestAMImpl am = LUtil.findLanceAM();
-        String id = createLocationFn(lancerId, json, am);
+        String id = createLocationFn(userName, json, am);
         am.getDBTransaction().commit();
         return id;
     }
 
-    public String createLocationFn(String lancerId, JSONObject json, LanceRestAMImpl am) throws JSONException {
+    public String createLocationFn(String userName, JSONObject json, LanceRestAMImpl am) throws JSONException {
         LancerLocationListVOImpl vo = am.getLancerLocationList1();
         Row row = LUtil.createInsertRow(vo);
-        row.setAttribute("LancerId", lancerId);
+        row.setAttribute("LancerId", userName);
         LUtil.transJsonToRow(json, row, ATTR_CREATE);
         return (String) row.getAttribute("Uuid");
     }

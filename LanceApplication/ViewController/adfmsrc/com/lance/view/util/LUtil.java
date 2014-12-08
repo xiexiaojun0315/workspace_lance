@@ -45,7 +45,6 @@ public class LUtil {
             LanceRestAMImpl am = (LanceRestAMImpl) RestUtil.findAmFromBinding("LanceRestAMDataControl");
             return am;
         } catch (Exception e) {
-            System.err.println("获取AM失败，请关闭浏览器重试");
             e.printStackTrace();
         }
         return null;
@@ -58,11 +57,9 @@ public class LUtil {
     }
 
     public static void transJsonToRow(JSONObject json, Row row, String[] attrs) throws JSONException {
-        System.out.println("transJsonToRow");
         for (String attr : attrs) {
             System.out.println(attr);
             if (json.has(attr)) {
-                System.out.println("copy:" + attr + ":" + json.get(attr));
                 row.setAttribute(attr, json.get(attr));
             }
         }

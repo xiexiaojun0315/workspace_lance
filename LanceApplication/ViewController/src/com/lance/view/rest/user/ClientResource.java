@@ -24,7 +24,9 @@ import oracle.jbo.Row;
 
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
-
+/**
+ * 建议用UserResource代替
+ */
 @Path("user/client")
 public class ClientResource extends BaseRestResource {
 
