@@ -33,8 +33,8 @@ import org.codehaus.jettison.json.JSONObject;
  * todo 教育结果验证功能
  *
  */
-@Path("user/lancer/education")
-public class LancerEducationResource extends BaseRestResource {
+@Path("user/education")
+public class UserEducationResource extends BaseRestResource {
 
     public static final String[] ATTR_CREATE = {
         "InstitutionName", "DegreeType", "StartDate", "EndDate", "Description", "Attach1Link", "Attach2Link",
@@ -46,7 +46,7 @@ public class LancerEducationResource extends BaseRestResource {
     };
 
 
-    public LancerEducationResource() {
+    public UserEducationResource() {
     }
 
     /**
@@ -71,17 +71,17 @@ public class LancerEducationResource extends BaseRestResource {
      * @throws JSONException
      */
     @POST
-    @Path("{lancerId}")
+    @Path("{userName}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public String createLancerEducation(@PathParam("lancerId") String lancerId, JSONObject json) throws JSONException {
+    public String createLancerEducation(@PathParam("userName") String userName, JSONObject json) throws JSONException {
         LanceRestAMImpl am = LUtil.findLanceAM();
-        String uuid = createLancerEducationFn(lancerId, json, am);
+        String uuid = createLancerEducationFn(userName, json, am);
         am.getDBTransaction().commit();
         return uuid;
     }
 
-    public String createLancerEducationFn(String lancerId, JSONObject json, LanceRestAMImpl am) throws JSONException {
-        new LancerResumeResource().findLancerResumeByLancerIdFn(lancerId, am);
+    public String createLancerEducationFn(String userName, JSONObject json, LanceRestAMImpl am) throws JSONException {
+        new LancerResumeResource().findLancerResumeByLancerIdFn(userName, am);
         ViewObjectImpl vo2 = am.getLancerEducation1();
         Row row2 = LUtil.createInsertRow(vo2);
         LUtil.transJsonToRow(json, row2, this.ATTR_CREATE);

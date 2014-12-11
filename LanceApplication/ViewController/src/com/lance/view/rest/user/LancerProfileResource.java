@@ -225,7 +225,7 @@ public class LancerProfileResource extends BaseRestResource{
         JSONObject json = new JSONObject();
         json.put("lancerResume", new LancerResumeResource().findLancerResumeByLancerIdFn(lancerId, am));
         json.put("lancer", new LancerResource().findLancerByIdFn(lancerId, am));
-        json.put("lancerEducations", new LancerEducationResource().findLancerEducationByLancerIdFn(lancerId, am));
+        json.put("lancerEducations", new UserEducationResource().findLancerEducationByLancerIdFn(lancerId, am));
         json.put("lancerSkills", new LancerSkillResource().findLancerSkillsFn(lancerId, am));
         return json;
     }

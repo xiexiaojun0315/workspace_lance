@@ -25,11 +25,24 @@ import org.codehaus.jettison.json.JSONObject;
 
 @Path("user")
 public class UserResource extends BaseRestResource {
-
+    
+    public static final String[] ATTR_ALL = {
+        "UserName", "TrueName", "DisplayName", "Email", "Password", "Img", "Country", "AccountType", "CompanyId",
+        "PhoneNumber", "Attach", "JobTitle", "Video", "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB",
+        "ImTypeB", "ImNumberC", "ImTypeC", "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview",
+        "ServiceDescription", "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "CreateBy", "CreateOn",
+        "ModifyBy", "ModifyOn", "Version", "LastLoginTime", "DescriptionTxt", "PaymentTermsTxt",
+        "ServiceDescriptionTxt", "CompanyName", "Company"
+    };
+    
     //todo 完善字段
     public static final String[] ATTR_CREATE = {
-        "UserName", "Email", "Password", "DisplayName", "Country", "TrueName", "AccountType", "CompanyName",
-        "PhoneNumber", "WebsiteUrl", "ImNumberA", "ImNumberB", "ImNumberC", "ImTypeA", "ImTypeB", "ImTypeC"
+        "UserName", "TrueName", "DisplayName", "Email", "Password", "Img", "Country", "AccountType", "CompanyId",
+        "PhoneNumber", "Attach", "JobTitle", "Video", "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB",
+        "ImTypeB", "ImNumberC", "ImTypeC", "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview",
+        "ServiceDescription", "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "CreateBy", "CreateOn",
+        "ModifyBy", "ModifyOn", "Version", "LastLoginTime", "DescriptionTxt", "PaymentTermsTxt",
+        "ServiceDescriptionTxt", "CompanyName", "Company"
     };
 
     public static final String[] ATTR_UPDATE = {
@@ -178,7 +191,7 @@ public class UserResource extends BaseRestResource {
 
         /**
          * 如果公司信息没变，可返回原来的CompanyId或不传CompanyId
-         * 
+         *
          * 如果返回了CompanyId，且与原来的CompanyId不同，则做如下判断：
          * 如果没有CompanyName，则代表没有公司，清空当前用户的CompanyId
          * 如果有CompanyName，则重新merge CompanyName
@@ -199,7 +212,7 @@ public class UserResource extends BaseRestResource {
         }
 
 
-        //同时修改地址信息 
+        //同时修改地址信息
         LancerLocationResource loc = new LancerLocationResource();
         if (json.has("LocationA")) {
             loc.updateLocationFn(userName, json.getJSONObject("LocationA"), am);
@@ -211,6 +224,6 @@ public class UserResource extends BaseRestResource {
         am.getDBTransaction().commit();
         return "ok";
     }
-    
-    
+
+
 }
