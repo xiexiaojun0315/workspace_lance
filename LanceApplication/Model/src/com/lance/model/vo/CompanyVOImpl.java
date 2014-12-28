@@ -29,5 +29,21 @@ public class CompanyVOImpl extends BaseViewObjectImpl {
     public void setpName(String value) {
         ensureVariableManager().setVariableValue("pName", value);
     }
+
+    /**
+     * Returns the variable value for pUuid.
+     * @return variable value for pUuid
+     */
+    public String getpUuid() {
+        return (String) ensureVariableManager().getVariableValue("pUuid");
+    }
+
+    /**
+     * Sets <code>value</code> for variable pUuid.
+     * @param value value to bind as pUuid
+     */
+    public void setpUuid(String value) {
+        ensureVariableManager().setVariableValue("pUuid", value);
+    }
 }
 

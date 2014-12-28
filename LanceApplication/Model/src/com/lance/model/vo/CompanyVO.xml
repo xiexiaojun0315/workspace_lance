@@ -31,6 +31,10 @@
     Name="pName"
     Kind="viewcriteria"
     Type="java.lang.String"/>
+  <Variable
+    Name="pUuid"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <EntityUsage
     Name="CompanyEO"
     Entity="com.lance.model.eo.CompanyEO"/>
@@ -163,6 +167,43 @@
         Operator="CONTAINS"
         Conjunction="AND"
         Value=":pName"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="FindByUuidVC"
+    ViewObjectName="com.lance.model.vo.CompanyVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="CompanyVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Uuid"
+        ViewAttribute="Uuid"
+        Operator="="
+        Conjunction="AND"
+        Value=":pUuid"
+        UpperColumns="0"
         IsBindVarValue="true"
         Required="Optional"/>
     </ViewCriteriaRow>

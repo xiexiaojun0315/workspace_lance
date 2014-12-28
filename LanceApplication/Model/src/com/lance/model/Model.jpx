@@ -40,6 +40,38 @@
     </DesignTime>
   </Containee>
   <Containee
+    Name="as"
+    PackageName="com.lance.model.user.as"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_AS" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="eo"
+    PackageName="com.lance.model.user.eo"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_EO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="vl"
+    PackageName="com.lance.model.user.vl"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VL" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
+    Name="vo"
+    PackageName="com.lance.model.user.vo"
+    ObjectType="JboPackage">
+    <DesignTime>
+      <Attr Name="_VO" Value="true"/>
+    </DesignTime>
+  </Containee>
+  <Containee
     Name="vl"
     PackageName="com.lance.model.vl"
     ObjectType="JboPackage">
@@ -69,7 +101,7 @@
     FullName="com.zngh.platform.front.core.model.Model"
     ObjectType="JboProject">
     <DesignTime>
-      <Attr Name="_SourceName" Value="CommonModel.jar"/>
+      <Attr Name="_SourceName" Value="CommonModel-1.4-SNAPSHOT.jar"/>
     </DesignTime>
   </AppContainee>
 </JboProject>

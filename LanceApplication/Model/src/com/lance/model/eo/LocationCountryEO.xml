@@ -52,7 +52,7 @@
   </Attribute>
   <Attribute
     Name="Code"
-    Precision="5"
+    Precision="9"
     ColumnName="CODE"
     SQLType="VARCHAR"
     Type="java.lang.String"

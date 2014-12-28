@@ -12,8 +12,8 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  RowClass="com.lance.model.vo.UUserVORowImpl"
-  ComponentClass="com.lance.model.vo.UUserVOImpl"
+  RowClass="com.lance.model.user.vo.UUserVORowImpl"
+  ComponentClass="com.lance.model.user.vo.UUserVOImpl"
   PageIterMode="Full">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
@@ -23,11 +23,16 @@
     Name="pUserName"
     Kind="viewcriteria"
     Type="java.lang.String"/>
+  <Variable
+    Name="pEmail"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <EntityUsage
     Name="UUserEO"
-    Entity="com.lance.model.eo.UUserEO"/>
+    Entity="com.lance.model.user.eo.UUserEO"/>
   <ViewAttribute
     Name="UserName"
+    IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="UserName"
     EntityUsage="UUserEO"
@@ -234,7 +239,18 @@
     EntityAttrName="CreateOn"
     EntityUsage="UUserEO"
     AliasName="CREATE_ON"
-    IsUpdateable="false"/>
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <FMT_FORMATTER
+          ResId="com.lance.model.user.vo.UUserVO.CreateOn_FMT_FORMATTER"/>
+        <FMT_FORMAT
+          ResId="com.lance.model.user.vo.UUserVO.CreateOn_FMT_FORMAT"/>
+        <TimeZoneID
+          Value="Asia/Hong_Kong"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="ModifyBy"
     PrecisionRule="true"
@@ -261,37 +277,14 @@
     PrecisionRule="true"
     EntityAttrName="LastLoginTime"
     EntityUsage="UUserEO"
-    AliasName="LAST_LOGIN_TIME"/>
-  <ViewAttribute
-    Name="DescriptionTxt"
-    IsSelected="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Precision="255"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="VIEW_ATTR"
-    SQLType="VARCHAR"/>
-  <ViewAttribute
-    Name="PaymentTermsTxt"
-    IsSelected="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Precision="255"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="VIEW_ATTR"
-    SQLType="VARCHAR"/>
-  <ViewAttribute
-    Name="ServiceDescriptionTxt"
-    IsSelected="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Precision="255"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="VIEW_ATTR"
-    SQLType="VARCHAR"/>
+    AliasName="LAST_LOGIN_TIME">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="date"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CompanyName"
     IsSelected="false"
@@ -302,9 +295,16 @@
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
     SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="CanBeSearch"
+    PrecisionRule="true"
+    EntityAttrName="CanBeSearch"
+    EntityUsage="UUserEO"
+    AliasName="CAN_BE_SEARCH"
+    DefaultValue="1"/>
   <ViewCriteria
     Name="FindByUserNameVC"
-    ViewObjectName="com.lance.model.vo.UUserVO"
+    ViewObjectName="com.lance.model.user.vo.UUserVO"
     Conjunction="AND">
     <Properties>
       <CustomProperties>
@@ -334,14 +334,87 @@
         Operator="="
         Conjunction="AND"
         Value=":pUserName"
-        UpperColumns="0"
+        Required="Optional"
+        UpperColumns="1"
+        IsBindVarValue="true"/>
+      <ViewCriteriaItem
+        Name="CanBeSearch"
+        ViewAttribute="CanBeSearch"
+        Operator="="
+        Conjunction="AND"
+        Value="1"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="FindByEmailVC"
+    ViewObjectName="com.lance.model.user.vo.UUserVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="UUserVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Email"
+        ViewAttribute="Email"
+        Operator="="
+        Conjunction="AND"
+        Value=":pEmail"
+        UpperColumns="1"
         IsBindVarValue="true"
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
   <ViewLinkAccessor
+    Name="UserSkill"
+    ViewLink="com.lance.model.user.vl.UserSkillUUserFk1VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="UserEducation"
+    ViewLink="com.lance.model.user.vl.UserEducationUUserFk1VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="UserWorkExpComment"
+    ViewLink="com.lance.model.user.vl.UserWorkExpCommentFk1VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="UserWorkExp"
+    ViewLink="com.lance.model.user.vl.UserWorkExpUUserFk1VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="UserLocationList"
+    ViewLink="com.lance.model.user.vl.UserLocationListUUserFk1VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
     Name="Company"
     ViewLink="com.lance.model.vl.UUser_CompanyVL"
     Type="oracle.jbo.Row"
     IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.lance.model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

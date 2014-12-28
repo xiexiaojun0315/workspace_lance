@@ -60,6 +60,7 @@ public class CompanyEOImpl extends BaseEntityImpl {
         }
     }
 
+
     public static final int UUID = AttributesEnum.Uuid.index();
     public static final int NAME = AttributesEnum.Name.index();
     public static final int ENTERPRISEPROPERTY = AttributesEnum.EnterpriseProperty.index();
@@ -88,6 +89,7 @@ public class CompanyEOImpl extends BaseEntityImpl {
     public static synchronized EntityDefImpl getDefinitionObject() {
         return EntityDefImpl.findDefObject("com.lance.model.eo.CompanyEO");
     }
+
 
     /**
      * Gets the attribute value for Uuid, using the alias name Uuid.

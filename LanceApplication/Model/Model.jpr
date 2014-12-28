@@ -335,6 +335,10 @@
             <value n="id" v="Commons-lang-2.4.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
+         <hash>
+            <url n="id" path="ADF_Library_Dependencies.library"/>
+            <value n="isJDK" v="false"/>
+         </hash>
       </list>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectPaths">

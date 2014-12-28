@@ -1,5 +1,12 @@
 package com.lance.model;
 
+import com.lance.model.user.vo.UUserVOImpl;
+import com.lance.model.user.vo.UserEducationVOImpl;
+import com.lance.model.user.vo.UserLocationListVOImpl;
+import com.lance.model.user.vo.UserRoleGrantsVOImpl;
+import com.lance.model.user.vo.UserSkillVOImpl;
+import com.lance.model.user.vo.UserWorkExpCommentVOImpl;
+import com.lance.model.user.vo.UserWorkExpVOImpl;
 import com.lance.model.vo.ClientUserVOImpl;
 import com.lance.model.vo.CompanyVOImpl;
 import com.lance.model.vo.JobTemplateVOImpl;
@@ -17,10 +24,10 @@ import com.lance.model.vo.PostJobDiscussVOImpl;
 import com.lance.model.vo.PostJobsVOImpl;
 import com.lance.model.vo.SkillsVOImpl;
 import com.lance.model.vo.SpreadHeardFromVOImpl;
-import com.lance.model.vo.UUserVOImpl;
 import com.lance.model.vvo.LancerSearchVVOImpl;
 import com.lance.model.vvo.LocationCountryVVOImpl;
 
+import com.lance.model.vvo.LookupsVVOImpl;
 import com.lance.model.vvo.PostJobsVVOImpl;
 
 import com.zngh.platform.front.core.model.BaseApplicationModuleImpl;
@@ -309,12 +316,111 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
         return (ViewLinkImpl) findViewLink("PostJob_PostJobDiscussVL1");
     }
 
+
     /**
-     * Container's getter for UUser1.
-     * @return UUser1
+     * Container's getter for UUser3.
+     * @return UUser3
      */
     public UUserVOImpl getUUser1() {
         return (UUserVOImpl) findViewObject("UUser1");
     }
+
+    /**
+     * Container's getter for UserEducation1.
+     * @return UserEducation1
+     */
+    public UserEducationVOImpl getUserEducation1() {
+        return (UserEducationVOImpl) findViewObject("UserEducation1");
+    }
+
+    /**
+     * Container's getter for UserEducationUUserFk1VL1.
+     * @return UserEducationUUserFk1VL1
+     */
+    public ViewLinkImpl getUserEducationUUserFk1VL1() {
+        return (ViewLinkImpl) findViewLink("UserEducationUUserFk1VL1");
+    }
+
+    /**
+     * Container's getter for UserLocationList1.
+     * @return UserLocationList1
+     */
+    public UserLocationListVOImpl getUserLocationList1() {
+        return (UserLocationListVOImpl) findViewObject("UserLocationList1");
+    }
+
+    /**
+     * Container's getter for UserLocationListUUserFk1VL1.
+     * @return UserLocationListUUserFk1VL1
+     */
+    public ViewLinkImpl getUserLocationListUUserFk1VL1() {
+        return (ViewLinkImpl) findViewLink("UserLocationListUUserFk1VL1");
+    }
+
+    /**
+     * Container's getter for UserSkill1.
+     * @return UserSkill1
+     */
+    public UserSkillVOImpl getUserSkill1() {
+        return (UserSkillVOImpl) findViewObject("UserSkill1");
+    }
+
+    /**
+     * Container's getter for UserSkillUUserFk1VL1.
+     * @return UserSkillUUserFk1VL1
+     */
+    public ViewLinkImpl getUserSkillUUserFk1VL1() {
+        return (ViewLinkImpl) findViewLink("UserSkillUUserFk1VL1");
+    }
+
+    /**
+     * Container's getter for UserWorkExpComment1.
+     * @return UserWorkExpComment1
+     */
+    public UserWorkExpCommentVOImpl getUserWorkExpComment1() {
+        return (UserWorkExpCommentVOImpl) findViewObject("UserWorkExpComment1");
+    }
+
+    /**
+     * Container's getter for UserWorkExpCommentFk1VL1.
+     * @return UserWorkExpCommentFk1VL1
+     */
+    public ViewLinkImpl getUserWorkExpCommentFk1VL1() {
+        return (ViewLinkImpl) findViewLink("UserWorkExpCommentFk1VL1");
+    }
+
+    /**
+     * Container's getter for UserWorkExp1.
+     * @return UserWorkExp1
+     */
+    public UserWorkExpVOImpl getUserWorkExp1() {
+        return (UserWorkExpVOImpl) findViewObject("UserWorkExp1");
+    }
+
+    /**
+     * Container's getter for UserWorkExpUUserFk1VL1.
+     * @return UserWorkExpUUserFk1VL1
+     */
+    public ViewLinkImpl getUserWorkExpUUserFk1VL1() {
+        return (ViewLinkImpl) findViewLink("UserWorkExpUUserFk1VL1");
+    }
+
+
+    /**
+     * Container's getter for UserRoleGrants1.
+     * @return UserRoleGrants1
+     */
+    public UserRoleGrantsVOImpl getUserRoleGrants1() {
+        return (UserRoleGrantsVOImpl) findViewObject("UserRoleGrants1");
+    }
+
+    /**
+     * Container's getter for LookupsV1.
+     * @return LookupsV1
+     */
+    public LookupsVVOImpl getLookupsV1() {
+        return (LookupsVVOImpl) findViewObject("LookupsV1");
+    }
+
 }
 

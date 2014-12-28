@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="UserRoleGrantsEO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="USER_ROLE_GRANTS"
+  AliasName="UserRoleGrantsEO"
+  BindingStyle="OracleName"
+  RowClass="com.zngh.platform.front.core.model.BaseEntityImpl"
+  CollClass="com.zngh.platform.front.core.model.BaseEntityCache">
+  <Attribute
+    Name="UserName"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="USER_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USER_ROLE_GRANTS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="RoleName"
+    IsNotNull="true"
+    Precision="100"
+    ColumnName="ROLE_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USER_ROLE_GRANTS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="UserRole"
+    Association="com.lance.model.user.as.UserRoleGrantsFk1AS"
+    AssociationEnd="com.lance.model.user.as.UserRoleGrantsFk1AS.UserRole"
+    AssociationOtherEnd="com.lance.model.user.as.UserRoleGrantsFk1AS.UserRoleGrants"
+    Type="com.zngh.platform.front.core.model.BaseEntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="UserRoleGrantsPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="USER_ROLE_GRANTS_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.user.eo.UserRoleGrantsEO.UserName"/>
+      <Item Value="com.lance.model.user.eo.UserRoleGrantsEO.RoleName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="UserRoleGrantsFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="USER_ROLE_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="USER_ROLE_GRANTS_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.user.eo.UserRoleGrantsEO.RoleName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="UserRoleGrantsUUserFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="U_USER_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="USER_ROLE_GRANTS_U_USER_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.user.eo.UserRoleGrantsEO.UserName"/>
+    </AttrArray>
+  </Key>
+</Entity>

@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="UserEducationEO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="USER_EDUCATION"
+  AliasName="UserEducationEO"
+  BindingStyle="OracleName"
+  RowClass="com.zngh.platform.front.core.model.BaseEntityImpl"
+  CollClass="com.zngh.platform.front.core.model.BaseEntityCache">
+  <Attribute
+    Name="Uuid"
+    IsNotNull="true"
+    Precision="32"
+    ColumnName="UUID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USER_EDUCATION"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="UserName"
+    Precision="32"
+    ColumnName="USER_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USER_EDUCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="InstitutionName"
+    Precision="45"
+    ColumnName="INSTITUTION_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USER_EDUCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="45"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DegreeType"
+    Precision="45"
+    ColumnName="DEGREE_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USER_EDUCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="45"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="StartDate"
+    ColumnName="START_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="USER_EDUCATION"/>
+  <Attribute
+    Name="EndDate"
+    ColumnName="END_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="USER_EDUCATION"/>
+  <Attribute
+    Name="Description"
+    IsQueriable="false"
+    ColumnName="DESCRIPTION"
+    SQLType="CLOB"
+    Type="oracle.jbo.domain.ClobDomain"
+    ColumnType="CLOB"
+    TableName="USER_EDUCATION"/>
+  <Attribute
+    Name="Attach1Link"
+    Precision="500"
+    ColumnName="ATTACH1_LINK"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USER_EDUCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attach2Link"
+    Precision="500"
+    ColumnName="ATTACH2_LINK"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USER_EDUCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Attach3Link"
+    Precision="500"
+    ColumnName="ATTACH3_LINK"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USER_EDUCATION">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="TobeVerified"
+    ColumnName="TOBE_VERIFIED"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="USER_EDUCATION"/>
+  <Attribute
+    Name="DoneVerified"
+    ColumnName="DONE_VERIFIED"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="USER_EDUCATION"/>
+  <Attribute
+    Name="Display"
+    ColumnName="DISPLAY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="USER_EDUCATION"/>
+  <Attribute
+    Name="CreateBy"
+    Precision="32"
+    ColumnName="CREATE_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USER_EDUCATION"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreateOn"
+    ColumnName="CREATE_ON"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="USER_EDUCATION"
+    HistoryColumn="DateHistory"
+    IsUpdateable="while_insert"/>
+  <Attribute
+    Name="ModifyBy"
+    Precision="32"
+    ColumnName="MODIFY_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="USER_EDUCATION"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifyOn"
+    ColumnName="MODIFY_ON"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="USER_EDUCATION"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="Version"
+    ColumnName="VERSION"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="USER_EDUCATION"
+    HistoryColumn="VersionHistory"/>
+  <AccessorAttribute
+    Name="UUser"
+    Association="com.lance.model.user.as.UserEducationUUserFk1AS"
+    AssociationEnd="com.lance.model.user.as.UserEducationUUserFk1AS.UUser"
+    AssociationOtherEnd="com.lance.model.user.as.UserEducationUUserFk1AS.UserEducation"
+    Type="com.zngh.platform.front.core.model.BaseEntityImpl"
+    IsUpdateable="true"/>
+  <Key
+    Name="UserEducationPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="USER_EDUCATION_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.user.eo.UserEducationEO.Uuid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="UserEducationUUserFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="U_USER_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="USER_EDUCATION_U_USER_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.user.eo.UserEducationEO.UserName"/>
+    </AttrArray>
+  </Key>
+</Entity>

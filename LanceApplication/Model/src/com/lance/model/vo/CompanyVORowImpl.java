@@ -15,6 +15,7 @@ import oracle.jbo.domain.Number;
 // ---------------------------------------------------------------------
 public class CompanyVORowImpl extends BaseViewRowImpl {
 
+
     public static final int ENTITY_COMPANYEO = 0;
 
     /**
@@ -54,6 +55,7 @@ public class CompanyVORowImpl extends BaseViewRowImpl {
             return vals;
         }
     }
+
 
     public static final int UUID = AttributesEnum.Uuid.index();
     public static final int NAME = AttributesEnum.Name.index();

@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewObject SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewObject
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="UserWorkExpCommentVO"
+  Version="12.1.3.10.8"
+  InheritPersonalization="merge"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  SelectAllAttributes="false"
+  RowClass="com.lance.model.user.vo.UserWorkExpCommentVORowImpl"
+  ComponentClass="com.lance.model.user.vo.UserWorkExpCommentVOImpl"
+  PageIterMode="Full">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <EntityUsage
+    Name="UserWorkExpCommentEO"
+    Entity="com.lance.model.user.eo.UserWorkExpCommentEO"/>
+  <ViewAttribute
+    Name="Uuid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Uuid"
+    EntityUsage="UserWorkExpCommentEO"
+    AliasName="UUID"/>
+  <ViewAttribute
+    Name="UserWorkExpId"
+    PrecisionRule="true"
+    EntityAttrName="UserWorkExpId"
+    EntityUsage="UserWorkExpCommentEO"
+    AliasName="USER_WORK_EXP_ID"/>
+  <ViewAttribute
+    Name="Text"
+    PrecisionRule="true"
+    EntityAttrName="Text"
+    EntityUsage="UserWorkExpCommentEO"
+    AliasName="TEXT"/>
+  <ViewAttribute
+    Name="CreateBy"
+    PrecisionRule="true"
+    EntityAttrName="CreateBy"
+    EntityUsage="UserWorkExpCommentEO"
+    AliasName="CREATE_BY"/>
+  <ViewAttribute
+    Name="CreateOn"
+    PrecisionRule="true"
+    EntityAttrName="CreateOn"
+    EntityUsage="UserWorkExpCommentEO"
+    AliasName="CREATE_ON"/>
+  <ViewAttribute
+    Name="ModifyBy"
+    PrecisionRule="true"
+    EntityAttrName="ModifyBy"
+    EntityUsage="UserWorkExpCommentEO"
+    AliasName="MODIFY_BY"/>
+  <ViewAttribute
+    Name="ModifyOn"
+    PrecisionRule="true"
+    EntityAttrName="ModifyOn"
+    EntityUsage="UserWorkExpCommentEO"
+    AliasName="MODIFY_ON"/>
+  <ViewAttribute
+    Name="Version"
+    PrecisionRule="true"
+    EntityAttrName="Version"
+    EntityUsage="UserWorkExpCommentEO"
+    AliasName="VERSION"/>
+  <ViewAttribute
+    Name="UserName"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="UserName"
+    EntityUsage="UserWorkExpCommentEO"
+    AliasName="USER_NAME"/>
+</ViewObject>

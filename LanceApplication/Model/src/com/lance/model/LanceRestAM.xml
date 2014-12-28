@@ -94,7 +94,28 @@
         ViewObjectName="com.lance.model.vo.PostJobDiscussVO"/>
     <ViewUsage
         Name="UUser1"
-        ViewObjectName="com.lance.model.vo.UUserVO"/>
+        ViewObjectName="com.lance.model.user.vo.UUserVO"/>
+    <ViewUsage
+        Name="UserEducation1"
+        ViewObjectName="com.lance.model.user.vo.UserEducationVO"/>
+    <ViewUsage
+        Name="UserLocationList1"
+        ViewObjectName="com.lance.model.user.vo.UserLocationListVO"/>
+    <ViewUsage
+        Name="UserSkill1"
+        ViewObjectName="com.lance.model.user.vo.UserSkillVO"/>
+    <ViewUsage
+        Name="UserWorkExpComment1"
+        ViewObjectName="com.lance.model.user.vo.UserWorkExpCommentVO"/>
+    <ViewUsage
+        Name="UserWorkExp1"
+        ViewObjectName="com.lance.model.user.vo.UserWorkExpVO"/>
+    <ViewUsage
+        Name="UserRoleGrants1"
+        ViewObjectName="com.lance.model.user.vo.UserRoleGrantsVO"/>
+    <ViewUsage
+        Name="LookupsV1"
+        ViewObjectName="com.lance.model.vvo.LookupsVVO"/>
     <ViewLinkUsage
       Name="LancerResume_SkillVL1"
       ViewLinkObjectName="com.lance.model.vl.LancerResume_SkillVL"
@@ -142,6 +163,36 @@
         ViewLinkObjectName="com.lance.model.vl.PostJob_PostJobDiscussVL"
         SrcViewUsageName="com.lance.model.LanceRestAM.PostJobs1"
         DstViewUsageName="com.lance.model.LanceRestAM.PostJobDiscuss1"
+        Reversed="false"/>
+    <ViewLinkUsage
+        Name="UserEducationUUserFk1VL1"
+        ViewLinkObjectName="com.lance.model.user.vl.UserEducationUUserFk1VL"
+        SrcViewUsageName="com.lance.model.LanceRestAM.UUser1"
+        DstViewUsageName="com.lance.model.LanceRestAM.UserEducation1"
+        Reversed="false"/>
+    <ViewLinkUsage
+        Name="UserLocationListUUserFk1VL1"
+        ViewLinkObjectName="com.lance.model.user.vl.UserLocationListUUserFk1VL"
+        SrcViewUsageName="com.lance.model.LanceRestAM.UUser1"
+        DstViewUsageName="com.lance.model.LanceRestAM.UserLocationList1"
+        Reversed="false"/>
+    <ViewLinkUsage
+        Name="UserSkillUUserFk1VL1"
+        ViewLinkObjectName="com.lance.model.user.vl.UserSkillUUserFk1VL"
+        SrcViewUsageName="com.lance.model.LanceRestAM.UUser1"
+        DstViewUsageName="com.lance.model.LanceRestAM.UserSkill1"
+        Reversed="false"/>
+    <ViewLinkUsage
+        Name="UserWorkExpCommentFk1VL1"
+        ViewLinkObjectName="com.lance.model.user.vl.UserWorkExpCommentFk1VL"
+        SrcViewUsageName="com.lance.model.LanceRestAM.UUser1"
+        DstViewUsageName="com.lance.model.LanceRestAM.UserWorkExpComment1"
+        Reversed="false"/>
+    <ViewLinkUsage
+        Name="UserWorkExpUUserFk1VL1"
+        ViewLinkObjectName="com.lance.model.user.vl.UserWorkExpUUserFk1VL"
+        SrcViewUsageName="com.lance.model.LanceRestAM.UUser1"
+        DstViewUsageName="com.lance.model.LanceRestAM.UserWorkExp1"
         Reversed="false"/>
     <ResourceBundle>
         <PropertiesBundle

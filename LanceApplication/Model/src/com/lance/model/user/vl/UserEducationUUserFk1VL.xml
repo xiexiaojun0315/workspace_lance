@@ -3,42 +3,33 @@
 <!---->
 <ViewLink
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="UUser_CompanyVL"
+  Name="UserEducationUUserFk1VL"
   Version="12.1.3.10.8"
-  InheritPersonalization="merge">
-  <Properties>
-    <SchemaBasedProperties>
-      <LABEL
-        ResId="com.lance.model.vl.UUser_CompanyVL_LABEL"/>
-    </SchemaBasedProperties>
-  </Properties>
+  InheritPersonalization="merge"
+  EntityAssociation="com.lance.model.user.as.UserEducationUUserFk1AS">
   <ViewLinkDefEnd
     Name="UUser"
     Cardinality="1"
     Source="true"
-    Owner="com.lance.model.vo.UUserVO">
+    Owner="com.lance.model.user.vo.UUserVO">
     <DesignTime>
       <Attr Name="_finderName" Value="UUser"/>
       <Attr Name="_isUpdateable" Value="true"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.lance.model.vo.UUserVO.CompanyId"/>
+      <Item Value="com.lance.model.user.vo.UUserVO.UserName"/>
     </AttrArray>
   </ViewLinkDefEnd>
   <ViewLinkDefEnd
-    Name="Company"
-    Cardinality="1"
-    Owner="com.lance.model.vo.CompanyVO">
+    Name="UserEducation"
+    Cardinality="-1"
+    Owner="com.lance.model.user.vo.UserEducationVO">
     <DesignTime>
-      <Attr Name="_finderName" Value="Company"/>
+      <Attr Name="_finderName" Value="UserEducation"/>
       <Attr Name="_isUpdateable" Value="true"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.lance.model.vo.CompanyVO.Uuid"/>
+      <Item Value="com.lance.model.user.vo.UserEducationVO.UserName"/>
     </AttrArray>
   </ViewLinkDefEnd>
-  <ResourceBundle>
-    <PropertiesBundle
-      PropertiesFile="com.lance.model.ModelBundle"/>
-  </ResourceBundle>
 </ViewLink>
