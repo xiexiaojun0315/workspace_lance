@@ -1,6 +1,8 @@
 package com.lance.view.util;
 
 import com.lance.model.LanceRestAMImpl;
+import com.lance.model.user.vo.UUserVOImpl;
+import com.lance.model.user.vo.UUserVORowImpl;
 import com.lance.model.vo.LancerVOImpl;
 import com.lance.model.vo.LancerVORowImpl;
 import com.lance.model.vo.LocationCityVOImpl;
@@ -10,15 +12,17 @@ import com.lance.model.vo.LocationProvinceVORowImpl;
 import com.lance.model.vvo.LocationCountryVVOImpl;
 import com.lance.model.vvo.LocationCountryVVORowImpl;
 import com.lance.view.rest.user.ClientResource;
-import com.lance.view.rest.user.LancerResource;
+//import com.lance.view.rest.user.LancerResource;
 
 import com.zngh.platform.front.core.view.RestUtil;
 
 import java.util.HashMap;
 import java.util.Map;
 
+import oracle.jbo.Key;
 import oracle.jbo.Row;
 import oracle.jbo.RowSetIterator;
+import oracle.jbo.ViewObject;
 import oracle.jbo.server.RowImpl;
 import oracle.jbo.server.ViewObjectImpl;
 
@@ -39,7 +43,7 @@ public class LUtil {
     public LUtil() {
         super();
     }
-
+    
     public static LanceRestAMImpl findLanceAM() {
         try {
             LanceRestAMImpl am = (LanceRestAMImpl) RestUtil.findAmFromBinding("LanceRestAMDataControl");
@@ -49,23 +53,24 @@ public class LUtil {
         }
         return null;
     }
-    
-//    public static JSONObject convertVoToJsonObject(ViewObjectImpl vo){
-//        
-//        }
-//    
-//    public static JSONObject convertRowToJsonObject(){
-//        
-//        }
+
+    //    public static JSONObject convertVoToJsonObject(ViewObjectImpl vo){
+    //
+    //        }
+    //
+    //    public static JSONObject convertRowToJsonObject(){
+    //
+    //        }
 
     public static RowImpl createInsertRow(ViewObjectImpl vo) {
         RowImpl row = (RowImpl) vo.createRow();
         vo.insertRow(row);
         return row;
     }
-    
-    
-    public static void transJsonToRow(JSONObject json,ViewObjectImpl vo , Row row, String[] attrs) throws JSONException {
+
+
+    public static void transJsonToRow(JSONObject json, ViewObjectImpl vo, Row row,
+                                      String[] attrs) throws JSONException {
         for (String attr : attrs) {
             System.out.println(attr);
             if (json.has(attr)) {
@@ -73,8 +78,8 @@ public class LUtil {
             }
         }
     }
-    
-    
+
+
     public static void transJsonToRow(JSONObject json, Row row, String[] attrs) throws JSONException {
         for (String attr : attrs) {
             System.out.println(attr);
@@ -84,6 +89,7 @@ public class LUtil {
         }
     }
 
+    //to delete
     public static LancerVORowImpl findLancerById(String lancerId, LanceRestAMImpl am) {
         LancerVOImpl lancerVO = am.getLancer1();
         //存在性判断
@@ -104,6 +110,45 @@ public class LUtil {
     }
 
     /**
+     * 确保userName对应的User为CurrentRow
+     * @param userName
+     * @param am
+     * @return
+     */
+    public static UUserVORowImpl getUUserByName(String userName, LanceRestAMImpl am) {
+        UUserVOImpl userVO = am.getUUser1();
+        //存在性判断
+        UUserVORowImpl row = (UUserVORowImpl) userVO.getCurrentRow();
+        if (row != null && row.getUserName().equals(userName)) {
+            return row;
+        }
+
+        userVO.setApplyViewCriteriaName("FindByUserNameVC");
+        userVO.setpUserName(userName);
+        userVO.executeQuery();
+        userVO.removeApplyViewCriteriaName("FindByUserNameVC");
+        return (UUserVORowImpl) userVO.first();
+    }
+
+    public static Row getByKey(ViewObject vo, Object key) {
+        Row[] rows = vo.findByKey(new Key(new Object[] { key }), 1);
+        if (rows == null||rows.length==0) {
+            return null;
+        }
+        vo.setCurrentRow(rows[0]);
+        return rows[0];
+    }
+
+    public static Row getByKey(ViewObject vo, Object key1, Object key2) {
+        Row[] rows = vo.findByKey(new Key(new Object[] { key1, key2 }), 1);
+        if (rows == null||rows.length==0) {
+            return null;
+        }
+        vo.setCurrentRow(rows[0]);
+        return rows[0];
+    }
+
+    /**
      * 根据UserId获取UserDisplayName
      * @param userId 同uuid，userName
      * @param type 用户类型：CLIENT,LANCER
@@ -115,7 +160,8 @@ public class LUtil {
         if (USER_TYPE_CLIENT.equals(type)) {
             return ClientResource.findClientByIdFn(userId, am).getString("DisplayName");
         } else if (USER_TYPE_LANCER.equals(type)) {
-            return LancerResource.findLancerByIdFn(userId, am).getString("DisplayName");
+//            return LancerResource.findLancerByIdFn(userId, am).getString("DisplayName");
+            return null;
         }
         System.err.println("无法识别的type");
         return null;
@@ -182,6 +228,6 @@ public class LUtil {
 
         LOCATION_INITED = true;
     }
-    
+
 
 }

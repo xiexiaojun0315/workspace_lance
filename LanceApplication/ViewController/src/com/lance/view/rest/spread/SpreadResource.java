@@ -20,7 +20,7 @@ public class SpreadResource {
     /**
      *
      * 记录用户从何处找到本网站
-     * GET http://localhost:7101/lance/res/spread/heardFrom
+     * POST http://localhost:7101/lance/res/spread/heardFrom
      *
      * @example
      {

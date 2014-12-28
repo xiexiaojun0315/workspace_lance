@@ -61,6 +61,9 @@
       <string v="oracle.toplink.workbench.addin/toplinkContentSet"/>
    </list>
    <value n="defaultPackage" v="com.lance.view"/>
+   <value n="jbo.JpxName" v="com.lance.view.ViewController"/>
+   <value n="jbo.NoAttrEnumClasses" v="true"/>
+   <value n="JboProject" v="true"/>
    <hash n="oracle.adfdtinternal.model.ide.security.SecurityPolicies">
       <value n="grantOption" v="none"/>
    </hash>
@@ -101,6 +104,7 @@
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="ADF_FACES"/>
+         <string v="ADFbc"/>
          <string v="ADFc"/>
          <string v="ADFm"/>
          <string v="HTML"/>
@@ -113,12 +117,94 @@
          <string v="XML"/>
       </list>
    </hash>
+   <value n="oracle.jbo.ASPackage" v="as"/>
+   <value n="oracle.jbo.EOPackage" v="eo"/>
+   <value n="oracle.jbo.ObjAMSuffix" v="AM"/>
+   <value n="oracle.jbo.ObjAssocSuffix" v="AS"/>
+   <value n="oracle.jbo.ObjEOSuffix" v="EO"/>
+   <value n="oracle.jbo.ObjViewLinkSuffix" v="VL"/>
+   <value n="oracle.jbo.ObjVOSuffix" v="VO"/>
+   <value n="oracle.jbo.SavedPreferences" v="true"/>
+   <value n="oracle.jbo.VLPackage" v="vl"/>
+   <value n="oracle.jbo.VOPackage" v="vo"/>
    <hash n="oracle.jdeveloper.compiler.OjcConfiguration">
+      <list n="copyRes">
+         <string v=".cpx"/>
+         <string v=".dcx"/>
+         <string v=".ejx"/>
+         <string v=".gif"/>
+         <string v=".ini"/>
+         <string v=".jpeg"/>
+         <string v=".jpg"/>
+         <string v=".png"/>
+         <string v=".properties"/>
+         <string v=".sva"/>
+         <string v=".tag"/>
+         <string v=".tld"/>
+         <string v=".wsdl"/>
+         <string v=".xcfg"/>
+         <string v=".xlf"/>
+         <string v=".xml"/>
+         <string v=".xsd"/>
+         <string v=".xsl"/>
+         <string v=".jpx"/>
+         <string v=".rpx"/>
+      </list>
       <value n="internalEncoding" v="UTF-8"/>
       <value n="webIANAEncoding" v="UTF-8"/>
    </hash>
    <hash n="oracle.jdeveloper.deploy.dt.DeploymentProfiles">
       <hash n="profileDefinitions">
+         <hash n="LanceApplication_ViewController">
+            <value n="adflib-connectionDetails" v="true"/>
+            <value n="adflib-nonReusablesError" v="false"/>
+            <hash n="archiveOptions">
+               <value n="hasManifest" v="true"/>
+            </hash>
+            <hash n="fileGroups">
+               <list n="groups">
+                  <hash>
+                     <list n="contributors">
+                        <hash>
+                           <value n="type" v="2"/>
+                        </hash>
+                        <hash>
+                           <value n="type" v="5"/>
+                        </hash>
+                     </list>
+                     <value n="displayName" v="Project Output"/>
+                     <hash n="filters">
+                        <list n="rules">
+                           <hash>
+                              <value n="pattern" v="WEB-INF/classes/**"/>
+                              <value n="type" v="1"/>
+                           </hash>
+                           <hash>
+                              <value n="pattern" v="**"/>
+                              <value n="type" v="0"/>
+                           </hash>
+                        </list>
+                     </hash>
+                     <value n="internalName" v="project-output"/>
+                     <value n="type" v="1"/>
+                  </hash>
+               </list>
+            </hash>
+            <url n="jarURL" path="deploy/LanceApplication_ViewController.jar"/>
+            <hash n="LibraryDependencies">
+               <list n="dependencyList">
+                  <hash>
+                     <hash n="dependable">
+                        <url n="sourceOwnerURL" path="../LanceApplication.jws"/>
+                        <url n="sourceURL" path="../Model/Model.jpr"/>
+                     </hash>
+                     <value n="recognizerId" v="oracle.jdeveloper.library"/>
+                  </hash>
+               </list>
+            </hash>
+            <value n="profileClass" v="oracle.adfdt.common.deploy.impl.AdfLibraryProfile"/>
+            <value n="profileName" v="LanceApplication_ViewController"/>
+         </hash>
          <hash n="LanceApplication_ViewController_webapp">
             <hash n="appletArchives"/>
             <hash n="appletFiles">
@@ -196,6 +282,7 @@
       </hash>
       <list n="profileList">
          <string v="LanceApplication_ViewController_webapp"/>
+         <string v="LanceApplication_ViewController"/>
       </list>
    </hash>
    <hash n="oracle.jdeveloper.model.J2eeSettings">
@@ -214,13 +301,25 @@
                   <url path="adfmsrc/"/>
                </list>
             </hash>
+            <hash>
+               <url n="content-folder-url" path="adfmsrc/com/lance/view/util/"/>
+               <list n="pattern-filters">
+                  <string v="+com/lance/view/util/RestSecurityUtil.java"/>
+               </list>
+               <list n="url-path">
+                  <url path="adfmsrc/"/>
+               </list>
+            </hash>
+            <hash>
+               <list n="pattern-filters">
+                  <string v="+**"/>
+               </list>
+               <list n="url-path">
+                  <url path="src/"/>
+               </list>
+            </hash>
          </list>
-         <list n="pattern-filters">
-            <string v="+**"/>
-         </list>
-         <list n="url-path">
-            <url path="src/"/>
-         </list>
+         <list n="url-path"/>
       </hash>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
@@ -526,6 +625,10 @@
          </hash>
          <hash>
             <value n="id" v="CommonView-1.4-SNAPSHOT.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <url n="id" path="ADF_Library_Dependencies.library"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

@@ -1,8 +1,8 @@
 package com.lance.view.servlet;
 
 import com.lance.view.rest.job.SearchResource;
-import com.lance.view.rest.user.LancerProfileResource;
-import com.lance.view.rest.user.LancerSkillResource;
+//import com.lance.view.rest.user.LancerProfileResource;
+import com.lance.view.rest.uuser.UserSkillResource;
 
 import java.io.IOException;
 
@@ -61,20 +61,20 @@ public class PageDirectServlet extends HttpServlet {
                 toPage(request, response, "/WEB-INF/search/Search.jsp", data);
 
             } else if ("/lance/pages/profile/Overview".equals(uri)) {
-                toPage(request, response, "/WEB-INF/profile/Overview.jsp",
-                       new LancerProfileResource().findSelfProfile4CurUser());
+//                toPage(request, response, "/WEB-INF/profile/Overview.jsp",
+//                       new LancerProfileResource().findSelfProfile4CurUser());
 
             } else if ("/lance/pages/profile/EditBasic".equals(uri)) {
-                toPage(request, response, "/WEB-INF/profile/EditBasic.jsp",
-                       new LancerProfileResource().getBasicProfile4CurUser());
+//                toPage(request, response, "/WEB-INF/profile/EditBasic.jsp",
+//                       new LancerProfileResource().getBasicProfile4CurUser());
 
             } else if ("/lance/pages/profile/EditContact".equals(uri)) {
-                toPage(request, response, "/WEB-INF/profile/EditContact.jsp",
-                       new LancerProfileResource().findContactInfo4CurUser());
+//                toPage(request, response, "/WEB-INF/profile/EditContact.jsp",
+//                       new LancerProfileResource().findContactInfo4CurUser());
 
             } else if ("/lance/pages/profile/EditSkill".equals(uri)) {
                 toPage(request, response, "/WEB-INF/profile/lc/EditContact.jsp",
-                       new LancerSkillResource().findLancerSkills4CurUser());
+                       new UserSkillResource().findLancerSkills4CurUser());
 
             }
 

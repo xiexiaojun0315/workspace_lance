@@ -1,10 +1,11 @@
 package com.lance.view.rest.job;
 
 import com.lance.model.LanceRestAMImpl;
+import com.lance.model.user.vo.UUserVOImpl;
 import com.lance.model.vo.LancerVOImpl;
 import com.lance.model.vvo.LancerSearchVVOImpl;
 import com.lance.model.vvo.PostJobsVVOImpl;
-import com.lance.view.rest.user.LancerLocationResource;
+import com.lance.view.rest.uuser.UserLocationListResource;
 import com.lance.view.util.LUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;
@@ -178,13 +179,12 @@ public class SearchResource extends BaseRestResource {
         System.out.println(vvo.getQuery());
         vvo.removeApplyViewCriteriaName("FindByKeywordVC");
         return this.packViewObject(vvo, null, null, ATTR_SEARCH_JOB);
-        //todo 分页返回
-        //        return this.convertVoToJsonArray(vvo, ATTR_SEARCH_JOB);
     }
 
     /**
      * 寻找Lancer
      * 模糊查询，开头匹配UserName（输入2个字符后开始查询）
+     * 
      * 返回UserName，（返回UserName同Uuid）
      * @param keyword
      * @return
@@ -197,14 +197,12 @@ public class SearchResource extends BaseRestResource {
             throw new RuntimeException("输入2个字符后开始查询");
         }
         LanceRestAMImpl am = LUtil.findLanceAM();
-        LancerVOImpl vo = am.getLancer1();
+        UUserVOImpl vo = am.getUUser1();
         vo.setApplyViewCriteriaName("FindByNameVC");
-        vo.setpName(keyword);
+        vo.setpUserName(keyword);
         vo.executeQuery();
         vo.removeApplyViewCriteriaName("FindByNameVC");
         return this.packViewObject(vo, null, null, ATTR_SEARCH_LANCER_NAME);
-        //todo 分页返回
-        //return this.convertVoToJsonArray(vo, ATTR_SEARCH_LANCER);
     }
 
 
@@ -334,12 +332,12 @@ public class SearchResource extends BaseRestResource {
         //处理位置信息
         JSONObject data = this.packViewObject(vo, null, null, ATTR_SEARCH_LANCER);
         JSONArray arr = data.getJSONArray("data");
-        LancerLocationResource loc = new LancerLocationResource();
+        UserLocationListResource loc = new UserLocationListResource();
         JSONObject json = null;
         for (int i = 0; i < arr.length(); i++) {
             json = arr.getJSONObject(i);
-            json.put("UserLocationA", loc.findLocationByIdFn(json.getString("UserLocationA"), am));
-            json.put("UserLocationB", loc.findLocationByIdFn(json.getString("UserLocationB"), am));
+            json.put("UserLocationA", loc.findLocationFn(json.getString("UserLocationA"), am));
+            json.put("UserLocationB", loc.findLocationFn(json.getString("UserLocationB"), am));
         }
 
         return data;
