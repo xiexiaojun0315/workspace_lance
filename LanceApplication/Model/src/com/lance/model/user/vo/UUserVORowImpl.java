@@ -66,6 +66,7 @@ public class UUserVORowImpl extends BaseViewRowImpl {
         LastLoginTime,
         CompanyName,
         CanBeSearch,
+        DefaultRole,
         UserSkill,
         UserEducation,
         UserWorkExpComment,
@@ -137,6 +138,7 @@ public class UUserVORowImpl extends BaseViewRowImpl {
     public static final int LASTLOGINTIME = AttributesEnum.LastLoginTime.index();
     public static final int COMPANYNAME = AttributesEnum.CompanyName.index();
     public static final int CANBESEARCH = AttributesEnum.CanBeSearch.index();
+    public static final int DEFAULTROLE = AttributesEnum.DefaultRole.index();
     public static final int USERSKILL = AttributesEnum.UserSkill.index();
     public static final int USEREDUCATION = AttributesEnum.UserEducation.index();
     public static final int USERWORKEXPCOMMENT = AttributesEnum.UserWorkExpComment.index();
@@ -767,6 +769,22 @@ public class UUserVORowImpl extends BaseViewRowImpl {
      */
     public void setCanBeSearch(BigDecimal value) {
         setAttributeInternal(CANBESEARCH, value);
+    }
+
+    /**
+     * Gets the attribute value for DEFAULT_ROLE using the alias name DefaultRole.
+     * @return the DEFAULT_ROLE
+     */
+    public String getDefaultRole() {
+        return (String) getAttributeInternal(DEFAULTROLE);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for DEFAULT_ROLE using the alias name DefaultRole.
+     * @param value value to set the DEFAULT_ROLE
+     */
+    public void setDefaultRole(String value) {
+        setAttributeInternal(DEFAULTROLE, value);
     }
 
     /**

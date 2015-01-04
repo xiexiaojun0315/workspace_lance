@@ -442,6 +442,18 @@
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
     TableName="U_USER"/>
+  <Attribute
+    Name="DefaultRole"
+    Precision="20"
+    ColumnName="DEFAULT_ROLE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="U_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="UserSkill"
     Association="com.lance.model.user.as.UserSkillUUserFk1AS"

@@ -302,6 +302,12 @@
     EntityUsage="UUserEO"
     AliasName="CAN_BE_SEARCH"
     DefaultValue="1"/>
+  <ViewAttribute
+    Name="DefaultRole"
+    PrecisionRule="true"
+    EntityAttrName="DefaultRole"
+    EntityUsage="UUserEO"
+    AliasName="DEFAULT_ROLE"/>
   <ViewCriteria
     Name="FindByUserNameVC"
     ViewObjectName="com.lance.model.user.vo.UUserVO"
