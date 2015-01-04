@@ -2,7 +2,10 @@ package com.lance.view.servlet;
 
 import com.lance.view.rest.job.SearchResource;
 //import com.lance.view.rest.user.LancerProfileResource;
+import com.lance.view.rest.uuser.UserResource;
 import com.lance.view.rest.uuser.UserSkillResource;
+
+import com.rsa.jcm.c.fa;
 
 import java.io.IOException;
 
@@ -51,10 +54,13 @@ public class PageDirectServlet extends HttpServlet {
                 response.sendRedirect("/lance/login.htm");
             }
 
-            if ("/lance/pages/ToMyHome".equals(uri)) {
+            if ("/lance/pages/MyHome".equals(uri)) {
                 //改变URL的跳转，无法携带Resquest
-                response.sendRedirect("/WEB-INF/home/MyHome");
-
+                ADFContext adfctx = ADFContext.getCurrent();
+                String user = adfctx.getSecurityContext().getUserPrincipal().getName();
+                JSONObject data = new UserResource().findUserById(user);
+                toPage(request, response, "/WEB-INF/home/UserHome.jsp", data);
+                
             } else if ("/lance/pages/DefaultPage".equals(uri)) {
                 JSONArray data=new JSONArray();
                 data.put(new SearchResource().getLatestPosted());

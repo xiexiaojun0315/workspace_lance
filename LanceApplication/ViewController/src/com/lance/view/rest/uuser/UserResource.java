@@ -7,6 +7,8 @@ import com.lance.model.user.vo.UserRoleGrantsVOImpl;
 import com.lance.model.user.vo.UserRoleGrantsVORowImpl;
 import com.lance.view.util.LUtil;
 
+import com.lance.view.util.RestSecurityUtil;
+
 import com.zngh.platform.front.core.view.BaseRestResource;
 
 import java.text.SimpleDateFormat;
@@ -71,6 +73,8 @@ import org.codehaus.jettison.json.JSONObject;
     Version,Precision:0,JavaType:java.math.BigDecimal
     LastLoginTime,Precision:0,JavaType:oracle.jbo.domain.Date
     CompanyName,Precision:255,JavaType:java.lang.String
+    CanBeSearch,Precision:0,JavaType:java.math.BigDecimal  是否可被搜索到（隐私）
+    DefaultRole,Precision:20,JavaType:java.lang.String    默认角色（用于跳转到相应主页）
  */
 @Path("user")
 public class UserResource extends BaseRestResource {
@@ -96,7 +100,7 @@ public class UserResource extends BaseRestResource {
         "Attach", "JobTitle", "Video", "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB", "ImTypeB",
         "ImNumberC", "ImTypeC", "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview",
         "ServiceDescription", "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "CreateBy", "CreateOn",
-        "ModifyBy", "ModifyOn", "Version", "LastLoginTime", "CompanyName"
+        "ModifyBy", "ModifyOn", "Version", "LastLoginTime", "CompanyName" ,"CanBeSearch","DefaultRole"
     };
 
 
@@ -109,22 +113,22 @@ public class UserResource extends BaseRestResource {
         "UserName", "TrueName", "DisplayName", "Email", "Password", "Img", "Country", "CompanyId", "PhoneNumber",
         "Attach", "JobTitle", "Video", "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB", "ImTypeB",
         "ImNumberC", "ImTypeC", "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview",
-        "ServiceDescription", "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "CompanyName"
+        "ServiceDescription", "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "CompanyName","CanBeSearch","DefaultRole"
     };
 
     public static final String[] ATTR_UPDATE = {
         "DisplayName", "Email", "Password", "Img", "Country", "CompanyId", "PhoneNumber", "Attach", "JobTitle", "Video",
         "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB", "ImTypeB", "ImNumberC", "ImTypeC",
         "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview", "ServiceDescription",
-        "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "LastLoginTime", "CompanyName"
+        "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "LastLoginTime", "CompanyName","CanBeSearch","DefaultRole"
     };
 
     public static final String[] ATTR_GET = {
-        "UserName", "TrueName", "DisplayName", "Email", "Password", "Img", "Country", "CompanyId", "PhoneNumber",
+        "UserName", "TrueName", "DisplayName", "Email", "Img", "Country", "CompanyId", "PhoneNumber",
         "Attach", "JobTitle", "Video", "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB", "ImTypeB",
         "ImNumberC", "ImTypeC", "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview",
         "ServiceDescription", "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "CreateBy", "CreateOn",
-        "ModifyBy", "ModifyOn", "Version", "LastLoginTime", "CompanyName"
+        "ModifyBy", "ModifyOn", "Version", "LastLoginTime", "CompanyName","CanBeSearch","DefaultRole"
     };
 
     public static final String[] ATTR_GET_A = {
@@ -189,6 +193,7 @@ public class UserResource extends BaseRestResource {
             //DefaultRole只允许设置基础角色
             grantsRow.setRoleName(json.getString("DefaultRole"));
             grantsVo.insertRow(grantsRow);
+            row.setAttribute("DefaultRole", json.getString("DefaultRole"));
         }
 
         am.getDBTransaction().commit();
@@ -289,9 +294,12 @@ public class UserResource extends BaseRestResource {
         ViewObjectImpl vo = am.getUUser1();
         UUserVORowImpl row = LUtil.getUUserByName(userName, am);
         if (row == null) {
-            return "error:找不到用户:" + userName;
+            return "msg:找不到用户:" + userName;
         }
-
+        
+        if(!RestSecurityUtil.isOwner(row)){
+            return "msg:没有足够的权限修改此用户";
+        }
         copyJsonObjectToRow(json, vo, row, ATTR_UPDATE);
         am.getDBTransaction().commit();
         return "ok";

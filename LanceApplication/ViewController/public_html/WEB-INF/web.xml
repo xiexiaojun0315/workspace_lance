@@ -246,7 +246,7 @@
     <listener-class>com.zngh.platform.front.core.view.servlet.FrontCoreListener</listener-class>
   </listener>
   <welcome-file-list>
-    <welcome-file>/pages/ToMyHome</welcome-file>
+    <welcome-file>/pages/MyHome</welcome-file>
   </welcome-file-list>
   <login-config>
     <auth-method>FORM</auth-method>

@@ -9,6 +9,6 @@
         </script>
     </head>
     <body>
-    ClientHome
+    UserHome
     </body>
 </html>
