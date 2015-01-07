@@ -6,15 +6,15 @@
   Name="UUserVO"
   Version="12.1.3.10.8"
   InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="com.lance.model.user.vo.UUserVORowImpl"
+  ComponentClass="com.lance.model.user.vo.UUserVOImpl"
+  PageIterMode="Full"
   SelectListFlags="1"
   FromListFlags="1"
   WhereFlags="1"
-  BindingStyle="OracleName"
-  CustomQuery="false"
-  SelectAllAttributes="false"
-  RowClass="com.lance.model.user.vo.UUserVORowImpl"
-  ComponentClass="com.lance.model.user.vo.UUserVOImpl"
-  PageIterMode="Full">
+  SelectAllAttributes="false">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>

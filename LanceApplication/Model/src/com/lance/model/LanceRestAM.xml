@@ -116,6 +116,9 @@
     <ViewUsage
         Name="LookupsV1"
         ViewObjectName="com.lance.model.vvo.LookupsVVO"/>
+    <ViewUsage
+        Name="UserSearchV1"
+        ViewObjectName="com.lance.model.vvo.UserSearchVVO"/>
     <ViewLinkUsage
       Name="LancerResume_SkillVL1"
       ViewLinkObjectName="com.lance.model.vl.LancerResume_SkillVL"

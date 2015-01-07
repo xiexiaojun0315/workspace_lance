@@ -30,6 +30,8 @@ import com.lance.model.vvo.LocationCountryVVOImpl;
 import com.lance.model.vvo.LookupsVVOImpl;
 import com.lance.model.vvo.PostJobsVVOImpl;
 
+import com.lance.model.vvo.UserSearchVVOImpl;
+
 import com.zngh.platform.front.core.model.BaseApplicationModuleImpl;
 
 
@@ -422,5 +424,12 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
         return (LookupsVVOImpl) findViewObject("LookupsV1");
     }
 
+    /**
+     * Container's getter for UserSearchV1.
+     * @return UserSearchV1
+     */
+    public UserSearchVVOImpl getUserSearchV1() {
+        return (UserSearchVVOImpl) findViewObject("UserSearchV1");
+    }
 }
 
