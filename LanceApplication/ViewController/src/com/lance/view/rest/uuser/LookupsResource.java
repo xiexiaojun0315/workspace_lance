@@ -58,13 +58,12 @@ public class LookupsResource extends BaseRestResource {
     public ViewObjectImpl getLookupsFromAM(LanceRestAMImpl am) {
         return am.getLookupsV1();
     }
-
-    public Row findLookupsByType(String type, ViewObjectImpl vo, LanceRestAMImpl am) {
+    
+    public void findLookupsByType(String type, ViewObjectImpl vo, LanceRestAMImpl am) {
         vo.setApplyViewCriteriaName("FindByTypeVC");
         vo.ensureVariableManager().setVariableValue("pType", type);
         vo.executeQuery();
         vo.removeApplyViewCriteriaName("FindByTypeVC");
-        return null;
     }
 
     public String returnParamAfterCreate(Row row) {

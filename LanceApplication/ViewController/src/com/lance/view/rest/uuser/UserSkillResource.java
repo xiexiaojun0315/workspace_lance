@@ -2,12 +2,9 @@ package com.lance.view.rest.uuser;
 
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.user.vo.UserSkillVOImpl;
-import com.lance.view.rest.user.LancerResumeResource;
-import com.lance.view.util.LUtil;
-
 import com.zngh.platform.front.core.view.BaseRestResource;
 import com.zngh.platform.front.core.view.RestUtil;
-
+import com.lance.view.util.LUtil;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -193,7 +190,6 @@ public class UserSkillResource extends BaseRestResource {
 
 
     public JSONArray findUserSkillsFn(String userName, LanceRestAMImpl am) throws JSONException {
-        new LancerResumeResource().findLancerResumeByLancerIdFn(userName, am);
         LUtil.getUUserByName(userName, am);
 
         UserSkillVOImpl vo = am.getUserSkill1();

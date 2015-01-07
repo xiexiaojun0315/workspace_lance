@@ -74,7 +74,7 @@ import org.codehaus.jettison.json.JSONObject;
     LastLoginTime,Precision:0,JavaType:oracle.jbo.domain.Date
     CompanyName,Precision:255,JavaType:java.lang.String
     CanBeSearch,Precision:0,JavaType:java.math.BigDecimal  是否可被搜索到（隐私）
-    DefaultRole,Precision:20,JavaType:java.lang.String    默认角色（用于跳转到相应主页）
+    DefaultRole,Precision:20,JavaType:java.lang.String    默认角色（用于跳转到相应主页）  client,lancer,contract
  */
 @Path("user")
 public class UserResource extends BaseRestResource {

@@ -2,7 +2,6 @@ package com.lance.view.rest.uuser;
 
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.user.vo.UserEducationVOImpl;
-import com.lance.view.rest.user.LancerResumeResource;
 import com.lance.view.util.LUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;

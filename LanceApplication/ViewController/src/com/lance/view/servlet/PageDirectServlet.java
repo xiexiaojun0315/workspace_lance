@@ -2,6 +2,9 @@ package com.lance.view.servlet;
 
 import com.lance.view.rest.job.SearchResource;
 //import com.lance.view.rest.user.LancerProfileResource;
+import com.lance.view.rest.uuser.LookupsResource;
+import com.lance.view.rest.uuser.UserEducationResource;
+import com.lance.view.rest.uuser.UserLocationListResource;
 import com.lance.view.rest.uuser.UserResource;
 import com.lance.view.rest.uuser.UserSkillResource;
 
@@ -56,9 +59,23 @@ public class PageDirectServlet extends HttpServlet {
 
             if ("/lance/pages/MyHome".equals(uri)) {
                 //改变URL的跳转，无法携带Resquest
+                JSONObject data=new JSONObject();
+                //获取当前用户详细信息
                 ADFContext adfctx = ADFContext.getCurrent();
                 String user = adfctx.getSecurityContext().getUserPrincipal().getName();
-                JSONObject data = new UserResource().findUserById(user);
+                JSONObject userData = new UserResource().findUserById(user);
+                data.put("User", userData);
+                //获取当前用户Education
+                data.getJSONObject("User").put("Education", new UserEducationResource().findAllUserEducation(user));
+                //获取当前用户Skill
+                data.getJSONObject("User").put("Skill", new UserSkillResource().findAllUserSkills(user));
+                //获取当前用户LocationList
+                data.getJSONObject("User").put("LocationList", new UserLocationListResource().findAllLocation(user));
+                //获取值集——公司性质
+                data.put("Lookup_CompanyPorperty", new LookupsResource().getLookupsByType("CompanyProperty"));
+                //获取值集——公司规模
+                data.put("Lookup_CompNumGrade", new LookupsResource().getLookupsByType("CompNumGrade"));
+                
                 toPage(request, response, "/WEB-INF/home/UserHome.jsp", data);
                 
             } else if ("/lance/pages/DefaultPage".equals(uri)) {

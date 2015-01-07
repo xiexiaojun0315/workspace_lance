@@ -5,6 +5,7 @@ import com.lance.model.user.vo.UUserVOImpl;
 import com.lance.model.vo.LancerVOImpl;
 import com.lance.model.vvo.LancerSearchVVOImpl;
 import com.lance.model.vvo.PostJobsVVOImpl;
+import com.lance.model.vvo.UserSearchVVOImpl;
 import com.lance.view.rest.uuser.UserLocationListResource;
 import com.lance.view.util.LUtil;
 
@@ -207,8 +208,8 @@ public class SearchResource extends BaseRestResource {
 
 
     /**
-     * 根据Overview，Tagline，Keyword查询Lancer
-     * 适用于Client根据技术查找Lancer
+     * 根据Overview，Tagline，Keyword查询UUser
+     * 适用于Client根据技术查找UUser
      *
      * GET http://localhost:7101/lance/res/search/lancer/searchLancer4Job/{keyword}
      * start:1和start=0时都从第一条开始返回
@@ -315,11 +316,11 @@ public class SearchResource extends BaseRestResource {
             throw new RuntimeException("输入2个字符后开始查询");
         }
         LanceRestAMImpl am = LUtil.findLanceAM();
-        LancerSearchVVOImpl vo = am.getLancerSearchV1();
+        UserSearchVVOImpl vo = am.getUserSearchV1();
         keyword = keyword.trim().replaceAll(",", " ").replaceAll("，", " ");
 
         //查询算法
-        StringBuilder sb = new StringBuilder(" 1=1 ");
+        StringBuilder sb = new StringBuilder(" ROLE_NAME = 'lancer' ");
         String[] sps = keyword.split(" "); //根据空格分隔
         for (String sp : sps) {
             sb.append(" AND upper(INDEX_FIELD) like '%" + sp.toUpperCase() + "%'");
@@ -331,14 +332,14 @@ public class SearchResource extends BaseRestResource {
 
         //处理位置信息
         JSONObject data = this.packViewObject(vo, null, null, ATTR_SEARCH_LANCER);
-        JSONArray arr = data.getJSONArray("data");
-        UserLocationListResource loc = new UserLocationListResource();
-        JSONObject json = null;
-        for (int i = 0; i < arr.length(); i++) {
-            json = arr.getJSONObject(i);
-            json.put("UserLocationA", loc.findLocationFn(json.getString("UserLocationA"), am));
-            json.put("UserLocationB", loc.findLocationFn(json.getString("UserLocationB"), am));
-        }
+//        JSONArray arr = data.getJSONArray("data");
+//        UserLocationListResource loc = new UserLocationListResource();
+//        JSONObject json = null;
+//        for (int i = 0; i < arr.length(); i++) {
+//            json = arr.getJSONObject(i);
+//            json.put("UserLocationA", loc.findLocationFn(json.getString("UserLocationA"), am));
+//            json.put("UserLocationB", loc.findLocationFn(json.getString("UserLocationB"), am));
+//        }
 
         return data;
     }

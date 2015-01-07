@@ -11,7 +11,6 @@ import com.lance.model.vo.LocationProvinceVOImpl;
 import com.lance.model.vo.LocationProvinceVORowImpl;
 import com.lance.model.vvo.LocationCountryVVOImpl;
 import com.lance.model.vvo.LocationCountryVVORowImpl;
-import com.lance.view.rest.user.ClientResource;
 //import com.lance.view.rest.user.LancerResource;
 
 import com.zngh.platform.front.core.view.RestUtil;
@@ -149,6 +148,7 @@ public class LUtil {
     }
 
     /**
+     * todo remove
      * 根据UserId获取UserDisplayName
      * @param userId 同uuid，userName
      * @param type 用户类型：CLIENT,LANCER
@@ -158,7 +158,7 @@ public class LUtil {
      */
     public static String findUserDisplayNameById(String userId, String type, LanceRestAMImpl am) throws JSONException {
         if (USER_TYPE_CLIENT.equals(type)) {
-            return ClientResource.findClientByIdFn(userId, am).getString("DisplayName");
+//            return ClientResource.findClientByIdFn(userId, am).getString("DisplayName");
         } else if (USER_TYPE_LANCER.equals(type)) {
 //            return LancerResource.findLancerByIdFn(userId, am).getString("DisplayName");
             return null;
