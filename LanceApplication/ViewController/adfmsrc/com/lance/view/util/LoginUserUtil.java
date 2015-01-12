@@ -32,39 +32,38 @@ public class LoginUserUtil {
         return null;
     }
 
-    @SuppressWarnings("unchecked")
-    public void initUserInfoMap() {
-        LanceRestAMImpl am = LUtil.findLanceAM();
-        Map roleGrants = initRoleGrantsMap(am);
-
-        LoginUserVOImpl vo = am.getLoginUser1();
-        RowSetIterator it = vo.createRowSetIterator(null);
-        LoginUserVORowImpl row;
-        LoginUser loginUser;
-        while (it.hasNext()) {
-            row = (LoginUserVORowImpl) it.next();
-            loginUser = new LoginUser();
-            loginUser.displayName = row.getDisplayName();
-            loginUser.userName = row.getUserName();
-            
-            USER_INFO_MAP.put(row.getUserName(), loginUser);
-        }
-        it.closeRowSetIterator();
-    }
-
-    @SuppressWarnings("unchecked")
-    public Map initRoleGrantsMap(LanceRestAMImpl am) {
-        Map roleGrants = new HashMap();
-        LoginUserRoleGrantsVOImpl vo = am.getLoginUserRoleGrants1();
-        LoginUserRoleGrantsVORowImpl row;
-        RowSetIterator it = vo.createRowSetIterator(null);
-        while (it.hasNext()) {
-            row = (LoginUserRoleGrantsVORowImpl) it.next();
-            roleGrants.put(row.getUserName(), row.getRoleName());
-        }
-        it.closeRowSetIterator();
-        return roleGrants;
-    }
+//    @SuppressWarnings("unchecked")
+//    public void initUserInfoMap() {
+//        LanceRestAMImpl am = LUtil.findLanceAM();
+//        Map roleGrants = initRoleGrantsMap(am);
+//
+//        LoginUserVOImpl vo = am.getLoginUser1();
+//        RowSetIterator it = vo.createRowSetIterator(null);
+//        LoginUserVORowImpl row;
+//        LoginUser loginUser;
+//        while (it.hasNext()) {
+//            row = (LoginUserVORowImpl) it.next();
+//            loginUser = new LoginUser();
+//            loginUser.displayName = row.getDisplayName();
+//            loginUser.userName = row.getUserName();
+//            
+//            USER_INFO_MAP.put(row.getUserName(), loginUser);
+//        }
+//        it.closeRowSetIterator();
+//    }
+//    @SuppressWarnings("unchecked")
+//    public Map initRoleGrantsMap(LanceRestAMImpl am) {
+//        Map roleGrants = new HashMap();
+//        LoginUserRoleGrantsVOImpl vo = am.getLoginUserRoleGrants1();
+//        LoginUserRoleGrantsVORowImpl row;
+//        RowSetIterator it = vo.createRowSetIterator(null);
+//        while (it.hasNext()) {
+//            row = (LoginUserRoleGrantsVORowImpl) it.next();
+//            roleGrants.put(row.getUserName(), row.getRoleName());
+//        }
+//        it.closeRowSetIterator();
+//        return roleGrants;
+//    }
 
 
     public class LoginUser {

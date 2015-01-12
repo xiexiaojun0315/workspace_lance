@@ -4,7 +4,7 @@
 <AppModule
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LanceRestAM"
-  Version="12.1.3.10.8"
+    Version="12.1.3.2.36"
   InheritPersonalization="merge"
   ComponentClass="com.lance.model.LanceRestAMImpl"
   ClearCacheOnRollback="true">
@@ -18,14 +18,8 @@
         </SchemaBasedProperties>
     </Properties>
     <ViewUsage
-      Name="Lancer1"
-      ViewObjectName="com.lance.model.vo.LancerVO"/>
-    <ViewUsage
       Name="ClientUser1"
       ViewObjectName="com.lance.model.vo.ClientUserVO"/>
-    <ViewUsage
-      Name="LoginUser1"
-      ViewObjectName="com.lance.model.vo.LoginUserVO"/>
     <ViewUsage
       Name="Company1"
       ViewObjectName="com.lance.model.vo.CompanyVO"/>
@@ -35,21 +29,6 @@
     <ViewUsage
       Name="SpreadHeardFrom1"
       ViewObjectName="com.lance.model.vo.SpreadHeardFromVO"/>
-    <ViewUsage
-      Name="LancerResume1"
-      ViewObjectName="com.lance.model.vo.LancerResumeVO"/>
-    <ViewUsage
-      Name="LancerSkill1"
-      ViewObjectName="com.lance.model.vo.LancerSkillVO"/>
-    <ViewUsage
-      Name="LancerEducation1"
-      ViewObjectName="com.lance.model.vo.LancerEducationVO"/>
-    <ViewUsage
-      Name="LancerLocationList1"
-      ViewObjectName="com.lance.model.vo.LancerLocationListVO"/>
-    <ViewUsage
-      Name="LancerSetting1"
-      ViewObjectName="com.lance.model.vo.LancerSettingVO"/>
     <ViewUsage
       Name="JobCategory1"
       ViewObjectName="com.lance.model.vo.JobCategoryVO"/>
@@ -74,18 +53,6 @@
     <ViewUsage
       Name="PostJobsV1"
       ViewObjectName="com.lance.model.vvo.PostJobsVVO"/>
-    <ViewUsage
-        Name="LoginUserRole1"
-        ViewObjectName="com.lance.model.vo.LoginUserRoleVO"/>
-    <ViewUsage
-        Name="LoginUserRoleGrants1"
-        ViewObjectName="com.lance.model.vo.LoginUserRoleGrantsVO"/>
-    <ViewUsage
-        Name="LancerSearchV1"
-        ViewObjectName="com.lance.model.vvo.LancerSearchVVO"/>
-    <ViewUsage
-        Name="LancerLocationList2"
-        ViewObjectName="com.lance.model.vo.LancerLocationListVO"/>
     <ViewUsage
         Name="LocationCity2"
         ViewObjectName="com.lance.model.vo.LocationCityVO"/>
@@ -119,30 +86,6 @@
     <ViewUsage
         Name="UserSearchV1"
         ViewObjectName="com.lance.model.vvo.UserSearchVVO"/>
-    <ViewLinkUsage
-      Name="LancerResume_SkillVL1"
-      ViewLinkObjectName="com.lance.model.vl.LancerResume_SkillVL"
-      SrcViewUsageName="com.lance.model.LanceRestAM.LancerResume1"
-      DstViewUsageName="com.lance.model.LanceRestAM.LancerSkill1"
-      Reversed="false"/>
-    <ViewLinkUsage
-      Name="LancerResume_EducationVL1"
-      ViewLinkObjectName="com.lance.model.vl.LancerResume_EducationVL"
-      SrcViewUsageName="com.lance.model.LanceRestAM.LancerResume1"
-      DstViewUsageName="com.lance.model.LanceRestAM.LancerEducation1"
-      Reversed="false"/>
-    <ViewLinkUsage
-      Name="Lancer_LocationListVL1"
-      ViewLinkObjectName="com.lance.model.vl.Lancer_LocationListVL"
-      SrcViewUsageName="com.lance.model.LanceRestAM.Lancer1"
-      DstViewUsageName="com.lance.model.LanceRestAM.LancerLocationList1"
-      Reversed="false"/>
-    <ViewLinkUsage
-      Name="Lancer_LancerSettingVL1"
-      ViewLinkObjectName="com.lance.model.vl.Lancer_LancerSettingVL"
-      SrcViewUsageName="com.lance.model.LanceRestAM.Lancer1"
-      DstViewUsageName="com.lance.model.LanceRestAM.LancerSetting1"
-      Reversed="false"/>
     <ViewLinkUsage
       Name="JobCategory_SubCategoryVL1"
       ViewLinkObjectName="com.lance.model.vl.JobCategory_SubCategoryVL"

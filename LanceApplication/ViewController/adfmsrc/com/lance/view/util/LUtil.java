@@ -89,24 +89,24 @@ public class LUtil {
     }
 
     //to delete
-    public static LancerVORowImpl findLancerById(String lancerId, LanceRestAMImpl am) {
-        LancerVOImpl lancerVO = am.getLancer1();
-        //存在性判断
-        LancerVORowImpl row = (LancerVORowImpl) lancerVO.getCurrentRow();
-        if (row != null && row.getUuid().equals(lancerId)) {
-            return row;
-        }
-
-        lancerVO.setApplyViewCriteriaName("FindByUuidVC");
-        lancerVO.setpUuid(lancerId);
-        lancerVO.executeQuery();
-        lancerVO.setApplyViewCriteriaName(null);
-        row = (LancerVORowImpl) lancerVO.first();
-        if (row != null) {
-            lancerVO.setCurrentRow(row);
-        }
-        return row;
-    }
+//    public static LancerVORowImpl findLancerById(String lancerId, LanceRestAMImpl am) {
+//        LancerVOImpl lancerVO = am.getLancer1();
+//        //存在性判断
+//        LancerVORowImpl row = (LancerVORowImpl) lancerVO.getCurrentRow();
+//        if (row != null && row.getUuid().equals(lancerId)) {
+//            return row;
+//        }
+//
+//        lancerVO.setApplyViewCriteriaName("FindByUuidVC");
+//        lancerVO.setpUuid(lancerId);
+//        lancerVO.executeQuery();
+//        lancerVO.setApplyViewCriteriaName(null);
+//        row = (LancerVORowImpl) lancerVO.first();
+//        if (row != null) {
+//            lancerVO.setCurrentRow(row);
+//        }
+//        return row;
+//    }
 
     /**
      * 确保userName对应的User为CurrentRow

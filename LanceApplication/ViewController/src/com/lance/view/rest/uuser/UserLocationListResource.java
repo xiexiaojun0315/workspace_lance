@@ -216,12 +216,12 @@ public class UserLocationListResource extends BaseRestResource {
     }
 
     //to delete
-    public JSONObject findLocationFn(String locationId, LanceRestAMImpl am) throws JSONException {
-        LancerLocationListVOImpl vo = am.getLancerLocationList2();
-        LancerLocationListVORowImpl row = (LancerLocationListVORowImpl) vo.findByKey(new Key(new Object[] {
-                                                                                             locationId }), 1)[0];
-        return convertLocationName(this.convertRowToJsonObject(row, this.ATTR_GET_SIMPLE));
-    }
+//    public JSONObject findLocationFn(String locationId, LanceRestAMImpl am) throws JSONException {
+//        LancerLocationListVOImpl vo = am.getLancerLocationList2();
+//        LancerLocationListVORowImpl row = (LancerLocationListVORowImpl) vo.findByKey(new Key(new Object[] {
+//                                                                                             locationId }), 1)[0];
+//        return convertLocationName(this.convertRowToJsonObject(row, this.ATTR_GET_SIMPLE));
+//    }
 
     //to delete
     public JSONObject convertLocationName(JSONObject locJson) throws JSONException {

@@ -145,9 +145,6 @@ public class SearchResource extends BaseRestResource {
         vvo.removeApplyViewCriteriaName("FindLatestPostedVC");
         JSONObject data = this.packViewObject(vvo, null, null, ATTR_SEARCH_JOB);
         return data;
-
-        //todo 分页返回ATTR_SEARCH_JOB
-        //        return this.convertVoToJsonArray(vvo, ATTR_SEARCH_JOB);
     }
 
     /**
@@ -208,16 +205,21 @@ public class SearchResource extends BaseRestResource {
 
 
     /**
-     * 根据Overview，Tagline，Keyword查询UUser
+     * 根据Overview，Tagline，Keyword,skill查询UUser
      * 适用于Client根据技术查找UUser
      *
-     * GET http://localhost:7101/lance/res/search/lancer/searchLancer4Job/{keyword}
+     * GET http://localhost:7101/lance/res/search/lancer4Job/{keyword}
      * start:1和start=0时都从第一条开始返回
      * limit=5&start=1 不传此参数时，默认返回1~25条
-     *
+     * 
+     * 优先级：svip>vip>普通
+     * keyword>Tagline>skill>Overview
+     * 识别地理位置
+     * 
+     * 
      * 例子：
      * 查询 Test overview
-     * GET http://localhost:7101/lance/res/search/lancer/searchLancer4Job/Test%20overview
+     * GET http://localhost:7101/lance/res/search/lancer4Job/Test%20overview
      *
      {
          "count" : 4,
@@ -310,7 +312,7 @@ public class SearchResource extends BaseRestResource {
      * @throws JSONException
      */
     @GET
-    @Path("lancer/searchLancer4Job/{keyword}")
+    @Path("/lancer4Job/{keyword}")
     public JSONObject searchLancer4Job(@PathParam("keyword") String keyword) throws JSONException {
         if (StringUtils.isBlank(keyword) || keyword.length() < 2) {
             throw new RuntimeException("输入2个字符后开始查询");
