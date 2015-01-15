@@ -5,9 +5,6 @@ import com.lance.model.user.vo.UserEducationVOImpl;
 import com.lance.model.user.vo.UserLocationListVOImpl;
 import com.lance.model.user.vo.UserRoleGrantsVOImpl;
 import com.lance.model.user.vo.UserSkillVOImpl;
-import com.lance.model.user.vo.UserWorkExpCommentVOImpl;
-import com.lance.model.user.vo.UserWorkExpVOImpl;
-import com.lance.model.vo.ClientUserVOImpl;
 import com.lance.model.vo.CompanyVOImpl;
 import com.lance.model.vo.JobTemplateVOImpl;
 import com.lance.model.vo.LocationCityVOImpl;
@@ -43,15 +40,6 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      * This is the default constructor (do not remove).
      */
     public LanceRestAMImpl() {
-    }
-
-
-    /**
-     * Container's getter for ClientUser1.
-     * @return ClientUser1
-     */
-    public ClientUserVOImpl getClientUser1() {
-        return (ClientUserVOImpl) findViewObject("ClientUser1");
     }
 
 
@@ -249,38 +237,6 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      */
     public ViewLinkImpl getUserSkillUUserFk1VL1() {
         return (ViewLinkImpl) findViewLink("UserSkillUUserFk1VL1");
-    }
-
-    /**
-     * Container's getter for UserWorkExpComment1.
-     * @return UserWorkExpComment1
-     */
-    public UserWorkExpCommentVOImpl getUserWorkExpComment1() {
-        return (UserWorkExpCommentVOImpl) findViewObject("UserWorkExpComment1");
-    }
-
-    /**
-     * Container's getter for UserWorkExpCommentFk1VL1.
-     * @return UserWorkExpCommentFk1VL1
-     */
-    public ViewLinkImpl getUserWorkExpCommentFk1VL1() {
-        return (ViewLinkImpl) findViewLink("UserWorkExpCommentFk1VL1");
-    }
-
-    /**
-     * Container's getter for UserWorkExp1.
-     * @return UserWorkExp1
-     */
-    public UserWorkExpVOImpl getUserWorkExp1() {
-        return (UserWorkExpVOImpl) findViewObject("UserWorkExp1");
-    }
-
-    /**
-     * Container's getter for UserWorkExpUUserFk1VL1.
-     * @return UserWorkExpUUserFk1VL1
-     */
-    public ViewLinkImpl getUserWorkExpUUserFk1VL1() {
-        return (ViewLinkImpl) findViewLink("UserWorkExpUUserFk1VL1");
     }
 
 

@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="UserSkillVO"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   InheritPersonalization="merge"
   SelectListFlags="1"
   FromListFlags="1"
@@ -46,7 +46,9 @@
     PrecisionRule="true"
     EntityAttrName="Tested"
     EntityUsage="UserSkillEO"
-    AliasName="TESTED"/>
+    AliasName="TESTED"
+    IsQueriable="false"
+    IsPersistent="false"/>
   <ViewAttribute
     Name="Display"
     PrecisionRule="true"

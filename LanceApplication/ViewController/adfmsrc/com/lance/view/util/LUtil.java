@@ -3,8 +3,6 @@ package com.lance.view.util;
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.user.vo.UUserVOImpl;
 import com.lance.model.user.vo.UUserVORowImpl;
-import com.lance.model.vo.LancerVOImpl;
-import com.lance.model.vo.LancerVORowImpl;
 import com.lance.model.vo.LocationCityVOImpl;
 import com.lance.model.vo.LocationCityVORowImpl;
 import com.lance.model.vo.LocationProvinceVOImpl;

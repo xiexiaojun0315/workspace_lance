@@ -4,7 +4,7 @@
 <Entity
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="CompanyEO"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   InheritPersonalization="merge"
   DBObjectType="table"
   DBObjectName="COMPANY"
@@ -32,7 +32,7 @@
   </Attribute>
   <Attribute
     Name="Name"
-    Precision="100"
+    Precision="300"
     ColumnName="NAME"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -70,7 +70,7 @@
     TableName="COMPANY"/>
   <Attribute
     Name="AboutCompany"
-    Precision="20"
+    Precision="2100"
     ColumnName="ABOUT_COMPANY"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -82,7 +82,7 @@
   </Attribute>
   <Attribute
     Name="ServiceDesc"
-    Precision="20"
+    Precision="2100"
     ColumnName="SERVICE_DESC"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -95,18 +95,19 @@
   <Attribute
     Name="Location"
     Precision="32"
-    ColumnName="LOCATION"
+    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
     SQLType="VARCHAR"
     Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="COMPANY">
+    ColumnType="$none$"
+    IsQueriable="false"
+    IsPersistent="false">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="32"/>
     </DesignTime>
   </Attribute>
   <Attribute
     Name="Video"
-    Precision="200"
+    Precision="600"
     ColumnName="VIDEO"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -118,7 +119,7 @@
   </Attribute>
   <Attribute
     Name="Logo"
-    Precision="200"
+    Precision="600"
     ColumnName="LOGO"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -130,7 +131,7 @@
   </Attribute>
   <Attribute
     Name="CreateBy"
-    Precision="32"
+    Precision="60"
     ColumnName="CREATE_BY"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -153,7 +154,7 @@
     HistoryColumn="DateHistory"/>
   <Attribute
     Name="ModifyBy"
-    Precision="32"
+    Precision="60"
     ColumnName="MODIFY_BY"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -180,6 +181,54 @@
     ColumnType="NUMBER"
     TableName="COMPANY"
     HistoryColumn="VersionHistory"/>
+  <Attribute
+    Name="LocationCountry"
+    Precision="32"
+    ColumnName="LOCATION_COUNTRY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="COMPANY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationProvince"
+    Precision="32"
+    ColumnName="LOCATION_PROVINCE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="COMPANY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationCity"
+    Precision="32"
+    ColumnName="LOCATION_CITY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="COMPANY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationDesc"
+    Precision="1200"
+    ColumnName="LOCATION_DESC"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="COMPANY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="1200"/>
+    </DesignTime>
+  </Attribute>
   <Key
     Name="ClientCompanyPk"
     PrimaryKey="true">

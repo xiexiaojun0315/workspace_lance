@@ -2,11 +2,8 @@ package com.lance.view.rest.job;
 
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.user.vo.UUserVOImpl;
-import com.lance.model.vo.LancerVOImpl;
-import com.lance.model.vvo.LancerSearchVVOImpl;
 import com.lance.model.vvo.PostJobsVVOImpl;
 import com.lance.model.vvo.UserSearchVVOImpl;
-import com.lance.view.rest.uuser.UserLocationListResource;
 import com.lance.view.util.LUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;
@@ -17,7 +14,6 @@ import javax.ws.rs.PathParam;
 
 import org.apache.commons.lang.StringUtils;
 
-import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -59,7 +55,7 @@ public class SearchResource extends BaseRestResource {
         "UserCountry", "UserDisplayName", "UserImg", "UserLocationA", "UserLocationB"
     };
 
-    public static final String[] ATTR_SEARCH_LANCER_NAME = { "Uuid","DisplayName" };
+    public static final String[] ATTR_SEARCH_LANCER_NAME = { "Uuid", "DisplayName" };
 
     public SearchResource() {
     }
@@ -152,7 +148,7 @@ public class SearchResource extends BaseRestResource {
      * 关键词：工作名，简介，技能
      * 附加条件：JobVisiable：1 可见，Status：2 已发布
      * http://localhost:7101/lance/res/search/postJob/searchJob/{keyword}
-     *
+     * 
      * http://localhost:7101/lance/res/search/postJob/searchJob/说明
      * http://localhost:7101/lance/res/search/postJob/searchJob/XML
      *
@@ -182,7 +178,7 @@ public class SearchResource extends BaseRestResource {
     /**
      * 寻找Lancer
      * 模糊查询，开头匹配UserName（输入2个字符后开始查询）
-     * 
+     *
      * 返回UserName，（返回UserName同Uuid）
      * @param keyword
      * @return
@@ -205,22 +201,41 @@ public class SearchResource extends BaseRestResource {
 
 
     /**
+     * 2015年1月13日更新
+     * 待实现
+     * 
      * 根据Overview，Tagline，Keyword,skill查询UUser
      * 适用于Client根据技术查找UUser
      *
-     * GET http://localhost:7101/lance/res/search/lancer4Job/{keyword}
+     * 模糊查询（关键字查询）
+     * GET http://localhost:7101/lance/res/search/userByKeyword/{userType}/{keyword}?category={category}
      * start:1和start=0时都从第一条开始返回
      * limit=5&start=1 不传此参数时，默认返回1~25条
+     * 
+     * userType:lancer/contract/client列出对应类型的人员,如果为空则列出所有类型人员
+     * keyword：关键词，支持空格逗号分隔
+     * 
+     * 其它查询条件（用问号表达式方式）
+     * category:工作大类，例10183 （IT & Programming）
+     * country：国家ID
+     * province:省ID
+     * city:城市ID
+     * skill:技能，多个用空格分隔
+     * HourlyRateMin：最小时薪
+     * HourlyRateMax：最大时薪
      * 
      * 优先级：svip>vip>普通
      * keyword>Tagline>skill>Overview
      * 识别地理位置
-     * 
+     *  
+     * 示例URL  GET http://localhost:7101/lance/res/search/userByKeyword/lancer/Test%20overview?city=1&category=10183&skill=xml%20html
+     * %20是空格
      * 
      * 例子：
      * 查询 Test overview
-     * GET http://localhost:7101/lance/res/search/lancer4Job/Test%20overview
+     * GET http://localhost:7101/lance/res/search/userByKeyword/lancer/Test%20overview
      *
+     * 返回前25条
      {
          "count" : 4,
          "data" : [
@@ -312,37 +327,38 @@ public class SearchResource extends BaseRestResource {
      * @throws JSONException
      */
     @GET
-    @Path("/lancer4Job/{keyword}")
-    public JSONObject searchLancer4Job(@PathParam("keyword") String keyword) throws JSONException {
+    @Path("/userByKeyword/{userType}/{keyword}")
+    public JSONObject searchLancer4Job(@PathParam("userType") String userType,
+                                       @PathParam("keyword") String keyword) throws JSONException {
+
+        if (StringUtils.isNotBlank(userType) && "lancer,company,client".indexOf(userType) != -1) {
+        } else {
+            throw new RuntimeException("User Type is undefined");
+        }
+
         if (StringUtils.isBlank(keyword) || keyword.length() < 2) {
             throw new RuntimeException("输入2个字符后开始查询");
         }
+
         LanceRestAMImpl am = LUtil.findLanceAM();
         UserSearchVVOImpl vo = am.getUserSearchV1();
         keyword = keyword.trim().replaceAll(",", " ").replaceAll("，", " ");
 
         //查询算法
-        StringBuilder sb = new StringBuilder(" ROLE_NAME = 'lancer' ");
+        StringBuilder sb = new StringBuilder();
+        if (StringUtils.isNotBlank(userType)) {
+            sb.append(" ROLE_NAME = '" + userType + "' ");
+        }
+        
         String[] sps = keyword.split(" "); //根据空格分隔
         for (String sp : sps) {
             sb.append(" AND upper(INDEX_FIELD) like '%" + sp.toUpperCase() + "%'");
         }
         vo.setWhereClause(sb.toString());
-        System.out.println(vo.getQuery());
         vo.executeQuery();
-        System.out.println(vo.getRowCount());
 
         //处理位置信息
         JSONObject data = this.packViewObject(vo, null, null, ATTR_SEARCH_LANCER);
-//        JSONArray arr = data.getJSONArray("data");
-//        UserLocationListResource loc = new UserLocationListResource();
-//        JSONObject json = null;
-//        for (int i = 0; i < arr.length(); i++) {
-//            json = arr.getJSONObject(i);
-//            json.put("UserLocationA", loc.findLocationFn(json.getString("UserLocationA"), am));
-//            json.put("UserLocationB", loc.findLocationFn(json.getString("UserLocationB"), am));
-//        }
-
         return data;
     }
 

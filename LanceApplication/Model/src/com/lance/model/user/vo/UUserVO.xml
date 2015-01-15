@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="UUserVO"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -78,7 +78,9 @@
     PrecisionRule="true"
     EntityAttrName="AccountType"
     EntityUsage="UUserEO"
-    AliasName="ACCOUNT_TYPE"/>
+    AliasName="ACCOUNT_TYPE"
+    IsQueriable="false"
+    IsPersistent="false"/>
   <ViewAttribute
     Name="CompanyId"
     PrecisionRule="true"
@@ -397,16 +399,6 @@
   <ViewLinkAccessor
     Name="UserEducation"
     ViewLink="com.lance.model.user.vl.UserEducationUUserFk1VL"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <ViewLinkAccessor
-    Name="UserWorkExpComment"
-    ViewLink="com.lance.model.user.vl.UserWorkExpCommentFk1VL"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <ViewLinkAccessor
-    Name="UserWorkExp"
-    ViewLink="com.lance.model.user.vl.UserWorkExpUUserFk1VL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
   <ViewLinkAccessor

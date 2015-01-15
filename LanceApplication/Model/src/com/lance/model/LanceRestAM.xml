@@ -18,9 +18,6 @@
         </SchemaBasedProperties>
     </Properties>
     <ViewUsage
-      Name="ClientUser1"
-      ViewObjectName="com.lance.model.vo.ClientUserVO"/>
-    <ViewUsage
       Name="Company1"
       ViewObjectName="com.lance.model.vo.CompanyVO"/>
     <ViewUsage
@@ -72,12 +69,6 @@
         Name="UserSkill1"
         ViewObjectName="com.lance.model.user.vo.UserSkillVO"/>
     <ViewUsage
-        Name="UserWorkExpComment1"
-        ViewObjectName="com.lance.model.user.vo.UserWorkExpCommentVO"/>
-    <ViewUsage
-        Name="UserWorkExp1"
-        ViewObjectName="com.lance.model.user.vo.UserWorkExpVO"/>
-    <ViewUsage
         Name="UserRoleGrants1"
         ViewObjectName="com.lance.model.user.vo.UserRoleGrantsVO"/>
     <ViewUsage
@@ -127,18 +118,6 @@
         ViewLinkObjectName="com.lance.model.user.vl.UserSkillUUserFk1VL"
         SrcViewUsageName="com.lance.model.LanceRestAM.UUser1"
         DstViewUsageName="com.lance.model.LanceRestAM.UserSkill1"
-        Reversed="false"/>
-    <ViewLinkUsage
-        Name="UserWorkExpCommentFk1VL1"
-        ViewLinkObjectName="com.lance.model.user.vl.UserWorkExpCommentFk1VL"
-        SrcViewUsageName="com.lance.model.LanceRestAM.UUser1"
-        DstViewUsageName="com.lance.model.LanceRestAM.UserWorkExpComment1"
-        Reversed="false"/>
-    <ViewLinkUsage
-        Name="UserWorkExpUUserFk1VL1"
-        ViewLinkObjectName="com.lance.model.user.vl.UserWorkExpUUserFk1VL"
-        SrcViewUsageName="com.lance.model.LanceRestAM.UUser1"
-        DstViewUsageName="com.lance.model.LanceRestAM.UserWorkExp1"
         Reversed="false"/>
     <ResourceBundle>
         <PropertiesBundle
