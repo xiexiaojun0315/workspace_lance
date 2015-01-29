@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <table xmlns="http://xmlns.oracle.com/jdeveloper/1211/offlinedb">
-  <name>PROJECT_MILSTONE_PACK</name>
+  <name>SKILL_SUPER_TYPE</name>
   <columns>
     <column>
       <name>UUID</name>
@@ -26,8 +26,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>UUID</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILSTONE_PACK</name>
-              <identifier class="java.math.BigDecimal">30325</identifier>
+              <name>SKILL_SUPER_TYPE</name>
+              <identifier class="java.math.BigDecimal">30297</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -37,123 +37,12 @@
       </properties>
     </column>
     <column>
-      <name>STATUS</name>
+      <name>NAME</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">20</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">是否使用中、草稿、待确认等</value>
-        </entry>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>STATUS</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILSTONE_PACK</name>
-              <identifier class="java.math.BigDecimal">30325</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>DESCRIPTION</name>
-      <dataTypeUsage>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>CLOB</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">备注</value>
-        </entry>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>DESCRIPTION</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILSTONE_PACK</name>
-              <identifier class="java.math.BigDecimal">30325</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-        <entry>
-          <key>OracleColumnProperties</key>
-          <value class="oracle.javatools.db.ora.OracleColumnProperties">
-            <LOBProperties>
-              <name></name>
-              <LOBCache>NOCACHE</LOBCache>
-              <LOBSegName>SYS_LOB0000030325C00003$$</LOBSegName>
-              <chunk>8192</chunk>
-              <properties>
-                <entry>
-                  <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-                  <value class="oracle.javatools.db.ReferenceID">
-                    <parent class="oracle.javatools.db.ReferenceID">
-                      <parent class="oracle.javatools.db.ReferenceID">
-                        <name>DESCRIPTION</name>
-                        <parent class="oracle.javatools.db.ReferenceID">
-                          <name>PROJECT_MILSTONE_PACK</name>
-                          <identifier class="java.math.BigDecimal">30325</identifier>
-                          <schemaName>LANCE</schemaName>
-                          <type>TABLE</type>
-                        </parent>
-                        <type>COLUMN</type>
-                      </parent>
-                      <type>OracleColumnProperties</type>
-                    </parent>
-                    <type>LOB DESCRIPTOR</type>
-                  </value>
-                </entry>
-              </properties>
-              <retention>true</retention>
-              <storage>
-                <bufferMode>DEFAULT</bufferMode>
-                <initialExtent>65536</initialExtent>
-                <logging>true</logging>
-                <maxExtent>0</maxExtent>
-                <minExtent>1</minExtent>
-                <tablespaceID class="oracle.javatools.db.ReferenceID">
-                  <name>USERS</name>
-                  <type>TABLESPACE</type>
-                </tablespaceID>
-              </storage>
-              <storageEnabledInRow>true</storageEnabledInRow>
-            </LOBProperties>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>PROJECT_ID</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">32</value>
+            <value class="java.lang.Long">60</value>
           </entry>
           <entry>
             <key>unit</key>
@@ -169,10 +58,10 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>PROJECT_ID</name>
+            <name>NAME</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILSTONE_PACK</name>
-              <identifier class="java.math.BigDecimal">30325</identifier>
+              <name>SKILL_SUPER_TYPE</name>
+              <identifier class="java.math.BigDecimal">30297</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -205,8 +94,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>CREATE_BY</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILSTONE_PACK</name>
-              <identifier class="java.math.BigDecimal">30325</identifier>
+              <name>SKILL_SUPER_TYPE</name>
+              <identifier class="java.math.BigDecimal">30297</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -229,8 +118,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>CREATE_ON</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILSTONE_PACK</name>
-              <identifier class="java.math.BigDecimal">30325</identifier>
+              <name>SKILL_SUPER_TYPE</name>
+              <identifier class="java.math.BigDecimal">30297</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -263,8 +152,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>MODIFY_BY</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILSTONE_PACK</name>
-              <identifier class="java.math.BigDecimal">30325</identifier>
+              <name>SKILL_SUPER_TYPE</name>
+              <identifier class="java.math.BigDecimal">30297</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -287,8 +176,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>MODIFY_ON</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILSTONE_PACK</name>
-              <identifier class="java.math.BigDecimal">30325</identifier>
+              <name>SKILL_SUPER_TYPE</name>
+              <identifier class="java.math.BigDecimal">30297</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -311,8 +200,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>VERSION</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILSTONE_PACK</name>
-              <identifier class="java.math.BigDecimal">30325</identifier>
+              <name>SKILL_SUPER_TYPE</name>
+              <identifier class="java.math.BigDecimal">30297</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -323,59 +212,13 @@
     </column>
   </columns>
   <constraints>
-    <constraint class="oracle.javatools.db.FKConstraint">
-      <name>PROJECT_MILSTONE_PACK_FK1</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>PROJECT_ID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>PROJECT_MILSTONE_PACK</name>
-            <schemaName>LANCE</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>LANCE</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <onDeleteAction>NO_ACTION</onDeleteAction>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>PROJECT_MILSTONE_PACK_FK1</name>
-            <childObjectNames>
-              <childObjectName>PROJECT_ID</childObjectName>
-            </childObjectNames>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILSTONE_PACK</name>
-              <identifier class="java.math.BigDecimal">30325</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <subType>FKConstraint</subType>
-            <type>CONSTRAINT</type>
-          </value>
-        </entry>
-      </properties>
-      <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>PROJECT_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>PROJECT</name>
-          <schemaName>LANCE</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>LANCE</schemaName>
-        <type>CONSTRAINT</type>
-      </referenceID>
-    </constraint>
     <constraint class="oracle.javatools.db.PKConstraint">
-      <name>POST_JOB_MILSTONE_PACK_PK</name>
+      <name>SKILL_SUPER_TYPE_PK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>UUID</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>PROJECT_MILSTONE_PACK</name>
+            <name>SKILL_SUPER_TYPE</name>
             <schemaName>LANCE</schemaName>
             <type>TABLE</type>
           </parent>
@@ -385,9 +228,9 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>POST_JOB_MILSTONE_PACK_PK</name>
+        <name>SKILL_SUPER_TYPE_PK</name>
         <parent class="oracle.javatools.db.NameBasedID">
-          <name>PROJECT_MILSTONE_PACK</name>
+          <name>SKILL_SUPER_TYPE</name>
           <schemaName>LANCE</schemaName>
           <type>TABLE</type>
         </parent>
@@ -398,13 +241,13 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>POST_JOB_MILSTONE_PACK_PK</name>
+            <name>SKILL_SUPER_TYPE_PK</name>
             <childObjectNames>
               <childObjectName>UUID</childObjectName>
             </childObjectNames>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILSTONE_PACK</name>
-              <identifier class="java.math.BigDecimal">30325</identifier>
+              <name>SKILL_SUPER_TYPE</name>
+              <identifier class="java.math.BigDecimal">30297</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -417,7 +260,7 @@
   </constraints>
   <indexes>
     <index>
-      <name>POST_JOB_MILSTONE_PACK_PK</name>
+      <name>SKILL_SUPER_TYPE_PK</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>UUID</expressionSource>
@@ -428,11 +271,11 @@
               <value class="oracle.javatools.db.ReferenceID">
                 <name>UUID</name>
                 <parent class="oracle.javatools.db.ReferenceID">
-                  <name>POST_JOB_MILSTONE_PACK_PK</name>
-                  <identifier class="java.math.BigDecimal">30361</identifier>
+                  <name>SKILL_SUPER_TYPE_PK</name>
+                  <identifier class="java.math.BigDecimal">30342</identifier>
                   <parent class="oracle.javatools.db.ReferenceID">
-                    <name>PROJECT_MILSTONE_PACK</name>
-                    <identifier class="java.math.BigDecimal">30325</identifier>
+                    <name>SKILL_SUPER_TYPE</name>
+                    <identifier class="java.math.BigDecimal">30297</identifier>
                     <schemaName>LANCE</schemaName>
                     <type>TABLE</type>
                   </parent>
@@ -451,11 +294,11 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>POST_JOB_MILSTONE_PACK_PK</name>
-            <identifier class="java.math.BigDecimal">30361</identifier>
+            <name>SKILL_SUPER_TYPE_PK</name>
+            <identifier class="java.math.BigDecimal">30342</identifier>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILSTONE_PACK</name>
-              <identifier class="java.math.BigDecimal">30325</identifier>
+              <name>SKILL_SUPER_TYPE</name>
+              <identifier class="java.math.BigDecimal">30297</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -489,7 +332,7 @@
   <properties>
     <entry>
       <key>Comment</key>
-      <value class="java.lang.String">项目里程碑集合</value>
+      <value class="java.lang.String">技能大类</value>
     </entry>
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_CONNECTION</key>
@@ -498,8 +341,8 @@
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
       <value class="oracle.javatools.db.ReferenceID">
-        <name>PROJECT_MILSTONE_PACK</name>
-        <identifier class="java.math.BigDecimal">30325</identifier>
+        <name>SKILL_SUPER_TYPE</name>
+        <identifier class="java.math.BigDecimal">30297</identifier>
         <schemaName>LANCE</schemaName>
         <type>TABLE</type>
       </value>

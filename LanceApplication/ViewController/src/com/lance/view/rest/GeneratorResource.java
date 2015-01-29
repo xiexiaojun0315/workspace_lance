@@ -30,8 +30,14 @@ public class GeneratorResource {
     @GET
     public String generateAttributes() {
         LanceRestAMImpl am = LUtil.findLanceAM();
-        ViewObject vo = am.getUUser1();
-        outputAttrTypes(vo);
+        outputAttrTypes(am.getUUser1());
+        outputAttrTypes(am.getUserEducation1());
+        outputAttrTypes(am.getUserLocationList1());
+        outputAttrTypes(am.getUserSkill1());
+//        outputAttrTypes(am.get);
+//        outputAttrTypes(am);
+//        outputAttrTypes(am);
+//        outputAttrTypes(am);
         return "ok";
     }
 

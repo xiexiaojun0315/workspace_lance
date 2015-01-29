@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <table xmlns="http://xmlns.oracle.com/jdeveloper/1211/offlinedb">
-  <name>PROJECT_MILESTONE</name>
+  <name>LOCATION_REGION</name>
   <columns>
     <column>
       <name>UUID</name>
@@ -26,8 +26,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>UUID</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILESTONE</name>
-              <identifier class="java.math.BigDecimal">30328</identifier>
+              <name>LOCATION_REGION</name>
+              <identifier class="java.math.BigDecimal">30295</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -37,37 +37,7 @@
       </properties>
     </column>
     <column>
-      <name>PROJECT_ID</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Integer">32</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-    </column>
-    <column>
-      <name>CONTRACT_ID</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Integer">32</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-    </column>
-    <column>
-      <name>TITLE</name>
+      <name>NAME_CN</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -86,16 +56,12 @@
       <notNull>false</notNull>
       <properties>
         <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">名称</value>
-        </entry>
-        <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>TITLE</name>
+            <name>NAME_CN</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILESTONE</name>
-              <identifier class="java.math.BigDecimal">30328</identifier>
+              <name>LOCATION_REGION</name>
+              <identifier class="java.math.BigDecimal">30295</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -105,110 +71,12 @@
       </properties>
     </column>
     <column>
-      <name>LOCATION</name>
+      <name>NAME_EN</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Integer">21</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">地址</value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>REMARK</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Integer">2100</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">备忘、备注</value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>DATE_DELIVERY</name>
-      <dataTypeUsage>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>DATE</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">交付日期</value>
-        </entry>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>DELIVERY_DATE</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILESTONE</name>
-              <identifier class="java.math.BigDecimal">30328</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>PRICE</name>
-      <dataTypeUsage>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">金额</value>
-        </entry>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>PRICE</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILESTONE</name>
-              <identifier class="java.math.BigDecimal">30328</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>PROCESS</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">20</value>
+            <value class="java.lang.Long">60</value>
           </entry>
           <entry>
             <key>unit</key>
@@ -222,95 +90,17 @@
       <notNull>false</notNull>
       <properties>
         <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">进度：draft,done，doing，todo</value>
-        </entry>
-        <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>PROCESS</name>
+            <name>NAME_EN</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILESTONE</name>
-              <identifier class="java.math.BigDecimal">30328</identifier>
+              <name>LOCATION_REGION</name>
+              <identifier class="java.math.BigDecimal">30295</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
             <type>COLUMN</type>
           </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>STATUS</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">10</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">--未确定用途</value>
-        </entry>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>STATUS</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILESTONE</name>
-              <identifier class="java.math.BigDecimal">30328</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>PAY_STATUS</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">20</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">未支付、已支付、已到帐</value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>DATE_LATEST_PAY</name>
-      <dataTypeUsage>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>DATE</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">最迟支付日期</value>
         </entry>
       </properties>
     </column>
@@ -338,8 +128,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>CREATE_BY</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILESTONE</name>
-              <identifier class="java.math.BigDecimal">30328</identifier>
+              <name>LOCATION_REGION</name>
+              <identifier class="java.math.BigDecimal">30295</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -362,8 +152,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>CREATE_ON</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILESTONE</name>
-              <identifier class="java.math.BigDecimal">30328</identifier>
+              <name>LOCATION_REGION</name>
+              <identifier class="java.math.BigDecimal">30295</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -396,8 +186,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>MODIFY_BY</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILESTONE</name>
-              <identifier class="java.math.BigDecimal">30328</identifier>
+              <name>LOCATION_REGION</name>
+              <identifier class="java.math.BigDecimal">30295</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -420,8 +210,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>MODIFY_ON</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILESTONE</name>
-              <identifier class="java.math.BigDecimal">30328</identifier>
+              <name>LOCATION_REGION</name>
+              <identifier class="java.math.BigDecimal">30295</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -444,8 +234,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>VERSION</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILESTONE</name>
-              <identifier class="java.math.BigDecimal">30328</identifier>
+              <name>LOCATION_REGION</name>
+              <identifier class="java.math.BigDecimal">30295</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -457,12 +247,12 @@
   </columns>
   <constraints>
     <constraint class="oracle.javatools.db.PKConstraint">
-      <name>POST_JOB_MILESTONE_PK</name>
+      <name>LOCATION_REGION_PK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>UUID</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>PROJECT_MILESTONE</name>
+            <name>LOCATION_REGION</name>
             <schemaName>LANCE</schemaName>
             <type>TABLE</type>
           </parent>
@@ -472,9 +262,9 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>POST_JOB_MILESTONE_PK</name>
+        <name>LOCATION_REGION_PK</name>
         <parent class="oracle.javatools.db.NameBasedID">
-          <name>PROJECT_MILESTONE</name>
+          <name>LOCATION_REGION</name>
           <schemaName>LANCE</schemaName>
           <type>TABLE</type>
         </parent>
@@ -485,13 +275,13 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>POST_JOB_MILESTONE_PK</name>
+            <name>LOCATION_REGION_PK</name>
             <childObjectNames>
               <childObjectName>UUID</childObjectName>
             </childObjectNames>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILESTONE</name>
-              <identifier class="java.math.BigDecimal">30328</identifier>
+              <name>LOCATION_REGION</name>
+              <identifier class="java.math.BigDecimal">30295</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -501,36 +291,10 @@
         </entry>
       </properties>
     </constraint>
-    <constraint class="oracle.javatools.db.FKConstraint">
-      <name>PROJECT_MILESTONE_FK1</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>DATE_LATEST_PAY</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>PROJECT_MILESTONE</name>
-            <schemaName>LANCE</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>LANCE</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>DAILY_CALENDAR_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>SYS_CALENDAR</name>
-          <schemaName>LANCE</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>LANCE</schemaName>
-        <type>CONSTRAINT</type>
-      </referenceID>
-    </constraint>
   </constraints>
   <indexes>
     <index>
-      <name>POST_JOB_MILESTONE_PK</name>
+      <name>LOCATION_REGION_PK</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>UUID</expressionSource>
@@ -541,11 +305,11 @@
               <value class="oracle.javatools.db.ReferenceID">
                 <name>UUID</name>
                 <parent class="oracle.javatools.db.ReferenceID">
-                  <name>POST_JOB_MILESTONE_PK</name>
-                  <identifier class="java.math.BigDecimal">30362</identifier>
+                  <name>LOCATION_REGION_PK</name>
+                  <identifier class="java.math.BigDecimal">30340</identifier>
                   <parent class="oracle.javatools.db.ReferenceID">
-                    <name>PROJECT_MILESTONE</name>
-                    <identifier class="java.math.BigDecimal">30328</identifier>
+                    <name>LOCATION_REGION</name>
+                    <identifier class="java.math.BigDecimal">30295</identifier>
                     <schemaName>LANCE</schemaName>
                     <type>TABLE</type>
                   </parent>
@@ -564,11 +328,11 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>POST_JOB_MILESTONE_PK</name>
-            <identifier class="java.math.BigDecimal">30362</identifier>
+            <name>LOCATION_REGION_PK</name>
+            <identifier class="java.math.BigDecimal">30340</identifier>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_MILESTONE</name>
-              <identifier class="java.math.BigDecimal">30328</identifier>
+              <name>LOCATION_REGION</name>
+              <identifier class="java.math.BigDecimal">30295</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -602,7 +366,7 @@
   <properties>
     <entry>
       <key>Comment</key>
-      <value class="java.lang.String">项目里程碑</value>
+      <value class="java.lang.String">地区：大洲</value>
     </entry>
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_CONNECTION</key>
@@ -611,8 +375,8 @@
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
       <value class="oracle.javatools.db.ReferenceID">
-        <name>PROJECT_MILESTONE</name>
-        <identifier class="java.math.BigDecimal">30328</identifier>
+        <name>LOCATION_REGION</name>
+        <identifier class="java.math.BigDecimal">30295</identifier>
         <schemaName>LANCE</schemaName>
         <type>TABLE</type>
       </value>

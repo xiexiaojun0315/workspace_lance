@@ -174,7 +174,7 @@
       </properties>
     </column>
     <column>
-      <name>COMPANY_ID</name>
+      <name>PROJECT_COMPANY_ID</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
@@ -473,7 +473,7 @@
   <properties>
     <entry>
       <key>Comment</key>
-      <value class="java.lang.String">项目</value>
+      <value class="java.lang.String">合约</value>
     </entry>
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_CONNECTION</key>
