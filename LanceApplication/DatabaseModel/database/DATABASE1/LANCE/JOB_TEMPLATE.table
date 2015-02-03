@@ -53,7 +53,7 @@
           <typeName>VARCHAR2</typeName>
         </dataTypeID>
       </dataTypeUsage>
-      <notNull>true</notNull>
+      <notNull>false</notNull>
       <properties>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
@@ -69,6 +69,21 @@
           </value>
         </entry>
       </properties>
+    </column>
+    <column>
+      <name>JOB_SUB_CATEGORY_ID</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Integer">32</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
     </column>
     <column>
       <name>NAME_EN</name>
@@ -490,52 +505,6 @@
     </column>
   </columns>
   <constraints>
-    <constraint class="oracle.javatools.db.FKConstraint">
-      <name>JOB_TEMPLATE_JOB_CATEGORY_FK1</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>JOB_CATEGORY_ID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>JOB_TEMPLATE</name>
-            <schemaName>LANCE</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>LANCE</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <onDeleteAction>NO_ACTION</onDeleteAction>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>JOB_TEMPLATE_JOB_CATEGORY_FK1</name>
-            <childObjectNames>
-              <childObjectName>JOB_CATEGORY_ID</childObjectName>
-            </childObjectNames>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>JOB_TEMPLATE</name>
-              <identifier class="java.math.BigDecimal">30301</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <subType>FKConstraint</subType>
-            <type>CONSTRAINT</type>
-          </value>
-        </entry>
-      </properties>
-      <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>JOB_CATEGORY_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>JOB_CATEGORY</name>
-          <schemaName>LANCE</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>LANCE</schemaName>
-        <type>CONSTRAINT</type>
-      </referenceID>
-    </constraint>
     <constraint class="oracle.javatools.db.PKConstraint">
       <name>JOB_TEMPLATE_PK</name>
       <columnIDs>

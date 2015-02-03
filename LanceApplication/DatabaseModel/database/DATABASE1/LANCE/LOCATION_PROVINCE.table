@@ -5,8 +5,14 @@
     <column>
       <name>UUID</name>
       <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Integer">32</value>
+          </entry>
+        </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
+          <typeName>VARCHAR2</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>true</notNull>
@@ -93,6 +99,21 @@
           </value>
         </entry>
       </properties>
+    </column>
+    <column>
+      <name>COUNTRY_ID</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Integer">32</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
     </column>
     <column>
       <name>SHOW_ORDER</name>
@@ -304,6 +325,32 @@
           </value>
         </entry>
       </properties>
+    </constraint>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>LOCATION_PROVINCE_FK1</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>COUNTRY_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>LOCATION_PROVINCE</name>
+            <schemaName>LANCE</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>LANCE</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>LOCATION_COUNTRY_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>LOCATION_COUNTRY</name>
+          <schemaName>LANCE</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>LANCE</schemaName>
+        <type>CONSTRAINT</type>
+      </referenceID>
     </constraint>
   </constraints>
   <indexes>

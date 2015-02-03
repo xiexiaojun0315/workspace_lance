@@ -212,6 +212,21 @@
       </properties>
     </column>
     <column>
+      <name>PARENT_PROJECT_ID</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Integer">32</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+    </column>
+    <column>
       <name>CREATE_BY</name>
       <dataTypeUsage>
         <attributeValues>
@@ -353,6 +368,32 @@
     </column>
   </columns>
   <constraints>
+    <constraint class="oracle.javatools.db.FKConstraint">
+      <name>PROJECT_PROJECT_FK1</name>
+      <columnIDs>
+        <columnID class="oracle.javatools.db.NameBasedID">
+          <name>PARENT_PROJECT_ID</name>
+          <parent class="oracle.javatools.db.NameBasedID">
+            <name>PROJECT</name>
+            <schemaName>LANCE</schemaName>
+            <type>TABLE</type>
+          </parent>
+          <schemaName>LANCE</schemaName>
+          <type>COLUMN</type>
+        </columnID>
+      </columnIDs>
+      <enabled>true</enabled>
+      <referenceID class="oracle.javatools.db.NameBasedID">
+        <name>PROJECT_PK</name>
+        <parent class="oracle.javatools.db.NameBasedID">
+          <name>PROJECT</name>
+          <schemaName>LANCE</schemaName>
+          <type>TABLE</type>
+        </parent>
+        <schemaName>LANCE</schemaName>
+        <type>CONSTRAINT</type>
+      </referenceID>
+    </constraint>
     <constraint class="oracle.javatools.db.PKConstraint">
       <name>PROJECT_PK</name>
       <columnIDs>

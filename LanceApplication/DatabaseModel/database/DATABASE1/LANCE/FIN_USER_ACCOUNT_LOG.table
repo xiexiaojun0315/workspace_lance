@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <table xmlns="http://xmlns.oracle.com/jdeveloper/1211/offlinedb">
-  <name>PROJECT_DAILY_REPORT</name>
+  <name>FIN_USER_ACCOUNT_LOG</name>
   <columns>
     <column>
       <name>UUID</name>
@@ -26,8 +26,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>UUID</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_DAILY_REPORT</name>
-              <identifier class="java.math.BigDecimal">30381</identifier>
+              <name>FIN_ACCOUNT_LOG</name>
+              <identifier class="java.math.BigDecimal">30306</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -37,16 +37,12 @@
       </properties>
     </column>
     <column>
-      <name>PROJECT_ID</name>
+      <name>MOVE_TARGET</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">32</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
+            <value class="java.lang.Integer">60</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -56,31 +52,18 @@
       <notNull>false</notNull>
       <properties>
         <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>PROJECT_ID</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_DAILY_REPORT</name>
-              <identifier class="java.math.BigDecimal">30381</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
+          <key>Comment</key>
+          <value class="java.lang.String">银行名等</value>
         </entry>
       </properties>
     </column>
     <column>
-      <name>CONTRACT_ID</name>
+      <name>MOVE_DIRECTION</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">32</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
+            <value class="java.lang.Long">20</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -90,123 +73,13 @@
       <notNull>false</notNull>
       <properties>
         <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>CONTRACT_ID</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_DAILY_REPORT</name>
-              <identifier class="java.math.BigDecimal">30381</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>DATE_RECORD</name>
-      <dataTypeUsage>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>DATE</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
           <key>Comment</key>
-          <value class="java.lang.String">年月日</value>
-        </entry>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>DATE_RECORD</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_DAILY_REPORT</name>
-              <identifier class="java.math.BigDecimal">30381</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
+          <value class="java.lang.String">in;out</value>
         </entry>
       </properties>
     </column>
     <column>
-      <name>WORK_CONTENT</name>
-      <dataTypeUsage>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>CLOB</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>Comment</key>
-          <value class="java.lang.String">日报内容</value>
-        </entry>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>CONTENT</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_DAILY_REPORT</name>
-              <identifier class="java.math.BigDecimal">30381</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-        <entry>
-          <key>OracleColumnProperties</key>
-          <value class="oracle.javatools.db.ora.OracleColumnProperties">
-            <LOBProperties>
-              <name></name>
-              <LOBCache>NOCACHE</LOBCache>
-              <LOBSegName>SYS_LOB0000030381C00003$$</LOBSegName>
-              <chunk>8192</chunk>
-              <properties>
-                <entry>
-                  <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-                  <value class="oracle.javatools.db.ReferenceID">
-                    <parent class="oracle.javatools.db.ReferenceID">
-                      <parent class="oracle.javatools.db.ReferenceID">
-                        <name>CONTENT</name>
-                        <parent class="oracle.javatools.db.ReferenceID">
-                          <name>PROJECT_DAILY_REPORT</name>
-                          <identifier class="java.math.BigDecimal">30381</identifier>
-                          <schemaName>LANCE</schemaName>
-                          <type>TABLE</type>
-                        </parent>
-                        <type>COLUMN</type>
-                      </parent>
-                      <type>OracleColumnProperties</type>
-                    </parent>
-                    <type>LOB DESCRIPTOR</type>
-                  </value>
-                </entry>
-              </properties>
-              <retention>true</retention>
-              <storage>
-                <bufferMode>DEFAULT</bufferMode>
-                <initialExtent>65536</initialExtent>
-                <logging>true</logging>
-                <maxExtent>0</maxExtent>
-                <minExtent>1</minExtent>
-                <tablespaceID class="oracle.javatools.db.ReferenceID">
-                  <name>USERS</name>
-                  <type>TABLESPACE</type>
-                </tablespaceID>
-              </storage>
-              <storageEnabledInRow>true</storageEnabledInRow>
-            </LOBProperties>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>WORK_HOURS</name>
+      <name>MOVE_AMOUNT</name>
       <dataTypeUsage>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <typeName>NUMBER</typeName>
@@ -216,107 +89,67 @@
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">工时</value>
-        </entry>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>WORK_HOURS</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_DAILY_REPORT</name>
-              <identifier class="java.math.BigDecimal">30381</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
+          <value class="java.lang.String">金额</value>
         </entry>
       </properties>
     </column>
     <column>
-      <name>WORK_REMARK</name>
+      <name>OTHER_FEE</name>
       <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">2100</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
-          </entry>
-        </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
+          <typeName>NUMBER</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>false</notNull>
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">备注</value>
-        </entry>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>REMARK</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_DAILY_REPORT</name>
-              <identifier class="java.math.BigDecimal">30381</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
+          <value class="java.lang.String">第三方手续费</value>
         </entry>
       </properties>
     </column>
     <column>
-      <name>STATUS</name>
+      <name>AFTER_ACCOUNT_AMOUNT</name>
       <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">20</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
-          </entry>
-        </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
+          <typeName>NUMBER</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>false</notNull>
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">确认、拒绝</value>
-        </entry>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>STATUS</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_DAILY_REPORT</name>
-              <identifier class="java.math.BigDecimal">30381</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
+          <value class="java.lang.String">操作后剩余金额</value>
         </entry>
       </properties>
     </column>
     <column>
-      <name>STATUS_REMARK</name>
+      <name>BEFORE_ACCOUNT_AMOUNT</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">操前剩余金额</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>DESCRIPTION</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
             <key>size</key>
             <value class="java.lang.Integer">2100</value>
           </entry>
+          <entry>
+            <key>unit</key>
+            <value class="java.lang.String">BYTE</value>
+          </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <typeName>VARCHAR2</typeName>
@@ -326,19 +159,206 @@
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">确认情况备注</value>
+          <value class="java.lang.String">描述</value>
+        </entry>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>SUMMARY</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>FIN_ACCOUNT_LOG</name>
+              <identifier class="java.math.BigDecimal">30306</identifier>
+              <schemaName>LANCE</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>SUCCESS</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Integer">20</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">操作是否Y成功，N失败</value>
+        </entry>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>SUCCESS</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>FIN_ACCOUNT_LOG</name>
+              <identifier class="java.math.BigDecimal">30306</identifier>
+              <schemaName>LANCE</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>CREATE_BY</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">60</value>
+          </entry>
+          <entry>
+            <key>unit</key>
+            <value class="java.lang.String">BYTE</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>CREATE_BY</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>FIN_ACCOUNT_LOG</name>
+              <identifier class="java.math.BigDecimal">30306</identifier>
+              <schemaName>LANCE</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>CREATE_ON</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>DATE</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>CREATE_ON</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>FIN_ACCOUNT_LOG</name>
+              <identifier class="java.math.BigDecimal">30306</identifier>
+              <schemaName>LANCE</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>MODIFY_BY</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">60</value>
+          </entry>
+          <entry>
+            <key>unit</key>
+            <value class="java.lang.String">BYTE</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>MODIFY_BY</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>FIN_ACCOUNT_LOG</name>
+              <identifier class="java.math.BigDecimal">30306</identifier>
+              <schemaName>LANCE</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>MODIFY_ON</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>DATE</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>MODIFY_ON</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>FIN_ACCOUNT_LOG</name>
+              <identifier class="java.math.BigDecimal">30306</identifier>
+              <schemaName>LANCE</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>VERSION</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>VERSION</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>FIN_ACCOUNT_LOG</name>
+              <identifier class="java.math.BigDecimal">30306</identifier>
+              <schemaName>LANCE</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
         </entry>
       </properties>
     </column>
   </columns>
   <constraints>
     <constraint class="oracle.javatools.db.PKConstraint">
-      <name>PROJECT_DAILY_REPORT_PK</name>
+      <name>FIN_ACCOUNT_LOG_PK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>UUID</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>PROJECT_DAILY_REPORT</name>
+            <name>FIN_USER_ACCOUNT_LOG</name>
             <schemaName>LANCE</schemaName>
             <type>TABLE</type>
           </parent>
@@ -348,9 +368,9 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>PROJECT_DAILY_REPORT_PK</name>
+        <name>FIN_ACCOUNT_LOG_PK</name>
         <parent class="oracle.javatools.db.NameBasedID">
-          <name>PROJECT_DAILY_REPORT</name>
+          <name>FIN_USER_ACCOUNT_LOG</name>
           <schemaName>LANCE</schemaName>
           <type>TABLE</type>
         </parent>
@@ -361,13 +381,13 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>PROJECT_DAILY_REPORT_PK</name>
+            <name>FIN_ACCOUNT_LOG_PK</name>
             <childObjectNames>
               <childObjectName>UUID</childObjectName>
             </childObjectNames>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_DAILY_REPORT</name>
-              <identifier class="java.math.BigDecimal">30381</identifier>
+              <name>FIN_ACCOUNT_LOG</name>
+              <identifier class="java.math.BigDecimal">30306</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -377,56 +397,10 @@
         </entry>
       </properties>
     </constraint>
-    <constraint class="oracle.javatools.db.FKConstraint">
-      <name>PROJECT_DAILY_REPORT_FK1</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>DATE_RECORD</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>PROJECT_DAILY_REPORT</name>
-            <schemaName>LANCE</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>LANCE</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <onDeleteAction>NO_ACTION</onDeleteAction>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>PROJECT_DAILY_REPORT_FK1</name>
-            <childObjectNames>
-              <childObjectName>DATE_RECORD</childObjectName>
-            </childObjectNames>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_DAILY_REPORT</name>
-              <identifier class="java.math.BigDecimal">30381</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <subType>FKConstraint</subType>
-            <type>CONSTRAINT</type>
-          </value>
-        </entry>
-      </properties>
-      <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>DAILY_CALENDAR_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>SYS_CALENDAR</name>
-          <schemaName>LANCE</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>LANCE</schemaName>
-        <type>CONSTRAINT</type>
-      </referenceID>
-    </constraint>
   </constraints>
   <indexes>
     <index>
-      <name>PROJECT_DAILY_REPORT_PK</name>
+      <name>FIN_ACCOUNT_LOG_PK</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>UUID</expressionSource>
@@ -437,11 +411,11 @@
               <value class="oracle.javatools.db.ReferenceID">
                 <name>UUID</name>
                 <parent class="oracle.javatools.db.ReferenceID">
-                  <name>PROJECT_DAILY_REPORT_PK</name>
-                  <identifier class="java.math.BigDecimal">30384</identifier>
+                  <name>FIN_ACCOUNT_LOG_PK</name>
+                  <identifier class="java.math.BigDecimal">30347</identifier>
                   <parent class="oracle.javatools.db.ReferenceID">
-                    <name>PROJECT_DAILY_REPORT</name>
-                    <identifier class="java.math.BigDecimal">30381</identifier>
+                    <name>FIN_ACCOUNT_LOG</name>
+                    <identifier class="java.math.BigDecimal">30306</identifier>
                     <schemaName>LANCE</schemaName>
                     <type>TABLE</type>
                   </parent>
@@ -460,11 +434,11 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>PROJECT_DAILY_REPORT_PK</name>
-            <identifier class="java.math.BigDecimal">30384</identifier>
+            <name>FIN_ACCOUNT_LOG_PK</name>
+            <identifier class="java.math.BigDecimal">30347</identifier>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_DAILY_REPORT</name>
-              <identifier class="java.math.BigDecimal">30381</identifier>
+              <name>FIN_ACCOUNT_LOG</name>
+              <identifier class="java.math.BigDecimal">30306</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -492,10 +466,14 @@
       <schema>
         <name>LANCE</name>
       </schema>
-      <systemGenerated>true</systemGenerated>
+      <systemGenerated>false</systemGenerated>
     </index>
   </indexes>
   <properties>
+    <entry>
+      <key>Comment</key>
+      <value class="java.lang.String">账户变动记录</value>
+    </entry>
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_CONNECTION</key>
       <value class="java.lang.String">lance</value>
@@ -503,8 +481,8 @@
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
       <value class="oracle.javatools.db.ReferenceID">
-        <name>PROJECT_DAILY_REPORT</name>
-        <identifier class="java.math.BigDecimal">30381</identifier>
+        <name>FIN_ACCOUNT_LOG</name>
+        <identifier class="java.math.BigDecimal">30306</identifier>
         <schemaName>LANCE</schemaName>
         <type>TABLE</type>
       </value>
