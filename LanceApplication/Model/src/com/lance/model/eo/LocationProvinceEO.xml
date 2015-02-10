@@ -16,11 +16,12 @@
     Name="Uuid"
     IsNotNull="true"
     ColumnName="UUID"
-    SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
     TableName="LOCATION_PROVINCE"
-    PrimaryKey="true"/>
+    PrimaryKey="true"
+    Precision="32"/>
   <Attribute
     Name="ProvinceCode"
     Precision="10"
@@ -59,7 +60,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LOCATION_PROVINCE">
+    TableName="LOCATION_PROVINCE"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -70,7 +73,9 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LOCATION_PROVINCE"/>
+    TableName="LOCATION_PROVINCE"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
   <Attribute
     Name="ModifyBy"
     Precision="60"
@@ -78,7 +83,8 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LOCATION_PROVINCE">
+    TableName="LOCATION_PROVINCE"
+    HistoryColumn="UserHistory">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -89,14 +95,35 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LOCATION_PROVINCE"/>
+    TableName="LOCATION_PROVINCE"
+    HistoryColumn="DateHistory"/>
   <Attribute
     Name="Version"
     ColumnName="VERSION"
     SQLType="NUMERIC"
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
-    TableName="LOCATION_PROVINCE"/>
+    TableName="LOCATION_PROVINCE"
+    HistoryColumn="VersionHistory"/>
+  <Attribute
+    Name="CountryId"
+    Precision="32"
+    ColumnName="COUNTRY_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LOCATION_PROVINCE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <AccessorAttribute
+    Name="LocationCountry"
+    Association="com.lance.model.as.LocationProvinceFk1Assoc"
+    AssociationEnd="com.lance.model.as.LocationProvinceFk1Assoc.LocationCountry"
+    AssociationOtherEnd="com.lance.model.as.LocationProvinceFk1Assoc.LocationProvince"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
   <Key
     Name="LocationProvincePk"
     PrimaryKey="true">
@@ -105,6 +132,17 @@
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.lance.model.eo.LocationProvinceEO.Uuid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="LocationProvinceFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="LOCATION_COUNTRY_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="LOCATION_PROVINCE_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.LocationProvinceEO.CountryId"/>
     </AttrArray>
   </Key>
 </Entity>

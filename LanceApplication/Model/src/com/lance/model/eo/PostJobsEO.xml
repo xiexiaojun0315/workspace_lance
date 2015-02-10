@@ -52,7 +52,7 @@
   </Attribute>
   <Attribute
     Name="Attach"
-    Precision="200"
+    Precision="2000"
     ColumnName="ATTACH"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -75,19 +75,6 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="Skills"
-    Precision="1000"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="$none$"
-    IsQueriable="false"
-    IsPersistent="false">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="1000"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="Postform"
     ColumnName="POSTFORM"
     SQLType="VARCHAR"
@@ -99,7 +86,7 @@
     Name="WeeklyHours"
     ColumnName="WEEKLY_HOURS"
     SQLType="NUMERIC"
-    Type="java.lang.Integer"
+    Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="POST_JOBS"/>
   <Attribute
@@ -110,19 +97,6 @@
     ColumnType="VARCHAR2"
     TableName="POST_JOBS"
     Precision="20"/>
-  <Attribute
-    Name="LocationId"
-    Precision="32"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="$none$"
-    IsQueriable="false"
-    IsPersistent="false">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="32"/>
-    </DesignTime>
-  </Attribute>
   <Attribute
     Name="LocationDesc"
     Precision="1200"
@@ -159,17 +133,19 @@
   <Attribute
     Name="JobVisibility"
     ColumnName="JOB_VISIBILITY"
-    SQLType="NUMERIC"
-    Type="java.lang.Integer"
-    ColumnType="NUMBER"
-    TableName="POST_JOBS"/>
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS"
+    Precision="20"/>
   <Attribute
     Name="AllowSearchEngines"
     ColumnName="ALLOW_SEARCH_ENGINES"
-    SQLType="NUMERIC"
-    Type="java.lang.Integer"
-    ColumnType="NUMBER"
-    TableName="POST_JOBS"/>
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS"
+    Precision="20"/>
   <Attribute
     Name="WorkCategory"
     Precision="32"
@@ -274,20 +250,6 @@
     ColumnType="NUMBER"
     TableName="POST_JOBS"/>
   <Attribute
-    Name="DayPayMax"
-    ColumnName="DAY_PAY_MAX"
-    SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    TableName="POST_JOBS"/>
-  <Attribute
-    Name="DayPayMin"
-    ColumnName="DAY_PAY_MIN"
-    SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    TableName="POST_JOBS"/>
-  <Attribute
     Name="FixedPayMax"
     ColumnName="FIXED_PAY_MAX"
     SQLType="NUMERIC"
@@ -383,44 +345,14 @@
     IsUpdateable="while_insert"
     HistoryColumn="DateHistory"/>
   <Attribute
-    Name="ModifiedBy"
-    Precision="32"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="$none$"
-    HistoryColumn="UserHistory"
-    IsQueriable="false"
-    IsPersistent="false">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="32"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="ModifiedOn"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
-    SQLType="DATE"
-    Type="java.sql.Timestamp"
-    ColumnType="$none$"
-    HistoryColumn="DateHistory"
-    IsQueriable="false"
-    IsPersistent="false"/>
-  <Attribute
-    Name="Version"
-    ColumnName="VERSION"
-    SQLType="NUMERIC"
-    Type="oracle.jbo.domain.Number"
-    ColumnType="NUMBER"
-    TableName="POST_JOBS"
-    HistoryColumn="VersionHistory"/>
-  <Attribute
     Name="ModifyBy"
     Precision="60"
     ColumnName="MODIFY_BY"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="POST_JOBS">
+    TableName="POST_JOBS"
+    HistoryColumn="UserHistory">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -431,7 +363,16 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="POST_JOBS"/>
+    TableName="POST_JOBS"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="Version"
+    ColumnName="VERSION"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="POST_JOBS"
+    HistoryColumn="VersionHistory"/>
   <Key
     Name="PostJobsPk"
     PrimaryKey="true">

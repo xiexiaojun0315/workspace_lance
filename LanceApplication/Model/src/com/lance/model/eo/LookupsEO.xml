@@ -27,6 +27,20 @@
     </DesignTime>
   </Attribute>
   <Attribute
+    Name="ItemType"
+    IsNotNull="true"
+    Precision="50"
+    ColumnName="ITEM_TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="LOOKUPS"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
     Name="ItemDisplay"
     Precision="500"
     ColumnName="ITEM_DISPLAY"
@@ -51,40 +65,15 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="ItemType"
-    IsNotNull="true"
-    Precision="50"
-    ColumnName="ITEM_TYPE"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="LOOKUPS"
-    PrimaryKey="true">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="50"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="CreateBy"
     Precision="60"
     ColumnName="CREATE_BY"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LOOKUPS">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="32"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="UpdateBy"
-    Precision="32"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="$none$"
-    IsQueriable="false"
-    IsPersistent="false">
+    TableName="LOOKUPS"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="32"/>
     </DesignTime>
@@ -95,22 +84,9 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LOOKUPS"/>
-  <Attribute
-    Name="UdpateOn"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
-    SQLType="DATE"
-    Type="java.sql.Timestamp"
-    ColumnType="$none$"
-    IsQueriable="false"
-    IsPersistent="false"/>
-  <Attribute
-    Name="Version"
-    ColumnName="VERSION"
-    SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    TableName="LOOKUPS"/>
+    TableName="LOOKUPS"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
   <Attribute
     Name="ModifyBy"
     Precision="60"
@@ -118,7 +94,8 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LOOKUPS">
+    TableName="LOOKUPS"
+    HistoryColumn="UserHistory">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -129,7 +106,16 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LOOKUPS"/>
+    TableName="LOOKUPS"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="Version"
+    ColumnName="VERSION"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="LOOKUPS"
+    HistoryColumn="VersionHistory"/>
   <Key
     Name="LookupsPk"
     PrimaryKey="true">

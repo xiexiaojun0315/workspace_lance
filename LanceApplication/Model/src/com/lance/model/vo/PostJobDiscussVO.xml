@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="PostJobDiscussVO"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   InheritPersonalization="merge"
   SelectListFlags="1"
   FromListFlags="1"
@@ -19,14 +19,22 @@
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
+  <Variable
+    Name="pId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="pJobId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="pCreator"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <ViewAccessor
-    Name="LoginUserVO1"
-    ViewObjectName="com.lance.model.vo.LoginUserVO"
-    RowLevelBinds="true">
-    <ViewCriteriaUsage
-      Name="FindByUserIdVC"
-      FullName="com.lance.model.vo.LoginUserVO.FindByUserIdVC"/>
-  </ViewAccessor>
+    Name="UUserVO1"
+    ViewObjectName="com.lance.model.user.vo.UUserVO"
+    RowLevelBinds="true"/>
   <EntityUsage
     Name="PostJobDiscussEO"
     Entity="com.lance.model.eo.PostJobDiscussEO"/>
@@ -56,6 +64,78 @@
     EntityUsage="PostJobDiscussEO"
     AliasName="IS_APPLY"/>
   <ViewAttribute
+    Name="SignBy"
+    PrecisionRule="true"
+    EntityAttrName="SignBy"
+    EntityUsage="PostJobDiscussEO"
+    AliasName="SIGN_BY"/>
+  <ViewAttribute
+    Name="Postform"
+    PrecisionRule="true"
+    EntityAttrName="Postform"
+    EntityUsage="PostJobDiscussEO"
+    AliasName="POSTFORM"/>
+  <ViewAttribute
+    Name="HourlyPay"
+    PrecisionRule="true"
+    EntityAttrName="HourlyPay"
+    EntityUsage="PostJobDiscussEO"
+    AliasName="HOURLY_PAY"/>
+  <ViewAttribute
+    Name="FixedPayMax"
+    PrecisionRule="true"
+    EntityAttrName="FixedPayMax"
+    EntityUsage="PostJobDiscussEO"
+    AliasName="FIXED_PAY_MAX"/>
+  <ViewAttribute
+    Name="FixedPayMin"
+    PrecisionRule="true"
+    EntityAttrName="FixedPayMin"
+    EntityUsage="PostJobDiscussEO"
+    AliasName="FIXED_PAY_MIN"/>
+  <ViewAttribute
+    Name="WeeklyHours"
+    PrecisionRule="true"
+    EntityAttrName="WeeklyHours"
+    EntityUsage="PostJobDiscussEO"
+    AliasName="WEEKLY_HOURS"/>
+  <ViewAttribute
+    Name="EnteryDate"
+    PrecisionRule="true"
+    EntityAttrName="EnteryDate"
+    EntityUsage="PostJobDiscussEO"
+    AliasName="ENTERY_DATE"/>
+  <ViewAttribute
+    Name="ParentDiscussId"
+    PrecisionRule="true"
+    EntityAttrName="ParentDiscussId"
+    EntityUsage="PostJobDiscussEO"
+    AliasName="PARENT_DISCUSS_ID"/>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="PostJobDiscussEO"
+    AliasName="STATUS"
+    DefaultValue="display"/>
+  <ViewAttribute
+    Name="StatusLog"
+    PrecisionRule="true"
+    EntityAttrName="StatusLog"
+    EntityUsage="PostJobDiscussEO"
+    AliasName="STATUS_LOG"/>
+  <ViewAttribute
+    Name="CreateByName"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
     Name="CreateBy"
     PrecisionRule="true"
     EntityAttrName="CreateBy"
@@ -70,19 +150,19 @@
     AliasName="CREATE_ON"
     IsUpdateable="false"/>
   <ViewAttribute
-    Name="UpdateBy"
+    Name="ModifyBy"
+    IsUpdateable="false"
     PrecisionRule="true"
-    EntityAttrName="UpdateBy"
+    EntityAttrName="ModifyBy"
     EntityUsage="PostJobDiscussEO"
-    AliasName="UPDATE_BY"
-    IsUpdateable="false"/>
+    AliasName="MODIFY_BY"/>
   <ViewAttribute
-    Name="UpdateOn"
+    Name="ModifyOn"
+    IsUpdateable="false"
     PrecisionRule="true"
-    EntityAttrName="UpdateOn"
+    EntityAttrName="ModifyOn"
     EntityUsage="PostJobDiscussEO"
-    AliasName="UPDATE_ON"
-    IsUpdateable="false"/>
+    AliasName="MODIFY_ON"/>
   <ViewAttribute
     Name="Version"
     PrecisionRule="true"
@@ -90,51 +170,110 @@
     EntityUsage="PostJobDiscussEO"
     AliasName="VERSION"
     IsUpdateable="false"/>
-  <ViewAttribute
-    Name="Postform"
-    PrecisionRule="true"
-    EntityAttrName="Postform"
-    EntityUsage="PostJobDiscussEO"
-    AliasName="POSTFORM"/>
-  <ViewAttribute
-    Name="HourlyPay"
-    PrecisionRule="true"
-    EntityAttrName="HourlyPay"
-    EntityUsage="PostJobDiscussEO"
-    AliasName="HOURLY_PAY"/>
-  <ViewAttribute
-    Name="WeeklyHours"
-    PrecisionRule="true"
-    EntityAttrName="WeeklyHours"
-    EntityUsage="PostJobDiscussEO"
-    AliasName="WEEKLY_HOURS"/>
-  <ViewAttribute
-    Name="EnteryDate"
-    PrecisionRule="true"
-    EntityAttrName="EnteryDate"
-    EntityUsage="PostJobDiscussEO"
-    AliasName="ENTERY_DATE"/>
-  <ViewAttribute
-    Name="TotalPrice"
-    PrecisionRule="true"
-    EntityAttrName="TotalPrice"
-    EntityUsage="PostJobDiscussEO"
-    AliasName="TOTAL_PRICE"/>
-  <ViewAttribute
-    Name="ParentDiscussId"
-    PrecisionRule="true"
-    EntityAttrName="ParentDiscussId"
-    EntityUsage="PostJobDiscussEO"
-    AliasName="PARENT_DISCUSS_ID"/>
-  <ViewAttribute
-    Name="CreateByName"
-    IsUpdateable="false"
-    IsSelected="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Precision="255"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="VIEW_ATTR"
-    SQLType="VARCHAR"/>
+  <ViewCriteria
+    Name="Find4DeleteVC"
+    ViewObjectName="com.lance.model.vo.PostJobDiscussVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="PostJobDiscussVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Uuid"
+        ViewAttribute="Uuid"
+        Operator="="
+        Conjunction="OR"
+        Value=":pId"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="ParentDiscussId"
+        ViewAttribute="ParentDiscussId"
+        Operator="="
+        Conjunction="OR"
+        Value=":pId"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+    <ViewCriteriaRow
+      Name="Find4DeleteVC_row_1"
+      Conjunction="AND"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="PostJobId"
+        ViewAttribute="PostJobId"
+        Operator="="
+        Conjunction="AND"
+        Value=":pJobId"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="FindByIdAndCreatorVC"
+    ViewObjectName="com.lance.model.vo.PostJobDiscussVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="PostJobDiscussVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Uuid"
+        ViewAttribute="Uuid"
+        Operator="="
+        Conjunction="AND"
+        Value=":pId"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="CreateBy"
+        ViewAttribute="CreateBy"
+        Operator="="
+        Conjunction="AND"
+        Value=":pCreator"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
 </ViewObject>

@@ -57,7 +57,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LOCATION_REGION">
+    TableName="LOCATION_REGION"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -68,7 +70,9 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LOCATION_REGION"/>
+    TableName="LOCATION_REGION"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
   <Attribute
     Name="ModifyBy"
     Precision="60"
@@ -76,7 +80,8 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LOCATION_REGION">
+    TableName="LOCATION_REGION"
+    HistoryColumn="UserHistory">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -87,14 +92,23 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="LOCATION_REGION"/>
+    TableName="LOCATION_REGION"
+    HistoryColumn="DateHistory"/>
   <Attribute
     Name="Version"
     ColumnName="VERSION"
     SQLType="NUMERIC"
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
-    TableName="LOCATION_REGION"/>
+    TableName="LOCATION_REGION"
+    HistoryColumn="VersionHistory"/>
+  <AccessorAttribute
+    Name="LocationCountry"
+    Association="com.lance.model.as.LocationCountryFk1Assoc"
+    AssociationEnd="com.lance.model.as.LocationCountryFk1Assoc.LocationCountry"
+    AssociationOtherEnd="com.lance.model.as.LocationCountryFk1Assoc.LocationRegion"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <Key
     Name="LocationRegionPk"
     PrimaryKey="true">

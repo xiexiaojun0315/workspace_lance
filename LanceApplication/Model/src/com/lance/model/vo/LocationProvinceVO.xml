@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LocationProvinceVO"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   InheritPersonalization="merge"
   SelectListFlags="1"
   FromListFlags="1"
@@ -30,6 +30,12 @@
     EntityUsage="LocationProvinceEO"
     AliasName="UUID"/>
   <ViewAttribute
+    Name="CountryId"
+    PrecisionRule="true"
+    EntityAttrName="CountryId"
+    EntityUsage="LocationProvinceEO"
+    AliasName="COUNTRY_ID"/>
+  <ViewAttribute
     Name="ProvinceCode"
     PrecisionRule="true"
     EntityAttrName="ProvinceCode"
@@ -47,11 +53,52 @@
     EntityAttrName="ShowOrder"
     EntityUsage="LocationProvinceEO"
     AliasName="SHOW_ORDER"/>
+  <ViewAttribute
+    Name="CreateBy"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="CreateBy"
+    EntityUsage="LocationProvinceEO"
+    AliasName="CREATE_BY"/>
+  <ViewAttribute
+    Name="CreateOn"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="CreateOn"
+    EntityUsage="LocationProvinceEO"
+    AliasName="CREATE_ON"/>
+  <ViewAttribute
+    Name="ModifyBy"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="ModifyBy"
+    EntityUsage="LocationProvinceEO"
+    AliasName="MODIFY_BY"/>
+  <ViewAttribute
+    Name="ModifyOn"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="ModifyOn"
+    EntityUsage="LocationProvinceEO"
+    AliasName="MODIFY_ON"/>
+  <ViewAttribute
+    Name="Version"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Version"
+    EntityUsage="LocationProvinceEO"
+    AliasName="VERSION"/>
   <ViewLinkAccessor
     Name="LocationCity"
     ViewLink="com.lance.model.vl.LocationProvince_CityVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <SortCriteria>
+    <Sort
+      Attribute="ShowOrder"/>
+    <Sort
+      Attribute="ProvinceName"/>
+  </SortCriteria>
   <SortCriteria>
     <Sort
       Attribute="ShowOrder"/>

@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="SkillSuperTypeVO"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   InheritPersonalization="merge"
   SelectListFlags="1"
   FromListFlags="1"
@@ -31,6 +31,36 @@
     EntityAttrName="Name"
     EntityUsage="SkillSuperTypeEO"
     AliasName="NAME"/>
+  <ViewAttribute
+    Name="CreateBy"
+    PrecisionRule="true"
+    EntityAttrName="CreateBy"
+    EntityUsage="SkillSuperTypeEO"
+    AliasName="CREATE_BY"/>
+  <ViewAttribute
+    Name="CreateOn"
+    PrecisionRule="true"
+    EntityAttrName="CreateOn"
+    EntityUsage="SkillSuperTypeEO"
+    AliasName="CREATE_ON"/>
+  <ViewAttribute
+    Name="ModifyBy"
+    PrecisionRule="true"
+    EntityAttrName="ModifyBy"
+    EntityUsage="SkillSuperTypeEO"
+    AliasName="MODIFY_BY"/>
+  <ViewAttribute
+    Name="ModifyOn"
+    PrecisionRule="true"
+    EntityAttrName="ModifyOn"
+    EntityUsage="SkillSuperTypeEO"
+    AliasName="MODIFY_ON"/>
+  <ViewAttribute
+    Name="Version"
+    PrecisionRule="true"
+    EntityAttrName="Version"
+    EntityUsage="SkillSuperTypeEO"
+    AliasName="VERSION"/>
   <ViewLinkAccessor
     Name="Skills"
     ViewLink="com.lance.model.vl.SkillsSkillSuperTypeFk1VL"

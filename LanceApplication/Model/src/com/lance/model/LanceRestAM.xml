@@ -77,6 +77,9 @@
     <ViewUsage
         Name="UserSearchV1"
         ViewObjectName="com.lance.model.vvo.UserSearchVVO"/>
+    <ViewUsage
+        Name="PostJobDiscussVO1"
+        ViewObjectName="com.lance.model.vo.PostJobDiscussVO"/>
     <ViewLinkUsage
       Name="JobCategory_SubCategoryVL1"
       ViewLinkObjectName="com.lance.model.vl.JobCategory_SubCategoryVL"

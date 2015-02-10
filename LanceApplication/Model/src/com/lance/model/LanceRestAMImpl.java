@@ -263,5 +263,13 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
     public UserSearchVVOImpl getUserSearchV1() {
         return (UserSearchVVOImpl) findViewObject("UserSearchV1");
     }
+
+    /**
+     * Container's getter for PostJobDiscussVO1.
+     * @return PostJobDiscussVO1
+     */
+    public PostJobDiscussVOImpl getPostJobDiscussVO1() {
+        return (PostJobDiscussVOImpl) findViewObject("PostJobDiscussVO1");
+    }
 }
 

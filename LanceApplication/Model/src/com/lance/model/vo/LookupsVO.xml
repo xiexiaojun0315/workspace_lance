@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LookupsVO"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   InheritPersonalization="merge"
   SelectListFlags="1"
   FromListFlags="1"
@@ -26,6 +26,13 @@
     EntityUsage="LookupsEO"
     AliasName="ITEM_KEY"/>
   <ViewAttribute
+    Name="ItemType"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="ItemType"
+    EntityUsage="LookupsEO"
+    AliasName="ITEM_TYPE"/>
+  <ViewAttribute
     Name="ItemDisplay"
     PrecisionRule="true"
     EntityAttrName="ItemDisplay"
@@ -38,24 +45,11 @@
     EntityUsage="LookupsEO"
     AliasName="ITEM_DESC"/>
   <ViewAttribute
-    Name="ItemType"
-    IsNotNull="true"
-    PrecisionRule="true"
-    EntityAttrName="ItemType"
-    EntityUsage="LookupsEO"
-    AliasName="ITEM_TYPE"/>
-  <ViewAttribute
     Name="CreateBy"
     PrecisionRule="true"
     EntityAttrName="CreateBy"
     EntityUsage="LookupsEO"
     AliasName="CREATE_BY"/>
-  <ViewAttribute
-    Name="UpdateBy"
-    PrecisionRule="true"
-    EntityAttrName="UpdateBy"
-    EntityUsage="LookupsEO"
-    AliasName="UPDATE_BY"/>
   <ViewAttribute
     Name="CreateOn"
     PrecisionRule="true"
@@ -63,11 +57,17 @@
     EntityUsage="LookupsEO"
     AliasName="CREATE_ON"/>
   <ViewAttribute
-    Name="UdpateOn"
+    Name="ModifyBy"
     PrecisionRule="true"
-    EntityAttrName="UdpateOn"
+    EntityAttrName="ModifyBy"
     EntityUsage="LookupsEO"
-    AliasName="UDPATE_ON"/>
+    AliasName="MODIFY_BY"/>
+  <ViewAttribute
+    Name="ModifyOn"
+    PrecisionRule="true"
+    EntityAttrName="ModifyOn"
+    EntityUsage="LookupsEO"
+    AliasName="MODIFY_ON"/>
   <ViewAttribute
     Name="Version"
     PrecisionRule="true"

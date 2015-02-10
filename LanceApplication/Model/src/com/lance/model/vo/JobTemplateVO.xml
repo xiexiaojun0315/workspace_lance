@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="JobTemplateVO"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   InheritPersonalization="merge"
   SelectListFlags="1"
   FromListFlags="1"
@@ -59,6 +59,12 @@
     EntityAttrName="JobCategoryId"
     EntityUsage="JobTemplateEO"
     AliasName="JOB_CATEGORY_ID"/>
+  <ViewAttribute
+    Name="JobSubCategoryId"
+    PrecisionRule="true"
+    EntityAttrName="JobSubCategoryId"
+    EntityUsage="JobTemplateEO"
+    AliasName="JOB_SUB_CATEGORY_ID"/>
   <ViewAttribute
     Name="NameEn"
     PrecisionRule="true"
@@ -174,6 +180,41 @@
       </SchemaBasedProperties>
     </Properties>
   </ViewAttribute>
+  <ViewAttribute
+    Name="CreateBy"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="CreateBy"
+    EntityUsage="JobTemplateEO"
+    AliasName="CREATE_BY"/>
+  <ViewAttribute
+    Name="CreateOn"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="CreateOn"
+    EntityUsage="JobTemplateEO"
+    AliasName="CREATE_ON"/>
+  <ViewAttribute
+    Name="ModifyBy"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="ModifyBy"
+    EntityUsage="JobTemplateEO"
+    AliasName="MODIFY_BY"/>
+  <ViewAttribute
+    Name="ModifyOn"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="ModifyOn"
+    EntityUsage="JobTemplateEO"
+    AliasName="MODIFY_ON"/>
+  <ViewAttribute
+    Name="Version"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Version"
+    EntityUsage="JobTemplateEO"
+    AliasName="VERSION"/>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.lance.model.ModelBundle"/>

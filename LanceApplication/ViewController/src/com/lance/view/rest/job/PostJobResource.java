@@ -2,15 +2,12 @@ package com.lance.view.rest.job;
 
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.vo.PostJobDiscussVOImpl;
+import com.lance.model.vo.PostJobDiscussVORowImpl;
 import com.lance.model.vo.PostJobsVOImpl;
 import com.lance.model.vo.PostJobsVORowImpl;
 import com.lance.view.util.LUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;
-
-import java.text.SimpleDateFormat;
-
-import java.util.Date;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -22,148 +19,132 @@ import javax.ws.rs.core.MediaType;
 
 import oracle.jbo.Row;
 
+import oracle.jbo.RowSetIterator;
+
+import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
-@Path("user/client/postJob")
+@Path("postJob")
 public class PostJobResource extends BaseRestResource {
 
-    //
-    public static final String[] ATTR_ALL = {
-        "Uuid", "AllowSearchEngines", "Attach", "Brief", "DayPayMax", "DayPayMin", "DurationMax", "DurationMin",
-        "FixedLocation", "FixedPayMax", "FixedPayMin", "HourlyPayMax", "HourlyPayMin", "JobVisibility", "LocationDesc",
-        "LocationId", "Name", "Postform", "Skills", "SpecificSkillA", "SpecificSkillB", "SpecificSkillC",
-        "SpecificSkillD", "SpecificSkillE", "SpecificSkillF", "SpecificSkillG", "Status", "WeeklyHours", "WorkCategory",
-        "WorkSubcategory", "CreateBy", "CreateOn", "ModifiedBy", "ModifiedOn", "Version"
+    /**
+     *   PostJobVO 字段说明
+         Uuid,Precision:32,JavaType:java.lang.String
+         Attach,Precision:2000,JavaType:java.lang.String  附件的链接
+         Brief,Precision:2100,JavaType:java.lang.String  描述
+         DurationMax,Precision:0,JavaType:java.math.BigDecimal 项目周期最少（周），月要换算成周（4周一个月），稍后决定时可以为空
+         DurationMin,Precision:0,JavaType:java.math.BigDecimal 项目周期最多（周）
+         FixedLocation,Precision:20,JavaType:java.lang.String  固定地点项目（Y/N）
+         FixedPayMax,Precision:0,JavaType:java.math.BigDecimal 固定价格项目：预算最多价格
+         FixedPayMin,Precision:0,JavaType:java.math.BigDecimal
+         HourlyPayMax,Precision:0,JavaType:java.math.BigDecimal 按时间计费项目：最大多少钱/小时
+         HourlyPayMin,Precision:0,JavaType:java.math.BigDecimal 时薪。记录hourly rate的范围。稍后决定时可以为空。必须大于等于10，最大值不能小于最小值。错误提示不需要链接，直接提示如下信息即可
+     * 根据2014年8月；均为最低档标准，最低工资不能低于9.9元每小时。即不能少于10元。
+         JobVisibility,Precision:20,JavaType:java.lang.String  隐私协议，此消息是否可被搜索：public(可被搜索到)/private（只用于发布给指定人员）
+         AllowSearchEngines,Precision:20,JavaType:java.lang.String 是否允许此信息出现在百度、谷歌等搜索引擎上，Y/N利用搜索引擎推广
+         LocationDesc,Precision:1200,JavaType:java.lang.String 地点描述
+         Name,Precision:60,JavaType:java.lang.String 工作名
+         Postform,Precision:20,JavaType:java.lang.String 支付方式：hourly（时薪）/fixed（固定价格）
+         SpecificSkillA,Precision:32,JavaType:java.lang.String  特殊技能需求，外键，连接到技能ID。
+         SpecificSkillB,Precision:32,JavaType:java.lang.String
+         SpecificSkillC,Precision:32,JavaType:java.lang.String
+         SpecificSkillD,Precision:32,JavaType:java.lang.String
+         SpecificSkillE,Precision:32,JavaType:java.lang.String
+         SpecificSkillF,Precision:32,JavaType:java.lang.String
+         SpecificSkillG,Precision:32,JavaType:java.lang.String
+         Status,Precision:20,JavaType:java.lang.String   draft:草稿，posted：发布，deleted：删除
+         WeeklyHours,Precision:0,JavaType:oracle.jbo.domain.Number   每周工作时间：>1
+         WorkCategory,Precision:32,JavaType:java.lang.String  工作大类，从JobTemplate接口获取。存储ID
+         WorkSubcategory,Precision:32,JavaType:java.lang.String 工作详细类别，从JobTemplate接口获取。存储ID
+         PostJobDateStart,Precision:0,JavaType:oracle.jbo.domain.Date  信息发布有效期(年月日)，不可大于90天。UI建议采用elance的形式，立即生效时需要设置开始时间为当前天
+         PostJobDateEnd,Precision:0,JavaType:oracle.jbo.domain.Date
+         LocationCity,Precision:32,JavaType:java.lang.String  地点，城市ID
+         LocationCountry,Precision:32,JavaType:java.lang.String
+         LocationProvince,Precision:32,JavaType:java.lang.String
+         CreateBy,Precision:60,JavaType:java.lang.String
+         CreateOn,Precision:0,JavaType:java.sql.Timestamp
+         ModifyBy,Precision:60,JavaType:java.lang.String
+         ModifyOn,Precision:0,JavaType:java.sql.Timestamp
+         Version,Precision:0,JavaType:oracle.jbo.domain.Number
+         CreateByName,Precision:50,JavaType:java.lang.String  发布人显示名
+     */
+    public static final String[] POST_JOB_VO_ATTR_ALL = {
+        "Uuid", "AllowSearchEngines", "Attach", "Brief", "DurationMax", "DurationMin", "FixedLocation", "FixedPayMax",
+        "FixedPayMin", "HourlyPayMax", "HourlyPayMin", "JobVisibility", "LocationDesc", "Name", "Postform",
+        "SpecificSkillA", "SpecificSkillB", "SpecificSkillC", "SpecificSkillD", "SpecificSkillE", "SpecificSkillF",
+        "SpecificSkillG", "Status", "WeeklyHours", "WorkCategory", "WorkSubcategory", "PostJobDateStart",
+        "PostJobDateEnd", "LocationCity", "LocationCountry", "LocationProvince", "CreateBy", "CreateOn", "ModifyBy",
+        "ModifyOn", "Version", "CreateByName"
+    };
+
+    public static final String[] POST_JOB_VO_ATTR_GET = POST_JOB_VO_ATTR_ALL;
+
+    public static final String[] POST_JOB_VO_ATTR_SORT_GET = {
+        "Uuid", "Brief", "DurationMax", "DurationMin", "FixedLocation", "FixedPayMax", "FixedPayMin", "HourlyPayMax",
+        "HourlyPayMin", "JobVisibility", "LocationDesc", "Name", "Postform", "SpecificSkillA", "SpecificSkillB",
+        "SpecificSkillC", "SpecificSkillD", "SpecificSkillE", "SpecificSkillF", "SpecificSkillG", "Status",
+        "WeeklyHours", "WorkCategory", "WorkSubcategory", "PostJobDateStart", "PostJobDateEnd", "LocationCity",
+        "LocationCountry", "LocationProvince", "CreateBy", "CreateOn", "ModifyBy", "ModifyOn", "Version", "CreateByName"
+    };
+
+    public static final String[] POST_JOB_VO_ATTR_UPDATE = {
+        "AllowSearchEngines", "Attach", "Brief", "DurationMax", "DurationMin", "FixedLocation", "FixedPayMax",
+        "FixedPayMin", "HourlyPayMax", "HourlyPayMin", "JobVisibility", "LocationDesc", "Name", "Postform",
+        "SpecificSkillA", "SpecificSkillB", "SpecificSkillC", "SpecificSkillD", "SpecificSkillE", "SpecificSkillF",
+        "SpecificSkillG", "Status", "WeeklyHours", "WorkCategory", "WorkSubcategory", "PostJobDateStart",
+        "PostJobDateEnd", "LocationCity", "LocationCountry", "LocationProvince"
+    };
+
+    /**
+     * 发布工作时，不可为空的字段（不限于以下字段）
+     * 保存草稿时，不验证非空字段
+     */
+    public static final String[] POST_JOB_VO_ATTR_REQUIRED = {
+        "Name", "Brief", "WorkCategory", "WorkSubcategory", "Postform", "Status", "PostJobDateStart", "PostJobDateEnd"
+    };
+
+    /**
+     * POST_JOB_DISCUSS_VO
+     *
+        Uuid,Precision:32,JavaType:java.lang.String
+        PostJobId,Precision:32,JavaType:java.lang.String
+        ParentDiscussId,Precision:32,JavaType:java.lang.String 基于某一条评论/申请的回复
+        Content,Precision:2100,JavaType:java.lang.String 正文、附加描述
+        IsApply,Precision:1,JavaType:java.lang.String  申请：Y 讨论：N
+        SignBy,Precision:20,JavaType:java.lang.String  合同签署方：self/company
+        Postform,Precision:20,JavaType:java.lang.String hourly时薪/fixed固定价格/空
+        HourlyPay,Precision:0,JavaType:java.math.BigDecimal 报价：时薪
+        FixedPayMax,Precision:0,JavaType:java.math.BigDecimal 固定价格（最大）
+        FixedPayMin,Precision:0,JavaType:java.math.BigDecimal 固定价格（最小）
+        WeeklyHours,Precision:0,JavaType:oracle.jbo.domain.Number 每周工作时间
+        EnteryDate,Precision:0,JavaType:oracle.jbo.domain.Date 可进入时间/空（稍后确定）
+        CreateByName,Precision:255,JavaType:java.lang.String
+        CreateBy,Precision:60,JavaType:java.lang.String
+        CreateOn,Precision:0,JavaType:oracle.jbo.domain.Date
+        ModifyBy,Precision:60,JavaType:java.lang.String
+        ModifyOn,Precision:0,JavaType:oracle.jbo.domain.Date
+        Version,Precision:0,JavaType:oracle.jbo.domain.Number
+     */
+    public static final String[] POST_JOB_DISCUSS_VO_ATTR_ALL = {
+        "Uuid", "PostJobId", "Content", "IsApply", "SignBy", "Postform", "HourlyPay", "FixedPayMax", "FixedPayMin",
+        "WeeklyHours", "EnteryDate", "ParentDiscussId", "CreateByName", "CreateBy", "CreateOn", "ModifyBy", "ModifyOn",
+        "Version"
     };
 
     /**
      * 讨论，申请Job相关字段
-     * 适用于乙方查看甲方发布的Job需求，并发布讨论或申请
-     *
-     * Content描述
-     * IsApply 申请：Y 讨论：N
-     * Postform 1时薪/2固定价格
-     * ParentDiscussId:适用于回复某内容，回复内容的DiscussId
-     *
-     * 选择时薪时可录入以下内容
-     * HourlyPay 每小时价格
-     * WeeklyHours 每周工作时间
-     * EnteryDate 可进入项目时间
-     *
-     * 选择固定价格时
-     * TotalPrice 总价格
-     *
      * 此接口也适用于
      * 只传入Uuid,IsApply=Y 代表某人申请某工作
      *
      */
-    public static final String[] DISCUSS_FIELD = {
-        "Content", "IsApply", "Postform", "HourlyPay", "WeeklyHours", "EnteryDate", "TotalPrice", "ParentDiscussId",
-        "ParentDiscussId"
+    public static final String[] POST_JOB_DISCUSS_VO_ATTR_CREATE = {
+        "PostJobId", "Content", "IsApply", "SignBy", "Postform", "HourlyPay", "FixedPayMax", "FixedPayMin",
+        "WeeklyHours", "EnteryDate", "ParentDiscussId"
     };
 
-    public static final String[] DISCUSS_FIELD_READ = {
-        "Uuid", "PostJobId", "Content", "IsApply", "Postform", "HourlyPay", "WeeklyHours", "EnteryDate", "TotalPrice",
-        "ParentDiscussId", "ParentDiscussId"
-    };
 
-    //SpecificSkillG,SpecificSkillF为Vip用
-
-    /**
-     * Name：Name your job。工作名称
-     * Brief：Describe it。描述
-     * Attach：附件的链接
-     * WorkCategory：工作大类，从JobTemplate接口获取。存储ID
-     * WorkSubcategory：工作详细类别，从JobTemplate接口获取。存储ID
-     * SpecificSkillA~SpecificSkillE：用来存储Request specific skills or groups (optional)（所需指定技能）。对输入提供快速提示，明文存储，允许输入提示中不存在的技能。普通用户最多输入5项。
-     * Postform 工作安排： Set work arrangement (optional)下的Hourly、FixedPrice
-     * HourlyPayMax，HourlyPayMin：时薪。记录hourly rate的范围。稍后决定时可以为空。必须大于等于10，最大值不能小于最小值。错误提示不需要链接，直接提示如下信息即可
-     * 根据2014年8月；均为最低档标准，最低工资不能低于9.9元每小时。即不能少于10元。
-     * WeeklyHours 每周工作时间：>0
-     * DurationMax,DurationMin 项目周期：以周的方式记录。稍后决定时可以为空
-     * FixedPayMax，FixedPayMin 支付价格，选择固定价格时出现。工作价值不得少于80元，最大值不能小于最小值。
-     * JobVisibility 隐私设置：public（公开——开放给所有驻才网用户），private（私有——不要公开显示，只有被我邀请的候选人才能看到）。1公开（默认），0私有。
-     * AllowSearchEngines：是否允许此信息出现在百度、谷歌等搜索引擎上，0不许，1允许（默认）
-     *
-     * I prefer candidates from certain location(s) 这句话说的是从指定位置选择候选人。我们只在国内，因此修改如下
-     * Preferred Candidate Location 改为：是否需要到达现场进行工作
-     * I prefer candidates from certain location(s) 改为：固定工作地点（默认不选中）
-     * 当用户选择 固定工作地点 时，出现地点选择组件（国家，省份，城市），并且外加一段关于工作地点的描述输入框
-     *
-     * "LocationCity", "LocationCountry", "LocationProvince":保存地点的ID，先固定中国即可，地点从LocationResource获取
-     *
-     * PostJobDateStart,PostJobDateEnd 信息发布有效期(年月日)，不可大于90天。UI建议采用elance的形式，立即生效时需要设置开始时间为当前天
-     *
-     * Status :1:草稿，2：发布，0：删除
-     * 返回的JSON中Status等于1为保存草稿，等于2为发布工作需求（会执行校验）
-     *
-     * 补充：
-     * Location, Privacy and Other Options，默认显示即可，不需要Hide，但需要框起来
-     *
-     *
-     *
-     * 测试数据
-     * 查询：GET http://localhost:7101/lance/res/user/client/postJob/3d0df8be66d54e25a49ed25e8ec82f45
-     * 修改：POST http://localhost:7101/lance/res/user/client/postJob/3d0df8be66d54e25a49ed25e8ec82f45
-     *
-     * {
-        "Uuid" : "3d0df8be66d54e25a49ed25e8ec82f45",
-        "Name" : "工作测试",
-        "Brief" : "工作说明",
-        "WorkCategory" : "10183",
-        "WorkSubcategory" : "14174",
-        "SpecificSkillA" : "DHTML",
-        "SpecificSkillB" : "DOS",
-        "SpecificSkillC" : "XML",
-        "SpecificSkillD" : "JAVA",
-        "SpecificSkillE" : "BPM",
-        "Postform" : 1,
-        "HourlyPayMax" : 200,
-        "HourlyPayMin" : 100,
-        "WeeklyHours" : 100,
-        "DurationMax" : 9,
-        "DurationMin" : 100,
-        "FixedPayMax" : 200,
-        "FixedPayMin" : 100,
-        "JobVisibility" : 1,
-        "AllowSearchEngines" : 1,
-        "FixedLocation" : 1,
-        "LocationDesc" : "地点描述",
-        "Status" : 1,
-        "PostJobDateStart" : "2014-10-11 00:00:00",
-        "PostJobDateEnd" : "2014-12-11 00:00:00",
-        "LocationCity" : "1",
-        "LocationCountry" : "1",
-        "LocationProvince" : "1"
-    }
-     *
-     */
-    public static final String[] ATTR_GET = {
-        "Uuid", "Name", "Brief", "Attach", "WorkCategory", "WorkSubcategory", "SpecificSkillA", "SpecificSkillB",
-        "SpecificSkillC", "SpecificSkillD", "SpecificSkillE", "Postform", "HourlyPayMax", "HourlyPayMin", "WeeklyHours",
-        "DurationMax", "DurationMin", "FixedPayMax", "FixedPayMin", "JobVisibility", "AllowSearchEngines",
-        "FixedLocation", "LocationDesc", "LocationId", "Skills", "Status", "PostJobDateStart", "PostJobDateEnd",
-        "LocationCity", "LocationCountry", "LocationProvince", "CreateBy", "CreateOn", "ModifiedBy", "ModifiedOn",
-        "Version"
-    };
-
-    public static final String[] ATTR_UPDATE = {
-        "Name", "Brief", "Attach", "WorkCategory", "WorkSubcategory", "SpecificSkillA", "SpecificSkillB",
-        "SpecificSkillC", "SpecificSkillD", "SpecificSkillE", "Postform", "HourlyPayMax", "HourlyPayMin", "WeeklyHours",
-        "DurationMax", "DurationMin", "FixedPayMax", "FixedPayMin", "JobVisibility", "AllowSearchEngines",
-        "FixedLocation", "LocationDesc", "LocationId", "Skills", "Status", "PostJobDateStart", "PostJobDateEnd",
-        "LocationCity", "LocationCountry", "LocationProvince"
-    };
-
-    /**
-     * 发布工作时，不可为空的字段
-     * 保存草稿时，不验证非空字段
-     */
-    public static final String[] ATTR_POST_REQUIRED = {
-        "Name", "Brief", "WorkCategory", "WorkSubcategory", "Postform", "Status", "PostJobDateStart", "PostJobDateEnd"
-    };
-
+    public static final String[] POST_JOB_DISCUSS_VO_ATTR_READ = POST_JOB_DISCUSS_VO_ATTR_ALL;
 
     public PostJobResource() {
     }
@@ -185,7 +166,13 @@ public class PostJobResource extends BaseRestResource {
         return row.getUuid();
     }
 
-    //发布工作信息
+    /**
+     * 修改PostJob
+     * @param postJobId
+     * @param json
+     * @return
+     * @throws JSONException
+     */
     @POST
     @Path("update/{postJobId}")
     @Consumes(MediaType.APPLICATION_JSON)
@@ -207,20 +194,38 @@ public class PostJobResource extends BaseRestResource {
         return "ok";
     }
 
+    /**
+     * 修改PostJob功能（功能，非对外接口）
+     * @param am
+     * @param row
+     * @param json
+     * @throws JSONException
+     */
     public void updatePostJobFn(LanceRestAMImpl am, PostJobsVORowImpl row, JSONObject json) throws JSONException {
         System.out.println("updatePostJobFn:" + json.get("Status"));
-        if (json.get("Status").equals(1)) {
+        if (json.get("Status").equals("draft")) {
             System.out.println("只保存草稿");
             saveDraftPostJobFn(am, row, json);
-        } else if (json.get("Status").equals(2)) {
+        } else if (json.get("Status").equals("posted")) {
             System.out.println("发布");
             sendPostJobFn(am, row, json);
+        } else if (json.get("Status").equals("deleted")) {
+            saveDraftPostJobFn(am, row, json);
+        } else {
+            am.getDBTransaction().rollback();
         }
     }
 
+    /**
+     * 保存草稿功能
+     * @param am
+     * @param row
+     * @param json
+     * @throws JSONException
+     */
     public void saveDraftPostJobFn(LanceRestAMImpl am, PostJobsVORowImpl row, JSONObject json) throws JSONException {
-        System.out.println("saveDraftPostJobFn");
-        LUtil.transJsonToRow(json, row, ATTR_UPDATE);
+        System.out.println("发布招聘信息-保存草稿");
+        LUtil.transJsonToRow(json, row, POST_JOB_VO_ATTR_UPDATE);
     }
 
     /**
@@ -234,7 +239,7 @@ public class PostJobResource extends BaseRestResource {
     public JSONObject sendPostJobFn(LanceRestAMImpl am, PostJobsVORowImpl row, JSONObject json) throws JSONException {
         System.out.println("sendPostJobFn");
         JSONObject res = new JSONObject();
-        LUtil.jsonHasNullAttrs(json, ATTR_POST_REQUIRED);
+        LUtil.jsonHasNullAttrs(json, POST_JOB_VO_ATTR_REQUIRED);
         //非空
         if (json.has("HourlyPayMin") && json.getDouble("HourlyPayMin") < 10) {
             res.put("error", "时薪不能小于10元");
@@ -245,7 +250,7 @@ public class PostJobResource extends BaseRestResource {
             return res;
         }
         //
-        LUtil.transJsonToRow(json, row, ATTR_UPDATE);
+        LUtil.transJsonToRow(json, row, POST_JOB_VO_ATTR_UPDATE);
         return res;
     }
 
@@ -265,21 +270,23 @@ public class PostJobResource extends BaseRestResource {
         vo.executeQuery();
         vo.removeApplyViewCriteriaName("FindByIdVC");
         PostJobsVORowImpl row = (PostJobsVORowImpl) vo.first();
-        if (row.getStatus().equals(1)) {
+        if (row.getStatus().equals("draft")) {
             //草稿
             row.remove();
-        } else if (row.getStatus().equals(2)) {
+            am.getDBTransaction().commit();
+            return "ok";
+        } else if (row.getStatus().equals("posted")) {
             //发布
-            row.setStatus(0);
+            row.setStatus("deleted");
+            am.getDBTransaction().commit();
+            return "ok";
+        } else {
+            return "status not allowed";
         }
-        am.getDBTransaction().commit();
-        return "ok";
     }
 
     /**
-     *
-     *Example
-     *
+     * 获取指定PostJob
      *
      * @param postJobId
      * @return
@@ -297,18 +304,37 @@ public class PostJobResource extends BaseRestResource {
         vo.removeApplyViewCriteriaName("FindByIdVC");
         Row row = vo.first();
 
-        return this.convertRowToJsonObject(row, ATTR_GET);
+        return this.convertRowToJsonObject(row, POST_JOB_VO_ATTR_GET);
     }
 
     /**
-     * 基于
+     * 找到所有当前用户创建的PostJob
+     * @return
+     */
+    @GET
+    @Path("all/{userName}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public JSONArray findAllMyPostJob(@PathParam("userName") String userName) throws JSONException {
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        PostJobsVOImpl vo = am.getPostJobs1();
+        //todo userCheck
+        //String curUser = this.findCurrentUserName();
+        vo.setpCreateBy(userName);
+        vo.setApplyViewCriteriaName("FindByCreateByVC");
+        vo.executeQuery();
+        vo.removeApplyViewCriteriaName("FindByCreateByVC");
+        return this.convertVoToJsonArray(vo, this.POST_JOB_VO_ATTR_SORT_GET);
+    }
+
+    /**
+     * 对指定PostJob发布评论（申请）
      * @param jobId
      * @param json
      * @return
      * @throws JSONException
      */
     @POST
-    @Path("discuss/{postJobId}")
+    @Path("{postJobId}/discuss")
     @Produces(MediaType.TEXT_PLAIN)
     @Consumes(MediaType.APPLICATION_JSON)
     public String postDiscuss(@PathParam("postJobId") String jobId, JSONObject json) throws JSONException {
@@ -322,7 +348,7 @@ public class PostJobResource extends BaseRestResource {
 
         PostJobDiscussVOImpl vo2 = am.getPostJobDiscuss1();
         Row row = vo2.createRow();
-        for (String attr : DISCUSS_FIELD) {
+        for (String attr : POST_JOB_DISCUSS_VO_ATTR_CREATE) {
             if (json.has(attr))
                 row.setAttribute(attr, json.get(attr));
         }
@@ -334,13 +360,13 @@ public class PostJobResource extends BaseRestResource {
     /**
      * 获取指定工作下的讨论信息
      * （不含工作信息本身，乙方查看甲方发布的PostJob页面应该用异步方式加载讨论信息）
-     * 
+     *
      * @param jobId
      * @return
      * @throws JSONException
      */
     @GET
-    @Path("discuss/{postJobId}")
+    @Path("{postJobId}/discuss")
     @Produces(MediaType.APPLICATION_JSON)
     public JSONObject getJobDiscuss(@PathParam("postJobId") String jobId) throws JSONException {
         LanceRestAMImpl am = LUtil.findLanceAM();
@@ -352,16 +378,97 @@ public class PostJobResource extends BaseRestResource {
         vo.setCurrentRow(vo.first());
 
         PostJobDiscussVOImpl vo2 = am.getPostJobDiscuss1();
-        return this.packViewObject(vo2, null, null, DISCUSS_FIELD_READ);
+        vo2.executeQuery();
+        return this.packViewObject(vo2, null, null, POST_JOB_DISCUSS_VO_ATTR_READ);
+    }
+
+    /**
+     * 删除指定PostJob下的评论（申请）
+     *
+     * 可执行的操作类型
+     * 信息发布人执行删除 delete
+     * 评论发布人执行删除 delete
+     *
+     * 会同时删除基于此消息的所有评论
+     *
+     * @param jobId
+     * @param discussId
+     * @param operation 执行的操作类型 delete
+     * @return
+     */
+    @POST
+    @Path("{postJobId}/discuss/delete/{discussId}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public String deleteJobDiscuss(@PathParam("postJobId") String postJobId, @PathParam("discussId") String discussId) {
+        String currentUser = this.findCurrentUserName();
+        //check PostJobs status createBy user
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        PostJobsVOImpl postJobVo = am.getPostJobs1();
+        postJobVo.setApplyViewCriteriaName("FindByIdVC");
+        postJobVo.setpUuid(postJobId);
+        postJobVo.executeQuery();
+        postJobVo.removeApplyViewCriteriaName("FindByIdVC");
+        PostJobsVORowImpl postJobRow = (PostJobsVORowImpl) postJobVo.first();
+        postJobVo.setCurrentRow(postJobRow);
+
+        PostJobDiscussVOImpl discussVo = am.getPostJobDiscussVO1();
+
+        //非信息发布人执行删除时，需要验证当前用户是否是本discuss发布人
+        if (!postJobRow.getCreateBy().equals(currentUser)) {
+            findDiscussByIdAndCreator(am, discussId, currentUser);
+            if (discussVo.getRowCount() == 0) {
+                return "无权执行此操作";
+            }
+        }
+
+        findDiscuss4Delete(am, discussId);
+        if (discussVo.getRowCount() == 0) {
+            return "找不到对应的记录";
+        }
+
+        RowSetIterator discussIt = discussVo.createRowSetIterator(null);
+        PostJobDiscussVORowImpl discussRow;
+        while (discussIt.hasNext()) {
+            discussRow = (PostJobDiscussVORowImpl) discussIt.next();
+            discussRow.setStatus("deleted");
+            if (postJobRow.getCreateBy().equals(currentUser)) {
+                discussRow.setStatusLog("此信息已被客户删除");
+            } else {
+                discussRow.setStatusLog("此信息已被发布者删除");
+            }
+        }
+        discussIt.closeRowSetIterator();
+        
+        am.getDBTransaction().commit();
+        return "ok";
+    }
+
+    private PostJobDiscussVOImpl findDiscussByIdAndCreator(LanceRestAMImpl am, String discussId, String creator) {
+        PostJobDiscussVOImpl discussVo = am.getPostJobDiscussVO1();
+        discussVo.setApplyViewCriteriaName("FindByIdAndCreatorVC");
+        discussVo.setpCreator(creator);
+        discussVo.setpId(discussId);
+        discussVo.executeQuery();
+        discussVo.removeApplyViewCriteriaName("FindByIdAndCreatorVC");
+        return discussVo;
+    }
+
+    private PostJobDiscussVOImpl findDiscuss4Delete(LanceRestAMImpl am, String discussId) {
+        PostJobDiscussVOImpl discussVo = am.getPostJobDiscussVO1();
+        discussVo.setApplyViewCriteriaName("Find4DeleteVC");
+        discussVo.setpId(discussId);
+        discussVo.executeQuery();
+        discussVo.removeApplyViewCriteriaName("Find4DeleteVC");
+        return discussVo;
     }
 
 
-//    public static void main(String[] args) {
-//        System.out.println(System.currentTimeMillis());
-//        System.out.println(Math.random());
-//        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
-//        System.out.println(sdf.format(new Date()));
-//    }
+    //    public static void main(String[] args) {
+    //        System.out.println(System.currentTimeMillis());
+    //        System.out.println(Math.random());
+    //        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
+    //        System.out.println(sdf.format(new Date()));
+    //    }
 
 
 }

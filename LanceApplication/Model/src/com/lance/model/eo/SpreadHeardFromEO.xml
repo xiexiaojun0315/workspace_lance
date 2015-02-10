@@ -39,6 +39,18 @@
     </DesignTime>
   </Attribute>
   <Attribute
+    Name="Type"
+    Precision="20"
+    ColumnName="TYPE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="SPREAD_HEARD_FROM">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
     Name="CreateBy"
     Precision="60"
     ColumnName="CREATE_BY"
@@ -91,18 +103,6 @@
     ColumnType="NUMBER"
     TableName="SPREAD_HEARD_FROM"
     HistoryColumn="VersionHistory"/>
-  <Attribute
-    Name="Type"
-    Precision="20"
-    ColumnName="TYPE"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="SPREAD_HEARD_FROM">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="20"/>
-    </DesignTime>
-  </Attribute>
   <Key
     Name="SpreadHeardFromPk"
     PrimaryKey="true">

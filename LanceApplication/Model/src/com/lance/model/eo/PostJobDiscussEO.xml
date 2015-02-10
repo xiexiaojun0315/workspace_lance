@@ -63,6 +63,73 @@
     </DesignTime>
   </Attribute>
   <Attribute
+    Name="Postform"
+    ColumnName="POSTFORM"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOB_DISCUSS"
+    Precision="20"/>
+  <Attribute
+    Name="HourlyPay"
+    ColumnName="HOURLY_PAY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="POST_JOB_DISCUSS"/>
+  <Attribute
+    Name="FixedPayMin"
+    ColumnName="FIXED_PAY_MIN"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="POST_JOB_DISCUSS"/>
+  <Attribute
+    Name="FixedPayMax"
+    ColumnName="FIXED_PAY_MAX"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="POST_JOB_DISCUSS"/>
+  <Attribute
+    Name="SignBy"
+    Precision="20"
+    ColumnName="SIGN_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOB_DISCUSS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="WeeklyHours"
+    ColumnName="WEEKLY_HOURS"
+    SQLType="NUMERIC"
+    Type="oracle.jbo.domain.Number"
+    ColumnType="NUMBER"
+    TableName="POST_JOB_DISCUSS"/>
+  <Attribute
+    Name="EnteryDate"
+    ColumnName="ENTERY_DATE"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="POST_JOB_DISCUSS"/>
+  <Attribute
+    Name="ParentDiscussId"
+    Precision="32"
+    ColumnName="PARENT_DISCUSS_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOB_DISCUSS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
     Name="CreateBy"
     Precision="60"
     ColumnName="CREATE_BY"
@@ -86,28 +153,26 @@
     IsUpdateable="while_insert"
     HistoryColumn="DateHistory"/>
   <Attribute
-    Name="UpdateBy"
-    Precision="32"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
+    Name="ModifyBy"
+    Precision="60"
+    ColumnName="MODIFY_BY"
     SQLType="VARCHAR"
     Type="java.lang.String"
-    ColumnType="$none$"
-    HistoryColumn="UserHistory"
-    IsQueriable="false"
-    IsPersistent="false">
+    ColumnType="VARCHAR2"
+    TableName="POST_JOB_DISCUSS"
+    HistoryColumn="UserHistory">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="32"/>
+      <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="UpdateOn"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
+    Name="ModifyOn"
+    ColumnName="MODIFY_ON"
     SQLType="DATE"
     Type="oracle.jbo.domain.Date"
-    ColumnType="$none$"
-    HistoryColumn="DateHistory"
-    IsQueriable="false"
-    IsPersistent="false"/>
+    ColumnType="DATE"
+    TableName="POST_JOB_DISCUSS"
+    HistoryColumn="DateHistory"/>
   <Attribute
     Name="Version"
     ColumnName="VERSION"
@@ -117,72 +182,29 @@
     TableName="POST_JOB_DISCUSS"
     HistoryColumn="VersionHistory"/>
   <Attribute
-    Name="Postform"
-    ColumnName="POSTFORM"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="POST_JOB_DISCUSS"
-    Precision="20"/>
-  <Attribute
-    Name="HourlyPay"
-    ColumnName="HOURLY_PAY"
-    SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    TableName="POST_JOB_DISCUSS"/>
-  <Attribute
-    Name="WeeklyHours"
-    ColumnName="WEEKLY_HOURS"
-    SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    TableName="POST_JOB_DISCUSS"/>
-  <Attribute
-    Name="EnteryDate"
-    ColumnName="ENTERY_DATE"
-    SQLType="DATE"
-    Type="oracle.jbo.domain.Date"
-    ColumnType="DATE"
-    TableName="POST_JOB_DISCUSS"/>
-  <Attribute
-    Name="TotalPrice"
-    ColumnName="TOTAL_PRICE"
-    SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
-    ColumnType="NUMBER"
-    TableName="POST_JOB_DISCUSS"/>
-  <Attribute
-    Name="ParentDiscussId"
-    Precision="32"
-    ColumnName="PARENT_DISCUSS_ID"
+    Name="Status"
+    Precision="20"
+    ColumnName="STATUS"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="POST_JOB_DISCUSS">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="32"/>
+      <Attr Name="_DisplaySize" Value="20"/>
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="ModifyBy"
-    Precision="60"
-    ColumnName="MODIFY_BY"
+    Name="StatusLog"
+    Precision="200"
+    ColumnName="STATUS_LOG"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     TableName="POST_JOB_DISCUSS">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="60"/>
+      <Attr Name="_DisplaySize" Value="200"/>
     </DesignTime>
   </Attribute>
-  <Attribute
-    Name="ModifyOn"
-    ColumnName="MODIFY_ON"
-    SQLType="DATE"
-    Type="java.sql.Timestamp"
-    ColumnType="DATE"
-    TableName="POST_JOB_DISCUSS"/>
   <Key
     Name="PostJobDiscussPk"
     PrimaryKey="true">

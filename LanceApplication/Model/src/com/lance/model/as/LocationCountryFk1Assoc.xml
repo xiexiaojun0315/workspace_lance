@@ -3,38 +3,39 @@
 <!---->
 <Association
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="JobTemplateJobCategoryFk1AS"
+  Name="LocationCountryFk1Assoc"
   Version="12.1.3.2.36"
   InheritPersonalization="merge">
   <DesignTime>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <AssociationEnd
-    Name="JobCategory"
+    Name="LocationRegion"
     Cardinality="1"
     Source="true"
-    Owner="com.lance.model.eo.JobCategoryEO">
+    Owner="com.lance.model.eo.LocationRegionEO">
     <DesignTime>
       <Attr Name="_aggregation" Value="0"/>
-      <Attr Name="_finderName" Value="JobCategory"/>
+      <Attr Name="_finderName" Value="LocationRegion"/>
+      <Attr Name="_foreignKey" Value="com.lance.model.eo.LocationRegionEO.LocationRegionPk"/>
       <Attr Name="_isUpdateable" Value="true"/>
-      <Attr Name="_minCardinality" Value="1"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.lance.model.eo.JobCategoryEO.Uuid"/>
+      <Item Value="com.lance.model.eo.LocationRegionEO.Uuid"/>
     </AttrArray>
   </AssociationEnd>
   <AssociationEnd
-    Name="JobTemplate"
+    Name="LocationCountry"
     Cardinality="-1"
-    Owner="com.lance.model.eo.JobTemplateEO">
+    Owner="com.lance.model.eo.LocationCountryEO">
     <DesignTime>
       <Attr Name="_aggregation" Value="0"/>
-      <Attr Name="_finderName" Value="JobTemplate"/>
+      <Attr Name="_finderName" Value="LocationCountry"/>
+      <Attr Name="_foreignKey" Value="com.lance.model.eo.LocationCountryEO.LocationCountryFk1"/>
       <Attr Name="_isUpdateable" Value="true"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.lance.model.eo.JobTemplateEO.JobCategoryId"/>
+      <Item Value="com.lance.model.eo.LocationCountryEO.RegionId"/>
     </AttrArray>
   </AssociationEnd>
 </Association>

@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LocationCityVO"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   InheritPersonalization="merge"
   SelectListFlags="1"
   FromListFlags="1"
@@ -47,4 +47,34 @@
     EntityAttrName="ProvinceCode"
     EntityUsage="LocationCityEO"
     AliasName="PROVINCE_CODE"/>
+  <ViewAttribute
+    Name="CreateBy"
+    PrecisionRule="true"
+    EntityAttrName="CreateBy"
+    EntityUsage="LocationCityEO"
+    AliasName="CREATE_BY"/>
+  <ViewAttribute
+    Name="CreateOn"
+    PrecisionRule="true"
+    EntityAttrName="CreateOn"
+    EntityUsage="LocationCityEO"
+    AliasName="CREATE_ON"/>
+  <ViewAttribute
+    Name="ModifyBy"
+    PrecisionRule="true"
+    EntityAttrName="ModifyBy"
+    EntityUsage="LocationCityEO"
+    AliasName="MODIFY_BY"/>
+  <ViewAttribute
+    Name="ModifyOn"
+    PrecisionRule="true"
+    EntityAttrName="ModifyOn"
+    EntityUsage="LocationCityEO"
+    AliasName="MODIFY_ON"/>
+  <ViewAttribute
+    Name="Version"
+    PrecisionRule="true"
+    EntityAttrName="Version"
+    EntityUsage="LocationCityEO"
+    AliasName="VERSION"/>
 </ViewObject>

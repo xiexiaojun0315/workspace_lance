@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LookupsVVO"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="true"
@@ -20,15 +20,15 @@
     Name="pType"
     Kind="viewcriteria"
     Type="java.lang.String"/>
-  <SQLQuery><![CDATA[SELECT Lookups.ITEM_KEY,    
-       Lookups.ITEM_DISPLAY,    
-       Lookups.ITEM_DESC,    
-       Lookups.ITEM_TYPE,    
-       Lookups.CREATE_BY,    
-       Lookups.UPDATE_BY,    
-       Lookups.CREATE_ON,    
-       Lookups.UDPATE_ON,    
-       Lookups.VERSION    
+  <SQLQuery><![CDATA[SELECT Lookups.ITEM_KEY,      
+       Lookups.ITEM_DISPLAY,      
+       Lookups.ITEM_DESC,      
+       Lookups.ITEM_TYPE,      
+       Lookups.CREATE_BY,      
+       Lookups.MODIFY_BY,      
+       Lookups.CREATE_ON,      
+       Lookups.MODIFY_ON,      
+       Lookups.VERSION      
 FROM LOOKUPS Lookups]]></SQLQuery>
   <ViewAttribute
     Name="ItemKey"
@@ -44,6 +44,22 @@ FROM LOOKUPS Lookups]]></SQLQuery>
     SQLType="VARCHAR">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ItemType"
+    IsUpdateable="false"
+    IsPersistent="false"
+    IsNotNull="true"
+    PrecisionRule="true"
+    Precision="50"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="ITEM_TYPE"
+    Expression="ITEM_TYPE"
+    SQLType="VARCHAR">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
   </ViewAttribute>
   <ViewAttribute
@@ -77,22 +93,6 @@ FROM LOOKUPS Lookups]]></SQLQuery>
     </DesignTime>
   </ViewAttribute>
   <ViewAttribute
-    Name="ItemType"
-    IsUpdateable="false"
-    IsPersistent="false"
-    IsNotNull="true"
-    PrecisionRule="true"
-    Precision="50"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="ITEM_TYPE"
-    Expression="ITEM_TYPE"
-    SQLType="VARCHAR">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="50"/>
-    </DesignTime>
-  </ViewAttribute>
-  <ViewAttribute
     Name="CreateBy"
     IsUpdateable="false"
     IsPersistent="false"
@@ -108,18 +108,18 @@ FROM LOOKUPS Lookups]]></SQLQuery>
     </DesignTime>
   </ViewAttribute>
   <ViewAttribute
-    Name="UpdateBy"
+    Name="ModifyBy"
     IsUpdateable="false"
     IsPersistent="false"
     PrecisionRule="true"
-    Precision="32"
+    Precision="60"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    AliasName="UPDATE_BY"
-    Expression="UPDATE_BY"
+    AliasName="MODIFY_BY"
+    Expression="MODIFY_BY"
     SQLType="VARCHAR">
     <DesignTime>
-      <Attr Name="_DisplaySize" Value="32"/>
+      <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
   </ViewAttribute>
   <ViewAttribute
@@ -133,14 +133,14 @@ FROM LOOKUPS Lookups]]></SQLQuery>
     Expression="CREATE_ON"
     SQLType="DATE"/>
   <ViewAttribute
-    Name="UdpateOn"
+    Name="ModifyOn"
     IsUpdateable="false"
     IsPersistent="false"
     PrecisionRule="true"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    AliasName="UDPATE_ON"
-    Expression="UDPATE_ON"
+    AliasName="MODIFY_ON"
+    Expression="MODIFY_ON"
     SQLType="DATE"/>
   <ViewAttribute
     Name="Version"

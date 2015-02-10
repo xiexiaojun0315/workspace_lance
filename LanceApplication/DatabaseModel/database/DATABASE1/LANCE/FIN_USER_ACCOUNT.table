@@ -354,7 +354,7 @@
   <properties>
     <entry>
       <key>Comment</key>
-      <value class="java.lang.String">用户账户总表</value>
+      <value class="java.lang.String">用户账户</value>
     </entry>
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_CONNECTION</key>

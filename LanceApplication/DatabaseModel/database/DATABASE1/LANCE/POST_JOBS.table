@@ -110,7 +110,7 @@
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">200</value>
+            <value class="java.lang.Integer">2000</value>
           </entry>
           <entry>
             <key>unit</key>
@@ -159,7 +159,7 @@
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">1时薪/2固定价格</value>
+          <value class="java.lang.String">hourly时薪/fixed固定价格</value>
         </entry>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
@@ -217,54 +217,6 @@
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
             <name>HOURLY_PAY_MAX</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>POST_JOBS</name>
-              <identifier class="java.math.BigDecimal">30307</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>DAY_PAY_MIN</name>
-      <dataTypeUsage>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>DAY_PAY_MIN</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>POST_JOBS</name>
-              <identifier class="java.math.BigDecimal">30307</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>DAY_PAY_MAX</name>
-      <dataTypeUsage>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>DAY_PAY_MAX</name>
             <parent class="oracle.javatools.db.ReferenceID">
               <name>POST_JOBS</name>
               <identifier class="java.math.BigDecimal">30307</identifier>
@@ -411,8 +363,14 @@
     <column>
       <name>JOB_VISIBILITY</name>
       <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Integer">20</value>
+          </entry>
+        </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
+          <typeName>VARCHAR2</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>false</notNull>
@@ -439,15 +397,21 @@
     <column>
       <name>ALLOW_SEARCH_ENGINES</name>
       <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Integer">20</value>
+          </entry>
+        </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>NUMBER</typeName>
+          <typeName>VARCHAR2</typeName>
         </dataTypeID>
       </dataTypeUsage>
       <notNull>false</notNull>
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">利用搜索引擎推广</value>
+          <value class="java.lang.String">Y/N利用搜索引擎推广</value>
         </entry>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>

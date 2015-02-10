@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="CompanyVO"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="false"
@@ -18,9 +18,17 @@
        CompanyEO.FOUND_YEAR, 
        CompanyEO.ABOUT_COMPANY, 
        CompanyEO.SERVICE_DESC, 
-       CompanyEO.LOCATION, 
+       CompanyEO.LOCATION_CITY, 
+       CompanyEO.LOCATION_COUNTRY, 
+       CompanyEO.LOCATION_DESC, 
+       CompanyEO.LOCATION_PROVINCE, 
        CompanyEO.VIDEO, 
-       CompanyEO.LOGO"
+       CompanyEO.LOGO, 
+       CompanyEO.CREATE_BY, 
+       CompanyEO.CREATE_ON, 
+       CompanyEO.MODIFY_BY, 
+       CompanyEO.MODIFY_ON, 
+       CompanyEO.VERSION"
   FromList="COMPANY CompanyEO"
   RangeSize="10">
   <DesignTime>
@@ -88,6 +96,30 @@
     EntityUsage="CompanyEO"
     AliasName="LOCATION"/>
   <ViewAttribute
+    Name="LocationCity"
+    PrecisionRule="true"
+    EntityAttrName="LocationCity"
+    EntityUsage="CompanyEO"
+    AliasName="LOCATION_CITY"/>
+  <ViewAttribute
+    Name="LocationCountry"
+    PrecisionRule="true"
+    EntityAttrName="LocationCountry"
+    EntityUsage="CompanyEO"
+    AliasName="LOCATION_COUNTRY"/>
+  <ViewAttribute
+    Name="LocationDesc"
+    PrecisionRule="true"
+    EntityAttrName="LocationDesc"
+    EntityUsage="CompanyEO"
+    AliasName="LOCATION_DESC"/>
+  <ViewAttribute
+    Name="LocationProvince"
+    PrecisionRule="true"
+    EntityAttrName="LocationProvince"
+    EntityUsage="CompanyEO"
+    AliasName="LOCATION_PROVINCE"/>
+  <ViewAttribute
     Name="Video"
     PrecisionRule="true"
     EntityAttrName="Video"
@@ -99,6 +131,41 @@
     EntityAttrName="Logo"
     EntityUsage="CompanyEO"
     AliasName="LOGO"/>
+  <ViewAttribute
+    Name="CreateBy"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="CreateBy"
+    EntityUsage="CompanyEO"
+    AliasName="CREATE_BY"/>
+  <ViewAttribute
+    Name="CreateOn"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="CreateOn"
+    EntityUsage="CompanyEO"
+    AliasName="CREATE_ON"/>
+  <ViewAttribute
+    Name="ModifyBy"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="ModifyBy"
+    EntityUsage="CompanyEO"
+    AliasName="MODIFY_BY"/>
+  <ViewAttribute
+    Name="ModifyOn"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="ModifyOn"
+    EntityUsage="CompanyEO"
+    AliasName="MODIFY_ON"/>
+  <ViewAttribute
+    Name="Version"
+    IsUpdateable="false"
+    PrecisionRule="true"
+    EntityAttrName="Version"
+    EntityUsage="CompanyEO"
+    AliasName="VERSION"/>
   <ViewCriteria
     Name="FindByNameVC"
     ViewObjectName="com.lance.model.vo.CompanyVO"

@@ -28,7 +28,6 @@
   </Attribute>
   <Attribute
     Name="JobCategoryId"
-    IsNotNull="true"
     Precision="32"
     ColumnName="JOB_CATEGORY_ID"
     SQLType="VARCHAR"
@@ -151,6 +150,18 @@
     ColumnType="NUMBER"
     TableName="JOB_TEMPLATE"
     HistoryColumn="VersionHistory"/>
+  <Attribute
+    Name="JobSubCategoryId"
+    Precision="32"
+    ColumnName="JOB_SUB_CATEGORY_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="JOB_TEMPLATE">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="JobCategory"
     Association="com.lance.model.as.JobTemplateJobCategoryFk1AS"
@@ -166,17 +177,6 @@
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.lance.model.eo.JobTemplateEO.Uuid"/>
-    </AttrArray>
-  </Key>
-  <Key
-    Name="JobTemplateJobCategoryFk1">
-    <DesignTime>
-      <Attr Name="_referencedKey" Value="JOB_CATEGORY_PK"/>
-      <Attr Name="_isForeign" Value="true"/>
-      <Attr Name="_DBObjectName" Value="JOB_TEMPLATE_JOB_CATEGORY_FK1"/>
-    </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.lance.model.eo.JobTemplateEO.JobCategoryId"/>
     </AttrArray>
   </Key>
 </Entity>

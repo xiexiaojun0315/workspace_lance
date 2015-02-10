@@ -206,7 +206,7 @@ public class SearchResource extends BaseRestResource {
      * 
      * 根据Overview，Tagline，Keyword,skill查询UUser
      * 适用于Client根据技术查找UUser
-     *
+     * 
      * 模糊查询（关键字查询）
      * GET http://localhost:7101/lance/res/search/userByKeyword/{userType}/{keyword}?category={category}
      * start:1和start=0时都从第一条开始返回

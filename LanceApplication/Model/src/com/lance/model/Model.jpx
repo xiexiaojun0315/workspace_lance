@@ -4,7 +4,7 @@
 <JboProject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="Model"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   SeparateXMLFiles="true"
   PackageName="com.lance.model">
   <DesignTime>
@@ -14,6 +14,7 @@
     <Attr Name="_appModuleNames0" Value="com.lance.model.LanceRestAM"/>
     <Attr Name="_domainNames0" Value="com.lance.model.vo.Type"/>
     <Attr Name="_appModuleNames1" Value="com.lance.model.LanceAdminAM"/>
+    <Attr Name="_domainNames1" Value="com.lance.model.vvo.Type"/>
   </DesignTime>
   <Containee
     Name="as"
@@ -94,6 +95,7 @@
     ObjectType="JboPackage">
     <DesignTime>
       <Attr Name="_VO" Value="true"/>
+      <Attr Name="_DO" Value="true"/>
     </DesignTime>
   </Containee>
   <AppContainee
