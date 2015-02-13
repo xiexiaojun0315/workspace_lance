@@ -15,6 +15,9 @@ public class PostJobsVOImpl extends BaseViewObjectImpl {
      */
     public PostJobsVOImpl() {
     }
+    
+
+
 
     /**
      * Returns the variable value for pUuid.
@@ -46,6 +49,54 @@ public class PostJobsVOImpl extends BaseViewObjectImpl {
      */
     public void setpCreateBy(String value) {
         ensureVariableManager().setVariableValue("pCreateBy", value);
+    }
+
+    /**
+     * Returns the variable value for pLocation.
+     * @return variable value for pLocation
+     */
+    public String getpLocation() {
+        return (String) ensureVariableManager().getVariableValue("pLocation");
+    }
+
+    /**
+     * Sets <code>value</code> for variable pLocation.
+     * @param value value to bind as pLocation
+     */
+    public void setpLocation(String value) {
+        ensureVariableManager().setVariableValue("pLocation", value);
+    }
+
+    /**
+     * Returns the variable value for pSkill.
+     * @return variable value for pSkill
+     */
+    public String getpSkill() {
+        return (String) ensureVariableManager().getVariableValue("pSkill");
+    }
+
+    /**
+     * Sets <code>value</code> for variable pSkill.
+     * @param value value to bind as pSkill
+     */
+    public void setpSkill(String value) {
+        ensureVariableManager().setVariableValue("pSkill", value);
+    }
+
+    /**
+     * Returns the variable value for pCategory.
+     * @return variable value for pCategory
+     */
+    public String getpCategory() {
+        return (String) ensureVariableManager().getVariableValue("pCategory");
+    }
+
+    /**
+     * Sets <code>value</code> for variable pCategory.
+     * @param value value to bind as pCategory
+     */
+    public void setpCategory(String value) {
+        ensureVariableManager().setVariableValue("pCategory", value);
     }
 }
 

@@ -18,7 +18,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 
 import oracle.jbo.Row;
-
 import oracle.jbo.RowSetIterator;
 
 import org.codehaus.jettison.json.JSONArray;
@@ -62,6 +61,7 @@ public class PostJobResource extends BaseRestResource {
          LocationCity,Precision:32,JavaType:java.lang.String  地点，城市ID
          LocationCountry,Precision:32,JavaType:java.lang.String
          LocationProvince,Precision:32,JavaType:java.lang.String
+         LocationRegion,Precision:32,JavaType:java.lang.String
          CreateBy,Precision:60,JavaType:java.lang.String
          CreateOn,Precision:0,JavaType:java.sql.Timestamp
          ModifyBy,Precision:60,JavaType:java.lang.String
@@ -74,8 +74,8 @@ public class PostJobResource extends BaseRestResource {
         "FixedPayMin", "HourlyPayMax", "HourlyPayMin", "JobVisibility", "LocationDesc", "Name", "Postform",
         "SpecificSkillA", "SpecificSkillB", "SpecificSkillC", "SpecificSkillD", "SpecificSkillE", "SpecificSkillF",
         "SpecificSkillG", "Status", "WeeklyHours", "WorkCategory", "WorkSubcategory", "PostJobDateStart",
-        "PostJobDateEnd", "LocationCity", "LocationCountry", "LocationProvince", "CreateBy", "CreateOn", "ModifyBy",
-        "ModifyOn", "Version", "CreateByName"
+        "PostJobDateEnd", "LocationCity", "LocationCountry", "LocationProvince", "LocationRegion", "CreateBy",
+        "CreateOn", "ModifyBy", "ModifyOn", "Version", "CreateByName"
     };
 
     public static final String[] POST_JOB_VO_ATTR_GET = POST_JOB_VO_ATTR_ALL;
@@ -85,7 +85,8 @@ public class PostJobResource extends BaseRestResource {
         "HourlyPayMin", "JobVisibility", "LocationDesc", "Name", "Postform", "SpecificSkillA", "SpecificSkillB",
         "SpecificSkillC", "SpecificSkillD", "SpecificSkillE", "SpecificSkillF", "SpecificSkillG", "Status",
         "WeeklyHours", "WorkCategory", "WorkSubcategory", "PostJobDateStart", "PostJobDateEnd", "LocationCity",
-        "LocationCountry", "LocationProvince", "CreateBy", "CreateOn", "ModifyBy", "ModifyOn", "Version", "CreateByName"
+        "LocationCountry", "LocationProvince", "LocationRegion", "CreateBy", "CreateOn", "ModifyBy", "ModifyOn",
+        "Version", "CreateByName"
     };
 
     public static final String[] POST_JOB_VO_ATTR_UPDATE = {
@@ -93,7 +94,7 @@ public class PostJobResource extends BaseRestResource {
         "FixedPayMin", "HourlyPayMax", "HourlyPayMin", "JobVisibility", "LocationDesc", "Name", "Postform",
         "SpecificSkillA", "SpecificSkillB", "SpecificSkillC", "SpecificSkillD", "SpecificSkillE", "SpecificSkillF",
         "SpecificSkillG", "Status", "WeeklyHours", "WorkCategory", "WorkSubcategory", "PostJobDateStart",
-        "PostJobDateEnd", "LocationCity", "LocationCountry", "LocationProvince"
+        "PostJobDateEnd", "LocationRegion", "LocationCity", "LocationCountry", "LocationProvince"
     };
 
     /**
@@ -161,8 +162,7 @@ public class PostJobResource extends BaseRestResource {
         //使用简短ID，1414408397908
         row.setAttribute("Uuid", "" + System.currentTimeMillis());
 
-        updatePostJobFn(am, row, json);
-        am.getDBTransaction().commit();
+        updatePostJobFn(am, vo, row, json);
         return row.getUuid();
     }
 
@@ -189,8 +189,10 @@ public class PostJobResource extends BaseRestResource {
             row = (PostJobsVORowImpl) vo.first();
             vo.setCurrentRow(row);
         }
-        updatePostJobFn(am, row, json);
-        am.getDBTransaction().commit();
+        if (row == null) {
+            return "无法找到ID为" + postJobId + "的需求信息记录";
+        }
+        updatePostJobFn(am, vo, row, json);
         return "ok";
     }
 
@@ -201,16 +203,21 @@ public class PostJobResource extends BaseRestResource {
      * @param json
      * @throws JSONException
      */
-    public void updatePostJobFn(LanceRestAMImpl am, PostJobsVORowImpl row, JSONObject json) throws JSONException {
+    public void updatePostJobFn(LanceRestAMImpl am, PostJobsVOImpl vo, PostJobsVORowImpl row,
+                                JSONObject json) throws JSONException {
         System.out.println("updatePostJobFn:" + json.get("Status"));
         if (json.get("Status").equals("draft")) {
             System.out.println("只保存草稿");
-            saveDraftPostJobFn(am, row, json);
+            saveDraftPostJobFn(am, vo, row, json);
+            am.getDBTransaction().commit();
         } else if (json.get("Status").equals("posted")) {
             System.out.println("发布");
-            sendPostJobFn(am, row, json);
+            sendPostJobFn(am, vo, row, json);
+            row.updateSearchIndex();
+            am.getDBTransaction().commit();
         } else if (json.get("Status").equals("deleted")) {
-            saveDraftPostJobFn(am, row, json);
+            saveDraftPostJobFn(am, vo, row, json);
+            am.getDBTransaction().commit();
         } else {
             am.getDBTransaction().rollback();
         }
@@ -223,9 +230,10 @@ public class PostJobResource extends BaseRestResource {
      * @param json
      * @throws JSONException
      */
-    public void saveDraftPostJobFn(LanceRestAMImpl am, PostJobsVORowImpl row, JSONObject json) throws JSONException {
+    public void saveDraftPostJobFn(LanceRestAMImpl am, PostJobsVOImpl vo, PostJobsVORowImpl row,
+                                   JSONObject json) throws JSONException {
         System.out.println("发布招聘信息-保存草稿");
-        LUtil.transJsonToRow(json, row, POST_JOB_VO_ATTR_UPDATE);
+        this.copyJsonObjectToRow(json, vo, row, POST_JOB_VO_ATTR_UPDATE);
     }
 
     /**
@@ -236,7 +244,8 @@ public class PostJobResource extends BaseRestResource {
      * @param row
      * @param json
      */
-    public JSONObject sendPostJobFn(LanceRestAMImpl am, PostJobsVORowImpl row, JSONObject json) throws JSONException {
+    public JSONObject sendPostJobFn(LanceRestAMImpl am, PostJobsVOImpl vo, PostJobsVORowImpl row,
+                                    JSONObject json) throws JSONException {
         System.out.println("sendPostJobFn");
         JSONObject res = new JSONObject();
         LUtil.jsonHasNullAttrs(json, POST_JOB_VO_ATTR_REQUIRED);
@@ -249,8 +258,7 @@ public class PostJobResource extends BaseRestResource {
             res.put("error", "支付价格不能小于80元");
             return res;
         }
-        //
-        LUtil.transJsonToRow(json, row, POST_JOB_VO_ATTR_UPDATE);
+        this.copyJsonObjectToRow(json, vo, row, POST_JOB_VO_ATTR_UPDATE);
         return res;
     }
 
@@ -438,7 +446,7 @@ public class PostJobResource extends BaseRestResource {
             }
         }
         discussIt.closeRowSetIterator();
-        
+
         am.getDBTransaction().commit();
         return "ok";
     }
@@ -461,14 +469,6 @@ public class PostJobResource extends BaseRestResource {
         discussVo.removeApplyViewCriteriaName("Find4DeleteVC");
         return discussVo;
     }
-
-
-    //    public static void main(String[] args) {
-    //        System.out.println(System.currentTimeMillis());
-    //        System.out.println(Math.random());
-    //        SimpleDateFormat sdf = new SimpleDateFormat("yyyyMMddhhmmss");
-    //        System.out.println(sdf.format(new Date()));
-    //    }
 
 
 }

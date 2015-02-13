@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Entity SYSTEM "jbo_03_01.dtd">
+<!---->
+<Entity
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ContractEO"
+  Version="12.1.3.2.36"
+  InheritPersonalization="merge"
+  DBObjectType="table"
+  DBObjectName="CONTRACT"
+  AliasName="ContractEO"
+  BindingStyle="OracleName">
+  <Attribute
+    Name="Uuid"
+    IsNotNull="true"
+    Precision="32"
+    ColumnName="UUID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProjectId"
+    Precision="32"
+    ColumnName="PROJECT_ID"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Title"
+    Precision="60"
+    ColumnName="TITLE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Content"
+    IsQueriable="false"
+    ColumnName="CONTENT"
+    SQLType="CLOB"
+    Type="oracle.jbo.domain.ClobDomain"
+    ColumnType="CLOB"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="AttachmentLink"
+    Precision="600"
+    ColumnName="ATTACHMENT_LINK"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="600"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ClientName"
+    Precision="60"
+    ColumnName="CLIENT_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LancerName"
+    Precision="60"
+    ColumnName="LANCER_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="DateStart"
+    ColumnName="DATE_START"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="DateEnd"
+    ColumnName="DATE_END"
+    SQLType="DATE"
+    Type="oracle.jbo.domain.Date"
+    ColumnType="DATE"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="ClientRoleTitle"
+    Precision="120"
+    ColumnName="CLIENT_ROLE_TITLE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="120"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LancerRoleTitle"
+    Precision="120"
+    ColumnName="LANCER_ROLE_TITLE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="120"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Postform"
+    Precision="20"
+    ColumnName="POSTFORM"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="HourlyPay"
+    ColumnName="HOURLY_PAY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="WeeklyHours"
+    ColumnName="WEEKLY_HOURS"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="FixedPayPrice"
+    ColumnName="FIXED_PAY_PRICE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="ClientConfirmDelayDay"
+    ColumnName="CLIENT_CONFIRM_DELAY_DAY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="ClientPayDelayDay"
+    ColumnName="CLIENT_PAY_DELAY_DAY"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="FixedPayDate"
+    ColumnName="FIXED_PAY_DATE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="FixedPayDelayHoliday"
+    Precision="10"
+    ColumnName="FIXED_PAY_DELAY_HOLIDAY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="NeedDailyReport"
+    Precision="10"
+    ColumnName="NEED_DAILY_REPORT"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="10"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ProcessStatus"
+    Precision="20"
+    ColumnName="PROCESS_STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LancerTotalScore"
+    ColumnName="LANCER_TOTAL_SCORE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="LancerQualityScore"
+    ColumnName="LANCER_QUALITY_SCORE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="LancerProfessScore"
+    ColumnName="LANCER_PROFESS_SCORE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="LancerCostScore"
+    ColumnName="LANCER_COST_SCORE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="LancerPlanScore"
+    ColumnName="LANCER_PLAN_SCORE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="LancerResponsScore"
+    ColumnName="LANCER_RESPONS_SCORE"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CONTRACT"/>
+  <Attribute
+    Name="LancerEvaluation"
+    Precision="2100"
+    ColumnName="LANCER_EVALUATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ClientTotalScore"
+    Precision="20"
+    ColumnName="CLIENT_TOTAL_SCORE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Status"
+    Precision="20"
+    ColumnName="STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreateBy"
+    Precision="60"
+    ColumnName="CREATE_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="CreateOn"
+    ColumnName="CREATE_ON"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="CONTRACT"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="ModifyBy"
+    Precision="60"
+    ColumnName="MODIFY_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT"
+    HistoryColumn="UserHistory">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="60"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="ModifyOn"
+    ColumnName="MODIFY_ON"
+    SQLType="DATE"
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="CONTRACT"
+    HistoryColumn="DateHistory"/>
+  <Attribute
+    Name="Version"
+    ColumnName="VERSION"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="CONTRACT"
+    HistoryColumn="VersionHistory"/>
+  <AccessorAttribute
+    Name="Project"
+    Association="com.lance.model.as.ContractProjectFk1AS"
+    AssociationEnd="com.lance.model.as.ContractProjectFk1AS.Project"
+    AssociationOtherEnd="com.lance.model.as.ContractProjectFk1AS.Contract"
+    Type="oracle.jbo.server.EntityImpl"
+    IsUpdateable="true"/>
+  <AccessorAttribute
+    Name="ContractMilestone"
+    Association="com.lance.model.as.ContractMilestoneFk1AS"
+    AssociationEnd="com.lance.model.as.ContractMilestoneFk1AS.ContractMilestone"
+    AssociationOtherEnd="com.lance.model.as.ContractMilestoneFk1AS.Contract"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="ContractReport"
+    Association="com.lance.model.as.ContractReportContractFk1AS"
+    AssociationEnd="com.lance.model.as.ContractReportContractFk1AS.ContractReport"
+    AssociationOtherEnd="com.lance.model.as.ContractReportContractFk1AS.Contract"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <Key
+    Name="ContractPk"
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DBObjectName" Value="CONTRACT_PK"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.ContractEO.Uuid"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ContractProjectFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="PROJECT_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CONTRACT_PROJECT_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.ContractEO.ProjectId"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ContractUUserFk1">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="U_USER_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CONTRACT_U_USER_FK1"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.ContractEO.ClientName"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="ContractUUserFk2">
+    <DesignTime>
+      <Attr Name="_referencedKey" Value="U_USER_PK"/>
+      <Attr Name="_isForeign" Value="true"/>
+      <Attr Name="_DBObjectName" Value="CONTRACT_U_USER_FK2"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.ContractEO.LancerName"/>
+    </AttrArray>
+  </Key>
+</Entity>

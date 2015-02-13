@@ -80,6 +80,15 @@
     <ViewUsage
         Name="PostJobDiscussVO1"
         ViewObjectName="com.lance.model.vo.PostJobDiscussVO"/>
+    <ViewUsage
+        Name="ContractVO1"
+        ViewObjectName="com.lance.model.vo.ContractVO"/>
+    <ViewUsage
+        Name="ContractMilestoneVO1"
+        ViewObjectName="com.lance.model.vo.ContractMilestoneVO"/>
+    <ViewUsage
+        Name="ContractReportVO1"
+        ViewObjectName="com.lance.model.vo.ContractReportVO"/>
     <ViewLinkUsage
       Name="JobCategory_SubCategoryVL1"
       ViewLinkObjectName="com.lance.model.vl.JobCategory_SubCategoryVL"
@@ -121,6 +130,18 @@
         ViewLinkObjectName="com.lance.model.user.vl.UserSkillUUserFk1VL"
         SrcViewUsageName="com.lance.model.LanceRestAM.UUser1"
         DstViewUsageName="com.lance.model.LanceRestAM.UserSkill1"
+        Reversed="false"/>
+    <ViewLinkUsage
+        Name="ContractMilestoneFk1VL1"
+        ViewLinkObjectName="com.lance.model.vl.ContractMilestoneFk1VL"
+        SrcViewUsageName="com.lance.model.LanceRestAM.ContractVO1"
+        DstViewUsageName="com.lance.model.LanceRestAM.ContractMilestoneVO1"
+        Reversed="false"/>
+    <ViewLinkUsage
+        Name="ContractReportContractFk1VL1"
+        ViewLinkObjectName="com.lance.model.vl.ContractReportContractFk1VL"
+        SrcViewUsageName="com.lance.model.LanceRestAM.ContractVO1"
+        DstViewUsageName="com.lance.model.LanceRestAM.ContractReportVO1"
         Reversed="false"/>
     <ResourceBundle>
         <PropertiesBundle

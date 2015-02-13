@@ -27,9 +27,49 @@
     Name="pCreateBy"
     Kind="viewcriteria"
     Type="java.lang.String"/>
+  <Variable
+    Name="pLocation"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="pSkill"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="pCategory"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <ViewAccessor
     Name="UUserVO1"
     ViewObjectName="com.lance.model.user.vo.UUserVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="SkillsVO1"
+    ViewObjectName="com.lance.model.vo.SkillsVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LocationRegionVO1"
+    ViewObjectName="com.lance.model.vo.LocationRegionVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LocationProvinceVO1"
+    ViewObjectName="com.lance.model.vo.LocationProvinceVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LocationCountryVO1"
+    ViewObjectName="com.lance.model.vo.LocationCountryVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LocationCityVO1"
+    ViewObjectName="com.lance.model.vo.LocationCityVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="JobCategoryVO1"
+    ViewObjectName="com.lance.model.vo.JobCategoryVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="JobSubCategoryVO1"
+    ViewObjectName="com.lance.model.vo.JobSubCategoryVO"
     RowLevelBinds="true"/>
   <EntityUsage
     Name="PostJobsEO"
@@ -47,7 +87,7 @@
     EntityAttrName="AllowSearchEngines"
     EntityUsage="PostJobsEO"
     AliasName="ALLOW_SEARCH_ENGINES"
-    DefaultValue="1"/>
+    DefaultValue="Y"/>
   <ViewAttribute
     Name="Attach"
     PrecisionRule="true"
@@ -177,6 +217,12 @@
     AliasName="STATUS"
     DefaultValue="0"/>
   <ViewAttribute
+    Name="StatusDesc"
+    PrecisionRule="true"
+    EntityAttrName="StatusDesc"
+    EntityUsage="PostJobsEO"
+    AliasName="STATUS_DESC"/>
+  <ViewAttribute
     Name="WeeklyHours"
     PrecisionRule="true"
     EntityAttrName="WeeklyHours"
@@ -207,11 +253,11 @@
     EntityUsage="PostJobsEO"
     AliasName="POST_JOB_DATE_END"/>
   <ViewAttribute
-    Name="LocationCity"
+    Name="LocationRegion"
     PrecisionRule="true"
-    EntityAttrName="LocationCity"
+    EntityAttrName="LocationRegion"
     EntityUsage="PostJobsEO"
-    AliasName="LOCATION_CITY"/>
+    AliasName="LOCATION_REGION"/>
   <ViewAttribute
     Name="LocationCountry"
     PrecisionRule="true"
@@ -224,6 +270,30 @@
     EntityAttrName="LocationProvince"
     EntityUsage="PostJobsEO"
     AliasName="LOCATION_PROVINCE"/>
+  <ViewAttribute
+    Name="LocationCity"
+    PrecisionRule="true"
+    EntityAttrName="LocationCity"
+    EntityUsage="PostJobsEO"
+    AliasName="LOCATION_CITY"/>
+  <ViewAttribute
+    Name="IndexSkills"
+    PrecisionRule="true"
+    EntityAttrName="IndexSkills"
+    EntityUsage="PostJobsEO"
+    AliasName="INDEX_SKILLS"/>
+  <ViewAttribute
+    Name="IndexLocation"
+    PrecisionRule="true"
+    EntityAttrName="IndexLocation"
+    EntityUsage="PostJobsEO"
+    AliasName="INDEX_LOCATION"/>
+  <ViewAttribute
+    Name="IndexWorkCategorys"
+    PrecisionRule="true"
+    EntityAttrName="IndexWorkCategorys"
+    EntityUsage="PostJobsEO"
+    AliasName="INDEX_WORK_CATEGORYS"/>
   <ViewAttribute
     Name="CreateBy"
     IsUpdateable="false"
@@ -274,6 +344,27 @@
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
   </ViewAttribute>
+  <ViewAttribute
+    Name="BriefShort"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="SearchRank"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Type="java.lang.Integer"
+    ColumnType="INTEGER"
+    AliasName="VIEW_ATTR"
+    SQLType="INTEGER"/>
   <ViewCriteria
     Name="FindByIdVC"
     ViewObjectName="com.lance.model.vo.PostJobsVO"
@@ -348,9 +439,196 @@
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
+  <ViewCriteria
+    Name="FindPostedVC"
+    ViewObjectName="com.lance.model.vo.PostJobsVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="PostJobsVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Status"
+        ViewAttribute="Status"
+        Operator="="
+        Conjunction="AND"
+        Value="posted"
+        UpperColumns="0"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="SearchByKeywordVC"
+    ViewObjectName="com.lance.model.vo.PostJobsVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="PostJobsVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Brief"
+        ViewAttribute="Brief"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="SearchByLocationVC"
+    ViewObjectName="com.lance.model.vo.PostJobsVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="PostJobsVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="IndexLocation"
+        ViewAttribute="IndexLocation"
+        Operator="="
+        Conjunction="AND"
+        Value=":pLocation"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="SearchBySkillsVC"
+    ViewObjectName="com.lance.model.vo.PostJobsVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="PostJobsVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="IndexSkills"
+        ViewAttribute="IndexSkills"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Value=":pSkill"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="PostJobsVOCriteria"
+    ViewObjectName="com.lance.model.vo.PostJobsVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="PostJobsVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="IndexWorkCategorys"
+        ViewAttribute="IndexWorkCategorys"
+        Operator="CONTAINS"
+        Conjunction="AND"
+        Value=":pCategory"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ViewLinkAccessor
     Name="PostJobDiscuss"
     ViewLink="com.lance.model.vl.PostJob_PostJobDiscussVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <SortCriteria>
+    <Sort
+      Attribute="ModifyOn"/>
+  </SortCriteria>
+  <SortCriteria>
+    <Sort
+      Attribute="ModifyOn"/>
+  </SortCriteria>
 </ViewObject>

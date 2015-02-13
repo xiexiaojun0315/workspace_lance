@@ -2,15 +2,25 @@ package com.lance.view.rest.job;
 
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.user.vo.UUserVOImpl;
+import com.lance.model.vo.PostJobsVOImpl;
+import com.lance.model.vo.SkillsVOImpl;
+import com.lance.model.vo.SkillsVORowImpl;
 import com.lance.model.vvo.PostJobsVVOImpl;
 import com.lance.model.vvo.UserSearchVVOImpl;
 import com.lance.view.util.LUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;
 
+import java.util.HashMap;
+import java.util.List;
+
+import java.util.Map;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+
+import oracle.jbo.RowSetIterator;
 
 import org.apache.commons.lang.StringUtils;
 
@@ -42,7 +52,7 @@ public class SearchResource extends BaseRestResource {
     /**
      * 字段同PostJobs
      */
-    public static final String[] ATTR_SEARCH_JOB = {
+    public static final String[] POST_JOB_SEARCH_FIELD = {
         "Uuid", "Brief", "DayPayMax", "DayPayMin", "DurationMax", "DurationMin", "FixedLocation", "FixedPayMax",
         "FixedPayMin", "HourlyPayMax", "HourlyPayMin", "LocationId", "LocationCity", "LocationCountry",
         "LocationProvince", "Name", "Postform", "Skills", "SpecificSkillA", "SpecificSkillB", "SpecificSkillC",
@@ -131,15 +141,27 @@ public class SearchResource extends BaseRestResource {
      *
      * @return
      */
+//    @GET
+//    @Path("postJob/latest")
+//    public JSONObject getLatestPosted() throws JSONException {
+//        LanceRestAMImpl am = LUtil.findLanceAM();
+//        PostJobsVVOImpl vvo = am.getPostJobsV1();
+//        vvo.setApplyViewCriteriaName("FindPostedVC");
+//        vvo.executeQuery();
+//        vvo.removeApplyViewCriteriaName("FindPostedVC");
+//        JSONObject data = this.packViewObject(vvo, null, null, POST_JOB_SEARCH_FIELD);
+//        return data;
+//    }
+    
     @GET
     @Path("postJob/latest")
-    public JSONObject getLatestPosted() throws JSONException {
+    public JSONObject searchLatestPosted()throws JSONException{
         LanceRestAMImpl am = LUtil.findLanceAM();
-        PostJobsVVOImpl vvo = am.getPostJobsV1();
-        vvo.setApplyViewCriteriaName("FindLatestPostedVC");
-        vvo.executeQuery();
-        vvo.removeApplyViewCriteriaName("FindLatestPostedVC");
-        JSONObject data = this.packViewObject(vvo, null, null, ATTR_SEARCH_JOB);
+        PostJobsVOImpl vo = am.getPostJobs1();
+        vo.setApplyViewCriteriaName("FindPostedVC");
+        vo.executeQuery();
+        vo.removeApplyViewCriteriaName("FindPostedVC");
+        JSONObject data = this.packViewObject(vo, null, null, POST_JOB_SEARCH_FIELD);
         return data;
     }
 
@@ -172,9 +194,11 @@ public class SearchResource extends BaseRestResource {
         System.out.println(keyword);
         System.out.println(vvo.getQuery());
         vvo.removeApplyViewCriteriaName("FindByKeywordVC");
-        return this.packViewObject(vvo, null, null, ATTR_SEARCH_JOB);
+        return this.packViewObject(vvo, null, null, POST_JOB_SEARCH_FIELD);
     }
 
+   
+    
     /**
      * 寻找Lancer
      * 模糊查询，开头匹配UserName（输入2个字符后开始查询）

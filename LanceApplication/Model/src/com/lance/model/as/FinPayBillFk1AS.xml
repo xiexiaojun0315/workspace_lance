@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FinPayBillFk1AS"
+  Version="12.1.3.2.36"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="FinUserAccount"
+    Cardinality="1"
+    Source="true"
+    Owner="com.lance.model.eo.FinUserAccountEO">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="FinUserAccount"/>
+      <Attr Name="_foreignKey" Value="com.lance.model.eo.FinUserAccountEO.FinUserAccountPk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.FinUserAccountEO.UserName"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="FinPayBill"
+    Cardinality="-1"
+    Owner="com.lance.model.eo.FinPayBillEO">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="FinPayBill"/>
+      <Attr Name="_foreignKey" Value="com.lance.model.eo.FinPayBillEO.FinPayBillFk1"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.FinPayBillEO.PayUser"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

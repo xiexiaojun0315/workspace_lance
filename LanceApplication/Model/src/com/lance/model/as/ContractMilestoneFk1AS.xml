@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE Association SYSTEM "jbo_03_01.dtd">
+<!---->
+<Association
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ContractMilestoneFk1AS"
+  Version="12.1.3.2.36"
+  InheritPersonalization="merge">
+  <DesignTime>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <AssociationEnd
+    Name="Contract"
+    Cardinality="1"
+    Source="true"
+    Owner="com.lance.model.eo.ContractEO">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="Contract"/>
+      <Attr Name="_foreignKey" Value="com.lance.model.eo.ContractEO.ContractPk"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.ContractEO.Uuid"/>
+    </AttrArray>
+  </AssociationEnd>
+  <AssociationEnd
+    Name="ContractMilestone"
+    Cardinality="-1"
+    Owner="com.lance.model.eo.ContractMilestoneEO">
+    <DesignTime>
+      <Attr Name="_aggregation" Value="0"/>
+      <Attr Name="_finderName" Value="ContractMilestone"/>
+      <Attr Name="_foreignKey" Value="com.lance.model.eo.ContractMilestoneEO.ContractMilestoneFk1"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.ContractMilestoneEO.ContractId"/>
+    </AttrArray>
+  </AssociationEnd>
+</Association>

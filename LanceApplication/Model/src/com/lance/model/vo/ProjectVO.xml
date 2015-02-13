@@ -3,7 +3,7 @@
 <!---->
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="JobCategoryVO"
+  Name="ProjectVO"
   Version="12.1.3.2.36"
   InheritPersonalization="merge"
   SelectListFlags="1"
@@ -12,84 +12,86 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  RowClass="com.lance.model.vo.JobCategoryVORowImpl"
-  ComponentClass="com.lance.model.vo.JobCategoryVOImpl"
   PageIterMode="Full">
-  <DesignTime>
-    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
-    <Attr Name="_isCodegen" Value="true"/>
-  </DesignTime>
   <EntityUsage
-    Name="JobCategoryEO"
-    Entity="com.lance.model.eo.JobCategoryEO"/>
+    Name="ProjectEO"
+    Entity="com.lance.model.eo.ProjectEO"/>
   <ViewAttribute
     Name="Uuid"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="Uuid"
-    EntityUsage="JobCategoryEO"
+    EntityUsage="ProjectEO"
     AliasName="UUID"/>
   <ViewAttribute
-    Name="NameEn"
+    Name="PostJobId"
     PrecisionRule="true"
-    EntityAttrName="NameEn"
-    EntityUsage="JobCategoryEO"
-    AliasName="NAME_EN"/>
+    EntityAttrName="PostJobId"
+    EntityUsage="ProjectEO"
+    AliasName="POST_JOB_ID"/>
   <ViewAttribute
-    Name="NameCn"
+    Name="ProjectName"
     PrecisionRule="true"
-    EntityAttrName="NameCn"
-    EntityUsage="JobCategoryEO"
-    AliasName="NAME_CN"/>
+    EntityAttrName="ProjectName"
+    EntityUsage="ProjectEO"
+    AliasName="PROJECT_NAME"/>
   <ViewAttribute
-    Name="Display"
+    Name="Description"
+    IsQueriable="false"
     PrecisionRule="true"
-    EntityAttrName="Display"
-    EntityUsage="JobCategoryEO"
-    AliasName="DISPLAY"/>
+    EntityAttrName="Description"
+    EntityUsage="ProjectEO"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
+    Name="ProjectCompanyId"
+    PrecisionRule="true"
+    EntityAttrName="ProjectCompanyId"
+    EntityUsage="ProjectEO"
+    AliasName="PROJECT_COMPANY_ID"/>
+  <ViewAttribute
+    Name="ParentProjectId"
+    PrecisionRule="true"
+    EntityAttrName="ParentProjectId"
+    EntityUsage="ProjectEO"
+    AliasName="PARENT_PROJECT_ID"/>
   <ViewAttribute
     Name="CreateBy"
-    IsUpdateable="false"
     PrecisionRule="true"
     EntityAttrName="CreateBy"
-    EntityUsage="JobCategoryEO"
+    EntityUsage="ProjectEO"
     AliasName="CREATE_BY"/>
   <ViewAttribute
     Name="CreateOn"
-    IsUpdateable="false"
     PrecisionRule="true"
     EntityAttrName="CreateOn"
-    EntityUsage="JobCategoryEO"
+    EntityUsage="ProjectEO"
     AliasName="CREATE_ON"/>
   <ViewAttribute
     Name="ModifyBy"
-    IsUpdateable="false"
     PrecisionRule="true"
     EntityAttrName="ModifyBy"
-    EntityUsage="JobCategoryEO"
+    EntityUsage="ProjectEO"
     AliasName="MODIFY_BY"/>
   <ViewAttribute
     Name="ModifyOn"
-    IsUpdateable="false"
     PrecisionRule="true"
     EntityAttrName="ModifyOn"
-    EntityUsage="JobCategoryEO"
+    EntityUsage="ProjectEO"
     AliasName="MODIFY_ON"/>
   <ViewAttribute
     Name="Version"
-    IsUpdateable="false"
     PrecisionRule="true"
     EntityAttrName="Version"
-    EntityUsage="JobCategoryEO"
+    EntityUsage="ProjectEO"
     AliasName="VERSION"/>
   <ViewLinkAccessor
-    Name="JobTemplate"
-    ViewLink="com.lance.model.vl.JobTemplateJobCategoryFk1VL"
+    Name="Project"
+    ViewLink="com.lance.model.vl.ProjectProjectFk1VL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
   <ViewLinkAccessor
-    Name="JobSubCategory"
-    ViewLink="com.lance.model.vl.JobCategory_SubCategoryVL"
+    Name="Contract"
+    ViewLink="com.lance.model.vl.ContractProjectFk1VL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
 </ViewObject>

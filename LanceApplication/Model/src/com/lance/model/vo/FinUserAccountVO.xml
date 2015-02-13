@@ -3,7 +3,7 @@
 <!---->
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="JobSubCategoryVO"
+  Name="FinUserAccountVO"
   Version="12.1.3.2.36"
   InheritPersonalization="merge"
   SelectListFlags="1"
@@ -12,68 +12,67 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  RowClass="com.lance.model.vo.JobSubCategoryVORowImpl"
-  ComponentClass="com.lance.model.vo.JobSubCategoryVOImpl"
   PageIterMode="Full">
-  <DesignTime>
-    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
-    <Attr Name="_isCodegen" Value="true"/>
-  </DesignTime>
   <EntityUsage
-    Name="JobSubCategoryEO"
-    Entity="com.lance.model.eo.JobSubCategoryEO"/>
+    Name="FinUserAccountEO"
+    Entity="com.lance.model.eo.FinUserAccountEO"/>
   <ViewAttribute
-    Name="Uuid"
+    Name="UserName"
     IsNotNull="true"
     PrecisionRule="true"
-    EntityAttrName="Uuid"
-    EntityUsage="JobSubCategoryEO"
-    AliasName="UUID"/>
+    EntityAttrName="UserName"
+    EntityUsage="FinUserAccountEO"
+    AliasName="USER_NAME"/>
   <ViewAttribute
-    Name="CategoryId"
+    Name="AvaliableAmount"
     PrecisionRule="true"
-    EntityAttrName="CategoryId"
-    EntityUsage="JobSubCategoryEO"
-    AliasName="CATEGORY_ID"/>
+    EntityAttrName="AvaliableAmount"
+    EntityUsage="FinUserAccountEO"
+    AliasName="AVALIABLE_AMOUNT"/>
   <ViewAttribute
-    Name="Name"
+    Name="FreezeAmount"
     PrecisionRule="true"
-    EntityAttrName="Name"
-    EntityUsage="JobSubCategoryEO"
-    AliasName="NAME"/>
+    EntityAttrName="FreezeAmount"
+    EntityUsage="FinUserAccountEO"
+    AliasName="FREEZE_AMOUNT"/>
   <ViewAttribute
     Name="CreateBy"
-    IsUpdateable="false"
     PrecisionRule="true"
     EntityAttrName="CreateBy"
-    EntityUsage="JobSubCategoryEO"
+    EntityUsage="FinUserAccountEO"
     AliasName="CREATE_BY"/>
   <ViewAttribute
     Name="CreateOn"
-    IsUpdateable="false"
     PrecisionRule="true"
     EntityAttrName="CreateOn"
-    EntityUsage="JobSubCategoryEO"
+    EntityUsage="FinUserAccountEO"
     AliasName="CREATE_ON"/>
   <ViewAttribute
     Name="ModifyBy"
-    IsUpdateable="false"
     PrecisionRule="true"
     EntityAttrName="ModifyBy"
-    EntityUsage="JobSubCategoryEO"
+    EntityUsage="FinUserAccountEO"
     AliasName="MODIFY_BY"/>
   <ViewAttribute
     Name="ModifyOn"
-    IsUpdateable="false"
     PrecisionRule="true"
     EntityAttrName="ModifyOn"
-    EntityUsage="JobSubCategoryEO"
+    EntityUsage="FinUserAccountEO"
     AliasName="MODIFY_ON"/>
   <ViewAttribute
     Name="Version"
-    IsUpdateable="false"
     PrecisionRule="true"
     EntityAttrName="Version"
-    EntityUsage="JobSubCategoryEO"
+    EntityUsage="FinUserAccountEO"
     AliasName="VERSION"/>
+  <ViewLinkAccessor
+    Name="FinPayBill"
+    ViewLink="com.lance.model.vl.FinPayBillFk1VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="FinPayBill1"
+    ViewLink="com.lance.model.vl.FinPayBillFk2VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
 </ViewObject>

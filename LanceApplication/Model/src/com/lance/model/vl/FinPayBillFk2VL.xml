@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="FinPayBillFk2VL"
+  Version="12.1.3.2.36"
+  InheritPersonalization="merge"
+  EntityAssociation="com.lance.model.as.FinPayBillFk2AS">
+  <ViewLinkDefEnd
+    Name="FinUserAccount"
+    Cardinality="1"
+    Source="true"
+    Owner="com.lance.model.vo.FinUserAccountVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="FinUserAccount"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.vo.FinUserAccountVO.UserName"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="FinPayBill1"
+    Cardinality="-1"
+    Owner="com.lance.model.vo.FinPayBillVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="FinPayBill1"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.vo.FinPayBillVO.ReceiveUser"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+</ViewLink>

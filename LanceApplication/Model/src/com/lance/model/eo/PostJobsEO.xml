@@ -373,6 +373,66 @@
     ColumnType="NUMBER"
     TableName="POST_JOBS"
     HistoryColumn="VersionHistory"/>
+  <Attribute
+    Name="StatusDesc"
+    Precision="2100"
+    ColumnName="STATUS_DESC"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IndexSkills"
+    Precision="2100"
+    ColumnName="INDEX_SKILLS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IndexWorkCategorys"
+    Precision="600"
+    ColumnName="INDEX_WORK_CATEGORYS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="600"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IndexLocation"
+    Precision="500"
+    ColumnName="INDEX_LOCATION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationRegion"
+    Precision="32"
+    ColumnName="LOCATION_REGION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
   <Key
     Name="PostJobsPk"
     PrimaryKey="true">

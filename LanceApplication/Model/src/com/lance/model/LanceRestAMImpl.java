@@ -6,6 +6,8 @@ import com.lance.model.user.vo.UserLocationListVOImpl;
 import com.lance.model.user.vo.UserRoleGrantsVOImpl;
 import com.lance.model.user.vo.UserSkillVOImpl;
 import com.lance.model.vo.CompanyVOImpl;
+import com.lance.model.vo.JobCategoryVOImpl;
+import com.lance.model.vo.JobSubCategoryVOImpl;
 import com.lance.model.vo.JobTemplateVOImpl;
 import com.lance.model.vo.LocationCityVOImpl;
 import com.lance.model.vo.LocationProvinceVOImpl;
@@ -270,6 +272,46 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      */
     public PostJobDiscussVOImpl getPostJobDiscussVO1() {
         return (PostJobDiscussVOImpl) findViewObject("PostJobDiscussVO1");
+    }
+
+    /**
+     * Container's getter for ContractVO1.
+     * @return ContractVO1
+     */
+    public ViewObjectImpl getContractVO1() {
+        return (ViewObjectImpl) findViewObject("ContractVO1");
+    }
+
+    /**
+     * Container's getter for ContractMilestoneVO1.
+     * @return ContractMilestoneVO1
+     */
+    public ViewObjectImpl getContractMilestoneVO1() {
+        return (ViewObjectImpl) findViewObject("ContractMilestoneVO1");
+    }
+
+    /**
+     * Container's getter for ContractMilestoneFk1VL1.
+     * @return ContractMilestoneFk1VL1
+     */
+    public ViewLinkImpl getContractMilestoneFk1VL1() {
+        return (ViewLinkImpl) findViewLink("ContractMilestoneFk1VL1");
+    }
+
+    /**
+     * Container's getter for ContractReportVO1.
+     * @return ContractReportVO1
+     */
+    public ViewObjectImpl getContractReportVO1() {
+        return (ViewObjectImpl) findViewObject("ContractReportVO1");
+    }
+
+    /**
+     * Container's getter for ContractReportContractFk1VL1.
+     * @return ContractReportContractFk1VL1
+     */
+    public ViewLinkImpl getContractReportContractFk1VL1() {
+        return (ViewLinkImpl) findViewLink("ContractReportContractFk1VL1");
     }
 }
 

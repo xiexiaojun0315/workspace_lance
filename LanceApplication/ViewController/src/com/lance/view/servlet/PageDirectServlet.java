@@ -80,7 +80,7 @@ public class PageDirectServlet extends HttpServlet {
                 
             } else if ("/lance/pages/DefaultPage".equals(uri)) {
                 JSONArray data=new JSONArray();
-                data.put(new SearchResource().getLatestPosted());
+                data.put(new SearchResource().searchLatestPosted());
                 toPage(request, response, "/WEB-INF/search/Search.jsp", data);
 
             } else if ("/lance/pages/profile/Overview".equals(uri)) {
