@@ -3,22 +3,22 @@ package com.lance.view.rest.job;
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.user.vo.UUserVOImpl;
 import com.lance.model.vo.PostJobsVOImpl;
-import com.lance.model.vo.SkillsVOImpl;
-import com.lance.model.vo.SkillsVORowImpl;
+import com.lance.model.vo.PostJobsVORowImpl;
 import com.lance.model.vvo.PostJobsVVOImpl;
 import com.lance.model.vvo.UserSearchVVOImpl;
 import com.lance.view.util.LUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;
 
-import java.util.HashMap;
-import java.util.List;
-
-import java.util.Map;
-
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
+import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
+
+import javax.ws.rs.Produces;
+
+import javax.ws.rs.core.MediaType;
 
 import oracle.jbo.RowSetIterator;
 
@@ -49,15 +49,26 @@ import org.codehaus.jettison.json.JSONObject;
 public class SearchResource extends BaseRestResource {
     public static int DEFAULT_LIMIT = 25;
 
+
+    public static final String[] POST_JOB_VO_ATTR_ALL = {
+        "Uuid", "AllowSearchEngines", "Attach", "Brief", "DurationMax", "DurationMin", "FixedLocation", "FixedPayMax",
+        "FixedPayMin", "HourlyPayMax", "HourlyPayMin", "JobVisibility", "LocationDesc", "Name", "Postform",
+        "SpecificSkillA", "SpecificSkillB", "SpecificSkillC", "SpecificSkillD", "SpecificSkillE", "SpecificSkillF",
+        "SpecificSkillG", "Status", "StatusDesc", "WeeklyHours", "WorkCategory", "WorkSubcategory", "PostJobDateStart",
+        "PostJobDateEnd", "LocationRegion", "LocationCountry", "LocationProvince", "LocationCity", "IndexSkills",
+        "IndexLocation", "IndexWorkCategorys", "SignBy", "CreateBy", "CreateOn", "ModifyBy", "ModifyOn", "Version",
+        "CreateByName", "BriefShort"
+    };
+
     /**
      * 字段同PostJobs
      */
     public static final String[] POST_JOB_SEARCH_FIELD = {
-        "Uuid", "Brief", "DayPayMax", "DayPayMin", "DurationMax", "DurationMin", "FixedLocation", "FixedPayMax",
-        "FixedPayMin", "HourlyPayMax", "HourlyPayMin", "LocationId", "LocationCity", "LocationCountry",
-        "LocationProvince", "Name", "Postform", "Skills", "SpecificSkillA", "SpecificSkillB", "SpecificSkillC",
-        "SpecificSkillD", "SpecificSkillE", "SpecificSkillF", "SpecificSkillG", "Status", "WeeklyHours", "WorkCategory",
-        "WorkSubcategory", "CreateOn", "CreateBy", "ModifiedOn", "CreateByName"
+        "Uuid", "BriefShort", "DurationMax", "DurationMin", "FixedLocation", "FixedPayMax", "FixedPayMin",
+        "HourlyPayMax", "HourlyPayMin", "LocationDesc", "Name", "Postform", "SpecificSkillA", "SpecificSkillB",
+        "SpecificSkillC", "SpecificSkillD", "SpecificSkillE", "SpecificSkillF", "SpecificSkillG", "WeeklyHours",
+        "WorkCategory", "WorkSubcategory", "PostJobDateStart", "PostJobDateEnd", "IndexSkills", "IndexLocation",
+        "IndexWorkCategorys", "SignBy", "CreateBy", "CreateOn", "ModifyBy", "ModifyOn", "Version", "CreateByName"
     };
 
     public static final String[] ATTR_SEARCH_LANCER = {
@@ -141,21 +152,21 @@ public class SearchResource extends BaseRestResource {
      *
      * @return
      */
-//    @GET
-//    @Path("postJob/latest")
-//    public JSONObject getLatestPosted() throws JSONException {
-//        LanceRestAMImpl am = LUtil.findLanceAM();
-//        PostJobsVVOImpl vvo = am.getPostJobsV1();
-//        vvo.setApplyViewCriteriaName("FindPostedVC");
-//        vvo.executeQuery();
-//        vvo.removeApplyViewCriteriaName("FindPostedVC");
-//        JSONObject data = this.packViewObject(vvo, null, null, POST_JOB_SEARCH_FIELD);
-//        return data;
-//    }
-    
+    //    @GET
+    //    @Path("postJob/latest")
+    //    public JSONObject getLatestPosted() throws JSONException {
+    //        LanceRestAMImpl am = LUtil.findLanceAM();
+    //        PostJobsVVOImpl vvo = am.getPostJobsV1();
+    //        vvo.setApplyViewCriteriaName("FindPostedVC");
+    //        vvo.executeQuery();
+    //        vvo.removeApplyViewCriteriaName("FindPostedVC");
+    //        JSONObject data = this.packViewObject(vvo, null, null, POST_JOB_SEARCH_FIELD);
+    //        return data;
+    //    }
+
     @GET
     @Path("postJob/latest")
-    public JSONObject searchLatestPosted()throws JSONException{
+    public JSONObject searchLatestPosted() throws JSONException {
         LanceRestAMImpl am = LUtil.findLanceAM();
         PostJobsVOImpl vo = am.getPostJobs1();
         vo.setApplyViewCriteriaName("FindPostedVC");
@@ -166,39 +177,67 @@ public class SearchResource extends BaseRestResource {
     }
 
     /**
+     * 重新建立索引字段
+     * @return
+     */
+    @POST
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("postJob/reIndex")
+    public String reIndexPostJob() {
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        PostJobsVOImpl vo = am.getPostJobs1();
+        vo.executeQuery();
+        PostJobsVORowImpl row;
+        RowSetIterator it = vo.createRowSetIterator(null);
+        while (it.hasNext()) {
+            row = (PostJobsVORowImpl) it.next();
+            row.updateSearchIndex();
+        }
+        it.closeRowSetIterator();
+        am.getDBTransaction().commit();
+        return "ok";
+    }
+
+
+    /**
      * 根据关键词查询
-     * 关键词：工作名，简介，技能
-     * 附加条件：JobVisiable：1 可见，Status：2 已发布
-     * http://localhost:7101/lance/res/search/postJob/searchJob/{keyword}
+     * 关键词：工作名，简介，技能，地点，分类
+     * 只搜索：STATUS = 'posted' AND JOB_VISIBILITY = 'public'
      * 
-     * http://localhost:7101/lance/res/search/postJob/searchJob/说明
-     * http://localhost:7101/lance/res/search/postJob/searchJob/XML
+     * http://localhost:7101/lance/res/search/postJob/keyword/{keyword}
      *
-     *
+     * http://localhost:7101/lance/res/search/postJob/keyword/说明
+     * http://localhost:7101/lance/res/search/postJob/keyword/XML
      *
      * @param keyword
      * @return
      * @throws JSONException
      */
     @GET
-    @Path("postJob/searchJob/{keyword}")
+    @Path("postJob/keyword/{keyword}")
     public JSONObject searchJobs(@PathParam("keyword") String keyword) throws JSONException {
+        
+        if (StringUtils.isBlank(keyword) || keyword.length() < 2) {
+            JSONObject res=new JSONObject();
+            res.put("msg", "输入2个字符后开始查询");
+            return res;
+        }
+        
         LanceRestAMImpl am = LUtil.findLanceAM();
-        PostJobsVVOImpl vvo = am.getPostJobsV1();
-        vvo.setApplyViewCriteriaName("FindByKeywordVC");
-        vvo.setpName(keyword);
-        vvo.setpBrief(keyword);
-        vvo.setpSkill(keyword);
-        vvo.setpStatus(2); //已发布
-        vvo.executeQuery();
-        System.out.println(keyword);
-        System.out.println(vvo.getQuery());
-        vvo.removeApplyViewCriteriaName("FindByKeywordVC");
-        return this.packViewObject(vvo, null, null, POST_JOB_SEARCH_FIELD);
+        PostJobsVOImpl vo = am.getPostJobs1();
+        
+        StringBuffer sb=new StringBuffer(" STATUS = 'posted' AND JOB_VISIBILITY = 'public' ");
+        String[] sps = splitKeyword(keyword); //根据空格分隔
+        for (String sp : sps) {
+            sb.append(" AND upper(INDEX_ALL_META_INFO) like '%" + sp.toUpperCase() + "%'");
+        }
+        vo.setWhereClause(sb.toString());
+        vo.executeQuery();
+        
+        return this.packViewObject(vo, null, null, POST_JOB_SEARCH_FIELD);
     }
 
-   
-    
+
     /**
      * 寻找Lancer
      * 模糊查询，开头匹配UserName（输入2个字符后开始查询）
@@ -209,10 +248,12 @@ public class SearchResource extends BaseRestResource {
      * @throws JSONException
      */
     @GET
-    @Path("lancer/searchLancer/{keyword}")
+    @Path("lancer/nameStartWith/{keyword}")
     public JSONObject searchLancer4Name(@PathParam("keyword") String keyword) throws JSONException {
         if (keyword.length() < 2) {
-            throw new RuntimeException("输入2个字符后开始查询");
+            JSONObject res=new JSONObject();
+            res.put("msg", "输入2个字符后开始查询");
+            return res;
         }
         LanceRestAMImpl am = LUtil.findLanceAM();
         UUserVOImpl vo = am.getUUser1();
@@ -227,18 +268,18 @@ public class SearchResource extends BaseRestResource {
     /**
      * 2015年1月13日更新
      * 待实现
-     * 
+     *
      * 根据Overview，Tagline，Keyword,skill查询UUser
      * 适用于Client根据技术查找UUser
-     * 
+     *
      * 模糊查询（关键字查询）
      * GET http://localhost:7101/lance/res/search/userByKeyword/{userType}/{keyword}?category={category}
      * start:1和start=0时都从第一条开始返回
      * limit=5&start=1 不传此参数时，默认返回1~25条
-     * 
+     *
      * userType:lancer/contract/client列出对应类型的人员,如果为空则列出所有类型人员
      * keyword：关键词，支持空格逗号分隔
-     * 
+     *
      * 其它查询条件（用问号表达式方式）
      * category:工作大类，例10183 （IT & Programming）
      * country：国家ID
@@ -247,14 +288,14 @@ public class SearchResource extends BaseRestResource {
      * skill:技能，多个用空格分隔
      * HourlyRateMin：最小时薪
      * HourlyRateMax：最大时薪
-     * 
+     *
      * 优先级：svip>vip>普通
      * keyword>Tagline>skill>Overview
      * 识别地理位置
-     *  
+     *
      * 示例URL  GET http://localhost:7101/lance/res/search/userByKeyword/lancer/Test%20overview?city=1&category=10183&skill=xml%20html
      * %20是空格
-     * 
+     *
      * 例子：
      * 查询 Test overview
      * GET http://localhost:7101/lance/res/search/userByKeyword/lancer/Test%20overview
@@ -366,15 +407,14 @@ public class SearchResource extends BaseRestResource {
 
         LanceRestAMImpl am = LUtil.findLanceAM();
         UserSearchVVOImpl vo = am.getUserSearchV1();
-        keyword = keyword.trim().replaceAll(",", " ").replaceAll("，", " ");
 
         //查询算法
         StringBuilder sb = new StringBuilder();
         if (StringUtils.isNotBlank(userType)) {
             sb.append(" ROLE_NAME = '" + userType + "' ");
         }
-        
-        String[] sps = keyword.split(" "); //根据空格分隔
+
+        String[] sps = this.splitKeyword(keyword); //根据空格分隔
         for (String sp : sps) {
             sb.append(" AND upper(INDEX_FIELD) like '%" + sp.toUpperCase() + "%'");
         }
@@ -384,6 +424,16 @@ public class SearchResource extends BaseRestResource {
         //处理位置信息
         JSONObject data = this.packViewObject(vo, null, null, ATTR_SEARCH_LANCER);
         return data;
+    }
+
+    /**
+     * 将各种分隔符格式化为标准空格分隔的关键词,并进行split操作
+     * @param keyword
+     * @return
+     */
+    public String[] splitKeyword(String keyword) {
+        keyword = keyword.trim().replaceAll(",", " ").replaceAll("，", " ");
+        return keyword.split(" ");
     }
 
 }

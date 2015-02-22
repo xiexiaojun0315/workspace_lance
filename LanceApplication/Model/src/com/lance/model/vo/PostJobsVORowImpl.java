@@ -2,6 +2,7 @@ package com.lance.model.vo;
 
 import com.lance.model.user.vo.UUserVOImpl;
 
+import com.zngh.platform.front.core.model.BaseEntityImpl;
 import com.zngh.platform.front.core.model.BaseViewRowImpl;
 
 import java.math.BigDecimal;
@@ -14,7 +15,6 @@ import oracle.jbo.RowIterator;
 import oracle.jbo.RowSet;
 import oracle.jbo.domain.Date;
 import oracle.jbo.domain.Number;
-import oracle.jbo.server.EntityImpl;
 
 import org.apache.commons.lang.StringUtils;
 // ---------------------------------------------------------------------
@@ -68,6 +68,8 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
         IndexSkills,
         IndexLocation,
         IndexWorkCategorys,
+        IndexAllMetaInfo,
+        SignBy,
         CreateBy,
         CreateOn,
         ModifyBy,
@@ -85,7 +87,8 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
         LocationCityVO1,
         JobCategoryVO1,
         JobSubCategoryVO1;
-        static AttributesEnum[] vals = null; ;
+        static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -145,6 +148,8 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
     public static final int INDEXSKILLS = AttributesEnum.IndexSkills.index();
     public static final int INDEXLOCATION = AttributesEnum.IndexLocation.index();
     public static final int INDEXWORKCATEGORYS = AttributesEnum.IndexWorkCategorys.index();
+    public static final int INDEXALLMETAINFO = AttributesEnum.IndexAllMetaInfo.index();
+    public static final int SIGNBY = AttributesEnum.SignBy.index();
     public static final int CREATEBY = AttributesEnum.CreateBy.index();
     public static final int CREATEON = AttributesEnum.CreateOn.index();
     public static final int MODIFYBY = AttributesEnum.ModifyBy.index();
@@ -173,8 +178,8 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
      * Gets PostJobsEO entity object.
      * @return the PostJobsEO
      */
-    public EntityImpl getPostJobsEO() {
-        return (EntityImpl) getEntity(ENTITY_POSTJOBSEO);
+    public BaseEntityImpl getPostJobsEO() {
+        return (BaseEntityImpl) getEntity(ENTITY_POSTJOBSEO);
     }
 
     /**
@@ -758,6 +763,38 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
     }
 
     /**
+     * Gets the attribute value for INDEX_ALL_META_INFO using the alias name IndexAllMetaInfo.
+     * @return the INDEX_ALL_META_INFO
+     */
+    public String getIndexAllMetaInfo() {
+        return (String) getAttributeInternal(INDEXALLMETAINFO);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for INDEX_ALL_META_INFO using the alias name IndexAllMetaInfo.
+     * @param value value to set the INDEX_ALL_META_INFO
+     */
+    public void setIndexAllMetaInfo(String value) {
+        setAttributeInternal(INDEXALLMETAINFO, value);
+    }
+
+    /**
+     * Gets the attribute value for SIGN_BY using the alias name SignBy.
+     * @return the SIGN_BY
+     */
+    public String getSignBy() {
+        return (String) getAttributeInternal(SIGNBY);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for SIGN_BY using the alias name SignBy.
+     * @param value value to set the SIGN_BY
+     */
+    public void setSignBy(String value) {
+        setAttributeInternal(SIGNBY, value);
+    }
+
+    /**
      * Gets the attribute value for CREATE_BY using the alias name CreateBy.
      * @return the CREATE_BY
      */
@@ -797,7 +834,11 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
      */
     public String getBriefShort() {
         if (StringUtils.isNotBlank(this.getBrief())) {
-            return this.getBrief().substring(0, 100);
+            if (this.getBrief().length() > 100) {
+                return this.getBrief().substring(0, 100);
+            } else {
+                return this.getBrief();
+            }
         } else {
             return (String) getAttributeInternal(BRIEFSHORT);
         }
@@ -809,6 +850,14 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
      */
     public Integer getSearchRank() {
         return (Integer) getAttributeInternal(SEARCHRANK);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for the calculated attribute SearchRank.
+     * @param value value to set the  SearchRank
+     */
+    public void setSearchRank(Integer value) {
+        setAttributeInternal(SEARCHRANK, value);
     }
 
     /**
@@ -928,6 +977,8 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
         } else {
             this.setIndexWorkCategorys("");
         }
+        
+        this.setIndexAllMetaInfo(this.getIndexLocation()+";"+this.getIndexSkills()+";"+this.getIndexWorkCategorys()+";"+this.getName()+";"+this.getBrief());
         return null;
     }
 
@@ -978,7 +1029,10 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
             JobCategoryVORowImpl row = (JobCategoryVORowImpl) this.getJobCategoryVO1().getViewObject().findByKey(new Key(new Object[] {
                                                                                                                          id }),
                                                                                                                  1)[0];
-            sb.append(row.getNameCn() + ";");
+            sb.append(row.getNameCn());
+        }
+        if(StringUtils.isNotBlank(id) && StringUtils.isNotBlank(subId)){
+                sb.append(" > ");
         }
         if (StringUtils.isNotBlank(subId)) {
             JobSubCategoryVORowImpl row = (JobSubCategoryVORowImpl) this.getJobSubCategoryVO1().getViewObject().findByKey(new Key(new Object[] {
@@ -990,12 +1044,12 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
 
     public String replaceLocationName(String loc) {
         System.out.println("replaceLocationName:" + loc);
-        if (loc.indexOf("北京市;北京市") >= 0) {
-            loc = loc.replace("北京市;北京市", "北京市");
-        } else if (loc.indexOf("上海市;上海市") >= 0) {
-            loc = loc.replace("上海市;上海市", "上海市");
-        } else if (loc.indexOf("重庆市;重庆市") >= 0) {
-            loc = loc.replace("重庆市;重庆市", "重庆市");
+        if (loc.indexOf("北京市;北京市;") >= 0) {
+            loc = loc.replace("北京市;北京市;", "北京市");
+        } else if (loc.indexOf("上海市;上海市;") >= 0) {
+            loc = loc.replace("上海市;上海市;", "上海市");
+        } else if (loc.indexOf("重庆市;重庆市;") >= 0) {
+            loc = loc.replace("重庆市;重庆市;", "重庆市");
         }
         System.out.println(loc);
         return loc;

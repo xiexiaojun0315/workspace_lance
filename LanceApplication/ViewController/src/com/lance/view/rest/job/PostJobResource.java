@@ -1,10 +1,12 @@
 package com.lance.view.rest.job;
 
 import com.lance.model.LanceRestAMImpl;
+import com.lance.model.util.ConstantUtil;
 import com.lance.model.vo.PostJobDiscussVOImpl;
 import com.lance.model.vo.PostJobDiscussVORowImpl;
 import com.lance.model.vo.PostJobsVOImpl;
 import com.lance.model.vo.PostJobsVORowImpl;
+import com.lance.view.rest.project.ContractResource;
 import com.lance.view.util.LUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;
@@ -73,10 +75,12 @@ public class PostJobResource extends BaseRestResource {
         "Uuid", "AllowSearchEngines", "Attach", "Brief", "DurationMax", "DurationMin", "FixedLocation", "FixedPayMax",
         "FixedPayMin", "HourlyPayMax", "HourlyPayMin", "JobVisibility", "LocationDesc", "Name", "Postform",
         "SpecificSkillA", "SpecificSkillB", "SpecificSkillC", "SpecificSkillD", "SpecificSkillE", "SpecificSkillF",
-        "SpecificSkillG", "Status", "WeeklyHours", "WorkCategory", "WorkSubcategory", "PostJobDateStart",
-        "PostJobDateEnd", "LocationCity", "LocationCountry", "LocationProvince", "LocationRegion", "CreateBy",
-        "CreateOn", "ModifyBy", "ModifyOn", "Version", "CreateByName"
+        "SpecificSkillG", "Status", "StatusDesc", "WeeklyHours", "WorkCategory", "WorkSubcategory", "PostJobDateStart",
+        "PostJobDateEnd", "LocationRegion", "LocationCountry", "LocationProvince", "LocationCity", "IndexSkills",
+        "IndexLocation", "IndexWorkCategorys", "SignBy", "CreateBy", "CreateOn", "ModifyBy", "ModifyOn", "Version",
+        "CreateByName"
     };
+
 
     public static final String[] POST_JOB_VO_ATTR_GET = POST_JOB_VO_ATTR_ALL;
 
@@ -109,8 +113,8 @@ public class PostJobResource extends BaseRestResource {
      * POST_JOB_DISCUSS_VO
      *
         Uuid,Precision:32,JavaType:java.lang.String
-        PostJobId,Precision:32,JavaType:java.lang.String
-        ParentDiscussId,Precision:32,JavaType:java.lang.String 基于某一条评论/申请的回复
+        PostJobId,Precision:32,JavaType:java.lang.String 针对哪个PostJob的ID，即当前页面的PostJobId
+        ParentDiscussId,Precision:32,JavaType:java.lang.String 基于某一条评论/申请的回复/申请通过时的反馈信息
         Content,Precision:2100,JavaType:java.lang.String 正文、附加描述
         IsApply,Precision:1,JavaType:java.lang.String  申请：Y 讨论：N
         SignBy,Precision:20,JavaType:java.lang.String  合同签署方：self/company
@@ -144,6 +148,10 @@ public class PostJobResource extends BaseRestResource {
         "WeeklyHours", "EnteryDate", "ParentDiscussId"
     };
 
+    /**
+     * 甲方点击同意申请时传入的字段
+     */
+    public static final String[] POST_JOB_DISCUSS_VO_ATTR_AGREE = { "Content" };
 
     public static final String[] POST_JOB_DISCUSS_VO_ATTR_READ = POST_JOB_DISCUSS_VO_ATTR_ALL;
 
@@ -180,15 +188,7 @@ public class PostJobResource extends BaseRestResource {
         System.out.println("updatePostJob:" + postJobId);
         LanceRestAMImpl am = LUtil.findLanceAM();
         PostJobsVOImpl vo = am.getPostJobs1();
-        PostJobsVORowImpl row = (PostJobsVORowImpl) vo.getCurrentRow();
-        if (row == null || !row.getUuid().equals(postJobId)) {
-            vo.setpUuid(postJobId);
-            vo.setApplyViewCriteriaName("FindByIdVC");
-            vo.executeQuery();
-            vo.removeApplyViewCriteriaName("FindByIdVC");
-            row = (PostJobsVORowImpl) vo.first();
-            vo.setCurrentRow(row);
-        }
+        PostJobsVORowImpl row = this.findPostJobById(postJobId, vo);
         if (row == null) {
             return "无法找到ID为" + postJobId + "的需求信息记录";
         }
@@ -273,11 +273,8 @@ public class PostJobResource extends BaseRestResource {
     public String deletePostJob(@PathParam("postJobId") String postJobId) {
         LanceRestAMImpl am = LUtil.findLanceAM();
         PostJobsVOImpl vo = am.getPostJobs1();
-        vo.setApplyViewCriteriaName("FindByIdVC");
-        vo.setpUuid(postJobId);
-        vo.executeQuery();
-        vo.removeApplyViewCriteriaName("FindByIdVC");
-        PostJobsVORowImpl row = (PostJobsVORowImpl) vo.first();
+        PostJobsVORowImpl row = this.findPostJobById(postJobId, vo);
+
         if (row.getStatus().equals("draft")) {
             //草稿
             row.remove();
@@ -306,12 +303,7 @@ public class PostJobResource extends BaseRestResource {
     public JSONObject getPostJob(@PathParam("postJobId") String postJobId) throws JSONException {
         LanceRestAMImpl am = LUtil.findLanceAM();
         PostJobsVOImpl vo = am.getPostJobs1();
-        vo.setpUuid(postJobId);
-        vo.setApplyViewCriteriaName("FindByIdVC");
-        vo.executeQuery();
-        vo.removeApplyViewCriteriaName("FindByIdVC");
-        Row row = vo.first();
-
+        PostJobsVORowImpl row = this.findPostJobById(postJobId, vo);
         return this.convertRowToJsonObject(row, POST_JOB_VO_ATTR_GET);
     }
 
@@ -348,11 +340,7 @@ public class PostJobResource extends BaseRestResource {
     public String postDiscuss(@PathParam("postJobId") String jobId, JSONObject json) throws JSONException {
         LanceRestAMImpl am = LUtil.findLanceAM();
         PostJobsVOImpl vo = am.getPostJobs1();
-        vo.setApplyViewCriteriaName("FindByIdVC");
-        vo.setpUuid(jobId);
-        vo.executeQuery();
-        vo.removeApplyViewCriteriaName("FindByIdVC");
-        vo.setCurrentRow(vo.first());
+        findPostJobById(jobId, vo);
 
         PostJobDiscussVOImpl vo2 = am.getPostJobDiscuss1();
         Row row = vo2.createRow();
@@ -362,7 +350,71 @@ public class PostJobResource extends BaseRestResource {
         }
         vo2.insertRow(row);
         am.getDBTransaction().commit();
-        return "ok";
+        return (String) row.getAttribute("Uuid");
+    }
+
+    private PostJobsVORowImpl findPostJobById(String uuid, PostJobsVOImpl vo) {
+        PostJobsVORowImpl row = (PostJobsVORowImpl) vo.getCurrentRow();
+        if (row != null && row.getAttribute("Uuid").equals(uuid)) {
+            return row;
+        }
+        vo.setApplyViewCriteriaName("FindByIdVC");
+        vo.setpUuid(uuid);
+        vo.executeQuery();
+        row = (PostJobsVORowImpl) vo.first();
+        vo.removeApplyViewCriteriaName("FindByIdVC");
+        vo.setCurrentRow(row);
+        return row;
+    }
+
+    @POST
+    @Path("{postJobId}/agreeDiscuss/{discussId}")
+    @Produces(MediaType.TEXT_PLAIN)
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String agreeApplyDiscuss(@PathParam("postJobId") String jobId, @PathParam("discussId") String discussId,
+                                    JSONObject json) throws JSONException {
+        //获取postJob
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        PostJobsVOImpl vo = am.getPostJobs1();
+        findPostJobById(jobId, vo);
+        //获取申请Discuss
+        PostJobDiscussVOImpl vo2 = am.getPostJobDiscuss1();
+        vo2.setApplyViewCriteriaName("FindByIdVC");
+        vo2.setpId(discussId);
+        vo2.executeQuery();
+        PostJobDiscussVORowImpl row2 = (PostJobDiscussVORowImpl) vo2.first();
+        vo2.removeApplyViewCriteriaName("FindByIdVC");
+        //todo 为了测试方便 ，允许自己同意自己的申请
+        if (!ConstantUtil.DEBUG_MODE)
+            if (row2.getCreateBy().equals(this.findCurrentUserName())) {
+                System.err.println("用户试图同意自己的申请" + this.findCurrentUserName());
+                return "无法完成此操作";
+            }
+        if (!row2.getIsApply().equals("Y")) {
+            System.err.println("这不是一个申请");
+            return "这不是一个申请";
+        }
+        //反馈申请信息
+        PostJobDiscussVOImpl vo3 = am.getPostJobDiscuss1();
+        Row row = vo3.createRow();
+        for (String attr : POST_JOB_DISCUSS_VO_ATTR_AGREE) {
+            if (json.has(attr))
+                row.setAttribute(attr, json.get(attr));
+        }
+        vo3.insertRow(row);
+
+        //创建合作合同
+        System.out.println(" new ContractResource().createContractFn:" + row2.getCreateBy() + ";" +
+                           this.findCurrentUserName() + "；" + jobId + "；" + discussId);
+        String res =
+            new ContractResource().createContractFn(am, row2.getCreateBy(), this.findCurrentUserName(), jobId,
+                                                    discussId);
+        if (res.equals("ok")) {
+            am.getDBTransaction().commit();
+            return "ok";
+        } else {
+            return res;
+        }
     }
 
     /**
@@ -379,14 +431,11 @@ public class PostJobResource extends BaseRestResource {
     public JSONObject getJobDiscuss(@PathParam("postJobId") String jobId) throws JSONException {
         LanceRestAMImpl am = LUtil.findLanceAM();
         PostJobsVOImpl vo = am.getPostJobs1();
-        vo.setApplyViewCriteriaName("FindByIdVC");
-        vo.setpUuid(jobId);
-        vo.executeQuery();
-        vo.removeApplyViewCriteriaName("FindByIdVC");
-        vo.setCurrentRow(vo.first());
-
+        findPostJobById(jobId, vo);
+        System.out.println(vo.getCurrentRow());
         PostJobDiscussVOImpl vo2 = am.getPostJobDiscuss1();
         vo2.executeQuery();
+        System.out.println(vo2.getEstimatedRowCount());
         return this.packViewObject(vo2, null, null, POST_JOB_DISCUSS_VO_ATTR_READ);
     }
 
@@ -412,12 +461,7 @@ public class PostJobResource extends BaseRestResource {
         //check PostJobs status createBy user
         LanceRestAMImpl am = LUtil.findLanceAM();
         PostJobsVOImpl postJobVo = am.getPostJobs1();
-        postJobVo.setApplyViewCriteriaName("FindByIdVC");
-        postJobVo.setpUuid(postJobId);
-        postJobVo.executeQuery();
-        postJobVo.removeApplyViewCriteriaName("FindByIdVC");
-        PostJobsVORowImpl postJobRow = (PostJobsVORowImpl) postJobVo.first();
-        postJobVo.setCurrentRow(postJobRow);
+        PostJobsVORowImpl postJobRow = findPostJobById(postJobId, postJobVo);
 
         PostJobDiscussVOImpl discussVo = am.getPostJobDiscussVO1();
 

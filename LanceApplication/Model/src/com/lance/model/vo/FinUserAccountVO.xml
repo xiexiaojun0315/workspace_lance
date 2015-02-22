@@ -12,7 +12,13 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  RowClass="com.lance.model.vo.FinUserAccountVORowImpl"
+  ComponentClass="com.lance.model.vo.FinUserAccountVOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <EntityUsage
     Name="FinUserAccountEO"
     Entity="com.lance.model.eo.FinUserAccountEO"/>

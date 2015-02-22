@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="ContractLogContractVL"
+  Version="12.1.3.2.36"
+  InheritPersonalization="merge"
+  EntityAssociation="com.lance.model.as.ContractLogContractAS">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.lance.model.vl.ContractLogContractVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="Contract"
+    Cardinality="1"
+    Source="true"
+    Owner="com.lance.model.vo.ContractVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="Contract"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.vo.ContractVO.Uuid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="ContractLog"
+    Cardinality="-1"
+    Owner="com.lance.model.vo.ContractLogVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="ContractLog"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.vo.ContractLogVO.ContractId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.lance.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

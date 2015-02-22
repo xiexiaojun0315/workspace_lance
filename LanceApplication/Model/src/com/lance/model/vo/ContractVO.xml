@@ -12,7 +12,17 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  RowClass="com.lance.model.vo.ContractVORowImpl"
+  ComponentClass="com.lance.model.vo.ContractVOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="pUuid"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <EntityUsage
     Name="ContractEO"
     Entity="com.lance.model.eo.ContractEO"/>
@@ -24,17 +34,89 @@
     EntityUsage="ContractEO"
     AliasName="UUID"/>
   <ViewAttribute
-    Name="ProjectId"
+    Name="AttachmentLink"
     PrecisionRule="true"
-    EntityAttrName="ProjectId"
+    EntityAttrName="AttachmentLink"
     EntityUsage="ContractEO"
-    AliasName="PROJECT_ID"/>
+    AliasName="ATTACHMENT_LINK"/>
   <ViewAttribute
-    Name="Title"
+    Name="ClientCompanyId"
     PrecisionRule="true"
-    EntityAttrName="Title"
+    EntityAttrName="ClientCompanyId"
     EntityUsage="ContractEO"
-    AliasName="TITLE"/>
+    AliasName="CLIENT_COMPANY_ID"/>
+  <ViewAttribute
+    Name="ClientCompanyName"
+    PrecisionRule="true"
+    EntityAttrName="ClientCompanyName"
+    EntityUsage="ContractEO"
+    AliasName="CLIENT_COMPANY_NAME"/>
+  <ViewAttribute
+    Name="ClientConfirmDelayDay"
+    PrecisionRule="true"
+    EntityAttrName="ClientConfirmDelayDay"
+    EntityUsage="ContractEO"
+    AliasName="CLIENT_CONFIRM_DELAY_DAY"/>
+  <ViewAttribute
+    Name="ClientEmail"
+    PrecisionRule="true"
+    EntityAttrName="ClientEmail"
+    EntityUsage="ContractEO"
+    AliasName="CLIENT_EMAIL"/>
+  <ViewAttribute
+    Name="ClientIdNo"
+    PrecisionRule="true"
+    EntityAttrName="ClientIdNo"
+    EntityUsage="ContractEO"
+    AliasName="CLIENT_ID_NO"/>
+  <ViewAttribute
+    Name="ClientIdType"
+    PrecisionRule="true"
+    EntityAttrName="ClientIdType"
+    EntityUsage="ContractEO"
+    AliasName="CLIENT_ID_TYPE"/>
+  <ViewAttribute
+    Name="ClientName"
+    PrecisionRule="true"
+    EntityAttrName="ClientName"
+    EntityUsage="ContractEO"
+    AliasName="CLIENT_NAME"/>
+  <ViewAttribute
+    Name="ClientSignBy"
+    PrecisionRule="true"
+    EntityAttrName="ClientSignBy"
+    EntityUsage="ContractEO"
+    AliasName="CLIENT_SIGN_BY"/>
+  <ViewAttribute
+    Name="ClientPayDelayDay"
+    PrecisionRule="true"
+    EntityAttrName="ClientPayDelayDay"
+    EntityUsage="ContractEO"
+    AliasName="CLIENT_PAY_DELAY_DAY"/>
+  <ViewAttribute
+    Name="ClientPhone"
+    PrecisionRule="true"
+    EntityAttrName="ClientPhone"
+    EntityUsage="ContractEO"
+    AliasName="CLIENT_PHONE"/>
+  <ViewAttribute
+    Name="ClientRoleTitle"
+    PrecisionRule="true"
+    EntityAttrName="ClientRoleTitle"
+    EntityUsage="ContractEO"
+    AliasName="CLIENT_ROLE_TITLE"/>
+  <ViewAttribute
+    Name="ClientTotalScore"
+    PrecisionRule="true"
+    EntityAttrName="ClientTotalScore"
+    EntityUsage="ContractEO"
+    AliasName="CLIENT_TOTAL_SCORE"/>
+  <ViewAttribute
+    Name="ClientTrueName"
+    PrecisionRule="true"
+    EntityAttrName="ClientTrueName"
+    EntityUsage="ContractEO"
+    AliasName="CLIENT_TRUE_NAME"/>
   <ViewAttribute
     Name="Content"
     IsQueriable="false"
@@ -43,29 +125,19 @@
     EntityUsage="ContractEO"
     AliasName="CONTENT"/>
   <ViewAttribute
-    Name="AttachmentLink"
+    Name="CreateBy"
     PrecisionRule="true"
-    EntityAttrName="AttachmentLink"
+    EntityAttrName="CreateBy"
     EntityUsage="ContractEO"
-    AliasName="ATTACHMENT_LINK"/>
+    AliasName="CREATE_BY"
+    IsUpdateable="false"/>
   <ViewAttribute
-    Name="ClientName"
+    Name="CreateOn"
     PrecisionRule="true"
-    EntityAttrName="ClientName"
+    EntityAttrName="CreateOn"
     EntityUsage="ContractEO"
-    AliasName="CLIENT_NAME"/>
-  <ViewAttribute
-    Name="LancerName"
-    PrecisionRule="true"
-    EntityAttrName="LancerName"
-    EntityUsage="ContractEO"
-    AliasName="LANCER_NAME"/>
-  <ViewAttribute
-    Name="DateStart"
-    PrecisionRule="true"
-    EntityAttrName="DateStart"
-    EntityUsage="ContractEO"
-    AliasName="DATE_START"/>
+    AliasName="CREATE_ON"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="DateEnd"
     PrecisionRule="true"
@@ -73,53 +145,11 @@
     EntityUsage="ContractEO"
     AliasName="DATE_END"/>
   <ViewAttribute
-    Name="ClientRoleTitle"
+    Name="DateStart"
     PrecisionRule="true"
-    EntityAttrName="ClientRoleTitle"
+    EntityAttrName="DateStart"
     EntityUsage="ContractEO"
-    AliasName="CLIENT_ROLE_TITLE"/>
-  <ViewAttribute
-    Name="LancerRoleTitle"
-    PrecisionRule="true"
-    EntityAttrName="LancerRoleTitle"
-    EntityUsage="ContractEO"
-    AliasName="LANCER_ROLE_TITLE"/>
-  <ViewAttribute
-    Name="Postform"
-    PrecisionRule="true"
-    EntityAttrName="Postform"
-    EntityUsage="ContractEO"
-    AliasName="POSTFORM"/>
-  <ViewAttribute
-    Name="HourlyPay"
-    PrecisionRule="true"
-    EntityAttrName="HourlyPay"
-    EntityUsage="ContractEO"
-    AliasName="HOURLY_PAY"/>
-  <ViewAttribute
-    Name="WeeklyHours"
-    PrecisionRule="true"
-    EntityAttrName="WeeklyHours"
-    EntityUsage="ContractEO"
-    AliasName="WEEKLY_HOURS"/>
-  <ViewAttribute
-    Name="FixedPayPrice"
-    PrecisionRule="true"
-    EntityAttrName="FixedPayPrice"
-    EntityUsage="ContractEO"
-    AliasName="FIXED_PAY_PRICE"/>
-  <ViewAttribute
-    Name="ClientConfirmDelayDay"
-    PrecisionRule="true"
-    EntityAttrName="ClientConfirmDelayDay"
-    EntityUsage="ContractEO"
-    AliasName="CLIENT_CONFIRM_DELAY_DAY"/>
-  <ViewAttribute
-    Name="ClientPayDelayDay"
-    PrecisionRule="true"
-    EntityAttrName="ClientPayDelayDay"
-    EntityUsage="ContractEO"
-    AliasName="CLIENT_PAY_DELAY_DAY"/>
+    AliasName="DATE_START"/>
   <ViewAttribute
     Name="FixedPayDate"
     PrecisionRule="true"
@@ -133,35 +163,29 @@
     EntityUsage="ContractEO"
     AliasName="FIXED_PAY_DELAY_HOLIDAY"/>
   <ViewAttribute
-    Name="NeedDailyReport"
+    Name="FixedPayPrice"
     PrecisionRule="true"
-    EntityAttrName="NeedDailyReport"
+    EntityAttrName="FixedPayPrice"
     EntityUsage="ContractEO"
-    AliasName="NEED_DAILY_REPORT"/>
+    AliasName="FIXED_PAY_PRICE"/>
   <ViewAttribute
-    Name="ProcessStatus"
+    Name="HourlyPay"
     PrecisionRule="true"
-    EntityAttrName="ProcessStatus"
+    EntityAttrName="HourlyPay"
     EntityUsage="ContractEO"
-    AliasName="PROCESS_STATUS"/>
+    AliasName="HOURLY_PAY"/>
   <ViewAttribute
-    Name="LancerTotalScore"
+    Name="LancerCompanyId"
     PrecisionRule="true"
-    EntityAttrName="LancerTotalScore"
+    EntityAttrName="LancerCompanyId"
     EntityUsage="ContractEO"
-    AliasName="LANCER_TOTAL_SCORE"/>
+    AliasName="LANCER_COMPANY_ID"/>
   <ViewAttribute
-    Name="LancerQualityScore"
+    Name="LancerCompanyName"
     PrecisionRule="true"
-    EntityAttrName="LancerQualityScore"
+    EntityAttrName="LancerCompanyName"
     EntityUsage="ContractEO"
-    AliasName="LANCER_QUALITY_SCORE"/>
-  <ViewAttribute
-    Name="LancerProfessScore"
-    PrecisionRule="true"
-    EntityAttrName="LancerProfessScore"
-    EntityUsage="ContractEO"
-    AliasName="LANCER_PROFESS_SCORE"/>
+    AliasName="LANCER_COMPANY_NAME"/>
   <ViewAttribute
     Name="LancerCostScore"
     PrecisionRule="true"
@@ -169,17 +193,11 @@
     EntityUsage="ContractEO"
     AliasName="LANCER_COST_SCORE"/>
   <ViewAttribute
-    Name="LancerPlanScore"
+    Name="LancerEmail"
     PrecisionRule="true"
-    EntityAttrName="LancerPlanScore"
+    EntityAttrName="LancerEmail"
     EntityUsage="ContractEO"
-    AliasName="LANCER_PLAN_SCORE"/>
-  <ViewAttribute
-    Name="LancerResponsScore"
-    PrecisionRule="true"
-    EntityAttrName="LancerResponsScore"
-    EntityUsage="ContractEO"
-    AliasName="LANCER_RESPONS_SCORE"/>
+    AliasName="LANCER_EMAIL"/>
   <ViewAttribute
     Name="LancerEvaluation"
     PrecisionRule="true"
@@ -187,47 +205,184 @@
     EntityUsage="ContractEO"
     AliasName="LANCER_EVALUATION"/>
   <ViewAttribute
-    Name="ClientTotalScore"
+    Name="LancerIdNo"
     PrecisionRule="true"
-    EntityAttrName="ClientTotalScore"
+    EntityAttrName="LancerIdNo"
     EntityUsage="ContractEO"
-    AliasName="CLIENT_TOTAL_SCORE"/>
+    AliasName="LANCER_ID_NO"/>
   <ViewAttribute
-    Name="Status"
+    Name="LancerIdType"
     PrecisionRule="true"
-    EntityAttrName="Status"
+    EntityAttrName="LancerIdType"
     EntityUsage="ContractEO"
-    AliasName="STATUS"/>
+    AliasName="LANCER_ID_TYPE"/>
   <ViewAttribute
-    Name="CreateBy"
+    Name="LancerName"
     PrecisionRule="true"
-    EntityAttrName="CreateBy"
+    EntityAttrName="LancerName"
     EntityUsage="ContractEO"
-    AliasName="CREATE_BY"/>
+    AliasName="LANCER_NAME"/>
   <ViewAttribute
-    Name="CreateOn"
+    Name="LancerSignBy"
     PrecisionRule="true"
-    EntityAttrName="CreateOn"
+    EntityAttrName="LancerSignBy"
     EntityUsage="ContractEO"
-    AliasName="CREATE_ON"/>
+    AliasName="LANCER_SIGN_BY"/>
+  <ViewAttribute
+    Name="LancerPhone"
+    PrecisionRule="true"
+    EntityAttrName="LancerPhone"
+    EntityUsage="ContractEO"
+    AliasName="LANCER_PHONE"/>
+  <ViewAttribute
+    Name="LancerPlanScore"
+    PrecisionRule="true"
+    EntityAttrName="LancerPlanScore"
+    EntityUsage="ContractEO"
+    AliasName="LANCER_PLAN_SCORE"/>
+  <ViewAttribute
+    Name="LancerProfessScore"
+    PrecisionRule="true"
+    EntityAttrName="LancerProfessScore"
+    EntityUsage="ContractEO"
+    AliasName="LANCER_PROFESS_SCORE"/>
+  <ViewAttribute
+    Name="LancerQualityScore"
+    PrecisionRule="true"
+    EntityAttrName="LancerQualityScore"
+    EntityUsage="ContractEO"
+    AliasName="LANCER_QUALITY_SCORE"/>
+  <ViewAttribute
+    Name="LancerResponsScore"
+    PrecisionRule="true"
+    EntityAttrName="LancerResponsScore"
+    EntityUsage="ContractEO"
+    AliasName="LANCER_RESPONS_SCORE"/>
+  <ViewAttribute
+    Name="LancerRoleTitle"
+    PrecisionRule="true"
+    EntityAttrName="LancerRoleTitle"
+    EntityUsage="ContractEO"
+    AliasName="LANCER_ROLE_TITLE"/>
+  <ViewAttribute
+    Name="LancerTotalScore"
+    PrecisionRule="true"
+    EntityAttrName="LancerTotalScore"
+    EntityUsage="ContractEO"
+    AliasName="LANCER_TOTAL_SCORE"/>
+  <ViewAttribute
+    Name="LancerTrueName"
+    PrecisionRule="true"
+    EntityAttrName="LancerTrueName"
+    EntityUsage="ContractEO"
+    AliasName="LANCER_TRUE_NAME"/>
   <ViewAttribute
     Name="ModifyBy"
     PrecisionRule="true"
     EntityAttrName="ModifyBy"
     EntityUsage="ContractEO"
-    AliasName="MODIFY_BY"/>
+    AliasName="MODIFY_BY"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="ModifyOn"
     PrecisionRule="true"
     EntityAttrName="ModifyOn"
     EntityUsage="ContractEO"
-    AliasName="MODIFY_ON"/>
+    AliasName="MODIFY_ON"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="NeedDailyReport"
+    PrecisionRule="true"
+    EntityAttrName="NeedDailyReport"
+    EntityUsage="ContractEO"
+    AliasName="NEED_DAILY_REPORT"/>
+  <ViewAttribute
+    Name="Postform"
+    PrecisionRule="true"
+    EntityAttrName="Postform"
+    EntityUsage="ContractEO"
+    AliasName="POSTFORM"/>
+  <ViewAttribute
+    Name="ProcessStatus"
+    PrecisionRule="true"
+    EntityAttrName="ProcessStatus"
+    EntityUsage="ContractEO"
+    AliasName="PROCESS_STATUS"/>
+  <ViewAttribute
+    Name="ProcessStatusDesc"
+    PrecisionRule="true"
+    EntityAttrName="ProcessStatusDesc"
+    EntityUsage="ContractEO"
+    AliasName="PROCESS_STATUS_DESC"/>
+  <ViewAttribute
+    Name="ProjectId"
+    PrecisionRule="true"
+    EntityAttrName="ProjectId"
+    EntityUsage="ContractEO"
+    AliasName="PROJECT_ID"/>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="ContractEO"
+    AliasName="STATUS"
+    DefaultValue="draft"/>
+  <ViewAttribute
+    Name="Title"
+    PrecisionRule="true"
+    EntityAttrName="Title"
+    EntityUsage="ContractEO"
+    AliasName="TITLE"/>
   <ViewAttribute
     Name="Version"
     PrecisionRule="true"
     EntityAttrName="Version"
     EntityUsage="ContractEO"
-    AliasName="VERSION"/>
+    AliasName="VERSION"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="WeeklyHours"
+    PrecisionRule="true"
+    EntityAttrName="WeeklyHours"
+    EntityUsage="ContractEO"
+    AliasName="WEEKLY_HOURS"/>
+  <ViewCriteria
+    Name="FindByUuidVC"
+    ViewObjectName="com.lance.model.vo.ContractVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="FindByUuidVC_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Uuid"
+        ViewAttribute="Uuid"
+        Operator="="
+        Conjunction="AND"
+        Value=":pUuid"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ViewLinkAccessor
     Name="ContractMilestone"
     ViewLink="com.lance.model.vl.ContractMilestoneFk1VL"
@@ -236,6 +391,11 @@
   <ViewLinkAccessor
     Name="ContractReport"
     ViewLink="com.lance.model.vl.ContractReportContractFk1VL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="ContractLog"
+    ViewLink="com.lance.model.vl.ContractLogContractVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
 </ViewObject>

@@ -34,8 +34,7 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="LOOKUPS"
-    PrimaryKey="true">
+    TableName="LOOKUPS">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="50"/>
     </DesignTime>
@@ -116,6 +115,13 @@
     ColumnType="NUMBER"
     TableName="LOOKUPS"
     HistoryColumn="VersionHistory"/>
+  <Attribute
+    Name="DisplayOrder"
+    ColumnName="DISPLAY_ORDER"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="LOOKUPS"/>
   <Key
     Name="LookupsPk"
     PrimaryKey="true">
@@ -124,7 +130,6 @@
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.lance.model.eo.LookupsEO.ItemKey"/>
-      <Item Value="com.lance.model.eo.LookupsEO.ItemType"/>
     </AttrArray>
   </Key>
 </Entity>

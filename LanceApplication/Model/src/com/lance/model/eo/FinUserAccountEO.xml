@@ -9,7 +9,9 @@
   DBObjectType="table"
   DBObjectName="FIN_USER_ACCOUNT"
   AliasName="FinUserAccountEO"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  RowClass="com.zngh.platform.front.core.model.BaseEntityImpl"
+  CollClass="com.zngh.platform.front.core.model.BaseEntityCache">
   <Attribute
     Name="UserName"
     IsNotNull="true"

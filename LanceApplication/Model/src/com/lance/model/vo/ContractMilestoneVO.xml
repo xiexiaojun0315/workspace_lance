@@ -12,7 +12,17 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  RowClass="com.lance.model.vo.ContractMilestoneVORowImpl"
+  ComponentClass="com.lance.model.vo.ContractMilestoneVOImpl">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <Variable
+    Name="pUuid"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <EntityUsage
     Name="ContractMilestoneEO"
     Entity="com.lance.model.eo.ContractMilestoneEO"/>
@@ -100,29 +110,71 @@
     PrecisionRule="true"
     EntityAttrName="CreateBy"
     EntityUsage="ContractMilestoneEO"
-    AliasName="CREATE_BY"/>
+    AliasName="CREATE_BY"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="CreateOn"
     PrecisionRule="true"
     EntityAttrName="CreateOn"
     EntityUsage="ContractMilestoneEO"
-    AliasName="CREATE_ON"/>
+    AliasName="CREATE_ON"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="ModifyBy"
     PrecisionRule="true"
     EntityAttrName="ModifyBy"
     EntityUsage="ContractMilestoneEO"
-    AliasName="MODIFY_BY"/>
+    AliasName="MODIFY_BY"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="ModifyOn"
     PrecisionRule="true"
     EntityAttrName="ModifyOn"
     EntityUsage="ContractMilestoneEO"
-    AliasName="MODIFY_ON"/>
+    AliasName="MODIFY_ON"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="Version"
     PrecisionRule="true"
     EntityAttrName="Version"
     EntityUsage="ContractMilestoneEO"
-    AliasName="VERSION"/>
+    AliasName="VERSION"
+    IsUpdateable="false"/>
+  <ViewCriteria
+    Name="FindByUuidVC"
+    ViewObjectName="com.lance.model.vo.ContractMilestoneVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="ContractMilestoneVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Uuid"
+        ViewAttribute="Uuid"
+        Operator="="
+        Conjunction="AND"
+        Value=":pUuid"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
 </ViewObject>

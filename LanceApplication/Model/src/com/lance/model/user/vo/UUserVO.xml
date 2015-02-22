@@ -229,6 +229,30 @@
     EntityUsage="UUserEO"
     AliasName="CONTACT_INFO"/>
   <ViewAttribute
+    Name="IdentityType"
+    PrecisionRule="true"
+    EntityAttrName="IdentityType"
+    EntityUsage="UUserEO"
+    AliasName="IDENTITY_TYPE"/>
+  <ViewAttribute
+    Name="IdentityNo"
+    PrecisionRule="true"
+    EntityAttrName="IdentityNo"
+    EntityUsage="UUserEO"
+    AliasName="IDENTITY_NO"/>
+  <ViewAttribute
+    Name="Rank"
+    PrecisionRule="true"
+    EntityAttrName="Rank"
+    EntityUsage="UUserEO"
+    AliasName="RANK"/>
+  <ViewAttribute
+    Name="RankDesc"
+    PrecisionRule="true"
+    EntityAttrName="RankDesc"
+    EntityUsage="UUserEO"
+    AliasName="RANK_DESC"/>
+  <ViewAttribute
     Name="CreateBy"
     PrecisionRule="true"
     EntityAttrName="CreateBy"
@@ -345,13 +369,6 @@
         Required="Optional"
         UpperColumns="1"
         IsBindVarValue="true"/>
-      <ViewCriteriaItem
-        Name="CanBeSearch"
-        ViewAttribute="CanBeSearch"
-        Operator="="
-        Conjunction="AND"
-        Value="1"
-        Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
   <ViewCriteria
@@ -391,6 +408,50 @@
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
+  <ViewCriteria
+    Name="SearchByUserNameVC"
+    ViewObjectName="com.lance.model.user.vo.UUserVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="UUserVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="UserName"
+        ViewAttribute="UserName"
+        Operator="="
+        Conjunction="AND"
+        Value=":pUserName"
+        UpperColumns="1"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="CanBeSearch"
+        ViewAttribute="CanBeSearch"
+        Operator="="
+        Conjunction="AND"
+        Value="Y"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
   <ViewLinkAccessor
     Name="UserSkill"
     ViewLink="com.lance.model.user.vl.UserSkillUUserFk1VL"
@@ -415,4 +476,10 @@
     <PropertiesBundle
       PropertiesFile="com.lance.model.ModelBundle"/>
   </ResourceBundle>
+  <SortCriteria>
+    <Sort
+      Attribute="Rank"/>
+    <Sort
+      Attribute="ModifyOn"/>
+  </SortCriteria>
 </ViewObject>

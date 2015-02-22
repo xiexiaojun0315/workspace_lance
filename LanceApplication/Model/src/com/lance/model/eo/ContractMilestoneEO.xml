@@ -9,7 +9,9 @@
   DBObjectType="table"
   DBObjectName="CONTRACT_MILESTONE"
   AliasName="ContractMilestoneEO"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  RowClass="com.zngh.platform.front.core.model.BaseEntityImpl"
+  CollClass="com.zngh.platform.front.core.model.BaseEntityCache">
   <Attribute
     Name="Uuid"
     IsNotNull="true"

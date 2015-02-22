@@ -295,6 +295,18 @@
     EntityUsage="PostJobsEO"
     AliasName="INDEX_WORK_CATEGORYS"/>
   <ViewAttribute
+    Name="IndexAllMetaInfo"
+    PrecisionRule="true"
+    EntityAttrName="IndexAllMetaInfo"
+    EntityUsage="PostJobsEO"
+    AliasName="INDEX_ALL_META_INFO"/>
+  <ViewAttribute
+    Name="SignBy"
+    PrecisionRule="true"
+    EntityAttrName="SignBy"
+    EntityUsage="PostJobsEO"
+    AliasName="SIGN_BY"/>
+  <ViewAttribute
     Name="CreateBy"
     IsUpdateable="false"
     PrecisionRule="true"
@@ -357,7 +369,6 @@
     SQLType="VARCHAR"/>
   <ViewAttribute
     Name="SearchRank"
-    IsUpdateable="false"
     IsSelected="false"
     IsPersistent="false"
     PrecisionRule="true"
@@ -476,40 +487,6 @@
     </ViewCriteriaRow>
   </ViewCriteria>
   <ViewCriteria
-    Name="SearchByKeywordVC"
-    ViewObjectName="com.lance.model.vo.PostJobsVO"
-    Conjunction="AND">
-    <Properties>
-      <CustomProperties>
-        <Property
-          Name="displayOperators"
-          Value="InAdvancedMode"/>
-        <Property
-          Name="autoExecute"
-          Value="false"/>
-        <Property
-          Name="allowConjunctionOverride"
-          Value="true"/>
-        <Property
-          Name="showInList"
-          Value="true"/>
-        <Property
-          Name="mode"
-          Value="Basic"/>
-      </CustomProperties>
-    </Properties>
-    <ViewCriteriaRow
-      Name="PostJobsVOCriteria_row_0"
-      UpperColumns="1">
-      <ViewCriteriaItem
-        Name="Brief"
-        ViewAttribute="Brief"
-        Operator="CONTAINS"
-        Conjunction="AND"
-        Required="Optional"/>
-    </ViewCriteriaRow>
-  </ViewCriteria>
-  <ViewCriteria
     Name="SearchByLocationVC"
     ViewObjectName="com.lance.model.vo.PostJobsVO"
     Conjunction="AND">
@@ -623,6 +600,10 @@
     ViewLink="com.lance.model.vl.PostJob_PostJobDiscussVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <SortCriteria>
+    <Sort
+      Attribute="ModifyOn"/>
+  </SortCriteria>
   <SortCriteria>
     <Sort
       Attribute="ModifyOn"/>

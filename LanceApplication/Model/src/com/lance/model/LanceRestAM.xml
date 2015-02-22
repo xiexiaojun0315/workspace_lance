@@ -89,6 +89,9 @@
     <ViewUsage
         Name="ContractReportVO1"
         ViewObjectName="com.lance.model.vo.ContractReportVO"/>
+    <ViewUsage
+        Name="ContractLog1"
+        ViewObjectName="com.lance.model.vo.ContractLogVO"/>
     <ViewLinkUsage
       Name="JobCategory_SubCategoryVL1"
       ViewLinkObjectName="com.lance.model.vl.JobCategory_SubCategoryVL"
@@ -142,6 +145,12 @@
         ViewLinkObjectName="com.lance.model.vl.ContractReportContractFk1VL"
         SrcViewUsageName="com.lance.model.LanceRestAM.ContractVO1"
         DstViewUsageName="com.lance.model.LanceRestAM.ContractReportVO1"
+        Reversed="false"/>
+    <ViewLinkUsage
+        Name="ContractLogContractVL1"
+        ViewLinkObjectName="com.lance.model.vl.ContractLogContractVL"
+        SrcViewUsageName="com.lance.model.LanceRestAM.ContractVO1"
+        DstViewUsageName="com.lance.model.LanceRestAM.ContractLog1"
         Reversed="false"/>
     <ResourceBundle>
         <PropertiesBundle

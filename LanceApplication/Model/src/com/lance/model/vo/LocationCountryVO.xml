@@ -52,29 +52,34 @@
     PrecisionRule="true"
     EntityAttrName="CreateBy"
     EntityUsage="LocationCountryEO"
-    AliasName="CREATE_BY"/>
+    AliasName="CREATE_BY"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="CreateOn"
     PrecisionRule="true"
     EntityAttrName="CreateOn"
     EntityUsage="LocationCountryEO"
-    AliasName="CREATE_ON"/>
+    AliasName="CREATE_ON"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="ModifyBy"
     PrecisionRule="true"
     EntityAttrName="ModifyBy"
     EntityUsage="LocationCountryEO"
-    AliasName="MODIFY_BY"/>
+    AliasName="MODIFY_BY"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="ModifyOn"
     PrecisionRule="true"
     EntityAttrName="ModifyOn"
     EntityUsage="LocationCountryEO"
-    AliasName="MODIFY_ON"/>
+    AliasName="MODIFY_ON"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="Version"
     PrecisionRule="true"
     EntityAttrName="Version"
     EntityUsage="LocationCountryEO"
-    AliasName="VERSION"/>
+    AliasName="VERSION"
+    IsUpdateable="false"/>
 </ViewObject>

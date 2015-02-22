@@ -31,7 +31,7 @@ public class GeneratorResource {
     public String generateAttributes() {
         LanceRestAMImpl am = LUtil.findLanceAM();
 //        outputAttrTypes(am.getPostJobs1());
-        outputAttrTypes(am.getPostJobDiscuss1());
+        outputAttrTypes(am.getPostJobs1());
 //        outputAttrTypes(am.get);
 //        outputAttrTypes(am);
 //        outputAttrTypes(am);
@@ -80,7 +80,7 @@ public class GeneratorResource {
 
     @GET
     @Path("test")
-    public void test() {
+    public String test() {
         try {
             InitialContext ctx = new InitialContext();
             DataSource ds = (DataSource) ctx.lookup("jdbc/lanceDS");
@@ -95,6 +95,7 @@ public class GeneratorResource {
             // TODO: Add catch code
             ne.printStackTrace();
         }
+        return "ok";
     }
     
 }

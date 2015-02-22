@@ -6,15 +6,15 @@
   Name="LookupsVO"
   Version="12.1.3.2.36"
   InheritPersonalization="merge"
+  BindingStyle="OracleName"
+  CustomQuery="false"
+  RowClass="com.zngh.platform.front.core.model.BaseViewRowImpl"
+  ComponentClass="com.zngh.platform.front.core.model.BaseViewObjectImpl"
+  PageIterMode="Full"
   SelectListFlags="1"
   FromListFlags="1"
   WhereFlags="1"
-  BindingStyle="OracleName"
-  CustomQuery="false"
-  SelectAllAttributes="false"
-  RowClass="com.zngh.platform.front.core.model.BaseViewRowImpl"
-  ComponentClass="com.zngh.platform.front.core.model.BaseViewObjectImpl"
-  PageIterMode="Full">
+  SelectAllAttributes="false">
   <EntityUsage
     Name="LookupsEO"
     Entity="com.lance.model.eo.LookupsEO"/>
@@ -45,33 +45,80 @@
     EntityUsage="LookupsEO"
     AliasName="ITEM_DESC"/>
   <ViewAttribute
+    Name="DisplayOrder"
+    PrecisionRule="true"
+    EntityAttrName="DisplayOrder"
+    EntityUsage="LookupsEO"
+    AliasName="DISPLAY_ORDER"/>
+  <ViewAttribute
     Name="CreateBy"
     PrecisionRule="true"
     EntityAttrName="CreateBy"
     EntityUsage="LookupsEO"
-    AliasName="CREATE_BY"/>
+    AliasName="CREATE_BY"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="CreateOn"
     PrecisionRule="true"
     EntityAttrName="CreateOn"
     EntityUsage="LookupsEO"
-    AliasName="CREATE_ON"/>
+    AliasName="CREATE_ON"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="ModifyBy"
     PrecisionRule="true"
     EntityAttrName="ModifyBy"
     EntityUsage="LookupsEO"
-    AliasName="MODIFY_BY"/>
+    AliasName="MODIFY_BY"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="ModifyOn"
     PrecisionRule="true"
     EntityAttrName="ModifyOn"
     EntityUsage="LookupsEO"
-    AliasName="MODIFY_ON"/>
+    AliasName="MODIFY_ON"
+    IsUpdateable="false"/>
   <ViewAttribute
     Name="Version"
     PrecisionRule="true"
     EntityAttrName="Version"
     EntityUsage="LookupsEO"
-    AliasName="VERSION"/>
+    AliasName="VERSION"
+    IsUpdateable="false"/>
+  <ViewCriteria
+    Name="FindIdentitysVC"
+    ViewObjectName="com.lance.model.vo.LookupsVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="LookupsVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ItemType"
+        ViewAttribute="ItemType"
+        Operator="="
+        Conjunction="AND"
+        Value="IDENTITY_NO"
+        Required="Optional"
+        UpperColumns="0"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
 </ViewObject>

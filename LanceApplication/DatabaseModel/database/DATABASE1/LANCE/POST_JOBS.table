@@ -1049,6 +1049,27 @@
       </properties>
     </column>
     <column>
+      <name>SIGN_BY</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">20</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">合同签署方：self/company</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
       <name>INDEX_SKILLS</name>
       <dataTypeUsage>
         <attributeValues>
@@ -1108,6 +1129,21 @@
         <entry>
           <key>Comment</key>
           <value class="java.lang.String">索引：工作地点</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>INDEX_ALL_META_INFO</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>CLOB</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">索引：所有元信息</value>
         </entry>
       </properties>
     </column>

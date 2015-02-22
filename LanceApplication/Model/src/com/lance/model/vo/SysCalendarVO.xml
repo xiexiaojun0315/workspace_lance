@@ -12,7 +12,9 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  PageIterMode="Full">
+  PageIterMode="Full"
+  RowClass="com.zngh.platform.front.core.model.BaseViewRowImpl"
+  ComponentClass="com.zngh.platform.front.core.model.BaseViewObjectImpl">
   <EntityUsage
     Name="SysCalendarEO"
     Entity="com.lance.model.eo.SysCalendarEO"/>

@@ -1,5 +1,8 @@
 package com.lance.model.vo;
 
+import com.zngh.platform.front.core.model.BaseEntityImpl;
+import com.zngh.platform.front.core.model.BaseViewRowImpl;
+
 import java.math.BigDecimal;
 
 import java.sql.Timestamp;
@@ -13,7 +16,8 @@ import oracle.jbo.server.ViewRowImpl;
 // ---    Custom code may be added to this class.
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
-public class JobCategoryVORowImpl extends ViewRowImpl {
+public class JobCategoryVORowImpl extends BaseViewRowImpl {
+
     public static final int ENTITY_JOBCATEGORYEO = 0;
 
     /**
@@ -31,7 +35,8 @@ public class JobCategoryVORowImpl extends ViewRowImpl {
         Version,
         JobTemplate,
         JobSubCategory;
-        private static AttributesEnum[] vals = null;
+        static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -53,6 +58,7 @@ public class JobCategoryVORowImpl extends ViewRowImpl {
             return vals;
         }
     }
+
     public static final int UUID = AttributesEnum.Uuid.index();
     public static final int NAMEEN = AttributesEnum.NameEn.index();
     public static final int NAMECN = AttributesEnum.NameCn.index();
@@ -75,8 +81,8 @@ public class JobCategoryVORowImpl extends ViewRowImpl {
      * Gets JobCategoryEO entity object.
      * @return the JobCategoryEO
      */
-    public EntityImpl getJobCategoryEO() {
-        return (EntityImpl) getEntity(ENTITY_JOBCATEGORYEO);
+    public BaseEntityImpl getJobCategoryEO() {
+        return (BaseEntityImpl) getEntity(ENTITY_JOBCATEGORYEO);
     }
 
     /**

@@ -9,7 +9,9 @@
   DBObjectType="table"
   DBObjectName="CONTRACT_REPORT"
   AliasName="ContractReportEO"
-  BindingStyle="OracleName">
+  BindingStyle="OracleName"
+  RowClass="com.zngh.platform.front.core.model.BaseEntityImpl"
+  CollClass="com.zngh.platform.front.core.model.BaseEntityCache">
   <Attribute
     Name="Uuid"
     IsNotNull="true"

@@ -1,4 +1,4 @@
-package com.lance.view.rest.uuser;
+package com.lance.view.rest.template;
 
 import com.lance.model.LanceRestAMImpl;
 import com.lance.view.util.LUtil;

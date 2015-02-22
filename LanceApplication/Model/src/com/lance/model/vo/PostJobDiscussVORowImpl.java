@@ -311,15 +311,15 @@ public class PostJobDiscussVORowImpl extends BaseViewRowImpl {
      * Gets the attribute value for WEEKLY_HOURS using the alias name WeeklyHours.
      * @return the WEEKLY_HOURS
      */
-    public Number getWeeklyHours() {
-        return (Number) getAttributeInternal(WEEKLYHOURS);
+    public Integer getWeeklyHours() {
+        return (Integer) getAttributeInternal(WEEKLYHOURS);
     }
 
     /**
      * Sets <code>value</code> as attribute value for WEEKLY_HOURS using the alias name WeeklyHours.
      * @param value value to set the WEEKLY_HOURS
      */
-    public void setWeeklyHours(Number value) {
+    public void setWeeklyHours(Integer value) {
         setAttributeInternal(WEEKLYHOURS, value);
     }
 

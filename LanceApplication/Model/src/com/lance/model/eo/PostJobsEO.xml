@@ -433,6 +433,29 @@
       <Attr Name="_DisplaySize" Value="32"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="SignBy"
+    Precision="20"
+    ColumnName="SIGN_BY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IndexAllMetaInfo"
+    ColumnName="INDEX_ALL_META_INFO"
+    SQLType="CLOB"
+    Type="oracle.jbo.domain.ClobDomain"
+    ColumnType="CLOB"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2100"/>
+    </DesignTime>
+  </Attribute>
   <Key
     Name="PostJobsPk"
     PrimaryKey="true">

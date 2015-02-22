@@ -107,7 +107,7 @@
     Name="WeeklyHours"
     ColumnName="WEEKLY_HOURS"
     SQLType="NUMERIC"
-    Type="oracle.jbo.domain.Number"
+    Type="java.lang.Integer"
     ColumnType="NUMBER"
     TableName="POST_JOB_DISCUSS"/>
   <Attribute
