@@ -307,6 +307,18 @@
     EntityUsage="PostJobsEO"
     AliasName="SIGN_BY"/>
   <ViewAttribute
+    Name="Rank"
+    PrecisionRule="true"
+    EntityAttrName="Rank"
+    EntityUsage="PostJobsEO"
+    AliasName="RANK"/>
+  <ViewAttribute
+    Name="RankDesc"
+    PrecisionRule="true"
+    EntityAttrName="RankDesc"
+    EntityUsage="PostJobsEO"
+    AliasName="RANK_DESC"/>
+  <ViewAttribute
     Name="CreateBy"
     IsUpdateable="false"
     PrecisionRule="true"
@@ -602,13 +614,7 @@
     IsUpdateable="false"/>
   <SortCriteria>
     <Sort
-      Attribute="ModifyOn"/>
-  </SortCriteria>
-  <SortCriteria>
-    <Sort
-      Attribute="ModifyOn"/>
-  </SortCriteria>
-  <SortCriteria>
+      Attribute="Rank"/>
     <Sort
       Attribute="ModifyOn"/>
   </SortCriteria>

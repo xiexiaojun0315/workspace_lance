@@ -90,10 +90,9 @@
     Name="DateDelivery"
     ColumnName="DATE_DELIVERY"
     SQLType="DATE"
-    Type="oracle.jbo.domain.Date"
-    ColumnType="NUMBER"
-    TableName="CONTRACT_MILESTONE"
-    PrimaryKey="true"/>
+    Type="java.sql.Timestamp"
+    ColumnType="DATE"
+    TableName="CONTRACT_MILESTONE"/>
   <Attribute
     Name="Price"
     ColumnName="PRICE"
@@ -237,7 +236,6 @@
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.lance.model.eo.ContractMilestoneEO.Uuid"/>
-      <Item Value="com.lance.model.eo.ContractMilestoneEO.DateDelivery"/>
     </AttrArray>
   </Key>
   <Key

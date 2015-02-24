@@ -154,12 +154,16 @@ public class ContractResource extends BaseRestResource {
         return am.getContractVO1();
     }
 
-    public Row findContractById(String id, ViewObjectImpl vo, LanceRestAMImpl am) {
+    public ContractVORowImpl findContractById(String id, ViewObjectImpl vo, LanceRestAMImpl am) {
+        if(vo.getCurrentRow()!=null && vo.getCurrentRow().getAttribute("Uuid").equals(id)){
+            return (ContractVORowImpl)vo.getCurrentRow();
+        }
+        
         vo.setApplyViewCriteriaName("FindByUuidVC");
         vo.ensureVariableManager().setVariableValue("pUuid", id);
         vo.executeQuery();
         vo.removeApplyViewCriteriaName("FindByUuidVC");
-        return vo.first();
+        return (ContractVORowImpl)vo.first();
     }
 
     public String returnParamAfterCreate(Row row) {
@@ -180,7 +184,7 @@ public class ContractResource extends BaseRestResource {
     public JSONObject getContractById(@PathParam("contractId") String contractId) throws JSONException {
         LanceRestAMImpl am = LUtil.findLanceAM();
         ViewObjectImpl vo = getContractFromAM(am);
-        Row row = findContractById(contractId, vo, am);
+        ContractVORowImpl row = findContractById(contractId, vo, am);
 
         if (row == null) {
             String msg = "合同（" + contractId + "）对应的记录不存在或已被删除";
@@ -189,7 +193,10 @@ public class ContractResource extends BaseRestResource {
             return res;
         }
 
-        return RestUtil.convertRowToJsonObject(vo, row, this.ATTR_GET);
+        JSONObject res=new JSONObject();
+        JSONObject contract=RestUtil.convertRowToJsonObject(vo, row, this.ATTR_GET);
+        if("fixed".equals(row.getPostform())){}
+        return res;
     }
 
 
@@ -345,7 +352,7 @@ public class ContractResource extends BaseRestResource {
 
         contractRow.setPostform(applyRow.getPostform());
 
-        return "ok";
+        return contractRow.getUuid();
     }
 
 
@@ -434,8 +441,8 @@ public class ContractResource extends BaseRestResource {
      * @return
      * @throws JSONException
      */
-    @GET
-    @Path("{contractId}")
+    @POST
+    @Path("delete/{contractId}")
     public String deleteContract(@PathParam("contractId") String contractId) throws JSONException {
         if (!CAN_DELETE) {
             return "msg:此类记录无法被删除";

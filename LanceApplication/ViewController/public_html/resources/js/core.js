@@ -94,7 +94,7 @@ $.fn.postInputSearch = function(callback){
             curTex = obj.val();
             if(curTex != oldTex && curTex != ""){
                 oldTex = curTex;
-                $.ax("get", "template/job/specificSkill/" + curTex, null, function(cdata){
+                $.ax("get", "jobTemplate/specificSkill/" + curTex, null, function(cdata){
                     callback(cdata);
                 }, function(){
                     callback(null);

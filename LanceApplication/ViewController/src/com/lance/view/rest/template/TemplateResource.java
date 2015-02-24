@@ -159,8 +159,8 @@ public class TemplateResource extends BaseRestResource {
      * @return
      * @throws JSONException
      */
-    @GET
-    @Path("{templateId}")
+    @POST
+    @Path("delete/{templateId}")
     public String deleteTemplate(@PathParam("templateId") String templateId) throws JSONException {
         if(!CAN_DELETE){
             return "msg:此类记录无法被删除";

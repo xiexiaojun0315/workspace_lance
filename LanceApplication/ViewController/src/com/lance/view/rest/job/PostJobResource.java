@@ -369,10 +369,10 @@ public class PostJobResource extends BaseRestResource {
 
     @POST
     @Path("{postJobId}/agreeDiscuss/{discussId}")
-    @Produces(MediaType.TEXT_PLAIN)
+    @Produces(MediaType.APPLICATION_JSON)
     @Consumes(MediaType.APPLICATION_JSON)
-    public String agreeApplyDiscuss(@PathParam("postJobId") String jobId, @PathParam("discussId") String discussId,
-                                    JSONObject json) throws JSONException {
+    public JSONObject agreeApplyDiscuss(@PathParam("postJobId") String jobId, @PathParam("discussId") String discussId,
+                                        JSONObject json) throws JSONException {
         //获取postJob
         LanceRestAMImpl am = LUtil.findLanceAM();
         PostJobsVOImpl vo = am.getPostJobs1();
@@ -388,11 +388,11 @@ public class PostJobResource extends BaseRestResource {
         if (!ConstantUtil.DEBUG_MODE)
             if (row2.getCreateBy().equals(this.findCurrentUserName())) {
                 System.err.println("用户试图同意自己的申请" + this.findCurrentUserName());
-                return "无法完成此操作";
+                return LUtil.createJsonMsg("无法完成此操作");
             }
         if (!row2.getIsApply().equals("Y")) {
             System.err.println("这不是一个申请");
-            return "这不是一个申请";
+            return LUtil.createJsonMsg("这不是一个申请");
         }
         //反馈申请信息
         PostJobDiscussVOImpl vo3 = am.getPostJobDiscuss1();
@@ -406,14 +406,18 @@ public class PostJobResource extends BaseRestResource {
         //创建合作合同
         System.out.println(" new ContractResource().createContractFn:" + row2.getCreateBy() + ";" +
                            this.findCurrentUserName() + "；" + jobId + "；" + discussId);
-        String res =
+        String contractId =
             new ContractResource().createContractFn(am, row2.getCreateBy(), this.findCurrentUserName(), jobId,
                                                     discussId);
-        if (res.equals("ok")) {
+        if (contractId.length() == 32) { //返回的是32位，UUID的长度是32
             am.getDBTransaction().commit();
-            return "ok";
+            JSONObject json2 = LUtil.createJsonSuccess();
+            json2.put("contractId", contractId);
+            json2.put("href", "/lance/pages/project/Contract/" + contractId);
+            return json2;
         } else {
-            return res;
+            //contractId异常，返回的是错误信息
+            return LUtil.createJsonMsg(contractId);
         }
     }
 

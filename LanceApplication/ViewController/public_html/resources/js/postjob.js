@@ -226,7 +226,7 @@ var jobTemplate = function(){
     };
     
     var getTemplates = function(id){
-        $.ax("get", "template/job/jobTemplate/" + id, null, function(data){
+        $.ax("get", "jobTemplate/jobTemplate/" + id, null, function(data){
             var len = data.length, i = 0, str = "", page_count = 9, pages = Math.ceil(len / page_count), p = 0, tmplen = page_count, ind = 0;
             for(p=0;p<pages;p++){
                 str += ' <div class="tmp-cards f-left">';
@@ -316,7 +316,7 @@ $(function () {
         if (value != -1) {
             //ajax level2
             $("#cate-lev2").append('<option class="tmp" selected="selected">请稍后...</option>');
-            $.ax("get", "template/job/jobSubCategory/" + value, null, function(data){
+            $.ax("get", "jobTemplate/jobSubCategory/" + value, null, function(data){
                 var len = data.length, i = 0, str = "";
                 for(i=0;i<len;i++){
                     str += '<option value="'+data[i].Uuid+'">'+data[i].Name+'</option>';
@@ -360,7 +360,7 @@ $(function () {
         }
     });
     
-    $.ax("get", "template/job/jobCategory", null, function(data){
+    $.ax("get", "jobTemplate/jobCategory", null, function(data){
         var len = data.length, i = 0, str = "";
         for(i=0;i<len;i++){
             str += '<option value="'+data[i].Uuid+'">'+data[i].NameEn+'</option>';
@@ -405,7 +405,7 @@ $(function () {
             pa.find(".lbl-money").html("时薪范围：");
         }else{
             pa.find(".smlp").hide();
-            pa.find(".lbl-money").html("月薪范围：");
+            pa.find(".lbl-money").html("固定价格：");
             $(".er-work").html("");
         }
     });
@@ -485,7 +485,7 @@ $(function () {
     };
     var setOption = function(m_param){
         if($("#jpublic_chk")[0].checked){
-            m_param.JobVisibility = 1;
+            m_param.JobVisibility = "Y";
             if($("#jpublic_chk")[0].checked){
                 m_param.AllowSearchEngines = 1;
             }else{
@@ -497,7 +497,7 @@ $(function () {
         }
         //set location
         if($("#posjob_chk")[0].checked){
-            m_param.FixedLocation = 1;
+            m_param.FixedLocation = "Y";
             m_param.LocationProvince = $("#sel_province").val();
             m_param.LocationCity = $("#sel_city").val();
             m_param.LocationCountry = 44;//default China
@@ -550,7 +550,7 @@ $(function () {
         return true;
     };
     var postAjax = function(m_param, cback){
-        $.ax("post", "user/client/postJob", m_param, function(data){
+        $.ax("post", "postJob", m_param, function(data){
             $.ae("OK");
             cback(data);
         }, function(){
@@ -561,7 +561,7 @@ $(function () {
     var post_job_param = {};
     $(".btn-post.clickable").click(function(){
         var obj = $(this), type = obj.attr("data-val");
-        
+        console.log(type);
         var checkResult = post_check();
         
         if(checkResult){
@@ -632,7 +632,7 @@ $(function () {
     
     $(".btn_cadd.clickable").click(function(){
         var type = $(this).attr("data-type"), obj = $(this);
-        post_job_param.Status = Number(type);
+        post_job_param.Status = type;
         obj.removeClass("clickable").addClass("btn-load");
         
         postAjax(post_job_param, function(data){

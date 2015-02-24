@@ -93,19 +93,6 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="Location"
-    Precision="32"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="$none$"
-    IsQueriable="false"
-    IsPersistent="false">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="32"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="Video"
     Precision="600"
     ColumnName="VIDEO"
@@ -147,7 +134,7 @@
     Name="CreateOn"
     ColumnName="CREATE_ON"
     SQLType="DATE"
-    Type="java.sql.Timestamp"
+    Type="oracle.jbo.domain.Date"
     ColumnType="DATE"
     TableName="COMPANY"
     IsUpdateable="while_insert"
@@ -169,7 +156,7 @@
     Name="ModifyOn"
     ColumnName="MODIFY_ON"
     SQLType="DATE"
-    Type="java.sql.Timestamp"
+    Type="oracle.jbo.domain.Date"
     ColumnType="DATE"
     TableName="COMPANY"
     HistoryColumn="DateHistory"/>
@@ -177,7 +164,7 @@
     Name="Version"
     ColumnName="VERSION"
     SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
+    Type="oracle.jbo.domain.Number"
     ColumnType="NUMBER"
     TableName="COMPANY"
     HistoryColumn="VersionHistory"/>

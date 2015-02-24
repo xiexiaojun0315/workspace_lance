@@ -2,7 +2,7 @@
     $("#inp_email").checkInput("邮箱", /\w@\w*\.\w/, "请输入正确的邮箱格式", function(){
         var obj = $("#inp_email");
         obj.parent().find(".load-gif").show();
-        $.ax("get", "user/check/email/" + obj.val(), null, function(data){
+        $.ax("get", "user/exist/email/" + obj.val(), null, function(data){
             if(data == true){
                 obj.removeClass("errBor").removeClass("passBor").addClass("errBor");
                 obj.parent().find(".error").html("该邮箱已被注册，请选择其他邮箱。");
@@ -31,7 +31,7 @@
     $("#inp_uname").checkInput("登录名", /^[0-9A-Za-z]+$/, "登录名称只能输入字母和数字", function(){
         var obj = $("#inp_uname");
         obj.parent().find(".load-gif").show();
-        $.ax("get", "user/check/userName/" + obj.val(), null, function(data){
+        $.ax("get", "user/exist/userName/" + obj.val(), null, function(data){
             if(data == true){
                 obj.removeClass("errBor").removeClass("passBor").addClass("errBor");
                 obj.parent().find(".error").html("该用户名已被注册，请选择其他用户名。");
@@ -99,9 +99,12 @@
                         "TrueName" :  $("#inp_dname").val(),
                         "AccountType" : at ,
                         "CompanyName" : $("#inp_cname").val(),
-                        "Password" : $("#inp_pass").val()
+                        "Password" : $("#inp_pass").val(),
+                        "DefaultRole" : $('input:radio[name=rad-tp]:checked').val()
                     };
-                    $.ax("post", "user/lancer", param, function(data){
+                    $.ax("post", "user", param, function(data){
+                    //有问题：成功返回后不进入此方法
+                     location.href="/lance/registSuccess.html";
                         obj.parent().find(".error").html("注册成功");
                         $.ae("注册成功！跳转~");
                         obj.addClass("clickable").removeClass("btn-load");
@@ -144,11 +147,14 @@
                 "DisplayName" : $("#inp_dname").val(),
                 "Email" : $("#inp_email").val(),
                 "UserName" : $("#inp_uname").val(),
-                "Password" : $("#inp_pass").val()
+                "Password" : $("#inp_pass").val(),
+                "DefaultRole" : "client"
             };
-            $.ax("post", "user/client", param, function(data){
-                $.ae("注册成功！跳转~");
-                obj.addClass("clickable").removeClass("btn-load");
+            $.ax("post", "user", param, function(data){
+                console.log(data);
+                location.href="/lance/registSuccess.html"
+//                $.ae("注册成功！跳转~");
+//                obj.addClass("clickable").removeClass("btn-load");
             }, function(){
                 netWorkError();
                 obj.addClass("clickable").removeClass("btn-load");

@@ -456,6 +456,25 @@
       <Attr Name="_DisplaySize" Value="2100"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="Rank"
+    ColumnName="RANK"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="POST_JOBS"/>
+  <Attribute
+    Name="RankDesc"
+    Precision="2100"
+    ColumnName="RANK_DESC"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="POST_JOBS">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2100"/>
+    </DesignTime>
+  </Attribute>
   <Key
     Name="PostJobsPk"
     PrimaryKey="true">

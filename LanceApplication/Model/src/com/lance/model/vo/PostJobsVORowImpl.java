@@ -13,6 +13,7 @@ import oracle.jbo.Key;
 import oracle.jbo.Row;
 import oracle.jbo.RowIterator;
 import oracle.jbo.RowSet;
+import oracle.jbo.domain.ClobDomain;
 import oracle.jbo.domain.Date;
 import oracle.jbo.domain.Number;
 
@@ -70,6 +71,8 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
         IndexWorkCategorys,
         IndexAllMetaInfo,
         SignBy,
+        Rank,
+        RankDesc,
         CreateBy,
         CreateOn,
         ModifyBy,
@@ -150,6 +153,8 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
     public static final int INDEXWORKCATEGORYS = AttributesEnum.IndexWorkCategorys.index();
     public static final int INDEXALLMETAINFO = AttributesEnum.IndexAllMetaInfo.index();
     public static final int SIGNBY = AttributesEnum.SignBy.index();
+    public static final int RANK = AttributesEnum.Rank.index();
+    public static final int RANKDESC = AttributesEnum.RankDesc.index();
     public static final int CREATEBY = AttributesEnum.CreateBy.index();
     public static final int CREATEON = AttributesEnum.CreateOn.index();
     public static final int MODIFYBY = AttributesEnum.ModifyBy.index();
@@ -766,15 +771,15 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
      * Gets the attribute value for INDEX_ALL_META_INFO using the alias name IndexAllMetaInfo.
      * @return the INDEX_ALL_META_INFO
      */
-    public String getIndexAllMetaInfo() {
-        return (String) getAttributeInternal(INDEXALLMETAINFO);
+    public ClobDomain getIndexAllMetaInfo() {
+        return (ClobDomain) getAttributeInternal(INDEXALLMETAINFO);
     }
 
     /**
      * Sets <code>value</code> as attribute value for INDEX_ALL_META_INFO using the alias name IndexAllMetaInfo.
      * @param value value to set the INDEX_ALL_META_INFO
      */
-    public void setIndexAllMetaInfo(String value) {
+    public void setIndexAllMetaInfo(ClobDomain value) {
         setAttributeInternal(INDEXALLMETAINFO, value);
     }
 
@@ -792,6 +797,38 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
      */
     public void setSignBy(String value) {
         setAttributeInternal(SIGNBY, value);
+    }
+
+    /**
+     * Gets the attribute value for RANK using the alias name Rank.
+     * @return the RANK
+     */
+    public BigDecimal getRank() {
+        return (BigDecimal) getAttributeInternal(RANK);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for RANK using the alias name Rank.
+     * @param value value to set the RANK
+     */
+    public void setRank(BigDecimal value) {
+        setAttributeInternal(RANK, value);
+    }
+
+    /**
+     * Gets the attribute value for RANK_DESC using the alias name RankDesc.
+     * @return the RANK_DESC
+     */
+    public String getRankDesc() {
+        return (String) getAttributeInternal(RANKDESC);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for RANK_DESC using the alias name RankDesc.
+     * @param value value to set the RANK_DESC
+     */
+    public void setRankDesc(String value) {
+        setAttributeInternal(RANKDESC, value);
     }
 
     /**
@@ -978,7 +1015,7 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
             this.setIndexWorkCategorys("");
         }
         
-        this.setIndexAllMetaInfo(this.getIndexLocation()+";"+this.getIndexSkills()+";"+this.getIndexWorkCategorys()+";"+this.getName()+";"+this.getBrief());
+        this.setIndexAllMetaInfo(new ClobDomain(this.getIndexLocation()+";"+this.getIndexSkills()+";"+this.getIndexWorkCategorys()+";"+this.getName()+";"+this.getBrief()));
         return null;
     }
 

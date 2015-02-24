@@ -80,7 +80,8 @@
     PrecisionRule="true"
     EntityAttrName="Process"
     EntityUsage="ContractMilestoneEO"
-    AliasName="PROCESS"/>
+    AliasName="PROCESS"
+    DefaultValue="draft"/>
   <ViewAttribute
     Name="Status"
     PrecisionRule="true"

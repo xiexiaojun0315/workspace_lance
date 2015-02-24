@@ -8,6 +8,10 @@ public class ConstantUtil {
     
     public static final boolean DEBUG_MODE=true;
     
+    public static final String ROOT_URL="lance";
+    
+    public static final String ROOT_REST_URL="lance/res";
+    
     public static final String SIGN_BY_COMPANY = "company";
 
     public static final String SIGN_BY_SELF = "self";
@@ -96,7 +100,11 @@ public class ConstantUtil {
     //合同执行完毕,评价完毕
     public static final String CONTRACT_STATUS_DONE="Done";
     
-    //------------合同状态-------------
+    //------------里程碑状态-------------
+    public static final String MILESTONE_PROCESS_DRAFT="draft";//新纪录默认状态
+//    public static final String MILESTONE_PROCESS_TODO="toAudit";//甲方提交，等待乙方确认
+//    public static final String MILESTONE_PROCESS_TODO="toAudit";//乙方确认，等待开始            
+
     
     
 }

@@ -38,7 +38,7 @@ public class JobTemplateResource extends BaseRestResource {
 
     /**
      * 获取工作大类
-     * GET http://localhost:7101/lance/res/template/job/jobCategory
+     * GET http://localhost:7101/lance/res/jobTemplate/jobCategory
      *
      * [
         {
@@ -65,7 +65,7 @@ public class JobTemplateResource extends BaseRestResource {
     /**
      *
      * 根据工作大类ID获取工作子类
-     * GET http://localhost:7101/lance/res/template/job/jobSubCategory/10184
+     * GET http://localhost:7101/lance/res/jobTemplate/jobSubCategory/10184
      *
      * [
         {
@@ -106,7 +106,7 @@ public class JobTemplateResource extends BaseRestResource {
 
     /**
      * 根据工作大类ID，获取工作模版
-     * http://localhost:7101/lance/res/template/job/jobTemplate/10184
+     * http://localhost:7101/lance/res/template/jobTemplate/10184
      *
      * [
         {
@@ -142,15 +142,16 @@ public class JobTemplateResource extends BaseRestResource {
         }
 
         ViewObject vo3 = am.getJobTemplate1();
+        vo3.executeQuery();
         return this.convertVoToJsonArray(vo3, ATTR_GET_JOB_TEMPLATE);
     }
 
     /**
      * 为快速提示提供技能查询功能（建议输入3个字符后再提示）
-     * GET http://localhost:7101/lance/res/template/job/specificSkill/{skillName}
+     * GET http://localhost:7101/lance/res/jobTemplate/specificSkill/{skillName}
      *
      * Example
-     * GET http://localhost:7101/lance/res/template/job/specificSkill/ml
+     * GET http://localhost:7101/lance/res/jobTemplate/specificSkill/ml
      * [
         {
             "Name" : "DHTML"

@@ -226,6 +226,25 @@ public class LUtil {
 
         LOCATION_INITED = true;
     }
-
+    
+    public static JSONObject createJsonSuccess() throws JSONException {
+        JSONObject json=new JSONObject();
+        json.put("status", "ok");
+        return json;
+    }
+    
+    public static JSONObject createJsonMsg(String msg) throws JSONException {
+        JSONObject json=new JSONObject();
+        json.put("status", "msg");
+        json.put("msg", msg);
+        return json;
+    }
+    
+    public static JSONObject createJsonError(String msg) throws JSONException {
+        JSONObject json=new JSONObject();
+        json.put("status", "error");
+        json.put("error", msg);
+        return json;
+    }
 
 }

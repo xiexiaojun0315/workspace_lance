@@ -100,7 +100,7 @@ public class UserResource extends BaseRestResource {
         "Attach", "JobTitle", "Video", "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB", "ImTypeB",
         "ImNumberC", "ImTypeC", "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview",
         "ServiceDescription", "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "CreateBy", "CreateOn",
-        "ModifyBy", "ModifyOn", "Version", "LastLoginTime", "CompanyName" ,"CanBeSearch","DefaultRole"
+        "ModifyBy", "ModifyOn", "Version", "LastLoginTime", "CompanyName", "CanBeSearch", "DefaultRole"
     };
 
 
@@ -113,22 +113,24 @@ public class UserResource extends BaseRestResource {
         "UserName", "TrueName", "DisplayName", "Email", "Password", "Img", "Country", "CompanyId", "PhoneNumber",
         "Attach", "JobTitle", "Video", "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB", "ImTypeB",
         "ImNumberC", "ImTypeC", "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview",
-        "ServiceDescription", "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "CompanyName","CanBeSearch","DefaultRole"
+        "ServiceDescription", "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "CompanyName", "CanBeSearch",
+        "DefaultRole"
     };
 
     public static final String[] ATTR_UPDATE = {
         "DisplayName", "Email", "Password", "Img", "Country", "CompanyId", "PhoneNumber", "Attach", "JobTitle", "Video",
         "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB", "ImTypeB", "ImNumberC", "ImTypeC",
         "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview", "ServiceDescription",
-        "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "LastLoginTime", "CompanyName","CanBeSearch","DefaultRole"
+        "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "LastLoginTime", "CompanyName", "CanBeSearch",
+        "DefaultRole"
     };
 
     public static final String[] ATTR_GET = {
-        "UserName", "TrueName", "DisplayName", "Email", "Img", "Country", "CompanyId", "PhoneNumber",
-        "Attach", "JobTitle", "Video", "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB", "ImTypeB",
-        "ImNumberC", "ImTypeC", "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview",
-        "ServiceDescription", "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "CreateBy", "CreateOn",
-        "ModifyBy", "ModifyOn", "Version", "LastLoginTime", "CompanyName","CanBeSearch","DefaultRole"
+        "UserName", "TrueName", "DisplayName", "Email", "Img", "Country", "CompanyId", "PhoneNumber", "Attach",
+        "JobTitle", "Video", "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB", "ImTypeB", "ImNumberC",
+        "ImTypeC", "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview", "ServiceDescription",
+        "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "CreateBy", "CreateOn", "ModifyBy", "ModifyOn",
+        "Version", "LastLoginTime", "CompanyName", "CanBeSearch", "DefaultRole"
     };
 
     public static final String[] ATTR_GET_A = {
@@ -152,6 +154,8 @@ public class UserResource extends BaseRestResource {
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
     public String createNewUser(JSONObject json) throws JSONException {
+        System.out.println("createNewUser");
+        System.out.println(json);
         LanceRestAMImpl am = LUtil.findLanceAM();
         UUserVOImpl vo = am.getUUser1();
         UUserVORowImpl row = (UUserVORowImpl) LUtil.createInsertRow(vo);
@@ -196,7 +200,11 @@ public class UserResource extends BaseRestResource {
             row.setAttribute("DefaultRole", json.getString("DefaultRole"));
         }
 
-        am.getDBTransaction().commit();
+        String cm = am.commit();
+        if (!"ok".equals(cm)) {
+            return cm;
+        }
+        System.out.println("返回新增记录的ID " + json.getString("UserName"));
         return json.getString("UserName"); //返回新增记录的ID
     }
 
@@ -296,8 +304,8 @@ public class UserResource extends BaseRestResource {
         if (row == null) {
             return "msg:找不到用户:" + userName;
         }
-        
-        if(!RestSecurityUtil.isOwner(row)){
+
+        if (!RestSecurityUtil.isOwner(row)) {
             return "msg:没有足够的权限修改此用户";
         }
         copyJsonObjectToRow(json, vo, row, ATTR_UPDATE);
@@ -407,7 +415,7 @@ public class UserResource extends BaseRestResource {
     /**
      * 检查Email是否已存在
      *
-     * GET http://localhost:7101/lance/res/user/check/email/{email}
+     * GET http://localhost:7101/lance/res/user/exist/email/{email}
      *
      * @param userName
      * @return true:email已存在，不能继续。false：email不存在，可以继续
@@ -428,5 +436,5 @@ public class UserResource extends BaseRestResource {
         }
         return "false"; //用户不存在
     }
-    
+
 }

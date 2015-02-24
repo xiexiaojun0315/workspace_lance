@@ -11,26 +11,11 @@
   RowClass="com.lance.model.vo.CompanyVORowImpl"
   ComponentClass="com.lance.model.vo.CompanyVOImpl"
   PageIterMode="Full"
-  SelectList="CompanyEO.UUID, 
-       CompanyEO.NAME, 
-       CompanyEO.ENTERPRISE_PROPERTY, 
-       CompanyEO.EMPLOYEE_NUMBER_GRADE, 
-       CompanyEO.FOUND_YEAR, 
-       CompanyEO.ABOUT_COMPANY, 
-       CompanyEO.SERVICE_DESC, 
-       CompanyEO.LOCATION_CITY, 
-       CompanyEO.LOCATION_COUNTRY, 
-       CompanyEO.LOCATION_DESC, 
-       CompanyEO.LOCATION_PROVINCE, 
-       CompanyEO.VIDEO, 
-       CompanyEO.LOGO, 
-       CompanyEO.CREATE_BY, 
-       CompanyEO.CREATE_ON, 
-       CompanyEO.MODIFY_BY, 
-       CompanyEO.MODIFY_ON, 
-       CompanyEO.VERSION"
-  FromList="COMPANY CompanyEO"
-  RangeSize="10">
+  RangeSize="10"
+  SelectListFlags="1"
+  FromListFlags="1"
+  WhereFlags="1"
+  SelectAllAttributes="false">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
@@ -89,12 +74,6 @@
     EntityAttrName="ServiceDesc"
     EntityUsage="CompanyEO"
     AliasName="SERVICE_DESC"/>
-  <ViewAttribute
-    Name="Location"
-    PrecisionRule="true"
-    EntityAttrName="Location"
-    EntityUsage="CompanyEO"
-    AliasName="LOCATION"/>
   <ViewAttribute
     Name="LocationCity"
     PrecisionRule="true"

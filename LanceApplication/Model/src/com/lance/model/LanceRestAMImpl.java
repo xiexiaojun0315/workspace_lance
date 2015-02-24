@@ -44,6 +44,16 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
     public LanceRestAMImpl() {
     }
 
+    public String commit(){
+        try {
+            this.getDBTransaction().commit();
+            return "ok";
+        } catch (Exception e) {
+            e.printStackTrace();
+            this.getDBTransaction().rollback();
+            return e.getLocalizedMessage();
+        }
+    }
 
     /**
      * Container's getter for Company1.
