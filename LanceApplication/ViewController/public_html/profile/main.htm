@@ -455,7 +455,8 @@
     <script src="../resources/js/profile.js" type="text/javascript"></script>
     <script type="text/javascript">
         $(function(){
-            $.ax("get", "user/lancer/profile/allProfile/muhongdi", null, function(data){
+            $.ax("get", "user/muhongdi", null, function(data){
+            console.log(data);
                 initMainInfo(data);
             }, netWorkError);
         });

@@ -103,7 +103,7 @@
                         </div>
                         <a href="#" class="btn-gray">Go</a>
                         <span class="sep-sea"></span>
-                        <a href="#" class="btn-green">Post your job</a>
+                        <a href="/lance/pages/jobs/PostNewJob" class="btn-green">Post your job</a>
                     </div>
                 </div>
             </div>

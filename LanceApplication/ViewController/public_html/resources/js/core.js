@@ -65,7 +65,7 @@ $.ax = function(ptype, path, param, callback, errCallback, jtype){
         url: BASEURL + path,
         data: param,
         dataType: jtype,
-        timeout: 10000,
+        timeout: 60000,
         contentType: 'application/json',
         success: function(data){
             callback(data);

@@ -6,10 +6,10 @@ function initMainInfo(data){
         netWorkError();
     }else{
         //OK
-        var profile = data.lancer, resume = data.lancerResume, edu = data.lancerEducations,
-            skill = data.lancerSkills, i = 0, tmp;
+        var profile = data.User, resume = data.User, edu = data.User,
+            skill = data.User, i = 0, tmp;
         
-        $("#header .lname").html(profile.Uuid);
+        $("#header .lname").html(profile.UserName);
         $("#content .tname").html(profile.DisplayName);
         
         $("#content .tagline").html(resume.Tagline);
@@ -35,18 +35,21 @@ function initMainInfo(data){
             $(".edus ul").append(tmp);
             $(".edus").parent().find(".no-add").hide();
         }
-        var words = resume.Keywords.split(","), word2 = [], j = 0;
-        for(i=0;i<words.length;i++){
-            word2 = words[i].split("，");
-            for(j=0;j<word2.length;j++){
-                if(word2[j] != ""){
-                    tmp = $(".keys .mod-key").clone().removeClass("mod-key");
-                    tmp.html(word2[j]);
-                    $(".keys").append(tmp);
-                    $(".keys").parent().find(".no-add").hide();
+        if(resume.Keywords!=null){
+            var words = resume.Keywords.split(","), word2 = [], j = 0;
+            for(i=0;i<words.length;i++){
+                word2 = words[i].split("，");
+                for(j=0;j<word2.length;j++){
+                    if(word2[j] != ""){
+                        tmp = $(".keys .mod-key").clone().removeClass("mod-key");
+                        tmp.html(word2[j]);
+                        $(".keys").append(tmp);
+                        $(".keys").parent().find(".no-add").hide();
+                    }
                 }
             }
         }
+       
         
         $("#waiting").hide();
         $("#t_con").show();
@@ -54,7 +57,7 @@ function initMainInfo(data){
 }
 
 function setEditInfo(data){
-    var profile = data.lancer, resume = data.lancerResume;
+    var profile = data.User, resume = data.User;
     $("#inp_dname").val(profile.DisplayName);
     $("#inp_dname2").val(profile.DisplayName);
     $("#inp_tagline").val(resume.Tagline);
