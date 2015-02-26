@@ -1,0 +1,23 @@
+﻿.lan-menu .lan-group
+{
+    margin-top:5px;
+}
+.lan-menu .lan-but-m6
+{
+    margin-top:6px;
+}
+.lan-menu .lan-sep
+{
+    width:20px;
+    text-align:left;
+    margin-top:7px;
+}
+.lan-menu .lan-group .input-group
+{
+    width:100%;
+}
+
+.lan-main-container
+{
+    margin-top:20px;
+}
