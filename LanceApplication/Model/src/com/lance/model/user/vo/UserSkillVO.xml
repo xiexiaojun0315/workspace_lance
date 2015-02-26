@@ -42,14 +42,6 @@
     EntityUsage="UserSkillEO"
     AliasName="NAME"/>
   <ViewAttribute
-    Name="Tested"
-    PrecisionRule="true"
-    EntityAttrName="Tested"
-    EntityUsage="UserSkillEO"
-    AliasName="TESTED"
-    IsQueriable="false"
-    IsPersistent="false"/>
-  <ViewAttribute
     Name="Display"
     PrecisionRule="true"
     EntityAttrName="Display"

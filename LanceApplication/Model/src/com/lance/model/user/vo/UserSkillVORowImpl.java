@@ -13,6 +13,7 @@ import oracle.jbo.domain.Date;
 // ---    Warning: Do not modify method signatures of generated methods.
 // ---------------------------------------------------------------------
 public class UserSkillVORowImpl extends BaseViewRowImpl {
+
     public static final int ENTITY_USERSKILLEO = 0;
 
     /**
@@ -22,7 +23,6 @@ public class UserSkillVORowImpl extends BaseViewRowImpl {
         Uuid,
         UserName,
         Name,
-        Tested,
         Display,
         ShowOrder,
         MasterLevel,
@@ -31,7 +31,8 @@ public class UserSkillVORowImpl extends BaseViewRowImpl {
         ModifyBy,
         ModifyOn,
         Version;
-        private static AttributesEnum[] vals = null;
+        static AttributesEnum[] vals = null;
+        ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -53,10 +54,10 @@ public class UserSkillVORowImpl extends BaseViewRowImpl {
             return vals;
         }
     }
+
     public static final int UUID = AttributesEnum.Uuid.index();
     public static final int USERNAME = AttributesEnum.UserName.index();
     public static final int NAME = AttributesEnum.Name.index();
-    public static final int TESTED = AttributesEnum.Tested.index();
     public static final int DISPLAY = AttributesEnum.Display.index();
     public static final int SHOWORDER = AttributesEnum.ShowOrder.index();
     public static final int MASTERLEVEL = AttributesEnum.MasterLevel.index();
@@ -128,21 +129,6 @@ public class UserSkillVORowImpl extends BaseViewRowImpl {
         setAttributeInternal(NAME, value);
     }
 
-    /**
-     * Gets the attribute value for TESTED using the alias name Tested.
-     * @return the TESTED
-     */
-    public BigDecimal getTested() {
-        return (BigDecimal) getAttributeInternal(TESTED);
-    }
-
-    /**
-     * Sets <code>value</code> as attribute value for TESTED using the alias name Tested.
-     * @param value value to set the TESTED
-     */
-    public void setTested(BigDecimal value) {
-        setAttributeInternal(TESTED, value);
-    }
 
     /**
      * Gets the attribute value for DISPLAY using the alias name Display.
@@ -200,13 +186,6 @@ public class UserSkillVORowImpl extends BaseViewRowImpl {
         return (String) getAttributeInternal(CREATEBY);
     }
 
-    /**
-     * Sets <code>value</code> as attribute value for CREATE_BY using the alias name CreateBy.
-     * @param value value to set the CREATE_BY
-     */
-    public void setCreateBy(String value) {
-        setAttributeInternal(CREATEBY, value);
-    }
 
     /**
      * Gets the attribute value for CREATE_ON using the alias name CreateOn.
@@ -216,13 +195,6 @@ public class UserSkillVORowImpl extends BaseViewRowImpl {
         return (Date) getAttributeInternal(CREATEON);
     }
 
-    /**
-     * Sets <code>value</code> as attribute value for CREATE_ON using the alias name CreateOn.
-     * @param value value to set the CREATE_ON
-     */
-    public void setCreateOn(Date value) {
-        setAttributeInternal(CREATEON, value);
-    }
 
     /**
      * Gets the attribute value for MODIFY_BY using the alias name ModifyBy.
@@ -232,13 +204,6 @@ public class UserSkillVORowImpl extends BaseViewRowImpl {
         return (String) getAttributeInternal(MODIFYBY);
     }
 
-    /**
-     * Sets <code>value</code> as attribute value for MODIFY_BY using the alias name ModifyBy.
-     * @param value value to set the MODIFY_BY
-     */
-    public void setModifyBy(String value) {
-        setAttributeInternal(MODIFYBY, value);
-    }
 
     /**
      * Gets the attribute value for MODIFY_ON using the alias name ModifyOn.
@@ -248,13 +213,6 @@ public class UserSkillVORowImpl extends BaseViewRowImpl {
         return (Date) getAttributeInternal(MODIFYON);
     }
 
-    /**
-     * Sets <code>value</code> as attribute value for MODIFY_ON using the alias name ModifyOn.
-     * @param value value to set the MODIFY_ON
-     */
-    public void setModifyOn(Date value) {
-        setAttributeInternal(MODIFYON, value);
-    }
 
     /**
      * Gets the attribute value for VERSION using the alias name Version.
@@ -264,12 +222,5 @@ public class UserSkillVORowImpl extends BaseViewRowImpl {
         return (BigDecimal) getAttributeInternal(VERSION);
     }
 
-    /**
-     * Sets <code>value</code> as attribute value for VERSION using the alias name Version.
-     * @param value value to set the VERSION
-     */
-    public void setVersion(BigDecimal value) {
-        setAttributeInternal(VERSION, value);
-    }
 }
 

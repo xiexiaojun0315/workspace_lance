@@ -151,7 +151,6 @@
                 "DefaultRole" : "client"
             };
             $.ax("post", "user", param, function(data){
-                console.log(data);
                 location.href="/lance/registSuccess.html"
 //                $.ae("注册成功！跳转~");
 //                obj.addClass("clickable").removeClass("btn-load");

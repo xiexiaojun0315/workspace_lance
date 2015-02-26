@@ -3,6 +3,7 @@ package com.lance.view.rest.uuser;
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.user.vo.UUserVOImpl;
 import com.lance.model.user.vo.UUserVORowImpl;
+import com.lance.model.user.vo.UserEducationVOImpl;
 import com.lance.model.user.vo.UserRoleGrantsVOImpl;
 import com.lance.model.user.vo.UserRoleGrantsVORowImpl;
 import com.lance.view.util.LUtil;
@@ -216,6 +217,7 @@ public class UserResource extends BaseRestResource {
         return findUserByNameInJsonFn(userName, am);
     }
 
+
     public static JSONObject findUserByNameInJsonFn(String userName, LanceRestAMImpl am) throws JSONException {
         UUserVORowImpl row = LUtil.getUUserByName(userName, am);
         JSONObject data = new JSONObject();
@@ -242,7 +244,32 @@ public class UserResource extends BaseRestResource {
             }
         }
 
+        //获取当前用户Education
+        data.put("Education", new UserEducationResource().findAllUserEducation(userName));
+        //获取当前用户Skill
+        data.put("Skill", new UserSkillResource().findAllUserSkills(userName));
+        //获取当前用户LocationList
+        data.put("LocationList", new UserLocationListResource().findAllLocation(userName));
+        
         return data;
+    }
+
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("{userName}/simple")
+    public JSONObject findSimpleUserByName(@PathParam("userName") String userName) throws JSONException {
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        return findSimpleUserByNameInJsonFn(userName, am);
+    }
+
+    public static JSONObject findSimpleUserByNameInJsonFn(String userName, LanceRestAMImpl am) throws JSONException {
+        UUserVORowImpl row = LUtil.getUUserByName(userName, am);
+        if (row == null) {
+            JSONObject res = new JSONObject();
+            res.put("err", "找不到用户:" + userName);
+            return res;
+        }
+        return convertRowToJsonObject(am.getUUser1(), row, ATTR_GET_A);
     }
 
     //    public static UUserVORowImpl findUserByNameFn(String userName, LanceRestAMImpl am) {
@@ -298,6 +325,8 @@ public class UserResource extends BaseRestResource {
     @Consumes(MediaType.APPLICATION_JSON)
     @Path("update/{userName}")
     public String updateUser(@PathParam("userName") String userName, JSONObject json) throws JSONException {
+        System.out.println("updateUser " + userName);
+        System.out.println(json);
         LanceRestAMImpl am = LUtil.findLanceAM();
         ViewObjectImpl vo = am.getUUser1();
         UUserVORowImpl row = LUtil.getUUserByName(userName, am);
@@ -310,6 +339,7 @@ public class UserResource extends BaseRestResource {
         }
         copyJsonObjectToRow(json, vo, row, ATTR_UPDATE);
         am.getDBTransaction().commit();
+        System.out.println("row changed");
         return "ok";
     }
 

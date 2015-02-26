@@ -113,22 +113,22 @@ $.fn.postInputSearch = function(callback){
 var Lancer = {
     profile :　{
         getStart : function(callback){
-            $.ax("get", "user/lancer/muhongdi", null, function(data){
+            $.ax("get", "user/"+User.UserName, null, function(data){
                 callback(data);
             }, netWorkError);
         },
         getBasicInfo : function(callback){
-            $.ax("get", "user/lancer/profile/allProfile/muhongdi", null, function(data){
+            $.ax("get", "user/"+User.UserName, null, function(data){
                 callback(data);
             }, netWorkError);
         },
         getSkillsInfo : function(callback, infor){
-            $.ax("get", "user/lancer/skill/muhongdi", null, function(data){
+            $.ax("get", "user/skill/all/"+User.UserName, null, function(data){
                 callback(data, infor);
             }, netWorkError);
         },
         getContactInfo : function(callback, infor){
-            $.ax("get", "user/lancer/profile/contactInfo/muhongdi", null, function(data){
+            $.ax("get", "user/"+User.UserName, null, function(data){
                 callback(data, infor);
             }, netWorkError);
         }

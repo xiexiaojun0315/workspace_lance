@@ -51,14 +51,6 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="Tested"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
-    SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
-    ColumnType="$none$"
-    IsQueriable="false"
-    IsPersistent="false"/>
-  <Attribute
     Name="Display"
     ColumnName="DISPLAY"
     SQLType="NUMERIC"

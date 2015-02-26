@@ -1,3 +1,5 @@
+<%@ page contentType="text/html;charset=UTF-8"%>
+
             <div id="mfooter">
                 <div class="min-width">
                     <img src="/lance/resources/image/logo.png" alt="" />

@@ -485,15 +485,15 @@ $(function () {
     };
     var setOption = function(m_param){
         if($("#jpublic_chk")[0].checked){
-            m_param.JobVisibility = "Y";
+            m_param.JobVisibility = "public";
             if($("#jpublic_chk")[0].checked){
-                m_param.AllowSearchEngines = 1;
+                m_param.AllowSearchEngines = "Y";
             }else{
-                m_param.AllowSearchEngines = 0;
+                m_param.AllowSearchEngines = "N";
             }
         }
         if($("#jprivate")[0].checked){
-            m_param.JobVisibility = 0;
+            m_param.JobVisibility = "private";
         }
         //set location
         if($("#posjob_chk")[0].checked){
@@ -561,7 +561,6 @@ $(function () {
     var post_job_param = {};
     $(".btn-post.clickable").click(function(){
         var obj = $(this), type = obj.attr("data-val");
-        console.log(type);
         var checkResult = post_check();
         
         if(checkResult){

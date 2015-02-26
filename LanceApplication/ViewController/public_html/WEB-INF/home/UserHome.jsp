@@ -3,12 +3,12 @@
 <html>
     <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <link type="text/css" href="../resources/css/bootstrap.min.css" rel="stylesheet" />
-    <link type="text/css" href="../resources/css/common.css" rel="stylesheet" />
-    <link type="text/css" href="../resources/css/main.css" rel="stylesheet" />
+    <link type="text/css" href="/lance/resources/css/bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" href="/lance/resources/css/common.css" rel="stylesheet" />
+    <link type="text/css" href="/lance/resources/css/main.css" rel="stylesheet" />
     <!--[if lt IE 9]>
-      <script src="../resources/js/html5shiv.js"></script>
-      <script src="../resources/js/respond.js"></script>
+      <script src="/lance/resources/js/html5shiv.js"></script>
+      <script src="/lance/resources/js/respond.js"></script>
     <![endif]-->
         <script>
             var User=${user};
@@ -38,7 +38,7 @@
 
 
             <div id="waiting">
-                <img src="../resources/image/bloading.gif" alt="" />
+                <img src="/lance/resources/image/bloading.gif" alt="" />
                 <span class="bold-text">加载中...</span>
             </div>
 
@@ -119,7 +119,7 @@
                     </div>
                     <div class="list-free">
                         <div class="mod temp_mod lancer">
-                            <img src="../resources/image/pic/download.jpg" alt="" width="64" height="64" class="f-left avatar" />
+                            <img src="/lance/resources/image/pic/download.jpg" alt="" width="64" height="64" class="f-left avatar" />
                             <div class="infor">
                                 <div class="title">
                                     <a href="#" class="name">MobiDev</a>
@@ -133,7 +133,7 @@
                                 </div>
                                 <div class="asso">Professional Business App Development</div>
                                 <div class="jt">
-                                    <img src="../resources/image/country/china.png" alt="" />
+                                    <img src="/lance/resources/image/country/china.png" alt="" />
                                     <span>China</span>
                                     <span class="sep">&nbsp;&nbsp;|&nbsp;&nbsp;</span>
                                     <span>Rate: $29</span>
@@ -332,7 +332,7 @@
                                         <div class="content">
                                             <div class="arrow"><div class="arrow-after"></div></div>
                                             <div class="txt">
-                                                <img src="../resources/image/lance/pricing.png" alt="" />
+                                                <img src="/lance/resources/image/lance/pricing.png" alt="" />
                                                 <div class="preview">
                                                     <p><span class="bt">Low</span>$<span class="squrt">&nbsp;</span></p>
                                                     <p><span class="bt">Avg</span>$<span class="squrt">&nbsp;</span></p>
@@ -347,7 +347,7 @@
                                     <span class="rating rating-3"></span>
                                     <a href="#" class="font12">M****est</a>
                                     ,&nbsp;&nbsp;&nbsp;
-                                    <img src="../resources/image/country/china.png" alt="" />
+                                    <img src="/lance/resources/image/country/china.png" alt="" />
                                     <br />
                                     <p class="txt">
                                         We provide an online brain health tool that collects data using an online form, and then scores the user responses to create a customized report. We are currently trying a new *prototype* version of the test that provid..
@@ -389,7 +389,7 @@
                                         <div class="content">
                                             <div class="arrow"><div class="arrow-after"></div></div>
                                             <div class="txt">
-                                                <img src="../resources/image/lance/pricing.png" alt="" />
+                                                <img src="/lance/resources/image/lance/pricing.png" alt="" />
                                                 <div class="preview">
                                                     <p><span class="bt">Low</span>$<span class="squrt">&nbsp;</span></p>
                                                     <p><span class="bt">Avg</span>$<span class="squrt">&nbsp;</span></p>
@@ -404,7 +404,7 @@
                                     <span class="rating rating-3"></span>
                                     <a href="#" class="font12">M****est</a>
                                     ,&nbsp;&nbsp;&nbsp;
-                                    <img src="../resources/image/country/china.png" alt="" />
+                                    <img src="/lance/resources/image/country/china.png" alt="" />
                                     <br />
                                     <p class="txt">
                                         We provide an online brain health tool that collects data using an online form, and then scores the user responses to create a customized report. We are currently trying a new *prototype* version of the test that provid..
@@ -446,7 +446,7 @@
                                         <div class="content">
                                             <div class="arrow"><div class="arrow-after"></div></div>
                                             <div class="txt">
-                                                <img src="../resources/image/lance/pricing.png" alt="" />
+                                                <img src="/lance/resources/image/lance/pricing.png" alt="" />
                                                 <div class="preview">
                                                     <p><span class="bt">Low</span>$<span class="squrt">&nbsp;</span></p>
                                                     <p><span class="bt">Avg</span>$<span class="squrt">&nbsp;</span></p>
@@ -461,7 +461,7 @@
                                     <span class="rating rating-3"></span>
                                     <a href="#" class="font12">M****est</a>
                                     ,&nbsp;&nbsp;&nbsp;
-                                    <img src="../resources/image/country/china.png" alt="" />
+                                    <img src="/lance/resources/image/country/china.png" alt="" />
                                     <br />
                                     <p class="txt">
                                         We provide an online brain health tool that collects data using an online form, and then scores the user responses to create a customized report. We are currently trying a new *prototype* version of the test that provid..
@@ -497,22 +497,22 @@
                         <div class="box-infor">
                             <div class="title">Getting Started Tips</div>
                             <ul>
-                                <li><img src="../resources/image/lance/lightbulb.png" alt="" /><a href="#">How to Create a Great Profile</a></li>
-                                <li><img src="../resources/image/lance/lightbulb.png" alt="" /><a href="#">Making Every Proposal Count</a></li>
-                                <li><img src="../resources/image/lance/lightbulb.png" alt="" /><a href="#">7 Tips to Win More Jobs on Elance</a></li>
-                                <li><img src="../resources/image/lance/lightbulb.png" alt="" /><a href="#">Learn More From the official Freelancer Guide</a></li>
-                                <li><img src="../resources/image/lance/lightbulb.png" alt="" /><a href="#">Attend a Free Webinar & Learn More From the Pros</a></li>
+                                <li><img src="/lance/resources/image/lance/lightbulb.png" alt="" /><a href="#">How to Create a Great Profile</a></li>
+                                <li><img src="/lance/resources/image/lance/lightbulb.png" alt="" /><a href="#">Making Every Proposal Count</a></li>
+                                <li><img src="/lance/resources/image/lance/lightbulb.png" alt="" /><a href="#">7 Tips to Win More Jobs on Elance</a></li>
+                                <li><img src="/lance/resources/image/lance/lightbulb.png" alt="" /><a href="#">Learn More From the official Freelancer Guide</a></li>
+                                <li><img src="/lance/resources/image/lance/lightbulb.png" alt="" /><a href="#">Attend a Free Webinar & Learn More From the Pros</a></li>
                             </ul>
                         </div>
                     </div>
 
                 </div>
             </div>
-    <script src="../resources/js/jquery-1.9.1.min.js" type="text/javascript"></script>
-    <script src="../resources/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="../resources/js/core.js" type="text/javascript"></script>
-    <script src="../resources/js/profile.js" type="text/javascript"></script>
-    <script src="../resources/js/searchjob.js" type="text/javascript"></script>
+    <script src="/lance/resources/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <script src="/lance/resources/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/lance/resources/js/core.js" type="text/javascript"></script>
+    <script src="/lance/resources/js/profile.js" type="text/javascript"></script>
+    <script src="/lance/resources/js/searchjob.js" type="text/javascript"></script>
             
             
     <jsp:include page="/WEB-INF/common/BottomBar.jsp" />

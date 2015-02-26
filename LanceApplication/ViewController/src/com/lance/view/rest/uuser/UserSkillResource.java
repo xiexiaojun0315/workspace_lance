@@ -2,9 +2,14 @@ package com.lance.view.rest.uuser;
 
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.user.vo.UserSkillVOImpl;
+import com.lance.model.user.vo.UserSkillVORowImpl;
+
 import com.zngh.platform.front.core.view.BaseRestResource;
 import com.zngh.platform.front.core.view.RestUtil;
+
 import com.lance.view.util.LUtil;
+import com.lance.view.util.RestSecurityUtil;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,6 +23,9 @@ import javax.ws.rs.core.MediaType;
 
 import oracle.jbo.Key;
 import oracle.jbo.Row;
+
+import oracle.jbo.server.RowImpl;
+import oracle.jbo.server.ViewObjectImpl;
 
 import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
@@ -53,9 +61,13 @@ public class UserSkillResource extends BaseRestResource {
 
     public static final String[] ATTR_UPDATE = { "Name", "Tested", "Display", "ShowOrder", "MasterLevel" };
 
+    public static final String[] ATTR_SORT_GET = {
+        "Uuid", "Name", "Display", "ShowOrder", "MasterLevel"
+    };
+    
     @SuppressWarnings("oracle.jdeveloper.java.array-field-access")
     public static final String[] ATTR_GET = {
-        "Uuid", "UserName", "Name", "Tested", "Display", "ShowOrder", "MasterLevel", "CreateBy", "CreateOn", "ModifyBy",
+        "Uuid", "UserName", "Name", "Display", "ShowOrder", "MasterLevel", "CreateBy", "CreateOn", "ModifyBy",
         "ModifyOn", "Version"
     };
 
@@ -91,6 +103,36 @@ public class UserSkillResource extends BaseRestResource {
         vo.removeCurrentRow();
         am.getDBTransaction().commit();
         return "ok";
+    }
+
+    /**
+     * 单个新增
+     * @param userName
+     * @param json
+     * @return
+     * @throws JSONException
+     */
+    @POST
+    @Path("{userName}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String createUserSkill(@PathParam("userName") String userName, JSONObject json) throws JSONException {
+        LOGGER.log(LOGGER.NOTIFICATION, "createUserSkill");
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        LUtil.getUUserByName(userName, am);
+        UserSkillVOImpl vo = am.getUserSkill1();
+        if(vo.getRowCount()>=50){
+            return "msg:技能不能大于50个";
+        }
+        UserSkillVORowImpl row = (UserSkillVORowImpl) LUtil.createInsertRow(vo);
+        RestUtil.copyJsonObjectToRow(json, vo, row, this.ATTR_CREATE);
+        String cm = am.commit();
+        if (!"ok".equals(cm)) {
+            return "error:"+cm;
+        }
+        LOGGER.log(LOGGER.TRACE, "copyJsonObjectToRow :" + this.ATTR_CREATE);
+        String res = row.getUuid();
+        LOGGER.log(LOGGER.NOTIFICATION, "createUserSkill by return :" + res);
+        return res;
     }
 
     /**
@@ -156,12 +198,11 @@ public class UserSkillResource extends BaseRestResource {
      * GET http://localhost:7101/lance/res/user/skill/all/{userName}
      *
      * example
-     * GET http://localhost:7101/lance/res/user/skill/muhongdi
+     * GET http://localhost:7101/lance/res/user/skill/all/muhongdi
      *
      * [
         {
             "Name" : "html",
-            "Tested" : 0,
             "Display" : 1,
             "ShowOrder" : 1,
             "MasterLevel" : 0,
@@ -196,7 +237,7 @@ public class UserSkillResource extends BaseRestResource {
         if (vo.getRowCount() == 0) {
             return new JSONArray();
         }
-        return RestUtil.convertVoToJsonArray(vo, this.ATTR_GET);
+        return this.convertVoToJsonArray(vo, this.ATTR_SORT_GET);
     }
 
 }

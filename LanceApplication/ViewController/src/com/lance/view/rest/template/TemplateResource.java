@@ -148,6 +148,10 @@ public class TemplateResource extends BaseRestResource {
         RowImpl row = LUtil.createInsertRow(vo);
         RestUtil.copyJsonObjectToRow(json, vo, row, this.ATTR_CREATE);
         LOGGER.log(LOGGER.TRACE, "copyJsonObjectToRow :" + this.ATTR_CREATE);
+        String cm = am.commit();
+        if (!"ok".equals(cm)) {
+            return "error:"+cm;
+        }
         String res = returnParamAfterCreate(row);
         LOGGER.log(LOGGER.NOTIFICATION, "Template created by return :" + res);
         return res;

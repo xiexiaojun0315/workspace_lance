@@ -8,6 +8,10 @@ public class ConstantUtil {
     
     public static final boolean DEBUG_MODE=true;
     
+    public static final boolean USE_CACHE=false;
+    
+    public static final boolean EXECUTE_VO=true;
+    
     public static final String ROOT_URL="lance";
     
     public static final String ROOT_REST_URL="lance/res";

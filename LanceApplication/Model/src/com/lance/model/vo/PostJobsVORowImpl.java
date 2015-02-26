@@ -90,8 +90,7 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
         LocationCityVO1,
         JobCategoryVO1,
         JobSubCategoryVO1;
-        static AttributesEnum[] vals = null;
-        ;
+        static AttributesEnum[] vals = null; ;
         private static final int firstIndex = 0;
 
         public int index() {
@@ -1014,23 +1013,29 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
         } else {
             this.setIndexWorkCategorys("");
         }
-        
-        this.setIndexAllMetaInfo(new ClobDomain(this.getIndexLocation()+";"+this.getIndexSkills()+";"+this.getIndexWorkCategorys()+";"+this.getName()+";"+this.getBrief()));
+
+        this.setIndexAllMetaInfo(new ClobDomain(this.getIndexLocation() + ";" + this.getIndexSkills() + ";" +
+                                                this.getIndexWorkCategorys() + ";" + this.getName() + ";" +
+                                                this.getBrief() + ";"));
         return null;
     }
 
-    public void findSkillName(String skillId, StringBuffer sb) {
-        if (StringUtils.isBlank(skillId)) {
+    public void findSkillName(String skillName, StringBuffer sb) {
+        if (StringUtils.isBlank(skillName)) {
             return;
         }
-        try {
-            Row[] rows = this.getSkillsVO1().getViewObject().findByKey(new Key(new Object[] { skillId }), 1);
-            SkillsVORowImpl row = (SkillsVORowImpl) rows[0];
-            sb.append(row.getName() + ";");
-        } catch (Exception e) {
-            // TODO: Add catch code
-            e.printStackTrace();
-        }
+        //        try {
+        //            Row[] rows = this.getSkillsVO1().getViewObject().findByKey(new Key(new Object[] { skillName }), 1);
+        //            if(rows==null || rows.length==0){
+        //                System.err.println("can't find Skill by SkillId "+skillId);
+        //                return;
+        //            }
+        //            SkillsVORowImpl row = (SkillsVORowImpl) rows[0];
+        sb.append(skillName + ";");
+        //        } catch (Exception e) {
+        //            // TODO: Add catch code
+        //            e.printStackTrace();
+        //        }
         return;
     }
 
@@ -1068,8 +1073,8 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
                                                                                                                  1)[0];
             sb.append(row.getNameCn());
         }
-        if(StringUtils.isNotBlank(id) && StringUtils.isNotBlank(subId)){
-                sb.append(" > ");
+        if (StringUtils.isNotBlank(id) && StringUtils.isNotBlank(subId)) {
+            sb.append(" > ");
         }
         if (StringUtils.isNotBlank(subId)) {
             JobSubCategoryVORowImpl row = (JobSubCategoryVORowImpl) this.getJobSubCategoryVO1().getViewObject().findByKey(new Key(new Object[] {

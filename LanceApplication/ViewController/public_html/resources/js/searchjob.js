@@ -6,7 +6,7 @@ $(function(){
             isshow = false;
         }else{
             $(".search-key").html("'"+method+"' 的搜索结果");
-            method = "search/postJob/searchJob/" + method;
+            method = "search/postJob/keyword/" + method;
             isshow = true;
         }
         show_type = "job";

@@ -60,13 +60,13 @@ function setEditInfo(data){
     var profile = data.User, resume = data.User;
     $("#inp_dname").val(profile.DisplayName);
     $("#inp_dname2").val(profile.DisplayName);
-    $("#inp_tagline").val(resume.Tagline);
-    $("#inp_hour").val(resume.HourlyRate);
-    $("#inp_charge").val(resume.ChargeRate);
-    $("#inp_over").val(resume.Overview);
-    $("#inp_keyword").val(resume.Keywords);
-    $("#inp_service").val(resume.ServiceDescriptionTxt);
-    $("#inp_payment").val(resume.PaymentTermsTxt);
+    $("#inp_tagline").val(profile.Tagline);
+    $("#inp_hour").val(profile.HourlyRate);
+    $("#inp_charge").val(profile.ChargeRate);
+    $("#inp_over").val(profile.Overview);
+    $("#inp_keyword").val(profile.Keywords);
+    $("#inp_service").val(profile.ServiceDescription);
+    $("#inp_payment").val(profile.PaymentTerms);
     
     //init input, textarea
     $("#inp_tagline").limitWord(50);
@@ -99,20 +99,14 @@ function setEditInfo(data){
         var obj = $(this);
         if(dnameOK && tagOK){
             var param = {
-                "lancerResume" : {
                     "Keywords" : $("#inp_keyword").val(),
                     "Overview" : $("#inp_over").val(),
                     "PaymentTermsTxt" : $("#inp_payment").val(),
                     "ServiceDescriptionTxt" : $("#inp_service").val(),
                     "Tagline" : $("#inp_tagline").val(),
-                    "Uuid" : resume.Uuid,
-                    "LancerId" : resume.LancerId
-                },
-                "lancer" : {
-                    "Uuid" : profile.Uuid,
+                    "UserName" : profile.UserName,
                     "DisplayName" : $("#inp_dname").val(),
                     "TrueName" : $("#inp_dname2").val()
-                }
             };
             if($("#inp_charge").val() != "")
                 param.lancerResume.ChargeRate = $("#inp_charge").val();
@@ -121,8 +115,11 @@ function setEditInfo(data){
             
             //ajax update
             obj.removeClass("clickable").addClass("btn-load");
-            $.ax("post", "user/lancer/profile/basicInfo/merge/" + resume.LancerId, param, function(cdata){
-                window.location = "main.htm";
+            $.ax("post", "user/update/" + profile.UserName, param, function(cdata){
+            console.log(cdata)
+//                window.location = "main.htm";
+                //这里应该用弹出提示吧？
+                $.ae("保存成功");
             }, function(){
                 netWorkError();
             }, "text");
@@ -154,7 +151,7 @@ function initSkill(data, userInfo){
     $("#gridtbody").on("click", ".btn-delete", function(){
         var obj = $(this), id = obj.data("id"), pa = obj.closest("tr");
         if($.cf("你确定要删除这个技能吗？")){
-            $.ax("post", "user/lancer/skill/delete/" + userInfo.Uuid + "/" + id, null, function(data){
+            $.ax("post", "user/skill/delete/" + userInfo.User.UserName + "/" + id, null, function(data){
                 pa.fadeOut(300, function(){
                     pa.remove();
                     alreadySkill = alreadySkill.replace(pa.find(".skil").html(), "");
@@ -205,7 +202,7 @@ function initSkill(data, userInfo){
             }
         }
         //ajax
-        $.ax("post", "user/lancer/skill/muhongdi", add_post_param, function(cdata){
+        $.ax("post", "user/skill/batch/muhongdi", add_post_param, function(cdata){
             $.ae("添加成功");
             location.reload();
         }, function(){
@@ -216,7 +213,7 @@ function initSkill(data, userInfo){
 }
 
 function initContactInfo(data, userInfor){
-    var lancer = data.lancer, setting = data.setting;
+    var lancer = data.User, setting = data.User;
     $("#inp_dname").val(lancer.DisplayName);
     $("#inp_mail").val(lancer.Email || "");
     $("#inp_phone").val(lancer.PhoneNumber || "");
@@ -226,8 +223,8 @@ function initContactInfo(data, userInfor){
     $("#inp_imc").val(lancer.ImNumberC || "");
     
     var addr_index = setting.AddressDisplay, con_index = setting.ContactInfo;
-    $(".address_rads input:eq(" + (addr_index - 1) + ")")[0].checked = true;
-    $(".contact_rads input:eq(" + (con_index - 1) + ")")[0].checked = true;
+    if(addr_index!=null){$(".address_rads input:eq(" + (addr_index - 1) + ")")[0].checked = true;}
+    if(con_index!=null){$(".contact_rads input:eq(" + (con_index - 1) + ")")[0].checked = true;}
     
     var locA = lancer.LocationA, locB = lancer.LocationB;
     
@@ -288,28 +285,26 @@ function initContactInfo(data, userInfor){
     $("#btn_save.clickable").click(function(){
         var obj = $(this);
         obj.removeClass("clickable").addClass("btn-load");
-        var con_param = {"lancer" :{
-            "Uuid" : lancer.Uuid,
-            "DisplayName" : $("#inp_dname").val()
-        }, "setting":{
-            "LancerId" : setting.LancerId,
+        var con_param = {
+            "UserName" : lancer.UserName,
+            "DisplayName" : $("#inp_dname").val(),
             "AddressDisplay" : $(".address_rads input:checked").val(),
             "ContactInfo" : $(".contact_rads input:checked").val()
-        }};
+        };
         if($("#inp_phone").val() != ""){
-            con_param.lancer.PhoneNumber = $("#inp_phone").val();
+            con_param.PhoneNumber = $("#inp_phone").val();
         }
         if($("#inp_url").val() != ""){
-            con_param.lancer.WebsiteUrl = $("#inp_url").val();
+            con_param.WebsiteUrl = $("#inp_url").val();
         }
         if($("#inp_ima").val() != ""){
-            con_param.lancer.ImNumberA = $("#inp_ima").val();
+            con_param.ImNumberA = $("#inp_ima").val();
         }
         if($("#inp_imb").val() != ""){
-            con_param.lancer.ImNumberB = $("#inp_imb").val();
+            con_param.ImNumberB = $("#inp_imb").val();
         }
         if($("#inp_imc").val() != ""){
-            con_param.lancer.ImNumberC = $("#inp_imc").val();
+            con_param.ImNumberC = $("#inp_imc").val();
         }
         con_param.lancer.LocationA = {
             "COUNTRY_ID" : $("#sel_country").val(),
@@ -342,7 +337,7 @@ function initContactInfo(data, userInfor){
             con_param.lancer.LocationB.Uuid = lancer.LocationB.Uuid;
         }
         
-        $.ax("post", "user/lancer/profile/contactInfo/merge/muhongdi", con_param, function(cdata){
+        $.ax("post", "user/muhongdi", con_param, function(cdata){
             $.ae("保存成功");
         }, function(){
             netWorkError();

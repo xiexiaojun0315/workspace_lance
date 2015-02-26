@@ -489,6 +489,14 @@
       Name="PostJobsVOCriteria_row_0"
       UpperColumns="1">
       <ViewCriteriaItem
+        Name="JobVisibility"
+        ViewAttribute="JobVisibility"
+        Operator="="
+        Conjunction="AND"
+        Value="public"
+        Required="Optional"
+        UpperColumns="0"/>
+      <ViewCriteriaItem
         Name="Status"
         ViewAttribute="Status"
         Operator="="
@@ -612,6 +620,12 @@
     ViewLink="com.lance.model.vl.PostJob_PostJobDiscussVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <SortCriteria>
+    <Sort
+      Attribute="Rank"/>
+    <Sort
+      Attribute="ModifyOn"/>
+  </SortCriteria>
   <SortCriteria>
     <Sort
       Attribute="Rank"/>

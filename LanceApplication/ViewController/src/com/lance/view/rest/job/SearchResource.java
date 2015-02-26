@@ -180,7 +180,7 @@ public class SearchResource extends BaseRestResource {
      * 重新建立索引字段
      * @return
      */
-    @POST
+    @GET
     @Produces(MediaType.TEXT_PLAIN)
     @Path("postJob/reIndex")
     public String reIndexPostJob() {
@@ -233,6 +233,8 @@ public class SearchResource extends BaseRestResource {
         }
         vo.setWhereClause(sb.toString());
         vo.executeQuery();
+        System.out.println(vo.getQuery());
+        vo.setWhereClause(null);
         
         return this.packViewObject(vo, null, null, POST_JOB_SEARCH_FIELD);
     }

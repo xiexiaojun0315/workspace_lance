@@ -2,6 +2,7 @@ package com.lance.view.rest.uuser;
 
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.user.vo.UserEducationVOImpl;
+import com.lance.model.util.ConstantUtil;
 import com.lance.view.util.LUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;
@@ -178,6 +179,9 @@ public class UserEducationResource extends BaseRestResource {
     public JSONArray findAllUserEducationFn(String userName, LanceRestAMImpl am) throws JSONException {
         LUtil.getUUserByName(userName, am);
         UserEducationVOImpl vo2 = am.getUserEducation1();
+        if(ConstantUtil.EXECUTE_VO){
+            vo2.executeQuery();
+        }
         if (vo2.getRowCount() == 0) {
             return new JSONArray();
         }
