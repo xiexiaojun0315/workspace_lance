@@ -135,7 +135,7 @@ var Lancer = {
     },
     client : {
         getHeaderInfor : function(callback){
-            $.ax("get", "user/client/abcd", null, function(data){
+            $.ax("get", "user/muhongdi", null, function(data){
                 callback(data);
             }, netWorkError);
         }

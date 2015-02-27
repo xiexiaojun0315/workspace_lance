@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<%@ page contentType="text/html;charset=UTF-8"%>
+<html>
+    <head>
+     <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title></title>
+    <link type="text/css" href="/lance/resources/css/bootstrap.min.css" rel="stylesheet" />
+    <link type="text/css" href="/lance/resources/css/common.css" rel="stylesheet" />
+    <link type="text/css" href="/lance/resources/css/main.css" rel="stylesheet" />
+    <link type="text/css" href="/lance/resources/css/client.css" rel="stylesheet" />
+    <!--[if lt IE 9]>
+      <script src="/lance/resources/js/html5shiv.js"></script>
+      <script src="/lance/resources/js/respond.js"></script>
+    <![endif]-->
+    </head>
+    <body>
+       <div class="container-fluid">
+        <div class="row" id="waiting" style="display:none;">
+            <img src="/lance/resources/image/bloading.gif" alt="" />
+            <span class="bold-text">加载中...</span>
+        </div>
+        <div id="t_con" class="row chfont">
+            <div id="header">
+                <div class="min-width">
+                    <img class="logo" src="/lance/resources/image/logo.png" alt="" />
+                    <div class="setting">
+                        <div tabindex="-1" class="nav_sprite bold nav"><b class="lname">yxdy</b>
+                            <div class="dialog-small">
+                                <dl>
+                                    <dd class="first"><a href="#">My Lance</a></dd>
+                                    <dd><a href="#">Profile</a></dd>
+                                    <dd><a href="#">Setting</a></dd>
+                                    <dd><a href="#">Membership</a></dd>
+                                </dl>
+                                <div class="sep-dot"></div>
+                                <dl class="dquit">
+                                    <dd>
+                                        <span class="nav_sprite logout"></span>
+                                        <a href="#">Sign Out</a>
+                                    </dd>
+                                </dl>
+                            </div>
+                        </div>
+                        <span>|</span>
+                        <div href="#" class="nav">Inbox(1)</div>
+                        <span>|</span>
+                        <div tabindex="-1" href="#" class="nav_sprite nav">Help
+                            <div class="dialog-small">
+                                <dl>
+                                    <dd class="first"><a href="#">Elance Code of Conduct</a></dd>
+                                    <dd><a href="#">Contact Elance Support</a></dd>
+                                    <dd><a href="#">Help Center</a></dd>
+                                </dl>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        
+            <div id="menu">
+                <div class="min-width">
+                    <ul>
+                        <li class="sel">
+                            <span class="nav_sprite icon-home"></span>
+                            <a href="#">My Elance</a>
+                        </li>
+                        <li>
+                            <a href="#">HIRE</a>
+                            <div class="sub-menu">
+                                <a href="#">Search Jobs</a>
+                                <a href="#">Browse</a>
+                                <a href="#">Post a Job</a>
+                                <a href="#">Bring Your Freelancer</a>
+                                <a href="#">Client Profile</a>
+                                <a href="#">Watch List</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">FIND WORK</a>
+                            <div class="sub-menu">
+                                <a href="#">Search Jobs</a>
+                                <a href="#">Browse</a>
+                                <a href="#">Post a Job</a>
+                                <a href="#">Bring Your Freelancer</a>
+                                <a href="#">Client Profile</a>
+                                <a href="#">Watch List</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">MANAGE</a>
+                            <div class="sub-menu">
+                                <a href="#">Search Jobs</a>
+                                <a href="#">Browse</a>
+                                <a href="#">Post a Job</a>
+                                <a href="#">Bring Your Freelancer</a>
+                                <a href="#">Client Profile</a>
+                                <a href="#">Watch List</a>
+                            </div>
+                        </li>
+                        <li>
+                            <a href="#">RESOURCES</a>
+                            <div class="sub-menu">
+                                <a href="#">Search Jobs</a>
+                                <a href="#">Browse</a>
+                                <a href="#">Post a Job</a>
+                                <a href="#">Bring Your Freelancer</a>
+                                <a href="#">Client Profile</a>
+                                <a href="#">Watch List</a>
+                            </div>
+                        </li>
+                    </ul>
+
+                    <div class="search-bar">
+                        <div class="search" tabindex="-1">
+                            <span class="title">Jobs<span class="icon-sj"></span></span>
+                            <div class="drop-list">
+                                <span class="dlist">Jobs<span class="icon-sj"></span></span>
+                                <span class="dlist">Portfolio Samples</span>
+                                <span class="dlist">Freelancers</span>
+                                <span class="dlist">My Jobs</span>
+                            </div>
+                            <input type="text" value="" />
+                        </div>
+                        <a href="#" class="btn-gray">Go</a>
+                        <span class="sep-sea"></span>
+                        <a href="#" class="btn-green">Post your job</a>
+                    </div>
+                </div>
+            </div>
+        
+            <div id="content" class="min-width client-pro">
+                <div class="left-con">
+                    <div class="bt">个人信息</div>
+                    <br />
+                    <ul>
+                        <li class="sel nav-li"><a href="#">基本信息</a></li>
+                        <li><div class="sep">&nbsp;</div></li>
+                    </ul>
+                </div>
+                
+                <div class="right-con">
+                    <div class="per-info">
+                        <div class="per">
+                            <div class="avatar">
+                                <img class="f-left" width="40px" height="50px" src="/lance/resources/image/pic/download.jpg" alt="" />
+                                <p class="f-left">
+                                    <span class="name">个人用户名</span><br />
+                                    <span class="company">公司名称</span><br />
+                                    <span class="title">个人职称</span>
+                                </p>
+                                <a href="editBasic.htm" class="btn-edit f-right"><span>编辑</span></a>
+                            </div>
+                            
+                            <div class="desc">
+                                <div class="title">个人简介
+                                    <a href="editBasic.htm" class="btn-edit f-right"><span>编辑</span></a>
+                                </div>
+                                <p>
+                                    您好！<br />
+                                    我来自郑州，我是一名信息工程大学印刷工程专业应届本科即将毕业的学员。
+                                    我的性格偏于内向，为人坦率、热情、讲求原则；处事乐观、专心、细致、头脑清醒；富有责任心、乐于助人。 
+                                    我还是一个正直忠诚、勤奋求实的人，会不断追求人格的自我完善；明显的特点是乐观自信、温和开朗、稳重宽厚，因此，我人际关系和谐，适应环境能力较强。爱好电脑、科普知识，喜欢钻研，正因为这些增强了我的实干精神，习惯事情或问题及早解决。
+                                    最大的满足感在于该做的事顺利完成，以便有精力去关注其他，也就是追求感觉上的自我良好或优越感。最大的缺点是对没有秩序感的人可能缺乏足够的耐心，也可能因为心太细，会让别人误解我的一番好意。
+                                    基本上就这些，谢谢！
+                                </p>
+                            </div>
+                            
+                        </div>
+                        <div class="video">
+                            <a href="#" class="btn-edit f-right"><span>编辑</span></a><br />
+                            <img src="/lance/resources/image/profile/video.gif" alt="" />
+                            
+                            <div class="identy">
+                                <div class="title">个人资料
+                                    <a href="#" class="btn-edit f-right"><span>编辑</span></a>
+                                </div>
+                                <div class="zl">
+                                    <p>
+                                        <span class="key f-left">地址</span>
+                                        <span class="f-left">北京市-北京市 <br /> 北京市-北京市</span>
+                                    </p>
+                                    <p>
+                                        <span class="key f-left">注册时间</span>
+                                        <span class="f-left">2014年12月</span>
+                                    </p>
+                                    <p>
+                                        <span class="key f-left">上次登录时间</span>
+                                        <span class="f-left">2014年12月2日</span>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    
+                        <div class="rating-info">
+                            <div class="title">
+                                我发布的工作和工作定级
+                            </div>
+                            <div class="static">
+                                <div class="mod first">
+                                    <p class="number">
+                                        <b>0</b> 发布的工作
+                                    </p>
+                                </div>
+                                <div class="mod">
+                                    <p class="number">
+                                        <b>0</b> 评定的工作<br />
+                                        <b>0%</b> 评定的等级
+                                    </p>
+                                </div>
+                                <div class="mod">
+                                    <p class="number">
+                                        <b>0</b> 评定的工作<br />
+                                        <b>0%</b> 评定的等级
+                                    </p>
+                                </div>
+                                <div class="mod">
+                                    <p class="number">
+                                        <b>0</b> 评定的工作
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="list-relative">
+                            <a href="#" class="nav_sprite link-combox">所有的分类
+                                <ul>
+                                    <li>All Categories</li>
+                                    <li>Admin Support</li>
+                                    <li>Design & Multimedia</li>
+                                    <li>Engineering</li>
+                                    <li>IT & Programming</li>
+                                    <li>Sales & Marketing</li>
+                                </ul>
+                            </a>
+                            <a href="#" class="nav_sprite link-combox">所有的服务
+                                <ul>
+                                    <li>All Categories</li>
+                                    <li>Admin Support</li>
+                                    <li>Design & Multimedia</li>
+                                    <li>Engineering</li>
+                                    <li>IT & Programming</li>
+                                    <li>Sales & Marketing</li>
+                                </ul>
+                            </a>
+                            <a href="#" class="nav_sprite link-combox">所有的工作
+                                <ul>
+                                    <li>All Categories</li>
+                                    <li>Admin Support</li>
+                                    <li>Design & Multimedia</li>
+                                    <li>Engineering</li>
+                                    <li>IT & Programming</li>
+                                    <li>Sales & Marketing</li>
+                                </ul>
+                            </a>
+                            
+                            <a href="#" class="nav_sprite link-combox f-right">时间排序
+                                <ul>
+                                    <li>All Categories</li>
+                                    <li>Admin Support</li>
+                                    <li>Design & Multimedia</li>
+                                    <li>Engineering</li>
+                                    <li>IT & Programming</li>
+                                    <li>Sales & Marketing</li>
+                                </ul>
+                            </a>
+                            
+                            <div class="result-con">
+                                没有相关信息
+                            </div>
+                        </div>
+                    
+                    </div>
+                </div>
+            </div>
+            
+            <div id="mfooter">
+                <div class="min-width">
+                    <img src="/lance/resources/image/logo.png" alt="" />
+                    <span>©2014 Elance, Inc.</span>
+                    <span>|</span>
+                    <a href="#">Terms & Privacy</a>
+                    <span>|</span>
+                    <a href="#">Help</a>
+                </div>
+            </div>
+            
+            <div class="overlay"></div>
+            <!-- 修改视频地址弹框 -->
+            <div id="dia-video" class="dialog chfont">
+                <img class="dclose" src="/lance/resources/image/profile/dialog_close.png" alt="" />
+                <div class="dbody">
+                    <div class="title">
+                        编辑视频地址
+                    </div>
+                    <div class="video-url">
+                        <img src="/lance/resources/image/profile/video.gif" alt="" />
+                        <span>视频地址路径：</span>
+                        <input type="text" value="" />
+                    </div>
+                    <div class="buttons">
+                        <a class="btn-green">保存</a>
+                        <a class="btn-gray">取消</a>
+                    </div>
+                </div>
+            </div>
+        
+        </div>
+    </div>
+    </body>
+</html>
