@@ -407,7 +407,7 @@ public class SearchResource extends BaseRestResource {
      * @throws JSONException
      */
     @GET
-    @Path("/userByKeyword/{userType}/{keyword}")
+    @Path("/user/{userType}/{keyword}")
     public JSONObject searchLancer4Job(@PathParam("userType") String userType,
                                        @PathParam("keyword") String keyword) throws JSONException {
 

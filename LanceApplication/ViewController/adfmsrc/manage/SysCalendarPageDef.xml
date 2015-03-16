@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="SysCalendarPageDef"
+                Package="manage">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables">
+      <variable Type="java.lang.String" Name="createSysCalendarDates_return" IsQueriable="false" IsUpdateable="0"
+                DefaultValue="${bindings.createSysCalendarDates.result}"/>
+      <variable Type="java.lang.Integer" Name="createSysCalendarDates_start" IsQueriable="false"/>
+      <variable Type="java.lang.Integer" Name="createSysCalendarDates_end" IsQueriable="false"/>
+    </variableIterator>
+    <iterator Binds="SysCalendar1" RangeSize="25" DataControl="LanceAdminAMDataControl" id="SysCalendar1Iterator"/>
+    <searchRegion Binds="SysCalendar1Iterator" Criteria=""
+                  Customizer="oracle.jbo.uicli.binding.JUSearchBindingCustomizer" id="SysCalendar1Query"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="SysCalendar1Iterator" id="SysCalendar1">
+      <nodeDefinition DefName="com.lance.model.vo.SysCalendarVO" Name="SysCalendar10">
+        <AttrNames>
+          <Item Value="SysDateRec"/>
+          <Item Value="Day"/>
+          <Item Value="DateType"/>
+          <Item Value="Description"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <methodAction id="createSysCalendarDates" RequiresUpdateModel="true" Action="invokeMethod"
+                  MethodName="createSysCalendarDates" IsViewObjectMethod="false" DataControl="LanceAdminAMDataControl"
+                  InstanceName="data.LanceAdminAMDataControl.dataProvider"
+                  ReturnName="data.LanceAdminAMDataControl.methodResults.createSysCalendarDates_LanceAdminAMDataControl_dataProvider_createSysCalendarDates_result">
+      <NamedData NDName="start" NDType="java.lang.Integer" NDValue="${bindings.createSysCalendarDates_start}"/>
+      <NamedData NDName="end" NDType="java.lang.Integer" NDValue="${bindings.createSysCalendarDates_end}"/>
+    </methodAction>
+    <attributeValues IterBinding="variables" id="start">
+      <AttrNames>
+        <Item Value="createSysCalendarDates_start"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="variables" id="end">
+      <AttrNames>
+        <Item Value="createSysCalendarDates_end"/>
+      </AttrNames>
+    </attributeValues>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="LanceAdminAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction"
+            DataControl="LanceAdminAMDataControl"/>
+  </bindings>
+</pageDefinition>

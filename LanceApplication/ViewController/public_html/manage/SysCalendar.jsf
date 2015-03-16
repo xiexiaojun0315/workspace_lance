@@ -1,0 +1,116 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="SysCalendar.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:panelGridLayout id="pgl1">
+                <af:gridRow height="100%" id="gr1">
+                    <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                        <!-- Content -->
+                        <af:panelSplitter id="ps1" orientation="vertical" splitterPosition="20">
+                            <f:facet name="first">
+                                <af:panelGroupLayout id="pgl2" layout="horizontal">
+                                    <af:inputText value="#{bindings.start.inputValue}"
+                                                  label="#{bindings.start.hints.label}"
+                                                  required="#{bindings.start.hints.mandatory}"
+                                                  columns="#{bindings.start.hints.displayWidth}"
+                                                  maximumLength="#{bindings.start.hints.precision}"
+                                                  shortDesc="#{bindings.start.hints.tooltip}" id="it4">
+                                        <f:validator binding="#{bindings.start.validator}"/>
+                                        <af:convertNumber groupingUsed="false" pattern="#{bindings.start.format}"/>
+                                    </af:inputText>
+                                    <af:inputText value="#{bindings.end.inputValue}" label="#{bindings.end.hints.label}"
+                                                  required="#{bindings.end.hints.mandatory}"
+                                                  columns="#{bindings.end.hints.displayWidth}"
+                                                  maximumLength="#{bindings.end.hints.precision}"
+                                                  shortDesc="#{bindings.end.hints.tooltip}" id="it5">
+                                        <f:validator binding="#{bindings.end.validator}"/>
+                                        <af:convertNumber groupingUsed="false" pattern="#{bindings.end.format}"/>
+                                    </af:inputText>
+                                    <af:button actionListener="#{bindings.createSysCalendarDates.execute}"
+                                               text="createSysCalendarDates"
+                                               disabled="#{!bindings.createSysCalendarDates.enabled}" id="b1"/>
+                                    <af:button actionListener="#{bindings.Commit.execute}" text="Commit"
+                                               disabled="#{!bindings.Commit.enabled}" id="b2"/>
+                                    <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                                               disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b3">
+                                        <af:resetActionListener/>
+                                    </af:button>
+                                    <f:facet name="separator">
+                                        <af:spacer width="10" height="10" id="s1"/>
+                                    </f:facet>
+                                </af:panelGroupLayout>
+                            </f:facet>
+                            <f:facet name="second">
+                                <af:table value="#{bindings.SysCalendar1.collectionModel}" var="row"
+                                          rows="#{bindings.SysCalendar1.rangeSize}"
+                                          emptyText="#{bindings.SysCalendar1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                          rowBandingInterval="0"
+                                          selectedRowKeys="#{bindings.SysCalendar1.collectionModel.selectedRow}"
+                                          rowSelection="multiple" fetchSize="#{bindings.SysCalendar1.rangeSize}"
+                                          filterModel="#{bindings.SysCalendar1Query.queryDescriptor}"
+                                          queryListener="#{bindings.SysCalendar1Query.processQuery}"
+                                          filterVisible="true" varStatus="vs" id="t1" partialTriggers="::b1"
+                                          columnStretching="last">
+                                    <af:column sortProperty="#{bindings.SysCalendar1.hints.SysDateRec.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.SysCalendar1.hints.SysDateRec.label}" id="c1">
+                                        <af:inputText value="#{row.bindings.SysDateRec.inputValue}"
+                                                      label="#{bindings.SysCalendar1.hints.SysDateRec.label}"
+                                                      required="#{bindings.SysCalendar1.hints.SysDateRec.mandatory}"
+                                                      columns="#{bindings.SysCalendar1.hints.SysDateRec.displayWidth}"
+                                                      maximumLength="#{bindings.SysCalendar1.hints.SysDateRec.precision}"
+                                                      shortDesc="#{bindings.SysCalendar1.hints.SysDateRec.tooltip}"
+                                                      id="it3">
+                                            <f:validator binding="#{row.bindings.SysDateRec.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.SysCalendar1.hints.Day.name}" filterable="true"
+                                               sortable="true" headerText="#{bindings.SysCalendar1.hints.Day.label}"
+                                               id="c4">
+                                        <af:inputText value="#{row.bindings.Day.inputValue}"
+                                                      label="#{bindings.SysCalendar1.hints.Day.label}"
+                                                      required="#{bindings.SysCalendar1.hints.Day.mandatory}"
+                                                      columns="#{bindings.SysCalendar1.hints.Day.displayWidth}"
+                                                      maximumLength="#{bindings.SysCalendar1.hints.Day.precision}"
+                                                      shortDesc="#{bindings.SysCalendar1.hints.Day.tooltip}" id="it2">
+                                            <f:validator binding="#{row.bindings.Day.validator}"/>
+                                            <af:convertNumber groupingUsed="false"
+                                                              pattern="#{bindings.SysCalendar1.hints.Day.format}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.SysCalendar1.hints.DateType.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.SysCalendar1.hints.DateType.label}" id="c2">
+                                        <af:selectOneChoice value="#{row.bindings.DateType.inputValue}"
+                                                            label="#{row.bindings.DateType.label}"
+                                                            required="#{bindings.SysCalendar1.hints.DateType.mandatory}"
+                                                            shortDesc="#{bindings.SysCalendar1.hints.DateType.tooltip}"
+                                                            id="soc1">
+                                            <f:selectItems value="#{row.bindings.DateType.items}" id="si1"/>
+                                            <f:validator binding="#{row.bindings.DateType.validator}"/>
+                                        </af:selectOneChoice>
+                                    </af:column>
+                                    <af:column sortProperty="#{bindings.SysCalendar1.hints.Description.name}"
+                                               filterable="true" sortable="true"
+                                               headerText="#{bindings.SysCalendar1.hints.Description.label}" id="c3">
+                                        <af:inputText value="#{row.bindings.Description.inputValue}"
+                                                      label="#{bindings.SysCalendar1.hints.Description.label}"
+                                                      required="#{bindings.SysCalendar1.hints.Description.mandatory}"
+                                                      columns="#{bindings.SysCalendar1.hints.Description.displayWidth}"
+                                                      maximumLength="#{bindings.SysCalendar1.hints.Description.precision}"
+                                                      shortDesc="#{bindings.SysCalendar1.hints.Description.tooltip}"
+                                                      id="it1" rows="1">
+                                            <f:validator binding="#{row.bindings.Description.validator}"/>
+                                        </af:inputText>
+                                    </af:column>
+                                </af:table>
+                            </f:facet>
+                        </af:panelSplitter>
+                    </af:gridCell>
+                </af:gridRow>
+            </af:panelGridLayout>
+        </af:form>
+    </af:document>
+</f:view>
