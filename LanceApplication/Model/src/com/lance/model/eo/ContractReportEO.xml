@@ -179,13 +179,6 @@
     AssociationOtherEnd="com.lance.model.as.ContractReportFk1AS.ContractReport"
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
-  <AccessorAttribute
-    Name="SysCalendar"
-    Association="com.lance.model.as.ProjectDailyReportFk1AS"
-    AssociationEnd="com.lance.model.as.ProjectDailyReportFk1AS.SysCalendar"
-    AssociationOtherEnd="com.lance.model.as.ProjectDailyReportFk1AS.ContractReport"
-    Type="oracle.jbo.server.EntityImpl"
-    IsUpdateable="true"/>
   <Key
     Name="ProjectDailyReportPk"
     PrimaryKey="true">

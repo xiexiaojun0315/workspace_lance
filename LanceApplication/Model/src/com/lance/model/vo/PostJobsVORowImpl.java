@@ -2,6 +2,8 @@ package com.lance.model.vo;
 
 import com.lance.model.user.vo.UUserVOImpl;
 
+import com.lance.model.util.LocationUtil;
+
 import com.zngh.platform.front.core.model.BaseEntityImpl;
 import com.zngh.platform.front.core.model.BaseViewRowImpl;
 
@@ -1001,7 +1003,7 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
         findLocationName(this.getLocationRegion(), this.getLocationCountry(), this.getLocationProvince(),
                          this.getLocationCity(), locSb);
         if (locSb.length() > 0) {
-            this.setIndexLocation(replaceLocationName(locSb.substring(0, locSb.length() - 1).toString()));
+            this.setIndexLocation(LocationUtil.formatLocationName(locSb.substring(0, locSb.length() - 1).toString()));
         } else {
             this.setIndexLocation("");
         }
@@ -1084,18 +1086,6 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
         }
     }
 
-    public String replaceLocationName(String loc) {
-        System.out.println("replaceLocationName:" + loc);
-        if (loc.indexOf("北京市;北京市;") >= 0) {
-            loc = loc.replace("北京市;北京市;", "北京市");
-        } else if (loc.indexOf("上海市;上海市;") >= 0) {
-            loc = loc.replace("上海市;上海市;", "上海市");
-        } else if (loc.indexOf("重庆市;重庆市;") >= 0) {
-            loc = loc.replace("重庆市;重庆市;", "重庆市");
-        }
-        System.out.println(loc);
-        return loc;
-    }
 
 }
 

@@ -115,7 +115,7 @@
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">年月日</value>
+          <value class="java.lang.String">年月日 yyyy-MM-dd</value>
         </entry>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
@@ -292,7 +292,7 @@
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">确认、拒绝</value>
+          <value class="java.lang.String">确认、拒绝、待支付、已支付</value>
         </entry>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
@@ -494,52 +494,6 @@
         <name>PAY_NUMBER_PK</name>
         <parent class="oracle.javatools.db.NameBasedID">
           <name>FIN_PAY_BILL</name>
-          <schemaName>LANCE</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>LANCE</schemaName>
-        <type>CONSTRAINT</type>
-      </referenceID>
-    </constraint>
-    <constraint class="oracle.javatools.db.FKConstraint">
-      <name>PROJECT_DAILY_REPORT_FK1</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>DATE_RECORD</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>CONTRACT_REPORT</name>
-            <schemaName>LANCE</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>LANCE</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <onDeleteAction>NO_ACTION</onDeleteAction>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>PROJECT_DAILY_REPORT_FK1</name>
-            <childObjectNames>
-              <childObjectName>DATE_RECORD</childObjectName>
-            </childObjectNames>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>PROJECT_DAILY_REPORT</name>
-              <identifier class="java.math.BigDecimal">30381</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <subType>FKConstraint</subType>
-            <type>CONSTRAINT</type>
-          </value>
-        </entry>
-      </properties>
-      <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>DAILY_CALENDAR_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>SYS_CALENDAR</name>
           <schemaName>LANCE</schemaName>
           <type>TABLE</type>
         </parent>

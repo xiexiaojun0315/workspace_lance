@@ -23,6 +23,10 @@
     Name="pUuid"
     Kind="viewcriteria"
     Type="java.lang.String"/>
+  <Variable
+    Name="pCreator"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <EntityUsage
     Name="ContractEO"
     Entity="com.lance.model.eo.ContractEO"/>
@@ -378,6 +382,43 @@
         Operator="="
         Conjunction="AND"
         Value=":pUuid"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="FindByCreatorVC"
+    ViewObjectName="com.lance.model.vo.ContractVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="ContractVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="CreateBy"
+        ViewAttribute="CreateBy"
+        Operator="="
+        Conjunction="AND"
+        Value=":pCreator"
         UpperColumns="0"
         IsBindVarValue="true"
         Required="Optional"/>

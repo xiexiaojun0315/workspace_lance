@@ -75,7 +75,8 @@
     PrecisionRule="true"
     EntityAttrName="Status"
     EntityUsage="ContractReportEO"
-    AliasName="STATUS"/>
+    AliasName="STATUS"
+    DefaultValue="draft"/>
   <ViewAttribute
     Name="StatusRemark"
     PrecisionRule="true"

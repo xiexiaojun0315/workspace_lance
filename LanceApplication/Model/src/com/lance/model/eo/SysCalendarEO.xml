@@ -13,14 +13,39 @@
   RowClass="com.zngh.platform.front.core.model.BaseEntityImpl"
   CollClass="com.zngh.platform.front.core.model.BaseEntityCache">
   <Attribute
-    Name="SysDate1"
+    Name="SysDateRec"
     IsNotNull="true"
-    ColumnName="SYS_DATE"
-    SQLType="DATE"
-    Type="java.sql.Timestamp"
-    ColumnType="DATE"
+    Precision="20"
+    ColumnName="SYS_DATE_REC"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
     TableName="SYS_CALENDAR"
-    PrimaryKey="true"/>
+    PrimaryKey="true">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.eo.SysCalendarEO.SysDateRec_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
+  <Attribute
+    Name="Day"
+    ColumnName="DAY"
+    SQLType="NUMERIC"
+    Type="java.lang.Integer"
+    ColumnType="NUMBER"
+    TableName="SYS_CALENDAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.eo.SysCalendarEO.Day_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </Attribute>
   <Attribute
     Name="DateType"
     Precision="20"
@@ -32,6 +57,12 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="20"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.eo.SysCalendarEO.DateType_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
   </Attribute>
   <Attribute
     Name="Description"
@@ -44,36 +75,32 @@
     <DesignTime>
       <Attr Name="_DisplaySize" Value="20"/>
     </DesignTime>
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.eo.SysCalendarEO.Description_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
   </Attribute>
   <Attribute
-    Name="Day"
-    ColumnName="DAY"
+    Name="ShowOrder"
+    ColumnName="SHOW_ORDER"
     SQLType="NUMERIC"
-    Type="java.math.BigDecimal"
+    Type="java.lang.Long"
     ColumnType="NUMBER"
     TableName="SYS_CALENDAR"/>
-  <AccessorAttribute
-    Name="ContractReport"
-    Association="com.lance.model.as.ProjectDailyReportFk1AS"
-    AssociationEnd="com.lance.model.as.ProjectDailyReportFk1AS.ContractReport"
-    AssociationOtherEnd="com.lance.model.as.ProjectDailyReportFk1AS.SysCalendar"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <AccessorAttribute
-    Name="ContractMilestone"
-    Association="com.lance.model.as.ProjectMilestoneFk1AS"
-    AssociationEnd="com.lance.model.as.ProjectMilestoneFk1AS.ContractMilestone"
-    AssociationOtherEnd="com.lance.model.as.ProjectMilestoneFk1AS.SysCalendar"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
   <Key
-    Name="DailyCalendarPk"
+    Name="SysCalendarPk"
     PrimaryKey="true">
     <DesignTime>
-      <Attr Name="_DBObjectName" Value="DAILY_CALENDAR_PK"/>
+      <Attr Name="_DBObjectName" Value="SYS_CALENDAR_PK"/>
     </DesignTime>
     <AttrArray Name="Attributes">
-      <Item Value="com.lance.model.eo.SysCalendarEO.SysDate1"/>
+      <Item Value="com.lance.model.eo.SysCalendarEO.SysDateRec"/>
     </AttrArray>
   </Key>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.lance.model.ModelBundle"/>
+  </ResourceBundle>
 </Entity>

@@ -6,31 +6,72 @@
   Name="SysCalendarVO"
   Version="12.1.3.2.36"
   InheritPersonalization="merge"
-  SelectListFlags="1"
-  FromListFlags="1"
-  WhereFlags="1"
   BindingStyle="OracleName"
   CustomQuery="false"
-  SelectAllAttributes="false"
   PageIterMode="Full"
-  RowClass="com.zngh.platform.front.core.model.BaseViewRowImpl"
-  ComponentClass="com.zngh.platform.front.core.model.BaseViewObjectImpl">
+  RowClass="com.lance.model.vo.SysCalendarVORowImpl"
+  ComponentClass="com.lance.model.vo.SysCalendarVOImpl"
+  SelectList="SysCalendarEO.DAY, 
+       SysCalendarEO.DATE_TYPE, 
+       SysCalendarEO.DESCRIPTION, 
+       SysCalendarEO.SYS_DATE_REC, 
+       SysCalendarEO.SHOW_ORDER"
+  FromList="SYS_CALENDAR SysCalendarEO"
+  OrderBy="SysCalendarEO.SHOW_ORDER">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
+  <ViewAccessor
+    Name="LookupsVVO1"
+    ViewObjectName="com.lance.model.vvo.LookupsVVO"
+    RowLevelBinds="true">
+    <ViewCriteriaUsage
+      Name="FindDateTypeVC"
+      FullName="com.lance.model.vvo.LookupsVVO.FindDateTypeVC"/>
+  </ViewAccessor>
+  <ListBinding
+    Name="LOV_DateType"
+    ListVOName="LookupsVVO1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="DateType"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="ItemKey"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="ItemKey"/>
+      <Item Value="ItemDisplay"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="SysCalendarEO"
     Entity="com.lance.model.eo.SysCalendarEO"/>
   <ViewAttribute
-    Name="SysDate1"
-    IsNotNull="true"
+    Name="Day"
     PrecisionRule="true"
-    EntityAttrName="SysDate1"
+    EntityAttrName="Day"
     EntityUsage="SysCalendarEO"
-    AliasName="SYS_DATE"/>
+    AliasName="DAY"/>
   <ViewAttribute
     Name="DateType"
     PrecisionRule="true"
     EntityAttrName="DateType"
     EntityUsage="SysCalendarEO"
-    AliasName="DATE_TYPE"/>
+    AliasName="DATE_TYPE"
+    LOVName="LOV_DateType">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Description"
     PrecisionRule="true"
@@ -38,19 +79,20 @@
     EntityUsage="SysCalendarEO"
     AliasName="DESCRIPTION"/>
   <ViewAttribute
-    Name="Day"
+    Name="SysDateRec"
+    IsNotNull="true"
     PrecisionRule="true"
-    EntityAttrName="Day"
+    EntityAttrName="SysDateRec"
     EntityUsage="SysCalendarEO"
-    AliasName="DAY"/>
-  <ViewLinkAccessor
-    Name="ContractReport"
-    ViewLink="com.lance.model.vl.ProjectDailyReportFk1VL"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
-  <ViewLinkAccessor
-    Name="ContractMilestone"
-    ViewLink="com.lance.model.vl.ProjectMilestoneFk1VL"
-    Type="oracle.jbo.RowIterator"
-    IsUpdateable="false"/>
+    AliasName="SYS_DATE_REC"/>
+  <ViewAttribute
+    Name="ShowOrder"
+    PrecisionRule="true"
+    EntityAttrName="ShowOrder"
+    EntityUsage="SysCalendarEO"
+    AliasName="SHOW_ORDER"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.lance.model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

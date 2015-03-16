@@ -27,6 +27,22 @@
     Name="pEmail"
     Kind="viewcriteria"
     Type="java.lang.String"/>
+  <ViewAccessor
+    Name="LocationRegionVO1"
+    ViewObjectName="com.lance.model.vo.LocationRegionVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LocationCountryVO1"
+    ViewObjectName="com.lance.model.vo.LocationCountryVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LocationProvinceVO1"
+    ViewObjectName="com.lance.model.vo.LocationProvinceVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="LocationCityVO1"
+    ViewObjectName="com.lance.model.vo.LocationCityVO"
+    RowLevelBinds="true"/>
   <EntityUsage
     Name="UUserEO"
     Entity="com.lance.model.user.eo.UUserEO"/>
@@ -73,14 +89,6 @@
     EntityAttrName="Country"
     EntityUsage="UUserEO"
     AliasName="COUNTRY"/>
-  <ViewAttribute
-    Name="AccountType"
-    PrecisionRule="true"
-    EntityAttrName="AccountType"
-    EntityUsage="UUserEO"
-    AliasName="ACCOUNT_TYPE"
-    IsQueriable="false"
-    IsPersistent="false"/>
   <ViewAttribute
     Name="CompanyId"
     PrecisionRule="true"
@@ -167,11 +175,83 @@
     EntityUsage="UUserEO"
     AliasName="LOCATION_A"/>
   <ViewAttribute
+    Name="LocationARegion"
+    PrecisionRule="true"
+    EntityAttrName="LocationARegion"
+    EntityUsage="UUserEO"
+    AliasName="LOCATION_A_REGION"/>
+  <ViewAttribute
+    Name="LocationAProvince"
+    PrecisionRule="true"
+    EntityAttrName="LocationAProvince"
+    EntityUsage="UUserEO"
+    AliasName="LOCATION_A_PROVINCE"/>
+  <ViewAttribute
+    Name="LocationACity"
+    PrecisionRule="true"
+    EntityAttrName="LocationACity"
+    EntityUsage="UUserEO"
+    AliasName="LOCATION_A_CITY"/>
+  <ViewAttribute
+    Name="LocationACountry"
+    PrecisionRule="true"
+    EntityAttrName="LocationACountry"
+    EntityUsage="UUserEO"
+    AliasName="LOCATION_A_COUNTRY"/>
+  <ViewAttribute
+    Name="LocationADetail"
+    PrecisionRule="true"
+    EntityAttrName="LocationADetail"
+    EntityUsage="UUserEO"
+    AliasName="LOCATION_A_DETAIL"/>
+  <ViewAttribute
+    Name="LocationAIndex"
+    PrecisionRule="true"
+    EntityAttrName="LocationAIndex"
+    EntityUsage="UUserEO"
+    AliasName="LOCATION_A_INDEX"/>
+  <ViewAttribute
     Name="LocationB"
     PrecisionRule="true"
     EntityAttrName="LocationB"
     EntityUsage="UUserEO"
     AliasName="LOCATION_B"/>
+  <ViewAttribute
+    Name="LocationBRegion"
+    PrecisionRule="true"
+    EntityAttrName="LocationBRegion"
+    EntityUsage="UUserEO"
+    AliasName="LOCATION_B_REGION"/>
+  <ViewAttribute
+    Name="LocationBProvince"
+    PrecisionRule="true"
+    EntityAttrName="LocationBProvince"
+    EntityUsage="UUserEO"
+    AliasName="LOCATION_B_PROVINCE"/>
+  <ViewAttribute
+    Name="LocationBCountry"
+    PrecisionRule="true"
+    EntityAttrName="LocationBCountry"
+    EntityUsage="UUserEO"
+    AliasName="LOCATION_B_COUNTRY"/>
+  <ViewAttribute
+    Name="LocationBCity"
+    PrecisionRule="true"
+    EntityAttrName="LocationBCity"
+    EntityUsage="UUserEO"
+    AliasName="LOCATION_B_CITY"/>
+  <ViewAttribute
+    Name="LocationBDetail"
+    PrecisionRule="true"
+    EntityAttrName="LocationBDetail"
+    EntityUsage="UUserEO"
+    AliasName="LOCATION_B_DETAIL"/>
+  <ViewAttribute
+    Name="LocationBIndex"
+    PrecisionRule="true"
+    EntityAttrName="LocationBIndex"
+    EntityUsage="UUserEO"
+    AliasName="LOCATION_B_INDEX"/>
   <ViewAttribute
     Name="Tagline"
     PrecisionRule="true"
@@ -252,6 +332,13 @@
     EntityAttrName="RankDesc"
     EntityUsage="UUserEO"
     AliasName="RANK_DESC"/>
+  <ViewAttribute
+    Name="IndexAll"
+    IsQueriable="false"
+    PrecisionRule="true"
+    EntityAttrName="IndexAll"
+    EntityUsage="UUserEO"
+    AliasName="INDEX_ALL"/>
   <ViewAttribute
     Name="CreateBy"
     PrecisionRule="true"
@@ -476,6 +563,12 @@
     <PropertiesBundle
       PropertiesFile="com.lance.model.ModelBundle"/>
   </ResourceBundle>
+  <SortCriteria>
+    <Sort
+      Attribute="Rank"/>
+    <Sort
+      Attribute="ModifyOn"/>
+  </SortCriteria>
   <SortCriteria>
     <Sort
       Attribute="Rank"/>

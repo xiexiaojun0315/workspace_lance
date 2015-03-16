@@ -24,6 +24,7 @@ import oracle.adf.share.logging.ADFLogger;
 
 import oracle.jbo.Key;
 import oracle.jbo.Row;
+import oracle.jbo.RowSetIterator;
 import oracle.jbo.server.RowImpl;
 import oracle.jbo.server.ViewObjectImpl;
 
@@ -78,13 +79,12 @@ public class MilestoneResource extends BaseRestResource {
     public static final String[] ATTR_GET = ATTR_ALL;
 
     public static final String[] ATTR_UPDATE = {
-        "ProjectId", "ContractId", "Title", "Location", "Remark", "DateDelivery", "Price", "Process"  ,"Status" ,
+        "ProjectId", "ContractId", "Title", "Location", "Remark", "DateDelivery", "Price", "Process", "Status",
         "DateLatestPay"
     };
 
     public static final String[] ATTR_CREATE = {
-        "ProjectId", "ContractId", "Title", "Location", "Remark", "DateDelivery", "Price", 
-        "DateLatestPay"
+        "ProjectId", "ContractId", "Title", "Location", "Remark", "DateDelivery", "Price", "DateLatestPay"
     };
 
     public static final boolean CAN_DELETE = true;
@@ -253,27 +253,63 @@ public class MilestoneResource extends BaseRestResource {
                 }
             }
         }
-        
+
         //更新里程碑执行状态
-        if(json.has("process")){
-                JSONArray arr = json.getJSONArray("process");
-                if (arr != null) {
-                    for (int i = 0; i < arr.length(); i++) {
-                        JSONObject data = (JSONObject) arr.get(i);
-                        String milestoneId = data.getString("Uuid");
-                        row2 = getMilestoneRowByIdFn(milestoneId, vo2);
-                        System.out.println(row2.getUuid());
-                        this.copyJsonObjectToRow(data, vo2, row2, this.ATTR_UPDATE);
-                    }
+        if (json.has("process")) {
+            JSONArray arr = json.getJSONArray("process");
+            if (arr != null) {
+                for (int i = 0; i < arr.length(); i++) {
+                    JSONObject data = (JSONObject) arr.get(i);
+                    String milestoneId = data.getString("Uuid");
+                    row2 = getMilestoneRowByIdFn(milestoneId, vo2);
+                    System.out.println(row2.getUuid());
+                    this.copyJsonObjectToRow(data, vo2, row2, this.ATTR_UPDATE);
                 }
             }
+        }
 
         am.getDBTransaction().commit();
         return "ok";
     }
-    
-    //更新状态@todo
-    private void updateProcess(ContractMilestoneVORowImpl row,String newProcess){
+
+    //更新状态
+    @POST
+    @Path("audit/{contractId}/{milestoneId}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Produces(MediaType.TEXT_PLAIN)
+    public String updateProcessStatus(@PathParam("contractId") String contractId,
+                                      @PathParam("milestoneId") String milestoneId,
+                                      JSONObject json) throws JSONException {
+        String opt = json.getString("opt");
+        String desc = json.getString("desc");
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        if (opt.equals("confirm")) {
+            updateProcessStatusFn(contractId, milestoneId, am, "toPay", "已确认，待支付");
+        } else if (opt.equals("reject")) {
+            updateProcessStatusFn(contractId, milestoneId, am, "reject", "拒绝");
+        }
+        return "ok";
+    }
+
+    public void updateProcessStatusFn(String contractId, String milestoneId, LanceRestAMImpl am, String status,
+                                      String statusRemark) {
+        this.findContractById(contractId, am.getContractVO1(), am);
+        ContractMilestoneVOImpl vo = am.getContractMilestoneVO1();
+        if (milestoneId != null) {
+            Row row = findMilestoneById(contractId, milestoneId, am);
+            row.setAttribute("Status", status);
+            row.setAttribute("StatusRemark", statusRemark);
+        } else {
+            vo.executeQuery();
+            RowSetIterator it = vo.createRowSetIterator(null);
+            Row row;
+            while (it.hasNext()) {
+                row = it.next();
+                row.setAttribute("Status", status);
+                row.setAttribute("StatusRemark", statusRemark);
+            }
+            it.closeRowSetIterator();
+        }
     }
 
     private ContractMilestoneVORowImpl getMilestoneRowByIdFn(String milestoneId, ContractMilestoneVOImpl vo2) {
@@ -285,8 +321,6 @@ public class MilestoneResource extends BaseRestResource {
         vo2.setCurrentRow(row2);
         return (ContractMilestoneVORowImpl) row2;
     }
-    
-    
 
     //    /**
     //     * 创建

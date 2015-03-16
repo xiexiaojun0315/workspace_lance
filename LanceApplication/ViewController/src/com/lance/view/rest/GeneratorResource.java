@@ -31,7 +31,7 @@ public class GeneratorResource {
     public String generateAttributes() {
         LanceRestAMImpl am = LUtil.findLanceAM();
 //        outputAttrTypes(am.getPostJobs1());
-        outputAttrTypes(am.getPostJobs1());
+        outputAttrTypes(am.getUUser1());
 //        outputAttrTypes(am.get);
 //        outputAttrTypes(am);
 //        outputAttrTypes(am);

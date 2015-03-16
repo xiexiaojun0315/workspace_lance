@@ -221,13 +221,6 @@
     AssociationOtherEnd="com.lance.model.as.ContractMilestoneFk2AS.ContractMilestone"
     Type="oracle.jbo.server.EntityImpl"
     IsUpdateable="true"/>
-  <AccessorAttribute
-    Name="SysCalendar"
-    Association="com.lance.model.as.ProjectMilestoneFk1AS"
-    AssociationEnd="com.lance.model.as.ProjectMilestoneFk1AS.SysCalendar"
-    AssociationOtherEnd="com.lance.model.as.ProjectMilestoneFk1AS.ContractMilestone"
-    Type="oracle.jbo.server.EntityImpl"
-    IsUpdateable="true"/>
   <Key
     Name="PostJobMilestonePk"
     PrimaryKey="true">

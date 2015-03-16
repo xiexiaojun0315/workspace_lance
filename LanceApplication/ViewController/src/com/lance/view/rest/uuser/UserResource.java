@@ -35,14 +35,13 @@ import org.codehaus.jettison.json.JSONObject;
 
 
 /**
-    UserName,Precision:50,JavaType:java.lang.String
-    TrueName,Precision:50,JavaType:java.lang.String
+    UserName,Precision:50,JavaType:java.lang.String 
+    TrueName,Precision:50,JavaType:java.lang.String 
     DisplayName,Precision:50,JavaType:java.lang.String
     Email,Precision:100,JavaType:java.lang.String
     Password,Precision:100,JavaType:java.lang.String
     Img,Precision:900,JavaType:java.lang.String
     Country,Precision:32,JavaType:java.lang.String
-    AccountType,Precision:100,JavaType:java.lang.String
     CompanyId,Precision:32,JavaType:java.lang.String
     PhoneNumber,Precision:20,JavaType:java.lang.String
     Attach,Precision:200,JavaType:java.lang.String
@@ -200,6 +199,8 @@ public class UserResource extends BaseRestResource {
             grantsVo.insertRow(grantsRow);
             row.setAttribute("DefaultRole", json.getString("DefaultRole"));
         }
+        
+        row.updateSearchIndex();
 
         String cm = am.commit();
         if (!"ok".equals(cm)) {
@@ -228,7 +229,6 @@ public class UserResource extends BaseRestResource {
             return res;
         }
 
-
         JSONObject json = convertRowToJsonObject(am.getUUser1(), row, ATTR_GET);
         data.put("User", json);
 
@@ -248,8 +248,8 @@ public class UserResource extends BaseRestResource {
         data.put("Education", new UserEducationResource().findAllUserEducation(userName));
         //获取当前用户Skill
         data.put("Skill", new UserSkillResource().findAllUserSkills(userName));
-        //获取当前用户LocationList
-        data.put("LocationList", new UserLocationListResource().findAllLocation(userName));
+//        //获取当前用户LocationList
+//        data.put("LocationList", new UserLocationListResource().findAllLocation(userName));
         
         return data;
     }
@@ -338,6 +338,7 @@ public class UserResource extends BaseRestResource {
             return "msg:没有足够的权限修改此用户";
         }
         copyJsonObjectToRow(json, vo, row, ATTR_UPDATE);
+        row.updateSearchIndex();
         am.getDBTransaction().commit();
         System.out.println("row changed");
         return "ok";

@@ -173,21 +173,6 @@ ORDER BY ROLE_LEVEL]]></SQLQuery>
     </DesignTime>
   </ViewAttribute>
   <ViewAttribute
-    Name="AccountType"
-    IsUpdateable="false"
-    IsPersistent="false"
-    PrecisionRule="true"
-    Precision="100"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    AliasName="ACCOUNT_TYPE"
-    Expression="ACCOUNT_TYPE"
-    SQLType="VARCHAR">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="100"/>
-    </DesignTime>
-  </ViewAttribute>
-  <ViewAttribute
     Name="CompanyId"
     IsUpdateable="false"
     IsPersistent="false"

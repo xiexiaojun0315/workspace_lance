@@ -37,16 +37,16 @@
                 <h3 class="lan-font-green">
                     欢迎登录</h3>
                 <br />
-                <form role="form" method="post" action="#">
+                <form role="form" method="post" action="j_security_check">
                     <div class="form-group <!--has-error has-feedback-->">
                         <label for="exampleInputEmail1" class="control-label">
                             请输入用户名或邮箱</label>
-                        <input value="" type="text" class="form-control" id="inp_emil" placeholder="">
+                        <input value="" type="text" class="form-control" id="inp_emil" placeholder="" name="j_username">
                     </div>
                     <div class="form-group">
                         <label for="exampleInputPassword1" class="control-label">
                             请输入密码</label>
-                        <input value="" type="password" class="form-control" id="inp_pass" placeholder="">
+                        <input value="" type="password" class="form-control" id="inp_pass" placeholder="" name="j_password">
                     </div>
                     <div class="checkbox pull-left">
                         <label>

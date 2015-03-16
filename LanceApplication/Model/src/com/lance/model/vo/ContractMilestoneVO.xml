@@ -87,7 +87,8 @@
     PrecisionRule="true"
     EntityAttrName="Status"
     EntityUsage="ContractMilestoneEO"
-    AliasName="STATUS"/>
+    AliasName="STATUS"
+    DefaultValue="draft"/>
   <ViewAttribute
     Name="PayStatus"
     PrecisionRule="true"

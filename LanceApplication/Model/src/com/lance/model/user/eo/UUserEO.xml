@@ -99,19 +99,6 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="AccountType"
-    Precision="100"
-    ColumnName="&quot;Synchronize:Fix_SQL&quot;"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="$none$"
-    IsQueriable="false"
-    IsPersistent="false">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="100"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
     Name="CompanyId"
     Precision="32"
     ColumnName="COMPANY_ID"
@@ -267,18 +254,6 @@
     Name="LocationA"
     Precision="32"
     ColumnName="LOCATION_A"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="U_USER">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="32"/>
-    </DesignTime>
-  </Attribute>
-  <Attribute
-    Name="LocationB"
-    Precision="32"
-    ColumnName="LOCATION_B"
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
@@ -496,6 +471,170 @@
     TableName="U_USER">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="2100"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationBRegion"
+    Precision="32"
+    ColumnName="LOCATION_B_REGION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="U_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationARegion"
+    Precision="32"
+    ColumnName="LOCATION_A_REGION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="U_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationACountry"
+    Precision="32"
+    ColumnName="LOCATION_A_COUNTRY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="U_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationACity"
+    Precision="32"
+    ColumnName="LOCATION_A_CITY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="U_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationADetail"
+    Precision="32"
+    ColumnName="LOCATION_A_DETAIL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="U_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationAIndex"
+    Precision="500"
+    ColumnName="LOCATION_A_INDEX"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="U_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationBCountry"
+    Precision="32"
+    ColumnName="LOCATION_B_COUNTRY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="U_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationBCity"
+    Precision="32"
+    ColumnName="LOCATION_B_CITY"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="U_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationBDetail"
+    Precision="32"
+    ColumnName="LOCATION_B_DETAIL"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="U_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationBIndex"
+    Precision="500"
+    ColumnName="LOCATION_B_INDEX"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="U_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="500"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="IndexAll"
+    IsQueriable="false"
+    ColumnName="INDEX_ALL"
+    SQLType="CLOB"
+    Type="oracle.jbo.domain.ClobDomain"
+    ColumnType="CLOB"
+    TableName="U_USER"/>
+  <Attribute
+    Name="LocationAProvince"
+    Precision="32"
+    ColumnName="LOCATION_A_PROVINCE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="U_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationBProvince"
+    Precision="32"
+    ColumnName="LOCATION_B_PROVINCE"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="U_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="LocationB"
+    Precision="32"
+    ColumnName="LOCATION_B"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="U_USER">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="32"/>
     </DesignTime>
   </Attribute>
   <AccessorAttribute

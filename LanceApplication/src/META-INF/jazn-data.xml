@@ -6,5 +6,31 @@
             <name>jazn.com</name>
         </realm>
     </jazn-realm>
+    <policy-store>
+        <applications>
+            <application>
+                <name>LanceApplication</name>
+                <jazn-policy>
+                    <grant>
+                        <grantee>
+                            <principals>
+                                <principal>
+                                    <class>oracle.security.jps.internal.core.principals.JpsAuthenticatedRoleImpl</class>
+                                    <name>authenticated-role</name>
+                                </principal>
+                            </principals>
+                        </grantee>
+                        <permissions>
+                            <permission>
+                                <class>oracle.adf.share.security.authorization.RegionPermission</class>
+                                <name>manage.SysCalendarPageDef</name>
+                                <actions>view</actions>
+                            </permission>
+                        </permissions>
+                    </grant>
+                </jazn-policy>
+            </application>
+        </applications>
+    </policy-store>
     <system-policy/>
 </jazn-data>

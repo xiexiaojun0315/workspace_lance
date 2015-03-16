@@ -2,22 +2,17 @@ package com.lance.view.rest.job;
 
 import com.lance.model.LanceRestAMImpl;
 import com.lance.model.user.vo.UUserVOImpl;
+import com.lance.model.user.vo.UUserVORowImpl;
 import com.lance.model.vo.PostJobsVOImpl;
 import com.lance.model.vo.PostJobsVORowImpl;
-import com.lance.model.vvo.PostJobsVVOImpl;
-import com.lance.model.vvo.UserSearchVVOImpl;
 import com.lance.view.util.LUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;
 
-import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
-import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
-
 import javax.ws.rs.Produces;
-
 import javax.ws.rs.core.MediaType;
 
 import oracle.jbo.RowSetIterator;
@@ -198,12 +193,30 @@ public class SearchResource extends BaseRestResource {
         return "ok";
     }
 
+    @GET
+    @Produces(MediaType.TEXT_PLAIN)
+    @Path("user/reIndex")
+    public String reIndexUser() {
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        UUserVOImpl vo = am.getUUser1();
+        vo.executeQuery();
+        UUserVORowImpl row;
+        RowSetIterator it = vo.createRowSetIterator(null);
+        while (it.hasNext()) {
+            row = (UUserVORowImpl) it.next();
+            row.updateSearchIndex();
+        }
+        it.closeRowSetIterator();
+        am.getDBTransaction().commit();
+        return "ok";
+    }
+
 
     /**
      * 根据关键词查询
      * 关键词：工作名，简介，技能，地点，分类
      * 只搜索：STATUS = 'posted' AND JOB_VISIBILITY = 'public'
-     * 
+     *
      * http://localhost:7101/lance/res/search/postJob/keyword/{keyword}
      *
      * http://localhost:7101/lance/res/search/postJob/keyword/说明
@@ -216,17 +229,17 @@ public class SearchResource extends BaseRestResource {
     @GET
     @Path("postJob/keyword/{keyword}")
     public JSONObject searchJobs(@PathParam("keyword") String keyword) throws JSONException {
-        
+
         if (StringUtils.isBlank(keyword) || keyword.length() < 2) {
-            JSONObject res=new JSONObject();
+            JSONObject res = new JSONObject();
             res.put("msg", "输入2个字符后开始查询");
             return res;
         }
-        
+
         LanceRestAMImpl am = LUtil.findLanceAM();
         PostJobsVOImpl vo = am.getPostJobs1();
-        
-        StringBuffer sb=new StringBuffer(" STATUS = 'posted' AND JOB_VISIBILITY = 'public' ");
+
+        StringBuffer sb = new StringBuffer(" STATUS = 'posted' AND JOB_VISIBILITY = 'public' ");
         String[] sps = splitKeyword(keyword); //根据空格分隔
         for (String sp : sps) {
             sb.append(" AND upper(INDEX_ALL_META_INFO) like '%" + sp.toUpperCase() + "%'");
@@ -235,7 +248,7 @@ public class SearchResource extends BaseRestResource {
         vo.executeQuery();
         System.out.println(vo.getQuery());
         vo.setWhereClause(null);
-        
+
         return this.packViewObject(vo, null, null, POST_JOB_SEARCH_FIELD);
     }
 
@@ -253,7 +266,7 @@ public class SearchResource extends BaseRestResource {
     @Path("lancer/nameStartWith/{keyword}")
     public JSONObject searchLancer4Name(@PathParam("keyword") String keyword) throws JSONException {
         if (keyword.length() < 2) {
-            JSONObject res=new JSONObject();
+            JSONObject res = new JSONObject();
             res.put("msg", "输入2个字符后开始查询");
             return res;
         }
@@ -408,7 +421,7 @@ public class SearchResource extends BaseRestResource {
         }
 
         LanceRestAMImpl am = LUtil.findLanceAM();
-        UserSearchVVOImpl vo = am.getUserSearchV1();
+        UUserVOImpl vo = am.getUUser1();
 
         //查询算法
         StringBuilder sb = new StringBuilder();
@@ -418,7 +431,7 @@ public class SearchResource extends BaseRestResource {
 
         String[] sps = this.splitKeyword(keyword); //根据空格分隔
         for (String sp : sps) {
-            sb.append(" AND upper(INDEX_FIELD) like '%" + sp.toUpperCase() + "%'");
+            sb.append(" AND upper(INDEX_ALL) like '%" + sp.toUpperCase() + "%'");
         }
         vo.setWhereClause(sb.toString());
         vo.executeQuery();
@@ -434,8 +447,14 @@ public class SearchResource extends BaseRestResource {
      * @return
      */
     public String[] splitKeyword(String keyword) {
-        keyword = keyword.trim().replaceAll(",", " ").replaceAll("，", " ");
+        keyword = keyword.trim().replaceAll(",", " ").replaceAll("，", " ").replaceAll("\\+", " ");
         return keyword.split(" ");
+    }
+
+    public static void main(String[] args) {
+        String a = "aa,bb，cc+dd";
+        a = a.trim().replaceAll(",", " ").replaceAll("，", " ").replaceAll("\\+", " ");
+        System.out.println(a);
     }
 
 }

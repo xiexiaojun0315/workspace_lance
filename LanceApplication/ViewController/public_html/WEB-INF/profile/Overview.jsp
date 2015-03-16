@@ -51,7 +51,7 @@
                     <div class="information">
                         <div class="mod ov">
                             <a href="#" class="title">自我介绍</a>
-                            <a href="editBasic.htm" class="btn-edit f-right"><span>编辑</span></a>
+                            <a href="EditBasic" class="btn-edit f-right"><span>编辑</span></a>
                             <p>
                                 Minimum Hourly Rate <span class="num">$135</span>&nbsp;&nbsp;&nbsp;&nbsp;|&nbsp;&nbsp; 
                                 <span class="icon-video">Add Video</span><br />
@@ -73,7 +73,7 @@
 
                         <div class="mod">
                             <a href="#" class="title">技能</a>
-                            <a href="editSkill.htm" class="btn-edit f-right"><span>编辑</span></a>
+                            <a href="EditSkill" class="btn-edit f-right"><span>编辑</span></a>
                             <div class="f-right bold">Tested</div>
                             <p class="no-add">
                                 None

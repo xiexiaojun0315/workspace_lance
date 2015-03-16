@@ -35,6 +35,7 @@ import oracle.jbo.server.ViewObjectImpl;
 
 import org.apache.commons.lang.StringUtils;
 
+import org.codehaus.jettison.json.JSONArray;
 import org.codehaus.jettison.json.JSONException;
 import org.codehaus.jettison.json.JSONObject;
 
@@ -155,15 +156,15 @@ public class ContractResource extends BaseRestResource {
     }
 
     public ContractVORowImpl findContractById(String id, ViewObjectImpl vo, LanceRestAMImpl am) {
-        if(vo.getCurrentRow()!=null && vo.getCurrentRow().getAttribute("Uuid").equals(id)){
-            return (ContractVORowImpl)vo.getCurrentRow();
+        if (vo.getCurrentRow() != null && vo.getCurrentRow().getAttribute("Uuid").equals(id)) {
+            return (ContractVORowImpl) vo.getCurrentRow();
         }
-        
+
         vo.setApplyViewCriteriaName("FindByUuidVC");
         vo.ensureVariableManager().setVariableValue("pUuid", id);
         vo.executeQuery();
         vo.removeApplyViewCriteriaName("FindByUuidVC");
-        return (ContractVORowImpl)vo.first();
+        return (ContractVORowImpl) vo.first();
     }
 
     public String returnParamAfterCreate(Row row) {
@@ -193,10 +194,28 @@ public class ContractResource extends BaseRestResource {
             return res;
         }
 
-        JSONObject res=new JSONObject();
-        JSONObject contract=RestUtil.convertRowToJsonObject(vo, row, this.ATTR_GET);
-        if("fixed".equals(row.getPostform())){}
+        JSONObject res = new JSONObject();
+        JSONObject contract = RestUtil.convertRowToJsonObject(vo, row, this.ATTR_GET);
+        if ("fixed".equals(row.getPostform())) {
+        }
         return res;
+    }
+
+    /**
+     * 获取当前用户的所有合同
+     * @param contractId
+     * @return
+     * @throws JSONException
+     */
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    public JSONArray getAllContracts() throws JSONException {
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        ViewObjectImpl vo = getContractFromAM(am);
+        vo.setApplyViewCriteriaName("FindByCreatorVC");
+        vo.executeQuery();
+        vo.removeApplyViewCriteriaName("FindByCreatorVC");
+        return RestUtil.convertVoToJsonArray(vo, this.ATTR_GET);
     }
 
 
@@ -472,59 +491,52 @@ public class ContractResource extends BaseRestResource {
     /**
      * 改变合同状态
      *
-     * @param newStatus waiting,marching,end,holding
+     * @param opt waiting,marching,end,holding
      * @return
      * @throws JSONException
      */
     @POST
-    @Path("{contractId}/status/{newStatus}")
+    @Path("audit/{contractId}/{opt}")
     @Consumes(MediaType.APPLICATION_JSON)
-    public String changeContractStatus(@PathParam("contractId") String contractId,
-                                       @PathParam("newStatus") String newStatus, JSONObject json) throws JSONException {
+    public String changeContractStatus(@PathParam("contractId") String contractId, @PathParam("newStatus") String opt,
+                                       JSONObject json) throws JSONException {
         ContractVORowImpl row = findContractRowById(contractId);
-        if (ConstantUtil.CONTRACT_OPT_SEND_AUDIT.equals(newStatus)) { //甲方发给乙方确认合同
-            if (ConstantUtil.CONTRACT_STATUS_DRAFT.equals(row.getProcessStatus()) ||
-                ConstantUtil.CONTRACT_STATUS_REJECTED.equals(row.getProcessStatus())) {
-                return sendAuditContract(contractId, json);
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        String currentUser = this.findCurrentUserName();
+        String lastStatus = row.getProcessStatus();
+        if ("draft".equals(lastStatus) && "sendLancerAudit".equals(opt) && currentUser.equals(row.getCreateBy())) {
+            this.copyJsonObjectToRow(json, am.getContractVO1(), row, this.CONTRACT_ATTR_UPDATE_ON_CREATE);
+            row.setProcessStatus("toLancerAudit");
+            row.setProcessStatusDesc("等待乙方确认");
+            logContract("甲方发送合同给乙方确认");
+            am.getDBTransaction().commit();
+        } else if ("toLancerAudit".equals(lastStatus) && "audit".equals(opt) &&
+                   currentUser.equals(row.getLancerName())) {
+            String innerStatus, innerStatusDesc;
+            if (row.getDateStart() != null && row.getDateStart().getValue().getTime() <= System.currentTimeMillis()) {
+                //等待指定时间开始
+                innerStatus = ConstantUtil.CONTRACT_STATUS_WAITING;
+                innerStatusDesc = "乙方确认合同，项目开始";
             } else {
-                return "状态不允许此操作";
+                //项目已经开始
+                innerStatus = ConstantUtil.CONTRACT_STATUS_ON_PROCESS;
+                innerStatusDesc = "乙方确认合同，等待项目开始";
             }
-        } else if (ConstantUtil.CONTRACT_OPT_AUDIT.equals(newStatus)) { //乙方确认合同
-            if (ConstantUtil.CONTRACT_STATUS_TO_AUDIT.equals(row.getProcessStatus())) {
-                if (row.getDateStart() != null &&
-                    row.getDateStart().getValue().getTime() <= System.currentTimeMillis()) {
-                    //等待指定时间开始
-                    row.setProcessStatus(ConstantUtil.CONTRACT_STATUS_WAITING);
-                    row.setProcessStatusDesc("等待项目开始");
-                } else {
-                    //项目已经开始
-                    row.setProcessStatus(ConstantUtil.CONTRACT_STATUS_ON_PROCESS);
-                    row.setProcessStatusDesc("项目进行中");
-                }
-                //日志
-                logContract("甲方发送合同给乙方确认");
-                LUtil.findLanceAM().getDBTransaction().commit();
-                return "ok";
-            } else {
-                return "状态不允许此操作";
+            row.setProcessStatus(innerStatus);
+            row.setProcessStatusDesc(innerStatusDesc);
+            //日志
+            logContract(innerStatusDesc);
+            //修改里程碑状态
+            if (row.getPostform().equals("fixed")) {
+                new MilestoneResource().updateProcessStatusFn(contractId, null, am, innerStatus, "等待项目开始");
             }
-        } else if (ConstantUtil.CONTRACT_OPT_REJECT.equals(newStatus)) { //乙方拒绝合同
-            if (ConstantUtil.CONTRACT_STATUS_TO_AUDIT.equals(row.getProcessStatus())) {
-                row.setProcessStatus(ConstantUtil.CONTRACT_STATUS_CANCEL);
-                logContract("乙方拒绝合同");
-                LUtil.findLanceAM().getDBTransaction().commit();
-                return "ok";
-            } else {
-                return "状态不允许此操作";
-            }
+            am.getDBTransaction().commit();
+        }else if ("toLancerAudit".equals(lastStatus) && "reject".equals(opt) &&
+                   currentUser.equals(row.getLancerName())){
+                row.setProcessStatus("draft");
+                row.setProcessStatusDesc("乙方退回合同："+json.getString("ProcessStatusDesc"));
+                am.getDBTransaction().commit();
         }
-        //        else if (ConstantUtil.CONTRACT_OPT_CLIENT_CANCEL.equals(newStatus)){ //甲方申请取消合同
-        //            if(!ConstantUtil.CONTRACT_STATUS_DONE.equals(newStatus)){
-        //
-        //            } else {
-        //                return "状态不允许此操作";
-        //            }
-        //        }
 
         return "error";
     }
