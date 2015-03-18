@@ -1,0 +1,43 @@
+﻿.lan-login-container
+{
+    border-left:solid 1px #ccc;
+    margin-top:30px;
+    padding-left:50px;
+    padding-bottom:20px;
+    
+}
+.lan-login-container .lan-sep
+{
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: dotted 1px #ccc;
+}
+
+/* 注册 */
+.lan-frm-regist
+{
+    width:60%;   
+}
+.lan-frm-regist .lan-frm-term
+{
+    font-size:11px;
+    color:#929292;
+}
+.lan-frm-regist .btn-primary
+{
+    width:120px;
+}
+.lan-intro
+{
+    margin:176px 40px 0 78px;
+}
+.lan-intro .page-header
+{
+    margin-top:0px;
+}
+.lan-reg-term
+{
+    border-top:solid 1px #ccc;
+    padding-top:2px;
+    margin:10px 0;
+}

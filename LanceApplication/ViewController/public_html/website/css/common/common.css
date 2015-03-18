@@ -1,0 +1,177 @@
+﻿*{font-size: 12px;}
+/* 简易头部 */
+.lan-header
+{
+    height:70px;
+    border-bottom:solid 1px #939393;
+    line-height:70px;
+}
+
+.lan-header-main
+{
+    background-color:#f7f7f8;
+    height:50px;
+    line-height:44px;
+    border-top:solid 2px #50852C;
+}
+.lan-header-main .breadcrumb
+{
+    padding:0px;
+    position:relative;
+    margin-bottom: 0px;
+}
+.lan-header-main .label-danger
+{
+    padding:1px 4px;
+    font-weight:normal;
+}
+.lan-header-main .logo
+{
+    margin-top:8px;
+}
+
+.lan-main-menu
+{
+    background-color:#e0e0e0;
+    height: 50px;
+    width: 100%;
+}
+.lan-main-menu li
+{
+    min-width: 100px;
+    text-align: center;
+}
+.lan-main-menu .dropdown-menu li
+{
+    text-align: left;
+}
+.lan-main-menu li a
+{
+    color:#333;
+    font-size:14px;
+}
+.lan-main-menu li.active
+{
+    background: #67ab3a;
+}
+.lan-main-menu li.active a,.lan-main-menu li.active:hover a
+{
+    color:#ffffff;
+    font-weight: bold;
+    background: #67ab3a;
+}
+.lan-main-menu li:hover a
+{
+    color:#333;
+}
+.lan-main-menu .search
+{
+    width:400px;
+    line-height: 50px;
+}
+.lan-main-menu .search .input-group
+{
+    margin-top: 12px;
+    width:190px;
+    float:left;
+    margin-right: 5px;
+}
+.lan-main-menu .btn-small
+{
+    padding: 4px 7px;
+    font-size: 12px;
+}
+.lan-main-menu .btn-middle
+{
+    padding: 4px 15px;
+    font-size: 12px;
+    margin-left: 55px;
+}
+
+/* footer */
+.lan-footer
+{
+    background-color:#e6e6e6;
+    padding:30px 0 20px 0;
+    overflow:hidden;
+    clear:both;
+    margin-top:136px;
+}
+.lan-footer dl
+{
+    margin-right:55px;
+}
+.lan-footer dl dt
+{
+    margin-bottom:10px;
+}
+.lan-footer .copyright
+{
+    font-size: 11px;
+    color: #999;
+    clear: both;
+}
+/* 字体颜色 */
+.lan-font-green{color:#50852C;}
+.lan-font-black{color:#333333;}
+.lan-font-white{color:#ffffff;}
+
+/* 字体大小 */
+.lan-font-12{font-size:12px;}
+.lan-font-16{font-size:16px;}
+.lan-font-18{font-size:18px;}
+.lan-font-20{font-size:20px;}
+.lan-font-22{font-size:22px;}
+
+.lan-font-bold{font-weight: bold;}
+
+.lan-sprite-icon
+{
+    background:url(../../image/icon/sprite_icons.png) no-repeat 0 0;
+    display:inline-block;
+}
+.lan-icon-admin
+{
+    width:19px;
+    height:19px;
+    background-position:-5px -5px;
+    vertical-align:middle;
+}
+
+/* 菜单 */
+.lan-menu
+{
+    background-color:#e0e0e0;
+    height:40px;
+}
+
+.lan-nav li
+{
+    border-right:solid 1px #fff;
+}
+.lan-nav li a
+{
+    color:#333;
+    padding:10px 40px;
+}
+
+.lan-nav > li:hover > a,
+.lan-nav > li.active > a,
+.lan-nav > li > a:focus,
+.lan-nav > li:focus > a:focus
+{
+    color:#fff;
+    background:url(../../image/common/bg_menu.png) repeat-x 0 0;
+}
+
+.btn-green
+{
+    color: #fff;
+    background-color: #62a236;
+    border:none;
+}
+.btn-green:hover
+{
+    background-color:#004486;
+    color:#fff;
+}

@@ -1,0 +1,68 @@
+﻿.lan-menu .lan-group
+{
+    margin-top:5px;
+}
+.lan-menu .lan-but-m6
+{
+    margin-top:6px;
+}
+.lan-menu .lan-sep
+{
+    width:20px;
+    text-align:left;
+    margin-top:7px;
+}
+.lan-menu .lan-group .input-group
+{
+    width:100%;
+}
+
+.lan-main-container
+{
+    margin-top:20px;
+}
+
+.lan-main-left
+{
+	
+}
+.lan-main-left .nav li.active a
+{
+	background-color: #67ab3a;
+	color:#fff;
+}
+.lan-main-right
+{
+	border-left: 1px solid #ccc;
+}
+.lan-main-right .alert-info
+{
+	position:relative;
+}
+.lan-main-right .btn-edit
+{
+	padding:2px 8px;
+	position:absolute;
+	right:10px;
+	bottom:10px;
+	font-size:12px;
+}
+.lan-main-right .sep
+{
+	border-top:dotted 1px #ccc;
+	margin-top:20px;
+	height:20px;
+}
+.lan-main-right .well .mod
+{
+	position: relative;
+}
+.lan-main-right .well .mod .btn-edit
+{
+	top:0px;
+	padding:2px 8px;
+	position:absolute;
+	right:-9px;
+	bottom:auto;
+	font-size:12px;
+}
