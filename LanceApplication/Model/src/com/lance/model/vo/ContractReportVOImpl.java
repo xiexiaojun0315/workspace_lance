@@ -30,5 +30,37 @@ public class ContractReportVOImpl extends BaseViewObjectImpl {
     public void setpUuid(String value) {
         ensureVariableManager().setVariableValue("pUuid", value);
     }
+
+    /**
+     * Returns the variable value for constract_Id.
+     * @return variable value for constract_Id
+     */
+    public String getconstract_Id() {
+        return (String) ensureVariableManager().getVariableValue("constract_Id");
+    }
+
+    /**
+     * Sets <code>value</code> for variable constract_Id.
+     * @param value value to bind as constract_Id
+     */
+    public void setconstract_Id(String value) {
+        ensureVariableManager().setVariableValue("constract_Id", value);
+    }
+
+    /**
+     * Returns the variable value for pStatus.
+     * @return variable value for pStatus
+     */
+    public String getpStatus() {
+        return (String) ensureVariableManager().getVariableValue("pStatus");
+    }
+
+    /**
+     * Sets <code>value</code> for variable pStatus.
+     * @param value value to bind as pStatus
+     */
+    public void setpStatus(String value) {
+        ensureVariableManager().setVariableValue("pStatus", value);
+    }
 }
 

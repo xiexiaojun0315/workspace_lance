@@ -1,5 +1,7 @@
 package com.lance.model.vo;
 
+import com.lance.model.eo.ContractReportEOImpl;
+
 import com.zngh.platform.front.core.model.BaseEntityImpl;
 import com.zngh.platform.front.core.model.BaseViewRowImpl;
 
@@ -24,16 +26,22 @@ public class ContractReportVORowImpl extends BaseViewRowImpl {
      * AttributesEnum: generated enum for identifying attributes and accessors. DO NOT MODIFY.
      */
     public enum AttributesEnum {
-        Uuid,
-        ProjectId,
         ContractId,
+        CreateBy,
+        CreateOn,
         DateRecord,
+        ModifyBy,
+        ModifyOn,
+        PayBillNumber,
+        ProjectId,
+        Status,
+        StatusName,
+        StatusRemark,
+        Uuid,
+        Version,
         WorkContent,
         WorkHours,
-        WorkRemark,
-        Status,
-        StatusRemark,
-        PayBillNumber;
+        WorkRemark;
         static AttributesEnum[] vals = null;
         ;
         private static final int firstIndex = 0;
@@ -59,16 +67,22 @@ public class ContractReportVORowImpl extends BaseViewRowImpl {
     }
 
 
-    public static final int UUID = AttributesEnum.Uuid.index();
-    public static final int PROJECTID = AttributesEnum.ProjectId.index();
     public static final int CONTRACTID = AttributesEnum.ContractId.index();
+    public static final int CREATEBY = AttributesEnum.CreateBy.index();
+    public static final int CREATEON = AttributesEnum.CreateOn.index();
     public static final int DATERECORD = AttributesEnum.DateRecord.index();
+    public static final int MODIFYBY = AttributesEnum.ModifyBy.index();
+    public static final int MODIFYON = AttributesEnum.ModifyOn.index();
+    public static final int PAYBILLNUMBER = AttributesEnum.PayBillNumber.index();
+    public static final int PROJECTID = AttributesEnum.ProjectId.index();
+    public static final int STATUS = AttributesEnum.Status.index();
+    public static final int STATUSNAME = AttributesEnum.StatusName.index();
+    public static final int STATUSREMARK = AttributesEnum.StatusRemark.index();
+    public static final int UUID = AttributesEnum.Uuid.index();
+    public static final int VERSION = AttributesEnum.Version.index();
     public static final int WORKCONTENT = AttributesEnum.WorkContent.index();
     public static final int WORKHOURS = AttributesEnum.WorkHours.index();
     public static final int WORKREMARK = AttributesEnum.WorkRemark.index();
-    public static final int STATUS = AttributesEnum.Status.index();
-    public static final int STATUSREMARK = AttributesEnum.StatusRemark.index();
-    public static final int PAYBILLNUMBER = AttributesEnum.PayBillNumber.index();
 
     /**
      * This is the default constructor (do not remove).
@@ -80,8 +94,8 @@ public class ContractReportVORowImpl extends BaseViewRowImpl {
      * Gets ContractReportEO entity object.
      * @return the ContractReportEO
      */
-    public BaseEntityImpl getContractReportEO() {
-        return (BaseEntityImpl) getEntity(ENTITY_CONTRACTREPORTEO);
+    public ContractReportEOImpl getContractReportEO() {
+        return (ContractReportEOImpl) getEntity(ENTITY_CONTRACTREPORTEO);
     }
 
     /**
@@ -98,6 +112,22 @@ public class ContractReportVORowImpl extends BaseViewRowImpl {
      */
     public void setUuid(String value) {
         setAttributeInternal(UUID, value);
+    }
+
+    /**
+     * Gets the attribute value for VERSION using the alias name Version.
+     * @return the VERSION
+     */
+    public BigDecimal getVersion() {
+        return (BigDecimal) getAttributeInternal(VERSION);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for VERSION using the alias name Version.
+     * @param value value to set the VERSION
+     */
+    public void setVersion(BigDecimal value) {
+        setAttributeInternal(VERSION, value);
     }
 
     /**
@@ -133,6 +163,24 @@ public class ContractReportVORowImpl extends BaseViewRowImpl {
     }
 
     /**
+     * Gets the attribute value for CREATE_BY using the alias name CreateBy.
+     * @return the CREATE_BY
+     */
+    public String getCreateBy() {
+        return (String) getAttributeInternal(CREATEBY);
+    }
+
+
+    /**
+     * Gets the attribute value for CREATE_ON using the alias name CreateOn.
+     * @return the CREATE_ON
+     */
+    public Timestamp getCreateOn() {
+        return (Timestamp) getAttributeInternal(CREATEON);
+    }
+
+
+    /**
      * Gets the attribute value for DATE_RECORD using the alias name DateRecord.
      * @return the DATE_RECORD
      */
@@ -147,6 +195,24 @@ public class ContractReportVORowImpl extends BaseViewRowImpl {
     public void setDateRecord(Timestamp value) {
         setAttributeInternal(DATERECORD, value);
     }
+
+    /**
+     * Gets the attribute value for MODIFY_BY using the alias name ModifyBy.
+     * @return the MODIFY_BY
+     */
+    public String getModifyBy() {
+        return (String) getAttributeInternal(MODIFYBY);
+    }
+
+
+    /**
+     * Gets the attribute value for MODIFY_ON using the alias name ModifyOn.
+     * @return the MODIFY_ON
+     */
+    public Timestamp getModifyOn() {
+        return (Timestamp) getAttributeInternal(MODIFYON);
+    }
+
 
     /**
      * Gets the attribute value for WORK_CONTENT using the alias name WorkContent.
@@ -210,6 +276,22 @@ public class ContractReportVORowImpl extends BaseViewRowImpl {
      */
     public void setStatus(String value) {
         setAttributeInternal(STATUS, value);
+    }
+
+    /**
+     * Gets the attribute value for STATUS_NAME using the alias name StatusName.
+     * @return the STATUS_NAME
+     */
+    public String getStatusName() {
+        return (String) getAttributeInternal(STATUSNAME);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for STATUS_NAME using the alias name StatusName.
+     * @param value value to set the STATUS_NAME
+     */
+    public void setStatusName(String value) {
+        setAttributeInternal(STATUSNAME, value);
     }
 
     /**

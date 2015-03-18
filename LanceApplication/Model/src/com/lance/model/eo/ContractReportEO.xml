@@ -10,8 +10,12 @@
   DBObjectName="CONTRACT_REPORT"
   AliasName="ContractReportEO"
   BindingStyle="OracleName"
-  RowClass="com.zngh.platform.front.core.model.BaseEntityImpl"
+  RowClass="com.lance.model.eo.ContractReportEOImpl"
   CollClass="com.zngh.platform.front.core.model.BaseEntityCache">
+  <DesignTime>
+    <Attr Name="_codeGenFlag2" Value="Init|Access"/>
+    <Attr Name="_isCodegen" Value="true"/>
+  </DesignTime>
   <Attribute
     Name="Uuid"
     IsNotNull="true"
@@ -127,7 +131,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="CONTRACT_REPORT">
+    TableName="CONTRACT_REPORT"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -138,7 +144,9 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="CONTRACT_REPORT"/>
+    TableName="CONTRACT_REPORT"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
   <Attribute
     Name="ModifyBy"
     Precision="60"
@@ -146,7 +154,8 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="CONTRACT_REPORT">
+    TableName="CONTRACT_REPORT"
+    HistoryColumn="UserHistory">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -157,7 +166,8 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="CONTRACT_REPORT"/>
+    TableName="CONTRACT_REPORT"
+    HistoryColumn="DateHistory"/>
   <Attribute
     Name="Version"
     ColumnName="VERSION"
@@ -165,6 +175,18 @@
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
     TableName="CONTRACT_REPORT"/>
+  <Attribute
+    Name="StatusName"
+    Precision="20"
+    ColumnName="STATUS_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT_REPORT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="Contract"
     Association="com.lance.model.as.ContractReportContractFk1AS"
@@ -209,17 +231,6 @@
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.lance.model.eo.ContractReportEO.PayBillNumber"/>
-    </AttrArray>
-  </Key>
-  <Key
-    Name="ProjectDailyReportFk1">
-    <DesignTime>
-      <Attr Name="_referencedKey" Value="DAILY_CALENDAR_PK"/>
-      <Attr Name="_isForeign" Value="true"/>
-      <Attr Name="_DBObjectName" Value="PROJECT_DAILY_REPORT_FK1"/>
-    </DesignTime>
-    <AttrArray Name="Attributes">
-      <Item Value="com.lance.model.eo.ContractReportEO.DateRecord"/>
     </AttrArray>
   </Key>
 </Entity>

@@ -105,6 +105,27 @@
       </properties>
     </column>
     <column>
+      <name>STATUS_NAME</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">20</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">状态名称</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
       <name>DATE_RECORD</name>
       <dataTypeUsage>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -574,6 +595,10 @@
     </index>
   </indexes>
   <properties>
+    <entry>
+      <key>Comment</key>
+      <value class="java.lang.String">工作日志</value>
+    </entry>
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_CONNECTION</key>
       <value class="java.lang.String">lance</value>

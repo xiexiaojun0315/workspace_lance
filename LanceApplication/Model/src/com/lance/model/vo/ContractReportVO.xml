@@ -23,9 +23,87 @@
     Name="pUuid"
     Kind="viewcriteria"
     Type="java.lang.String"/>
+  <Variable
+    Name="constract_Id"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="pStatus"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <EntityUsage
     Name="ContractReportEO"
     Entity="com.lance.model.eo.ContractReportEO"/>
+  <ViewAttribute
+    Name="ContractId"
+    PrecisionRule="true"
+    EntityAttrName="ContractId"
+    EntityUsage="ContractReportEO"
+    AliasName="CONTRACT_ID"/>
+  <ViewAttribute
+    Name="CreateBy"
+    PrecisionRule="true"
+    EntityAttrName="CreateBy"
+    EntityUsage="ContractReportEO"
+    AliasName="CREATE_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="CreateOn"
+    PrecisionRule="true"
+    EntityAttrName="CreateOn"
+    EntityUsage="ContractReportEO"
+    AliasName="CREATE_ON"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="DateRecord"
+    PrecisionRule="true"
+    EntityAttrName="DateRecord"
+    EntityUsage="ContractReportEO"
+    AliasName="DATE_RECORD"/>
+  <ViewAttribute
+    Name="ModifyBy"
+    PrecisionRule="true"
+    EntityAttrName="ModifyBy"
+    EntityUsage="ContractReportEO"
+    AliasName="MODIFY_BY"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="ModifyOn"
+    PrecisionRule="true"
+    EntityAttrName="ModifyOn"
+    EntityUsage="ContractReportEO"
+    AliasName="MODIFY_ON"
+    IsUpdateable="false"/>
+  <ViewAttribute
+    Name="PayBillNumber"
+    PrecisionRule="true"
+    EntityAttrName="PayBillNumber"
+    EntityUsage="ContractReportEO"
+    AliasName="PAY_BILL_NUMBER"/>
+  <ViewAttribute
+    Name="ProjectId"
+    PrecisionRule="true"
+    EntityAttrName="ProjectId"
+    EntityUsage="ContractReportEO"
+    AliasName="PROJECT_ID"/>
+  <ViewAttribute
+    Name="Status"
+    PrecisionRule="true"
+    EntityAttrName="Status"
+    EntityUsage="ContractReportEO"
+    AliasName="STATUS"/>
+  <ViewAttribute
+    Name="StatusName"
+    PrecisionRule="true"
+    EntityAttrName="StatusName"
+    EntityUsage="ContractReportEO"
+    AliasName="STATUS_NAME"/>
+  <ViewAttribute
+    Name="StatusRemark"
+    PrecisionRule="true"
+    EntityAttrName="StatusRemark"
+    EntityUsage="ContractReportEO"
+    AliasName="STATUS_REMARK"/>
   <ViewAttribute
     Name="Uuid"
     IsNotNull="true"
@@ -34,23 +112,11 @@
     EntityUsage="ContractReportEO"
     AliasName="UUID"/>
   <ViewAttribute
-    Name="ProjectId"
+    Name="Version"
     PrecisionRule="true"
-    EntityAttrName="ProjectId"
+    EntityAttrName="Version"
     EntityUsage="ContractReportEO"
-    AliasName="PROJECT_ID"/>
-  <ViewAttribute
-    Name="ContractId"
-    PrecisionRule="true"
-    EntityAttrName="ContractId"
-    EntityUsage="ContractReportEO"
-    AliasName="CONTRACT_ID"/>
-  <ViewAttribute
-    Name="DateRecord"
-    PrecisionRule="true"
-    EntityAttrName="DateRecord"
-    EntityUsage="ContractReportEO"
-    AliasName="DATE_RECORD"/>
+    AliasName="VERSION"/>
   <ViewAttribute
     Name="WorkContent"
     IsQueriable="false"
@@ -70,25 +136,6 @@
     EntityAttrName="WorkRemark"
     EntityUsage="ContractReportEO"
     AliasName="WORK_REMARK"/>
-  <ViewAttribute
-    Name="Status"
-    PrecisionRule="true"
-    EntityAttrName="Status"
-    EntityUsage="ContractReportEO"
-    AliasName="STATUS"
-    DefaultValue="draft"/>
-  <ViewAttribute
-    Name="StatusRemark"
-    PrecisionRule="true"
-    EntityAttrName="StatusRemark"
-    EntityUsage="ContractReportEO"
-    AliasName="STATUS_REMARK"/>
-  <ViewAttribute
-    Name="PayBillNumber"
-    PrecisionRule="true"
-    EntityAttrName="PayBillNumber"
-    EntityUsage="ContractReportEO"
-    AliasName="PAY_BILL_NUMBER"/>
   <ViewCriteria
     Name="FindByUuidVC"
     ViewObjectName="com.lance.model.vo.ContractReportVO"
@@ -112,18 +159,29 @@
           Value="Basic"/>
       </CustomProperties>
     </Properties>
-    <ViewCriteriaRow
-      Name="ContractReportVOCriteria_row_0"
-      UpperColumns="1">
-      <ViewCriteriaItem
-        Name="Uuid"
-        ViewAttribute="Uuid"
-        Operator="="
-        Conjunction="AND"
-        Value=":pUuid"
-        UpperColumns="0"
-        IsBindVarValue="true"
-        Required="Optional"/>
-    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewCriteria
+    Name="findByContractIdVC"
+    ViewObjectName="com.lance.model.vo.ContractReportVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
   </ViewCriteria>
 </ViewObject>

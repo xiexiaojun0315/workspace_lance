@@ -1587,7 +1587,7 @@
   <properties>
     <entry>
       <key>Comment</key>
-      <value class="java.lang.String">项目人员评价</value>
+      <value class="java.lang.String">合同</value>
     </entry>
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_CONNECTION</key>

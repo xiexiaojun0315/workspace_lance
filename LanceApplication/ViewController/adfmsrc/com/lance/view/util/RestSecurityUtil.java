@@ -41,4 +41,8 @@ public class RestSecurityUtil {
         }
         return false;
     }
+    
+    public static String getCurrentUserName(){
+      return ADFContext.getCurrent().getSecurityContext().getUserName();    
+    }
 }
