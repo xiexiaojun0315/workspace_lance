@@ -1,4 +1,16 @@
 var BASEURL = "/lance/res/";
+//var User = {"UserName" : "muhongdi"};
+var User={  "UserName":"muhongdi",
+            "Email":"muhongdi@aa.com",
+            "Country":"44",
+            "TrueName":"牟宏迪",
+            "WebsiteUrl":"www.mywebsit.com",
+            "ImNumberA":"149997704",
+            "ImNumberB":"muhongdi@xxx.com",
+            "ImTypeA":"QQ",
+            "ImTypeB":"MSN",
+            "roles":["authenticated-role","anonymous-role"]
+        };
 
 function netWorkError(goPath){
     alert("网络错误，请稍后再试。");

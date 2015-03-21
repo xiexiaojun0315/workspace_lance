@@ -1,4 +1,4 @@
-﻿.lan-menu .lan-group
+.lan-menu .lan-group
 {
     margin-top:5px;
 }
@@ -21,3 +21,67 @@
 {
     margin-top:20px;
 }
+
+.lan-main-left
+{
+	
+}
+.lan-main-left .nav li.active a
+{
+	background-color: #67ab3a;
+	color:#fff;
+}
+.lan-main-right
+{
+	border-left: 1px solid #ccc;
+}
+.lan-main-right .alert-info
+{
+	position:relative;
+}
+.lan-main-right .btn-edit
+{
+	padding:2px 8px;
+	position:absolute;
+	right:10px;
+	bottom:10px;
+	font-size:12px;
+}
+.lan-main-right .sep
+{
+	border-top:dotted 1px #ccc;
+	margin-top:20px;
+	height:20px;
+}
+.lan-main-right .well .mod
+{
+	position: relative;
+}
+.lan-main-right .well .mod .btn-edit
+{
+	top:0px;
+	padding:2px 8px;
+	position:absolute;
+	right:-9px;
+	bottom:auto;
+	font-size:12px;
+}
+.lan-main-right .well .mod div.lan-font-12{
+    padding-top:10px;
+}
+.lan-main-right .well .mod .uskill .label{
+    margin:4px 7px 0 0;    
+}
+.lan-main-right .well .mod .no-add{
+    text-align:center;
+    background:#ddd;
+}
+.lan-main-right .well .mod .no-add:hover{
+    border:solid 1px #fff;
+}
+
+.lan-main-right .basic-form{
+    width:50%;
+}
+.lan-main-right .basic-form .sml-inp{width:60%;}
+

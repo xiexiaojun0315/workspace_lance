@@ -52,3 +52,5 @@ $.fn.lanCheck = function (rule) {
     return checkFun();
 
 };
+
+
