@@ -1,7 +1,6 @@
 package com.lance.model.vo;
 
 import com.lance.model.user.vo.UUserVOImpl;
-
 import com.lance.model.util.LocationUtil;
 
 import com.zngh.platform.front.core.model.BaseEntityImpl;
@@ -12,7 +11,6 @@ import java.math.BigDecimal;
 import java.sql.Timestamp;
 
 import oracle.jbo.Key;
-import oracle.jbo.Row;
 import oracle.jbo.RowIterator;
 import oracle.jbo.RowSet;
 import oracle.jbo.domain.ClobDomain;
@@ -862,6 +860,10 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
      * @return the CreateByName
      */
     public String getCreateByName() {
+        if (StringUtils.isBlank(this.getCreateBy())) {
+            System.err.println("无法找到PostJob的CreateBy用户：" + this.getCreateBy());
+            return null;
+        }
         return ((UUserVOImpl) this.getUUserVO1().getViewObject()).findDisplayNameByUserName(this.getCreateBy());
         //        return (String) getAttributeInternal(CREATEBYNAME);
     }

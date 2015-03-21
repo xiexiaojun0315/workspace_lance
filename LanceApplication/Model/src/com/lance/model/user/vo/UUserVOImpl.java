@@ -17,9 +17,15 @@ public class UUserVOImpl extends BaseViewObjectImpl {
     }
 
     public String findDisplayNameByUserName(String userName) {
-        UUserVORowImpl row = (UUserVORowImpl) this.findByKey(new Key(new Object[] { userName }), 1)[0];
-        System.out.println(row.getDisplayName());
-        return row.getDisplayName();
+        try {
+            UUserVORowImpl row = (UUserVORowImpl) this.findByKey(new Key(new Object[] { userName }), 1)[0];
+            System.out.println(row.getDisplayName());
+            return row.getDisplayName();
+        } catch (Exception e) {
+            System.err.println("找不到用户名");
+            e.printStackTrace();
+        }
+        return null;
     }
 
     /**
