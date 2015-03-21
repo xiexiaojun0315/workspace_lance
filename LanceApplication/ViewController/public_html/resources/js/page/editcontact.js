@@ -3,7 +3,8 @@ $(function(){
     
 
     Lancer.profile.getContactInfo(function(data){
-        var user = data.User, loc = data.LocationList;
+        var user = data.User;
+        
         
         $("#inp_uname").val(user.TrueName);
         $("#inp_email").val(user.Email);
@@ -11,18 +12,7 @@ $(function(){
         $("#inp_contact1").val(user.ImNumberA);
         $("#inp_contact2").val(user.ImNumberB);
         $("#inp_contact3").val(user.ImNumberC);
-        
-        var locA =  null, locB = null;
-        if(loc.length > 0){
-            if(loc.length == 1){
-                locA = loc[0];
-            }else if(loc.length == 2){
-                locA = loc[0];
-                locB = loc[1];
-            }
-            //TODO
-        }
-        
+        //l
         var getCity = function(selId, proId, CurrentSelId){
             var cstr = "";
             $("#" + selId).html('<option class="tmp" selected="selected">请稍候...</option>');
@@ -50,8 +40,15 @@ $(function(){
             }
             $("#sel_province,#sel_province2").append(str);//加载省
             
+            $("#sel_province").val(user.LocationAProvince);
+            $("#sel_province2").val(user.LocationBProvince);
+            
+            getCity("sel_city", user.LocationAProvince, user.LocationACity);
+            getCity("sel_city2", user.LocationBProvince, user.LocationBCity);
+            
+            /*
             if(locA != null && locA.ProvinceId){
-                $("#sel_province").val(locA.ProvinceId);
+                $("#sel_province").val(user.LocationAProvince);
                 selCityId1 = locA.CityId ? locA.CityId : null;
                 getCity("sel_city", locA.ProvinceId, selCityId1);
             }
@@ -66,7 +63,7 @@ $(function(){
             if(locB != null && locB.DetailLoc){
                 $("#inp_detail_addr2").val(locB.DetailLoc)
             }
-            
+            */
             $("#sel_province,#sel_province2").change(function(){
                 var cid = $(this).attr("data-id"), id = $(this).val(), cstr = "";
                 if(id != -1){
@@ -125,8 +122,8 @@ $(function(){
             var con_param = {
                 "UserName" : User.UserName,
                 "DisplayName" : $("#inp_uname").val(),
-                "AddressDisplay" : $(".address_rads input:checked").val(),
-                "ContactInfo" : $(".contact_rads input:checked").val()
+                "AddressDisplay" : $(".address_rads:checked").val(),
+                "ContactInfo" : $(".contact_rads:checked").val()
             };
             if($("#inp_phone").val() != ""){
                 con_param.PhoneNumber = $("#inp_phone").val();
@@ -141,37 +138,37 @@ $(function(){
             if($("#inp_contact3").val() != ""){
                 con_param.ImNumberC = $("#inp_contact3").val();
             }
-            con_param.lancer.LocationA = {
-                "COUNTRY_ID" : $("#sel_country").val()
-            };
+            
+            con_param.LocationACountry = $("#sel_country").val();
             if($("#sel_province").val() != -1){
-                con_param.lancer.LocationA.ProvinceId = $("#sel_province").val();
+                con_param.LocationAProvince = $("#sel_province").val();
             }
             if($("#sel_city").val() != -1){
-                con_param.lancer.LocationA.CityId = $("#sel_city").val();
+                con_param.LocationACity = $("#sel_city").val();
             }
-            if($("#inp_detail_addr").val() != ""){
-                con_param.lancer.LocationA.DetailLoc = $("#inp_detail_addr").val();
-            }
-            if(lancer.LocationA.Uuid){
-                con_param.lancer.LocationA.Uuid = lancer.LocationA.Uuid;
+            if($("#inp_loc1").val() != ""){
+                con_param.LocationADetail = $("#inp_loc1").val();
             }
             
-            con_param.lancer.LocationB = {};
+            con_param.LocationBCountry = $("#sel_country2").val();
             if($("#sel_province2").val() != -1){
-                con_param.lancer.LocationB.ProvinceId = $("#sel_province2").val();
+                con_param.LocationBProvince = $("#sel_province2").val();
             }
             if($("#sel_city2").val() != -1){
-                con_param.lancer.LocationB.CityId = $("#sel_city2").val();
-            }
-            if($("#inp_detail_addr2").val() != ""){
-                con_param.lancer.LocationB.DetailLoc = $("#inp_detail_addr2").val();
-            }
-            if(lancer.LocationB.Uuid){
-                con_param.lancer.LocationB.Uuid = lancer.LocationB.Uuid;
-            }
+                con_param.LocationBCity = $("#sel_city2").val();
+            } 
+            if($("#inp_loc2").val() != ""){
+                con_param.LocationBDetail = $("#inp_loc2").val();
+            };
             
-            console.log(con_param);
+            $.ax("post", "user/update/" + User.UserName, con_param, function(cdata){
+                $.ae("保存成功!");
+                btn.button("reset");
+            }, function(){
+                netWorkError();
+                btn.button("reset");
+            }, "text");
+            
         }
     });
     
