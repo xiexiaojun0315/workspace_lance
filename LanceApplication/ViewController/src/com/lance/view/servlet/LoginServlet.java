@@ -58,6 +58,7 @@ public class LoginServlet extends HttpServlet {
             weblogic.servlet.security.ServletAuthentication.runAs(subject, request);
             System.out.println(un + " 登录成功");
 //            response.sendRedirect("/lance/pages/MyHome");
+//            new PageDirectServlet().toPage(request, response, "/lance/pages/MyHome", new JSONObject());
             response.setContentType(CONTENT_TYPE);
             PrintWriter out = response.getWriter();
             out.println("ok:/lance/pages/MyHome"); //成功，跳转页面

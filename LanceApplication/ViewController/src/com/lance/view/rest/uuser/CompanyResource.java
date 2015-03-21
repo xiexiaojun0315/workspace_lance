@@ -195,7 +195,7 @@ public class CompanyResource extends BaseRestResource {
      * 
      * POST  http://localhost:7101/lance/res/company/update/507f2cc755e84001858f0dea85ecec7d
         {
-        "Name" : "驻才网3.5",
+        "Name" : "才才网3.5",
         "EnterpriseProperty" : "2",
         "EmployeeNumberGrade" : "1"
         }
@@ -235,7 +235,7 @@ public class CompanyResource extends BaseRestResource {
      * 创建
      * POST  http://localhost:7101/lance/res/company
         {
-            "Name" : "驻才网3",
+            "Name" : "才才网3",
         "EnterpriseProperty" : "1",
         "EmployeeNumberGrade" : "3"
         }

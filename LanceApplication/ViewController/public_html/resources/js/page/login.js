@@ -35,8 +35,8 @@ $(function(){
         $.post("/lance/login", param, function(data){
             if(data.indexOf("ok") >= 0){
                 var url = data.split(":")[1];
-                alert(url);
-                //window.location.href = url;
+//                alert(url);
+                window.location.href = url;
             }else{
                 $("#inp_emil,#inp_pass").closest(".form-group").addClass("has-error");
                 $(".err-tip").html("用户名或密码错误");

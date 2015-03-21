@@ -66,7 +66,7 @@
 //                "TrueName" : "牟宏迪",
 //                "AccountType" : 1,
 //                "CompanyId" : "beb3b27ea5df4fd8b48b85d6ffbee986",
-//                "CompanyName" : "驻才网"
+//                "CompanyName" : "才才网"
 //            }
 //        }
 //
@@ -126,7 +126,7 @@
 //            "TrueName" : "牟宏迪",
 //            "AccountType" : 1,
 //            "CompanyId" : "beb3b27ea5df4fd8b48b85d6ffbee986",
-//            "CompanyName" : "驻才网"
+//            "CompanyName" : "才才网"
 //        }
 //    }
 //
@@ -183,7 +183,7 @@
 //             "TrueName" : "牟宏迪",
 //             "AccountType" : 1,
 //             "CompanyId" : "79fbae75257946e89d2a22a8d2d38031",
-//             "CompanyName" : "驻才网"
+//             "CompanyName" : "才才网"
 //         },
 //         "lancerEducations" : [
 //             {
@@ -255,7 +255,7 @@
 //            "TrueName" : "牟宏迪",
 //            "AccountType" : 1,
 //            "CompanyId" : "79fbae75257946e89d2a22a8d2d38031",
-//            "CompanyName" : "驻才网",
+//            "CompanyName" : "才才网",
 //            "LocationA" : {
 //                "Uuid" : "a643d4c3f23a4be59d79a906e237351d",
 //                "LancerId" : "muhongdi"
@@ -309,7 +309,7 @@
 //            "TrueName" : "牟宏迪",
 //            "AccountType" : 1,
 //            "CompanyId" : "79fbae75257946e89d2a22a8d2d38031",
-//            "CompanyName" : "驻才网",
+//            "CompanyName" : "才才网",
 //            "LocationA" : {
 //                "Uuid" : "a643d4c3f23a4be59d79a906e237351d",
 //                "LancerId" : "muhongdi"

@@ -55,8 +55,8 @@ import org.codehaus.jettison.json.JSONObject;
     ImTypeB,Precision:20,JavaType:java.lang.String
     ImNumberC,Precision:50,JavaType:java.lang.String
     ImTypeC,Precision:20,JavaType:java.lang.String
-    LocationA,Precision:32,JavaType:java.lang.String
-    LocationB,Precision:32,JavaType:java.lang.String
+    LocationA,Precision:32,JavaType:java.lang.String 这里有变更
+    LocationB,Precision:32,JavaType:java.lang.String 这里有变更
     Tagline,Precision:150,JavaType:java.lang.String
     HourlyRate,Precision:0,JavaType:java.math.BigDecimal Lancer提出的每小时价格，例如100
     ChargeRate,Precision:0,JavaType:java.math.BigDecimal 网站会向客户提出的价格，例如100.13

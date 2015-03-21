@@ -5,15 +5,15 @@ public class ConstantUtil {
     public ConstantUtil() {
         super();
     }
-    
+    //用于代码调试，跳过一些验证等，当发布到环境时会设为false
     public static final boolean DEBUG_MODE=true;
-    
+    //出于性能和稳定性考虑，某些场景下，是否使用VO缓存的数据
     public static final boolean USE_CACHE=false;
-    
+    //出于性能和稳定性考虑，某些场景下，是否使用VO缓存的数据
     public static final boolean EXECUTE_VO=true;
-    
+    //当前应用的根URL
     public static final String ROOT_URL="lance";
-    
+    //当前应用的REST根URL（桶URL）
     public static final String ROOT_REST_URL="lance/res";
     
     public static final String SIGN_BY_COMPANY = "company";

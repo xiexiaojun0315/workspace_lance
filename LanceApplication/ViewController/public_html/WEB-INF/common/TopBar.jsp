@@ -10,7 +10,7 @@
                         <div class="dialog-small">
                             <dl>
                                 <dd class="first">
-                                    <a href="#">我的驻才网</a>
+                                    <a href="#">我的才才网</a>
                                 </dd>
                                 <dd>
                                     <a href="#">个人信息</a>
@@ -39,7 +39,7 @@
                         <div class="dialog-small">
                             <dl>
                                 <dd>
-                                    <a href="#">联系驻才网客服</a>
+                                    <a href="#">联系才才网客服</a>
                                 </dd>
                                 <dd>
                                     <a href="#">帮助中心</a>
@@ -56,7 +56,7 @@
                     <li class="sel">
                         <span class="nav_sprite icon-home"></span>
                          
-                        <a href="/lance/pages/MyHome">我的驻才网</a>
+                        <a href="/lance/pages/MyHome">我的才才网</a>
                     </li>
                     <li>
                         <a href="#">找自由工作者</a>
@@ -109,7 +109,7 @@
                         <div class="sub-menu">
                             <a href="#">使用手册</a>
                              
-                            <a href="#">关于驻才网</a>
+                            <a href="#">关于才才网</a>
                              
                             <a href="#">开放API</a>
                              
