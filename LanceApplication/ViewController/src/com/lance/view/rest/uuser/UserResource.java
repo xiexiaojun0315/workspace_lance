@@ -35,8 +35,8 @@ import org.codehaus.jettison.json.JSONObject;
 
 
 /**
-    UserName,Precision:50,JavaType:java.lang.String 
-    TrueName,Precision:50,JavaType:java.lang.String 
+    UserName,Precision:50,JavaType:java.lang.String
+    TrueName,Precision:50,JavaType:java.lang.String
     DisplayName,Precision:50,JavaType:java.lang.String
     Email,Precision:100,JavaType:java.lang.String
     Password,Precision:100,JavaType:java.lang.String
@@ -75,6 +75,11 @@ import org.codehaus.jettison.json.JSONObject;
     CompanyName,Precision:255,JavaType:java.lang.String
     CanBeSearch,Precision:0,JavaType:java.math.BigDecimal  是否可被搜索到（隐私）
     DefaultRole,Precision:20,JavaType:java.lang.String    默认角色（用于跳转到相应主页）  client,lancer,contract
+    
+    地址ID示例
+     北京：1 0 1 1
+     沈阳：1 0 6 39
+     上海：1 0 9 75
  */
 @Path("user")
 public class UserResource extends BaseRestResource {
@@ -98,9 +103,11 @@ public class UserResource extends BaseRestResource {
     public static final String[] ATTR_ALL = {
         "UserName", "TrueName", "DisplayName", "Email", "Password", "Img", "Country", "CompanyId", "PhoneNumber",
         "Attach", "JobTitle", "Video", "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB", "ImTypeB",
-        "ImNumberC", "ImTypeC", "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview",
-        "ServiceDescription", "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "CreateBy", "CreateOn",
-        "ModifyBy", "ModifyOn", "Version", "LastLoginTime", "CompanyName", "CanBeSearch", "DefaultRole"
+        "ImNumberC", "ImTypeC", "LocationARegion", "LocationACountry", "LocationAProvince", "LocationACity",
+        "LocationADetail", "LocationBRegion", "LocationBCountry", "LocationBProvince", "LocationBCity",
+        "LocationBDetail", "Tagline", "HourlyRate", "ChargeRate", "Overview", "ServiceDescription", "PaymentTerms",
+        "Keywords", "AddressDisplay", "ContactInfo", "CreateBy", "CreateOn", "ModifyBy", "ModifyOn", "Version",
+        "LastLoginTime", "CompanyName", "CanBeSearch", "DefaultRole"
     };
 
 
@@ -112,30 +119,35 @@ public class UserResource extends BaseRestResource {
     public static final String[] ATTR_CREATE = {
         "UserName", "TrueName", "DisplayName", "Email", "Password", "Img", "Country", "CompanyId", "PhoneNumber",
         "Attach", "JobTitle", "Video", "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB", "ImTypeB",
-        "ImNumberC", "ImTypeC", "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview",
-        "ServiceDescription", "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "CompanyName", "CanBeSearch",
-        "DefaultRole"
+        "ImNumberC", "ImTypeC", "LocationARegion", "LocationACountry", "LocationAProvince", "LocationACity",
+        "LocationADetail", "LocationBRegion", "LocationBCountry", "LocationBProvince", "LocationBCity",
+        "LocationBDetail", "Tagline", "HourlyRate", "ChargeRate", "Overview", "ServiceDescription", "PaymentTerms",
+        "Keywords", "AddressDisplay", "ContactInfo", "CompanyName", "CanBeSearch", "DefaultRole"
     };
 
     public static final String[] ATTR_UPDATE = {
         "DisplayName", "Email", "Password", "Img", "Country", "CompanyId", "PhoneNumber", "Attach", "JobTitle", "Video",
         "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB", "ImTypeB", "ImNumberC", "ImTypeC",
-        "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview", "ServiceDescription",
-        "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "LastLoginTime", "CompanyName", "CanBeSearch",
-        "DefaultRole"
+        "LocationARegion", "LocationACountry", "LocationAProvince", "LocationACity", "LocationADetail",
+        "LocationBRegion", "LocationBCountry", "LocationBProvince", "LocationBCity", "LocationBDetail", "Tagline",
+        "HourlyRate", "ChargeRate", "Overview", "ServiceDescription", "PaymentTerms", "Keywords", "AddressDisplay",
+        "ContactInfo", "LastLoginTime", "CompanyName", "CanBeSearch", "DefaultRole"
     };
 
     public static final String[] ATTR_GET = {
         "UserName", "TrueName", "DisplayName", "Email", "Img", "Country", "CompanyId", "PhoneNumber", "Attach",
         "JobTitle", "Video", "Description", "WebsiteUrl", "ImNumberA", "ImTypeA", "ImNumberB", "ImTypeB", "ImNumberC",
-        "ImTypeC", "LocationA", "LocationB", "Tagline", "HourlyRate", "ChargeRate", "Overview", "ServiceDescription",
+        "ImTypeC", "LocationARegion", "LocationACountry", "LocationAProvince", "LocationACity", "LocationADetail",
+        "LocationBRegion", "LocationBCountry", "LocationBProvince", "LocationBCity", "LocationBDetail",
+        "LocationAIndex", "LocationBIndex", "Tagline", "HourlyRate", "ChargeRate", "Overview", "ServiceDescription",
         "PaymentTerms", "Keywords", "AddressDisplay", "ContactInfo", "CreateBy", "CreateOn", "ModifyBy", "ModifyOn",
         "Version", "LastLoginTime", "CompanyName", "CanBeSearch", "DefaultRole"
     };
 
     public static final String[] ATTR_GET_A = {
-        "UserName", "Email", "DisplayName", "Country", "TrueName", "CompanyId", "CompanyName", "LocationA", "LocationB",
-        "PhoneNumber", "WebsiteUrl", "ImNumberA", "ImNumberB", "ImNumberC", "ImTypeA", "ImTypeB", "ImTypeC"
+        "UserName", "Email", "DisplayName", "Country", "TrueName", "CompanyId", "CompanyName", "LocationAIndex",
+        "LocationBIndex", "PhoneNumber", "WebsiteUrl", "ImNumberA", "ImNumberB", "ImNumberC", "ImTypeA", "ImTypeB",
+        "ImTypeC"
     };
 
     public UserResource() {
@@ -199,7 +211,7 @@ public class UserResource extends BaseRestResource {
             grantsVo.insertRow(grantsRow);
             row.setAttribute("DefaultRole", json.getString("DefaultRole"));
         }
-        
+
         row.updateSearchIndex();
 
         String cm = am.commit();
@@ -248,9 +260,9 @@ public class UserResource extends BaseRestResource {
         data.put("Education", new UserEducationResource().findAllUserEducation(userName));
         //获取当前用户Skill
         data.put("Skill", new UserSkillResource().findAllUserSkills(userName));
-//        //获取当前用户LocationList
-//        data.put("LocationList", new UserLocationListResource().findAllLocation(userName));
-        
+        //        //获取当前用户LocationList
+        //        data.put("LocationList", new UserLocationListResource().findAllLocation(userName));
+
         return data;
     }
 
