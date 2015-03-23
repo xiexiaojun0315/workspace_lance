@@ -36,14 +36,15 @@ public class UserPayResource extends BaseRestResource {
     @GET
     @Path("priceMap")
     public JSONObject getPriceMap() throws JSONException {
-        JSONObject json = new JSONObject();
-        if (this.isUserInRole("vip")) {
-            //lancer提出价格，网站像
-            json.put("lancer_argue_rate", PriceConstant.VIP_PRICE_RATE_YEAR_1);
-        } else {
-            json.put("lancer_argue_rate", PriceConstant.NORMAL_CLIENT_PRICE_RATE);
-        }
-        return json;
+//        JSONObject json = new JSONObject();
+//        if (this.isUserInRole("vip")) {
+//            //lancer提出价格，网站像
+//            json.put("lancer_argue_rate", PriceConstant.VIP_PRICE_RATE_YEAR_1);
+//        } else {
+//            json.put("lancer_argue_rate", PriceConstant.NORMAL_CLIENT_PRICE_RATE);
+//        }
+//        return json;
+        return null;
     }
 
     /**
