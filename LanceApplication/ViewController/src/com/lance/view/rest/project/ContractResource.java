@@ -106,6 +106,16 @@ public class ContractResource extends BaseRestResource {
          NeedDailyReport,Precision:10,JavaType:java.lang.String
          Postform,Precision:20,JavaType:java.lang.String
          ProcessStatus,Precision:20,JavaType:java.lang.String 合同进度
+            草稿：合同已创建
+            待乙方确认合同：甲方提交草稿给乙方确认
+            等待项目开始：乙方确认合同，合同开始时间未到
+            进行中：乙方确认合同且项目时间已到
+            挂起：项目出现争议，无限期停止
+            乙方申请项目已完成，或甲方申请项目完成（甲方确认最后一个里程碑完成时，应给出提示“是否确认当前项目已完成”）
+            
+            待完善：
+            等待甲方确认完成：乙方申请项目完成，等待甲方确认
+            完成：乙方申请项目完成，甲方确认完毕
          ProcessStatusDesc,Precision:2100,JavaType:java.lang.String 合同进度描述
          ProjectId,Precision:32,JavaType:java.lang.String
          WeeklyHours,Precision:0,JavaType:java.lang.Integer
