@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <title>工作日志</title>
+        <!-- Bootstrap -->
+        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/common/common.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/control/main.css" rel="stylesheet" type="text/css"/>
+        <link type="text/css" href="../../resources/js/jqueryui/jquery-ui.css" rel="stylesheet"/>
+        <link href="../../resources/css/common/common.css" rel="stylesheet" type="text/css" />
+        <link type="text/css" href="../../resources/css/control/report.css" rel="stylesheet"/>
+        <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+        <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+        <!--[if lt IE 9]>
+          <script src="../js/html5shiv.js" type="text/javascript"></script>
+          <script src="../js/respond.js" type="text/javascript"></script>
+        <![endif]-->
+    </head>
+    <body>
+        <div class="container-fluid">
+            <div class="row-fluid">
+               <div class="panel panel-default">
+                  <div class="panel-heading">合同信息</div>
+                  <div class="panel-body">
+                      <table class="table">
+                        <tbody>
+                            <tr>
+                                <td class="cen1 font_bold">合同编号</td>
+                                <td class="cen2"><span id="htbh"></span></td>
+                                <td class="cen1 font_bold">合同名称</td>
+                                <td class="cen2"><span id="htmc"></span></td>
+                                <td class="cen1 font_bold">职位</td>
+                                <td class="cen2"><span id="zw"></span></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  </div>
+                </div>
+                <div class="panel panel-default">
+                  <div class="panel-heading">工作信息</div>
+                  <div class="panel-body">
+                      <table class="table">
+                        <tbody class="cen3">
+                            <tr class="font_bold">
+                                <td>甲方：</td>
+                                <td>乙方</td>
+                                <td>价格：</td>
+                                <td>支付方式</td>
+                            </tr>
+                            <tr>
+                                <td><span id="cn"></span></td>
+                                <td><span id="lanceN"></span></td>
+                                <td><span id="jg1"></span></td>
+                                <td><span id="zffs"></span></td>
+                            </tr>
+                            <tr class="font_bold">
+                                <td>工作开始时间</td>
+                                <td>工作结束时间</td>
+                                <td>状态</td>
+                                <td></td>
+                            </tr>
+                            <tr>
+                                <td><span id="gzkssj"></span></td>
+                                <td><span id="gzjssj"></span></td>
+                                <td><span id="zt"></span></td>
+                                <td></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                  </div>
+                </div>
+            </div>
+            <div class="row-fluid">
+                <div class="span12">
+                    <form class="form-search">
+                        <select name="select" id="sel_year" class="xla_k">
+                            <option value="2011">2011</option>
+                            <option value="2012">2012</option>
+                            <option value="2013">2013</option>
+                            <option value="2014">2014</option>
+                            <option value="2015">2015</option>
+                        </select>
+                        <select name="select" id="sel_month" class="xla_k">
+                            <option value="01">01</option>
+                            <option value="02">02</option>
+                            <option value="03">03</option>
+                            <option value="04">04</option>
+                            <option value="05">05</option>
+                            <option value="06">06</option>
+                            <option value="07">07</option>
+                            <option value="08">08</option>
+                            <option value="09">09</option>
+                            <option value="10">10</option>
+                            <option value="11">11</option>
+                            <option value="12">12</option>
+                        </select>
+                        <button type="button" class="btn-group btn-group-sm" role="group" id="last_mon">上月</button>
+                        <button type="button" class="btn-group btn-group-sm" role="group" id="next_mon">下月</button>
+                    </form>
+                    <table class="table table-hover">
+                        <thead>
+                            <tr class="info">
+                                <th>
+                                </th>
+                                <th>日期</th>
+                                <th>星期</th>
+                                <th>地点</th>
+                                <th>工作内容</th>
+                                <th>工时(小时)</th>
+                                <th>备注</th>
+                                <th>状态</th>
+                            </tr>
+                        </thead>
+                        <tbody id="rep-cnt">
+                            <script id="rep-cnt-sp1" type="text/html">
+                                {{each list as data i}}
+                                     <tr>
+                                        <td>
+                                          <input name="rep_check" type="checkbox" id="ch{{i+1}}" value="{{data.SysDateRec}}"/>
+                                        </td>
+                                        <td>{{data.SysDateRec}}</td>
+                                        <td>{{data.Day}}</td>
+                                        <td><input type="text" readonly="readonly" value="{{data.Address}}" id="adr{{i+1}}" class="inp" /></td>
+                                        <td><input type="text" readonly="readonly" value="{{data.WorkContent}}" id="wc{{i+1}}" class="inp" /></td>
+                                        <td><input type="text" readonly="readonly" value="{{data.WorkHours}}" id="wk{{i+1}}" class="inp" /></td>
+                                        <td><input type="text" readonly="readonly" value="{{data.WorkRemark}}" id="wr{{i+1}}" class="inp" /></td>
+                                        <td>{{data.StatusRemark}}</td>
+                                    </tr>
+                                {{/each}}
+                             </script>
+                        </tbody>
+                    </table>
+                    <form>
+                        <div class="alert alert-info" role="alert" id="gloal-msg" style="display:none;"></div>
+                        <button type="button" class="btn" data-toggle="modal" data-target="#reportModal">批量填写</button>
+                        <br/>
+                        <br/>
+                        <button type="submit" class="btn">提交</button>
+                        <button type="submit" class="btn">取消</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="reportModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+             aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                        <h4 class="modal-title" id="myModalLabel">编辑</h4>
+                    </div>
+                    <div class="container-fluid">
+                        <div class="row-fluid">
+                             <h4 class="lan-font-green">
+                                帮助信息<br />
+                                <small class="lan-font-16">帮助信息，关于XXX</small></h4>
+                             <br />
+                              <form class="lan-frm-regist" action="#" method="post" role="form">
+                                 <div class="form-group">
+                                    <label for="date" class="control-label">日期</label>
+                                    <input type="text" class="form-control" id="date" placeholder="" readonly="readonly"
+                                        data-container="body" data-toggle="popover" data-placement="right" 
+                                        data-trigger="manual" data-animation="false" />
+                                    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                                 </div>
+                                 <div class="form-group">
+                                   <label for="inp_address" class="control-label">地点</label>
+                                    <input type="text" class="form-control" id="inp_address" placeholder=""
+                                        data-container="body" data-toggle="popover" data-placement="right" 
+                                        data-trigger="manual" data-animation="false" />
+                                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="inp_workCon" class="control-label">工作内容</label>
+                                    <input type="text" class="form-control" id="inp_workCon" placeholder=""
+                                            data-container="body" data-toggle="popover" data-placement="right" 
+                                            data-content="工作内容不能为空" data-trigger="manual" data-animation="false" />
+                                     <span class="glyphicon glyphicon-ok form-control-feedback" aria-hidden="true"></span>
+                                 </div>
+                                 <div class="form-group">
+                                    <label for="inp_hours" class="control-label">工时</label>
+                                    <input type="text" class="form-control" id="inp_hours" placeholder=""
+                                        data-container="body" data-toggle="popover" data-placement="right" 
+                                        data-content="工时必须为大于0并且小于24的正整数" data-trigger="manual" data-animation="false" />
+                                    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                                </div>
+                                 <div class="form-group">
+                                    <label for="inp_comments" class="control-label">备注</label>
+                                    <input type="text" class="form-control" id="inp_comments" placeholder=""
+                                        data-container="body" data-toggle="popover" data-placement="right" 
+                                        data-trigger="manual" data-animation="false" />
+                                    <span class="glyphicon glyphicon-ok form-control-feedback"></span>
+                                </div>
+                                <div class="alert alert-warning alert-dismissible" role="alert" style="display:none;">
+                                  <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                                  <strong>系统提示:</strong><span id="upt-msg"></span>
+                                </div>
+                             </form>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="btn_commit" data-dismiss="modal" autocomplete="off" data-loading-text="保存中..." class="btn btn-primary">保存</button>
+                        <button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+        <script src="../js/jquery-1.9.1.min.js" type="text/javascript"></script>
+        <!-- Include all compiled plugins (below), or include individual files as needed -->
+        <script src="../js/bootstrap.min.js" type="text/javascript"></script>
+        <script src="../../resources/js/jqueryui/jquery-ui.js" type="text/javascript"></script>
+        <script src="../../resources/js/jquery.json-2.4.js" type="text/javascript"></script>
+        <script src="../../resources/js/template.js" type="text/javascript"></script>
+        <script src="../../resources/js/page/contractReport.js" type="text/javascript"></script>
+    </body>
+</html>

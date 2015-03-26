@@ -322,25 +322,26 @@ public class MilestoneResource extends BaseRestResource {
         return (ContractMilestoneVORowImpl) row2;
     }
 
-    //    /**
-    //     * 创建
-    //     * @param json
-    //     * @return
-    //     * @throws JSONException
-    //     */
-    //    @POST
-    //    @Consumes(MediaType.APPLICATION_JSON)
-    //    public String createMilestone(JSONObject json) throws JSONException {
-    //        LOGGER.log(LOGGER.NOTIFICATION, "create Milestone");
-    //        LanceRestAMImpl am = LUtil.findLanceAM();
-    //        ViewObjectImpl vo = getMilestoneFromAM(am);
-    //        RowImpl row = LUtil.createInsertRow(vo);
-    //        RestUtil.copyJsonObjectToRow(json, vo, row, this.ATTR_CREATE);
-    //        LOGGER.log(LOGGER.TRACE, "copyJsonObjectToRow :" + this.ATTR_CREATE);
-    //        String res = returnParamAfterCreate(row);
-    //        LOGGER.log(LOGGER.NOTIFICATION, "Milestone created by return :" + res);
-    //        return res;
-    //    }
+        /**
+         * 创建
+         * @param json
+         * @return
+         * @throws JSONException
+         */
+        @POST
+        @Consumes(MediaType.APPLICATION_JSON)
+        public String createMilestone(JSONObject json) throws JSONException {
+            LOGGER.log(LOGGER.NOTIFICATION, "create Milestone");
+            LanceRestAMImpl am = LUtil.findLanceAM();
+            ViewObjectImpl vo = getMilestoneFromAM(am);
+            RowImpl row = LUtil.createInsertRow(vo);
+            row.setAttribute("Status", ReportStatus.DRAFT.status());
+            RestUtil.copyJsonObjectToRow(json, vo, row, this.ATTR_CREATE);
+            LOGGER.log(LOGGER.TRACE, "copyJsonObjectToRow :" + this.ATTR_CREATE);
+            String res = returnParamAfterCreate(row);
+            LOGGER.log(LOGGER.NOTIFICATION, "Milestone created by return :" + res);
+            return res;
+        }
     //    /**
     //     * 删除
     //     * @param milestoneId
@@ -375,5 +376,32 @@ public class MilestoneResource extends BaseRestResource {
     //        return "ok";
     //    }
 
-
+    @GET
+    @Path("statusList")
+    @Produces(MediaType.APPLICATION_JSON)
+    public JSONObject getStatusList() throws JSONException {
+        JSONObject json = new JSONObject(); 
+        for(ReportStatus rs : ReportStatus.values()){
+            json.put(rs.status(), rs.statusName());
+        }
+       return json;
+    }
+    
+    private enum ReportStatus {
+        DRAFT("draft","草稿"), POSTED("posted", "已发送"), ARGEE("agree", "确认"), REJECT("reject","拒绝"), PAYED("payed", "已支付");
+        private String _name;
+        private String _status;
+        private ReportStatus (String status,String name) {
+            this._name = name;
+            this._status = status;
+        }
+        
+        public String status(){
+          return this._status;    
+        }
+        
+        public String statusName(){
+          return this._name;    
+        }
+    }
 }

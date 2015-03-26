@@ -572,6 +572,18 @@
       <Attr Name="_DisplaySize" Value="20"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="ContractName"
+    Precision="210"
+    ColumnName="CONTRACT_NAME"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="CONTRACT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="210"/>
+    </DesignTime>
+  </Attribute>
   <AccessorAttribute
     Name="Project"
     Association="com.lance.model.as.ContractProjectFk1AS"

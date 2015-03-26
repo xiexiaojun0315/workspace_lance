@@ -29,7 +29,6 @@ public class ContractVORowImpl extends BaseViewRowImpl {
      * AttributesEnum: generated enum for identifying attributes and accessors. DO NOT MODIFY.
      */
     public enum AttributesEnum {
-        Uuid,
         AttachmentLink,
         ClientCompanyId,
         ClientCompanyName,
@@ -38,13 +37,14 @@ public class ContractVORowImpl extends BaseViewRowImpl {
         ClientIdNo,
         ClientIdType,
         ClientName,
-        ClientSignBy,
         ClientPayDelayDay,
         ClientPhone,
         ClientRoleTitle,
+        ClientSignBy,
         ClientTotalScore,
         ClientTrueName,
         Content,
+        ContractName,
         CreateBy,
         CreateOn,
         DateEnd,
@@ -61,15 +61,16 @@ public class ContractVORowImpl extends BaseViewRowImpl {
         LancerIdNo,
         LancerIdType,
         LancerName,
-        LancerSignBy,
         LancerPhone,
         LancerPlanScore,
         LancerProfessScore,
         LancerQualityScore,
         LancerResponsScore,
         LancerRoleTitle,
+        LancerSignBy,
         LancerTotalScore,
         LancerTrueName,
+        LastProcessStatus,
         ModifyBy,
         ModifyOn,
         NeedDailyReport,
@@ -79,6 +80,7 @@ public class ContractVORowImpl extends BaseViewRowImpl {
         ProjectId,
         Status,
         Title,
+        Uuid,
         Version,
         WeeklyHours,
         ContractMilestone,
@@ -109,7 +111,6 @@ public class ContractVORowImpl extends BaseViewRowImpl {
     }
 
 
-    public static final int UUID = AttributesEnum.Uuid.index();
     public static final int ATTACHMENTLINK = AttributesEnum.AttachmentLink.index();
     public static final int CLIENTCOMPANYID = AttributesEnum.ClientCompanyId.index();
     public static final int CLIENTCOMPANYNAME = AttributesEnum.ClientCompanyName.index();
@@ -118,13 +119,14 @@ public class ContractVORowImpl extends BaseViewRowImpl {
     public static final int CLIENTIDNO = AttributesEnum.ClientIdNo.index();
     public static final int CLIENTIDTYPE = AttributesEnum.ClientIdType.index();
     public static final int CLIENTNAME = AttributesEnum.ClientName.index();
-    public static final int CLIENTSIGNBY = AttributesEnum.ClientSignBy.index();
     public static final int CLIENTPAYDELAYDAY = AttributesEnum.ClientPayDelayDay.index();
     public static final int CLIENTPHONE = AttributesEnum.ClientPhone.index();
     public static final int CLIENTROLETITLE = AttributesEnum.ClientRoleTitle.index();
+    public static final int CLIENTSIGNBY = AttributesEnum.ClientSignBy.index();
     public static final int CLIENTTOTALSCORE = AttributesEnum.ClientTotalScore.index();
     public static final int CLIENTTRUENAME = AttributesEnum.ClientTrueName.index();
     public static final int CONTENT = AttributesEnum.Content.index();
+    public static final int CONTRACTNAME = AttributesEnum.ContractName.index();
     public static final int CREATEBY = AttributesEnum.CreateBy.index();
     public static final int CREATEON = AttributesEnum.CreateOn.index();
     public static final int DATEEND = AttributesEnum.DateEnd.index();
@@ -141,15 +143,16 @@ public class ContractVORowImpl extends BaseViewRowImpl {
     public static final int LANCERIDNO = AttributesEnum.LancerIdNo.index();
     public static final int LANCERIDTYPE = AttributesEnum.LancerIdType.index();
     public static final int LANCERNAME = AttributesEnum.LancerName.index();
-    public static final int LANCERSIGNBY = AttributesEnum.LancerSignBy.index();
     public static final int LANCERPHONE = AttributesEnum.LancerPhone.index();
     public static final int LANCERPLANSCORE = AttributesEnum.LancerPlanScore.index();
     public static final int LANCERPROFESSSCORE = AttributesEnum.LancerProfessScore.index();
     public static final int LANCERQUALITYSCORE = AttributesEnum.LancerQualityScore.index();
     public static final int LANCERRESPONSSCORE = AttributesEnum.LancerResponsScore.index();
     public static final int LANCERROLETITLE = AttributesEnum.LancerRoleTitle.index();
+    public static final int LANCERSIGNBY = AttributesEnum.LancerSignBy.index();
     public static final int LANCERTOTALSCORE = AttributesEnum.LancerTotalScore.index();
     public static final int LANCERTRUENAME = AttributesEnum.LancerTrueName.index();
+    public static final int LASTPROCESSSTATUS = AttributesEnum.LastProcessStatus.index();
     public static final int MODIFYBY = AttributesEnum.ModifyBy.index();
     public static final int MODIFYON = AttributesEnum.ModifyOn.index();
     public static final int NEEDDAILYREPORT = AttributesEnum.NeedDailyReport.index();
@@ -159,6 +162,7 @@ public class ContractVORowImpl extends BaseViewRowImpl {
     public static final int PROJECTID = AttributesEnum.ProjectId.index();
     public static final int STATUS = AttributesEnum.Status.index();
     public static final int TITLE = AttributesEnum.Title.index();
+    public static final int UUID = AttributesEnum.Uuid.index();
     public static final int VERSION = AttributesEnum.Version.index();
     public static final int WEEKLYHOURS = AttributesEnum.WeeklyHours.index();
     public static final int CONTRACTMILESTONE = AttributesEnum.ContractMilestone.index();
@@ -241,6 +245,22 @@ public class ContractVORowImpl extends BaseViewRowImpl {
      */
     public void setContent(ClobDomain value) {
         setAttributeInternal(CONTENT, value);
+    }
+
+    /**
+     * Gets the attribute value for CONTRACT_NAME using the alias name ContractName.
+     * @return the CONTRACT_NAME
+     */
+    public String getContractName() {
+        return (String) getAttributeInternal(CONTRACTNAME);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for CONTRACT_NAME using the alias name ContractName.
+     * @param value value to set the CONTRACT_NAME
+     */
+    public void setContractName(String value) {
+        setAttributeInternal(CONTRACTNAME, value);
     }
 
     /**
@@ -737,6 +757,22 @@ public class ContractVORowImpl extends BaseViewRowImpl {
      */
     public void setLancerTrueName(String value) {
         setAttributeInternal(LANCERTRUENAME, value);
+    }
+
+    /**
+     * Gets the attribute value for LAST_PROCESS_STATUS using the alias name LastProcessStatus.
+     * @return the LAST_PROCESS_STATUS
+     */
+    public String getLastProcessStatus() {
+        return (String) getAttributeInternal(LASTPROCESSSTATUS);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for LAST_PROCESS_STATUS using the alias name LastProcessStatus.
+     * @param value value to set the LAST_PROCESS_STATUS
+     */
+    public void setLastProcessStatus(String value) {
+        setAttributeInternal(LASTPROCESSSTATUS, value);
     }
 
     /**

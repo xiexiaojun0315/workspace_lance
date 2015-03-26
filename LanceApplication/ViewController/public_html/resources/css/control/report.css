@@ -1,0 +1,21 @@
+@charset "UTF-8";
+.cen1{text-align:center;width:16.6%}
+.cen2{text-align:left;width:16.6%}
+.cen3 td{text-align:center;width:25%}
+.font_bold{font-weight: bold;}
+.inp{BORDER-TOP-STYLE: none; BORDER-RIGHT-STYLE: none; BORDER-LEFT-STYLE: none; BORDER-BOTTOM-STYLE: none;width:100%;}
+.info_cen th{text-align:center}
+.lan-frm-regist
+{
+    width:75%;   
+}
+.lan-frm-regist .lan-frm-term
+{
+    font-size:11px;
+    color:#929292;
+}
+.lan-frm-regist .btn-primary
+{
+    width:120px;
+}
+.textArea{height:45px;}

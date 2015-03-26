@@ -26,6 +26,7 @@ public class ContractReportVORowImpl extends BaseViewRowImpl {
      * AttributesEnum: generated enum for identifying attributes and accessors. DO NOT MODIFY.
      */
     public enum AttributesEnum {
+        Address,
         ContractId,
         CreateBy,
         CreateOn,
@@ -67,6 +68,7 @@ public class ContractReportVORowImpl extends BaseViewRowImpl {
     }
 
 
+    public static final int ADDRESS = AttributesEnum.Address.index();
     public static final int CONTRACTID = AttributesEnum.ContractId.index();
     public static final int CREATEBY = AttributesEnum.CreateBy.index();
     public static final int CREATEON = AttributesEnum.CreateOn.index();
@@ -96,6 +98,22 @@ public class ContractReportVORowImpl extends BaseViewRowImpl {
      */
     public ContractReportEOImpl getContractReportEO() {
         return (ContractReportEOImpl) getEntity(ENTITY_CONTRACTREPORTEO);
+    }
+
+    /**
+     * Gets the attribute value for ADDRESS using the alias name Address.
+     * @return the ADDRESS
+     */
+    public String getAddress() {
+        return (String) getAttributeInternal(ADDRESS);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for ADDRESS using the alias name Address.
+     * @param value value to set the ADDRESS
+     */
+    public void setAddress(String value) {
+        setAttributeInternal(ADDRESS, value);
     }
 
     /**

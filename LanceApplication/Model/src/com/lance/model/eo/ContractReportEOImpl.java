@@ -37,6 +37,7 @@ public class ContractReportEOImpl extends BaseEntityImpl {
         ModifyOn,
         Version,
         StatusName,
+        Address,
         Contract,
         FinPayBill;
         private static AttributesEnum[] vals = null;
@@ -62,6 +63,7 @@ public class ContractReportEOImpl extends BaseEntityImpl {
         }
     }
 
+
     public static final int UUID = AttributesEnum.Uuid.index();
     public static final int PROJECTID = AttributesEnum.ProjectId.index();
     public static final int CONTRACTID = AttributesEnum.ContractId.index();
@@ -78,6 +80,7 @@ public class ContractReportEOImpl extends BaseEntityImpl {
     public static final int MODIFYON = AttributesEnum.ModifyOn.index();
     public static final int VERSION = AttributesEnum.Version.index();
     public static final int STATUSNAME = AttributesEnum.StatusName.index();
+    public static final int ADDRESS = AttributesEnum.Address.index();
     public static final int CONTRACT = AttributesEnum.Contract.index();
     public static final int FINPAYBILL = AttributesEnum.FinPayBill.index();
 
@@ -93,6 +96,7 @@ public class ContractReportEOImpl extends BaseEntityImpl {
     public static synchronized EntityDefImpl getDefinitionObject() {
         return EntityDefImpl.findDefObject("com.lance.model.eo.ContractReportEO");
     }
+
 
     /**
      * Gets the attribute value for Uuid, using the alias name Uuid.
@@ -316,6 +320,22 @@ public class ContractReportEOImpl extends BaseEntityImpl {
      */
     public void setStatusName(String value) {
         setAttributeInternal(STATUSNAME, value);
+    }
+
+    /**
+     * Gets the attribute value for Address, using the alias name Address.
+     * @return the value of Address
+     */
+    public String getAddress() {
+        return (String) getAttributeInternal(ADDRESS);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for Address.
+     * @param value value to set the Address
+     */
+    public void setAddress(String value) {
+        setAttributeInternal(ADDRESS, value);
     }
 
     /**

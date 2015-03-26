@@ -26,6 +26,7 @@ import javax.ws.rs.POST;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
+import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
 import oracle.adf.share.logging.ADFLogger;
@@ -135,7 +136,7 @@ public class ContractResource extends BaseRestResource {
         "LancerName", "LancerSignBy", "LancerPhone", "LancerPlanScore", "LancerProfessScore", "LancerQualityScore",
         "LancerResponsScore", "LancerRoleTitle", "LancerTotalScore", "LancerTrueName", "ModifyBy", "ModifyOn",
         "NeedDailyReport", "Postform", "ProcessStatus", "ProcessStatusDesc", "ProjectId", "Status", "Title", "Version",
-        "WeeklyHours"
+        "WeeklyHours","ContractName"
     };
 
     public static final String[] ATTR_GET = ATTR_ALL;
@@ -176,7 +177,18 @@ public class ContractResource extends BaseRestResource {
         vo.removeApplyViewCriteriaName("FindByUuidVC");
         return (ContractVORowImpl) vo.first();
     }
-
+    
+    public ViewObjectImpl findContractByName(LanceRestAMImpl am,String cname,String lname){
+      StringBuffer sql = new StringBuffer();
+      sql.append("select cc.TITLE,cc.UUID contractid,(select count(*) from CONTRACT_REPORT cr where cr.STATUS='draft' and cr.CONTRACT_ID=cc.UUID) rpc,(select count(*) from CONTRACT_MILESTONE cm where cm.STATUS='draft' and cm.CONTRACT_ID=cc.UUID) cmc from CONTRACT cc ");
+      if(!"".equals(cname)){
+          sql.append(" where cc.LANCER_NAME='"+cname+"'");
+      }else if(!"".equals(lname)){
+          sql.append(" where cc.CLIENT_NAME='"+lname+"'");    
+      }
+      return am.createDynamicViewObject("QueryContractVO1", sql.toString());
+    }
+    
     public String returnParamAfterCreate(Row row) {
         return (String) row.getAttribute("Uuid");
     }
@@ -204,11 +216,11 @@ public class ContractResource extends BaseRestResource {
             return res;
         }
 
-        JSONObject res = new JSONObject();
-        JSONObject contract = RestUtil.convertRowToJsonObject(vo, row, this.ATTR_GET);
-        if ("fixed".equals(row.getPostform())) {
-        }
-        return res;
+//        JSONObject res = new JSONObject();
+//        JSONObject contract = RestUtil.convertRowToJsonObject(vo, row, this.ATTR_GET);
+//        if ("fixed".equals(row.getPostform())) {
+//        }
+        return RestUtil.convertRowToJsonObject(vo, row, this.ATTR_GET);
     }
 
     /**
@@ -550,13 +562,42 @@ public class ContractResource extends BaseRestResource {
 
         return "error";
     }
-
+    
+    @GET
+    @Path("findContract")
+    @Produces(MediaType.APPLICATION_JSON)
+    public JSONArray findContract(@QueryParam("type") String type,@QueryParam("userName")String userName) throws JSONException {
+        JSONArray ja = new JSONArray();
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        ViewObjectImpl vo = null;
+        if("client".equals(type)){
+            vo = findContractByName(am, userName, "");
+        }else if("lance".equals(type)){
+            vo = findContractByName(am, "", userName);
+        }
+        if(vo != null && vo.getEstimatedRowCount() > 0){
+            for(Row row : vo.getAllRowsInRange()){
+                JSONObject json = new JSONObject();
+                json.put("Title", convertToString(row, "Title".toUpperCase()));
+                json.put("Contractid", convertToString(row, "Contractid".toUpperCase()));
+                json.put("Rpc", convertToString(row, "Rpc".toUpperCase()));
+                json.put("Cmc", convertToString(row, "Cmc".toUpperCase()));
+                ja.put(json);
+            }
+        }
+      return ja;
+    }
+    
+    private String convertToString(Row row,String attr){
+        return row.getAttribute(attr)==null ? "" : row.getAttribute(attr).toString();
+    } 
+    
     private ContractVORowImpl findContractRowById(String contractId) {
         LanceRestAMImpl am = LUtil.findLanceAM();
         ViewObjectImpl vo = getContractFromAM(am);
         ContractVORowImpl row = (ContractVORowImpl) findContractById(contractId, vo, am);
         return row;
-    }
+    } 
 
 
 }

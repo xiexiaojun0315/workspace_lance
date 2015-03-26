@@ -31,13 +31,6 @@
     Name="ContractEO"
     Entity="com.lance.model.eo.ContractEO"/>
   <ViewAttribute
-    Name="Uuid"
-    IsNotNull="true"
-    PrecisionRule="true"
-    EntityAttrName="Uuid"
-    EntityUsage="ContractEO"
-    AliasName="UUID"/>
-  <ViewAttribute
     Name="AttachmentLink"
     PrecisionRule="true"
     EntityAttrName="AttachmentLink"
@@ -86,12 +79,6 @@
     EntityUsage="ContractEO"
     AliasName="CLIENT_NAME"/>
   <ViewAttribute
-    Name="ClientSignBy"
-    PrecisionRule="true"
-    EntityAttrName="ClientSignBy"
-    EntityUsage="ContractEO"
-    AliasName="CLIENT_SIGN_BY"/>
-  <ViewAttribute
     Name="ClientPayDelayDay"
     PrecisionRule="true"
     EntityAttrName="ClientPayDelayDay"
@@ -109,6 +96,12 @@
     EntityAttrName="ClientRoleTitle"
     EntityUsage="ContractEO"
     AliasName="CLIENT_ROLE_TITLE"/>
+  <ViewAttribute
+    Name="ClientSignBy"
+    PrecisionRule="true"
+    EntityAttrName="ClientSignBy"
+    EntityUsage="ContractEO"
+    AliasName="CLIENT_SIGN_BY"/>
   <ViewAttribute
     Name="ClientTotalScore"
     PrecisionRule="true"
@@ -128,6 +121,12 @@
     EntityAttrName="Content"
     EntityUsage="ContractEO"
     AliasName="CONTENT"/>
+  <ViewAttribute
+    Name="ContractName"
+    PrecisionRule="true"
+    EntityAttrName="ContractName"
+    EntityUsage="ContractEO"
+    AliasName="CONTRACT_NAME"/>
   <ViewAttribute
     Name="CreateBy"
     PrecisionRule="true"
@@ -227,12 +226,6 @@
     EntityUsage="ContractEO"
     AliasName="LANCER_NAME"/>
   <ViewAttribute
-    Name="LancerSignBy"
-    PrecisionRule="true"
-    EntityAttrName="LancerSignBy"
-    EntityUsage="ContractEO"
-    AliasName="LANCER_SIGN_BY"/>
-  <ViewAttribute
     Name="LancerPhone"
     PrecisionRule="true"
     EntityAttrName="LancerPhone"
@@ -269,6 +262,12 @@
     EntityUsage="ContractEO"
     AliasName="LANCER_ROLE_TITLE"/>
   <ViewAttribute
+    Name="LancerSignBy"
+    PrecisionRule="true"
+    EntityAttrName="LancerSignBy"
+    EntityUsage="ContractEO"
+    AliasName="LANCER_SIGN_BY"/>
+  <ViewAttribute
     Name="LancerTotalScore"
     PrecisionRule="true"
     EntityAttrName="LancerTotalScore"
@@ -280,6 +279,12 @@
     EntityAttrName="LancerTrueName"
     EntityUsage="ContractEO"
     AliasName="LANCER_TRUE_NAME"/>
+  <ViewAttribute
+    Name="LastProcessStatus"
+    PrecisionRule="true"
+    EntityAttrName="LastProcessStatus"
+    EntityUsage="ContractEO"
+    AliasName="LAST_PROCESS_STATUS"/>
   <ViewAttribute
     Name="ModifyBy"
     PrecisionRule="true"
@@ -329,14 +334,20 @@
     PrecisionRule="true"
     EntityAttrName="Status"
     EntityUsage="ContractEO"
-    AliasName="STATUS"
-    DefaultValue="draft"/>
+    AliasName="STATUS"/>
   <ViewAttribute
     Name="Title"
     PrecisionRule="true"
     EntityAttrName="Title"
     EntityUsage="ContractEO"
     AliasName="TITLE"/>
+  <ViewAttribute
+    Name="Uuid"
+    IsNotNull="true"
+    PrecisionRule="true"
+    EntityAttrName="Uuid"
+    EntityUsage="ContractEO"
+    AliasName="UUID"/>
   <ViewAttribute
     Name="Version"
     PrecisionRule="true"
@@ -382,7 +393,6 @@
         Operator="="
         Conjunction="AND"
         Value=":pUuid"
-        UpperColumns="0"
         IsBindVarValue="true"
         Required="Optional"/>
     </ViewCriteriaRow>
@@ -411,7 +421,7 @@
       </CustomProperties>
     </Properties>
     <ViewCriteriaRow
-      Name="ContractVOCriteria_row_0"
+      Name="FindByCreatorVC_row_0"
       UpperColumns="1">
       <ViewCriteriaItem
         Name="CreateBy"
@@ -419,7 +429,6 @@
         Operator="="
         Conjunction="AND"
         Value=":pCreator"
-        UpperColumns="0"
         IsBindVarValue="true"
         Required="Optional"/>
     </ViewCriteriaRow>

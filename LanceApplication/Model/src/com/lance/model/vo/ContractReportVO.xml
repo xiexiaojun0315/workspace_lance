@@ -35,6 +35,12 @@
     Name="ContractReportEO"
     Entity="com.lance.model.eo.ContractReportEO"/>
   <ViewAttribute
+    Name="Address"
+    PrecisionRule="true"
+    EntityAttrName="Address"
+    EntityUsage="ContractReportEO"
+    AliasName="ADDRESS"/>
+  <ViewAttribute
     Name="ContractId"
     PrecisionRule="true"
     EntityAttrName="ContractId"

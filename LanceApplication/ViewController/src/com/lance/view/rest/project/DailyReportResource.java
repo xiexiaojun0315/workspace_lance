@@ -1,12 +1,19 @@
 package com.lance.view.rest.project;
 
 import com.lance.model.LanceRestAMImpl;
+import com.lance.model.vo.ContractVOImpl;
+import com.lance.model.vo.ContractVORowImpl;
 import com.lance.view.util.LUtil;
 
 import com.lance.view.util.RestSecurityUtil;
 
 import com.zngh.platform.front.core.view.BaseRestResource;
 import com.zngh.platform.front.core.view.RestUtil;
+
+import java.text.SimpleDateFormat;
+
+import java.util.Calendar;
+import java.util.Date;
 
 import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
@@ -62,22 +69,29 @@ public class DailyReportResource extends BaseRestResource {
      */
     public static final String[] ATTR_ALL = {
         "Uuid", "ProjectId", "ContractId", "DateRecord", "WorkContent", "WorkHours", "WorkRemark", "Status",
-        "StatusRemark", "PayBillNumber"
+        "StatusRemark", "PayBillNumber","Address"
     };
 
     public static final String[] ATTR_GET = ATTR_ALL;
 
-    public static final String[] ATTR_UPDATE = {"WorkContent","WorkHours","WorkRemark"};
+    public static final String[] ATTR_UPDATE = {"WorkContent","WorkHours","WorkRemark","Address"};
     
     public static final String[] ATTR_APPROVE = {"Status","StatusRemark","PayBillNumber"};
 
-    public static final String[] ATTR_CREATE = {"ProjectId","ContractId","DateRecord","WorkContent","WorkHours","WorkRemark"};
+    public static final String[] ATTR_CREATE = {"ProjectId","ContractId","DateRecord","WorkContent","WorkHours","WorkRemark","Address"};
+    
+    public static final String[] ATTR_SEARCH = {"Uuid", "ProjectId", "ContractId", "DateRecord", "WorkContent", "WorkHours", "WorkRemark", "Status",
+        "StatusRemark", "PayBillNumber","Day","Address","SysDateRec"};
 
     public static final boolean CAN_DELETE = true;
 
 
     public ViewObjectImpl getDailyReportFromAM(LanceRestAMImpl am) {
         return am.getContractReportVO1();
+    }
+    
+    public ViewObjectImpl getDailyReportVVOFromAM(LanceRestAMImpl am) {
+        return am.getContractReportVVO1();
     }
 
     public Row findDailyReportById(String id, ViewObjectImpl vo, LanceRestAMImpl am) {
@@ -86,6 +100,16 @@ public class DailyReportResource extends BaseRestResource {
         vo.executeQuery();
         vo.removeApplyViewCriteriaName("FindByUuidVC");
         return vo.first();
+    }
+    
+    public Row findDailyReportByConId(String date,String projid,String contractId, ViewObjectImpl vo, LanceRestAMImpl am){
+        vo.setWhereClause(null);
+        vo.setWhereClause("TO_CHAR(DATE_RECORD, 'yyyy-MM-dd')='"+date+"' and CONTRACT_ID='"+contractId+"' and CREATE_BY='"+findCurrentUserName()+"'");
+        vo.executeQuery();
+        if(vo.first() != null){
+            return vo.first();
+        }
+        return null;
     }
     
     public ViewObjectImpl findDailyReportByContractId(String contractId,String status, ViewObjectImpl vo) {
@@ -98,12 +122,28 @@ public class DailyReportResource extends BaseRestResource {
         return vo;
     }
     
-    public ViewObjectImpl findDailyReportByMonth(String month,ViewObjectImpl vo){
-       vo.setWhereClause(null);
-       vo.setWhereClause("TO_CHAR(DATE_RECORD,'yyyy-MM') = '"+month+"' and CREATE_BY = '"+RestSecurityUtil.getCurrentUserName()+"'");
-       vo.setOrderByClause("DATE_RECORD");
+    public ViewObjectImpl findDailyReportByMonth(int year,int month,String contractId,ViewObjectImpl vo){
+       vo.setNamedWhereClauseParam("startDate", getMonthOfDate(year, month, "first"));
+       vo.setNamedWhereClauseParam("endDate", getMonthOfDate(year, month, "end"));
+       vo.setNamedWhereClauseParam("conId", contractId);
+       vo.setNamedWhereClauseParam("userName", findCurrentUserName());
+       vo.setRangeSize(-1);
        vo.executeQuery();
        return vo;
+    }
+    
+    public ContractVORowImpl findContractByIdFn(LanceRestAMImpl am, String contractId) {
+        ContractVOImpl contractVO = am.getContractVO1();
+        contractVO.setApplyViewCriteriaName("FindByUuidVC");
+        contractVO.setpUuid(contractId);
+        contractVO.executeQuery();
+        contractVO.removeApplyViewCriteriaName("FindByUuidVC");
+        ContractVORowImpl row = (ContractVORowImpl) contractVO.first();
+        if (row == null) {
+            return null;
+        }
+        contractVO.setCurrentRow(row);
+        return (ContractVORowImpl) contractVO.first();
     }
     
     public boolean checkStatusIsDraft(Row row){
@@ -172,7 +212,7 @@ public class DailyReportResource extends BaseRestResource {
         }
 
         RestUtil.copyJsonObjectToRow(json, vo, row, this.ATTR_UPDATE);
-        am.getDBTransaction().commit();
+//        am.getDBTransaction().commit();
 
         LOGGER.log(LOGGER.NOTIFICATION,
                    findCurrentUserName() + "修改每日工作报告(" + reportId + ") 为：" +
@@ -247,13 +287,37 @@ public class DailyReportResource extends BaseRestResource {
      * @throws JSONException
      */
     @GET
-    @Path("search/{month}")
+    @Path("search/{contractId}/{year}/{month}")
     @Produces(MediaType.APPLICATION_JSON)
-    public JSONArray findDailyReportByMonth(@PathParam("month") String month) throws JSONException {
+    public JSONArray findDailyReportByMonth(@PathParam("year")int year,@PathParam("month")int month,@PathParam("contractId")String contractId) throws JSONException {
         LanceRestAMImpl am = LUtil.findLanceAM();
-        ViewObjectImpl vo = getDailyReportFromAM(am);
-        this.findDailyReportByMonth(month, vo);
-        return this.convertVoToJsonArray(vo, this.ATTR_GET);
+        ViewObjectImpl vo = getDailyReportVVOFromAM(am);
+        this.findDailyReportByMonth(year,month,contractId, vo);
+        return this.convertVoToJsonArray(vo, this.ATTR_SEARCH);
+    }
+    
+    public String getMonthOfDate(int year,int month,String flag){
+        Date d = null;
+        Calendar cal = Calendar.getInstance();
+        cal.set(Calendar.YEAR, year);
+        cal.set(Calendar.MONTH, month);
+        if("end".equals(flag)){
+            cal.set(Calendar.DAY_OF_MONTH, 1);
+            cal.add(Calendar.DAY_OF_MONTH, -1);
+            d = cal.getTime();
+        }else{
+            cal.set(Calendar.DAY_OF_MONTH, 1);
+            cal.add(Calendar.DAY_OF_MONTH, -1);
+            cal.set(Calendar.DAY_OF_MONTH, 1);
+            d = cal.getTime();
+        }
+       return formatDate(d);
+    }
+
+    public String formatDate(Date d) {
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+        String time = formatter.format(d);
+        return time;
     }
    
     /**
@@ -310,6 +374,54 @@ public class DailyReportResource extends BaseRestResource {
         }
         return this.convertVoToJsonArray(vo, this.ATTR_GET);
     } 
+    
+    @POST
+    @Path("mergeConRe")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String mergeContractResport(JSONObject json) throws JSONException {
+        if(!isEmpty(json.getString("contractId"))){
+            LanceRestAMImpl am = LUtil.findLanceAM();
+            ContractVORowImpl cr = findContractByIdFn(am, json.getString("contractId"));
+            if(findCurrentUserName().equals(cr.getLancerName())){
+                String[] dates = json.getString("date").split(",");
+                for(String d : dates){
+                    Row row = findDailyReportByConId(d, cr.getProjectId(), cr.getUuid(), am.getContractReport2(), am);
+                    if(row == null){
+                       JSONObject data = json.getJSONObject("data");
+                       data.put("DateRecord", d);
+                       data.put("ProjectId", cr.getProjectId());
+                       this.createDailyReport(data);   
+                    }else{
+                       this.updateDailyReport((String)row.getAttribute("Uuid"), json.getJSONObject("data"));
+                    }
+                }
+                if(!this.isEmpty(dates)){
+                    am.getDBTransaction().commit();
+                }
+            }else{
+               LOGGER.log(LOGGER.NOTIFICATION, findCurrentUserName() + "正在尝试修改他人工作日志" + json);
+               return "请勿改写他人日志，谢谢!"; 
+            }
+        }else{
+            LOGGER.log(LOGGER.NOTIFICATION, findCurrentUserName() + "正在修改工作日志，但合同编号contractId获取异常" + json);
+            return "系统获取合同编号异常，请重试!"; 
+        }
+       return "OK";
+    }
+    
+    private boolean isEmpty(String str){
+        if(str == null || "".equals(str)){
+            return true;
+        }
+        return false;
+    }
+    
+    private boolean isEmpty(String[] strs){
+        if(strs == null || strs.length == 0){
+            return true;
+        }
+        return false;
+    }
    
     /**
      *工作日志状态(status)集合

@@ -46,5 +46,7 @@ public class ContractVOImpl extends BaseViewObjectImpl {
     public void setpCreator(String value) {
         ensureVariableManager().setVariableValue("pCreator", value);
     }
+
+
 }
 

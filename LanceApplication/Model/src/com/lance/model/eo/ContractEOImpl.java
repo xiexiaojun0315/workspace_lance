@@ -76,6 +76,7 @@ public class ContractEOImpl extends BaseEntityImpl {
         LancerCompanyId,
         ProcessStatusDesc,
         LastProcessStatus,
+        ContractName,
         Project,
         ContractMilestone,
         ContractReport,
@@ -157,6 +158,7 @@ public class ContractEOImpl extends BaseEntityImpl {
     public static final int LANCERCOMPANYID = AttributesEnum.LancerCompanyId.index();
     public static final int PROCESSSTATUSDESC = AttributesEnum.ProcessStatusDesc.index();
     public static final int LASTPROCESSSTATUS = AttributesEnum.LastProcessStatus.index();
+    public static final int CONTRACTNAME = AttributesEnum.ContractName.index();
     public static final int PROJECT = AttributesEnum.Project.index();
     public static final int CONTRACTMILESTONE = AttributesEnum.ContractMilestone.index();
     public static final int CONTRACTREPORT = AttributesEnum.ContractReport.index();
@@ -982,6 +984,22 @@ public class ContractEOImpl extends BaseEntityImpl {
      */
     public void setLastProcessStatus(String value) {
         setAttributeInternal(LASTPROCESSSTATUS, value);
+    }
+
+    /**
+     * Gets the attribute value for ContractName, using the alias name ContractName.
+     * @return the value of ContractName
+     */
+    public String getContractName() {
+        return (String) getAttributeInternal(CONTRACTNAME);
+    }
+
+    /**
+     * Sets <code>value</code> as the attribute value for ContractName.
+     * @param value value to set the ContractName
+     */
+    public void setContractName(String value) {
+        setAttributeInternal(CONTRACTNAME, value);
     }
 
     /**
