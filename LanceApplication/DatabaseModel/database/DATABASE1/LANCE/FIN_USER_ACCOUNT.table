@@ -37,7 +37,7 @@
       </properties>
     </column>
     <column>
-      <name>AVALIABLE_AMOUNT</name>
+      <name>TEMP_AVALIABLE_AMOUNT</name>
       <dataTypeUsage>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <typeName>NUMBER</typeName>
@@ -47,7 +47,7 @@
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">可用余额</value>
+          <value class="java.lang.String">临时可用账户，项目金，赠送金额，会过期</value>
         </entry>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
@@ -65,7 +65,7 @@
       </properties>
     </column>
     <column>
-      <name>FREEZE_AMOUNT</name>
+      <name>REAL_AVALIABLE_AMOUNT</name>
       <dataTypeUsage>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <typeName>NUMBER</typeName>
@@ -75,7 +75,37 @@
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">冻结余额</value>
+          <value class="java.lang.String">用户充值金额，不过期，永久金额</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>TOTAL_RECEIVE_AMOUNT</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">用户已赚金额，不过期</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>TOTAL_AMOUNT</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">总金额，以上字段相加得出，用于快速查询</value>
         </entry>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
@@ -369,7 +399,7 @@
   <properties>
     <entry>
       <key>Comment</key>
-      <value class="java.lang.String">用户账户</value>
+      <value class="java.lang.String">用户虚拟账户</value>
     </entry>
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_CONNECTION</key>

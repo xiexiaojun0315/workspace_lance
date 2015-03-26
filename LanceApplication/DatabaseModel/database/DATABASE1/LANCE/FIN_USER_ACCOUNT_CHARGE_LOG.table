@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <table xmlns="http://xmlns.oracle.com/jdeveloper/1211/offlinedb">
-  <name>FIN_USER_ACCOUNT_LOG</name>
+  <name>FIN_USER_ACCOUNT_CHARGE_LOG</name>
   <columns>
     <column>
       <name>UUID</name>
@@ -43,6 +43,25 @@
           <entry>
             <key>size</key>
             <value class="java.lang.Integer">60</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+    </column>
+    <column>
+      <name>BANK_BILL_NUMBER</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Integer">60</value>
+          </entry>
+          <entry>
+            <key>unit</key>
+            <value class="java.lang.String">CHAR</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -124,7 +143,7 @@
       </properties>
     </column>
     <column>
-      <name>AFTER_ACCOUNT_AMOUNT</name>
+      <name>AFTER_REAL_AVALIABLE_AMOUNT</name>
       <dataTypeUsage>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <typeName>NUMBER</typeName>
@@ -139,7 +158,7 @@
       </properties>
     </column>
     <column>
-      <name>BEFORE_ACCOUNT_AMOUNT</name>
+      <name>BEFORE_REAL_AVALIABLE_AMOUNT</name>
       <dataTypeUsage>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
           <typeName>NUMBER</typeName>
@@ -163,7 +182,7 @@
           </entry>
           <entry>
             <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
+            <value class="java.lang.String">CHAR</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -222,6 +241,21 @@
             </parent>
             <type>COLUMN</type>
           </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>PAY_ON</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>DATE</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">支付时间</value>
         </entry>
       </properties>
     </column>
@@ -373,7 +407,7 @@
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>UUID</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>FIN_USER_ACCOUNT_LOG</name>
+            <name>FIN_USER_ACCOUNT_CHARGE_LOG</name>
             <schemaName>LANCE</schemaName>
             <type>TABLE</type>
           </parent>
@@ -385,7 +419,7 @@
       <indexID class="oracle.javatools.db.NameBasedID">
         <name>FIN_ACCOUNT_LOG_PK</name>
         <parent class="oracle.javatools.db.NameBasedID">
-          <name>FIN_USER_ACCOUNT_LOG</name>
+          <name>FIN_USER_ACCOUNT_CHARGE_LOG</name>
           <schemaName>LANCE</schemaName>
           <type>TABLE</type>
         </parent>
@@ -487,7 +521,7 @@
   <properties>
     <entry>
       <key>Comment</key>
-      <value class="java.lang.String">账户变动记录</value>
+      <value class="java.lang.String">账户充值提现记录表</value>
     </entry>
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_CONNECTION</key>

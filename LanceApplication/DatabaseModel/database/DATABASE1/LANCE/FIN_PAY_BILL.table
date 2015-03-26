@@ -22,6 +22,10 @@
       <notNull>true</notNull>
       <properties>
         <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">支付单号</value>
+        </entry>
+        <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
             <name>PAY_NUMBER</name>
@@ -56,6 +60,10 @@
       <notNull>false</notNull>
       <properties>
         <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">支付方</value>
+        </entry>
+        <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
             <name>PAY_ACCOUNT</name>
@@ -79,6 +87,10 @@
       </dataTypeUsage>
       <notNull>false</notNull>
       <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">支付金额</value>
+        </entry>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
@@ -114,6 +126,10 @@
       <notNull>false</notNull>
       <properties>
         <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">收款方</value>
+        </entry>
+        <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
             <name>RECEIVE_ACCOUNT</name>
@@ -138,6 +154,10 @@
       <notNull>false</notNull>
       <properties>
         <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">实收金额</value>
+        </entry>
+        <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
             <name>RECEIVE_PRICE</name>
@@ -161,6 +181,10 @@
       </dataTypeUsage>
       <notNull>false</notNull>
       <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">其他费用</value>
+        </entry>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
