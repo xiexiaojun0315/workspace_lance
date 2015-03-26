@@ -18,7 +18,25 @@ $(function () {
         check_form(obj,contractId);
     });
     
+    $("#selAll").click(function(){
+        reverse();
+    });
+    
 });
+
+var reverse = function(){
+     var i=0;
+     $("input[name='rep_check']").each(function () {
+          i++;
+          if($(this).attr("checked")){
+             $(this).attr("checked", false);
+             $(this).val(false);
+          }else{
+             $(this).attr("checked", true);
+             $(this).val(true);
+          }
+     });
+}
 
 var check_form = function(btn,contractId){
 //    btn.button('loading');
@@ -60,11 +78,14 @@ var dialogshow=function(){
             var dates = "";
             var i = 0;
             var index = null;
-            $('input[name="rep_check"]:checked').each(function(){ 
-                i++;
-                dates+=$(this).val()+','; 
-                if(i == 1){
-                    index = $(this).attr("id").substring(2);
+            $("input[name='rep_check']:checked").each(function(){ 
+                var date = $(this).attr("datev");
+                if(date){
+                    i++;
+                    dates+=$(this).attr("datev")+','; 
+                    if(i == 1){
+                        index = $(this).attr("id").substring(2);
+                    }
                 }
             }); 
             if(dates != null && dates.length > 0){

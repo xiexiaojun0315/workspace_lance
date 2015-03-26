@@ -102,6 +102,7 @@
                         <thead>
                             <tr class="info">
                                 <th>
+                                   <input name="rep_check" type="checkbox" id="selAll" />
                                 </th>
                                 <th>日期</th>
                                 <th>星期</th>
@@ -117,7 +118,7 @@
                                 {{each list as data i}}
                                      <tr>
                                         <td>
-                                          <input name="rep_check" type="checkbox" id="ch{{i+1}}" value="{{data.SysDateRec}}"/>
+                                          <input name="rep_check" type="checkbox" id="ch{{i+1}}" datev="{{data.SysDateRec}}"/>
                                         </td>
                                         <td>{{data.SysDateRec}}</td>
                                         <td>{{data.Day}}</td>
