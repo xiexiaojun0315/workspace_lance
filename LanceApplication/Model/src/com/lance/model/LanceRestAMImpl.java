@@ -1,6 +1,7 @@
 package com.lance.model;
 
 import com.lance.model.user.vo.UUserVOImpl;
+import com.lance.model.user.vo.UUserVORowImpl;
 import com.lance.model.user.vo.UserEducationVOImpl;
 import com.lance.model.user.vo.UserLocationListVOImpl;
 import com.lance.model.user.vo.UserRoleGrantsVOImpl;
@@ -47,7 +48,20 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
     public LanceRestAMImpl() {
     }
 
-    public String commit(){
+    public String findDisplayNameByUserName(String userName) {
+        UUserVOImpl vo = this.getUUser1();
+        vo.setApplyViewCriteriaName("FindByUserNameVC");
+        vo.setpUserName(userName);
+        vo.executeQuery();
+        vo.removeApplyViewCriteriaName("FindByUserNameVC");
+        if (vo.getRowCount() != 0) {
+            UUserVORowImpl row = (UUserVORowImpl) vo.first();
+            return row.getDisplayName();
+        }
+        return "";
+    }
+
+    public String commit() {
         try {
             this.getDBTransaction().commit();
             return "ok";

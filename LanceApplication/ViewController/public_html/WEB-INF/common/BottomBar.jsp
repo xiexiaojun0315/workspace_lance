@@ -1,44 +1,101 @@
 <%@ page contentType="text/html;charset=UTF-8"%>
-
-            <div id="mfooter">
-                <div class="min-width">
-                    <img src="/lance/resources/image/logo.png" alt="" />
-                    <span>©2014 Elance, Inc.</span>
-                    <span>|</span>
-                    <a href="#">Terms & Privacy</a>
-                    <span>|</span>
-                    <a href="#">Help</a>
-                </div>
+<div class="lan-footer">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-2">
+                <img src="\lance\resources\image\common\logo.png" alt=""/>
             </div>
-
-            <div class="overlay"></div>
-
-            <div id="dia-verify" class="dialog">
-                <img class="dclose" src="/lance/resources/image/profile/dialog_close.png" alt="" />
-                <div class="dbody">
-                    <span class="icon-verify"></span>
-                    <span class="title">Verify Your Identity!</span>
-                    <div class="text">
-                        Elance uses Integrity's Global ID and Age Verification service, powered by Aristotle. You will be redirected to Aristotle's identity verification form where you will need to complete the verification form and upload a government identity document. The information you submit will be subject to <a href="#">Aristotle's privacy policy</a>.<a href="#">Learn More</a>
-                        <br /><br />
-                        Elance will be sending the following information to Aristotle:
-                        <br /><br />
-                        <img src="/lance/resources/image/pic/download.jpg" alt="" />
-                        <ul>
-                            <li>yx dy</li>
-                            <li>123213213, 123213123123, Chongqing, Chongqing Shi, 123123213, CN</li>
-                            <li>hwjwxn@163.com</li>
-                        </ul>
-                        <br /><br />
-                        Note: Please ensure that the name on your profile matches your government ID, and your profile picture clearly shows your face.
-                        <br /><br />
-                        <input type="checkbox" id="chk_con" />
-                        <label for="chk_con">I accept the <a href="#">terms and conditions.</a></label>
-                    </div>
-                    <p class="buttons">
-                        <a href="#" class="btn-green">Continue</a>
-                        <a href="#" class="btn-gray">Cancel</a>
-                    </p>
-                </div>
+            <div class="col-md-10">
+                <dl class="pull-left">
+                    <dt>Research</dt>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Trends</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Online Employment Report</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Annual Impact Report</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Global Business Survey</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Global Freelancer Survey</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Women in Technology</a>
+                    </dd>
+                </dl>
+                 
+                <dl class="pull-left">
+                    <dt>Research</dt>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Trends</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Online Employment Report</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Annual Impact Report</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Global Business Survey</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Global Freelancer Survey</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Women in Technology</a>
+                    </dd>
+                </dl>
+                 
+                <dl class="pull-left">
+                    <dt>Research</dt>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Trends</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Online Employment Report</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Annual Impact Report</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Global Business Survey</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Global Freelancer Survey</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Women in Technology</a>
+                    </dd>
+                </dl>
+                 
+                <dl class="pull-left">
+                    <dt>Research</dt>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Trends</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Online Employment Report</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Annual Impact Report</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Global Business Survey</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Global Freelancer Survey</a>
+                    </dd>
+                    <dd>
+                        <a href="#" class="lan-font-black lan-font-12">Women in Technology</a>
+                    </dd>
+                </dl>
+                <div class="copyright">&copy; 1999 - 2014 Elance, Inc. All Rights Reserved. U.S. Patents 7,069,242,
+                                       8,073,762 and 8,380,709</div>
             </div>
-
+        </div>
+    </div>
+</div>

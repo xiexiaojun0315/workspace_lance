@@ -1,6 +1,6 @@
 package com.lance.model.vo;
 
-import com.lance.model.user.vo.UUserVOImpl;
+import com.lance.model.LanceRestAMImpl;
 import com.lance.model.util.LocationUtil;
 
 import com.zngh.platform.front.core.model.BaseEntityImpl;
@@ -864,7 +864,7 @@ public class PostJobsVORowImpl extends BaseViewRowImpl {
             System.err.println("无法找到PostJob的CreateBy用户：" + this.getCreateBy());
             return null;
         }
-        return ((UUserVOImpl) this.getUUserVO1().getViewObject()).findDisplayNameByUserName(this.getCreateBy());
+        return ((LanceRestAMImpl) this.getApplicationModule()).findDisplayNameByUserName(this.getCreateBy());
         //        return (String) getAttributeInternal(CREATEBYNAME);
     }
 

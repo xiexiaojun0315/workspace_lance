@@ -7,71 +7,158 @@
             var User=${user};
             var Data=${data};
             </script>
-            <meta charset="utf-8" />
-            <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-            <meta name="viewport" content="width=device-width, initial-scale=1" />
-            <title></title>
-            <link type="text/css" href="/lance/resources/css/bootstrap.min.css" rel="stylesheet" />
-            <link type="text/css" href="/lance/resources/css/common.css" rel="stylesheet" />
-            <link type="text/css" href="/lance/resources/css/main.css" rel="stylesheet" />
+             <!-- Bootstrap -->
+            <link href="/lance/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+            <link href="/lance/resources/css/common/common.css" rel="stylesheet" type="text/css" />
+            <link href="/lance/resources/css/control/main.css" rel="stylesheet" type="text/css" />
+            <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+            <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
             <!--[if lt IE 9]>
-              <script src="/lance/resources/js/html5shiv.js"></script>
-              <script src="/lance/resources/js/respond.js"></script>
+              <script src="/lance/resources/js/html5shiv.js" type="text/javascript"></script>
+              <script src="/lance/resources/js/respond.js" type="text/javascript"></script>
             <![endif]-->
         
     </head>
     <body>
-      <div class="container-fluid">
-        <div class="row" id="waiting">
-            <img src="/lance/resources/image/bloading.gif" alt="" />
-            <span class="bold-text">加载中...</span>
-        </div>
-        <div class="row" id="t_con" style="display:none;">
-            <jsp:include page="/WEB-INF/common/TopBar.jsp" />
+     <div class="lan-header-main">
+        <div class="container">
+            <img class="pull-left logo" src="/lance/resources/image/common/logo.png" alt="" />
 
-            <div id="content" class="min-width">
-                <jsp:include page="/WEB-INF/profile/ProfileMenu.jsp" />
-                <div class="right-con no-border">
-                    <div class="basic">
-                        <h3>Edit Profile</h3>
-                        <p class="ment">
-                            <br />
-                            Add skills to your profile so that clients can find and select you for jobs. Skills are also used to send you matching jobs. <a href="#">More Info</a>
-                            <br /><br />
-                            Note: Based on your membership plan, first 10 skills will be shown on your profile. <a href="#">More Info</a>
-                        </p>
-                        <br />
-                        <table class="tab-skills" border="0" cellpadding="0" cellspacing="0" width="100%">
-                            <thead>
-                                <tr>
-                                    <th>Order</th>
-                                    <th><a id="btn_addSkill" href="#" class="btn-green">Add Skill(s)</a></th>
-                                    <th>Tested</th>
-                                    <th>Display</th>
-                                    <th>Actions</th>
-                                </tr>
-                            </thead>
-                            <tbody id="gridtbody">
-                                <tr class="mod-skill">
-                                    <td class="xh">1.</td>
-                                    <td><span class="skil">PHP5</span></td>
-                                    <td><span class="no-test">not yet tested</span></td>
-                                    <td><span class="chk-icon"></span></td>
-                                    <td><a class="btn-delete" href="#">Delete</a></td>
-                                </tr>
-                            </tbody>
-                        </table>
+            <ol class="breadcrumb pull-right">
+                <li>
+                    <a class="lan-font-bold" data-toggle="dropdown" aria-expanded="false" href="#">Yxdaye</a>
+                    <span class="caret"></span>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">个人信息</a></li>
+                        <li><a href="#">个人简历</a></li>
+                        <li><a href="#">个人设置</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li><a href="#">退出</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">收件箱 <span class="label label-danger">1</span></a></li>
+                <li class="active">
+                    <a class="lan-font-bold" data-toggle="dropdown" aria-expanded="false" href="#">帮助</a>
+                    <span class="caret"></span>
+                </li>
+            </ol>
+
+        </div>
+    </div>
+    
+    <div class="lan-main-menu">
+        <div class="container">
+            <ul class="nav navbar-nav pull-left">
+                <li class="active">
+                    <a href="#">首页<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">找人 <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="pull-right search">
+                <div class="input-group input-group-sm">
+                    <span data-toggle="dropdown" role="button" aria-expanded="false" class="input-group-addon" id="sizing-addon3">自由人<span class="caret"></span></span>
+                    <input type="text" class="form-control" placeholder="搜索" aria-describedby="sizing-addon3">
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">自由人</a></li>
+                        <li><a href="#">工作</a></li>
+                        <li><a href="#">团队</a></li>
+                    </ul>
+
+                </div>
+                <button type="button" class="btn btn-primary btn-small">搜索</button>
+
+                <button type="button" class="btn btn-success btn-middle">发布工作信息</button>
+            </div>
+
+        </div>
+    </div>
+    
+    
+    
+    <div class="container">
+        <div class="row" id="t_con">
+           <div class="col-md-3 lan-main-left">
+                <img width="200px" src="/lance/resources/image/jpg/avatar5.png" alt="" class="img-thumbnail">
+
+                <br /><br />
+                <ul class="nav nav-stacked">
+                    <li role="presentation" class="active"><a href="#">Home</a></li>
+                    <li role="presentation"><a href="#">Profile</a></li>
+                    <li role="presentation"><a href="#">Messages</a></li>
+                </ul>
+            </div>
+            <div class="col-md-9 lan-main-right">
+                <div class="page-header">
+                    <h1><small>个人基本技能编辑</small></h1>
+                </div>
+                <div class="alert alert-info" role="alert">
+                    添加个人技能为了才才网给您推荐合适的工作机会，同时也可以让公司很容易的看上你。<br />
+                    <br />
+                    <b>注意：根据每个用户的级别，技能最先只能显示10条。</b>
+                </div>
+                
+                <table class="table table-bordered">
+                    <thead>
+                        <tr>
+                            <th>顺序</th>
+                            <th>技能名称 <a class="btn-delete btn btn-xs btn-success" href="#" data-toggle="modal" data-target="#addSkill">添加技能</a></th>
+                            <th>是否显示</th>
+                            <th>操作</th>
+                        </tr>
+                    </thead>
+                    <tbody id="gridtbody">
+                        <tr class="mod-skill" style="display:none">
+                            <td class="xh">1.</td>
+                            <td><span class="skil">PHP5</span></td>
+                            <td>
+                                <input class="chk-icon" type="checkbox" value="" />
+                            </td>
+                            <td><a class="btn-delete btn btn-xs btn-danger" href="#">删除</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+                
+            </div>
+            
+            <div class="modal fade" id="addSkill" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                            <h4 class="modal-title" id="myModalLabel">添加技能</h4>
+                        </div>
+                        <div class="modal-body">
+                            <span>输入个人技能，按回车键添加。</span>
+                            <div class="well well-sm pskills">
+                                <button type="button" class="btn btn-primary btn-xs mod-skill" style="display:none;">
+                                    
+                                </button>
+                                <input type="text" id="inp_addnew" class="inp_add_skill" placeholder="输入技能" />
+                            </div>
+                            
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="button" id="btn_confirm_add" class="btn btn-primary">保存</button>
+                        </div>
                     </div>
                 </div>
             </div>
-
-
-         <jsp:include page="/WEB-INF/common/BottomBar.jsp" />
-         
-         
+            
             <div class="overlay"></div>
 
-            <div id="dia-skill" class="dialog">
+            <div id="dia-skill" class="dialog" style="display:none;">
                 <img class="dclose" src="/lance/resources/image/profile/dialog_close.png" alt="" />
                 <div class="dbody">
                     <span class="title">Add Skill(s)</span>
@@ -96,18 +183,64 @@
 
         </div>
     </div>
+            
+    <div class="lan-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="/lance/resources/image/common/logo.png" alt="" />
+                </div>
+                <div class="col-md-10">
+                    <dl class="pull-left">
+                        <dt>Research</dt>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Trends</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Online Employment Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Annual Impact Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Business Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Freelancer Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Women in Technology</a></dd>
+                    </dl>
+                    <dl class="pull-left">
+                        <dt>Research</dt>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Trends</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Online Employment Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Annual Impact Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Business Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Freelancer Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Women in Technology</a></dd>
+                    </dl>
+                    <dl class="pull-left">
+                        <dt>Research</dt>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Trends</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Online Employment Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Annual Impact Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Business Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Freelancer Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Women in Technology</a></dd>
+                    </dl>
+                    <dl class="pull-left">
+                        <dt>Research</dt>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Trends</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Online Employment Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Annual Impact Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Business Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Freelancer Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Women in Technology</a></dd>
+                    </dl>
+                    <div class="copyright">© 1999 - 2014 Elance, Inc. All Rights Reserved. U.S. Patents 7,069,242, 8,073,762 and 8,380,709</div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
     <script src="/lance/resources/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
     <script src="/lance/resources/js/bootstrap.min.js" type="text/javascript"></script>
-    <script src="/lance/resources/js/jquery.dragsort-0.5.2.min.js" type="text/javascript"></script>
+    
     <script src="/lance/resources/js/core.js" type="text/javascript"></script>
-    <script src="/lance/resources/js/profile.js" type="text/javascript"></script>
-    <script type="text/javascript">
-        $(function(){
-            Lancer.profile.getStart(function(data){
-                startInfor(data);
-                Lancer.profile.getSkillsInfo(initSkill, data);
-            });
-        });
-    </script>
+    <script src="/lance/resources/js/control/lan_check.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/lance/resources/js/page/editskill.js"></script>
+
     </body>
 </html>
