@@ -27,19 +27,45 @@
     </DesignTime>
   </Attribute>
   <Attribute
-    Name="AvaliableAmount"
-    ColumnName="AVALIABLE_AMOUNT"
+    Name="TempAvaliableAmount"
+    ColumnName="TEMP_AVALIABLE_AMOUNT"
     SQLType="NUMERIC"
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
     TableName="FIN_USER_ACCOUNT"/>
   <Attribute
-    Name="FreezeAmount"
-    ColumnName="FREEZE_AMOUNT"
+    Name="RealAvaliableAmount"
+    ColumnName="REAL_AVALIABLE_AMOUNT"
     SQLType="NUMERIC"
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
     TableName="FIN_USER_ACCOUNT"/>
+  <Attribute
+    Name="TotalReceiveAmount"
+    ColumnName="TOTAL_RECEIVE_AMOUNT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="FIN_USER_ACCOUNT"/>
+  <Attribute
+    Name="TotalAmount"
+    ColumnName="TOTAL_AMOUNT"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="FIN_USER_ACCOUNT"/>
+  <Attribute
+    Name="Status"
+    Precision="20"
+    ColumnName="STATUS"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="FIN_USER_ACCOUNT">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
   <Attribute
     Name="CreateBy"
     Precision="60"

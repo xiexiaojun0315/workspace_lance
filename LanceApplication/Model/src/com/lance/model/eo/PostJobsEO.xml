@@ -160,7 +160,7 @@
   </Attribute>
   <Attribute
     Name="SpecificSkillA"
-    Precision="32"
+    Precision="120"
     ColumnName="SPECIFIC_SKILL_A"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -172,7 +172,7 @@
   </Attribute>
   <Attribute
     Name="SpecificSkillB"
-    Precision="32"
+    Precision="120"
     ColumnName="SPECIFIC_SKILL_B"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -184,7 +184,7 @@
   </Attribute>
   <Attribute
     Name="SpecificSkillC"
-    Precision="32"
+    Precision="120"
     ColumnName="SPECIFIC_SKILL_C"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -196,7 +196,7 @@
   </Attribute>
   <Attribute
     Name="SpecificSkillD"
-    Precision="32"
+    Precision="120"
     ColumnName="SPECIFIC_SKILL_D"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -208,7 +208,7 @@
   </Attribute>
   <Attribute
     Name="SpecificSkillE"
-    Precision="32"
+    Precision="120"
     ColumnName="SPECIFIC_SKILL_E"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -220,7 +220,7 @@
   </Attribute>
   <Attribute
     Name="SpecificSkillF"
-    Precision="32"
+    Precision="120"
     ColumnName="SPECIFIC_SKILL_F"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -232,7 +232,7 @@
   </Attribute>
   <Attribute
     Name="SpecificSkillG"
-    Precision="32"
+    Precision="120"
     ColumnName="SPECIFIC_SKILL_G"
     SQLType="VARCHAR"
     Type="java.lang.String"

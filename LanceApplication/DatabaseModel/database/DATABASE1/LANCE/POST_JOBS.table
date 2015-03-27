@@ -548,11 +548,11 @@
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">32</value>
+            <value class="java.lang.Integer">120</value>
           </entry>
           <entry>
             <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
+            <value class="java.lang.String">CHAR</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -586,11 +586,11 @@
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">32</value>
+            <value class="java.lang.Integer">120</value>
           </entry>
           <entry>
             <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
+            <value class="java.lang.String">CHAR</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -620,11 +620,11 @@
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">32</value>
+            <value class="java.lang.Integer">120</value>
           </entry>
           <entry>
             <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
+            <value class="java.lang.String">CHAR</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -654,11 +654,11 @@
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">32</value>
+            <value class="java.lang.Integer">120</value>
           </entry>
           <entry>
             <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
+            <value class="java.lang.String">CHAR</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -688,11 +688,11 @@
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">32</value>
+            <value class="java.lang.Integer">120</value>
           </entry>
           <entry>
             <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
+            <value class="java.lang.String">CHAR</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -722,11 +722,11 @@
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">32</value>
+            <value class="java.lang.Integer">120</value>
           </entry>
           <entry>
             <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
+            <value class="java.lang.String">CHAR</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -756,11 +756,11 @@
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">32</value>
+            <value class="java.lang.Integer">120</value>
           </entry>
           <entry>
             <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
+            <value class="java.lang.String">CHAR</value>
           </entry>
         </attributeValues>
         <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
@@ -1144,6 +1144,42 @@
         <entry>
           <key>Comment</key>
           <value class="java.lang.String">索引：所有元信息</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>RANK</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">排序优先级</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>RANK_DESC</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Integer">2100</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">排序优先级说明</value>
         </entry>
       </properties>
     </column>

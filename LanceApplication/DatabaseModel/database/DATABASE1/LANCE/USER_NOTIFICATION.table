@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <table xmlns="http://xmlns.oracle.com/jdeveloper/1211/offlinedb">
-  <name>SKILLS</name>
+  <name>USER_NOTIFICATION</name>
   <columns>
     <column>
       <name>UUID</name>
@@ -26,8 +26,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>UUID</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>SKILLS</name>
-              <identifier class="java.math.BigDecimal">30334</identifier>
+              <name>USER_NOTIFICATION</name>
+              <identifier class="java.math.BigDecimal">32926</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -37,46 +37,12 @@
       </properties>
     </column>
     <column>
-      <name>SUPER_TYPE_ID</name>
+      <name>TITLE</name>
       <dataTypeUsage>
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Long">32</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>SUPER_TYPE_ID</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>SKILLS</name>
-              <identifier class="java.math.BigDecimal">30334</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>NAME</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Integer">120</value>
+            <value class="java.lang.Long">20</value>
           </entry>
           <entry>
             <key>unit</key>
@@ -92,10 +58,10 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>NAME</name>
+            <name>TITLE</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>SKILLS</name>
-              <identifier class="java.math.BigDecimal">30334</identifier>
+              <name>USER_NOTIFICATION</name>
+              <identifier class="java.math.BigDecimal">32926</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -103,6 +69,123 @@
           </value>
         </entry>
       </properties>
+    </column>
+    <column>
+      <name>CONTENT</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">1000</value>
+          </entry>
+          <entry>
+            <key>unit</key>
+            <value class="java.lang.String">CHAR</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>CONTENT</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>USER_NOTIFICATION</name>
+              <identifier class="java.math.BigDecimal">32926</identifier>
+              <schemaName>LANCE</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>USER_NAME</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">60</value>
+          </entry>
+          <entry>
+            <key>unit</key>
+            <value class="java.lang.String">CHAR</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>USER_NAME</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>USER_NOTIFICATION</name>
+              <identifier class="java.math.BigDecimal">32926</identifier>
+              <schemaName>LANCE</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>TYPE</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">20</value>
+          </entry>
+          <entry>
+            <key>unit</key>
+            <value class="java.lang.String">CHAR</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>TYPE</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>USER_NOTIFICATION</name>
+              <identifier class="java.math.BigDecimal">32926</identifier>
+              <schemaName>LANCE</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>READ</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">20</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
     </column>
     <column>
       <name>CREATE_BY</name>
@@ -128,8 +211,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>CREATE_BY</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>SKILLS</name>
-              <identifier class="java.math.BigDecimal">30334</identifier>
+              <name>USER_NOTIFICATION</name>
+              <identifier class="java.math.BigDecimal">32926</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -152,8 +235,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>CREATE_ON</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>SKILLS</name>
-              <identifier class="java.math.BigDecimal">30334</identifier>
+              <name>USER_NOTIFICATION</name>
+              <identifier class="java.math.BigDecimal">32926</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -186,8 +269,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>MODIFY_BY</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>SKILLS</name>
-              <identifier class="java.math.BigDecimal">30334</identifier>
+              <name>USER_NOTIFICATION</name>
+              <identifier class="java.math.BigDecimal">32926</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -210,8 +293,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>MODIFY_ON</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>SKILLS</name>
-              <identifier class="java.math.BigDecimal">30334</identifier>
+              <name>USER_NOTIFICATION</name>
+              <identifier class="java.math.BigDecimal">32926</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -234,8 +317,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>VERSION</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>SKILLS</name>
-              <identifier class="java.math.BigDecimal">30334</identifier>
+              <name>USER_NOTIFICATION</name>
+              <identifier class="java.math.BigDecimal">32926</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -247,12 +330,12 @@
   </columns>
   <constraints>
     <constraint class="oracle.javatools.db.PKConstraint">
-      <name>SKILLS_PK</name>
+      <name>MAIL_PK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>UUID</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>SKILLS</name>
+            <name>USER_NOTIFICATION</name>
             <schemaName>LANCE</schemaName>
             <type>TABLE</type>
           </parent>
@@ -262,9 +345,9 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>SKILLS_PK</name>
+        <name>MAIL_PK</name>
         <parent class="oracle.javatools.db.NameBasedID">
-          <name>SKILLS</name>
+          <name>USER_NOTIFICATION</name>
           <schemaName>LANCE</schemaName>
           <type>TABLE</type>
         </parent>
@@ -275,13 +358,13 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>SKILLS_PK</name>
+            <name>MAIL_PK</name>
             <childObjectNames>
               <childObjectName>UUID</childObjectName>
             </childObjectNames>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>SKILLS</name>
-              <identifier class="java.math.BigDecimal">30334</identifier>
+              <name>USER_NOTIFICATION</name>
+              <identifier class="java.math.BigDecimal">32926</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -291,56 +374,10 @@
         </entry>
       </properties>
     </constraint>
-    <constraint class="oracle.javatools.db.FKConstraint">
-      <name>SKILLS_SKILL_SUPER_TYPE_FK1</name>
-      <columnIDs>
-        <columnID class="oracle.javatools.db.NameBasedID">
-          <name>SUPER_TYPE_ID</name>
-          <parent class="oracle.javatools.db.NameBasedID">
-            <name>SKILLS</name>
-            <schemaName>LANCE</schemaName>
-            <type>TABLE</type>
-          </parent>
-          <schemaName>LANCE</schemaName>
-          <type>COLUMN</type>
-        </columnID>
-      </columnIDs>
-      <enabled>true</enabled>
-      <onDeleteAction>NO_ACTION</onDeleteAction>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>SKILLS_SKILL_SUPER_TYPE_FK1</name>
-            <childObjectNames>
-              <childObjectName>SUPER_TYPE_ID</childObjectName>
-            </childObjectNames>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>SKILLS</name>
-              <identifier class="java.math.BigDecimal">30334</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <subType>FKConstraint</subType>
-            <type>CONSTRAINT</type>
-          </value>
-        </entry>
-      </properties>
-      <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>SKILL_SUPER_TYPE_PK</name>
-        <parent class="oracle.javatools.db.NameBasedID">
-          <name>SKILL_SUPER_TYPE</name>
-          <schemaName>LANCE</schemaName>
-          <type>TABLE</type>
-        </parent>
-        <schemaName>LANCE</schemaName>
-        <type>CONSTRAINT</type>
-      </referenceID>
-    </constraint>
   </constraints>
   <indexes>
     <index>
-      <name>SKILLS_PK</name>
+      <name>MAIL_PK</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>UUID</expressionSource>
@@ -351,11 +388,11 @@
               <value class="oracle.javatools.db.ReferenceID">
                 <name>UUID</name>
                 <parent class="oracle.javatools.db.ReferenceID">
-                  <name>SKILLS_PK</name>
-                  <identifier class="java.math.BigDecimal">30366</identifier>
+                  <name>MAIL_PK</name>
+                  <identifier class="java.math.BigDecimal">32927</identifier>
                   <parent class="oracle.javatools.db.ReferenceID">
-                    <name>SKILLS</name>
-                    <identifier class="java.math.BigDecimal">30334</identifier>
+                    <name>USER_NOTIFICATION</name>
+                    <identifier class="java.math.BigDecimal">32926</identifier>
                     <schemaName>LANCE</schemaName>
                     <type>TABLE</type>
                   </parent>
@@ -374,11 +411,11 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>SKILLS_PK</name>
-            <identifier class="java.math.BigDecimal">30366</identifier>
+            <name>MAIL_PK</name>
+            <identifier class="java.math.BigDecimal">32927</identifier>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>SKILLS</name>
-              <identifier class="java.math.BigDecimal">30334</identifier>
+              <name>USER_NOTIFICATION</name>
+              <identifier class="java.math.BigDecimal">32926</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -406,14 +443,10 @@
       <schema>
         <name>LANCE</name>
       </schema>
-      <systemGenerated>false</systemGenerated>
+      <systemGenerated>true</systemGenerated>
     </index>
   </indexes>
   <properties>
-    <entry>
-      <key>Comment</key>
-      <value class="java.lang.String">全部技能</value>
-    </entry>
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_CONNECTION</key>
       <value class="java.lang.String">lance</value>
@@ -421,8 +454,8 @@
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
       <value class="oracle.javatools.db.ReferenceID">
-        <name>SKILLS</name>
-        <identifier class="java.math.BigDecimal">30334</identifier>
+        <name>USER_NOTIFICATION</name>
+        <identifier class="java.math.BigDecimal">32926</identifier>
         <schemaName>LANCE</schemaName>
         <type>TABLE</type>
       </value>

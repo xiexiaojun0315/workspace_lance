@@ -30,17 +30,35 @@
     EntityUsage="FinUserAccountEO"
     AliasName="USER_NAME"/>
   <ViewAttribute
-    Name="AvaliableAmount"
+    Name="RealAvaliableAmount"
     PrecisionRule="true"
-    EntityAttrName="AvaliableAmount"
+    EntityAttrName="RealAvaliableAmount"
     EntityUsage="FinUserAccountEO"
-    AliasName="AVALIABLE_AMOUNT"/>
+    AliasName="REAL_AVALIABLE_AMOUNT"/>
   <ViewAttribute
-    Name="FreezeAmount"
+    Name="Status"
     PrecisionRule="true"
-    EntityAttrName="FreezeAmount"
+    EntityAttrName="Status"
     EntityUsage="FinUserAccountEO"
-    AliasName="FREEZE_AMOUNT"/>
+    AliasName="STATUS"/>
+  <ViewAttribute
+    Name="TempAvaliableAmount"
+    PrecisionRule="true"
+    EntityAttrName="TempAvaliableAmount"
+    EntityUsage="FinUserAccountEO"
+    AliasName="TEMP_AVALIABLE_AMOUNT"/>
+  <ViewAttribute
+    Name="TotalAmount"
+    PrecisionRule="true"
+    EntityAttrName="TotalAmount"
+    EntityUsage="FinUserAccountEO"
+    AliasName="TOTAL_AMOUNT"/>
+  <ViewAttribute
+    Name="TotalReceiveAmount"
+    PrecisionRule="true"
+    EntityAttrName="TotalReceiveAmount"
+    EntityUsage="FinUserAccountEO"
+    AliasName="TOTAL_RECEIVE_AMOUNT"/>
   <ViewAttribute
     Name="CreateBy"
     PrecisionRule="true"
