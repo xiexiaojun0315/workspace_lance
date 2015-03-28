@@ -563,6 +563,24 @@ public class ContractResource extends BaseRestResource {
         return "error";
     }
     
+    /**
+     *检查当前用户是甲方、还是乙方
+     * @param contractId
+     * @return
+     */
+    @GET
+    @Path("checkUser/{contractId}")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String checkCurUserRole(@PathParam("contractId")String contractId){
+       ContractVORowImpl cvr = findContractRowById(contractId);
+       if(this.findCurrentUserName().equals(cvr.getLancerName())){
+           return "LANCER";
+       }else if(this.findCurrentUserName().equals(cvr.getClientName())){
+           return "CLIENT";
+       }
+       return "undefined";
+    }
+    
     @GET
     @Path("findContract")
     @Produces(MediaType.APPLICATION_JSON)

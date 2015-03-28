@@ -98,6 +98,9 @@
     <ViewUsage
         Name="ContractReport2"
         ViewObjectName="com.lance.model.vo.ContractReportVO"/>
+    <ViewUsage
+        Name="ContractClientReportV1"
+        ViewObjectName="com.lance.model.vvo.ContractClientReportVVO"/>
     <ViewLinkUsage
       Name="JobCategory_SubCategoryVL1"
       ViewLinkObjectName="com.lance.model.vl.JobCategory_SubCategoryVL"

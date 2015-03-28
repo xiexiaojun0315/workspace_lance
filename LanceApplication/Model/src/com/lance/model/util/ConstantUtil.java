@@ -109,6 +109,10 @@ public class ConstantUtil {
 //    public static final String MILESTONE_PROCESS_TODO="toAudit";//甲方提交，等待乙方确认
 //    public static final String MILESTONE_PROCESS_TODO="toAudit";//乙方确认，等待开始            
 
-    
-    
+    //------------工作日志状态-------------
+    public static final String REPORT_STATUS_WITHDRAW="withdraw";//已撤回
+    public static final String REPORT_STATUS_POSTED="posted";//等待确认
+    public static final String REPORT_STATUS_CONFIRM="confirm";//确认待付款
+    public static final String REPORT_STATUS_PAYED="payed";//已支付
+    public static final String REPORT_STATUS_REJECT="reject";//已拒绝
 }

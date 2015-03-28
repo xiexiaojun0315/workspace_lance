@@ -1,6 +1,7 @@
 package com.lance.view.rest.project;
 
 import com.lance.model.LanceRestAMImpl;
+import com.lance.model.util.ConstantUtil;
 import com.lance.model.vo.ContractVOImpl;
 import com.lance.model.vo.ContractVORowImpl;
 import com.lance.view.util.LUtil;
@@ -41,9 +42,6 @@ import org.codehaus.jettison.json.JSONObject;
  * DailyReport ：Company
  * reportId ： companyId
  * 每日工作报告 ： 公司
- *
- *
- *
  */
 @Path("dailyReport")
 public class DailyReportResource extends BaseRestResource {
@@ -69,19 +67,19 @@ public class DailyReportResource extends BaseRestResource {
      */
     public static final String[] ATTR_ALL = {
         "Uuid", "ProjectId", "ContractId", "DateRecord", "WorkContent", "WorkHours", "WorkRemark", "Status",
-        "StatusRemark", "PayBillNumber","Address"
+        "StatusRemark", "PayBillNumber","Address","StatusName"
     };
 
     public static final String[] ATTR_GET = ATTR_ALL;
 
     public static final String[] ATTR_UPDATE = {"WorkContent","WorkHours","WorkRemark","Address"};
     
-    public static final String[] ATTR_APPROVE = {"Status","StatusRemark","PayBillNumber"};
+    public static final String[] ATTR_APPROVE = {"Status","StatusName","StatusRemark","PayBillNumber"};
 
     public static final String[] ATTR_CREATE = {"ProjectId","ContractId","DateRecord","WorkContent","WorkHours","WorkRemark","Address"};
     
     public static final String[] ATTR_SEARCH = {"Uuid", "ProjectId", "ContractId", "DateRecord", "WorkContent", "WorkHours", "WorkRemark", "Status",
-        "StatusRemark", "PayBillNumber","Day","Address","SysDateRec"};
+        "StatusRemark", "PayBillNumber","Day","Address","SysDateRec","StatusName"};
 
     public static final boolean CAN_DELETE = true;
 
@@ -92,6 +90,10 @@ public class DailyReportResource extends BaseRestResource {
     
     public ViewObjectImpl getDailyReportVVOFromAM(LanceRestAMImpl am) {
         return am.getContractReportVVO1();
+    }
+    
+    public ViewObjectImpl getContractClientReportVVOFromAM(LanceRestAMImpl am) {
+        return am.getContractClientReportV1();
     }
 
     public Row findDailyReportById(String id, ViewObjectImpl vo, LanceRestAMImpl am) {
@@ -123,10 +125,23 @@ public class DailyReportResource extends BaseRestResource {
     }
     
     public ViewObjectImpl findDailyReportByMonth(int year,int month,String contractId,ViewObjectImpl vo){
+       vo.clearCache();
+       vo.setWhereClause(null);
        vo.setNamedWhereClauseParam("startDate", getMonthOfDate(year, month, "first"));
        vo.setNamedWhereClauseParam("endDate", getMonthOfDate(year, month, "end"));
        vo.setNamedWhereClauseParam("conId", contractId);
        vo.setNamedWhereClauseParam("userName", findCurrentUserName());
+       vo.setRangeSize(-1);
+       vo.executeQuery();
+       return vo;
+    }
+    
+    public ViewObjectImpl findCliDailyReportByMonth(int year,int month,String contractId,ViewObjectImpl vo){
+       vo.clearCache();
+       vo.setWhereClause(null);
+       vo.setNamedWhereClauseParam("startDate", getMonthOfDate(year, month, "first"));
+       vo.setNamedWhereClauseParam("endDate", getMonthOfDate(year, month, "end"));
+       vo.setNamedWhereClauseParam("conId", contractId);
        vo.setRangeSize(-1);
        vo.executeQuery();
        return vo;
@@ -146,8 +161,8 @@ public class DailyReportResource extends BaseRestResource {
         return (ContractVORowImpl) contractVO.first();
     }
     
-    public boolean checkStatusIsDraft(Row row){
-        return ReportStatus.DRAFT.status().equals((String)row.getAttribute("Status"));
+    public boolean checkIsAllowUpt(Row row){
+        return !(ReportStatus.CONFIRM.status().equals((String)row.getAttribute("Status")) || ReportStatus.PAYED.status().equals((String)row.getAttribute("Status")));
     }
 
     public String returnParamAfterCreate(Row row) {
@@ -201,8 +216,8 @@ public class DailyReportResource extends BaseRestResource {
             return "msg:can't find DailyReport by id " + reportId;
         }
         
-        if(!checkStatusIsDraft(row)){
-            String msg = "此记录甲方已批阅,请勿修改!";
+        if(!checkIsAllowUpt(row)){
+            String msg = "此记录甲方已确认,请勿修改!";
             return "msg:" + msg; 
         }
         
@@ -212,7 +227,7 @@ public class DailyReportResource extends BaseRestResource {
         }
 
         RestUtil.copyJsonObjectToRow(json, vo, row, this.ATTR_UPDATE);
-//        am.getDBTransaction().commit();
+        am.getDBTransaction().commit();
 
         LOGGER.log(LOGGER.NOTIFICATION,
                    findCurrentUserName() + "修改每日工作报告(" + reportId + ") 为：" +
@@ -233,12 +248,13 @@ public class DailyReportResource extends BaseRestResource {
         LanceRestAMImpl am = LUtil.findLanceAM();
         ViewObjectImpl vo = getDailyReportFromAM(am);
         RowImpl row = LUtil.createInsertRow(vo);
-        row.setAttribute("Status", ReportStatus.DRAFT.status());
-        row.setAttribute("StatusName", ReportStatus.DRAFT.statusName());
+        row.setAttribute("Status", ReportStatus.POSTED.status());
+        row.setAttribute("StatusName", ReportStatus.POSTED.statusName());
         RestUtil.copyJsonObjectToRow(json, vo, row, this.ATTR_CREATE);
         LOGGER.log(LOGGER.TRACE, "copyJsonObjectToRow :" + this.ATTR_CREATE);
         String res = returnParamAfterCreate(row);
         LOGGER.log(LOGGER.NOTIFICATION, "DailyReport created by return :" + res);
+        am.getDBTransaction().commit();
         return res;
     }
 
@@ -260,8 +276,8 @@ public class DailyReportResource extends BaseRestResource {
         Row row = findDailyReportById(reportId, vo, am);
         if (row != null) {
             //权限判断
-            if(!checkStatusIsDraft(row)){
-                String msg = "此记录甲方已批阅,请勿删除!";
+            if(!checkIsAllowUpt(row)){
+                String msg = "此记录甲方已确认,请勿删除!";
                 return "msg:" + msg; 
             }
             if (!RestSecurityUtil.isOwner(row)) {
@@ -287,12 +303,22 @@ public class DailyReportResource extends BaseRestResource {
      * @throws JSONException
      */
     @GET
-    @Path("search/{contractId}/{year}/{month}")
+    @Path("search/lancer/{contractId}/{year}/{month}")
     @Produces(MediaType.APPLICATION_JSON)
-    public JSONArray findDailyReportByMonth(@PathParam("year")int year,@PathParam("month")int month,@PathParam("contractId")String contractId) throws JSONException {
+    public JSONArray findLancerDailyReportByMonth(@PathParam("year")int year,@PathParam("month")int month,@PathParam("contractId")String contractId) throws JSONException {
         LanceRestAMImpl am = LUtil.findLanceAM();
         ViewObjectImpl vo = getDailyReportVVOFromAM(am);
         this.findDailyReportByMonth(year,month,contractId, vo);
+        return this.convertVoToJsonArray(vo, this.ATTR_SEARCH);
+    }
+    
+    @GET
+    @Path("search/client/{contractId}/{year}/{month}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public JSONArray findClintDailyReportByMonth(@PathParam("year")int year,@PathParam("month")int month,@PathParam("contractId")String contractId) throws JSONException {
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        ViewObjectImpl vo = getContractClientReportVVOFromAM(am);
+        this.findCliDailyReportByMonth(year,month,contractId, vo);
         return this.convertVoToJsonArray(vo, this.ATTR_SEARCH);
     }
     
@@ -340,8 +366,8 @@ public class DailyReportResource extends BaseRestResource {
             return "msg:can't find DailyReport by id " + reportId;
         }
         
-        if(!checkStatusIsDraft(row)){
-            String msg = "此记录甲方已批阅,请勿修改!";
+        if(!checkIsAllowUpt(row)){
+            String msg = "此记录甲方已确认,请勿修改!";
             return "msg:" + msg; 
         }
         
@@ -395,9 +421,6 @@ public class DailyReportResource extends BaseRestResource {
                        this.updateDailyReport((String)row.getAttribute("Uuid"), json.getJSONObject("data"));
                     }
                 }
-                if(!this.isEmpty(dates)){
-                    am.getDBTransaction().commit();
-                }
             }else{
                LOGGER.log(LOGGER.NOTIFICATION, findCurrentUserName() + "正在尝试修改他人工作日志" + json);
                return "请勿改写他人日志，谢谢!"; 
@@ -406,7 +429,36 @@ public class DailyReportResource extends BaseRestResource {
             LOGGER.log(LOGGER.NOTIFICATION, findCurrentUserName() + "正在修改工作日志，但合同编号contractId获取异常" + json);
             return "系统获取合同编号异常，请重试!"; 
         }
-       return "OK";
+       return "ok";
+    }
+    
+    /**
+     *工作日志审批 确认
+     * @param json
+     * @return
+     * @throws JSONException
+     */
+    @POST
+    @Path("audit")
+    @Consumes(MediaType.APPLICATION_JSON)
+    public String auditContractReport(JSONObject json) throws JSONException {
+        if(!isEmpty(json.getString("ids"))){
+            LanceRestAMImpl am = LUtil.findLanceAM();
+            ContractVORowImpl cr = findContractByIdFn(am, json.getString("contractId"));
+            if(findCurrentUserName().equals(cr.getClientName())){
+                String[] ids = json.getString("ids").split(",");
+                for(String reportId : ids){
+                    approveDailyReport(reportId, json.getJSONObject("data"));
+                }
+            }else{
+               LOGGER.log(LOGGER.NOTIFICATION, findCurrentUserName() + "正在尝试修改审批甲方日志" + json);
+               return "请勿审批甲方日志，谢谢!"; 
+            }
+        }else{
+            LOGGER.log(LOGGER.NOTIFICATION, findCurrentUserName() + "正在审批工作日志，但合同编号contractId获取异常" + json);
+            return "系统获取合同编号异常，请重试!"; 
+        }
+       return "ok";
     }
     
     private boolean isEmpty(String str){
@@ -440,7 +492,11 @@ public class DailyReportResource extends BaseRestResource {
     }
     
     private enum ReportStatus {
-        DRAFT("draft","草稿"), POSTED("posted", "已发送"), ARGEE("agree", "确认"), REJECT("reject","拒绝"), PAYED("payed", "已支付");
+        POSTED(ConstantUtil.REPORT_STATUS_POSTED,"等待确认"),
+        WITHDRAW(ConstantUtil.REPORT_STATUS_WITHDRAW,"已撤回"),
+        CONFIRM(ConstantUtil.REPORT_STATUS_CONFIRM, "待付款"),
+        PAYED(ConstantUtil.REPORT_STATUS_PAYED, "已支付"),
+        REJECT(ConstantUtil.REPORT_STATUS_REJECT,"已拒绝");
         private String _name;
         private String _status;
         private ReportStatus (String status,String name) {

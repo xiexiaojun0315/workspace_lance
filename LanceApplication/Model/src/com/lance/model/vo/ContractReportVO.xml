@@ -165,6 +165,18 @@
           Value="Basic"/>
       </CustomProperties>
     </Properties>
+    <ViewCriteriaRow
+      Name="FindByUuidVC_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="Uuid"
+        ViewAttribute="Uuid"
+        Operator="="
+        Conjunction="AND"
+        Value=":pUuid"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
   </ViewCriteria>
   <ViewCriteria
     Name="findByContractIdVC"
@@ -189,5 +201,25 @@
           Value="Basic"/>
       </CustomProperties>
     </Properties>
+    <ViewCriteriaRow
+      Name="findByContractIdVC_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="ContractId"
+        ViewAttribute="ContractId"
+        Operator="="
+        Conjunction="AND"
+        Value=":constract_Id"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="Status"
+        ViewAttribute="Status"
+        Operator="="
+        Conjunction="AND"
+        Value=":pStatus"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
   </ViewCriteria>
 </ViewObject>

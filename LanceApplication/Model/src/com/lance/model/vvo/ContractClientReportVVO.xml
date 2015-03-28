@@ -3,7 +3,7 @@
 <!---->
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="ContractReportVVO"
+  Name="ContractClientReportVVO"
   Version="12.1.3.2.36"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
@@ -17,7 +17,7 @@
   <Properties>
     <SchemaBasedProperties>
       <LABEL
-        ResId="com.lance.model.vvo.ContractReportVVO_LABEL"/>
+        ResId="com.lance.model.vvo.ContractClientReportVVO_LABEL"/>
     </SchemaBasedProperties>
   </Properties>
   <Variable
@@ -29,14 +29,10 @@
     Kind="where"
     Type="java.lang.String"/>
   <Variable
-    Name="userName"
-    Kind="where"
-    Type="java.lang.String"/>
-  <Variable
     Name="conId"
     Kind="where"
     Type="java.lang.String"/>
-  <SQLQuery><![CDATA[select sc.DAY,sc.SYS_DATE_REC,sc.DESCRIPTION,cr.* from SYS_CALENDAR sc left JOIN (select * from CONTRACT_REPORT cc where cc.CREATE_BY=:userName and cc.CONTRACT_ID=:conId) cr on sc.SYS_DATE_REC=to_char(cr.DATE_RECORD,'yyyy-MM-dd')      
+  <SQLQuery><![CDATA[select sc.DAY,sc.SYS_DATE_REC,sc.DESCRIPTION,cr.* from SYS_CALENDAR sc left JOIN (select * from CONTRACT_REPORT cc where cc.STATUS in ('posted','confirm','payed','reject') and cc.CONTRACT_ID=:conId) cr on sc.SYS_DATE_REC=to_char(cr.DATE_RECORD,'yyyy-MM-dd')              
   where sc.SYS_DATE_REC >=:startDate and sc.SYS_DATE_REC <=:endDate order by sc.SHOW_ORDER]]></SQLQuery>
   <ViewAttribute
     Name="Day"
@@ -304,9 +300,6 @@
     AliasName="VERSION"
     Expression="VERSION"
     SQLType="NUMERIC"/>
-  <AttrArray Name="KeyAttributes">
-    <Item Value="SysDateRec"/>
-  </AttrArray>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.lance.model.ModelBundle"/>

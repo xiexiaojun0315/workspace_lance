@@ -398,5 +398,13 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
     public ContractReportVOImpl getContractReport2() {
         return (ContractReportVOImpl) findViewObject("ContractReport2");
     }
+
+    /**
+     * Container's getter for ContractClientReportV1.
+     * @return ContractClientReportV1
+     */
+    public BaseViewObjectImpl getContractClientReportV1() {
+        return (BaseViewObjectImpl) findViewObject("ContractClientReportV1");
+    }
 }
 
