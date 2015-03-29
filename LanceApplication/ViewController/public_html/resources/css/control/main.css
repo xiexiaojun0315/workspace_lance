@@ -88,3 +88,22 @@
 .modal-title{color:#50852C;font-weight:bold;}
 .inp_add_skill{width:80px;height:21px;margin-left:2px;}
 .pskills .btn-xs{margin-right:8px;}
+.page-header{margin-top:10px;margin-left:14px;}
+.job_cate{width:150px;display:inline-block;}
+
+.dotline{width:98%;border:#ccc dotted 1px;}
+.jobDetail{padding-top:10px;}
+.jobDetail .title-info tr{height:30px;}
+.jobDetail .lan-bg-f5{padding:10px 10px 0 10px;}
+.jobDetail .media-body{padding-top: 10px;}
+.jobDetail .pre-txt{margin-top:10px;}
+.jobDetail .lan-bg-e7{padding:10px;}
+.jobDetail .qmedia{padding:10px;}
+.jobDetail .list-mods{margin-top:10px;}
+.jobDetail .exa-intro{margin:10px 0;}
+.jobDetail .list-img{vertical-align:top;position:relative;top:11px;}
+.jobDetail .qmedia .lan-bg-f5{padding:10px;margin-top:10px;}
+
+
+#post_apply .inp-txt{width:200px;}
+

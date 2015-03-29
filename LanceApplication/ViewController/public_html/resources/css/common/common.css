@@ -116,12 +116,18 @@
 .lan-font-black{color:#333333;}
 .lan-font-white{color:#ffffff;}
 .lan-font-red{color:#a94442;}
+.lan-font-yellow{color:#f3c53f;}
 
 /* 字体大小 */
 .lan-font-12{font-size:12px;}
 .lan-font-16{font-size:16px;}
 .lan-font-18{font-size:18px;}
 .lan-font-22{font-size:22px;}
+
+.lan-bg-f5{background-color:#f5f5f5;}
+.lan-bg-e7{background-color:#e7e7e7;}
+
+.lan-ov-hid{overflow:hidden;}
 
 
 

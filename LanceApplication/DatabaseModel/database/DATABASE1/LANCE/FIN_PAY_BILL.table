@@ -23,7 +23,7 @@
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">支付单号</value>
+          <value class="java.lang.String">支付单号（根据时间生成，要简短）</value>
         </entry>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
@@ -61,7 +61,7 @@
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">支付方</value>
+          <value class="java.lang.String">甲方（支付方）</value>
         </entry>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
@@ -183,7 +183,7 @@
       <properties>
         <entry>
           <key>Comment</key>
-          <value class="java.lang.String">其他费用</value>
+          <value class="java.lang.String">手续费</value>
         </entry>
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
@@ -201,6 +201,27 @@
       </properties>
     </column>
     <column>
+      <name>PAY_TIME</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">20</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">支付时间</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
       <name>CREATE_BY</name>
       <dataTypeUsage>
         <attributeValues>
@@ -214,6 +235,12 @@
         </dataTypeID>
       </dataTypeUsage>
       <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">创建时间</value>
+        </entry>
+      </properties>
     </column>
     <column>
       <name>CREATE_ON</name>

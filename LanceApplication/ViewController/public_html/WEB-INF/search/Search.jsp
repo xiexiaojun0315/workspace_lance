@@ -11,14 +11,8 @@
       <script src="/lance/resources/js/respond.js"></script>
     <![endif]-->
         <script>
-          var User = $
-          {
-              user
-          };
-          var Data = $
-          {
-              data
-          };
+            var User=${user};
+            var Data=${data};
         </script>
     </head>
     <body>
