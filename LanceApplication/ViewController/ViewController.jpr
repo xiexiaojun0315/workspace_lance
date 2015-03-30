@@ -320,26 +320,8 @@
                   <url path="src/"/>
                </list>
             </hash>
-            <hash>
-               <list n="pattern-filters">
-                  <string v="+**"/>
-               </list>
-               <list n="url-path">
-                  <url path="adfmsrc/servlet/"/>
-               </list>
-            </hash>
          </list>
          <list n="url-path"/>
-      </hash>
-   </hash>
-   <hash n="oracle.jdeveloper.runner.RunConfigurations">
-      <hash n="runConfigurationDefinitions">
-         <hash n="Default">
-            <value n="custom" v="false"/>
-            <value n="javaOptions" v="-Djbo.debugoutput=console"/>
-            <value n="name" v="Default"/>
-            <value n="targetURL"/>
-         </hash>
       </hash>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
@@ -457,7 +439,7 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <url n="id" protocol="file" path="/C:/Users/admin/AppData/Roaming/JDeveloper/system12.1.3.0.41.140521.1008/o.jdeveloper/ADF View.library"/>
+            <value n="id" v="CommonView-1.4-SNAPSHOT.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
@@ -490,7 +472,17 @@
          </hash>
       </list>
       <hash n="internalDefinitions">
-         <list n="libraryDefinitions"/>
+         <list n="libraryDefinitions">
+            <hash>
+               <list n="classPath">
+                  <url path="../../DeployLibrary/CommonView-1.4-SNAPSHOT.jar" jar-entry=""/>
+               </list>
+               <value n="deployedByDefault" v="true"/>
+               <value n="description" v="CommonView-1.4-SNAPSHOT.jar"/>
+               <value n="id" v="CommonView-1.4-SNAPSHOT.jar"/>
+               <value n="locked" v="true"/>
+            </hash>
+         </list>
       </hash>
       <list n="libraryReferences">
          <hash>
@@ -606,11 +598,11 @@
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <url n="id" path="ADF_Library_Dependencies.library"/>
+            <value n="id" v="CommonView-1.4-SNAPSHOT.jar"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
-            <url n="id" protocol="file" path="/C:/Users/admin/AppData/Roaming/JDeveloper/system12.1.3.0.41.140521.1008/o.jdeveloper/ADF View.library"/>
+            <url n="id" path="ADF_Library_Dependencies.library"/>
             <value n="isJDK" v="false"/>
          </hash>
          <hash>
@@ -809,7 +801,6 @@
       </list>
    </hash>
    <hash n="ResourceBundleOptions">
-      <value n="BundleCreationPolicy" v="0"/>
-      <list n="RegisteredResourceBundles"/>
+      <value n="BundleCreationPolicy" v="2"/>
    </hash>
 </jpr:project>

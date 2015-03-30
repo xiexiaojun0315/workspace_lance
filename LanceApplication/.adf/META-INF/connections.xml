@@ -11,11 +11,11 @@
       <StringRefAddr addrType="user">
         <Contents>lance</Contents>
       </StringRefAddr>
-      <StringRefAddr addrType="port">
-        <Contents>1521</Contents>
-      </StringRefAddr>
       <StringRefAddr addrType="hostname">
         <Contents>localhost</Contents>
+      </StringRefAddr>
+      <StringRefAddr addrType="port">
+        <Contents>1521</Contents>
       </StringRefAddr>
       <SecureRefAddr addrType="password"/>
       <StringRefAddr addrType="oraDriverType">
