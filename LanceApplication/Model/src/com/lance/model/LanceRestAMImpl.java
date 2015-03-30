@@ -21,6 +21,8 @@ import com.lance.model.vo.PostJobDiscussVOImpl;
 import com.lance.model.vo.PostJobsVOImpl;
 import com.lance.model.vo.SkillsVOImpl;
 import com.lance.model.vo.SpreadHeardFromVOImpl;
+import com.lance.model.vvo.ContractClientReportVVOImpl;
+import com.lance.model.vvo.ContractReportVVOImpl;
 import com.lance.model.vvo.LocationCountryVVOImpl;
 
 import com.lance.model.vvo.LookupsVVOImpl;
@@ -387,8 +389,8 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      * Container's getter for ContractReportV1.
      * @return ContractReportV1
      */
-    public BaseViewObjectImpl getContractReportV1() {
-        return (BaseViewObjectImpl) findViewObject("ContractReportV1");
+    public ContractReportVVOImpl getContractReportV1() {
+        return (ContractReportVVOImpl) findViewObject("ContractReportV1");
     }
 
     /**
@@ -403,8 +405,8 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      * Container's getter for ContractClientReportV1.
      * @return ContractClientReportV1
      */
-    public BaseViewObjectImpl getContractClientReportV1() {
-        return (BaseViewObjectImpl) findViewObject("ContractClientReportV1");
+    public ContractClientReportVVOImpl getContractClientReportV1() {
+        return (ContractClientReportVVOImpl) findViewObject("ContractClientReportV1");
     }
 }
 

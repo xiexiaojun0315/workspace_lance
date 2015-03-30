@@ -2,6 +2,7 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <meta http-equiv="Cache-Control" CONTENT="no-cache" />
         <title>工作日志</title>
         <!-- Bootstrap -->
         <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -75,11 +76,11 @@
                 <div class="span12">
                     <form class="form-search">
                         <select name="select" id="sel_year" class="xla_k">
-                            <option value="2011">2011</option>
-                            <option value="2012">2012</option>
-                            <option value="2013">2013</option>
-                            <option value="2014">2014</option>
-                            <option value="2015">2015</option>
+                            <script id="year-cnt-sp1" type="text/html">
+                                {{each list as data i}}
+                                    <option value={{data}}>{{data}}</option> 
+                                {{/each}}
+                             </script>
                         </select>
                         <select name="select" id="sel_month" class="xla_k">
                             <option value="01">01</option>
@@ -95,13 +96,13 @@
                             <option value="11">11</option>
                             <option value="12">12</option>
                         </select>
-                        <button type="button" class="btn-group btn-group-sm" role="group" id="last_mon">上月</button>
-                        <button type="button" class="btn-group btn-group-sm" role="group" id="next_mon">下月</button>
+                        <button type="button" class="btn btn-xs btn-info" id="last_mon">上月</button>
+                        <button type="button" class="btn btn-xs btn-info" id="next_mon">下月</button>
                     </form>
                     <table class="table table-hover">
                         <thead>
                             <tr class="info">
-                                <th>
+                                <th style="width:60px;">
                                    <input name="rep_check" type="checkbox" id="selAll" />
                                 </th>
                                 <th style="width:90px;">日期</th>
@@ -112,6 +113,7 @@
                                 <th>备注</th>
                                 <th style="width:80px;">状态</th>
                                 <th>状态备注</th>
+                                <th>操作</th>
                             </tr>
                         </thead>
                         <tbody id="rep-cnt">
@@ -129,6 +131,19 @@
                                         <td><span id="wr{{i+1}}">{{data.WorkRemark}}</span></td>
                                         <td>{{data.StatusName}}</td>
                                         <td><span id="sr{{i+1}}">{{data.StatusRemark}}</span></td>
+                                        <td>
+                                          {{if data.WorkContent != null}}
+                                              {{if (data.Role=='lancer' && (data.Status=='posted' || data.Status=='reject'))}} 
+                                                <button type="button" name="btn_wd" class="btn btn-xs btn-info">撤回</button>
+                                              {{else if (data.Role=='client' && (data.Status=='posted' || data.Status=='reject'))}}
+                                                 <button type="button" name="btn_wd" class="btn btn-xs btn-info">确认</button>
+                                              {{else if (data.Role=='client' && data.Status=='confirm')}}
+                                                 <button type="button" name="btn_wd" class="btn btn-xs btn-info">拒绝</button>
+                                              {{else if (data.Role=='client' && data.Status=='withdraw')}}
+                                                <button type="button" name="btn_del" class="btn btn-xs btn-warning">删除</button>
+                                              {{/if}}
+                                          {{/if}}
+                                        </td>
                                     </tr>
                                 {{/each}}
                              </script>
@@ -136,8 +151,8 @@
                     </table>
                     <form>
                         <div class="alert alert-info" role="alert" id="gloal-msg" style="display:none;"></div>
-                        <button type='button' class='btn' id='btn-pltx'>批量填写</button>
-                        <button type='button' class='btn' id='btn-plsp'>批量审批</button>
+                        <button type='button' class='btn btn-info' id='btn-pltx'>批量填写</button>
+                        <button type='button' class='btn btn-info' id='btn-plsp'>批量审批</button>
                         <br/>
                         <br/>
                     </form>
@@ -176,9 +191,7 @@
                                  </div>
                                  <div class="form-group">
                                     <label for="inp_workCon" class="control-label">工作内容</label>
-                                    <input type="text" class="form-control" id="inp_workCon" placeholder=""
-                                            data-container="body" data-toggle="popover" data-placement="right" 
-                                            data-content="工作内容不能为空" data-trigger="manual" data-animation="false" />
+                                    <textarea class="form-control" id="inp_workCon" rows="3"></textarea>
                                  </div>
                                  <div class="form-group">
                                     <label for="inp_hours" class="control-label">工时</label>
@@ -188,9 +201,7 @@
                                 </div>
                                 <div class="form-group">
                                     <label for="inp_comments" class="control-label">备注</label>
-                                    <input type="text" class="form-control" id="inp_comments" placeholder=""
-                                        data-container="body" data-toggle="popover" data-placement="right" 
-                                        data-trigger="manual" data-animation="false" />
+                                    <textarea class="form-control" id="inp_comments" rows="3"></textarea>
                                 </div>
                                 <div id="lancerMsg" class="alert alert-warning alert-dismissible" role="alert" style="display:none;">
                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
@@ -230,9 +241,7 @@
                                  </div>
                                  <div class="form-group">
                                     <label for="inp_remark" class="control-label">备注</label>
-                                    <input type="text" class="form-control" id="inp_remark" placeholder=""
-                                        data-container="body" data-toggle="popover" data-placement="right" 
-                                        data-trigger="manual" data-animation="false" />
+                                    <textarea class="form-control" id="inp_remark" rows="3"></textarea>
                                  </div>
                                 <div id="clientMsg" class="alert alert-warning alert-dismissible" role="alert" style="display:none;">
                                   <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>

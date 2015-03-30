@@ -297,7 +297,7 @@ function searchReport(cur_year,cur_month,contractId,role){
    }
    //初始化日志数据
    jQuery.ajax( {
-        url : '/lance/res/dailyReport/search/'+optype+'/'+ contractId +'/'+ cur_year + '/' + cur_month, type : 'get', success : function (data) {
+        url : '/lance/res/dailyReport/search/'+optype+'/'+ contractId +'/'+ cur_year + '/' + cur_month+'?random='+Math.random(), type : 'get', success : function (data) {
             $("#rep-cnt").html(template('rep-cnt-sp1', 
             {
                 'list' : data
@@ -312,37 +312,38 @@ var initCurUserData = function(contractId){
    jQuery.ajax({
         url : '/lance/res/contract/checkUser/'+ contractId, type : 'get', success : function (data) {
             var date = new Date();
+            var cur_year = date.getFullYear();
+            var arrYear = new Array([4]);
+            var i =0;
+            var minYear = (cur_year-4);
+            for(var t=(cur_year-4);t<=cur_year;t++){
+                arrYear[i]=t;
+                i++;
+            }
+            $("#sel_year").html(template('year-cnt-sp1',{'list' : arrYear}));
             if("LANCER" == data){
                 $("#btn-plsp").empty();
                 $("#btn-plsp").remove();
                 $("#clientModal").empty();
                 $("#clientModal").remove();
-                //初始化合同信息
-                initContract(contractId);
-                //初始化日志数据
-                init(date,contractId,"LANCER");
-                //上月、下月 单击事件绑定
-                $("#last_mon").bind('click', function () {last(contractId,"LANCER");});
-                $("#next_mon").bind('click', function () {next(date,contractId,"LANCER");});
+                
                 //批量填写数据提交
                 $("#btn_commit").click(function(){
                     var obj = $(this);
                     commitLancerform(obj,contractId);
                 });
+                $("#btn-qkrz").click(function(){
+                    var obj = $(this);
+                    commitLancerform(obj,contractId);
+                });
                 lancerDialogShow();
-                
+               
             }else if("CLIENT" == data){
                 $("#btn-pltx").empty();
                 $("#btn-pltx").remove();
                 $("#lancerModal").empty();
                 $("#lancerModal").remove();
-                //初始化合同信息
-                initContract(contractId);
-                //初始化日志数据
-                init(date,contractId,"CLIENT");
-                //上月、下月 单击事件绑定
-                $("#last_mon").bind('click', function () {last(contractId,"CLIENT");});
-                $("#next_mon").bind('click', function () {next(date,contractId,"CLIENT");});
+                
                 $("#btn_confirm").click(function(){
                     var obj = $(this);
                     commitClientform(obj,contractId,"comfirm");
@@ -353,16 +354,30 @@ var initCurUserData = function(contractId){
                 });
                 clientDialogShow();
             }else{
-                $("#btn-plsp").empty();
                 $("#btn-plsp").remove();
                 $("#clientModal").empty();
                 $("#clientModal").remove();
                 
-                $("#btn-pltx").empty();
                 $("#btn-pltx").remove();
                 $("#lancerModal").empty();
                 $("#lancerModal").remove();
+                return;
             }
+            
+            //初始化合同信息
+            initContract(contractId);
+            //初始化日志数据
+            init(date,contractId,data);
+            //上月、下月 单击事件绑定
+            $("#last_mon").bind('click', function () {last(contractId,data,minYear);});
+            $("#next_mon").bind('click', function () {next(date,contractId,data,cur_year);});
+            $("#sel_year,#sel_month").change(function(){
+                if("sel_year" == $(this).attr("id")){
+                   searchReport(parseInt($("#sel_year option:selected").val()),parseInt($("#sel_month").val()),contractId,data);
+                }else{
+                   searchReport(parseInt($("#sel_year").val()),parseInt($("#sel_month option:selected").val()),contractId,data);
+                }
+            });
         },
         error : function (msg) {
         }
@@ -370,13 +385,13 @@ var initCurUserData = function(contractId){
 };
 
 //上月
-function last(contractId,role) {
+function last(contractId,role,minYear) {
     var sel_year = parseInt($("#sel_year").val());
     var sel_month = parseInt($("#sel_month").val());
     var lastY = sel_year;
     if (sel_month == 1) {
         sel_month = "12";
-        if (lastY <= 2011) {
+        if (lastY <= minYear) {
             $("#last_mon").attr("disabled", true);
         }
         lastY = (sel_year - 1);
@@ -394,13 +409,13 @@ function last(contractId,role) {
 };
 
 //下月
-function next(date,contractId,role) {
+function next(date,contractId,role,cur_year) {
     var sel_year = parseInt($("#sel_year").val());
     var sel_month = parseInt($("#sel_month").val());
     var nextM = (sel_month + 1);
     var nextY = sel_year;
     if (sel_month == 12) {
-        if (sel_year >= date.getFullYear()) {
+        if (sel_year >= cur_year) {
             $("#next_mon").attr("disabled", true);
         }else{
            nextY = sel_year + 1;

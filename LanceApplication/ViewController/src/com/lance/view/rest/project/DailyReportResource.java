@@ -79,7 +79,7 @@ public class DailyReportResource extends BaseRestResource {
     public static final String[] ATTR_CREATE = {"ProjectId","ContractId","DateRecord","WorkContent","WorkHours","WorkRemark","Address"};
     
     public static final String[] ATTR_SEARCH = {"Uuid", "ProjectId", "ContractId", "DateRecord", "WorkContent", "WorkHours", "WorkRemark", "Status",
-        "StatusRemark", "PayBillNumber","Day","Address","SysDateRec","StatusName"};
+        "StatusRemark", "PayBillNumber","Day","Address","SysDateRec","StatusName","Role"};
 
     public static final boolean CAN_DELETE = true;
 
