@@ -15,12 +15,12 @@ $(function () {
 
 var reverse = function(){
     $("input[name='rep_check']").each(function () {
-          if($(this).attr("checked")){
-             $(this).attr("checked", false);
-          }else{
-             $(this).attr("checked", true);
-          }
-     });
+      if($(this).attr("checked")){
+         $(this).attr("checked", false);
+      }else{
+         $(this).attr("checked", true);
+      }
+    });
 };
 
 var commitLancerform = function(btn,contractId){
@@ -322,10 +322,8 @@ var initCurUserData = function(contractId){
             }
             $("#sel_year").html(template('year-cnt-sp1',{'list' : arrYear}));
             if("LANCER" == data){
-                $("#btn-plsp").empty();
-                $("#btn-plsp").remove();
-                $("#clientModal").empty();
-                $("#clientModal").remove();
+               $("#btn-area").html(template('rep-btn-sp1',{'role' : data}));
+               $("#modal-area").html(template('rep-modal-sp1',{'role' : data}));
                 
                 //批量填写数据提交
                 $("#btn_commit").click(function(){
@@ -339,11 +337,8 @@ var initCurUserData = function(contractId){
                 lancerDialogShow();
                
             }else if("CLIENT" == data){
-                $("#btn-pltx").empty();
-                $("#btn-pltx").remove();
-                $("#lancerModal").empty();
-                $("#lancerModal").remove();
-                
+                $("#btn-area").html(template('rep-btn-sp1',{'role' : data}));
+                $("#modal-area").html(template('rep-modal-sp1',{'role' : data}));
                 $("#btn_confirm").click(function(){
                     var obj = $(this);
                     commitClientform(obj,contractId,"comfirm");
@@ -378,6 +373,13 @@ var initCurUserData = function(contractId){
                    searchReport(parseInt($("#sel_year").val()),parseInt($("#sel_month option:selected").val()),contractId,data);
                 }
             });
+            
+           $(".tbody-class").on("click", "button[name='btn_rej']", function(){
+//               alert($(this).attr("id"));
+           });
+           $(".tbody-class").on("click", "button[name='btn_wd']", function(){
+//               alert($(this).attr("id"));
+           });
         },
         error : function (msg) {
         }
