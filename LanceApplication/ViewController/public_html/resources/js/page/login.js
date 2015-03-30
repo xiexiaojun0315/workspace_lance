@@ -59,10 +59,10 @@ $(function(){
     $("#a_regist").click(function(){
         var href = "";
         if($("#afree")[0].checked){
-            href = "freeRegist.html";
+            href = "companyRegist.html";
         }
         if($("#cfree")[0].checked){
-            href = "companyRegist.html";
+            href = "freeRegist.html";
         }
         window.location.href = href;
     });
