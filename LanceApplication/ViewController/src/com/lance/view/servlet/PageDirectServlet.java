@@ -91,7 +91,13 @@ public class PageDirectServlet extends HttpServlet {
             } else if ("/lance/pages/jobs/PostNewJob".equals(uri)) {
                 toPage(request, response, "/WEB-INF/jobs/PostNewJob.jsp", new JSONObject());
 
-            } 
+            } else if ("/lance/pages/UserRegSuccess1".equals(uri)){
+                toPage(request, response, "/WEB-INF/profile/UserRegSuccess1.jsp", new JSONObject());
+                
+            } else if ("/lance/pages/UserRegSuccess2".equals(uri)){
+                toPage(request, response, "/WEB-INF/profile/UserRegSuccess2.jsp", new JSONObject());
+                
+            }
 //            else if (uri.startsWith("/lance/pages/project/Contract/")) { //uri:http://localhost:7101/lance/pages/project/Contact/157e69a513f942c7bb895e7dddd01a56
 //                //读取合同
 //                uri = uri.replaceFirst("/lance/pages/project/Contract/", "");
