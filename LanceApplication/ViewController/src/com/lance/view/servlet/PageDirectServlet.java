@@ -91,14 +91,15 @@ public class PageDirectServlet extends HttpServlet {
             } else if ("/lance/pages/jobs/PostNewJob".equals(uri)) {
                 toPage(request, response, "/WEB-INF/jobs/PostNewJob.jsp", new JSONObject());
 
-            } else if (uri.startsWith("/lance/pages/project/Contract/")) { //uri:http://localhost:7101/lance/pages/project/Contact/157e69a513f942c7bb895e7dddd01a56
-                //读取合同
-                uri = uri.replaceFirst("/lance/pages/project/Contract/", "");
-                String contractId = uri.substring(0, 32); //32位uuid
-                System.out.println(contractId);
-                toPage(request, response, "/WEB-INF/project/Contract.jsp",
-                       new ContractResource().getContractById(contractId));
-            }
+            } 
+//            else if (uri.startsWith("/lance/pages/project/Contract/")) { //uri:http://localhost:7101/lance/pages/project/Contact/157e69a513f942c7bb895e7dddd01a56
+//                //读取合同
+//                uri = uri.replaceFirst("/lance/pages/project/Contract/", "");
+//                String contractId = uri.substring(0, 32); //32位uuid
+//                System.out.println(contractId);
+//                toPage(request, response, "/WEB-INF/project/Contract.jsp",
+//                       new ContractResource().getContractById(contractId));
+//            }
 
         } catch (Exception e) {
             e.printStackTrace();
