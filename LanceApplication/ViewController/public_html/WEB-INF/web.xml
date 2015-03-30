@@ -49,6 +49,10 @@
     <servlet-name>LoginServlet</servlet-name>
     <servlet-class>com.lance.view.servlet.LoginServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>EmailActivateServlet</servlet-name>
+    <servlet-class>com.lance.view.servlet.EmailActivateServlet</servlet-class>
+  </servlet>
   <servlet-mapping>
     <servlet-name>Faces Servlet</servlet-name>
     <url-pattern>/faces/*</url-pattern>
@@ -96,6 +100,10 @@
   <servlet-mapping>
     <servlet-name>LoginServlet</servlet-name>
     <url-pattern>/login</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>EmailActivateServlet</servlet-name>
+    <url-pattern>/res/sendMail/validateEmail</url-pattern>
   </servlet-mapping>
   <filter>
     <filter-name>JpsFilter</filter-name>
@@ -163,6 +171,12 @@
   <filter-mapping>
     <filter-name>adfBindings</filter-name>
     <servlet-name>PageDirectServlet</servlet-name>
+    <dispatcher>FORWARD</dispatcher>
+    <dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <filter-mapping>
+    <filter-name>adfBindings</filter-name>
+    <servlet-name>EmailActivateServlet</servlet-name>
     <dispatcher>FORWARD</dispatcher>
     <dispatcher>REQUEST</dispatcher>
   </filter-mapping>

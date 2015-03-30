@@ -1,9 +1,18 @@
 package com.lance.view.rest.email;
 
+import com.lance.model.LanceRestAMImpl;
+import com.lance.model.vo.RegEmailChkVOImpl;
+import com.lance.model.vo.RegEmailChkVORowImpl;
+import com.lance.view.util.LUtil;
+
+import java.io.IOException;
+
 import java.util.Calendar;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.Properties;
+
+import javax.faces.context.FacesContext;
 
 import javax.mail.Address;
 import javax.mail.Authenticator;
@@ -14,9 +23,15 @@ import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
+import javax.servlet.http.HttpServletResponse;
+
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
 import javax.ws.rs.QueryParam;
+
+import oracle.jbo.Key;
+import oracle.jbo.Row;
+import javax.ws.rs.core.Response;
 
 /**
  * 使用Javamail实现邮件发送功能
@@ -29,49 +44,55 @@ public class SendActivateMail {
         super();
     }
 
-    @GET
-    @Path("validateEmail")
-    public void validateEmail(@QueryParam("validateCode") String validateCode, @QueryParam("sid") String sid)
-    {
-        //通过sid找出系统用户 验证码，激活状态，激活截止日期
-        //用户验证码
-        String uesrValidateCode = "12345678"; 
-        //用户的激活状态    0未激活1激活
-        int uesrStatus = 0; 
-        //激活截止日期
-        Date date = new Date();
-        Calendar calendar = new GregorianCalendar();
-        calendar.setTime(date);
-        calendar.add(calendar.DATE, 1);
-        Date userLastActivateTime = calendar.getTime();
-        if (uesrValidateCode != null) {
-            //验证用户激活状态
-            if (uesrStatus == 0) {
-                ///没激活
-                Date currentTime = new Date(); //获取当前时间
-                //验证链接是否过期
-                if (currentTime.before(userLastActivateTime)) {
-                    //验证激活码是否正确
-                    if (validateCode.equals(uesrValidateCode)) {
-                        //激活成功， //并更新用户的激活状态，为已激活
-                        System.out.println("激活成功");
-                        //把状态改为激活
-                        uesrStatus = 1;
-                    } else {
-                        System.out.println("激活码不正确");
-                    }
-                } else {
-                    System.out.println("激活码已过期！");
-                }
-            } else {
-                System.out.println("邮箱已激活，请登录！");
-            }
-        } else {
-            System.out.println("该邮箱未注册（邮箱地址不存在）！");
-        }
-    }
-    
-    public void sendActivateEmail(String userEmail,String validateCode,String uid){
+//    @GET
+//    @Path("validateEmail")
+//    public void validateEmail(@QueryParam("validateCode") String validateCode, @QueryParam("sid") String sid
+//                              ) {
+//        try {
+//            HttpServletResponse response =
+//                (HttpServletResponse) FacesContext.getCurrentInstance().getExternalContext().getResponse();
+//            LanceRestAMImpl am = LUtil.findLanceAM();
+//            RegEmailChkVOImpl regEmailChkVO = am.getRegEmailChk1();
+//            Row[] regEmailChkRows = regEmailChkVO.findByKey(new Key(new Object[] { validateCode }), 1);
+//            if (regEmailChkRows != null && regEmailChkRows.length > 0) {
+//                //通过验证码,用户找出系统用户 激活状态，激活截止日期
+//                RegEmailChkVORowImpl regEmailChkRow = (RegEmailChkVORowImpl) regEmailChkRows[0];
+//                //用户的激活状态    0未激活1激活
+//                int uesrStatus = 0;
+//                //激活截止日期
+//                Date date = new Date();
+//                Calendar calendar = new GregorianCalendar();
+//                calendar.setTime(date);
+//                //激活2天内有效
+//                calendar.add(calendar.DATE, -2);
+//                Date userLastActivateTime = calendar.getTime();
+//                //验证用户激活状态
+//                if (uesrStatus == 0) {
+//                    ///没激活
+//                    Date userCreateTime = regEmailChkRow.getCreateOn(); //获取用户注册的时间
+//                    //验证链接是否过期
+//                    if (userCreateTime.before(userLastActivateTime)) {
+//                        //激活成功， //并更新用户的激活状态，为已激活
+//                        System.out.println("激活成功");
+//                        //把状态改为激活
+//                        uesrStatus = 1;
+//                    } else {
+//                        System.out.println("激活码已过期！");
+//                    }
+//                } else {
+//                    System.out.println("邮箱已激活，请登录！");
+//                    response.sendRedirect("/lance/login.htm");
+//                }
+//            } else {
+//                System.out.println("该用户未注册（邮用户不存在）！");
+//            }
+//        } catch (IOException ioe) {
+//            // TODO: Add catch code
+//            ioe.printStackTrace();
+//        }
+//    }
+
+    public void sendActivateEmail(String userEmail, String validateCode, String uid) {
         Properties props = new Properties();
         props.put("mail.smtp.host", "smtp.126.com");
         props.put("mail.smtp.auth", "true");
@@ -81,7 +102,7 @@ public class SendActivateMail {
             session.setDebug(true);
             MimeMessage message = new MimeMessage(session);
             Address addressFrom = new InternetAddress(PopupAuthenticator.mailuser + "@126.com", "才才网！");
-            Address addressTo = new InternetAddress(userEmail, "");   //接收邮箱和用户
+            Address addressTo = new InternetAddress(userEmail, ""); //接收邮箱和用户
             ///邮件的内容  validateCode通过MD5加密
             StringBuffer sb = new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！</br>");
             sb.append("<a href=\"http://localhost:7101/lance/res/sendMail/validateEmail?uid=");
@@ -121,7 +142,7 @@ public class SendActivateMail {
             session.setDebug(true);
             MimeMessage message = new MimeMessage(session);
             Address addressFrom = new InternetAddress(PopupAuthenticator.mailuser + "@126.com", "才才网！");
-            Address addressTo = new InternetAddress("lzm1507008@126.com", "");   //接收邮箱和用户
+            Address addressTo = new InternetAddress("lzm1507008@126.com", ""); //接收邮箱和用户
             ///邮件的内容  validateCode通过MD5加密
             StringBuffer sb = new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！</br>");
             sb.append("<a href=\"http://localhost:7101/lance/res/sendMail/validateEmail?uid=");
@@ -152,8 +173,8 @@ public class SendActivateMail {
 }
 
 class PopupAuthenticator extends Authenticator {
-    public static final String mailuser = "lzm1507008";   //126邮箱账号
-    public static final String password = "*********";    //126邮箱密码
+    public static final String mailuser = "lzm1507008"; //126邮箱账号
+    public static final String password = "Luozhaomeng26"; //126邮箱密码
 
     public PasswordAuthentication getPasswordAuthentication() {
         return new PasswordAuthentication(mailuser, password);

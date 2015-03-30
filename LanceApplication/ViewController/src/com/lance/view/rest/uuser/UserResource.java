@@ -6,10 +6,14 @@ import com.lance.model.user.vo.UUserVORowImpl;
 import com.lance.model.user.vo.UserEducationVOImpl;
 import com.lance.model.user.vo.UserRoleGrantsVOImpl;
 import com.lance.model.user.vo.UserRoleGrantsVORowImpl;
+import com.lance.model.vo.RegEmailChkVOImpl;
+import com.lance.model.vo.RegEmailChkVORowImpl;
+import com.lance.view.rest.email.SendActivateMail;
 import com.lance.view.util.LUtil;
 
 import com.lance.view.util.RestSecurityUtil;
 
+import com.zngh.platform.front.core.model.util.UUIDGenerator;
 import com.zngh.platform.front.core.view.BaseRestResource;
 
 import java.text.SimpleDateFormat;
@@ -211,7 +215,18 @@ public class UserResource extends BaseRestResource {
             grantsVo.insertRow(grantsRow);
             row.setAttribute("DefaultRole", json.getString("DefaultRole"));
         }
-
+        
+        //发送激活注册邮件
+        RegEmailChkVOImpl regEmailChkVO = am.getRegEmailChk1();
+        SendActivateMail sendActivateMail = new SendActivateMail();
+        String uuid = UUIDGenerator.getUuid();
+        String userName = json.getString("UserName");
+        String email = json.getString("Email");
+        RegEmailChkVORowImpl regEmailChkRow = (RegEmailChkVORowImpl) regEmailChkVO.createRow();
+        regEmailChkRow.setUuid(uuid);
+        regEmailChkRow.setUserName(userName);
+        sendActivateMail.sendActivateEmail(email, uuid,userName);
+        regEmailChkVO.insertRow(regEmailChkRow);
         row.updateSearchIndex();
 
         String cm = am.commit();
