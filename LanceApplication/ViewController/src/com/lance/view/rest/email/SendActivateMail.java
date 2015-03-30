@@ -101,7 +101,7 @@ public class SendActivateMail {
             Session session = Session.getInstance(props, auth);
             session.setDebug(true);
             MimeMessage message = new MimeMessage(session);
-            Address addressFrom = new InternetAddress(PopupAuthenticator.mailuser + "@126.com", "才才网！");
+            Address addressFrom = new InternetAddress(PopupAuthenticator.mailuser + "@126.com", "驻才网！");
             Address addressTo = new InternetAddress(userEmail, ""); //接收邮箱和用户
             ///邮件的内容  validateCode通过MD5加密
             StringBuffer sb = new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！</br>");
@@ -116,7 +116,7 @@ public class SendActivateMail {
             sb.append("</a>");
             message.setContent(sb.toString(), "text/html;charset=utf-8");
             // message.setText(sb.toString());
-            message.setSubject("欢迎您注册才才网，请激活您的才才用户名");
+            message.setSubject("欢迎您注册驻才网，请激活您的驻才用户名");
             message.setFrom(addressFrom);
             message.addRecipient(Message.RecipientType.TO, addressTo);
             message.saveChanges();
@@ -141,7 +141,7 @@ public class SendActivateMail {
             Session session = Session.getInstance(props, auth);
             session.setDebug(true);
             MimeMessage message = new MimeMessage(session);
-            Address addressFrom = new InternetAddress(PopupAuthenticator.mailuser + "@126.com", "才才网！");
+            Address addressFrom = new InternetAddress(PopupAuthenticator.mailuser + "@126.com", "驻才网！");
             Address addressTo = new InternetAddress("lzm1507008@126.com", ""); //接收邮箱和用户
             ///邮件的内容  validateCode通过MD5加密
             StringBuffer sb = new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！</br>");
@@ -156,7 +156,7 @@ public class SendActivateMail {
             sb.append("</a>");
             message.setContent(sb.toString(), "text/html;charset=utf-8");
             // message.setText(sb.toString());
-            message.setSubject("欢迎您注册才才网，请激活您的才才用户名");
+            message.setSubject("欢迎您注册驻才网，请激活您的驻才用户名");
             message.setFrom(addressFrom);
             message.addRecipient(Message.RecipientType.TO, addressTo);
             message.saveChanges();

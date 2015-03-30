@@ -83,7 +83,7 @@
 //         "TrueName" : "牟宏迪",
 //         "AccountType" : 1,//为0时后台会忽略CompanyName
 //          "Password" : "welcome1",
-//         "CompanyName" : "才才网"
+//         "CompanyName" : "驻才网"
 //        }
 //     *
 //     * @param json
@@ -179,7 +179,7 @@
 //         "TrueName" : "牟宏迪",
 //         "AccountType" : 1,
 //         "CompanyId" : "79fbae75257946e89d2a22a8d2d38031",
-//         "CompanyName" : "才才网",
+//         "CompanyName" : "驻才网",
 //         "PhoneNumber" : "1xxxxxxxxxx",
 //         "WebsiteUrl" : "www.xxx.ccc",
 //         "ImNumberA" : "123456123",
@@ -304,7 +304,7 @@
 //         "TrueName" : "牟宏迪",
 //         "AccountType" : 1,
 //         "CompanyId" : "79fbae75257946e89d2a22a8d2d38031",
-//         "CompanyName" : "才才网",
+//         "CompanyName" : "驻才网",
 //         "PhoneNumber" : "12323xxx",
 //         "WebsiteUrl" : "www1233cc",
 //         "ImNumberA" : "123456123",

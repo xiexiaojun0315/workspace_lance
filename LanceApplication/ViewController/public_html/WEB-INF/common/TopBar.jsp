@@ -43,7 +43,7 @@
     <div class="container">
         <ul class="nav navbar-nav pull-left">
             <li class="active">
-                <a href="/lance/pages/MyHome">我的才才网
+                <a href="/lance/pages/MyHome">我的驻才网
                     <span class="sr-only">(current)</span></a>
             </li>
             <li class="dropdown">
@@ -126,7 +126,7 @@
                         <a href="#">使用手册</a>
                     </li>
                     <li>
-                        <a href="#">关于才才网</a>
+                        <a href="#">关于驻才网</a>
                     </li>
                     <li>
                         <a href="#">开放API</a>

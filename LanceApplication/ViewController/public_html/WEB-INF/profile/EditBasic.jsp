@@ -65,7 +65,7 @@
                     </div>
                     <div class="form-group <!--has-error has-feedback-->">
                         <label for="exampleInputEmail1" class="control-label">
-                            才才网向客户提出的时薪价格（元/小时）：</label>
+                            驻才网向客户提出的时薪价格（元/小时）：</label>
                         <input readonly value="" type="text" class="form-control sml-inp" id="inp_hour2" placeholder="" />
                     </div>
                     
