@@ -19,6 +19,7 @@ import com.lance.model.vo.LocationProvinceVOImpl;
 
 import com.lance.model.vo.PostJobDiscussVOImpl;
 import com.lance.model.vo.PostJobsVOImpl;
+import com.lance.model.vo.RegEmailChkVOImpl;
 import com.lance.model.vo.SkillsVOImpl;
 import com.lance.model.vo.SpreadHeardFromVOImpl;
 import com.lance.model.vvo.ContractClientReportVVOImpl;
@@ -407,6 +408,14 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
      */
     public ContractClientReportVVOImpl getContractClientReportV1() {
         return (ContractClientReportVVOImpl) findViewObject("ContractClientReportV1");
+    }
+
+    /**
+     * Container's getter for RegEmailChk1.
+     * @return RegEmailChk1
+     */
+    public RegEmailChkVOImpl getRegEmailChk1() {
+        return (RegEmailChkVOImpl) findViewObject("RegEmailChk1");
     }
 }
 

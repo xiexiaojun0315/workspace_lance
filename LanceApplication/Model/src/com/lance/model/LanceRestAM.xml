@@ -4,7 +4,7 @@
 <AppModule
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LanceRestAM"
-    Version="12.1.3.2.36"
+    Version="12.1.3.10.8"
   InheritPersonalization="merge"
   ComponentClass="com.lance.model.LanceRestAMImpl"
   ClearCacheOnRollback="true">
@@ -101,6 +101,9 @@
     <ViewUsage
         Name="ContractClientReportV1"
         ViewObjectName="com.lance.model.vvo.ContractClientReportVVO"/>
+    <ViewUsage
+        Name="RegEmailChk1"
+        ViewObjectName="com.lance.model.vo.RegEmailChkVO"/>
     <ViewLinkUsage
       Name="JobCategory_SubCategoryVL1"
       ViewLinkObjectName="com.lance.model.vl.JobCategory_SubCategoryVL"
