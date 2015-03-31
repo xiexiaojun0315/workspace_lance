@@ -15,7 +15,7 @@ import org.codehaus.jettison.json.JSONException;
 @Path("location/country")
 public class CountryResource extends BaseRestResource {
 
-    public static final String[] ATTR_GET = { "Uuid", "Name" };
+    public static final String[] ATTR_GET = { "Uuid", "Name","NameLoc" };
 
     public CountryResource() {
     }

@@ -196,7 +196,6 @@ $(function(){
                 "DefaultRole" : "client"
             };
             $.ax("post", "user", param, function(data){
-                alert("OK");
                 location.href="/lance/registSuccess.html"
             }, function(){
                 btn.button('reset');
@@ -292,6 +291,22 @@ $(function(){
     
 });
 
-
+$(function () {
+  loadCountrys();
+  function loadCountrys(){
+     jQuery.ajax({
+          url : '/lance/res/location/country/list', 
+          type : 'get',
+          success: function(data){
+            if(data.length > 0){
+                $("#sel_country").html(template('reg-coun-sp1',{'list' : data}));
+                $("#sel_country").val('44');
+            }
+        },error:function(msg){
+           
+        }
+    });
+  }
+});
 
 

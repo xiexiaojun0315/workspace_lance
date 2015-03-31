@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="LocationCountryVVO"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   InheritPersonalization="merge"
   BindingStyle="OracleName"
   CustomQuery="true"
@@ -27,16 +27,16 @@
     Name="pName"
     Kind="viewcriteria"
     Type="java.lang.String"/>
-  <SQLQuery><![CDATA[SELECT  
-    LOCATION_COUNTRY.UUID UUID,  
-    LOCATION_COUNTRY.NAME NAME,  
-    LOCATION_COUNTRY.ABB ABB,  
-    LOCATION_COUNTRY.CODE CODE,  
-    LOCATION_COUNTRY.NAME_LOC NAME_LOC,  
-    LOCATION_COUNTRY.SHOW_ORDER SHOW_ORDER  
-FROM  
-    LOCATION_COUNTRY 
-order by SHOW_ORDER]]></SQLQuery>
+  <SQLQuery><![CDATA[SELECT    
+    LOCATION_COUNTRY.UUID UUID,    
+    LOCATION_COUNTRY.NAME NAME,    
+    LOCATION_COUNTRY.ABB ABB,    
+    LOCATION_COUNTRY.CODE CODE,    
+    LOCATION_COUNTRY.NAME_LOC NAME_LOC,    
+    LOCATION_COUNTRY.SHOW_ORDER SHOW_ORDER    
+FROM    
+    LOCATION_COUNTRY   
+order by SHOW_ORDER,NAME]]></SQLQuery>
   <ViewAttribute
     Name="Uuid"
     IsUpdateable="false"
@@ -194,11 +194,11 @@ order by SHOW_ORDER]]></SQLQuery>
         Required="Optional"/>
     </ViewCriteriaRow>
   </ViewCriteria>
+  <AttrArray Name="KeyAttributes">
+    <Item Value="Uuid"/>
+  </AttrArray>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.lance.model.ModelBundle"/>
   </ResourceBundle>
-  <AttrArray Name="KeyAttributes">
-    <Item Value="Uuid"/>
-  </AttrArray>
 </ViewObject>

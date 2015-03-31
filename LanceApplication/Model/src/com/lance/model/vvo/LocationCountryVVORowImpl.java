@@ -44,6 +44,7 @@ public class LocationCountryVVORowImpl extends BaseViewRowImpl {
         }
     }
 
+
     public static final int UUID = AttributesEnum.Uuid.index();
     public static final int NAME = AttributesEnum.Name.index();
     public static final int ABB = AttributesEnum.Abb.index();

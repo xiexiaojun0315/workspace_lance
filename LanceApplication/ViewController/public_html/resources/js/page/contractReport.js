@@ -8,17 +8,17 @@ $(function () {
     initCurUserData(contractId);
    
     $("#selAll").change(function(){
-        reverse();
+        reverse(this);
     });
     
 });
 
-var reverse = function(){
-    $("input[name='rep_check']").each(function () {
-      if($(this).attr("checked")){
-         $(this).attr("checked", false);
+var reverse = function(o){
+     $("input[name='rep_check']").each(function () {
+      if(this.checked){
+         this.checked = false;
       }else{
-         $(this).attr("checked", true);
+         this.checked = true;
       }
     });
 };
