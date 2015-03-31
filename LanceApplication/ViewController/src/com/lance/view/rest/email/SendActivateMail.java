@@ -94,14 +94,14 @@ public class SendActivateMail {
 
     public void sendActivateEmail(String userEmail, String validateCode, String uid) {
         Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.126.com");
+        props.put("mail.smtp.host", "smtp.163.com");
         props.put("mail.smtp.auth", "true");
         try {
             PopupAuthenticator auth = new PopupAuthenticator();
             Session session = Session.getInstance(props, auth);
             session.setDebug(true);
             MimeMessage message = new MimeMessage(session);
-            Address addressFrom = new InternetAddress(PopupAuthenticator.mailuser + "@126.com", "驻才网！");
+            Address addressFrom = new InternetAddress(PopupAuthenticator.mailuser + "@163.com", "驻才网！");
             Address addressTo = new InternetAddress(userEmail, ""); //接收邮箱和用户
             ///邮件的内容  validateCode通过MD5加密
             StringBuffer sb = new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！</br>");
@@ -121,7 +121,7 @@ public class SendActivateMail {
             message.addRecipient(Message.RecipientType.TO, addressTo);
             message.saveChanges();
             Transport transport = session.getTransport("smtp");
-            transport.connect("smtp.126.com", PopupAuthenticator.mailuser, PopupAuthenticator.password);
+            transport.connect("smtp.163.com", PopupAuthenticator.mailuser, PopupAuthenticator.password);
             transport.send(message);
             transport.close();
             System.out.println("发送成功");
@@ -134,14 +134,14 @@ public class SendActivateMail {
 
     public static void main(String[] args) {
         Properties props = new Properties();
-        props.put("mail.smtp.host", "smtp.126.com");
+        props.put("mail.smtp.host", "smtp.163.com");
         props.put("mail.smtp.auth", "true");
         try {
             PopupAuthenticator auth = new PopupAuthenticator();
             Session session = Session.getInstance(props, auth);
             session.setDebug(true);
             MimeMessage message = new MimeMessage(session);
-            Address addressFrom = new InternetAddress(PopupAuthenticator.mailuser + "@126.com", "驻才网！");
+            Address addressFrom = new InternetAddress(PopupAuthenticator.mailuser + "@163.com", "驻才网！");
             Address addressTo = new InternetAddress("lzm1507008@126.com", ""); //接收邮箱和用户
             ///邮件的内容  validateCode通过MD5加密
             StringBuffer sb = new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！</br>");
@@ -161,7 +161,7 @@ public class SendActivateMail {
             message.addRecipient(Message.RecipientType.TO, addressTo);
             message.saveChanges();
             Transport transport = session.getTransport("smtp");
-            transport.connect("smtp.126.com", PopupAuthenticator.mailuser, PopupAuthenticator.password);
+            transport.connect("smtp.163.com", PopupAuthenticator.mailuser, PopupAuthenticator.password);
             transport.send(message);
             transport.close();
             System.out.println("sent suc");
@@ -173,8 +173,8 @@ public class SendActivateMail {
 }
 
 class PopupAuthenticator extends Authenticator {
-    public static final String mailuser = "lzm1507008"; //126邮箱账号
-    public static final String password = "Luozhaomeng26"; //126邮箱密码
+    public static final String mailuser = "zhucai_me"; //邮箱账号
+    public static final String password = "******123"; //邮箱密码
 
     public PasswordAuthentication getPasswordAuthentication() {
         return new PasswordAuthentication(mailuser, password);
