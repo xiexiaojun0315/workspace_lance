@@ -185,6 +185,12 @@ $(function(){
     
     var check_form = function(btn){
         if(ckresult.emr && ckresult.lgr && ckresult.umr && ckresult.psr){
+            if(!$("#fwtk")[0].checked){
+                $("#lbl_fwtk").popover("show");
+                return;
+            }else{
+                $("#lbl_fwtk").popover("hide");
+            }
             btn.button('loading');
             
             var param = {
