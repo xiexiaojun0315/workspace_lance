@@ -4,7 +4,7 @@
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="UserRoleGrantsVO"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   InheritPersonalization="merge"
   SelectListFlags="1"
   FromListFlags="1"
@@ -19,6 +19,61 @@
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
+  <ViewAccessor
+    Name="UUserVO1"
+    ViewObjectName="com.lance.model.user.vo.UUserVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="UserRoleVO1"
+    ViewObjectName="com.lance.model.user.vo.UserRoleVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_UserName"
+    ListVOName="UUserVO1"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="UserName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UserName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="UserName"/>
+      <Item Value="TrueName"/>
+      <Item Value="DisplayName"/>
+      <Item Value="Email"/>
+      <Item Value="Rank"/>
+      <Item Value="RankDesc"/>
+    </AttrArray>
+    <DisplayCriteria
+      Name="FindByUserNameVC"/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_RoleName"
+    ListVOName="UserRoleVO1"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="RoleName"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Name"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Name"/>
+      <Item Value="DisplayName"/>
+      <Item Value="Description"/>
+    </AttrArray>
+    <DisplayCriteria
+      Hint="hide"/>
+  </ListBinding>
   <EntityUsage
     Name="UserRoleGrantsEO"
     Entity="com.lance.model.user.eo.UserRoleGrantsEO"/>
@@ -28,12 +83,119 @@
     PrecisionRule="true"
     EntityAttrName="UserName"
     EntityUsage="UserRoleGrantsEO"
-    AliasName="USER_NAME"/>
+    AliasName="USER_NAME"
+    LOVName="LOV_UserName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+        <LABEL
+          ResId="com.lance.model.user.vo.UserRoleGrantsVO.UserName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="RoleName"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="RoleName"
     EntityUsage="UserRoleGrantsEO"
-    AliasName="ROLE_NAME"/>
+    AliasName="ROLE_NAME"
+    LOVName="LOV_RoleName">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+        <LABEL
+          ResId="com.lance.model.user.vo.UserRoleGrantsVO.RoleName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Type"
+    PrecisionRule="true"
+    EntityAttrName="Type"
+    EntityUsage="UserRoleGrantsEO"
+    AliasName="TYPE">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.user.vo.UserRoleGrantsVO.Type_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreateBy"
+    PrecisionRule="true"
+    EntityAttrName="CreateBy"
+    EntityUsage="UserRoleGrantsEO"
+    AliasName="CREATE_BY"
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.user.vo.UserRoleGrantsVO.CreateBy_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="CreateOn"
+    PrecisionRule="true"
+    EntityAttrName="CreateOn"
+    EntityUsage="UserRoleGrantsEO"
+    AliasName="CREATE_ON"
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.user.vo.UserRoleGrantsVO.CreateOn_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ModifyBy"
+    PrecisionRule="true"
+    EntityAttrName="ModifyBy"
+    EntityUsage="UserRoleGrantsEO"
+    AliasName="MODIFY_BY"
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.user.vo.UserRoleGrantsVO.ModifyBy_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="ModifyOn"
+    PrecisionRule="true"
+    EntityAttrName="ModifyOn"
+    EntityUsage="UserRoleGrantsEO"
+    AliasName="MODIFY_ON"
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.user.vo.UserRoleGrantsVO.ModifyOn_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ViewAttribute
+    Name="Version"
+    PrecisionRule="true"
+    EntityAttrName="Version"
+    EntityUsage="UserRoleGrantsEO"
+    AliasName="VERSION"
+    IsUpdateable="false">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.user.vo.UserRoleGrantsVO.Version_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.lance.model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

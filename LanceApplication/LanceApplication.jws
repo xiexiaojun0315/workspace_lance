@@ -30,6 +30,7 @@
       <string v="oracle.jdeveloper.model.PathsConfiguration/ApplicationSrcContentSet"/>
       <string v="oracle.jdeveloper.model.PathsConfiguration/ApplicationBuildToolContentSet"/>
       <string v="oracle.jdeveloper.model.PathsConfiguration/ResourceBundlesContentSet"/>
+      <string v="oracle.jdeveloper.model.PathsConfiguration/MobileResourcesContentSet"/>
    </list>
    <list n="listOfChildren">
       <hash><url n="URL" path="DatabaseModel/DatabaseModel.jpr"/></hash>
@@ -97,6 +98,12 @@
          <string v="LanceApplication_Project1_LanceApplication"/>
       </list>
    </hash>
+   <hash n="oracle.jdeveloper.deploy.SecurityDeploymentSettings">
+      <value n="Security-Deployment-Migrate-Users-And-Groups-Key" v="false"/>
+      <value n="Security-Deployment-Overwrite-Application-Policies-Key" v="false"/>
+      <value n="Security-Deployment-Overwrite-Credentials-Key" v="false"/>
+      <value n="Security-Deployment-Update-Weblogic-Application-Key" v="false"/>
+   </hash>
    <hash n="oracle.jdeveloper.model.PathsConfiguration">
       <hash n="ApplicationSrcContentSet">
          <list n="pattern-filters">
@@ -106,5 +113,8 @@
             <url path="src/"/>
          </list>
       </hash>
+   </hash>
+   <hash n="Weblogic JDBC">
+      <value n="Weblogic-JDBC-Auto-Sync-Key" v="false"/>
    </hash>
 </jws:workspace>

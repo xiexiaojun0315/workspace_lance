@@ -59,7 +59,9 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="USER_ROLE_GRANTS">
+    TableName="USER_ROLE_GRANTS"
+    IsUpdateable="while_insert"
+    HistoryColumn="UserHistory">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -70,7 +72,9 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="USER_ROLE_GRANTS"/>
+    TableName="USER_ROLE_GRANTS"
+    IsUpdateable="while_insert"
+    HistoryColumn="DateHistory"/>
   <Attribute
     Name="ModifyBy"
     Precision="60"
@@ -78,7 +82,8 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="USER_ROLE_GRANTS">
+    TableName="USER_ROLE_GRANTS"
+    HistoryColumn="UserHistory">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="60"/>
     </DesignTime>
@@ -89,14 +94,16 @@
     SQLType="DATE"
     Type="java.sql.Timestamp"
     ColumnType="DATE"
-    TableName="USER_ROLE_GRANTS"/>
+    TableName="USER_ROLE_GRANTS"
+    HistoryColumn="DateHistory"/>
   <Attribute
     Name="Version"
     ColumnName="VERSION"
     SQLType="NUMERIC"
     Type="java.math.BigDecimal"
     ColumnType="NUMBER"
-    TableName="USER_ROLE_GRANTS"/>
+    TableName="USER_ROLE_GRANTS"
+    HistoryColumn="VersionHistory"/>
   <AccessorAttribute
     Name="UserRole"
     Association="com.lance.model.user.as.UserRoleGrantsFk1AS"

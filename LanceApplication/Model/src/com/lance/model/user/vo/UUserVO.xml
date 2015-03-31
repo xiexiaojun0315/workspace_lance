@@ -52,19 +52,40 @@
     PrecisionRule="true"
     EntityAttrName="UserName"
     EntityUsage="UUserEO"
-    AliasName="USER_NAME"/>
+    AliasName="USER_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.user.vo.UUserVO.UserName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="TrueName"
     PrecisionRule="true"
     EntityAttrName="TrueName"
     EntityUsage="UUserEO"
-    AliasName="TRUE_NAME"/>
+    AliasName="TRUE_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.user.vo.UUserVO.TrueName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="DisplayName"
     PrecisionRule="true"
     EntityAttrName="DisplayName"
     EntityUsage="UUserEO"
-    AliasName="DISPLAY_NAME"/>
+    AliasName="DISPLAY_NAME">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.user.vo.UUserVO.DisplayName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Email"
     PrecisionRule="true"
@@ -76,7 +97,14 @@
     PrecisionRule="true"
     EntityAttrName="Password"
     EntityUsage="UUserEO"
-    AliasName="PASSWORD"/>
+    AliasName="PASSWORD">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.user.vo.UUserVO.Password_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Img"
     PrecisionRule="true"
@@ -429,7 +457,7 @@
       <CustomProperties>
         <Property
           Name="displayOperators"
-          Value="InAdvancedMode"/>
+          Value="Never"/>
         <Property
           Name="autoExecute"
           Value="false"/>
@@ -441,7 +469,7 @@
           Value="true"/>
         <Property
           Name="mode"
-          Value="Basic"/>
+          Value="Advanced"/>
       </CustomProperties>
     </Properties>
     <ViewCriteriaRow
@@ -559,6 +587,14 @@
     ViewLink="com.lance.model.vl.UUser_CompanyVL"
     Type="oracle.jbo.Row"
     IsUpdateable="false"/>
+  <LOVUIHints
+    ListType="108"
+    MRUCount="0"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    ComboRowCountHint="10">
+    <DisplayCriteria/>
+  </LOVUIHints>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.lance.model.ModelBundle"/>

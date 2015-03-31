@@ -41,7 +41,7 @@ public class MyAuthenticator extends Authenticator{
               mailInfo.setUserName("lzm1507008@126.com");    
               mailInfo.setPassword("*****");//您的邮箱密码    
               mailInfo.setFromAddress("lzm1507008@126.com");    
-              mailInfo.setToAddress("806780823@qq.com");    
+              mailInfo.setToAddress("muhongdi@qq.com");    
               mailInfo.setSubject("设置邮箱标题 如http://www.guihua.org 中国桂花网");    
               mailInfo.setContent("设置邮箱内容 如http://www.guihua.org 中国桂花网 是中国最大桂花网站==");    
                  //这个类主要来发送邮件   

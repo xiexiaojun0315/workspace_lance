@@ -1,0 +1,114 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <af:document title="Role.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:pageTemplate viewId="/TabletSupportTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+                <f:facet name="center"/>
+                <f:facet name="east"/>
+                <f:facet name="header"/>
+                <f:facet name="status"/>
+                <f:facet name="appNav"/>
+                <f:facet name="globalLinks"/>
+                <f:facet name="footer"/>
+                <f:facet name="content">
+                    <af:panelBorderLayout id="pbl1">
+                        <af:table value="#{bindings.UserRole1.collectionModel}" var="row"
+                                  rows="#{bindings.UserRole1.rangeSize}"
+                                  emptyText="#{bindings.UserRole1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" fetchSize="#{bindings.UserRole1.rangeSize}" id="t1"
+                                  partialTriggers="::b1">
+                            <af:column headerText="#{bindings.UserRole1.hints.Name.label}" id="c1">
+                                <af:inputText value="#{row.bindings.Name.inputValue}"
+                                              label="#{bindings.UserRole1.hints.Name.label}"
+                                              required="#{bindings.UserRole1.hints.Name.mandatory}"
+                                              columns="#{bindings.UserRole1.hints.Name.displayWidth}"
+                                              maximumLength="#{bindings.UserRole1.hints.Name.precision}"
+                                              shortDesc="#{bindings.UserRole1.hints.Name.tooltip}" id="it1">
+                                    <f:validator binding="#{row.bindings.Name.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRole1.hints.DisplayName.label}" id="c2">
+                                <af:inputText value="#{row.bindings.DisplayName.inputValue}"
+                                              label="#{bindings.UserRole1.hints.DisplayName.label}"
+                                              required="#{bindings.UserRole1.hints.DisplayName.mandatory}"
+                                              columns="#{bindings.UserRole1.hints.DisplayName.displayWidth}"
+                                              maximumLength="#{bindings.UserRole1.hints.DisplayName.precision}"
+                                              shortDesc="#{bindings.UserRole1.hints.DisplayName.tooltip}" id="it2">
+                                    <f:validator binding="#{row.bindings.DisplayName.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRole1.hints.Type.label}" id="c3">
+                                <af:inputText value="#{row.bindings.Type.inputValue}"
+                                              label="#{bindings.UserRole1.hints.Type.label}"
+                                              required="#{bindings.UserRole1.hints.Type.mandatory}"
+                                              columns="#{bindings.UserRole1.hints.Type.displayWidth}"
+                                              maximumLength="#{bindings.UserRole1.hints.Type.precision}"
+                                              shortDesc="#{bindings.UserRole1.hints.Type.tooltip}" id="it3">
+                                    <f:validator binding="#{row.bindings.Type.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRole1.hints.Description.label}" id="c4">
+                                <af:inputText value="#{row.bindings.Description.inputValue}"
+                                              label="#{bindings.UserRole1.hints.Description.label}"
+                                              required="#{bindings.UserRole1.hints.Description.mandatory}"
+                                              columns="#{bindings.UserRole1.hints.Description.displayWidth}"
+                                              maximumLength="#{bindings.UserRole1.hints.Description.precision}"
+                                              shortDesc="#{bindings.UserRole1.hints.Description.tooltip}" id="it4">
+                                    <f:validator binding="#{row.bindings.Description.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRole1.hints.CreateBy.label}" id="c5">
+                                <af:outputText value="#{row.CreateBy}"
+                                               shortDesc="#{bindings.UserRole1.hints.CreateBy.tooltip}" id="ot1"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRole1.hints.CreateOn.label}" id="c6">
+                                <af:outputText value="#{row.CreateOn}"
+                                               shortDesc="#{bindings.UserRole1.hints.CreateOn.tooltip}" id="ot2">
+                                    <af:convertDateTime pattern="#{bindings.UserRole1.hints.CreateOn.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRole1.hints.ModifyBy.label}" id="c7">
+                                <af:outputText value="#{row.ModifyBy}"
+                                               shortDesc="#{bindings.UserRole1.hints.ModifyBy.tooltip}" id="ot3"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRole1.hints.ModifyOn.label}" id="c8">
+                                <af:outputText value="#{row.ModifyOn}"
+                                               shortDesc="#{bindings.UserRole1.hints.ModifyOn.tooltip}" id="ot4">
+                                    <af:convertDateTime pattern="#{bindings.UserRole1.hints.ModifyOn.format}"/>
+                                </af:outputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRole1.hints.Version.label}" id="c9">
+                                <af:outputText value="#{row.Version}"
+                                               shortDesc="#{bindings.UserRole1.hints.Version.tooltip}" id="ot5">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.UserRole1.hints.Version.format}"/>
+                                </af:outputText>
+                            </af:column>
+                        </af:table>
+                        <f:facet name="top">
+                            <af:panelGroupLayout id="pgl1" layout="horizontal">
+                                <af:button actionListener="#{bindings.CreateInsert.execute}"
+                                           text="添加角色"
+                                           disabled="#{!bindings.CreateInsert.enabled}" id="b1"/>
+                                <af:button actionListener="#{bindings.Commit.execute}" text="提交变更"
+                                           disabled="#{!bindings.Commit.enabled}" id="b2"/>
+                                <af:button actionListener="#{bindings.Rollback.execute}" text="撤销本次修改"
+                                           disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b3">
+                                    <af:resetActionListener/>
+                                </af:button>
+                                <f:facet name="separator">
+                                    <af:spacer width="10" height="10" id="s2"/>
+                                </f:facet>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </af:panelBorderLayout>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

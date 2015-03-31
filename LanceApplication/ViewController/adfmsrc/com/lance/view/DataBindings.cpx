@@ -11,12 +11,20 @@
     <page path="/AdminGroup/JOB_CATEGORY_ADMIN.jsf" usageId="com_lance_view_JOB_CATEGORY_ADMINPageDef"/>
     <page path="/WEB-INF/common/Container.jsf" usageId="com_lance_view_ContainerPageDef"/>
     <page path="/manage/SysCalendar.jsf" usageId="com_lance_view_SysCalendarPageDef"/>
+    <page path="/manage/Category.jsf" usageId="com_lance_view_CategoryPageDef"/>
+    <page path="/manage/UserAdmin.jsf" usageId="com_lance_view_UserAdminPageDef"/>
+    <page path="/manage/Role.jsf" usageId="com_lance_view_RolePageDef"/>
+    <page path="/manage/RoleGrants.jsf" usageId="com_lance_view_RoleGrantsPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_lance_view_TestPageDef" path="com.lance.view.pageDefs.TestPageDef"/>
     <page id="com_lance_view_JOB_CATEGORY_ADMINPageDef" path="AdminGroup.JOB_CATEGORY_ADMINPageDef"/>
     <page id="com_lance_view_ContainerPageDef" path="common.ContainerPageDef"/>
     <page id="com_lance_view_SysCalendarPageDef" path="manage.SysCalendarPageDef"/>
+    <page id="com_lance_view_CategoryPageDef" path="manage.CategoryPageDef"/>
+    <page id="com_lance_view_UserAdminPageDef" path="manage.UserAdminPageDef"/>
+    <page id="com_lance_view_RolePageDef" path="manage.RolePageDef"/>
+    <page id="com_lance_view_RoleGrantsPageDef" path="manage.RoleGrantsPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="RegisterAMDataControl" Package="com.lance.model"

@@ -1,0 +1,149 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="RoleGrants.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:pageTemplate viewId="/TabletSupportTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+                <f:facet name="center"/>
+                <f:facet name="east">
+                    <af:panelBox text="PanelBox1" id="pb1" showHeader="never">
+                        <f:facet name="toolbar"/>
+                        <af:outputFormatted value="为用户分配角色" id="of1"/>
+                    </af:panelBox>
+                </f:facet>
+                <f:facet name="header"/>
+                <f:facet name="status"/>
+                <f:facet name="appNav"/>
+                <f:facet name="globalLinks"/>
+                <f:facet name="footer"/>
+                <f:facet name="content">
+                    <af:panelBorderLayout id="pbl1">
+                        <f:facet name="start"/>
+                        <f:facet name="bottom"/>
+                        <f:facet name="end"/>
+                        <f:facet name="top">
+                            <af:panelGroupLayout id="pgl1" layout="horizontal" inlineStyle="margin-bottom:5px;">
+                                <af:button actionListener="#{bindings.CreateInsert.execute}" text="添加新授权"
+                                           disabled="#{!bindings.CreateInsert.enabled}" id="b1"/>
+                                <af:button actionListener="#{bindings.Delete.execute}" text="删除授权"
+                                           disabled="#{!bindings.Delete.enabled}" id="b2"/>
+                                <af:button actionListener="#{bindings.Commit.execute}" text="提交变更"
+                                           disabled="#{!bindings.Commit.enabled}" id="b3"/>
+                                <af:button actionListener="#{bindings.Rollback.execute}" text="撤销本次修改"
+                                           disabled="#{!bindings.Rollback.enabled}" immediate="true" id="b4">
+                                    <af:resetActionListener/>
+                                </af:button>
+                                <f:facet name="separator">
+                                    <af:spacer width="10" height="10" id="s2"/>
+                                </f:facet>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                        <af:table value="#{bindings.UserRoleGrants1.collectionModel}" var="row"
+                                  rows="#{bindings.UserRoleGrants1.rangeSize}"
+                                  emptyText="#{bindings.UserRoleGrants1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                  rowBandingInterval="0" fetchSize="#{bindings.UserRoleGrants1.rangeSize}" id="t1"
+                                  partialTriggers="::b1 ::b2 ::b3 ::b4"
+                                  selectedRowKeys="#{bindings.UserRoleGrants1.collectionModel.selectedRow}"
+                                  selectionListener="#{bindings.UserRoleGrants1.collectionModel.makeCurrent}"
+                                  rowSelection="single" filterModel="#{bindings.UserRoleGrants1Query.queryDescriptor}"
+                                  queryListener="#{bindings.UserRoleGrants1Query.processQuery}" filterVisible="true"
+                                  varStatus="vs">
+                            <af:column headerText="#{bindings.UserRoleGrants1.hints.UserName.label}" id="c1" width="200"
+                                       minimumWidth="100" sortProperty="#{bindings.UserRoleGrants1.hints.UserName.name}"
+                                       filterable="true" sortable="true">
+                                <af:inputListOfValues id="userNameId"
+                                                      popupTitle="Search and Select: #{bindings.UserRoleGrants1.hints.UserName.label}"
+                                                      value="#{row.bindings.UserName.inputValue}"
+                                                      model="#{row.bindings.UserName.listOfValuesModel}"
+                                                      required="#{bindings.UserRoleGrants1.hints.UserName.mandatory}"
+                                                      columns="#{bindings.UserRoleGrants1.hints.UserName.displayWidth}"
+                                                      shortDesc="#{bindings.UserRoleGrants1.hints.UserName.tooltip}"
+                                                      contentStyle="width:88%">
+                                    <f:validator binding="#{row.bindings.UserName.validator}"/>
+                                </af:inputListOfValues>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRoleGrants1.hints.RoleName.label}" id="c2" width="200"
+                                       minimumWidth="100" sortProperty="#{bindings.UserRoleGrants1.hints.RoleName.name}"
+                                       filterable="true" sortable="true">
+                                <af:inputListOfValues id="roleNameId"
+                                                      popupTitle="Search and Select: #{bindings.UserRoleGrants1.hints.RoleName.label}"
+                                                      value="#{row.bindings.RoleName.inputValue}"
+                                                      model="#{row.bindings.RoleName.listOfValuesModel}"
+                                                      required="#{bindings.UserRoleGrants1.hints.RoleName.mandatory}"
+                                                      columns="#{bindings.UserRoleGrants1.hints.RoleName.displayWidth}"
+                                                      shortDesc="#{bindings.UserRoleGrants1.hints.RoleName.tooltip}"
+                                                      contentStyle="width:88%">
+                                    <f:validator binding="#{row.bindings.RoleName.validator}"/>
+                                </af:inputListOfValues>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRoleGrants1.hints.Type.label}" id="c3" width="86"
+                                       sortProperty="#{bindings.UserRoleGrants1.hints.Type.name}" filterable="true"
+                                       sortable="true">
+                                <af:inputText value="#{row.bindings.Type.inputValue}"
+                                              label="#{bindings.UserRoleGrants1.hints.Type.label}"
+                                              required="#{bindings.UserRoleGrants1.hints.Type.mandatory}"
+                                              columns="#{bindings.UserRoleGrants1.hints.Type.displayWidth}"
+                                              maximumLength="#{bindings.UserRoleGrants1.hints.Type.precision}"
+                                              shortDesc="#{bindings.UserRoleGrants1.hints.Type.tooltip}" id="it3">
+                                    <f:validator binding="#{row.bindings.Type.validator}"/>
+                                </af:inputText>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRoleGrants1.hints.CreateBy.label}" id="c4" width="85"
+                                       sortProperty="#{bindings.UserRoleGrants1.hints.CreateBy.name}" filterable="true"
+                                       sortable="true">
+                                <af:outputText value="#{row.CreateBy}"
+                                               shortDesc="#{bindings.UserRoleGrants1.hints.CreateBy.tooltip}" id="ot1"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRoleGrants1.hints.CreateOn.label}" id="c5" width="100"
+                                       sortProperty="#{bindings.UserRoleGrants1.hints.CreateOn.name}" filterable="true"
+                                       sortable="true">
+                                <af:outputText value="#{row.CreateOn}"
+                                               shortDesc="#{bindings.UserRoleGrants1.hints.CreateOn.tooltip}" id="ot2">
+                                    <af:convertDateTime pattern="#{bindings.UserRoleGrants1.hints.CreateOn.format}"/>
+                                </af:outputText>
+                                <f:facet name="filter">
+                                    <af:inputDate value="#{bindings.UserRoleGrants1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.CreateOn.value}"
+                                                  id="id1">
+                                        <af:convertDateTime pattern="#{bindings.UserRoleGrants1.hints.CreateOn.format}"/>
+                                    </af:inputDate>
+                                </f:facet>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRoleGrants1.hints.ModifyBy.label}" id="c6" width="88"
+                                       sortProperty="#{bindings.UserRoleGrants1.hints.ModifyBy.name}" filterable="true"
+                                       sortable="true">
+                                <af:outputText value="#{row.ModifyBy}"
+                                               shortDesc="#{bindings.UserRoleGrants1.hints.ModifyBy.tooltip}" id="ot3"/>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRoleGrants1.hints.ModifyOn.label}" id="c7" width="74"
+                                       sortProperty="#{bindings.UserRoleGrants1.hints.ModifyOn.name}" filterable="true"
+                                       sortable="true">
+                                <af:outputText value="#{row.ModifyOn}"
+                                               shortDesc="#{bindings.UserRoleGrants1.hints.ModifyOn.tooltip}" id="ot4">
+                                    <af:convertDateTime pattern="#{bindings.UserRoleGrants1.hints.ModifyOn.format}"/>
+                                </af:outputText>
+                                <f:facet name="filter">
+                                    <af:inputDate value="#{bindings.UserRoleGrants1Query.queryDescriptor.filterConjunctionCriterion.criterionMap.ModifyOn.value}"
+                                                  id="id2">
+                                        <af:convertDateTime pattern="#{bindings.UserRoleGrants1.hints.ModifyOn.format}"/>
+                                    </af:inputDate>
+                                </f:facet>
+                            </af:column>
+                            <af:column headerText="#{bindings.UserRoleGrants1.hints.Version.label}" id="c8" width="100"
+                                       sortProperty="#{bindings.UserRoleGrants1.hints.Version.name}" filterable="true"
+                                       sortable="true">
+                                <af:outputText value="#{row.Version}"
+                                               shortDesc="#{bindings.UserRoleGrants1.hints.Version.tooltip}" id="ot5">
+                                    <af:convertNumber groupingUsed="false"
+                                                      pattern="#{bindings.UserRoleGrants1.hints.Version.format}"/>
+                                </af:outputText>
+                            </af:column>
+                        </af:table>
+                    </af:panelBorderLayout>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

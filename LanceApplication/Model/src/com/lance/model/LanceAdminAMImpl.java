@@ -1,6 +1,13 @@
 package com.lance.model;
 
 import com.lance.model.common.LanceAdminAM;
+import com.lance.model.user.vo.UUserVOImpl;
+import com.lance.model.user.vo.UserEducationVOImpl;
+import com.lance.model.user.vo.UserLocationListVOImpl;
+import com.lance.model.user.vo.UserRoleGrantsVOImpl;
+import com.lance.model.user.vo.UserRoleVOImpl;
+import com.lance.model.user.vo.UserSkillVOImpl;
+import com.lance.model.vo.CompanyVOImpl;
 import com.lance.model.vo.JobCategoryVOImpl;
 import com.lance.model.vo.JobSubCategoryVOImpl;
 import com.lance.model.vo.JobTemplateVOImpl;
@@ -123,6 +130,95 @@ public class LanceAdminAMImpl extends BaseApplicationModuleImpl implements Lance
      */
     public ViewLinkImpl getJobCategory_SubCategoryVL1() {
         return (ViewLinkImpl) findViewLink("JobCategory_SubCategoryVL1");
+    }
+
+    /**
+     * Container's getter for UUser1.
+     * @return UUser1
+     */
+    public UUserVOImpl getUUser1() {
+        return (UUserVOImpl) findViewObject("UUser1");
+    }
+
+
+    /**
+     * Container's getter for Company1.
+     * @return Company1
+     */
+    public CompanyVOImpl getCompany1() {
+        return (CompanyVOImpl) findViewObject("Company1");
+    }
+
+    /**
+     * Container's getter for UUser_CompanyVL1.
+     * @return UUser_CompanyVL1
+     */
+    public ViewLinkImpl getUUser_CompanyVL1() {
+        return (ViewLinkImpl) findViewLink("UUser_CompanyVL1");
+    }
+
+    /**
+     * Container's getter for UserEducation1.
+     * @return UserEducation1
+     */
+    public UserEducationVOImpl getUserEducation1() {
+        return (UserEducationVOImpl) findViewObject("UserEducation1");
+    }
+
+    /**
+     * Container's getter for UserEducationUUserFk1VL1.
+     * @return UserEducationUUserFk1VL1
+     */
+    public ViewLinkImpl getUserEducationUUserFk1VL1() {
+        return (ViewLinkImpl) findViewLink("UserEducationUUserFk1VL1");
+    }
+
+    /**
+     * Container's getter for UserLocationList1.
+     * @return UserLocationList1
+     */
+    public UserLocationListVOImpl getUserLocationList1() {
+        return (UserLocationListVOImpl) findViewObject("UserLocationList1");
+    }
+
+    /**
+     * Container's getter for UserLocationListUUserFk1VL1.
+     * @return UserLocationListUUserFk1VL1
+     */
+    public ViewLinkImpl getUserLocationListUUserFk1VL1() {
+        return (ViewLinkImpl) findViewLink("UserLocationListUUserFk1VL1");
+    }
+
+    /**
+     * Container's getter for UserSkill1.
+     * @return UserSkill1
+     */
+    public UserSkillVOImpl getUserSkill1() {
+        return (UserSkillVOImpl) findViewObject("UserSkill1");
+    }
+
+    /**
+     * Container's getter for UserSkillUUserFk1VL1.
+     * @return UserSkillUUserFk1VL1
+     */
+    public ViewLinkImpl getUserSkillUUserFk1VL1() {
+        return (ViewLinkImpl) findViewLink("UserSkillUUserFk1VL1");
+    }
+
+    /**
+     * Container's getter for UserRole1.
+     * @return UserRole1
+     */
+    public UserRoleVOImpl getUserRole1() {
+        return (UserRoleVOImpl) findViewObject("UserRole1");
+    }
+
+    /**
+     * Container's getter for UserRoleGrants1.
+     * @return UserRoleGrants1
+     */
+    public UserRoleGrantsVOImpl getUserRoleGrants1() {
+        return (UserRoleGrantsVOImpl) findViewObject("UserRoleGrants1");
     }
 }
 

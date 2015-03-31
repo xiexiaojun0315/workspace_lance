@@ -4,7 +4,7 @@
 <JboProject
   xmlns="http://xmlns.oracle.com/bc4j"
   Name="ViewController"
-  Version="12.1.3.10.8"
+  Version="12.1.3.2.36"
   SeparateXMLFiles="true"
   PackageName="com.lance.view">
   <DesignTime>
@@ -12,6 +12,14 @@
     <Attr Name="_jbo.TypeMapEntries" Value="OracleApps"/>
     <Attr Name="_NamedConnection" Value="lance"/>
   </DesignTime>
+  <AppContainee
+    Name="Model"
+    FullName="org.agileofm.template.model.Model"
+    ObjectType="JboProject">
+    <DesignTime>
+      <Attr Name="_SourceName" Value="LanTemplate.jar"/>
+    </DesignTime>
+  </AppContainee>
   <AppContainee
     Name="Model"
     FullName="com.zngh.platform.front.core.model.Model"

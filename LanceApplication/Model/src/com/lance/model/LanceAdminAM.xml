@@ -27,6 +27,27 @@
   <ViewUsage
     Name="SysCalendar1"
     ViewObjectName="com.lance.model.vo.SysCalendarVO"/>
+  <ViewUsage
+    Name="UUser1"
+    ViewObjectName="com.lance.model.user.vo.UUserVO"/>
+  <ViewUsage
+    Name="Company1"
+    ViewObjectName="com.lance.model.vo.CompanyVO"/>
+  <ViewUsage
+    Name="UserEducation1"
+    ViewObjectName="com.lance.model.user.vo.UserEducationVO"/>
+  <ViewUsage
+    Name="UserLocationList1"
+    ViewObjectName="com.lance.model.user.vo.UserLocationListVO"/>
+  <ViewUsage
+    Name="UserSkill1"
+    ViewObjectName="com.lance.model.user.vo.UserSkillVO"/>
+  <ViewUsage
+    Name="UserRole1"
+    ViewObjectName="com.lance.model.user.vo.UserRoleVO"/>
+  <ViewUsage
+    Name="UserRoleGrants1"
+    ViewObjectName="com.lance.model.user.vo.UserRoleGrantsVO"/>
   <ViewLinkUsage
     Name="JobTemplateJobCategoryFk1VL1"
     ViewLinkObjectName="com.lance.model.vl.JobTemplateJobCategoryFk1VL"
@@ -38,6 +59,30 @@
     ViewLinkObjectName="com.lance.model.vl.JobCategory_SubCategoryVL"
     SrcViewUsageName="com.lance.model.LanceAdminAM.JobCategory1"
     DstViewUsageName="com.lance.model.LanceAdminAM.JobSubCategory1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="UUser_CompanyVL1"
+    ViewLinkObjectName="com.lance.model.vl.UUser_CompanyVL"
+    SrcViewUsageName="com.lance.model.LanceAdminAM.UUser1"
+    DstViewUsageName="com.lance.model.LanceAdminAM.Company1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="UserEducationUUserFk1VL1"
+    ViewLinkObjectName="com.lance.model.user.vl.UserEducationUUserFk1VL"
+    SrcViewUsageName="com.lance.model.LanceAdminAM.UUser1"
+    DstViewUsageName="com.lance.model.LanceAdminAM.UserEducation1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="UserLocationListUUserFk1VL1"
+    ViewLinkObjectName="com.lance.model.user.vl.UserLocationListUUserFk1VL"
+    SrcViewUsageName="com.lance.model.LanceAdminAM.UUser1"
+    DstViewUsageName="com.lance.model.LanceAdminAM.UserLocationList1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="UserSkillUUserFk1VL1"
+    ViewLinkObjectName="com.lance.model.user.vl.UserSkillUUserFk1VL"
+    SrcViewUsageName="com.lance.model.LanceAdminAM.UUser1"
+    DstViewUsageName="com.lance.model.LanceAdminAM.UserSkill1"
     Reversed="false"/>
   <ClientInterface
     Name="__clientInterface">

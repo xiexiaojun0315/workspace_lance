@@ -4,6 +4,85 @@
     <jazn-realm default="jazn.com">
         <realm>
             <name>jazn.com</name>
+            <users>
+                <user>
+                    <name>muhongdi</name>
+                    <credentials>{903}odYrYV5YBAEFU/y+GiFtxfvKBW6WqV+f</credentials>
+                    <display-name>muhongdi</display-name>
+                </user>
+                <user>
+                    <name>Ben</name>
+                    <credentials>{903}vt2oK6PKlnumPOeE8DNwJzzjzzCK2pGn</credentials>
+                    <description></description>
+                </user>
+                <user>
+                    <name>Magic</name>
+                    <credentials>{903}vaNwOSPfDHvodrCRvQj6FAhCA2yVrNCC</credentials>
+                    <display-name>Magic</display-name>
+                </user>
+                <user>
+                    <name>Frank</name>
+                    <credentials>{903}K9h9mLx4F5Xua1bIEwXf1AGkXdtvRb1/</credentials>
+                    <display-name>Frank</display-name>
+                    <description>CEO of zhucai.me</description>
+                </user>
+                <user>
+                    <name>Jack</name>
+                    <credentials>{903}JCpaiTRaG4nh/+2I1ki1fF8P8G3mT4cE</credentials>
+                    <display-name>Jack</display-name>
+                </user>
+                <user>
+                    <name>Alan</name>
+                    <credentials>{903}VeZ4jA/S+YJfpmnj5MHWajtUjQEp1vGS</credentials>
+                    <display-name>Alan</display-name>
+                </user>
+            </users>
+            <roles>
+                <role>
+                    <name>Admin</name>
+                    <display-name>Admin</display-name>
+                    <members>
+                        <member>
+                            <type>user</type>
+                            <name>Ben</name>
+                        </member>
+                        <member>
+                            <type>user</type>
+                            <name>muhongdi</name>
+                        </member>
+                        <member>
+                            <type>user</type>
+                            <name>Frank</name>
+                        </member>
+                        <member>
+                            <type>user</type>
+                            <name>Magic</name>
+                        </member>
+                        <member>
+                            <type>user</type>
+                            <name>Alan</name>
+                        </member>
+                        <member>
+                            <type>user</type>
+                            <name>Jack</name>
+                        </member>
+                    </members>
+                </role>
+                <role>
+                    <name>ContentContributor</name>
+                    <display-name>ContentContributor</display-name>
+                    <description>网站内容贡献者</description>
+                </role>
+                <role>
+                    <name>CalendarAdmin</name>
+                    <display-name>CalendarAdmin</display-name>
+                    <description></description>
+                </role>
+                <role>
+                    <name>UserGrandsAdmin</name>
+                    <display-name>UserGrandsAdmin</display-name>
+                </role>
+            </roles>
         </realm>
     </jazn-realm>
     <policy-store>
@@ -15,8 +94,8 @@
                         <grantee>
                             <principals>
                                 <principal>
-                                    <class>oracle.security.jps.internal.core.principals.JpsAuthenticatedRoleImpl</class>
-                                    <name>authenticated-role</name>
+                                    <class>oracle.security.jps.internal.core.principals.JpsXmlEnterpriseRoleImpl</class>
+                                    <name>CalendarAdmin</name>
                                 </principal>
                             </principals>
                         </grantee>
@@ -24,6 +103,82 @@
                             <permission>
                                 <class>oracle.adf.share.security.authorization.RegionPermission</class>
                                 <name>manage.SysCalendarPageDef</name>
+                                <actions>view</actions>
+                            </permission>
+                        </permissions>
+                    </grant>
+                    <grant>
+                        <grantee>
+                            <principals>
+                                <principal>
+                                    <class>oracle.security.jps.internal.core.principals.JpsXmlEnterpriseRoleImpl</class>
+                                    <name>ContentContributor</name>
+                                </principal>
+                            </principals>
+                        </grantee>
+                        <permissions>
+                            <permission>
+                                <class>oracle.adf.share.security.authorization.RegionPermission</class>
+                                <name>manage.CategoryPageDef</name>
+                                <actions>view</actions>
+                            </permission>
+                        </permissions>
+                    </grant>
+                    <grant>
+                        <grantee>
+                            <principals>
+                                <principal>
+                                    <class>oracle.security.jps.internal.core.principals.JpsXmlEnterpriseRoleImpl</class>
+                                    <name>Admin</name>
+                                </principal>
+                            </principals>
+                        </grantee>
+                        <permissions>
+                            <permission>
+                                <class>oracle.adf.share.security.authorization.RegionPermission</class>
+                                <name>manage.CategoryPageDef</name>
+                                <actions>view</actions>
+                            </permission>
+                            <permission>
+                                <class>oracle.adf.share.security.authorization.RegionPermission</class>
+                                <name>manage.UserAdminPageDef</name>
+                                <actions>view</actions>
+                            </permission>
+                            <permission>
+                                <class>oracle.adf.share.security.authorization.RegionPermission</class>
+                                <name>manage.RoleGrantsPageDef</name>
+                                <actions>view</actions>
+                            </permission>
+                            <permission>
+                                <class>oracle.adf.share.security.authorization.RegionPermission</class>
+                                <name>manage.RolePageDef</name>
+                                <actions>view</actions>
+                            </permission>
+                        </permissions>
+                    </grant>
+                    <grant>
+                        <grantee>
+                            <principals>
+                                <principal>
+                                    <class>oracle.security.jps.internal.core.principals.JpsXmlEnterpriseRoleImpl</class>
+                                    <name>UserGrandsAdmin</name>
+                                </principal>
+                            </principals>
+                        </grantee>
+                        <permissions>
+                            <permission>
+                                <class>oracle.adf.share.security.authorization.RegionPermission</class>
+                                <name>manage.UserAdminPageDef</name>
+                                <actions>view</actions>
+                            </permission>
+                            <permission>
+                                <class>oracle.adf.share.security.authorization.RegionPermission</class>
+                                <name>manage.RoleGrantsPageDef</name>
+                                <actions>view</actions>
+                            </permission>
+                            <permission>
+                                <class>oracle.adf.share.security.authorization.RegionPermission</class>
+                                <name>manage.RolePageDef</name>
                                 <actions>view</actions>
                             </permission>
                         </permissions>
