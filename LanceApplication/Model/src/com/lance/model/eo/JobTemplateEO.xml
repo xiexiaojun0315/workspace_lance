@@ -162,6 +162,13 @@
       <Attr Name="_DisplaySize" Value="32"/>
     </DesignTime>
   </Attribute>
+  <Attribute
+    Name="Rank"
+    ColumnName="RANK"
+    SQLType="NUMERIC"
+    Type="java.math.BigDecimal"
+    ColumnType="NUMBER"
+    TableName="JOB_TEMPLATE"/>
   <AccessorAttribute
     Name="JobCategory"
     Association="com.lance.model.as.JobTemplateJobCategoryFk1AS"

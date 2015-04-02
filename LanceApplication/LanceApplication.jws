@@ -100,9 +100,9 @@
    </hash>
    <hash n="oracle.jdeveloper.deploy.SecurityDeploymentSettings">
       <value n="Security-Deployment-Migrate-Users-And-Groups-Key" v="false"/>
-      <value n="Security-Deployment-Overwrite-Application-Policies-Key" v="false"/>
-      <value n="Security-Deployment-Overwrite-Credentials-Key" v="false"/>
-      <value n="Security-Deployment-Update-Weblogic-Application-Key" v="false"/>
+      <value n="Security-Deployment-Overwrite-Application-Policies-Key" v="true"/>
+      <value n="Security-Deployment-Overwrite-Credentials-Key" v="true"/>
+      <value n="Security-Deployment-Update-Weblogic-Application-Key" v="true"/>
    </hash>
    <hash n="oracle.jdeveloper.model.PathsConfiguration">
       <hash n="ApplicationSrcContentSet">

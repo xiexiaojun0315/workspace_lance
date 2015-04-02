@@ -145,11 +145,13 @@ public class PageDirectServlet extends HttpServlet {
             JSONObject userData = new UserResource().findSimpleUserByName(user);
             String[] roles = adfctx.getSecurityContext().getUserRoles();
             JSONArray roleArr = new JSONArray();
+            
             for (String role : roles) {
                 roleArr.put(role);
             }
             userData.put("roles", roleArr);
-
+            System.out.println("roles:"+roleArr);
+            
             request.setAttribute("user", userData);
             request.setAttribute("data", arr);
         } catch (JSONException jsone) {

@@ -110,6 +110,7 @@
          <string v="ADFbc"/>
          <string v="ADFc"/>
          <string v="ADFm"/>
+         <string v="Coherence"/>
          <string v="HTML"/>
          <string v="JAVASCRIPT"/>
          <string v="JSF"/>
@@ -323,8 +324,27 @@
                   <url path="src/"/>
                </list>
             </hash>
+            <hash>
+               <url n="content-folder-url" path="adfmsrc/META-INF/"/>
+               <list n="pattern-filters">
+                  <string v="+coherence-cache-config.xml"/>
+                  <string v="+coherence-application.xml"/>
+               </list>
+               <list n="url-path">
+                  <url path="adfmsrc/META-INF/"/>
+               </list>
+            </hash>
          </list>
          <list n="url-path"/>
+      </hash>
+   </hash>
+   <hash n="oracle.jdeveloper.runner.RunConfigurations">
+      <hash n="runConfigurationDefinitions">
+         <hash n="Default">
+            <value n="custom" v="false"/>
+            <value n="javaOptions" v="-Dtangosol.coherence.cacheconfig=&quot;/D:/workspace_lance5/LanceApplication/ViewController/adfmsrc/META-INF/coherence-cache-config.xml&quot;"/>
+            <value n="name" v="Default"/>
+         </hash>
       </hash>
    </hash>
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
@@ -483,6 +503,10 @@
          </hash>
          <hash>
             <value n="id" v="BC4J Oracle Domains"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Coherence Runtime"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
@@ -667,6 +691,10 @@
          </hash>
          <hash>
             <value n="id" v="BC4J Oracle Domains"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Coherence Runtime"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

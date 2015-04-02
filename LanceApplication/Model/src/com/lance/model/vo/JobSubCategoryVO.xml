@@ -19,6 +19,52 @@
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
+  <ViewAccessor
+    Name="UUserVO1"
+    ViewObjectName="com.lance.model.user.vo.UUserVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="UUserVO2"
+    ViewObjectName="com.lance.model.user.vo.UUserVO"
+    RowLevelBinds="true"/>
+  <ListBinding
+    Name="LOV_CreateBy"
+    ListVOName="UUserVO1"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="CreateBy"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UserName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DisplayName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_ModifyBy"
+    ListVOName="UUserVO2"
+    ListRangeSize="-1"
+    ComboRowCountHint="10"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="ModifyBy"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="UserName"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="DisplayName"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="JobSubCategoryEO"
     Entity="com.lance.model.eo.JobSubCategoryEO"/>
@@ -47,7 +93,15 @@
     PrecisionRule="true"
     EntityAttrName="CreateBy"
     EntityUsage="JobSubCategoryEO"
-    AliasName="CREATE_BY"/>
+    AliasName="CREATE_BY"
+    LOVName="LOV_CreateBy">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="CreateOn"
     IsUpdateable="false"
@@ -61,7 +115,15 @@
     PrecisionRule="true"
     EntityAttrName="ModifyBy"
     EntityUsage="JobSubCategoryEO"
-    AliasName="MODIFY_BY"/>
+    AliasName="MODIFY_BY"
+    LOVName="LOV_ModifyBy">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="input_text_lov"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="ModifyOn"
     IsUpdateable="false"

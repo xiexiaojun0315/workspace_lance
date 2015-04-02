@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="EditJobTemplatePageDef"
+                Package="manage.fregment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="JobTemplate1" RangeSize="25" DataControl="LanceAdminAMDataControl" id="JobTemplate1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="JobTemplate1Iterator" id="JobTemplate1">
+      <nodeDefinition DefName="com.lance.model.vo.JobTemplateVO" Name="JobTemplate10">
+        <AttrNames>
+          <Item Value="Uuid"/>
+          <Item Value="JobCategoryId"/>
+          <Item Value="NameCn"/>
+        </AttrNames>
+        <Accessors>
+          <Item Value="JobCategoryIdJobTemplate"/>
+        </Accessors>
+      </nodeDefinition>
+      <nodeDefinition DefName="com.lance.model.vo.JobTemplateVO" Name="JobTemplate11">
+        <AttrNames>
+          <Item Value="Uuid"/>
+          <Item Value="JobSubCategoryId"/>
+          <Item Value="NameEn"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <attributeValues IterBinding="JobTemplate1Iterator" id="Uuid">
+      <AttrNames>
+        <Item Value="Uuid"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="JobTemplate1Iterator" StaticList="false" Uses="LOV_JobCategoryId" id="JobCategoryId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <list IterBinding="JobTemplate1Iterator" StaticList="false" Uses="LOV_JobSubCategoryId" id="JobSubCategoryId"
+          DTSupportsMRU="false" SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="JobTemplate1Iterator" id="NameEn">
+      <AttrNames>
+        <Item Value="NameEn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate1Iterator" id="NameCn">
+      <AttrNames>
+        <Item Value="NameCn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate1Iterator" id="DescriptionCn">
+      <AttrNames>
+        <Item Value="DescriptionCn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate1Iterator" id="DescriptionEn">
+      <AttrNames>
+        <Item Value="DescriptionEn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate1Iterator" id="Tips">
+      <AttrNames>
+        <Item Value="Tips"/>
+      </AttrNames>
+    </attributeValues>
+    <list IterBinding="JobTemplate1Iterator" StaticList="false" Uses="LOV_Type" id="Type" DTSupportsMRU="false"
+          SelectItemValueMode="ListObject"/>
+    <attributeValues IterBinding="JobTemplate1Iterator" id="DescriptionCnTxt">
+      <AttrNames>
+        <Item Value="DescriptionCnTxt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate1Iterator" id="DescriptionEnTxt">
+      <AttrNames>
+        <Item Value="DescriptionEnTxt"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate1Iterator" id="Rank">
+      <AttrNames>
+        <Item Value="Rank"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate1Iterator" id="CreateBy">
+      <AttrNames>
+        <Item Value="CreateBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate1Iterator" id="CreateOn">
+      <AttrNames>
+        <Item Value="CreateOn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate1Iterator" id="ModifyBy">
+      <AttrNames>
+        <Item Value="ModifyBy"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate1Iterator" id="ModifyOn">
+      <AttrNames>
+        <Item Value="ModifyOn"/>
+      </AttrNames>
+    </attributeValues>
+    <attributeValues IterBinding="JobTemplate1Iterator" id="Version">
+      <AttrNames>
+        <Item Value="Version"/>
+      </AttrNames>
+    </attributeValues>
+    <action IterBinding="JobTemplate1Iterator" id="First" RequiresUpdateModel="true" Action="first"/>
+    <action IterBinding="JobTemplate1Iterator" id="Previous" RequiresUpdateModel="true" Action="previous"/>
+    <action IterBinding="JobTemplate1Iterator" id="Next" RequiresUpdateModel="true" Action="next"/>
+    <action IterBinding="JobTemplate1Iterator" id="Last" RequiresUpdateModel="true" Action="last"/>
+  </bindings>
+</pageDefinition>

@@ -48,6 +48,9 @@
   <ViewUsage
     Name="UserRoleGrants1"
     ViewObjectName="com.lance.model.user.vo.UserRoleGrantsVO"/>
+  <ViewUsage
+    Name="JobTemplate3"
+    ViewObjectName="com.lance.model.vo.JobTemplateVO"/>
   <ViewLinkUsage
     Name="JobTemplateJobCategoryFk1VL1"
     ViewLinkObjectName="com.lance.model.vl.JobTemplateJobCategoryFk1VL"
@@ -84,6 +87,12 @@
     SrcViewUsageName="com.lance.model.LanceAdminAM.UUser1"
     DstViewUsageName="com.lance.model.LanceAdminAM.UserSkill1"
     Reversed="false"/>
+  <ViewLinkUsage
+    Name="JobTemplateCategory_TemplateSubCategoryVL1"
+    ViewLinkObjectName="com.lance.model.vl.JobTemplateCategory_TemplateSubCategoryVL"
+    SrcViewUsageName="com.lance.model.LanceAdminAM.JobTemplate1"
+    DstViewUsageName="com.lance.model.LanceAdminAM.JobTemplate3"
+    Reversed="false"/>
   <ClientInterface
     Name="__clientInterface">
     <Method
@@ -98,6 +107,25 @@
       <Parameter
         Name="end"
         Type="java.lang.Integer"/>
+    </Method>
+    <Method
+      Name="findJobTemplate"
+      MethodName="findJobTemplate">
+      <Return
+        Name="_return_type_"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="category"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="subCategory"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="attr1"
+        Type="java.lang.String"/>
+      <Parameter
+        Name="attr2"
+        Type="java.lang.String"/>
     </Method>
   </ClientInterface>
 </AppModule>

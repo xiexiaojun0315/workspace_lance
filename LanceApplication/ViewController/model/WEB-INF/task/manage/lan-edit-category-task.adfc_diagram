@@ -1,0 +1,53 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View2">
+      <property
+         name="activityId">EditCategory</property>
+      <property
+         name="page">/manage/fregment/ViewCategory.jsff</property>
+      <property
+         name="start">false</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>EditCategory&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">314.79883</property>
+      <property
+         name="x">558.6846</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <View
+      id="View3">
+      <property
+         name="activityId">ViewCategory</property>
+      <property
+         name="page">/manage/fregment/ViewCategory.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ViewCategory&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">312.09766</property>
+      <property
+         name="pageFragment">true</property>
+      <property
+         name="x">304.3506</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase4"
+      from="View3"
+      to="View2">
+      <property
+         name="fromOutcome">edit</property>
+      <property
+         name="sdm:polyPoints">R50,345.3506,311.74707,517.6846,314.44824,L50</property>
+   </ControlFlowCase>
+</SDM>

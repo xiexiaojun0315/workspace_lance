@@ -239,6 +239,10 @@
     <param-name>server.app.adf.container_id</param-name>
     <param-value>com_lance_view_ContainerPageDef</param-value>
   </context-param>
+  <context-param>
+    <param-name>lance.host.hostName</param-name>
+    <param-value>http://localhost:7101</param-value>
+  </context-param>
   <mime-mapping>
     <extension>swf</extension>
     <mime-type>application/x-shockwave-flash</mime-type>
@@ -258,6 +262,9 @@
   </listener>
   <listener>
     <listener-class>com.zngh.platform.front.core.view.servlet.FrontCoreListener</listener-class>
+  </listener>
+  <listener>
+    <listener-class>com.lance.view.servlet.AuthListener</listener-class>
   </listener>
   <welcome-file-list>
     <welcome-file>/pages/MyHome</welcome-file>

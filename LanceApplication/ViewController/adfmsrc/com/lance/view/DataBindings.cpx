@@ -15,6 +15,12 @@
     <page path="/manage/UserAdmin.jsf" usageId="com_lance_view_UserAdminPageDef"/>
     <page path="/manage/Role.jsf" usageId="com_lance_view_RolePageDef"/>
     <page path="/manage/RoleGrants.jsf" usageId="com_lance_view_RoleGrantsPageDef"/>
+    <page path="/manage/JobTemplate.jsf" usageId="com_lance_view_JobTemplatePageDef"/>
+    <page path="/WEB-INF/task/manage/lan-edit-jobtemplate-task.xml#lan-edit-jobtemplate-task@findJobTemplate"
+          usageId="com_lance_view_lan_edit_jobtemplate_task_lan_edit_jobtemplate_task_findJobTemplatePageDef"/>
+    <page path="/manage/fregment/EditJobTemplate.jsff" usageId="com_lance_view_EditJobTemplatePageDef"/>
+    <page path="/manage/fregment/ViewCategory.jsff" usageId="com_lance_view_ViewCategoryPageDef"/>
+    <page path="/manage/MyInfo.jsf" usageId="com_lance_view_MyInfoPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_lance_view_TestPageDef" path="com.lance.view.pageDefs.TestPageDef"/>
@@ -25,6 +31,12 @@
     <page id="com_lance_view_UserAdminPageDef" path="manage.UserAdminPageDef"/>
     <page id="com_lance_view_RolePageDef" path="manage.RolePageDef"/>
     <page id="com_lance_view_RoleGrantsPageDef" path="manage.RoleGrantsPageDef"/>
+    <page id="com_lance_view_JobTemplatePageDef" path="manage.JobTemplatePageDef"/>
+    <page id="com_lance_view_lan_edit_jobtemplate_task_lan_edit_jobtemplate_task_findJobTemplatePageDef"
+          path="manage.lan_edit_jobtemplate_task_lan_edit_jobtemplate_task_findJobTemplatePageDef"/>
+    <page id="com_lance_view_EditJobTemplatePageDef" path="manage.fregment.EditJobTemplatePageDef"/>
+    <page id="com_lance_view_ViewCategoryPageDef" path="manage.fregment.ViewCategoryPageDef"/>
+    <page id="com_lance_view_MyInfoPageDef" path="manage.MyInfoPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="RegisterAMDataControl" Package="com.lance.model"

@@ -38,7 +38,7 @@ public class LoginServlet extends HttpServlet {
      * @throws IOException
      */
     public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        System.out.println("doPost123");
+        System.out.println("doPost LoginServlet");
         //
         //        Cookie[]  cs=request.getCookies();
         //        for(Cookie c:cs){

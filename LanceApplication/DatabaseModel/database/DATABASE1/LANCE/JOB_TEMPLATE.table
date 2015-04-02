@@ -364,6 +364,21 @@
       </properties>
     </column>
     <column>
+      <name>RANK</name>
+      <dataTypeUsage>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>NUMBER</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">评级</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
       <name>CREATE_BY</name>
       <dataTypeUsage>
         <attributeValues>

@@ -13,5 +13,37 @@ public class JobTemplateVOImpl extends BaseViewObjectImpl {
      */
     public JobTemplateVOImpl() {
     }
+
+    /**
+     * Returns the variable value for pCreateBy.
+     * @return variable value for pCreateBy
+     */
+    public String getpCreateBy() {
+        return (String) ensureVariableManager().getVariableValue("pCreateBy");
+    }
+
+    /**
+     * Sets <code>value</code> for variable pCreateBy.
+     * @param value value to bind as pCreateBy
+     */
+    public void setpCreateBy(String value) {
+        ensureVariableManager().setVariableValue("pCreateBy", value);
+    }
+
+    /**
+     * Returns the variable value for pJobCategoryId.
+     * @return variable value for pJobCategoryId
+     */
+    public String getpJobCategoryId() {
+        return (String) ensureVariableManager().getVariableValue("pJobCategoryId");
+    }
+
+    /**
+     * Sets <code>value</code> for variable pJobCategoryId.
+     * @param value value to bind as pJobCategoryId
+     */
+    public void setpJobCategoryId(String value) {
+        ensureVariableManager().setVariableValue("pJobCategoryId", value);
+    }
 }
 

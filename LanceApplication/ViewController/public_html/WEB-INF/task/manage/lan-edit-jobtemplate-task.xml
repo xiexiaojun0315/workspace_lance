@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="lan-edit-jobtemplate-task">
+    <default-activity>findJobTemplate</default-activity>
+    <data-control-scope>
+      <shared/>
+    </data-control-scope>
+    <input-parameter-definition id="__1">
+      <name>category</name>
+      <value>#{pageFlowScope.category}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <input-parameter-definition id="__2">
+      <name>subCategory</name>
+      <value>#{pageFlowScope.subCategory}</value>
+      <class>java.lang.String</class>
+    </input-parameter-definition>
+    <method-call id="findJobTemplate">
+      <method>#{bindings.findJobTemplate.execute}</method>
+      <outcome>
+        <fixed-outcome>findJobTemplate</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="EditJobTemplate">
+      <page>/manage/fregment/EditJobTemplate.jsff</page>
+    </view>
+    <control-flow-rule id="__3">
+      <from-activity-id>findJobTemplate</from-activity-id>
+      <control-flow-case id="__4">
+        <from-outcome>findJobTemplate</from-outcome>
+        <to-activity-id>EditJobTemplate</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

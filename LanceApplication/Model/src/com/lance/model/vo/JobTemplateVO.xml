@@ -19,9 +19,25 @@
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
+  <Variable
+    Name="pCreateBy"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
+  <Variable
+    Name="pJobCategoryId"
+    Kind="viewcriteria"
+    Type="java.lang.String"/>
   <ViewAccessor
     Name="JobTemplateTypeVVO1"
     ViewObjectName="com.lance.model.vvo.JobTemplateTypeVVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="JobCategoryVO1"
+    ViewObjectName="com.lance.model.vo.JobCategoryVO"
+    RowLevelBinds="true"/>
+  <ViewAccessor
+    Name="JobSubCategoryVO1"
+    ViewObjectName="com.lance.model.vo.JobSubCategoryVO"
     RowLevelBinds="true"/>
   <ListBinding
     Name="LOV_Type"
@@ -42,6 +58,43 @@
     </AttrArray>
     <DisplayCriteria/>
   </ListBinding>
+  <ListBinding
+    Name="LOV_JobCategoryId"
+    ListVOName="JobCategoryVO1"
+    ListRangeSize="-1"
+    NullValueFlag="none"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="JobCategoryId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Uuid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="NameCn"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
+  <ListBinding
+    Name="LOV_JobSubCategoryId"
+    ListVOName="JobSubCategoryVO1"
+    ListRangeSize="-1"
+    NullValueFlag="start"
+    NullValueId="${adfBundle['oracle.javatools.resourcebundle.SystemBundle']['NULL_VALUE_RESID']}"
+    MRUCount="0">
+    <AttrArray Name="AttrNames">
+      <Item Value="JobSubCategoryId"/>
+    </AttrArray>
+    <AttrArray Name="AttrExpressions"/>
+    <AttrArray Name="ListAttrNames">
+      <Item Value="Uuid"/>
+    </AttrArray>
+    <AttrArray Name="ListDisplayAttrNames">
+      <Item Value="Name"/>
+    </AttrArray>
+    <DisplayCriteria/>
+  </ListBinding>
   <EntityUsage
     Name="JobTemplateEO"
     Entity="com.lance.model.eo.JobTemplateEO"/>
@@ -58,13 +111,29 @@
     PrecisionRule="true"
     EntityAttrName="JobCategoryId"
     EntityUsage="JobTemplateEO"
-    AliasName="JOB_CATEGORY_ID"/>
+    AliasName="JOB_CATEGORY_ID"
+    LOVName="LOV_JobCategoryId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="JobSubCategoryId"
     PrecisionRule="true"
     EntityAttrName="JobSubCategoryId"
     EntityUsage="JobTemplateEO"
-    AliasName="JOB_SUB_CATEGORY_ID"/>
+    AliasName="JOB_SUB_CATEGORY_ID"
+    LOVName="LOV_JobSubCategoryId">
+    <Properties>
+      <SchemaBasedProperties>
+        <CONTROLTYPE
+          Value="choice"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="NameEn"
     PrecisionRule="true"
@@ -181,6 +250,12 @@
     </Properties>
   </ViewAttribute>
   <ViewAttribute
+    Name="Rank"
+    PrecisionRule="true"
+    EntityAttrName="Rank"
+    EntityUsage="JobTemplateEO"
+    AliasName="RANK"/>
+  <ViewAttribute
     Name="CreateBy"
     IsUpdateable="false"
     PrecisionRule="true"
@@ -215,6 +290,57 @@
     EntityAttrName="Version"
     EntityUsage="JobTemplateEO"
     AliasName="VERSION"/>
+  <ViewCriteria
+    Name="FindByCategoryVC"
+    ViewObjectName="com.lance.model.vo.JobTemplateVO"
+    Conjunction="AND">
+    <Properties>
+      <CustomProperties>
+        <Property
+          Name="displayOperators"
+          Value="InAdvancedMode"/>
+        <Property
+          Name="autoExecute"
+          Value="false"/>
+        <Property
+          Name="allowConjunctionOverride"
+          Value="true"/>
+        <Property
+          Name="showInList"
+          Value="true"/>
+        <Property
+          Name="mode"
+          Value="Basic"/>
+      </CustomProperties>
+    </Properties>
+    <ViewCriteriaRow
+      Name="JobTemplateVOCriteria_row_0"
+      UpperColumns="1">
+      <ViewCriteriaItem
+        Name="JobCategoryId"
+        ViewAttribute="JobCategoryId"
+        Operator="="
+        Conjunction="AND"
+        Value=":pJobCategoryId"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+      <ViewCriteriaItem
+        Name="JobTemplateVOCriteria_JobTemplateVOCriteria_row_0_CreateBy"
+        ViewAttribute="CreateBy"
+        Operator="="
+        Conjunction="OR"
+        Value=":pCreateBy"
+        UpperColumns="0"
+        IsBindVarValue="true"
+        Required="Optional"/>
+    </ViewCriteriaRow>
+  </ViewCriteria>
+  <ViewLinkAccessor
+    Name="JobCategoryIdJobTemplate"
+    ViewLink="com.lance.model.vl.JobTemplateCategory_TemplateSubCategoryVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <ResourceBundle>
     <PropertiesBundle
       PropertiesFile="com.lance.model.ModelBundle"/>

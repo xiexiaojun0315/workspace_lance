@@ -65,6 +65,7 @@
    <hash n="oracle.ide.model.TechnologyScopeConfiguration">
       <list n="technologyScope">
          <string v="ADFbc"/>
+         <string v="Coherence"/>
          <string v="Java"/>
          <string v="XML"/>
       </list>
@@ -197,6 +198,15 @@
       <value n="j2eeWebAppName" v="LanceApplication-Model-webapp"/>
       <value n="j2eeWebContextRoot" v="LanceApplication-Model-context-root"/>
    </hash>
+   <hash n="oracle.jdeveloper.runner.RunConfigurations">
+      <hash n="runConfigurationDefinitions">
+         <hash n="Default">
+            <value n="custom" v="false"/>
+            <value n="javaOptions" v="-Dtangosol.coherence.cacheconfig=&quot;/D:/workspace_lance5/LanceApplication/Model/src/META-INF/coherence-cache-config.xml&quot;"/>
+            <value n="name" v="Default"/>
+         </hash>
+      </hash>
+   </hash>
    <hash n="oracle.jdevimpl.config.JProjectLibraries">
       <list n="exportedReferences">
          <hash>
@@ -253,6 +263,10 @@
          </hash>
          <hash>
             <value n="id" v="Commons-lang-2.4.jar"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Coherence Runtime"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>
@@ -337,6 +351,10 @@
          </hash>
          <hash>
             <url n="id" path="ADF_Library_Dependencies.library"/>
+            <value n="isJDK" v="false"/>
+         </hash>
+         <hash>
+            <value n="id" v="Coherence Runtime"/>
             <value n="isJDK" v="false"/>
          </hash>
       </list>

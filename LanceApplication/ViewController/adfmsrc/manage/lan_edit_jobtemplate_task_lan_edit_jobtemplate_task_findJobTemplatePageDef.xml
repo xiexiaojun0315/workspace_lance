@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36"
+                id="lan_edit_jobtemplate_task_lan_edit_jobtemplate_task_findJobTemplatePageDef" Package="manage"
+                SkipValidation="true">
+  <parameters/>
+  <executables/>
+  <bindings>
+    <methodAction id="findJobTemplate" RequiresUpdateModel="true" Action="invokeMethod" MethodName="findJobTemplate"
+                  IsViewObjectMethod="false" DataControl="LanceAdminAMDataControl"
+                  InstanceName="data.LanceAdminAMDataControl.dataProvider"
+                  ReturnName="data.LanceAdminAMDataControl.methodResults.findJobTemplate_LanceAdminAMDataControl_dataProvider_findJobTemplate_result">
+      <NamedData NDName="category" NDValue="#{pageFlowScope.category}" NDType="java.lang.String"/>
+      <NamedData NDName="subCategory" NDValue="#{pageFlowScope.subCategory}" NDType="java.lang.String"/>
+      <NamedData NDName="attr1" NDType="java.lang.String"/>
+      <NamedData NDName="attr2" NDType="java.lang.String"/>
+    </methodAction>
+  </bindings>
+</pageDefinition>
