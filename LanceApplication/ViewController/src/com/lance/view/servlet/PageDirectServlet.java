@@ -91,9 +91,11 @@ public class PageDirectServlet extends HttpServlet {
             } else if ("/lance/pages/jobs/PostNewJob".equals(uri)) {
                 toPage(request, response, "/WEB-INF/jobs/PostNewJob.jsp", new JSONObject());
 
-            } else if ("/lance/pages/UserRegSuccess1".equals(uri)){
-                toPage(request, response, "/WEB-INF/profile/UserRegSuccess1.jsp", new JSONObject());
-                
+            } else if (uri.contains("/lance/pages/UserRegSuccess1")){
+                String param = uri.substring(uri.lastIndexOf("/"), uri.length()-1);
+                JSONObject json = new JSONObject();
+                json.put("uuid", param);
+                toPage(request, response, "/WEB-INF/profile/UserRegSuccess1.jsp?uuid="+param, json);
             } else if ("/lance/pages/UserRegSuccess2".equals(uri)){
                 toPage(request, response, "/WEB-INF/profile/UserRegSuccess2.jsp", new JSONObject());
                 

@@ -202,7 +202,8 @@ $(function(){
                 "DefaultRole" : "client"
             };
             $.ax("post", "user", param, function(data){
-                location.href="/lance/registSuccess.html"
+                toLogin($("#inp_lgname").val(),$("#inp_pass").val(),btn);
+//                location.href="/lance/registSuccess.html"
             }, function(){
                 btn.button('reset');
             }, "text");
@@ -258,8 +259,9 @@ $(function(){
                     "DefaultRole" : 'lancer'
                 };
                 $.ax("post", "user", param, function(data){
-                    alert("OK");
-                    location.href="/lance/registSuccess.html";
+//                    alert("OK");
+                    toLogin($("#inp_lgname").val(),$("#inp_pass").val(),btn);
+//                    location.href="/lance/login";
                 }, function(xhr, err, info){
                     btn.button("reset");
                 }, "text");
@@ -281,6 +283,21 @@ $(function(){
     });
     
 });
+
+function toLogin(uname,password,btn){
+  var param={
+        name : uname,
+        pass : password,
+        optype:"regist"
+    };
+   param = JSON.stringify(param);
+   $.post("/lance/login", param, function(data){
+        if(data.indexOf("ok") >= 0){
+            var url = data.split(":")[1];
+            window.location.href = url;
+        }else{}
+    },"text");
+}
 
 $(function(){
     $("#rgr").click(function(){

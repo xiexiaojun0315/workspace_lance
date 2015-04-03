@@ -16,6 +16,8 @@ public class ConstantUtil {
     //当前应用的REST根URL（桶URL）
     public static final String ROOT_REST_URL = "lance/res";
 
+    public static final String ROOT_HTTP_URL="http://localhost:7101/lance";
+    
     public static final String SIGN_BY_COMPANY = "company";
 
     public static final String SIGN_BY_SELF = "self";

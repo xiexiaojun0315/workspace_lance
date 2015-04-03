@@ -103,7 +103,7 @@
   </servlet-mapping>
   <servlet-mapping>
     <servlet-name>EmailActivateServlet</servlet-name>
-    <url-pattern>/res/sendMail/validateEmail</url-pattern>
+    <url-pattern>/page/email/active</url-pattern>
   </servlet-mapping>
   <filter>
     <filter-name>JpsFilter</filter-name>

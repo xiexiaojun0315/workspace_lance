@@ -1,9 +1,15 @@
 package com.lance.view.rest.email;
 
 import com.lance.model.LanceRestAMImpl;
+import com.lance.model.util.ConstantUtil;
 import com.lance.model.vo.RegEmailChkVOImpl;
 import com.lance.model.vo.RegEmailChkVORowImpl;
 import com.lance.view.util.LUtil;
+
+import com.zngh.platform.front.core.model.cache.AuthCache;
+import com.zngh.platform.front.core.model.util.UUIDGenerator;
+
+import com.zngh.platform.front.core.view.BaseRestResource;
 
 import java.io.IOException;
 
@@ -25,9 +31,13 @@ import javax.mail.internet.MimeMessage;
 
 import javax.servlet.http.HttpServletResponse;
 
+import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.Path;
+import javax.ws.rs.PathParam;
 import javax.ws.rs.QueryParam;
+
+import javax.ws.rs.core.MediaType;
 
 import oracle.jbo.Key;
 import oracle.jbo.Row;
@@ -39,7 +49,7 @@ import javax.ws.rs.core.Response;
  */
 
 @Path("sendMail")
-public class SendActivateMail {
+public class SendActivateMail extends BaseRestResource{
     public SendActivateMail() {
         super();
     }
@@ -105,11 +115,11 @@ public class SendActivateMail {
             Address addressTo = new InternetAddress(userEmail, ""); //接收邮箱和用户
             ///邮件的内容  validateCode通过MD5加密
             StringBuffer sb = new StringBuffer("点击下面链接激活账号，48小时生效，否则重新注册账号，链接只能使用一次，请尽快激活！</br>");
-            sb.append("<a href=\"http://localhost:7101/lance/res/sendMail/validateEmail?uid=");
+            sb.append("<a href=\""+ConstantUtil.ROOT_HTTP_URL+"/page/email/active?uid=");
             sb.append(uid);
             sb.append("&validateCode=");
             sb.append(validateCode);
-            sb.append("\">http://localhost:7101/lance/res/sendMail/validateEmail?uid=");
+            sb.append("\">"+ConstantUtil.ROOT_HTTP_URL+"/page/email/active?uid=");
             sb.append(uid);
             sb.append("&validateCode=");
             sb.append(validateCode);
@@ -129,6 +139,49 @@ public class SendActivateMail {
             System.out.println(e.toString());
             System.out.println("发送失败");
         }
+    }
+    
+    /**
+     *重新发送邮件  xiexiaojun
+     * @param email
+     * @return
+     */
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("resend/{email}")
+    public String sendEmail(@PathParam("email")String email){
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        RegEmailChkVOImpl regEmailChkVO = am.getRegEmailChk1();
+        String uuid = UUIDGenerator.getUuid();
+        RegEmailChkVORowImpl regEmailChkRow = (RegEmailChkVORowImpl) regEmailChkVO.createRow();
+        regEmailChkRow.setUuid(uuid);
+        regEmailChkRow.setUserName(findCurrentUserName());
+        sendActivateEmail(email, uuid,findCurrentUserName());
+        return am.commit();
+    }
+    
+    /**
+     *重新发送邮件  xiexiaojun
+     * @param email
+     * @return
+     */
+    @GET
+    @Consumes(MediaType.APPLICATION_JSON)
+    @Path("resend2/{uname}")
+    public String sendEmail2(@PathParam("uname")String uname){
+        LanceRestAMImpl am = LUtil.findLanceAM();
+        RegEmailChkVOImpl regEmailChkVO = am.getRegEmailChk1();
+        String uuid = UUIDGenerator.getUuid();
+        RegEmailChkVORowImpl regEmailChkRow = (RegEmailChkVORowImpl) regEmailChkVO.createRow();
+        regEmailChkRow.setUuid(uuid);
+        regEmailChkRow.setUserName(uname);
+        String email = (String)AuthCache.getUserById(uname).get("Email");
+        sendActivateEmail((String)AuthCache.getUserById(uname).get("Email"), uuid,uname);
+        String flag = am.commit();
+        if("ok".equals(flag)){
+            return "ok:"+email;
+        }
+        return "err:发送邮件出现异常";
     }
 
 

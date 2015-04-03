@@ -62,6 +62,10 @@ public class LoginServlet extends HttpServlet {
             //        JSONObject res = new JSONObject();
             String un = jo.getString("name");
             byte[] pw = jo.getString("pass").getBytes();
+            String optype = null;
+            if(jo.has("optype")){
+                optype = jo.getString("optype");
+            }
             Subject subject = Authentication.login(new URLCallbackHandler(un, pw));
             weblogic.servlet.security.ServletAuthentication.runAs(subject, request);
             System.out.println(un + " 登录成功");
@@ -69,8 +73,14 @@ public class LoginServlet extends HttpServlet {
             //            new PageDirectServlet().toPage(request, response, "/lance/pages/MyHome", new JSONObject());
             response.setContentType(CONTENT_TYPE);
             PrintWriter out = response.getWriter();
-            out.println("ok:/lance/pages/MyHome"); //成功，跳转页面
-            out.close();
+            if(optype != null){
+                if("regist".equals(optype)){
+                   out.println("ok:/lance/pages/UserRegSuccess1/"+un); //成功，跳转页面
+                }
+            }else{
+                out.println("ok:/lance/pages/MyHome"); //成功，跳转页面
+            }
+            out.close(); 
             return;
         } catch (FailedLoginException fle) {
             response.setContentType(CONTENT_TYPE);
