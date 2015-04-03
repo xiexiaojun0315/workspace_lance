@@ -144,6 +144,28 @@
     EntityAttrName="Version"
     EntityUsage="JobCategoryEO"
     AliasName="VERSION"/>
+  <ViewAttribute
+    Name="CreateByName"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="ModifyByName"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
   <ViewLinkAccessor
     Name="JobTemplate"
     ViewLink="com.lance.model.vl.JobTemplateJobCategoryFk1VL"

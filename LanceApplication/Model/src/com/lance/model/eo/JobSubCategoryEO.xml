@@ -11,7 +11,8 @@
   AliasName="JobSubCategoryEO"
   BindingStyle="OracleName"
   RowClass="com.zngh.platform.front.core.model.BaseEntityImpl"
-  CollClass="com.zngh.platform.front.core.model.BaseEntityCache">
+  CollClass="com.zngh.platform.front.core.model.BaseEntityCache"
+  xmlns:validation="http://xmlns.oracle.com/adfm/validation">
   <Attribute
     Name="Uuid"
     IsNotNull="true"
@@ -45,7 +46,8 @@
     SQLType="VARCHAR"
     Type="java.lang.String"
     ColumnType="VARCHAR2"
-    TableName="JOB_SUB_CATEGORY">
+    TableName="JOB_SUB_CATEGORY"
+    IsNotNull="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="100"/>
     </DesignTime>
@@ -102,6 +104,41 @@
     ColumnType="NUMBER"
     TableName="JOB_SUB_CATEGORY"
     HistoryColumn="VersionHistory"/>
+  <Attribute
+    Name="Description"
+    Precision="2100"
+    ColumnName="DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="JOB_SUB_CATEGORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2100"/>
+    </DesignTime>
+  </Attribute>
+  <Key
+    Name="AltKey"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="JOB_SUB_CATEGORY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.JobSubCategoryEO.Name"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="JobSubCategoryNameCheck">
+    <DesignTime>
+      <Attr Name="_isNotNull" Value="true"/>
+      <Attr Name="_DBObjectName" Value="JOB_SUB_CATEGORY_NAME_CHECK"/>
+      <Attr Name="_checkCondition" Value='"NAME" IS NOT NULL'/>
+      <Attr Name="_isCheck" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.JobSubCategoryEO.Name"/>
+    </AttrArray>
+  </Key>
   <Key
     Name="JobSubCategoryPk"
     PrimaryKey="true">
@@ -123,4 +160,17 @@
       <Item Value="com.lance.model.eo.JobSubCategoryEO.CategoryId"/>
     </AttrArray>
   </Key>
+  <validation:UniqueKeyValidationBean
+    Name="JobSubCategory_NameRule"
+    ResId="nameAlreadyExists"
+    KeyName="AltKey">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="Name"/>
+    </validation:OnAttributes>
+  </validation:UniqueKeyValidationBean>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.lance.model.ModelBundle"/>
+  </ResourceBundle>
 </Entity>

@@ -1,0 +1,42 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGridLayout id="pgl1">
+        <af:gridRow height="100%" id="gr1">
+            <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                <!-- Content -->
+                <af:panelBorderLayout id="pbl1">
+                    <f:facet name="start"/>
+                    <af:panelGroupLayout id="pgl2" layout="vertical">
+                        <af:selectBooleanCheckbox text="selectBooleanCheckbox 1" id="sbc1"
+                                                  valueChangeListener="#{CategoryBean.onSelectAgreement}"/>
+                        <af:selectBooleanCheckbox text="selectBooleanCheckbox 1" id="sbc2"
+                                                  valueChangeListener="#{CategoryBean.onSelectAgreement}"/>
+                        <af:selectBooleanCheckbox text="selectBooleanCheckbox 1" id="sbc3"
+                                                  valueChangeListener="#{CategoryBean.onSelectAgreement}"/>
+                        <af:selectBooleanCheckbox text="selectBooleanCheckbox 1" id="sbc4"
+                                                  valueChangeListener="#{CategoryBean.onSelectAgreement}"/>
+                        <af:selectBooleanCheckbox text="selectBooleanCheckbox 1" id="sbc5"
+                                                  valueChangeListener="#{CategoryBean.onSelectAgreement}"/>
+                        <af:selectBooleanCheckbox text="selectBooleanCheckbox 1" id="sbc6"
+                                                  valueChangeListener="#{CategoryBean.onSelectAgreement}"/>
+                        <f:facet name="separator">
+                            <af:spacer width="10" height="10" id="s1"/>
+                        </f:facet>
+                    </af:panelGroupLayout>
+                    <f:facet name="bottom">
+                        <af:panelGroupLayout id="pgl3" layout="horizontal" halign="center">
+                            <af:button text="确定" id="b1" action="next"/>
+                            <af:button text="取消" id="b2" action="cancel"/>
+                            <f:facet name="separator">
+                                <af:spacer width="10" height="10" id="s2"/>
+                            </f:facet>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                    <f:facet name="end"/>
+                    <f:facet name="top"/>
+                </af:panelBorderLayout>
+            </af:gridCell>
+        </af:gridRow>
+    </af:panelGridLayout>
+</ui:composition>

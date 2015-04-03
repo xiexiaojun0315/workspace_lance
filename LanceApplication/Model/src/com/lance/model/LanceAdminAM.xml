@@ -51,6 +51,12 @@
   <ViewUsage
     Name="JobTemplate3"
     ViewObjectName="com.lance.model.vo.JobTemplateVO"/>
+  <ViewUsage
+    Name="JobSubCategoryExperts1"
+    ViewObjectName="com.lance.model.vo.JobSubCategoryExpertsVO"/>
+  <ViewUsage
+    Name="JobSubCategorySubmit1"
+    ViewObjectName="com.lance.model.vo.JobSubCategorySubmitVO"/>
   <ViewLinkUsage
     Name="JobTemplateJobCategoryFk1VL1"
     ViewLinkObjectName="com.lance.model.vl.JobTemplateJobCategoryFk1VL"
@@ -92,6 +98,18 @@
     ViewLinkObjectName="com.lance.model.vl.JobTemplateCategory_TemplateSubCategoryVL"
     SrcViewUsageName="com.lance.model.LanceAdminAM.JobTemplate1"
     DstViewUsageName="com.lance.model.LanceAdminAM.JobTemplate3"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="JobSubCategory_ExportsVL1"
+    ViewLinkObjectName="com.lance.model.vl.JobSubCategory_ExportsVL"
+    SrcViewUsageName="com.lance.model.LanceAdminAM.JobSubCategory1"
+    DstViewUsageName="com.lance.model.LanceAdminAM.JobSubCategoryExperts1"
+    Reversed="false"/>
+  <ViewLinkUsage
+    Name="JobSubCategory_SubCategorySubmitVL1"
+    ViewLinkObjectName="com.lance.model.vl.JobSubCategory_SubCategorySubmitVL"
+    SrcViewUsageName="com.lance.model.LanceAdminAM.JobSubCategory1"
+    DstViewUsageName="com.lance.model.LanceAdminAM.JobSubCategorySubmit1"
     Reversed="false"/>
   <ClientInterface
     Name="__clientInterface">

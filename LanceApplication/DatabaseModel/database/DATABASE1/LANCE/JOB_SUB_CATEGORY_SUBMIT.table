@@ -1,6 +1,6 @@
 <?xml version = '1.0' encoding = 'UTF-8'?>
 <table xmlns="http://xmlns.oracle.com/jdeveloper/1211/offlinedb">
-  <name>JOB_SUB_CATEGORY</name>
+  <name>JOB_SUB_CATEGORY_SUBMIT</name>
   <columns>
     <column>
       <name>UUID</name>
@@ -26,76 +26,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>UUID</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>JOB_SUB_CATEGORY</name>
-              <identifier class="java.math.BigDecimal">30290</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>CATEGORY_ID</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">32</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>CATEGORY_ID</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>JOB_SUB_CATEGORY</name>
-              <identifier class="java.math.BigDecimal">30290</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <type>COLUMN</type>
-          </value>
-        </entry>
-      </properties>
-    </column>
-    <column>
-      <name>NAME</name>
-      <dataTypeUsage>
-        <attributeValues>
-          <entry>
-            <key>size</key>
-            <value class="java.lang.Long">120</value>
-          </entry>
-          <entry>
-            <key>unit</key>
-            <value class="java.lang.String">BYTE</value>
-          </entry>
-        </attributeValues>
-        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
-          <typeName>VARCHAR2</typeName>
-        </dataTypeID>
-      </dataTypeUsage>
-      <notNull>false</notNull>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>NAME</name>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>JOB_SUB_CATEGORY</name>
-              <identifier class="java.math.BigDecimal">30290</identifier>
+              <name>JOB_SUB_CATEGORY_HIS</name>
+              <identifier class="java.math.BigDecimal">33616</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -110,7 +42,7 @@
         <attributeValues>
           <entry>
             <key>size</key>
-            <value class="java.lang.Integer">2100</value>
+            <value class="java.lang.Long">2100</value>
           </entry>
           <entry>
             <key>unit</key>
@@ -122,6 +54,21 @@
         </dataTypeID>
       </dataTypeUsage>
       <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>DESCRIPTION</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>JOB_SUB_CATEGORY_HIS</name>
+              <identifier class="java.math.BigDecimal">33616</identifier>
+              <schemaName>LANCE</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
     </column>
     <column>
       <name>CREATE_BY</name>
@@ -147,8 +94,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>CREATE_BY</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>JOB_SUB_CATEGORY</name>
-              <identifier class="java.math.BigDecimal">30290</identifier>
+              <name>JOB_SUB_CATEGORY_HIS</name>
+              <identifier class="java.math.BigDecimal">33616</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -171,8 +118,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>CREATE_ON</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>JOB_SUB_CATEGORY</name>
-              <identifier class="java.math.BigDecimal">30290</identifier>
+              <name>JOB_SUB_CATEGORY_HIS</name>
+              <identifier class="java.math.BigDecimal">33616</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -205,8 +152,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>MODIFY_BY</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>JOB_SUB_CATEGORY</name>
-              <identifier class="java.math.BigDecimal">30290</identifier>
+              <name>JOB_SUB_CATEGORY_HIS</name>
+              <identifier class="java.math.BigDecimal">33616</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -229,8 +176,8 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>MODIFY_ON</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>JOB_SUB_CATEGORY</name>
-              <identifier class="java.math.BigDecimal">30290</identifier>
+              <name>JOB_SUB_CATEGORY_HIS</name>
+              <identifier class="java.math.BigDecimal">33616</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -253,8 +200,42 @@
           <value class="oracle.javatools.db.ReferenceID">
             <name>VERSION</name>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>JOB_SUB_CATEGORY</name>
-              <identifier class="java.math.BigDecimal">30290</identifier>
+              <name>JOB_SUB_CATEGORY_HIS</name>
+              <identifier class="java.math.BigDecimal">33616</identifier>
+              <schemaName>LANCE</schemaName>
+              <type>TABLE</type>
+            </parent>
+            <type>COLUMN</type>
+          </value>
+        </entry>
+      </properties>
+    </column>
+    <column>
+      <name>SUB_CATEGORY_ID</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Long">32</value>
+          </entry>
+          <entry>
+            <key>unit</key>
+            <value class="java.lang.String">BYTE</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
+          <value class="oracle.javatools.db.ReferenceID">
+            <name>SUB_CATEGORY_ID</name>
+            <parent class="oracle.javatools.db.ReferenceID">
+              <name>JOB_SUB_CATEGORY_HIS</name>
+              <identifier class="java.math.BigDecimal">33616</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -266,12 +247,12 @@
   </columns>
   <constraints>
     <constraint class="oracle.javatools.db.PKConstraint">
-      <name>JOB_SUB_CATEGORY_PK</name>
+      <name>JOB_SUB_CATEGORY_HIS_PK</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
           <name>UUID</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>JOB_SUB_CATEGORY</name>
+            <name>JOB_SUB_CATEGORY_SUBMIT</name>
             <schemaName>LANCE</schemaName>
             <type>TABLE</type>
           </parent>
@@ -281,9 +262,9 @@
       </columnIDs>
       <enabled>true</enabled>
       <indexID class="oracle.javatools.db.NameBasedID">
-        <name>JOB_SUB_CATEGORY_PK</name>
+        <name>JOB_SUB_CATEGORY_HIS_PK</name>
         <parent class="oracle.javatools.db.NameBasedID">
-          <name>JOB_SUB_CATEGORY</name>
+          <name>JOB_SUB_CATEGORY_SUBMIT</name>
           <schemaName>LANCE</schemaName>
           <type>TABLE</type>
         </parent>
@@ -294,13 +275,13 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>JOB_SUB_CATEGORY_PK</name>
+            <name>JOB_SUB_CATEGORY_HIS_PK</name>
             <childObjectNames>
               <childObjectName>UUID</childObjectName>
             </childObjectNames>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>JOB_SUB_CATEGORY</name>
-              <identifier class="java.math.BigDecimal">30290</identifier>
+              <name>JOB_SUB_CATEGORY_HIS</name>
+              <identifier class="java.math.BigDecimal">33616</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -311,12 +292,12 @@
       </properties>
     </constraint>
     <constraint class="oracle.javatools.db.FKConstraint">
-      <name>JOB_SUB_CATEGORY_FK1</name>
+      <name>JOB_SUB_CATEGORY_HIS_FK1</name>
       <columnIDs>
         <columnID class="oracle.javatools.db.NameBasedID">
-          <name>CATEGORY_ID</name>
+          <name>SUB_CATEGORY_ID</name>
           <parent class="oracle.javatools.db.NameBasedID">
-            <name>JOB_SUB_CATEGORY</name>
+            <name>JOB_SUB_CATEGORY_SUBMIT</name>
             <schemaName>LANCE</schemaName>
             <type>TABLE</type>
           </parent>
@@ -325,30 +306,10 @@
         </columnID>
       </columnIDs>
       <enabled>true</enabled>
-      <onDeleteAction>NO_ACTION</onDeleteAction>
-      <properties>
-        <entry>
-          <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
-          <value class="oracle.javatools.db.ReferenceID">
-            <name>JOB_SUB_CATEGORY_FK1</name>
-            <childObjectNames>
-              <childObjectName>CATEGORY_ID</childObjectName>
-            </childObjectNames>
-            <parent class="oracle.javatools.db.ReferenceID">
-              <name>JOB_SUB_CATEGORY</name>
-              <identifier class="java.math.BigDecimal">30290</identifier>
-              <schemaName>LANCE</schemaName>
-              <type>TABLE</type>
-            </parent>
-            <subType>FKConstraint</subType>
-            <type>CONSTRAINT</type>
-          </value>
-        </entry>
-      </properties>
       <referenceID class="oracle.javatools.db.NameBasedID">
-        <name>JOB_CATEGORY_PK</name>
+        <name>JOB_SUB_CATEGORY_PK</name>
         <parent class="oracle.javatools.db.NameBasedID">
-          <name>JOB_CATEGORY</name>
+          <name>JOB_SUB_CATEGORY</name>
           <schemaName>LANCE</schemaName>
           <type>TABLE</type>
         </parent>
@@ -359,7 +320,7 @@
   </constraints>
   <indexes>
     <index>
-      <name>JOB_SUB_CATEGORY_PK</name>
+      <name>JOB_SUB_CATEGORY_HIS_PK</name>
       <columnExpressions>
         <columnExpression>
           <expressionSource>UUID</expressionSource>
@@ -370,11 +331,11 @@
               <value class="oracle.javatools.db.ReferenceID">
                 <name>UUID</name>
                 <parent class="oracle.javatools.db.ReferenceID">
-                  <name>JOB_SUB_CATEGORY_PK</name>
-                  <identifier class="java.math.BigDecimal">30335</identifier>
+                  <name>JOB_SUB_CATEGORY_HIS_PK</name>
+                  <identifier class="java.math.BigDecimal">33617</identifier>
                   <parent class="oracle.javatools.db.ReferenceID">
-                    <name>JOB_SUB_CATEGORY</name>
-                    <identifier class="java.math.BigDecimal">30290</identifier>
+                    <name>JOB_SUB_CATEGORY_HIS</name>
+                    <identifier class="java.math.BigDecimal">33616</identifier>
                     <schemaName>LANCE</schemaName>
                     <type>TABLE</type>
                   </parent>
@@ -393,11 +354,11 @@
         <entry>
           <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
           <value class="oracle.javatools.db.ReferenceID">
-            <name>JOB_SUB_CATEGORY_PK</name>
-            <identifier class="java.math.BigDecimal">30335</identifier>
+            <name>JOB_SUB_CATEGORY_HIS_PK</name>
+            <identifier class="java.math.BigDecimal">33617</identifier>
             <parent class="oracle.javatools.db.ReferenceID">
-              <name>JOB_SUB_CATEGORY</name>
-              <identifier class="java.math.BigDecimal">30290</identifier>
+              <name>JOB_SUB_CATEGORY_HIS</name>
+              <identifier class="java.math.BigDecimal">33616</identifier>
               <schemaName>LANCE</schemaName>
               <type>TABLE</type>
             </parent>
@@ -425,13 +386,13 @@
       <schema>
         <name>LANCE</name>
       </schema>
-      <systemGenerated>false</systemGenerated>
+      <systemGenerated>true</systemGenerated>
     </index>
   </indexes>
   <properties>
     <entry>
       <key>Comment</key>
-      <value class="java.lang.String">工作小类</value>
+      <value class="java.lang.String">修改SubCategory的申请</value>
     </entry>
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_CONNECTION</key>
@@ -440,8 +401,8 @@
     <entry>
       <key>OfflineDBConstants.IMPORT_SOURCE_ID</key>
       <value class="oracle.javatools.db.ReferenceID">
-        <name>JOB_SUB_CATEGORY</name>
-        <identifier class="java.math.BigDecimal">30290</identifier>
+        <name>JOB_SUB_CATEGORY_HIS</name>
+        <identifier class="java.math.BigDecimal">33616</identifier>
         <schemaName>LANCE</schemaName>
         <type>TABLE</type>
       </value>

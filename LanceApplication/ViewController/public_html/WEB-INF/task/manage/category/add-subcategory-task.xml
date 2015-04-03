@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<adfc-config xmlns="http://xmlns.oracle.com/adf/controller" version="1.2">
+  <task-flow-definition id="add-subcategory-task">
+    <default-activity>AddCategoryAgreement</default-activity>
+    <transaction>
+      <new-transaction/>
+    </transaction>
+    <data-control-scope>
+      <isolated/>
+    </data-control-scope>
+    <managed-bean id="__1">
+      <managed-bean-name>CategoryBean</managed-bean-name>
+      <managed-bean-class>com.lance.view.bean.CategoryBean</managed-bean-class>
+      <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <view id="AddCategoryAgreement">
+      <page>/manage/fregment/category/AddCategoryAgreement.jsff</page>
+      <train-stop/>
+    </view>
+    <view id="SelectMyCategory">
+      <page>/manage/fregment/category/SelectMyCategory.jsff</page>
+      <train-stop/>
+    </view>
+    <view id="SelectMyCategoryConfirm">
+      <page>/manage/fregment/category/SelectMyCategoryConfirm.jsff</page>
+      <train-stop/>
+    </view>
+    <task-flow-return id="Return">
+      <outcome>
+        <name>Return</name>
+        <rollback/>
+      </outcome>
+    </task-flow-return>
+    <task-flow-return id="Commit">
+      <outcome>
+        <name>Commit</name>
+        <commit/>
+      </outcome>
+    </task-flow-return>
+    <method-call id="CreateInsert">
+      <method>#{bindings.CreateInsert.execute}</method>
+      <outcome>
+        <fixed-outcome>CreateInsert</fixed-outcome>
+      </outcome>
+    </method-call>
+    <view id="SelectMyCategoryConfirm1">
+      <page>/manage/fregment/category/SelectMyCategoryConfirm.jsff</page>
+      <train-stop/>
+    </view>
+    <train/>
+    <control-flow-rule id="__2">
+      <from-activity-id>*</from-activity-id>
+      <control-flow-case id="__3">
+        <from-outcome>cancel</from-outcome>
+        <to-activity-id>Return</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__4">
+        <from-outcome>commit</from-outcome>
+        <to-activity-id>Commit</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__5">
+      <from-activity-id>AddCategoryAgreement</from-activity-id>
+      <control-flow-case id="__6">
+        <from-outcome>next</from-outcome>
+        <to-activity-id>SelectMyCategory</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__7">
+      <from-activity-id>SelectMyCategory</from-activity-id>
+      <control-flow-case id="__8">
+        <from-outcome>next</from-outcome>
+        <to-activity-id>SelectMyCategoryConfirm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__9">
+      <from-activity-id>SelectMyCategoryConfirm</from-activity-id>
+      <control-flow-case id="__11">
+        <from-outcome>goBack</from-outcome>
+        <to-activity-id>SelectMyCategory</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__12">
+        <from-outcome>next</from-outcome>
+        <to-activity-id>CreateInsert</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__13">
+      <from-activity-id>CreateInsert</from-activity-id>
+      <control-flow-case id="__14">
+        <from-outcome>CreateInsert</from-outcome>
+        <to-activity-id>SelectMyCategoryConfirm1</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__15">
+      <from-activity-id>SelectMyCategoryConfirm1</from-activity-id>
+      <control-flow-case id="__16">
+        <from-outcome>goBack</from-outcome>
+        <to-activity-id>SelectMyCategoryConfirm</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <use-page-fragments/>
+  </task-flow-definition>
+</adfc-config>

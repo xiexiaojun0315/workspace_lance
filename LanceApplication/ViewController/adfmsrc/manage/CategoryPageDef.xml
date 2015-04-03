@@ -6,8 +6,8 @@
     <variableIterator id="variables"/>
     <page path="org.agileofm.template.view.pageDefs.TabletSupportTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
     <taskFlow id="laneditcategorytask1"
-              taskFlowId="/WEB-INF/task/manage/lan-edit-category-task.xml#lan-edit-category-task" activation="deferred"
-              xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
+              taskFlowId="/WEB-INF/task/manage/category/lan-viewcategory-task.xml#lan-edit-category-task"
+              activation="deferred" xmlns="http://xmlns.oracle.com/adf/controller/binding"/>
   </executables>
   <bindings/>
 </pageDefinition>

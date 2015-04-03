@@ -16,6 +16,8 @@ import com.lance.model.vo.SysCalendarVORowImpl;
 
 import com.zngh.platform.front.core.model.BaseApplicationModuleImpl;
 
+import com.zngh.platform.front.core.model.BaseViewObjectImpl;
+
 import java.text.SimpleDateFormat;
 
 import java.util.Calendar;
@@ -246,6 +248,38 @@ public class LanceAdminAMImpl extends BaseApplicationModuleImpl implements Lance
      */
     public ViewLinkImpl getJobTemplateCategory_TemplateSubCategoryVL1() {
         return (ViewLinkImpl) findViewLink("JobTemplateCategory_TemplateSubCategoryVL1");
+    }
+
+    /**
+     * Container's getter for JobSubCategoryExperts1.
+     * @return JobSubCategoryExperts1
+     */
+    public BaseViewObjectImpl getJobSubCategoryExperts1() {
+        return (BaseViewObjectImpl) findViewObject("JobSubCategoryExperts1");
+    }
+
+    /**
+     * Container's getter for JobSubCategory_ExportsVL1.
+     * @return JobSubCategory_ExportsVL1
+     */
+    public ViewLinkImpl getJobSubCategory_ExportsVL1() {
+        return (ViewLinkImpl) findViewLink("JobSubCategory_ExportsVL1");
+    }
+
+    /**
+     * Container's getter for JobSubCategorySubmit1.
+     * @return JobSubCategorySubmit1
+     */
+    public BaseViewObjectImpl getJobSubCategorySubmit1() {
+        return (BaseViewObjectImpl) findViewObject("JobSubCategorySubmit1");
+    }
+
+    /**
+     * Container's getter for JobSubCategory_SubCategorySubmitVL1.
+     * @return JobSubCategory_SubCategorySubmitVL1
+     */
+    public ViewLinkImpl getJobSubCategory_SubCategorySubmitVL1() {
+        return (ViewLinkImpl) findViewLink("JobSubCategory_SubCategorySubmitVL1");
     }
 }
 

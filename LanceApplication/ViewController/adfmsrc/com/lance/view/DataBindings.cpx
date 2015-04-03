@@ -19,8 +19,12 @@
     <page path="/WEB-INF/task/manage/lan-edit-jobtemplate-task.xml#lan-edit-jobtemplate-task@findJobTemplate"
           usageId="com_lance_view_lan_edit_jobtemplate_task_lan_edit_jobtemplate_task_findJobTemplatePageDef"/>
     <page path="/manage/fregment/EditJobTemplate.jsff" usageId="com_lance_view_EditJobTemplatePageDef"/>
-    <page path="/manage/fregment/ViewCategory.jsff" usageId="com_lance_view_ViewCategoryPageDef"/>
+    <page path="/manage/fregment/category/ViewCategory.jsff" usageId="com_lance_view_ViewCategoryPageDef"/>
     <page path="/manage/MyInfo.jsf" usageId="com_lance_view_MyInfoPageDef"/>
+    <page path="/manage/fregment/category/SelectMyCategory.jsff" usageId="com_lance_view_AppendCategoryPageDef"/>
+    <page path="/manage/fregment/category/SelectMyCategoryConfirm.jsff" usageId="com_lance_view_SelectCategoryConfirmPageDef"/>
+    <page path="/WEB-INF/task/manage/category/add-subcategory-task.xml#add-subcategory-task@CreateInsert"
+          usageId="com_lance_view_add_subcategory_task_add_subcategory_task_CreateInsertPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_lance_view_TestPageDef" path="com.lance.view.pageDefs.TestPageDef"/>
@@ -37,6 +41,10 @@
     <page id="com_lance_view_EditJobTemplatePageDef" path="manage.fregment.EditJobTemplatePageDef"/>
     <page id="com_lance_view_ViewCategoryPageDef" path="manage.fregment.ViewCategoryPageDef"/>
     <page id="com_lance_view_MyInfoPageDef" path="manage.MyInfoPageDef"/>
+    <page id="com_lance_view_AppendCategoryPageDef" path="manage.fregment.AppendCategoryPageDef"/>
+    <page id="com_lance_view_SelectCategoryConfirmPageDef" path="manage.fregment.SelectCategoryConfirmPageDef"/>
+    <page id="com_lance_view_add_subcategory_task_add_subcategory_task_CreateInsertPageDef"
+          path="task.manage.category.add_subcategory_task_add_subcategory_task_CreateInsertPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
     <BC4JDataControl id="RegisterAMDataControl" Package="com.lance.model"

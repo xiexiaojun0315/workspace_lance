@@ -4,21 +4,17 @@
   <parameters/>
   <executables>
     <variableIterator id="variables"/>
-    <iterator Binds="JobCategory1" RangeSize="25" DataControl="LanceAdminAMDataControl" id="JobCategory1Iterator"/>
+    <iterator Binds="JobCategory1" RangeSize="100" DataControl="LanceAdminAMDataControl" id="JobCategory1Iterator"/>
   </executables>
   <bindings>
     <tree IterBinding="JobCategory1Iterator" id="JobCategory1">
       <nodeDefinition DefName="com.lance.model.vo.JobCategoryVO" Name="JobCategory10">
         <AttrNames>
-          <Item Value="Uuid"/>
-          <Item Value="NameEn"/>
           <Item Value="NameCn"/>
-          <Item Value="Display"/>
-          <Item Value="CreateBy"/>
+          <Item Value="CreateByName"/>
           <Item Value="CreateOn"/>
-          <Item Value="ModifyBy"/>
+          <Item Value="ModifyByName"/>
           <Item Value="ModifyOn"/>
-          <Item Value="Version"/>
         </AttrNames>
         <Accessors>
           <Item Value="JobSubCategory"/>
@@ -26,14 +22,11 @@
       </nodeDefinition>
       <nodeDefinition DefName="com.lance.model.vo.JobSubCategoryVO" Name="JobCategory11">
         <AttrNames>
-          <Item Value="CategoryId"/>
           <Item Value="Name"/>
-          <Item Value="CreateBy"/>
+          <Item Value="CreateByName"/>
           <Item Value="CreateOn"/>
-          <Item Value="ModifyBy"/>
+          <Item Value="ModifyByName"/>
           <Item Value="ModifyOn"/>
-          <Item Value="Version"/>
-          <Item Value="Uuid"/>
         </AttrNames>
       </nodeDefinition>
     </tree>

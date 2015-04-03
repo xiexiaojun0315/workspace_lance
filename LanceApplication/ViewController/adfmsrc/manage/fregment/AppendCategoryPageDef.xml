@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="AppendCategoryPageDef"
+                Package="manage.fregment">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="JobCategory1" RangeSize="25" DataControl="LanceAdminAMDataControl" id="JobCategory1Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="JobCategory1Iterator" id="JobCategory1">
+      <nodeDefinition DefName="com.lance.model.vo.JobCategoryVO" Name="JobCategory10">
+        <AttrNames>
+          <Item Value="NameCn"/>
+          <Item Value="NameEn"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

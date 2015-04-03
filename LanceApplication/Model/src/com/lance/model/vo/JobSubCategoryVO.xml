@@ -88,6 +88,12 @@
     EntityUsage="JobSubCategoryEO"
     AliasName="NAME"/>
   <ViewAttribute
+    Name="Description"
+    PrecisionRule="true"
+    EntityAttrName="Description"
+    EntityUsage="JobSubCategoryEO"
+    AliasName="DESCRIPTION"/>
+  <ViewAttribute
     Name="CreateBy"
     IsUpdateable="false"
     PrecisionRule="true"
@@ -138,4 +144,36 @@
     EntityAttrName="Version"
     EntityUsage="JobSubCategoryEO"
     AliasName="VERSION"/>
+  <ViewAttribute
+    Name="CreateByName"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewAttribute
+    Name="ModifyByName"
+    IsUpdateable="false"
+    IsSelected="false"
+    IsPersistent="false"
+    PrecisionRule="true"
+    Precision="255"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    AliasName="VIEW_ATTR"
+    SQLType="VARCHAR"/>
+  <ViewLinkAccessor
+    Name="JobSubCategorySubmit"
+    ViewLink="com.lance.model.vl.JobSubCategory_SubCategorySubmitVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <ViewLinkAccessor
+    Name="JobSubCategoryExperts"
+    ViewLink="com.lance.model.vl.JobSubCategory_ExportsVL"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
 </ViewObject>

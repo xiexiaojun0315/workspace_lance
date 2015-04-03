@@ -1,0 +1,51 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<SDM>
+   <OverallProperties
+      id="OverallProperties1"/>
+   <View
+      id="View7">
+      <property
+         name="activityId">ViewCategory</property>
+      <property
+         name="page">/manage/fregment/category/ViewCategory.jsff</property>
+      <property
+         name="start">true</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>ViewCategory&lt;/b> (Default Activity)&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">281.79883</property>
+      <property
+         name="x">509.3506</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <TaskFlowCall
+      id="TaskFlowCall5">
+      <property
+         name="taskFlowId">add-subcategory-task</property>
+      <property
+         name="activityId">add-subcategory-task</property>
+      <property
+         name="documentReference">/WEB-INF/task/manage/category/add-subcategory-task.xml</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>add-subcategory-task&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">222.14941</property>
+      <property
+         name="x">814.69727</property>
+   </TaskFlowCall>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase6"
+      from="View7"
+      to="TaskFlowCall5">
+      <property
+         name="fromOutcome">addSubCategory</property>
+      <property
+         name="sdm:polyPoints">R50,550.3506,281.44824,773.69727,221.79883,L50</property>
+   </ControlFlowCase>
+</SDM>

@@ -1,0 +1,56 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGridLayout id="pgl1">
+        <af:gridRow height="100%" id="gr1">
+            <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                <!-- Content -->
+                <af:panelBorderLayout id="pbl1">
+                    <f:facet name="start"/>
+                    <f:facet name="bottom"/>
+                    <f:facet name="end"/>
+                    <f:facet name="top">
+                        <af:panelGroupLayout id="pgl4" layout="horizontal" halign="right"
+                                             inlineStyle="margin-bottom:5px">
+                            <af:button text="添加子类别" id="b1" action="addSubCategory"/>
+                            <f:facet name="separator">
+                                <af:spacer width="10" height="10" id="s3"/>
+                            </f:facet>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                    <af:listView value="#{bindings.JobCategory1.treeModel}" var="item"
+                                 emptyText="#{bindings.JobCategory1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                 fetchSize="#{bindings.JobCategory1.rangeSize}" id="lv1" selection="single">
+                        <af:listItem id="li1">
+                            <af:panelGroupLayout layout="horizontal" id="pgl2">
+                                <f:facet name="separator">
+                                    <af:spacer width="10" id="s1"/>
+                                </f:facet>
+                                <af:outputFormatted value="#{item.bindings.Name.inputValue}" id="of1"/>
+                                <af:outputFormatted value="#{item.bindings.CreateByName.inputValue}" id="of2"/>
+                                <af:outputFormatted value="#{item.bindings.CreateOn.inputValue}" id="of3">
+                                    <af:convertDateTime pattern="#{bindings.JobCategory1.hints.CreateOn.format}"/>
+                                </af:outputFormatted>
+                                <af:outputFormatted value="#{item.bindings.ModifyByName.inputValue}" id="of4"/>
+                                <af:outputFormatted value="#{item.bindings.ModifyOn.inputValue}" id="of5">
+                                    <af:convertDateTime pattern="#{bindings.JobCategory1.hints.ModifyOn.format}"/>
+                                </af:outputFormatted>
+                            </af:panelGroupLayout>
+                        </af:listItem>
+                        <f:facet name="groupHeaderStamp">
+                            <af:listItem id="li2">
+                                <af:panelGroupLayout layout="horizontal" id="pgl3">
+                                    <f:facet name="separator">
+                                        <af:spacer width="10" id="s2"/>
+                                    </f:facet>
+                                    <af:outputFormatted value="#{item.bindings.NameCn.inputValue}" id="of6"/>
+                                </af:panelGroupLayout>
+                            </af:listItem>
+                        </f:facet>
+                    </af:listView>
+                </af:panelBorderLayout>
+            </af:gridCell>
+        </af:gridRow>
+    </af:panelGridLayout>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:CategoryBean-->
+</ui:composition>

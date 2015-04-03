@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE ViewLink SYSTEM "jbo_03_01.dtd">
+<!---->
+<ViewLink
+  xmlns="http://xmlns.oracle.com/bc4j"
+  Name="JobSubCategory_SubCategorySubmitVL"
+  Version="12.1.3.2.36"
+  InheritPersonalization="merge">
+  <Properties>
+    <SchemaBasedProperties>
+      <LABEL
+        ResId="com.lance.model.vl.JobSubCategory_SubCategorySubmitVL_LABEL"/>
+    </SchemaBasedProperties>
+  </Properties>
+  <ViewLinkDefEnd
+    Name="JobSubCategory"
+    Cardinality="1"
+    Source="true"
+    Owner="com.lance.model.vo.JobSubCategoryVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="JobSubCategory"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.vo.JobSubCategoryVO.Uuid"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ViewLinkDefEnd
+    Name="JobSubCategorySubmit"
+    Cardinality="-1"
+    Owner="com.lance.model.vo.JobSubCategorySubmitVO">
+    <DesignTime>
+      <Attr Name="_finderName" Value="JobSubCategorySubmit"/>
+      <Attr Name="_isUpdateable" Value="true"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.vo.JobSubCategorySubmitVO.SubCategoryId"/>
+    </AttrArray>
+  </ViewLinkDefEnd>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.lance.model.ModelBundle"/>
+  </ResourceBundle>
+</ViewLink>

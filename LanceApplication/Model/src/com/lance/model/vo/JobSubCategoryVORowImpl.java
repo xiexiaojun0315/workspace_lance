@@ -3,10 +3,13 @@ package com.lance.model.vo;
 import com.zngh.platform.front.core.model.BaseEntityImpl;
 import com.zngh.platform.front.core.model.BaseViewRowImpl;
 
+import com.zngh.platform.front.core.model.cache.AuthCache;
+
 import java.math.BigDecimal;
 
 import java.sql.Timestamp;
 
+import oracle.jbo.RowIterator;
 import oracle.jbo.RowSet;
 import oracle.jbo.server.EntityImpl;
 // ---------------------------------------------------------------------
@@ -27,11 +30,16 @@ public class JobSubCategoryVORowImpl extends BaseViewRowImpl {
         Uuid,
         CategoryId,
         Name,
+        Description,
         CreateBy,
         CreateOn,
         ModifyBy,
         ModifyOn,
         Version,
+        CreateByName,
+        ModifyByName,
+        JobSubCategorySubmit,
+        JobSubCategoryExperts,
         UUserVO1,
         UUserVO2;
         static AttributesEnum[] vals = null;
@@ -62,11 +70,16 @@ public class JobSubCategoryVORowImpl extends BaseViewRowImpl {
     public static final int UUID = AttributesEnum.Uuid.index();
     public static final int CATEGORYID = AttributesEnum.CategoryId.index();
     public static final int NAME = AttributesEnum.Name.index();
+    public static final int DESCRIPTION = AttributesEnum.Description.index();
     public static final int CREATEBY = AttributesEnum.CreateBy.index();
     public static final int CREATEON = AttributesEnum.CreateOn.index();
     public static final int MODIFYBY = AttributesEnum.ModifyBy.index();
     public static final int MODIFYON = AttributesEnum.ModifyOn.index();
     public static final int VERSION = AttributesEnum.Version.index();
+    public static final int CREATEBYNAME = AttributesEnum.CreateByName.index();
+    public static final int MODIFYBYNAME = AttributesEnum.ModifyByName.index();
+    public static final int JOBSUBCATEGORYSUBMIT = AttributesEnum.JobSubCategorySubmit.index();
+    public static final int JOBSUBCATEGORYEXPERTS = AttributesEnum.JobSubCategoryExperts.index();
     public static final int UUSERVO1 = AttributesEnum.UUserVO1.index();
     public static final int UUSERVO2 = AttributesEnum.UUserVO2.index();
 
@@ -133,6 +146,22 @@ public class JobSubCategoryVORowImpl extends BaseViewRowImpl {
     }
 
     /**
+     * Gets the attribute value for DESCRIPTION using the alias name Description.
+     * @return the DESCRIPTION
+     */
+    public String getDescription() {
+        return (String) getAttributeInternal(DESCRIPTION);
+    }
+
+    /**
+     * Sets <code>value</code> as attribute value for DESCRIPTION using the alias name Description.
+     * @param value value to set the DESCRIPTION
+     */
+    public void setDescription(String value) {
+        setAttributeInternal(DESCRIPTION, value);
+    }
+
+    /**
      * Gets the attribute value for CREATE_BY using the alias name CreateBy.
      * @return the CREATE_BY
      */
@@ -170,6 +199,37 @@ public class JobSubCategoryVORowImpl extends BaseViewRowImpl {
      */
     public BigDecimal getVersion() {
         return (BigDecimal) getAttributeInternal(VERSION);
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute CreateByName.
+     * @return the CreateByName
+     */
+    public String getCreateByName() {
+        return AuthCache.getUserDisplayNameByUserId(this.getCreateBy());
+    }
+
+    /**
+     * Gets the attribute value for the calculated attribute ModifyByName.
+     * @return the ModifyByName
+     */
+    public String getModifyByName() {
+        return AuthCache.getUserDisplayNameByUserId(this.getModifyBy());
+    }
+
+
+    /**
+     * Gets the associated <code>RowIterator</code> using master-detail link JobSubCategorySubmit.
+     */
+    public RowIterator getJobSubCategorySubmit() {
+        return (RowIterator) getAttributeInternal(JOBSUBCATEGORYSUBMIT);
+    }
+
+    /**
+     * Gets the associated <code>RowIterator</code> using master-detail link JobSubCategoryExperts.
+     */
+    public RowIterator getJobSubCategoryExperts() {
+        return (RowIterator) getAttributeInternal(JOBSUBCATEGORYEXPERTS);
     }
 
     /**

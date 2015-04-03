@@ -379,6 +379,31 @@
       </properties>
     </column>
     <column>
+      <name>IS_DEFAULT</name>
+      <dataTypeUsage>
+        <attributeValues>
+          <entry>
+            <key>size</key>
+            <value class="java.lang.Integer">1</value>
+          </entry>
+          <entry>
+            <key>unit</key>
+            <value class="java.lang.String">CHAR</value>
+          </entry>
+        </attributeValues>
+        <dataTypeID class="oracle.javatools.db.datatypes.DataTypeID">
+          <typeName>VARCHAR2</typeName>
+        </dataTypeID>
+      </dataTypeUsage>
+      <notNull>false</notNull>
+      <properties>
+        <entry>
+          <key>Comment</key>
+          <value class="java.lang.String">是否默认</value>
+        </entry>
+      </properties>
+    </column>
+    <column>
       <name>CREATE_BY</name>
       <dataTypeUsage>
         <attributeValues>

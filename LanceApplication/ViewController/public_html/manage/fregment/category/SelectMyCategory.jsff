@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGridLayout id="pgl1">
+        <af:gridRow height="100%" id="gr1">
+            <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                <!-- Content -->
+                <af:panelBorderLayout id="pbl1">
+                    <f:facet name="start"/>
+                    <af:listView value="#{bindings.JobCategory1.collectionModel}" var="item"
+                                 emptyText="#{bindings.JobCategory1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                 fetchSize="#{bindings.JobCategory1.rangeSize}" id="lv1" selection="single">
+                        <af:listItem id="li1">
+                            <af:panelGroupLayout layout="horizontal" id="pgl2">
+                                <f:facet name="separator">
+                                    <af:spacer width="10" id="s1"/>
+                                </f:facet>
+                                <af:outputFormatted value="#{item.bindings.NameCn.inputValue}" id="of1"/>
+                                <af:outputFormatted value="#{item.bindings.NameEn.inputValue}" id="of2"/>
+                            </af:panelGroupLayout>
+                        </af:listItem>
+                    </af:listView>
+                    <f:facet name="bottom">
+                        <af:panelGroupLayout id="pgl3" layout="horizontal" halign="center">
+                            <af:button text="确认" id="b1" action="next"/>
+                            <af:button text="返回" id="b2" action="goBack"/>
+                            <f:facet name="separator">
+                                <af:spacer width="10" height="10" id="s2"/>
+                            </f:facet>
+                        </af:panelGroupLayout>
+                    </f:facet>
+                    <f:facet name="end"/>
+                    <f:facet name="top">
+                        <af:outputFormatted value="请选择一个您擅长的类别&lt;br>注意：您只可选择一个行业类别" id="of3"/>
+                    </f:facet>
+                </af:panelBorderLayout>
+            </af:gridCell>
+        </af:gridRow>
+    </af:panelGridLayout>
+</ui:composition>
