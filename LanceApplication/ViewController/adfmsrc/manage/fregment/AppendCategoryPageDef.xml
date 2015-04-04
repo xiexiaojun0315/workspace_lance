@@ -5,6 +5,8 @@
   <executables>
     <variableIterator id="variables"/>
     <iterator Binds="JobCategory1" RangeSize="25" DataControl="LanceAdminAMDataControl" id="JobCategory1Iterator"/>
+    <iterator id="JobSubCategory1Iterator" Binds="JobSubCategory1" DataControl="LanceAdminAMDataControl"
+              RangeSize="25"/>
   </executables>
   <bindings>
     <tree IterBinding="JobCategory1Iterator" id="JobCategory1">

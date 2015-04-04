@@ -7,6 +7,8 @@
     <iterator Binds="JobCategory1" RangeSize="25" DataControl="LanceAdminAMDataControl" id="JobCategory1Iterator"/>
     <iterator Binds="JobSubCategory1" RangeSize="25" DataControl="LanceAdminAMDataControl"
               id="JobSubCategory1Iterator"/>
+    <iterator id="UserJobCategory1Iterator" Binds="UserJobCategory1" DataControl="LanceAdminAMDataControl"
+              RangeSize="25"/>
   </executables>
   <bindings>
     <attributeValues IterBinding="JobCategory1Iterator" id="NameEn">
@@ -17,16 +19,6 @@
     <attributeValues IterBinding="JobCategory1Iterator" id="NameCn">
       <AttrNames>
         <Item Value="NameCn"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="JobSubCategory1Iterator" id="Uuid">
-      <AttrNames>
-        <Item Value="Uuid"/>
-      </AttrNames>
-    </attributeValues>
-    <attributeValues IterBinding="JobSubCategory1Iterator" id="CategoryId">
-      <AttrNames>
-        <Item Value="CategoryId"/>
       </AttrNames>
     </attributeValues>
     <attributeValues IterBinding="JobSubCategory1Iterator" id="Name">
@@ -44,9 +36,10 @@
         <Item Value="CreateByName"/>
       </AttrNames>
     </attributeValues>
-    <attributeValues IterBinding="JobSubCategory1Iterator" id="CreateOn">
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="LanceAdminAMDataControl"/>
+    <attributeValues IterBinding="JobSubCategory1Iterator" id="NameCn1">
       <AttrNames>
-        <Item Value="CreateOn"/>
+        <Item Value="NameCn"/>
       </AttrNames>
     </attributeValues>
   </bindings>

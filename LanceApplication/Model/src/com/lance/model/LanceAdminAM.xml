@@ -57,6 +57,9 @@
   <ViewUsage
     Name="JobSubCategorySubmit1"
     ViewObjectName="com.lance.model.vo.JobSubCategorySubmitVO"/>
+  <ViewUsage
+    Name="UserJobCategory1"
+    ViewObjectName="com.lance.model.vo.UserJobCategoryVO"/>
   <ViewLinkUsage
     Name="JobTemplateJobCategoryFk1VL1"
     ViewLinkObjectName="com.lance.model.vl.JobTemplateJobCategoryFk1VL"

@@ -1,92 +1,87 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
                 xmlns:f="http://java.sun.com/jsf/core">
-    <af:panelGridLayout id="pgl1">
-        <af:gridRow height="100%" id="gr1">
-            <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
-                <!-- Content -->
-                <af:panelBorderLayout id="pbl1">
-                    <f:facet name="start"/>
-                    <af:panelFormLayout id="pfl1">
-                        <af:inputText value="#{bindings.NameCn.inputValue}" label="#{bindings.NameCn.hints.label}"
-                                      required="#{bindings.NameCn.hints.mandatory}"
-                                      columns="#{bindings.NameCn.hints.displayWidth}"
-                                      maximumLength="#{bindings.NameCn.hints.precision}"
-                                      shortDesc="#{bindings.NameCn.hints.tooltip}" id="it2" readOnly="true">
-                            <f:validator binding="#{bindings.NameCn.validator}"/>
-                        </af:inputText>
-                        <af:inputText value="#{bindings.NameEn.inputValue}" label="#{bindings.NameEn.hints.label}"
-                                      required="#{bindings.NameEn.hints.mandatory}"
-                                      columns="#{bindings.NameEn.hints.displayWidth}"
-                                      maximumLength="#{bindings.NameEn.hints.precision}"
-                                      shortDesc="#{bindings.NameEn.hints.tooltip}" id="it1" readOnly="true">
-                            <f:validator binding="#{bindings.NameEn.validator}"/>
-                        </af:inputText>
-                    </af:panelFormLayout>
-                    <af:panelFormLayout id="pfl2">
-                        <af:inputText value="#{bindings.Uuid.inputValue}" label="#{bindings.Uuid.hints.label}"
-                                      required="#{bindings.Uuid.hints.mandatory}"
-                                      columns="#{bindings.Uuid.hints.displayWidth}"
-                                      maximumLength="#{bindings.Uuid.hints.precision}"
-                                      shortDesc="#{bindings.Uuid.hints.tooltip}" id="it3">
-                            <f:validator binding="#{bindings.Uuid.validator}"/>
-                        </af:inputText>
-                        <af:inputText value="#{bindings.CategoryId.inputValue}"
-                                      label="#{bindings.CategoryId.hints.label}"
-                                      required="#{bindings.CategoryId.hints.mandatory}"
-                                      columns="#{bindings.CategoryId.hints.displayWidth}"
-                                      maximumLength="#{bindings.CategoryId.hints.precision}"
-                                      shortDesc="#{bindings.CategoryId.hints.tooltip}" id="it4">
-                            <f:validator binding="#{bindings.CategoryId.validator}"/>
-                        </af:inputText>
-                        <af:inputText value="#{bindings.Name.inputValue}" label="#{bindings.Name.hints.label}"
-                                      required="#{bindings.Name.hints.mandatory}"
-                                      columns="#{bindings.Name.hints.displayWidth}"
-                                      maximumLength="#{bindings.Name.hints.precision}"
-                                      shortDesc="#{bindings.Name.hints.tooltip}" id="it5">
-                            <f:validator binding="#{bindings.Name.validator}"/>
-                        </af:inputText>
-                        <af:inputText value="#{bindings.Description.inputValue}"
-                                      label="#{bindings.Description.hints.label}"
-                                      required="#{bindings.Description.hints.mandatory}"
-                                      columns="#{bindings.Description.hints.displayWidth}"
-                                      maximumLength="#{bindings.Description.hints.precision}"
-                                      shortDesc="#{bindings.Description.hints.tooltip}" id="it6">
-                            <f:validator binding="#{bindings.Description.validator}"/>
-                        </af:inputText>
-                        <af:inputText value="#{bindings.CreateByName.inputValue}"
-                                      label="#{bindings.CreateByName.hints.label}"
-                                      required="#{bindings.CreateByName.hints.mandatory}"
-                                      columns="#{bindings.CreateByName.hints.displayWidth}"
-                                      maximumLength="#{bindings.CreateByName.hints.precision}"
-                                      shortDesc="#{bindings.CreateByName.hints.tooltip}" id="it7">
-                            <f:validator binding="#{bindings.CreateByName.validator}"/>
-                        </af:inputText>
-                        <af:inputDate value="#{bindings.CreateOn.inputValue}" label="#{bindings.CreateOn.hints.label}"
-                                      required="#{bindings.CreateOn.hints.mandatory}"
-                                      columns="#{bindings.CreateOn.hints.displayWidth}"
-                                      shortDesc="#{bindings.CreateOn.hints.tooltip}" id="id1">
-                            <f:validator binding="#{bindings.CreateOn.validator}"/>
-                            <af:convertDateTime pattern="#{bindings.CreateOn.format}"/>
-                        </af:inputDate>
-                    </af:panelFormLayout>
-                    <f:facet name="bottom">
-                        <af:panelGroupLayout id="pgl2" layout="horizontal" halign="center">
-                            <af:selectBooleanCheckbox text="selectBooleanCheckbox 1" label="Label 1" id="sbc1"/>
-                            <af:button text="提交" id="b1" action="#{CategoryBean.submitMyTalent_action}"/>
-                            <af:button text="重选" id="b2" action="goBack"/>
-                            <f:facet name="separator">
-                                <af:spacer width="10" height="10" id="s1"/>
-                            </f:facet>
-                        </af:panelGroupLayout>
+    <af:panelBox text="添加新领域 > 提交" id="pb1" showDisclosure="false">
+        <f:facet name="toolbar"/>
+        <af:panelBorderLayout id="pbl1">
+            <f:facet name="start">
+                <af:spacer width="10" height="20" id="s3"/>
+            </f:facet>
+            <af:panelFormLayout id="pfl1" labelWidth="120" fieldWidth="200" labelAlignment="top">
+                <af:inputText value="#{bindings.NameCn.inputValue}" label="#{bindings.NameCn.hints.label}"
+                              required="#{bindings.NameCn.hints.mandatory}"
+                              columns="#{bindings.NameCn.hints.displayWidth}"
+                              maximumLength="#{bindings.NameCn.hints.precision}"
+                              shortDesc="#{bindings.NameCn.hints.tooltip}" id="it2" readOnly="true">
+                    <f:validator binding="#{bindings.NameCn.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.NameEn.inputValue}" label="#{bindings.NameEn.hints.label}"
+                              required="#{bindings.NameEn.hints.mandatory}"
+                              columns="#{bindings.NameEn.hints.displayWidth}"
+                              maximumLength="#{bindings.NameEn.hints.precision}"
+                              shortDesc="#{bindings.NameEn.hints.tooltip}" id="it1" readOnly="true">
+                    <f:validator binding="#{bindings.NameEn.validator}"/>
+                </af:inputText>
+            </af:panelFormLayout>
+            <af:panelFormLayout id="pfl2" labelWidth="120" fieldWidth="200" labelAlignment="top">
+                <af:inputText value="#{bindings.CreateByName.inputValue}" label="#{bindings.CreateByName.hints.label}"
+                              required="#{bindings.CreateByName.hints.mandatory}"
+                              columns="#{bindings.CreateByName.hints.displayWidth}"
+                              maximumLength="#{bindings.CreateByName.hints.precision}"
+                              shortDesc="#{bindings.CreateByName.hints.tooltip}" id="it7">
+                    <f:validator binding="#{bindings.CreateByName.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.Name.inputValue}" label="#{bindings.Name.hints.label}"
+                              required="#{bindings.Name.hints.mandatory}" columns="60"
+                              maximumLength="#{bindings.Name.hints.precision}"
+                              shortDesc="#{bindings.Name.hints.tooltip}" id="it5" autoSubmit="true">
+                    <f:validator binding="#{bindings.Name.validator}"/>
+                </af:inputText>
+                <af:inputText value="#{bindings.NameCn1.inputValue}" label="#{bindings.NameCn1.hints.label}"
+                              required="#{bindings.NameCn1.hints.mandatory}"
+                              columns="60"
+                              maximumLength="#{bindings.NameCn1.hints.precision}"
+                              shortDesc="#{bindings.NameCn1.hints.tooltip}" id="it3" autoSubmit="true">
+                    <f:validator binding="#{bindings.NameCn1.validator}"/>
+                </af:inputText>
+                <af:selectBooleanCheckbox id="sbc1" binding="#{CategoryBean.confirmMyCategory_InDutyChk}"
+                                          text="我从事该领域的工作"/>
+                <af:selectBooleanCheckbox id="sbc2" binding="#{CategoryBean.confirmMyCategory_SubscribeChk}"
+                                          text="订阅该领域的信息"/>
+                <af:inputText value="#{bindings.Description.inputValue}" label="#{bindings.Description.hints.label}"
+                              required="#{bindings.Description.hints.mandatory}" columns="70"
+                              maximumLength="#{bindings.Description.hints.precision}"
+                              shortDesc="#{bindings.Description.hints.tooltip}" id="it6" rows="10">
+                    <f:validator binding="#{bindings.Description.validator}"/>
+                </af:inputText>
+            </af:panelFormLayout>
+            <f:facet name="bottom">
+                <af:panelGroupLayout id="pgl2" layout="horizontal" halign="center">
+                    <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                        <af:dialog id="d1" dialogListener="#{CategoryBean.confirmMyCategory}" title="消息">
+                            <af:outputFormatted value="提交此分类？" id="of1"/>
+                            <f:facet name="buttonBar"/>
+                        </af:dialog>
+                    </af:popup>
+                    <af:button text="提交" id="b1">
+                        <af:showPopupBehavior popupId="p1"/>
+                    </af:button>
+                    <af:button text="上一步" id="b2" action="goBack" immediate="true"/>
+                    <af:button text="next" id="b3" action="next" binding="#{CategoryBean.toNextPageBtn}"
+                               visible="false" clientComponent="true"/>
+                    <f:facet name="separator">
+                        <af:spacer width="10" height="10" id="s1"/>
                     </f:facet>
-                    <f:facet name="end"/>
-                    <f:facet name="top">
-                        <af:outputFormatted value="您选择的是：" id="of1"/>
-                    </f:facet>
-                </af:panelBorderLayout>
-            </af:gridCell>
-        </af:gridRow>
-    </af:panelGridLayout>
+                </af:panelGroupLayout>
+            </f:facet>
+            <f:facet name="end"/>
+            <f:facet name="top">
+                <af:panelGroupLayout id="pgl3" layout="vertical">
+                    <af:spacer width="10" height="20" id="s2"/>
+                    <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="t1"/>
+                </af:panelGroupLayout>
+            </f:facet>
+        </af:panelBorderLayout>
+    </af:panelBox>
     <!--oracle-jdev-comment:preferred-managed-bean-name:CategoryBean-->
 </ui:composition>

@@ -3,7 +3,7 @@
 <!---->
 <ViewObject
   xmlns="http://xmlns.oracle.com/bc4j"
-  Name="JobSubCategoryExpertsVO"
+  Name="UserJobCategoryVO"
   Version="12.1.3.2.36"
   InheritPersonalization="merge"
   SelectListFlags="1"
@@ -12,98 +12,86 @@
   BindingStyle="OracleName"
   CustomQuery="false"
   SelectAllAttributes="false"
-  RowClass="com.lance.model.vo.JobSubCategoryExpertsVORowImpl"
-  ComponentClass="com.lance.model.vo.JobSubCategoryExpertsVOImpl"
+  RowClass="com.lance.model.vo.UserJobCategoryVORowImpl"
+  ComponentClass="com.lance.model.vo.UserJobCategoryVOImpl"
   PageIterMode="Full">
   <DesignTime>
     <Attr Name="_codeGenFlag2" Value="Access|Coll|VarAccess"/>
     <Attr Name="_isCodegen" Value="true"/>
   </DesignTime>
   <EntityUsage
-    Name="JobSubCategoryExpertsEO"
-    Entity="com.lance.model.eo.JobSubCategoryExpertsEO"/>
+    Name="UserJobCategoryEO"
+    Entity="com.lance.model.eo.UserJobCategoryEO"/>
   <ViewAttribute
     Name="Uuid"
     IsNotNull="true"
     PrecisionRule="true"
     EntityAttrName="Uuid"
-    EntityUsage="JobSubCategoryExpertsEO"
+    EntityUsage="UserJobCategoryEO"
     AliasName="UUID"/>
+  <ViewAttribute
+    Name="CategoryId"
+    PrecisionRule="true"
+    EntityAttrName="CategoryId"
+    EntityUsage="UserJobCategoryEO"
+    AliasName="CATEGORY_ID"/>
   <ViewAttribute
     Name="SubCategoryId"
     PrecisionRule="true"
     EntityAttrName="SubCategoryId"
-    EntityUsage="JobSubCategoryExpertsEO"
+    EntityUsage="UserJobCategoryEO"
     AliasName="SUB_CATEGORY_ID"/>
-  <ViewAttribute
-    Name="Name"
-    PrecisionRule="true"
-    EntityAttrName="Name"
-    EntityUsage="JobSubCategoryExpertsEO"
-    AliasName="NAME"/>
-  <ViewAttribute
-    Name="Description"
-    PrecisionRule="true"
-    EntityAttrName="Description"
-    EntityUsage="JobSubCategoryExpertsEO"
-    AliasName="DESCRIPTION"/>
   <ViewAttribute
     Name="UserName"
     PrecisionRule="true"
     EntityAttrName="UserName"
-    EntityUsage="JobSubCategoryExpertsEO"
+    EntityUsage="UserJobCategoryEO"
     AliasName="USER_NAME"/>
   <ViewAttribute
-    Name="Rank"
+    Name="Subscribe"
     PrecisionRule="true"
-    EntityAttrName="Rank"
-    EntityUsage="JobSubCategoryExpertsEO"
-    AliasName="RANK"/>
+    EntityAttrName="Subscribe"
+    EntityUsage="UserJobCategoryEO"
+    AliasName="SUBSCRIBE"/>
   <ViewAttribute
-    Name="Approval"
+    Name="InDuty"
     PrecisionRule="true"
-    EntityAttrName="Approval"
-    EntityUsage="JobSubCategoryExpertsEO"
-    AliasName="APPROVAL"/>
-  <ViewAttribute
-    Name="Type"
-    PrecisionRule="true"
-    EntityAttrName="Type"
-    EntityUsage="JobSubCategoryExpertsEO"
-    AliasName="TYPE"/>
+    EntityAttrName="InDuty"
+    EntityUsage="UserJobCategoryEO"
+    AliasName="IN_DUTY"/>
   <ViewAttribute
     Name="CreateBy"
     PrecisionRule="true"
     EntityAttrName="CreateBy"
-    EntityUsage="JobSubCategoryExpertsEO"
+    EntityUsage="UserJobCategoryEO"
     AliasName="CREATE_BY"
     IsUpdateable="false"/>
   <ViewAttribute
     Name="CreateOn"
     PrecisionRule="true"
     EntityAttrName="CreateOn"
-    EntityUsage="JobSubCategoryExpertsEO"
+    EntityUsage="UserJobCategoryEO"
     AliasName="CREATE_ON"
     IsUpdateable="false"/>
   <ViewAttribute
     Name="ModifyBy"
     PrecisionRule="true"
     EntityAttrName="ModifyBy"
-    EntityUsage="JobSubCategoryExpertsEO"
+    EntityUsage="UserJobCategoryEO"
     AliasName="MODIFY_BY"
     IsUpdateable="false"/>
   <ViewAttribute
     Name="ModifyOn"
     PrecisionRule="true"
     EntityAttrName="ModifyOn"
-    EntityUsage="JobSubCategoryExpertsEO"
+    EntityUsage="UserJobCategoryEO"
     AliasName="MODIFY_ON"
     IsUpdateable="false"/>
   <ViewAttribute
     Name="Version"
     PrecisionRule="true"
     EntityAttrName="Version"
-    EntityUsage="JobSubCategoryExpertsEO"
+    EntityUsage="UserJobCategoryEO"
     AliasName="VERSION"
     IsUpdateable="false"/>
 </ViewObject>

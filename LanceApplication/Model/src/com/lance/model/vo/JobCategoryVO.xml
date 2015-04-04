@@ -80,13 +80,27 @@
     PrecisionRule="true"
     EntityAttrName="NameEn"
     EntityUsage="JobCategoryEO"
-    AliasName="NAME_EN"/>
+    AliasName="NAME_EN">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.vo.JobCategoryVO.NameEn_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="NameCn"
     PrecisionRule="true"
     EntityAttrName="NameCn"
     EntityUsage="JobCategoryEO"
-    AliasName="NAME_CN"/>
+    AliasName="NAME_CN">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.vo.JobCategoryVO.NameCn_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Display"
     PrecisionRule="true"
@@ -114,7 +128,14 @@
     PrecisionRule="true"
     EntityAttrName="CreateOn"
     EntityUsage="JobCategoryEO"
-    AliasName="CREATE_ON"/>
+    AliasName="CREATE_ON">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.vo.JobCategoryVO.CreateOn_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="ModifyBy"
     IsUpdateable="false"
@@ -136,7 +157,14 @@
     PrecisionRule="true"
     EntityAttrName="ModifyOn"
     EntityUsage="JobCategoryEO"
-    AliasName="MODIFY_ON"/>
+    AliasName="MODIFY_ON">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.vo.JobCategoryVO.ModifyOn_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="Version"
     IsUpdateable="false"
@@ -154,7 +182,14 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR"/>
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.vo.JobCategoryVO.CreateByName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewAttribute
     Name="ModifyByName"
     IsUpdateable="false"
@@ -165,7 +200,14 @@
     Type="java.lang.String"
     ColumnType="VARCHAR2"
     AliasName="VIEW_ATTR"
-    SQLType="VARCHAR"/>
+    SQLType="VARCHAR">
+    <Properties>
+      <SchemaBasedProperties>
+        <LABEL
+          ResId="com.lance.model.vo.JobCategoryVO.ModifyByName_LABEL"/>
+      </SchemaBasedProperties>
+    </Properties>
+  </ViewAttribute>
   <ViewLinkAccessor
     Name="JobTemplate"
     ViewLink="com.lance.model.vl.JobTemplateJobCategoryFk1VL"
@@ -176,4 +218,8 @@
     ViewLink="com.lance.model.vl.JobCategory_SubCategoryVL"
     Type="oracle.jbo.RowIterator"
     IsUpdateable="false"/>
+  <ResourceBundle>
+    <PropertiesBundle
+      PropertiesFile="com.lance.model.ModelBundle"/>
+  </ResourceBundle>
 </ViewObject>

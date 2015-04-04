@@ -41,7 +41,7 @@
   </Attribute>
   <Attribute
     Name="Name"
-    Precision="120"
+    Precision="50"
     ColumnName="NAME"
     SQLType="VARCHAR"
     Type="java.lang.String"
@@ -50,6 +50,36 @@
     IsNotNull="true">
     <DesignTime>
       <Attr Name="_DisplaySize" Value="100"/>
+    </DesignTime>
+    <validation:PreDefinedValidationBean
+      Name="NameMandatory0"
+      ResId="com.lance.model.eo.JobSubCategoryEO.Name_Rule_0"
+      Description="Mandatory"
+      ValName="Mandatory"
+      Subtype="MANDATORY"/>
+  </Attribute>
+  <Attribute
+    Name="NameCn"
+    Precision="20"
+    ColumnName="NAME_CN"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="JOB_SUB_CATEGORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="20"/>
+    </DesignTime>
+  </Attribute>
+  <Attribute
+    Name="Description"
+    Precision="2100"
+    ColumnName="DESCRIPTION"
+    SQLType="VARCHAR"
+    Type="java.lang.String"
+    ColumnType="VARCHAR2"
+    TableName="JOB_SUB_CATEGORY">
+    <DesignTime>
+      <Attr Name="_DisplaySize" Value="2100"/>
     </DesignTime>
   </Attribute>
   <Attribute
@@ -104,18 +134,20 @@
     ColumnType="NUMBER"
     TableName="JOB_SUB_CATEGORY"
     HistoryColumn="VersionHistory"/>
-  <Attribute
-    Name="Description"
-    Precision="2100"
-    ColumnName="DESCRIPTION"
-    SQLType="VARCHAR"
-    Type="java.lang.String"
-    ColumnType="VARCHAR2"
-    TableName="JOB_SUB_CATEGORY">
-    <DesignTime>
-      <Attr Name="_DisplaySize" Value="2100"/>
-    </DesignTime>
-  </Attribute>
+  <AccessorAttribute
+    Name="JobSubCategoryExperts"
+    Association="com.lance.model.as.JobSubCategoryExpertsFk1Assoc"
+    AssociationEnd="com.lance.model.as.JobSubCategoryExpertsFk1Assoc.JobSubCategoryExperts"
+    AssociationOtherEnd="com.lance.model.as.JobSubCategoryExpertsFk1Assoc.JobSubCategory"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
+  <AccessorAttribute
+    Name="UserJobCategory"
+    Association="com.lance.model.as.UserJobCategoryFk1Assoc"
+    AssociationEnd="com.lance.model.as.UserJobCategoryFk1Assoc.UserJobCategory"
+    AssociationOtherEnd="com.lance.model.as.UserJobCategoryFk1Assoc.JobSubCategory"
+    Type="oracle.jbo.RowIterator"
+    IsUpdateable="false"/>
   <Key
     Name="AltKey"
     AltKey="true">
@@ -125,6 +157,17 @@
     </DesignTime>
     <AttrArray Name="Attributes">
       <Item Value="com.lance.model.eo.JobSubCategoryEO.Name"/>
+    </AttrArray>
+  </Key>
+  <Key
+    Name="AltKey1"
+    AltKey="true">
+    <DesignTime>
+      <Attr Name="_isUnique" Value="true"/>
+      <Attr Name="_DBObjectName" Value="JOB_SUB_CATEGORY"/>
+    </DesignTime>
+    <AttrArray Name="Attributes">
+      <Item Value="com.lance.model.eo.JobSubCategoryEO.NameCn"/>
     </AttrArray>
   </Key>
   <Key
@@ -167,6 +210,15 @@
     <validation:OnAttributes>
       <validation:Item
         Value="Name"/>
+    </validation:OnAttributes>
+  </validation:UniqueKeyValidationBean>
+  <validation:UniqueKeyValidationBean
+    Name="JobSubCategoryEORule0"
+    ResId="com.lance.model.eo.JobSubCategoryEO_Rule_1"
+    KeyName="AltKey1">
+    <validation:OnAttributes>
+      <validation:Item
+        Value="NameCn"/>
     </validation:OnAttributes>
   </validation:UniqueKeyValidationBean>
   <ResourceBundle>

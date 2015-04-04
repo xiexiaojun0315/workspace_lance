@@ -12,7 +12,7 @@
                     <f:facet name="top">
                         <af:panelGroupLayout id="pgl4" layout="horizontal" halign="right"
                                              inlineStyle="margin-bottom:5px">
-                            <af:button text="添加子类别" id="b1" action="addSubCategory"/>
+                            <af:button text="添加新领域" id="b1" action="addSubCategory"/>
                             <f:facet name="separator">
                                 <af:spacer width="10" height="10" id="s3"/>
                             </f:facet>
@@ -44,6 +44,14 @@
                                         <af:spacer width="10" id="s2"/>
                                     </f:facet>
                                     <af:outputFormatted value="#{item.bindings.NameCn.inputValue}" id="of6"/>
+                                    <af:outputFormatted value="#{item.bindings.CreateByName.inputValue}" id="of7"/>
+                                    <af:outputFormatted value="#{item.bindings.CreateOn.inputValue}" id="of8">
+                                        <af:convertDateTime pattern="#{bindings.JobCategory1.hints.CreateOn.format}"/>
+                                    </af:outputFormatted>
+                                    <af:outputFormatted value="#{item.bindings.ModifyByName.inputValue}" id="of9"/>
+                                    <af:outputFormatted value="#{item.bindings.ModifyOn.inputValue}" id="of10">
+                                        <af:convertDateTime pattern="#{bindings.JobCategory1.hints.ModifyOn.format}"/>
+                                    </af:outputFormatted>
                                 </af:panelGroupLayout>
                             </af:listItem>
                         </f:facet>

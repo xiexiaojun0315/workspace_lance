@@ -8,12 +8,16 @@
     <data-control-scope>
       <isolated/>
     </data-control-scope>
+    <task-flow-reentry>
+      <reentry-not-allowed/>
+    </task-flow-reentry>
     <managed-bean id="__1">
       <managed-bean-name>CategoryBean</managed-bean-name>
       <managed-bean-class>com.lance.view.bean.CategoryBean</managed-bean-class>
       <managed-bean-scope>request</managed-bean-scope>
     </managed-bean>
     <view id="AddCategoryAgreement">
+      <icon/>
       <page>/manage/fregment/category/AddCategoryAgreement.jsff</page>
       <train-stop/>
     </view>
@@ -37,14 +41,13 @@
         <commit/>
       </outcome>
     </task-flow-return>
-    <method-call id="CreateInsert">
-      <method>#{bindings.CreateInsert.execute}</method>
-      <outcome>
-        <fixed-outcome>CreateInsert</fixed-outcome>
-      </outcome>
-    </method-call>
     <view id="SelectMyCategoryConfirm1">
       <page>/manage/fregment/category/SelectMyCategoryConfirm.jsff</page>
+      <train-stop/>
+    </view>
+    <view id="AddCategorySuccess">
+      <display-name>gg</display-name>
+      <page>/manage/fregment/category/AddCategorySuccess.jsff</page>
       <train-stop/>
     </view>
     <train/>
@@ -72,6 +75,10 @@
         <from-outcome>next</from-outcome>
         <to-activity-id>SelectMyCategoryConfirm</to-activity-id>
       </control-flow-case>
+      <control-flow-case id="__17">
+        <from-outcome>goBack</from-outcome>
+        <to-activity-id>AddCategoryAgreement</to-activity-id>
+      </control-flow-case>
     </control-flow-rule>
     <control-flow-rule id="__9">
       <from-activity-id>SelectMyCategoryConfirm</from-activity-id>
@@ -79,15 +86,8 @@
         <from-outcome>goBack</from-outcome>
         <to-activity-id>SelectMyCategory</to-activity-id>
       </control-flow-case>
-      <control-flow-case id="__12">
+      <control-flow-case id="__10">
         <from-outcome>next</from-outcome>
-        <to-activity-id>CreateInsert</to-activity-id>
-      </control-flow-case>
-    </control-flow-rule>
-    <control-flow-rule id="__13">
-      <from-activity-id>CreateInsert</from-activity-id>
-      <control-flow-case id="__14">
-        <from-outcome>CreateInsert</from-outcome>
         <to-activity-id>SelectMyCategoryConfirm1</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
@@ -96,6 +96,10 @@
       <control-flow-case id="__16">
         <from-outcome>goBack</from-outcome>
         <to-activity-id>SelectMyCategoryConfirm</to-activity-id>
+      </control-flow-case>
+      <control-flow-case id="__18">
+        <from-outcome>next</from-outcome>
+        <to-activity-id>AddCategorySuccess</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>

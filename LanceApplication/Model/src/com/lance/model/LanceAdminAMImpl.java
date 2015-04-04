@@ -9,10 +9,13 @@ import com.lance.model.user.vo.UserRoleVOImpl;
 import com.lance.model.user.vo.UserSkillVOImpl;
 import com.lance.model.vo.CompanyVOImpl;
 import com.lance.model.vo.JobCategoryVOImpl;
+import com.lance.model.vo.JobSubCategoryExpertsVOImpl;
 import com.lance.model.vo.JobSubCategoryVOImpl;
 import com.lance.model.vo.JobTemplateVOImpl;
 import com.lance.model.vo.SysCalendarVOImpl;
 import com.lance.model.vo.SysCalendarVORowImpl;
+
+import com.lance.model.vo.UserJobCategoryVOImpl;
 
 import com.zngh.platform.front.core.model.BaseApplicationModuleImpl;
 
@@ -254,8 +257,8 @@ public class LanceAdminAMImpl extends BaseApplicationModuleImpl implements Lance
      * Container's getter for JobSubCategoryExperts1.
      * @return JobSubCategoryExperts1
      */
-    public BaseViewObjectImpl getJobSubCategoryExperts1() {
-        return (BaseViewObjectImpl) findViewObject("JobSubCategoryExperts1");
+    public JobSubCategoryExpertsVOImpl getJobSubCategoryExperts1() {
+        return (JobSubCategoryExpertsVOImpl) findViewObject("JobSubCategoryExperts1");
     }
 
     /**
@@ -280,6 +283,14 @@ public class LanceAdminAMImpl extends BaseApplicationModuleImpl implements Lance
      */
     public ViewLinkImpl getJobSubCategory_SubCategorySubmitVL1() {
         return (ViewLinkImpl) findViewLink("JobSubCategory_SubCategorySubmitVL1");
+    }
+
+    /**
+     * Container's getter for UserJobCategory1.
+     * @return UserJobCategory1
+     */
+    public UserJobCategoryVOImpl getUserJobCategory1() {
+        return (UserJobCategoryVOImpl) findViewObject("UserJobCategory1");
     }
 }
 

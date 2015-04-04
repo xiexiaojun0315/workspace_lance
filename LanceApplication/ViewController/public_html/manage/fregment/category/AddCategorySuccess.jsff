@@ -1,0 +1,41 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelGridLayout id="pgl1">
+        <af:gridRow height="100%" id="gr1">
+            <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
+                <!-- Content -->
+                <af:panelBox text="添加新领域 > 添加成功" id="pb1" showDisclosure="false">
+                    <f:facet name="toolbar"/>
+                    <af:panelBorderLayout id="pbl1">
+                        <f:facet name="start">
+                            <af:spacer width="50" height="10" id="s4"/>
+                        </f:facet>
+                        <af:panelGroupLayout id="pgl2" layout="vertical">
+                            <af:outputFormatted value="您现在可以" id="of1"/>
+                            <af:panelGroupLayout id="pgl3" inlineStyle="margin-left:100px" layout="vertical">
+                                <af:link text="返回到领域分类页面" id="l1" action="cancel"/>
+                                <af:link text="" id="l2" action="cancel"/>
+                                <f:facet name="separator">
+                                    <af:spacer width="10" height="10" id="s2"/>
+                                </f:facet>
+                            </af:panelGroupLayout>
+                            <f:facet name="separator">
+                                <af:spacer width="10" height="10" id="s1"/>
+                            </f:facet>
+                        </af:panelGroupLayout>
+                        <f:facet name="bottom"/>
+                        <f:facet name="end"/>
+                        <f:facet name="top">
+                            <af:panelGroupLayout id="pgl4" layout="vertical">
+                                <af:spacer width="10" height="20" id="s3"/>
+                                <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
+                                          id="t1"/>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </af:panelBorderLayout>
+                </af:panelBox>
+            </af:gridCell>
+        </af:gridRow>
+    </af:panelGridLayout>
+</ui:composition>

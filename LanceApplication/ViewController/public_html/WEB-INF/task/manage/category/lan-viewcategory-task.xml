@@ -14,6 +14,7 @@
       <page>/manage/fregment/category/ViewCategory.jsff</page>
     </view>
     <task-flow-call id="add-subcategory-task">
+      <display-name>ee</display-name>
       <task-flow-reference>
         <document>/WEB-INF/task/manage/category/add-subcategory-task.xml</document>
         <id>add-subcategory-task</id>

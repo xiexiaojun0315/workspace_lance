@@ -1,42 +1,59 @@
 <?xml version='1.0' encoding='UTF-8'?>
 <ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
-                xmlns:f="http://java.sun.com/jsf/core">
+                xmlns:f="http://java.sun.com/jsf/core" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle"
+           value="#{adfBundle['viewcontroller.manage.fregment.category.AddCategoryAgreementBundle']}"/>
     <af:panelGridLayout id="pgl1">
         <af:gridRow height="100%" id="gr1">
             <af:gridCell width="100%" halign="stretch" valign="stretch" id="gc1">
                 <!-- Content -->
-                <af:panelBorderLayout id="pbl1">
-                    <f:facet name="start"/>
-                    <af:panelGroupLayout id="pgl2" layout="vertical">
-                        <af:selectBooleanCheckbox text="selectBooleanCheckbox 1" id="sbc1"
-                                                  valueChangeListener="#{CategoryBean.onSelectAgreement}"/>
-                        <af:selectBooleanCheckbox text="selectBooleanCheckbox 1" id="sbc2"
-                                                  valueChangeListener="#{CategoryBean.onSelectAgreement}"/>
-                        <af:selectBooleanCheckbox text="selectBooleanCheckbox 1" id="sbc3"
-                                                  valueChangeListener="#{CategoryBean.onSelectAgreement}"/>
-                        <af:selectBooleanCheckbox text="selectBooleanCheckbox 1" id="sbc4"
-                                                  valueChangeListener="#{CategoryBean.onSelectAgreement}"/>
-                        <af:selectBooleanCheckbox text="selectBooleanCheckbox 1" id="sbc5"
-                                                  valueChangeListener="#{CategoryBean.onSelectAgreement}"/>
-                        <af:selectBooleanCheckbox text="selectBooleanCheckbox 1" id="sbc6"
-                                                  valueChangeListener="#{CategoryBean.onSelectAgreement}"/>
-                        <f:facet name="separator">
-                            <af:spacer width="10" height="10" id="s1"/>
+                <af:panelBox text="添加新领域 > 阅读协议" id="pb1" showDisclosure="false">
+                    <f:facet name="toolbar"/>
+                    <af:panelBorderLayout id="pbl1">
+                        <f:facet name="start">
+                            <af:spacer width="50" height="10" id="s4"/>
                         </f:facet>
-                    </af:panelGroupLayout>
-                    <f:facet name="bottom">
-                        <af:panelGroupLayout id="pgl3" layout="horizontal" halign="center">
-                            <af:button text="确定" id="b1" action="next"/>
-                            <af:button text="取消" id="b2" action="cancel"/>
+                        <af:panelGroupLayout id="pgl2" layout="vertical">
+                            <af:selectBooleanCheckbox text="属于具有竞争力的专业领域（有一定经验后，日薪可达￥700以上）"
+                                                      id="sbc1" binding="#{CategoryBean.agreementChk1}"
+                                                      autoSubmit="true" value="#{pageFlowScope.vchk1}"/>
+                            <af:selectBooleanCheckbox text="#{viewcontrollerBundle._U5C5E_U4E8E_U5E02_U573A_U7ADE_U4E89_U884C_U4E1A}"
+                                                      id="sbc2" binding="#{CategoryBean.agreementChk2}"
+                                                      autoSubmit="true" value="#{pageFlowScope.vchk2}"/>
+                            <af:selectBooleanCheckbox text="尚未被现有系统收录且属于合法的专业"
+                                                      id="sbc3" binding="#{CategoryBean.agreementChk3}"
+                                                      autoSubmit="true" value="#{pageFlowScope.vchk3}"/>
+                            <af:selectBooleanCheckbox text="您所添加的专业领域会立即生效，之后也可能被撤回，但您基于此领域发布的相关信息将保留60天"
+                                                      id="sbc4" binding="#{CategoryBean.agreementChk4}"
+                                                      autoSubmit="true" value="#{pageFlowScope.vchk4}"/>
                             <f:facet name="separator">
-                                <af:spacer width="10" height="10" id="s2"/>
+                                <af:spacer width="10" height="10" id="s1"/>
                             </f:facet>
                         </af:panelGroupLayout>
-                    </f:facet>
-                    <f:facet name="end"/>
-                    <f:facet name="top"/>
-                </af:panelBorderLayout>
+                        <f:facet name="bottom">
+                            <af:panelGroupLayout id="pgl3" layout="horizontal" halign="center">
+                                <af:button text="下一步" id="b1" action="#{CategoryBean.agreeAgreement_action}"
+                                           disabled="false" partialTriggers="pgl2"/>
+                                <af:button text="取消" id="b2" action="cancel"/>
+                                <f:facet name="separator">
+                                    <af:spacer width="10" height="10" id="s2"/>
+                                </f:facet>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                        <f:facet name="end"/>
+                        <f:facet name="top">
+                            <af:panelGroupLayout id="pgl4" layout="vertical">
+                                <af:spacer width="10" height="20" id="s3"/>
+                                <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
+                                          id="t1" var="v" varStatus="vs">
+                                    <f:facet name="nodeStamp"/>
+                                </af:train>
+                            </af:panelGroupLayout>
+                        </f:facet>
+                    </af:panelBorderLayout>
+                </af:panelBox>
             </af:gridCell>
         </af:gridRow>
     </af:panelGridLayout>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:CategoryBean-->
 </ui:composition>
