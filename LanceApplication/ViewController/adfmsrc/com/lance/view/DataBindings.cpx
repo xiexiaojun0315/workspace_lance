@@ -23,8 +23,6 @@
     <page path="/manage/MyInfo.jsf" usageId="com_lance_view_MyInfoPageDef"/>
     <page path="/manage/fregment/category/SelectMyCategory.jsff" usageId="com_lance_view_AppendCategoryPageDef"/>
     <page path="/manage/fregment/category/SelectMyCategoryConfirm.jsff" usageId="com_lance_view_SelectCategoryConfirmPageDef"/>
-    <page path="/WEB-INF/task/manage/category/add-subcategory-task.xml#add-subcategory-task@CreateInsert"
-          usageId="com_lance_view_add_subcategory_task_add_subcategory_task_CreateInsertPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_lance_view_TestPageDef" path="com.lance.view.pageDefs.TestPageDef"/>
@@ -43,14 +41,12 @@
     <page id="com_lance_view_MyInfoPageDef" path="manage.MyInfoPageDef"/>
     <page id="com_lance_view_AppendCategoryPageDef" path="manage.fregment.AppendCategoryPageDef"/>
     <page id="com_lance_view_SelectCategoryConfirmPageDef" path="manage.fregment.SelectCategoryConfirmPageDef"/>
-    <page id="com_lance_view_add_subcategory_task_add_subcategory_task_CreateInsertPageDef"
-          path="task.manage.category.add_subcategory_task_add_subcategory_task_CreateInsertPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
-    <BC4JDataControl id="RegisterAMDataControl" Package="com.lance.model"
+     <BC4JDataControl id="TemplateAMDataControl" Package="org.agileofm.template.model"
                      FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
                      SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
-                     SupportsSortCollection="true" Configuration="RegisterAMLocal" syncMode="Immediate"
+                     SupportsSortCollection="true" Configuration="TemplateAMLocal" syncMode="Immediate"
                      xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
     <BC4JDataControl id="LanceRestAMDataControl" Package="com.lance.model"
                      FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
