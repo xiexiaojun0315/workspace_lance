@@ -161,7 +161,8 @@ public class PostJobResource extends BaseRestResource {
     //发布工作信息
     @POST
     @Consumes(MediaType.APPLICATION_JSON)
-    public String createPostJob(JSONObject json) throws JSONException {
+    public JSONObject createPostJob(JSONObject json) throws JSONException {
+        JSONObject result = new JSONObject();
         LanceRestAMImpl am = LUtil.findLanceAM();
         PostJobsVOImpl vo = am.getPostJobs1();
         PostJobsVORowImpl row = (PostJobsVORowImpl) vo.createRow();
@@ -169,9 +170,15 @@ public class PostJobResource extends BaseRestResource {
 
         //使用简短ID，1414408397908
         row.setAttribute("Uuid", "" + System.currentTimeMillis());
-
-        updatePostJobFn(am, vo, row, json);
-        return row.getUuid();
+        String res = updatePostJobFn(am, vo, row, json);
+        if ("ok".equals(res)) {
+            result.put("status", "ok");
+            result.put("result", row.getUuid());
+        } else {
+            result.put("status", "err");
+            result.put("result", res);
+        }
+        return result;
     }
 
     /**
@@ -192,8 +199,7 @@ public class PostJobResource extends BaseRestResource {
         if (row == null) {
             return "无法找到ID为" + postJobId + "的需求信息记录";
         }
-        updatePostJobFn(am, vo, row, json);
-        return "ok";
+        return updatePostJobFn(am, vo, row, json);
     }
 
     /**
@@ -203,23 +209,27 @@ public class PostJobResource extends BaseRestResource {
      * @param json
      * @throws JSONException
      */
-    public void updatePostJobFn(LanceRestAMImpl am, PostJobsVOImpl vo, PostJobsVORowImpl row,
-                                JSONObject json) throws JSONException {
+    public String updatePostJobFn(LanceRestAMImpl am, PostJobsVOImpl vo, PostJobsVORowImpl row,
+                                  JSONObject json) throws JSONException {
         System.out.println("updatePostJobFn:" + json.get("Status"));
         if (json.get("Status").equals("draft")) {
             System.out.println("只保存草稿");
             saveDraftPostJobFn(am, vo, row, json);
             am.getDBTransaction().commit();
+            return "ok";
         } else if (json.get("Status").equals("posted")) {
             System.out.println("发布");
             sendPostJobFn(am, vo, row, json);
             row.updateSearchIndex();
             am.getDBTransaction().commit();
+            return "ok";
         } else if (json.get("Status").equals("deleted")) {
             saveDraftPostJobFn(am, vo, row, json);
             am.getDBTransaction().commit();
+            return "ok";
         } else {
             am.getDBTransaction().rollback();
+            return "status should in ['draft,'posted','deleted']";
         }
     }
 

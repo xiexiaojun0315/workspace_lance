@@ -83,18 +83,19 @@ public class CategoryBean extends BaseManagedBean {
                 vo.insertRow(row);
             }
         }
-        commit_action();
-        System.out.println("commited");
-        String script =
-            "setTimeout(function(){document.getElementById('" + this.toNextPageBtn.getClientId() + "').click();},2000)";
-        System.out.println(script);
-        this.appendScript(script);
         return "next";
     }
 
     public void confirmMyCategory(DialogEvent dialogEvent) {
         if (dialogEvent.getOutcome().equals(DialogEvent.Outcome.ok)) {
-            submitMyTalent_action();
+            String script =
+                "setTimeout(function(){document.getElementById('" + this.toNextPageBtn.getClientId() +
+                "').click();},1000);" + "setTimeout(function(){document.getElementById('" +
+                this.toNextPageBtn.getClientId() + "').click();},2000);" +
+                "setTimeout(function(){document.getElementById('" + this.toNextPageBtn.getClientId() +
+                "').click();},3000);";
+
+            this.appendScript(script);
         }
     }
 

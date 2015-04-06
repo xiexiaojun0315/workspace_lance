@@ -20,11 +20,28 @@
         <id>add-subcategory-task</id>
       </task-flow-reference>
     </task-flow-call>
+    <view id="AddCategorySuccess">
+      <page>/manage/fregment/category/AddCategorySuccess.jsff</page>
+    </view>
     <control-flow-rule id="__4">
       <from-activity-id>ViewCategory</from-activity-id>
       <control-flow-case id="__5">
         <from-outcome>addSubCategory</from-outcome>
         <to-activity-id>add-subcategory-task</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__1">
+      <from-activity-id>add-subcategory-task</from-activity-id>
+      <control-flow-case id="__2">
+        <from-outcome>Commit</from-outcome>
+        <to-activity-id>AddCategorySuccess</to-activity-id>
+      </control-flow-case>
+    </control-flow-rule>
+    <control-flow-rule id="__6">
+      <from-activity-id>AddCategorySuccess</from-activity-id>
+      <control-flow-case id="__7">
+        <from-outcome>viewCategory</from-outcome>
+        <to-activity-id>ViewCategory</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>

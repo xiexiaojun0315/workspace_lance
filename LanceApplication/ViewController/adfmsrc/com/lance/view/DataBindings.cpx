@@ -23,6 +23,9 @@
     <page path="/manage/MyInfo.jsf" usageId="com_lance_view_MyInfoPageDef"/>
     <page path="/manage/fregment/category/SelectMyCategory.jsff" usageId="com_lance_view_AppendCategoryPageDef"/>
     <page path="/manage/fregment/category/SelectMyCategoryConfirm.jsff" usageId="com_lance_view_SelectCategoryConfirmPageDef"/>
+    <page path="/manage/fregment/category/PreviewAddSubCategory.jsff"
+          usageId="com_lance_view_PreviewAddSubCategoryPageDef"/>
+    <page path="/manage/fregment/category/AddCategorySuccess.jsff" usageId="com_lance_view_AddCategorySuccessPageDef"/>
   </pageMap>
   <pageDefinitionUsages>
     <page id="com_lance_view_TestPageDef" path="com.lance.view.pageDefs.TestPageDef"/>
@@ -41,6 +44,9 @@
     <page id="com_lance_view_MyInfoPageDef" path="manage.MyInfoPageDef"/>
     <page id="com_lance_view_AppendCategoryPageDef" path="manage.fregment.AppendCategoryPageDef"/>
     <page id="com_lance_view_SelectCategoryConfirmPageDef" path="manage.fregment.SelectCategoryConfirmPageDef"/>
+    <page id="com_lance_view_PreviewAddSubCategoryPageDef"
+          path="manage.fregment.category.PreviewAddSubCategoryPageDef"/>
+    <page id="com_lance_view_AddCategorySuccessPageDef" path="manage.fregment.category.AddCategorySuccessPageDef"/>
   </pageDefinitionUsages>
   <dataControlUsages>
      <BC4JDataControl id="TemplateAMDataControl" Package="org.agileofm.template.model"

@@ -1,0 +1,67 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+                xmlns:f="http://java.sun.com/jsf/core">
+    <af:panelBorderLayout id="pbl1">
+        <f:facet name="start"/>
+        <f:facet name="bottom">
+            <af:panelGroupLayout id="pgl3" layout="horizontal" halign="center">
+                <af:popup childCreation="deferred" autoCancel="disabled" id="p1">
+                    <af:dialog id="d1" dialogListener="#{CategoryBean.confirmMyCategory}" title="消息">
+                        <af:outputFormatted value="提交此分类？" id="of1"/>
+                        <f:facet name="buttonBar"/>
+                    </af:dialog>
+                </af:popup>
+                <af:button text="提交" id="b2">
+                    <af:showPopupBehavior popupId="p1"/>
+                </af:button>
+                <f:facet name="separator">
+                    <af:spacer width="10" height="10" id="s1"/>
+                </f:facet>
+                <af:button text="上一步" id="b1" action="goBack"/>
+                 <af:button text="next" id="b3" action="commit" binding="#{CategoryBean.toNextPageBtn}" clientComponent="true"
+                               visible="false"/>
+            </af:panelGroupLayout>
+        </f:facet>
+        <f:facet name="end"/>
+        <f:facet name="top">
+            <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}" id="t1"/>
+        </f:facet>
+        <af:panelFormLayout id="pfl1">
+            <af:inputText value="#{bindings.Name.inputValue}" label="#{bindings.Name.hints.label}"
+                          required="#{bindings.Name.hints.mandatory}" readOnly="true"
+                          columns="#{bindings.Name.hints.displayWidth}" maximumLength="#{bindings.Name.hints.precision}"
+                          shortDesc="#{bindings.Name.hints.tooltip}" id="it1">
+                <f:validator binding="#{bindings.Name.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.NameCn.inputValue}" label="#{bindings.NameCn.hints.label}"
+                          required="#{bindings.NameCn.hints.mandatory}" readOnly="true"
+                          columns="#{bindings.NameCn.hints.displayWidth}"
+                          maximumLength="#{bindings.NameCn.hints.precision}"
+                          shortDesc="#{bindings.NameCn.hints.tooltip}" id="it2">
+                <f:validator binding="#{bindings.NameCn.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.Description.inputValue}" label="#{bindings.Description.hints.label}"
+                          required="#{bindings.Description.hints.mandatory}" readOnly="true"
+                          columns="#{bindings.Description.hints.displayWidth}"
+                          maximumLength="#{bindings.Description.hints.precision}"
+                          shortDesc="#{bindings.Description.hints.tooltip}" id="it3">
+                <f:validator binding="#{bindings.Description.validator}"/>
+            </af:inputText>
+            <af:inputText value="#{bindings.CreateByName.inputValue}" label="#{bindings.CreateByName.hints.label}"
+                          required="#{bindings.CreateByName.hints.mandatory}" readOnly="true"
+                          columns="#{bindings.CreateByName.hints.displayWidth}"
+                          maximumLength="#{bindings.CreateByName.hints.precision}"
+                          shortDesc="#{bindings.CreateByName.hints.tooltip}" id="it4">
+                <f:validator binding="#{bindings.CreateByName.validator}"/>
+            </af:inputText>
+            <af:inputDate value="#{bindings.CreateOn.inputValue}" readOnly="true"
+                          label="#{bindings.CreateOn.hints.label}" required="#{bindings.CreateOn.hints.mandatory}"
+                          columns="#{bindings.CreateOn.hints.displayWidth}"
+                          shortDesc="#{bindings.CreateOn.hints.tooltip}" id="id1">
+                <f:validator binding="#{bindings.CreateOn.validator}"/>
+                <af:convertDateTime pattern="#{bindings.CreateOn.format}"/>
+            </af:inputDate>
+            <f:facet name="footer"/>
+        </af:panelFormLayout>
+    </af:panelBorderLayout>
+</ui:composition>

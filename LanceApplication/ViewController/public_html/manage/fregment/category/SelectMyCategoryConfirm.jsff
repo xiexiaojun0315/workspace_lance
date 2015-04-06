@@ -63,12 +63,10 @@
                             <f:facet name="buttonBar"/>
                         </af:dialog>
                     </af:popup>
-                    <af:button text="提交" id="b1">
-                        <af:showPopupBehavior popupId="p1"/>
-                    </af:button>
+                    <af:button text="预览" id="b1" action="next"/>
                     <af:button text="上一步" id="b2" action="goBack" immediate="true"/>
-                    <af:button text="next" id="b3" action="next" binding="#{CategoryBean.toNextPageBtn}"
-                               visible="false" clientComponent="true"/>
+                    <af:button text="next" id="b3" action="commit" binding="#{CategoryBean.toNextPageBtn}" clientComponent="true"
+                               visible="false"/>
                     <f:facet name="separator">
                         <af:spacer width="10" height="10" id="s1"/>
                     </f:facet>

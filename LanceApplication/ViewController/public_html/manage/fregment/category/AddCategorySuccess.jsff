@@ -14,7 +14,7 @@
                         <af:panelGroupLayout id="pgl2" layout="vertical">
                             <af:outputFormatted value="您现在可以" id="of1"/>
                             <af:panelGroupLayout id="pgl3" inlineStyle="margin-left:100px" layout="vertical">
-                                <af:link text="返回到领域分类页面" id="l1" action="cancel"/>
+                                <af:link text="返回到领域分类页面" id="l1" action="viewCategory"/>
                                 <af:link text="" id="l2" action="cancel"/>
                                 <f:facet name="separator">
                                     <af:spacer width="10" height="10" id="s2"/>
@@ -29,8 +29,6 @@
                         <f:facet name="top">
                             <af:panelGroupLayout id="pgl4" layout="vertical">
                                 <af:spacer width="10" height="20" id="s3"/>
-                                <af:train value="#{controllerContext.currentViewPort.taskFlowContext.trainModel}"
-                                          id="t1"/>
                             </af:panelGroupLayout>
                         </f:facet>
                     </af:panelBorderLayout>

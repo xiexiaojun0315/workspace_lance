@@ -30,7 +30,7 @@
       <property
          name="documentReference">/WEB-INF/task/manage/category/add-subcategory-task.xml</property>
       <property
-         name="description">&lt;html>&lt;p>&lt;b>add-subcategory-task&lt;/b>&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
+         name="description">&lt;html>&lt;p>&lt;b>ee&lt;/b>&lt;/p>&lt;p>Activity ID:  add-subcategory-task&lt;/p>&lt;p>Activity Type:  Task Flow Call&lt;/p></property>
       <property
          name="exceptionHandler">false</property>
       <property
@@ -47,5 +47,42 @@
          name="fromOutcome">addSubCategory</property>
       <property
          name="sdm:polyPoints">R50,550.3506,281.44824,773.69727,221.79883,L50</property>
+   </ControlFlowCase>
+   <View
+      id="View5">
+      <property
+         name="activityId">AddCategorySuccess</property>
+      <property
+         name="page">/manage/fregment/category/AddCategorySuccess.jsff</property>
+      <property
+         name="description">&lt;html>&lt;p>&lt;b>AddCategorySuccess&lt;/b>&lt;/p>&lt;p>Activity Type:  View&lt;/p></property>
+      <property
+         name="exceptionHandler">false</property>
+      <property
+         name="y">375.09766</property>
+      <property
+         name="x">829.7051</property>
+      <property
+         name="pageFragment">true</property>
+   </View>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase7"
+      from="TaskFlowCall5"
+      to="View5">
+      <property
+         name="fromOutcome">Commit</property>
+      <property
+         name="sdm:polyPoints">B50,814.69727,275.79883,829.7051,320.74707,T50</property>
+   </ControlFlowCase>
+   <ControlFlowCase
+      islink="true"
+      id="ControlFlowCase8"
+      from="View5"
+      to="View7">
+      <property
+         name="fromOutcome">viewCategory</property>
+      <property
+         name="sdm:polyPoints">L50,788.7051,374.74707,550.3506,284.94824,R54</property>
    </ControlFlowCase>
 </SDM>

@@ -41,13 +41,8 @@
         <commit/>
       </outcome>
     </task-flow-return>
-    <view id="SelectMyCategoryConfirm1">
-      <page>/manage/fregment/category/SelectMyCategoryConfirm.jsff</page>
-      <train-stop/>
-    </view>
-    <view id="AddCategorySuccess">
-      <display-name>gg</display-name>
-      <page>/manage/fregment/category/AddCategorySuccess.jsff</page>
+    <view id="PreviewAddSubCategory">
+      <page>/manage/fregment/category/PreviewAddSubCategory.jsff</page>
       <train-stop/>
     </view>
     <train/>
@@ -86,20 +81,16 @@
         <from-outcome>goBack</from-outcome>
         <to-activity-id>SelectMyCategory</to-activity-id>
       </control-flow-case>
-      <control-flow-case id="__10">
+      <control-flow-case id="__27">
         <from-outcome>next</from-outcome>
-        <to-activity-id>SelectMyCategoryConfirm1</to-activity-id>
+        <to-activity-id>PreviewAddSubCategory</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
-    <control-flow-rule id="__15">
-      <from-activity-id>SelectMyCategoryConfirm1</from-activity-id>
-      <control-flow-case id="__16">
+    <control-flow-rule id="__28">
+      <from-activity-id>PreviewAddSubCategory</from-activity-id>
+      <control-flow-case id="__29">
         <from-outcome>goBack</from-outcome>
         <to-activity-id>SelectMyCategoryConfirm</to-activity-id>
-      </control-flow-case>
-      <control-flow-case id="__18">
-        <from-outcome>next</from-outcome>
-        <to-activity-id>AddCategorySuccess</to-activity-id>
       </control-flow-case>
     </control-flow-rule>
     <use-page-fragments/>
