@@ -417,5 +417,13 @@ public class LanceRestAMImpl extends BaseApplicationModuleImpl {
     public RegEmailChkVOImpl getRegEmailChk1() {
         return (RegEmailChkVOImpl) findViewObject("RegEmailChk1");
     }
+
+    /**
+     * Container's getter for JobSubCategory2.
+     * @return JobSubCategory2
+     */
+    public JobSubCategoryVOImpl getJobSubCategory2() {
+        return (JobSubCategoryVOImpl) findViewObject("JobSubCategory2");
+    }
 }
 
