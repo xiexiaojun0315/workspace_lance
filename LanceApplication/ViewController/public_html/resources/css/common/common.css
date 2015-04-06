@@ -1,4 +1,4 @@
-﻿/* 简易头部 */
+/* 简易头部 */
 .lan-header
 {
     height:70px;
@@ -120,6 +120,7 @@
 
 /* 字体大小 */
 .lan-font-12{font-size:12px;}
+.lan-font-14{font-size:14px;}
 .lan-font-16{font-size:16px;}
 .lan-font-18{font-size:18px;}
 .lan-font-22{font-size:22px;}
@@ -128,6 +129,8 @@
 .lan-bg-e7{background-color:#e7e7e7;}
 
 .lan-ov-hid{overflow:hidden;}
+
+.lan-dis-iblock{display:inline-block;}
 
 
 
@@ -181,3 +184,13 @@
     background-color:#004486;
     color:#fff;
 }
+.lan-dl{margin:20px 0 0 20px;}
+.lan-dl dt{margin-bottom:10px;padding-left:3px;}
+.lan-dl a{padding:0px;font-size:14px;}
+.lan-dl dt a{font-weight:bold;color:#50852C;}
+.lan-dl dd{padding:3px 5px;}
+.lan-dl dd a{color:#333;}
+.lan-dl dd:hover{background-color:#5cb85c;}
+.lan-dl dd:hover a{color:#fff;}
+
+

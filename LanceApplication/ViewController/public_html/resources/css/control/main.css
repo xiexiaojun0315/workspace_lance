@@ -107,3 +107,66 @@
 
 #post_apply .inp-txt{width:200px;}
 
+.popover-content{white-space:nowrap;}
+
+.newjob .skill-sea{width:373px;float:left;min-height:200px;}
+.newjob .sel-skills{width:250px;margin-left:380px;}
+.newjob .skl-title{font-size:12px;border-bottom:solid 1px #e7e7e7;height:56px;line-height:56px;}
+.newjob .sml-inp{width:90px;}
+.newjob .sml-inp2{width:50px;}
+.newjob .sml-sel{width:150px;}
+.newjob .step-intro{text-align:left;font-size:12px;line-height:25px;margin-left:15px;height:150px;}
+.newjob .thumbnail{height:300px;}
+.newjob .list-skills{height:100px;overflow:auto;}
+.newjob .list-skills a{cursor:pointer;}
+.newjob .list-sel-skill{line-height:20px;font-size:12px;}
+.newjob .list-sel-skill .bold-text{display:block;}
+.newjob .list-sel-skill .cls{margin-left:10px;color:#d9534f;cursor:pointer;}
+.newjob .apply_temp{font-size:12px;margin-right:18px;margin-top:20px;}
+.table pre{
+    white-space: pre-wrap;       /* css-3 */
+    white-space: -moz-pre-wrap;  /* Mozilla, since 1999 */
+    white-space: -pre-wrap;      /* Opera 4-6 */
+    white-space: -o-pre-wrap;    /* Opera 7 */
+    word-wrap: break-word;       /* Internet Explorer 5.5+ */
+    word-break:break-all;
+    overflow:hidden;
+}
+
+#job-template{position:absolute;top:200px;right:-500px;display:none;width:350px;height:700px;}
+.card{text-align:left;}
+.card .txt{font-size:12px;}
+.card .glyphicon{float:left;margin:0 7px 0 0;font-size:25px;}
+
+.tmp-card{text-align:left;}
+.tmp-card .txt{font-size:12px;}
+.tmp-card .glyphicon{float:left;margin:0 7px 0 0;font-size:25px;}
+
+#job-template .pg-list{width:320px;overflow:hidden;}
+#job-template .tmp-cards{float:left;position: relative;}
+#job-template .pg-con{position: relative;}
+#job-template .list-pages{margin:20px auto;}
+#job-template .list-pages .pg{display:inline-block;width:20px;height:20px;background:#f7f7f7;color:##5d5d5d;border:solid 1px #e5e5e5;margin:4px 0px 0px 3px;text-align:center;line-height:20px;font-size:12px;cursor:pointer;}
+#job-template .list-pages .pg.pgon{background: #67ab3a;color: #fff;}
+#job-template .btn-close{position:relative;left:180px;top:-7px;}
+#job-template .btn-close:hover{color:#d9534f;cursor:pointer;}
+
+.lan-search{height:130px;border-bottom:solid 1px #ccc;}
+.lan-search .search-form{margin-top:30px;}
+.lan-search .search-form .select{font-weight:bold;color:#50852C;}
+.rg-result{padding-top:13px;}
+.rg-result .sea-result-info{padding:10px 5px;margin:10px 0;}
+.rg-result .mod{margin-top:30px;font-size:12px;padding-bottom:10px;}
+.rg-result .mod .btn-link{padding:0px;font-size:16px;font-weight:bold;}
+.rg-result .mod .txt{margin-top:10px;font-size:12px;margin-bottom:10px;}
+.rg-result .mod .job-table{margin-top:10px;}
+.rg-result .mod .job-table tr{line-height:23px;}
+.rg-result .mod .job-table td .btn-info{margin-right:5px;}
+.rg-result .mod .avatar{width:70px;}
+.rg-result .mod .uinfo{margin-left:85px;}
+.rg-result .mod .uinfo p{margin-bottom:2px;line-height:20px;}
+.rg-result .mod .skills{margin-top:10px;}
+.rg-result .mod .skills .btn-info{margin-right:5px;}
+.rg-result .get-more{margin-top:80px;font-size:14px;border-radius:0px;}
+
+
