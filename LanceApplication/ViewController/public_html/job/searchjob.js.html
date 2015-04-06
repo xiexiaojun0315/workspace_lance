@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="zh-cn">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>首页</title>
+    <!-- Bootstrap -->
+    <link href="/lance/resources/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+    <link href="/lance/resources/css/common/common.css" rel="stylesheet" type="text/css" />
+    <link href="/lance/resources/css/control/main.css" rel="stylesheet" type="text/css" />
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+      <script src="/lance/resources/js/html5shiv.js" type="text/javascript"></script>
+      <script src="/lance/resources/js/respond.js" type="text/javascript"></script>
+    <![endif]-->
+</head>
+<body>
+    <div class="lan-header-main">
+        <div class="container">
+            <img class="pull-left logo" src="/lance/resources/image/common/logo.png" alt="" />
+
+            <ol class="breadcrumb pull-right">
+                <li>
+                    <a class="lan-font-bold" data-toggle="dropdown" aria-expanded="false" href="#">Yxdaye</a>
+                    <span class="caret"></span>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">个人信息</a></li>
+                        <li><a href="#">个人简历</a></li>
+                        <li><a href="#">个人设置</a></li>
+                        <li role="presentation" class="divider"></li>
+                        <li><a href="#">退出</a></li>
+                    </ul>
+                </li>
+                <li><a href="#">收件箱 <span class="label label-danger">1</span></a></li>
+                <li class="active">
+                    <a class="lan-font-bold" data-toggle="dropdown" aria-expanded="false" href="#">帮助</a>
+                    <span class="caret"></span>
+                </li>
+            </ol>
+        </div>
+    </div>
+    
+    <div class="lan-main-menu">
+        <div class="container">
+            <ul class="nav navbar-nav pull-left">
+                <li class="active">
+                    <a href="#">首页<span class="sr-only">(current)</span></a>
+                </li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">找人 <span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">Action</a></li>
+                        <li><a href="#">Another action</a></li>
+                        <li><a href="#">Something else here</a></li>
+                        <li class="divider"></li>
+                        <li><a href="#">Separated link</a></li>
+                    </ul>
+                </li>
+            </ul>
+
+            <div class="pull-right search">
+                <div class="input-group input-group-sm">
+                    <span data-toggle="dropdown" role="button" aria-expanded="false" class="input-group-addon" id="sizing-addon3">自由人<span class="caret"></span></span>
+                    <input type="text" class="form-control" placeholder="搜索" aria-describedby="sizing-addon3">
+
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#">自由人</a></li>
+                        <li><a href="#">工作</a></li>
+                        <li><a href="#">团队</a></li>
+                    </ul>
+
+                </div>
+                <button type="button" class="btn btn-primary btn-small">搜索</button>
+
+                <button type="button" class="btn btn-success btn-middle">发布工作信息</button>
+            </div>
+
+        </div>
+    </div>
+    
+    <div class="lan-search">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-offset-3 col-md-9 search-form">
+                    <div class="form-group has-feedback">
+                        <input type="text" class="form-control" id="inputSuccess5" aria-describedby="inputSuccess5Status">
+                        <span class="glyphicon glyphicon-search form-control-feedback" aria-hidden="true"></span>
+                        <span id="inputSuccess5Status" class="sr-only">(success)</span>
+                    </div>
+                    <div>
+                        <button data-cls="persons" data-title="所有的自由人" type="button" class="btn btn-link lan-font-black lan-font-16 sel-tab-type">自由人</button>
+                        <button data-cls="jobs" data-title="所有的工作" type="button" class="btn btn-link lan-font-black lan-font-16 sel-tab-type select">工作</button>
+                        
+                        <button type="button" class="btn btn-success btn-middle pull-right">发布工作信息</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <dl class="lan-dl">
+                    <dt><a class="btn btn-link">类型</a></dt>
+                    <dd><a class="btn btn-link">个人</a></dd>
+                    <dd><a class="btn btn-link">公司</a></dd>
+                </dl>
+                
+                <dl class="lan-dl">
+                    <dt><a class="btn btn-link">工作分类</a></dt>
+                    <dd><a class="btn btn-link">IT & Programming</a></dd>
+                    <dd><a class="btn btn-link">Design & Multimedia</a></dd>
+                    <dd><a class="btn btn-link">Writing & Translation</a></dd>
+                    <dd><a class="btn btn-link">Sales & Marketing</a></dd>
+                    <dd><a class="btn btn-link">Admin Support</a></dd>
+                </dl>
+            </div>
+            
+            <div class="col-md-9 rg-result">
+                <span><b class="lbl-search-title">所有的工作</b>（13869437 个）</span>
+                <p class="bg-info sea-result-info">
+                    'df' 的搜索结果    共 359 个
+                </p>
+                <div class="jobs">
+                    <div class="mod">
+                        <p class="title">
+                            <a class="btn btn-link">网页制作中的CSS+DIV:dl,dt,dd分别表示什么意思啊?请说..._百度知道</a>
+                            <button type="button" class="btn btn-success btn-sm pull-right">申请</button>
+                        </p>
+                        <div>
+                            <span><b>价格：不确定</b></span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>开始时间：2015年4月15日</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>结束时间：2015年10月1日</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>申请人数：9</span>
+                            <br class="clearfix" />
+                            <p class="txt">
+                                爱词霸权威在线词典,为您提供proposal的中文意思,proposal的用法讲解,proposal的读音,proposal的同义词,proposal的反义词,proposal的例句等英语服务。爱词霸权威在线词典,为您提供proposal的中文意思,proposal的用法讲解,proposal的读音,proposal的同义词,proposal的反义词,proposal的例句等英语服务。爱词霸权威在线词典,为您提供proposal的中文意思,proposal的用法讲解,proposal的读音,proposal的同义词,proposal的反义词,proposal的例句等英语服务。
+                            </p>
+                            <span>工作分类：第一大类</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>工作分类：第二大类</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        </div>
+                        <div>
+                            <table class="job-table" border="0">
+                                <tr>
+                                    <td width="50px"><b>类型</b></td>
+                                    <td width="100px">固定价格</td>
+                                    <td width="50px"><b>技能</b></td>
+                                    <td><a class="btn btn-info btn-xs">PHP</a><a class="btn btn-info btn-xs">JAVA</a><a class="btn btn-info btn-xs">HTML</a><a class="btn btn-info btn-xs">JAVASCRIPT</a></td>
+                                </tr>
+                                <tr>
+                                    <td><b>评级</b></td>
+                                    <td><span class="glyphicon glyphicon-star lan-font-yellow"></span><span class="glyphicon glyphicon-star lan-font-yellow"></span><span class="glyphicon glyphicon-star lan-font-yellow"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></td>
+                                    <td><b>地点</b></td>
+                                    <td>不需要下现场办公</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                
+                    
+                    <div class="mod">
+                        <p class="title">
+                            <a class="btn btn-link">网页制作中的CSS+DIV:dl,dt,dd分别表示什么意思啊?请说..._百度知道</a>
+                            <button type="button" class="btn btn-success btn-sm pull-right">申请</button>
+                        </p>
+                        <div>
+                            <span><b>价格：不确定</b></span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>开始时间：2015年4月15日</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>结束时间：2015年10月1日</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>申请人数：9</span>
+                            <br class="clearfix" />
+                            <p class="txt">
+                                爱词霸权威在线词典,为您提供proposal的中文意思,proposal的用法讲解,proposal的读音,proposal的同义词,proposal的反义词,proposal的例句等英语服务。爱词霸权威在线词典,为您提供proposal的中文意思,proposal的用法讲解,proposal的读音,proposal的同义词,proposal的反义词,proposal的例句等英语服务。爱词霸权威在线词典,为您提供proposal的中文意思,proposal的用法讲解,proposal的读音,proposal的同义词,proposal的反义词,proposal的例句等英语服务。
+                            </p>
+                            <span>工作分类：第一大类</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>工作分类：第二大类</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                        </div>
+                        <div>
+                            <table class="job-table" border="0">
+                                <tr>
+                                    <td width="50px"><b>类型</b></td>
+                                    <td width="100px">固定价格</td>
+                                    <td width="50px"><b>技能</b></td>
+                                    <td><a class="btn btn-info btn-xs">PHP</a><a class="btn btn-info btn-xs">JAVA</a><a class="btn btn-info btn-xs">HTML</a><a class="btn btn-info btn-xs">JAVASCRIPT</a></td>
+                                </tr>
+                                <tr>
+                                    <td><b>评级</b></td>
+                                    <td><span class="glyphicon glyphicon-star lan-font-yellow"></span><span class="glyphicon glyphicon-star lan-font-yellow"></span><span class="glyphicon glyphicon-star lan-font-yellow"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span></td>
+                                    <td><b>地点</b></td>
+                                    <td>不需要下现场办公</td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="persons" style="display:none;">
+                    <div class="mod">
+                        <div class="pull-left">
+                            <a href="#" class="thumbnail">
+                                <img class="media-object" src="/lance/resources/image/pic/download.jpg" width="64px" height="64px" alt="...">
+                            </a>
+                        </div>
+                        <div class="uinfo">
+                            <p>
+                                <a class="btn btn-link">Media heading</a>
+                                <button type="button" class="btn btn-success btn-sm pull-right">雇佣</button>
+                            </p>
+                            <p>
+                                <span class="lan-font-14">专业PHP工程师</span><br />
+                                <span>所在地：北京市-通州区-XXXX</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>薪水要求：￥100</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>参加过 49 个工作</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>总共获得 ￥890989</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-star lan-font-yellow"></span><span class="glyphicon glyphicon-star lan-font-yellow"></span><span class="glyphicon glyphicon-star lan-font-yellow"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                            </p>
+                            <p class="txt">
+                                我是一名应届毕业生，来自湖北武汉，农村生活铸就了我淳朴、诚实、善良的性格，培养了我不怕困难挫折，不服输的奋斗精神。我深知学习机会来之不易，在校期间非常重视计算机基础知识的学习，取得了良好的成绩。
+    基本上熟悉了pc机的原理与构造，能熟练地应用各种机床操作系统，通过了劳动部《模具设计师》高级级认证。在学习专业知识的同时，还十分重视培养自己的动手实践能力，利用暑假参加了长江融达企业给予的宝贵实习机会，了解的各式机床的操作，以及简单数控机床的编程及操作。
+                            </p>
+                            <p class="skills">
+                                <span>技能：<a class="btn btn-info btn-xs">PHP</a><a class="btn btn-info btn-xs">JAVA</a><a class="btn btn-info btn-xs">HTML</a><a class="btn btn-info btn-xs">JAVASCRIPT</a></span>
+                            </p>
+                        </div>
+                    </div>
+                    <div class="mod">
+                        <div class="pull-left">
+                            <a href="#" class="thumbnail">
+                                <img class="media-object" src="/lance/resources/image/pic/download.jpg" width="64px" height="64px" alt="...">
+                            </a>
+                        </div>
+                        <div class="uinfo">
+                            <p>
+                                <a class="btn btn-link">Media heading</a>
+                                <button type="button" class="btn btn-success btn-sm pull-right">雇佣</button>
+                            </p>
+                            <p>
+                                <span class="lan-font-14">专业PHP工程师</span><br />
+                                <span>所在地：北京市-通州区-XXXX</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>薪水要求：￥100</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>参加过 49 个工作</span>&nbsp;&nbsp;|&nbsp;&nbsp;<span>总共获得 ￥890989</span>&nbsp;&nbsp;|&nbsp;&nbsp;
+                                <span class="glyphicon glyphicon-star lan-font-yellow"></span><span class="glyphicon glyphicon-star lan-font-yellow"></span><span class="glyphicon glyphicon-star lan-font-yellow"></span><span class="glyphicon glyphicon-star"></span><span class="glyphicon glyphicon-star"></span>
+                            </p>
+                            <p class="txt">
+                                我是一名应届毕业生，来自湖北武汉，农村生活铸就了我淳朴、诚实、善良的性格，培养了我不怕困难挫折，不服输的奋斗精神。我深知学习机会来之不易，在校期间非常重视计算机基础知识的学习，取得了良好的成绩。
+    基本上熟悉了pc机的原理与构造，能熟练地应用各种机床操作系统，通过了劳动部《模具设计师》高级级认证。在学习专业知识的同时，还十分重视培养自己的动手实践能力，利用暑假参加了长江融达企业给予的宝贵实习机会，了解的各式机床的操作，以及简单数控机床的编程及操作。
+                            </p>
+                            <p class="skills">
+                                <span>技能：<a class="btn btn-info btn-xs">PHP</a><a class="btn btn-info btn-xs">JAVA</a><a class="btn btn-info btn-xs">HTML</a><a class="btn btn-info btn-xs">JAVASCRIPT</a></span>
+                            </p>
+                        </div>
+                    </div>
+                </div>               
+                
+                
+                
+                <button autocomplete="off" data-loading-text="获取数据中..." type="button" class="btn btn-default btn-lg btn-block get-more">点击加载更多</button>
+                
+            </div>
+        </div>
+    </div>
+    
+    
+    <div class="lan-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-2">
+                    <img src="/lance/resources/image/common/logo.png" alt="" />
+                </div>
+                <div class="col-md-10">
+                    <dl class="pull-left">
+                        <dt>Research</dt>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Trends</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Online Employment Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Annual Impact Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Business Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Freelancer Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Women in Technology</a></dd>
+                    </dl>
+                    <dl class="pull-left">
+                        <dt>Research</dt>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Trends</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Online Employment Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Annual Impact Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Business Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Freelancer Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Women in Technology</a></dd>
+                    </dl>
+                    <dl class="pull-left">
+                        <dt>Research</dt>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Trends</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Online Employment Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Annual Impact Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Business Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Freelancer Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Women in Technology</a></dd>
+                    </dl>
+                    <dl class="pull-left">
+                        <dt>Research</dt>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Trends</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Online Employment Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Annual Impact Report</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Business Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Global Freelancer Survey</a></dd>
+                        <dd><a href="#" class="lan-font-black lan-font-12">Women in Technology</a></dd>
+                    </dl>
+                    <div class="copyright">© 1999 - 2014 Elance, Inc. All Rights Reserved. U.S. Patents 7,069,242, 8,073,762 and 8,380,709</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    <script src="/lance/resources/js/jquery-1.9.1.min.js" type="text/javascript"></script>
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    <script src="/lance/resources/js/bootstrap.min.js" type="text/javascript"></script>
+    
+    <script src="/lance/resources/js/core.js" type="text/javascript"></script>
+    <script src="/lance/resources/js/control/lan_check.js" type="text/javascript"></script>
+    <script type="text/javascript" src="/lance/resources/js/page/search.js"></script>
+    
+</body>
+</html>

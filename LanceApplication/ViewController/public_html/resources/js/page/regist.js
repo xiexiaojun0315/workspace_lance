@@ -18,6 +18,8 @@ $(function(){
                 email.blur();
         };
         
+        com_conFocus(email, "邮箱用于登录，填写之后不可修改");
+        
         email.blur(function(){
             email.closest(".form-group").removeClass("has-error").removeClass("has-success").removeClass("has-feedback");
             email.popover("hide");
@@ -40,6 +42,9 @@ $(function(){
                 }else{
                     obj.closest(".form-group").addClass("has-success").addClass("has-feedback");
                     ckresult.emr = true;
+                    //fetch username
+                    var tmpName = obj.val().split('@')[0];
+                    $("#inp_lgname").val(tmpName);
                 }
                 obj.attr("disabled", false);
             }, function(){
@@ -60,6 +65,8 @@ $(function(){
             if(ckresult.lgr == false)
                 lgname.blur();
         };
+        
+        com_conFocus(lgname, "登录用户名");
         
         lgname.blur(function(){
             lgname.popover("hide");
@@ -104,6 +111,8 @@ $(function(){
                 uname.blur();
         };
         
+        com_conFocus(uname, "用户昵称，建议使用真实姓名");
+        
         uname.blur(function(){
             uname.closest(".form-group").removeClass("has-error").removeClass("has-success").removeClass("has-feedback");
             uname.popover("hide");
@@ -113,7 +122,7 @@ $(function(){
                 ckresult.umr = true;
             }else{
                 uname.closest(".form-group").addClass("has-error");
-                uname.popover("show");
+                uname.attr("data-content", "请输入正确的用户名").popover("show");
             }
         });    
         
@@ -123,6 +132,8 @@ $(function(){
     var check_pass = function(){
         var fpass = $("#inp_pass"),
             spass = $("#inp_cpass");
+        
+        com_conFocus(fpass, "登录密码");
         
         var mck = function(){
             if(ckresult.psr == false){
@@ -139,9 +150,11 @@ $(function(){
                 fpass.closest(".form-group").addClass("has-success").addClass("has-feedback");
             }else{
                 fpass.closest(".form-group").addClass("has-error");
-                fpass.popover("show");
+                fpass.attr("data-content", "请输入8位以上的密码").popover("show");
             }
         });
+        
+        com_conFocus(spass, "请再次输入密码");
         
         spass.blur(function(){
             spass.closest(".form-group").removeClass("has-error").removeClass("has-success").removeClass("has-feedback");
@@ -152,7 +165,7 @@ $(function(){
                 ckresult.psr = true;
             }else{
                 spass.closest(".form-group").addClass("has-error");
-                spass.popover("show");
+                spass.attr("data-content", "两次密码输入不一致").popover("show");
             }
         });
         return {ck:mck};
@@ -166,6 +179,8 @@ $(function(){
                 company.blur();
         };
         
+        com_conFocus(company, "公司名称");
+        
         company.blur(function(){
             company.closest(".form-group").removeClass("has-error").removeClass("has-success").removeClass("has-feedback");
             company.popover("hide");
@@ -175,7 +190,7 @@ $(function(){
                 ckresult.cmr = true;
             }else{
                 company.closest(".form-group").addClass("has-error");
-                company.popover("show");
+                company.attr("data-content", "请输入合法的公司名称").popover("show");
             }
         });    
         
@@ -185,12 +200,6 @@ $(function(){
     
     var check_form = function(btn){
         if(ckresult.emr && ckresult.lgr && ckresult.umr && ckresult.psr){
-            if(!$("#fwtk")[0].checked){
-                $("#lbl_fwtk").popover("show");
-                return;
-            }else{
-                $("#lbl_fwtk").popover("hide");
-            }
             btn.button('loading');
             
             var param = {
@@ -202,8 +211,8 @@ $(function(){
                 "DefaultRole" : "client"
             };
             $.ax("post", "user", param, function(data){
-                toLogin($("#inp_lgname").val(),$("#inp_pass").val(),btn);
-//                location.href="/lance/registSuccess.html"
+                alert("OK");
+                location.href="/lance/registSuccess.html"
             }, function(){
                 btn.button('reset');
             }, "text");
@@ -217,8 +226,15 @@ $(function(){
     };
     
     $("#btn_cregist").click(function(){
-        var obj = $(this);
-        check_form(obj);
+        if($("#fwtk")[0].checked){
+            $("#lbl_fwtk").popover("hide");
+            var obj = $(this);
+            check_form(obj);
+            
+        }else{
+            
+            $("#lbl_fwtk").popover("show");
+        }
     });
     
     var c1 = check_pass();
@@ -259,9 +275,8 @@ $(function(){
                     "DefaultRole" : 'lancer'
                 };
                 $.ax("post", "user", param, function(data){
-//                    alert("OK");
-                    toLogin($("#inp_lgname").val(),$("#inp_pass").val(),btn);
-//                    location.href="/lance/login";
+                    alert("OK");
+                    location.href="/lance/registSuccess.html";
                 }, function(xhr, err, info){
                     btn.button("reset");
                 }, "text");
@@ -284,52 +299,26 @@ $(function(){
     
 });
 
-function toLogin(uname,password,btn){
-  var param={
-        name : uname,
-        pass : password,
-        optype:"regist"
-    };
-   param = JSON.stringify(param);
-   $.post("/lance/login", param, function(data){
-        if(data.indexOf("ok") >= 0){
-            var url = data.split(":")[1];
-            window.location.href = url;
-        }else{}
-    },"text");
-}
-
 $(function(){
     $("#rgr").click(function(){
         if(this.checked){
             $("#inp_comname").attr("disabled", true).val($("#inp_name").val());
+            
+            $("#lbl_name").html("显示名");
+            $("#inp_comname").popover("hide").closest(".form-group").removeClass("has-error").removeClass("has-success").removeClass("has-feedback");
         }
     });
     
     $("#rgs").click(function(){
         if(this.checked){
             $("#inp_comname").attr("disabled", false).val("");
+            
+            $("#lbl_name").html("公司名");
         }
     });
     
 });
 
-$(function () {
-  loadCountrys();
-  function loadCountrys(){
-     jQuery.ajax({
-          url : '/lance/res/location/country/list', 
-          type : 'get',
-          success: function(data){
-            if(data.length > 0){
-                $("#sel_country").html(template('reg-coun-sp1',{'list' : data}));
-                $("#sel_country").val('0');
-            }
-        },error:function(msg){
-           
-        }
-    });
-  }
-});
+
 
 

@@ -1,4 +1,4 @@
-﻿/**
+/**
     rule : [];
 */
 $.fn.lanCheck = function (rule) {
@@ -15,7 +15,7 @@ $.fn.lanCheck = function (rule) {
     rules["onlyPhone"] = /d{3}-d{8}|d{4}-d{7}/;
     rules["onlyChar"] = /^[A-Za-z]+$/;
     rules["charIntLine"] = /^[a-zA-z]\w{3,15}$/;
-    rules["chineseCharIntLine"] = /^[\u0391-\uFFE5A-Za-z0-9_]+$/;
+    rules["chineseCharIntLine"] = /^[\u0391-\uFFE5A-Za-z0-9_\s]+$/;
     rules["password"] = /^.{8,}$/;
 
     var checkFun = function () {
