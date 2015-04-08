@@ -79,7 +79,7 @@ import org.codehaus.jettison.json.JSONObject;
     CompanyName,Precision:255,JavaType:java.lang.String
     CanBeSearch,Precision:0,JavaType:java.math.BigDecimal  是否可被搜索到（隐私）
     DefaultRole,Precision:20,JavaType:java.lang.String    默认角色（用于跳转到相应主页）  client,lancer,contract
-    
+
     地址ID示例
      北京：1 0 1 1
      沈阳：1 0 6 39
@@ -215,7 +215,7 @@ public class UserResource extends BaseRestResource {
             grantsVo.insertRow(grantsRow);
             row.setAttribute("DefaultRole", json.getString("DefaultRole"));
         }
-        
+
         //发送激活注册邮件
         RegEmailChkVOImpl regEmailChkVO = am.getRegEmailChk1();
         SendActivateMail sendActivateMail = new SendActivateMail();
@@ -225,12 +225,15 @@ public class UserResource extends BaseRestResource {
         RegEmailChkVORowImpl regEmailChkRow = (RegEmailChkVORowImpl) regEmailChkVO.createRow();
         regEmailChkRow.setUuid(uuid);
         regEmailChkRow.setUserName(userName);
-        sendActivateMail.sendActivateEmail(email, uuid,userName);
+        sendActivateMail.sendActivateEmail(email, uuid, userName);
         regEmailChkVO.insertRow(regEmailChkRow);
         row.updateSearchIndex();
 
         String cm = am.commit();
         if (!"ok".equals(cm)) {
+            //将用户添加到分布式缓存
+            new CacheResource().cacheSingleUser(row);
+            
             return cm;
         }
         System.out.println("返回新增记录的ID " + json.getString("UserName"));

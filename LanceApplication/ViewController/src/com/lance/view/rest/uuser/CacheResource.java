@@ -61,10 +61,23 @@ public class CacheResource extends BaseRestResource {
         NamedCache cache = CacheUtil.getInstance(CacheUtil.KEY_AUTH_USER);
         while (it.hasNext()) {
             row = (UUserVORowImpl) it.next();
-            //            System.out.println(row.getUserName() + ":" + row.getDisplayName());
-            cache.put(row.getUserName(), convertRowToMap(row, attrs));
+            //System.out.println(row.getUserName() + ":" + row.getDisplayName());
+            //cache.put(row.getUserName(), convertRowToMap(row, attrs));
+            cacheSingleUserFn(row, cache, attrs);
         }
         it.closeRowSetIterator();
+    }
+
+    public void cacheSingleUser(UUserVORowImpl row) {
+        String[] attrs = AuthCache.CACHED_USER_ATTRIBUTES;
+        NamedCache cache = CacheUtil.getInstance(CacheUtil.KEY_AUTH_USER);
+        cacheSingleUserFn(row, cache, attrs);
+    }
+
+    public void cacheSingleUserFn(UUserVORowImpl row, NamedCache cache, String[] attrs) {
+        cache = CacheUtil.getInstance(CacheUtil.KEY_AUTH_USER);
+        cache.put(row.getUserName(), convertRowToMap(row, attrs));
+        System.out.println("cached user " + row.getUserName() + " with DisplayName" + row.getDisplayName());
     }
 
     @GET
