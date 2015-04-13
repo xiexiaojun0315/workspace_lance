@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<skins xmlns="http://myfaces.apache.org/trinidad/skin">
+
+  <skin>
+    <id>zngh_def_skin.desktop</id>
+    <family>zngh_def_skin</family>
+    <extends>skyros-v1.desktop</extends>
+    <render-kit-id>org.apache.myfaces.trinidad.desktop</render-kit-id>
+    <style-sheet-name>skins/zngh_def_skin/zngh_def_skin.css</style-sheet-name>
+    <bundle-name>com.zngh.platform.skinBundle</bundle-name>
+  </skin>
+    <skin>
+        <id>front-skin.desktop</id>
+        <family>front-skin</family>
+        <extends>bhcm_general_fusion.desktop</extends>
+        <render-kit-id>org.apache.myfaces.trinidad.desktop</render-kit-id>
+        <style-sheet-name>skins/front-skin/front-skin.css</style-sheet-name>
+        <bundle-name>view.skinBundle</bundle-name>
+    </skin>
+    <skin>
+        <id>bhcm_general_fusion.desktop</id>
+        <family>bhcm_general_fusion</family>
+        <extends>fusion.desktop</extends>
+        <render-kit-id>org.apache.myfaces.trinidad.desktop</render-kit-id>
+        <style-sheet-name>skins/bhcmbase_fusion/bhcm_general_fusion.css</style-sheet-name>
+        <bundle-name>view.skinBundle</bundle-name>
+    </skin>
+</skins>

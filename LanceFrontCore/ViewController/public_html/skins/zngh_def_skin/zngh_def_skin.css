@@ -1,0 +1,1109 @@
+@charset "UTF-8";
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+
+
+.AFPopupSelectorContent {
+    background:#f00;
+    }
+
+.AFButtonBorderBottomColor:alias {
+    color: #95B9BD; 
+}
+
+.AFButtonBorderActiveColor:alias {
+    color: #C5DADC; 
+}
+
+.AFButtonBorderDisabledColor:alias {
+    color: #D5D5D5; 
+}
+
+erColor:alias {
+    color: #95B9BD; 
+}
+
+.AFButtonBorderHoverColor:alias {
+    color: #454DC9; 
+}
+
+.AFButtonGradientStar
+
+lor:alias {
+    color: #C5DADC; 
+}
+
+.AFButtonForeground:alias {
+    color: #FFFFFF; 
+}
+
+.AFButtonForegroundHover:alias {
+    color: #FFFFFF; 
+}
+
+.AFButtonBorder:alias {
+    border-radius: 0px; 
+}
+
+.AFDefaultFont:alias {
+    font-size: 12px; 
+}
+
+af|button {
+    height: 24px; 
+    line-height: 24px; 
+    background-image: none; 
+    background-color: #3db1be; 
+    border: none; 
+}
+
+af|button::link {
+    padding: 0px 10px 0px 10px; 
+}
+
+af|panelHeader::title-text0, af|showDetailHeader::title-text0, af|query::title-text0 {
+    color: #333333; 
+}
+
+af|panelHeader::title0, af|showDetailHeader::title0, af|query::title0 {
+    padding-left: 5px; 
+}
+
+af|inputText::content {
+    height: 21px; border-radius: 0px; 
+}
+
+@agent (touchScreen:none) {
+
+    af|inputText:click-to-edit:hover-target::content {
+        border-color: #3db1be; 
+    }
+
+}
+
+af|inputText:click-to-edit:focus-target::content {
+    border-color: #3db1be; 
+}
+
+@agent (touchScreen:none) {
+
+    af|inputText:click-to-edit:focus-target:hover-target::content {
+        border-color: #3db1be; 
+    }
+
+}
+
+af|selectOneChoice::content {
+    height: 24px; 
+    border: 1px solid #cccccc; 
+    border-color: #CCCCCC; 
+    border-radius: 0px; 
+}
+/*
+af|selectManyChoice::content {
+    width: auto; 
+    height: 24px; 
+    border-radius: 0px; 
+}
+
+af|selectManyChoice::dropdown {
+    background-image: none; 
+    height: auto; 
+    margin: 0px; 
+    border: none; 
+}
+
+af|selectManyChoice::dropdown:active {
+    background-image: none; 
+}
+
+af|selectManyChoice::dropdown:hover {
+    background-image: none; 
+}
+
+@agent (touchScreen:none) {
+
+    af|selectManyChoice::dropdown:active:hover {
+        background-image: none; 
+    }
+
+}
+
+af|selectManyChoice:disabled::dropdown {
+    border: none; 
+}
+
+af|selectManyChoice:disabled::dropdown:active {
+    background-image: none; 
+}
+*/
+
+@agent (touchScreen:none) {
+    af|button:hover{
+        border: none; 
+        background-image: none; 
+        background-color: #146c7c; 
+    }
+    af|button:depressed:hover{
+        border: none; 
+        background-image: none; 
+        background-color: #146c7c; 
+    }
+    af|button:selected:hover{
+        border: none; 
+        background-image: none; 
+        background-color: #146c7c; 
+    }
+    af|button:selected:active:hover{
+        border: none; 
+        background-image: none; 
+        background-color: #146c7c; 
+    }
+    af|button:focus:active:hover{
+        border: none; 
+        background-image: none; 
+        background-color: #146c7c; 
+    }
+}
+
+af|button:depressed {
+    background-image: none; 
+    border: none; 
+    background-color: #dcf1f3; 
+}
+af|button:focus:hover{
+    border: none; 
+    background-image: none; 
+    background-color: #146c7c; 
+}
+af|button:selected {
+    border: none; 
+    background-color: #dcf1f3; 
+
+    background-image: none; 
+}
+af|button:selected:active {
+
+    background-color: #dcf1f3; 
+    background-image: none; 
+}
+
+af|selectManyChoice::control {
+    background-color: #FFFFFF; 
+    border-radius: 0px; 
+}
+
+.AFButtonGradientEndColor:alias {
+    color: #CCE2F6; 
+}
+
+.AFButtonGradientEndActiveColor:alias {
+    color: #dcf1f3; 
+}
+
+.AFButtonGradientEndDisabledColor:alias {
+    color: #F4F4F4; 
+}
+
+.AFButtonGradientEndHoverColor:alias {
+    color: #E6E6E6; 
+}
+
+/*INFO: Color value exceeded range after adjustment: HSL(0, -53%, 85%)*/
+.AFButtonBorderBottomHoverColor:alias {
+    color: #D9D9D9; 
+}
+
+.AFHoverPrimaryColor:alias {
+    color: White; 
+}
+
+/*INFO: Color value exceeded range after adjustment: HSL(0, 20%, 111%)*/
+.AFButtonGradientStartHoverColor:alias {
+    color: #FFFFFF; 
+}
+
+/*INFO: Color value exceeded range after adjustment: HSL(0, -45%, 92%)*/
+.AFButtonBorderHoverColor:alias {
+    color: #EBEBEB; 
+}
+
+.AFHoverSecondaryColor:alias {
+    color: #dcf1f3; 
+}
+/*//////////////////////////////////////////////////////////////////////////////*/
+af|document{font-size:12px; font-family: 微软雅黑, Arial, Helvetica, sans-serif;background:White;}
+.AFDefaultFont:alias{font-size:12px; font-family: 微软雅黑, Arial, Helvetica, sans-serif;}
+.AFDefaultBoldFont:alias{   font-size: 12px; }
+.AFDefaultFontFamily:alias{  font-family: 微软雅黑; }
+
+.AFNoteWindowHintText{ display: none;}
+.AFNoteWindowSeparator{ display: none;}
+.AFNoteWindowShortDesc{display:none;}
+.AFAutoSuggestItem{font-size:12px;font-family: 微软雅黑, Arial, Helvetica, sans-serif;}
+.AFAutoSuggestItemsContainer{overflow-x:hidden;}
+.AFNoteWindowShortDesc{font-size:12px;}
+.AFPanelFormLayoutContentCell{padding-top:5px;vertical-align:middle;}
+.AFModalGlassPane{background:#000; opacity: 0.5;}
+
+/* Table */
+af|column::column-header-cell {
+    height: 30px; 
+    background-color: #999999; 
+    color: #ffffff; 
+    text-align:center;
+}
+af|column::column-header-cell:focused{
+    background-color:#7ccdd6;
+    color:#ffffff;
+}
+af|column::data-cell{
+    background-color:#ffffff;
+    text-align:center;
+    height:32px;
+}
+af|column::banded-data-cell{
+    background-color:#ededed;
+    text-align:center;
+    height:32px;
+}
+/* table 鼠标划过时样式 */  
+af|table::data-row:highlighted af|column::data-cell, af|table::data-row:highlighted af|column::banded-data-cell {  
+    background-color: #dcf1f3;  
+} 
+/* table focus时鼠标选中时样式 */  
+af|table::data-row:selected:focused af|column::data-cell, af|table::data-row:selected:focused af|column::banded-data-cell {  
+    background-color: #7ccdd6; 
+}  
+/* table 鼠标选中时样式 */  
+af|table::data-row:selected af|column::data-cell, af|table::data-row:selected af|column::banded-data-cell {  
+    background-color: #7ccdd6;  
+}  
+/* table 焦点离开时选中table的样式 */  
+af|table::data-row:selected:inactive af|column::data-cell, 
+af|table::data-row:selected:inactive af|column::banded-data-cell{  
+    background-color: #7ccdd6;  
+}  
+af|table {
+    background-color: #FFFFFF; 
+    border: none; 
+    width:100%;
+}
+
+af|treeTable,af|treeTable::data-cell{
+    width:100%;
+}
+
+af|tree::data-cell, af|treeTable::data-cell {
+    height: 22px; 
+}
+af|tree::data-cell:focused {
+    height: 22px; 
+    background-color:#ff9900;
+}
+af|tree::expanded-icon-style, af|treeTable::expanded-icon-style{
+    background-image:url("http://10.1.8.217/project/she/images/common/expand.png");
+}
+af|tree::collapsed-icon-style, af|treeTable::collapsed-icon-style{
+    background-image:url("http://10.1.8.217/project/she/images/common/inpand.png");
+}
+af|tree::leaf-icon-style, af|treeTable::leaf-icon-style{
+    background-image:url("http://10.1.8.217/project/she/images/common/leaf.png");
+}
+
+af|selectOneListbox::item{
+    height:30px;
+    line-height:30px;
+    color:#333333;
+}
+af|selectOneListbox::item:hover{
+    background-color:#dcf1f3;
+}
+af|selectOneListbox::item:selected,af|selectOneListbox::item:selected:hover{
+    background-color:#7ccdd6;
+    color:#ffffff;
+}
+
+af|selectOneListbox::item:active {
+    background-color: #7ccdd6; 
+    color:#333333;
+}
+
+af|chooseDate::prev-month-arrow{
+    background:url("http://10.1.8.217/project/she/images/common/but_date.png") no-repeat 0 0;width:25px;height:25px;
+    position:absolute;top:10px;left:10px;
+}
+af|chooseDate::prev-month-arrow:hover,af|chooseDate::prev-month-arrow:active{
+    background:url("http://10.1.8.217/project/she/images/common/but_date.png") no-repeat 0 -28px;width:25px;height:25px;
+}
+af|chooseDate::next-month-arrow{
+    background:url("http://10.1.8.217/project/she/images/common/but_date.png") no-repeat -35px 0;width:25px;height:25px;
+    position:absolute;top:10px;right:10px;
+}
+af|chooseDate::next-month-arrow:hover,af|chooseDate::next-month-arrow:active{
+    background:url("http://10.1.8.217/project/she/images/common/but_date.png") no-repeat -35px -28px;width:25px;height:25px;
+}
+af|chooseDate{
+    min-width:300px;
+}
+af|chooseDate::month-year-row {
+    background-color: #eae9e9; 
+    width:100%;position:relative;
+}
+
+af|chooseDate::week-header-cell {
+    height: 30px; 
+    background-color: #e2e0e0; 
+    color:#666;
+    font-weight:bold;
+}
+
+af|chooseDate::regular-day {
+    height: 30px;
+    border:solid 1px transparent;
+}
+af|chooseDate::regular-day:hover{
+    border:solid 1px #6fcacc;
+}
+
+af|chooseDate::prev-month-day {
+    background-color: #d9d9d9; 
+    height: 30px;
+}
+
+af|chooseDate::next-month-day {
+    background-color: #d9d9d9; 
+    height: 30px;
+}
+
+af|chooseDate::today,af|chooseDate::today:selected{
+    border: 1px solid #ff9900; 
+}
+af|chooseDate::today:selected:hover{
+    background:#ff9900;margin:0px;padding:0px;color:#ffffff;
+}
+af|chooseDate::today:hover{
+    background:#ff9900;margin:0px;padding:0px;color:#ffffff;
+}
+
+af|chooseDate::choice-list-content{
+    height:26px;
+}
+af|chooseDate::spinbox-content{
+    height:24px;
+    border-radius: 0px; 
+    margin:0;padding:0px 6px 0 0;
+}
+af|inputNumberSpinbox::content{
+    height:24px;
+    border-radius: 0px; 
+    margin:0;padding:0px 6px 0 0;
+}
+af|inputNumberSpinbox::increment-cell,
+af|inputNumberSpinbox::decrement-cell{
+    height:12px;
+}
+af|inputNumberSpinbox::incrementor-icon-style{
+    background:url("http://10.1.8.217/project/she/images/common/but_inp.png") no-repeat 0 0;
+    width:11px;height:12px;
+    border-radius: 0px; 
+}
+af|chooseDate::spinbox-incrementor-icon-style{
+    background:url("http://10.1.8.217/project/she/images/common/but_inp.png") no-repeat 0 0;
+    width:11px;height:12px;
+    border-radius: 0px; 
+}
+af|chooseDate::spinbox-decrementor-icon-style,
+af|inputNumberSpinbox::decrementor-icon-style{
+    background:url("http://10.1.8.217/project/she/images/common/but_inp.png") no-repeat 0 -12px;
+    width:11px;height:12px;
+    border-radius: 0px; 
+}
+af|chooseDate::spinbox-decrementor-icon-style:hover{
+    background:url("http://10.1.8.217/project/she/images/common/but_inp.png") no-repeat -11px -12px;
+    width:11px;height:12px;
+}
+
+@agent (touchScreen:none) {
+    af|inputNumberSpinbox::incrementor-icon-style:hover {
+        background:url("http://10.1.8.217/project/she/images/common/but_inp.png") no-repeat -11px 0;
+    }
+    af|inputNumberSpinbox::decrementor-icon-style:hover {
+        background:url("http://10.1.8.217/project/she/images/common/but_inp.png") no-repeat -11px -12px;
+    }
+
+}
+
+af|inputDate::content {
+    height: 25px; 
+    border-radius: 0px; 
+}
+af|inputDate::launch-icon-style{
+    background:url("http://10.1.8.217/project/she/images/common/date.png") no-repeat 0 0;
+    width:15px;height:15px;
+}
+
+@agent (touchScreen:none) {
+    af|inputDate::launch-icon-style:hover {
+    background:url("http://10.1.8.217/project/she/images/common/date_hor.png") no-repeat 0 0;
+    width:15px;height:15px;
+    }
+}
+
+af|selectManyListbox::item {
+    height: 30px; 
+    line-height:30px;
+}
+
+af|selectManyListbox::item:selected,af|selectManyListbox::item:selected:hover {
+    background-color: #7ccdd6; 
+    color:#ffffff;
+}
+
+af|message::confirmation-icon{
+    content:url("http://10.1.8.217/project/she/images/common/confirm.png");
+    width:16px;height:16px;
+}
+af|message::error-icon{
+    content:url("http://10.1.8.217/project/she/images/common/error.png");
+    width:16px;height:16px;
+}
+af|message::fatal-icon{
+    content:url("http://10.1.8.217/project/she/images/common/fatal.png");
+    width:16px;height:16px;
+}
+af|message::info-icon{
+    content:url("http://10.1.8.217/project/she/images/common/infor.png");
+    width:16px;height:16px;
+}
+af|message::warning-icon{
+    content:url("http://10.1.8.217/project/she/images/common/warning.png");
+    width:16px;height:16px;
+}
+
+
+
+
+af|panelBox::header-text{color:#ffffff;font-weight:bold;height:35px;margin:0px;padding:0px;background:#7ccdd6;padding-left:10px;}
+af|panelBox::header-element{font-size:16px;}
+af|panelBox.panelBox_base{
+    border-radius: 0px; box-shadow: none;
+    -webkit-box-shadow: none;padding:0px;
+}
+af|panelBox.panelBox_base .p_AFCore.p_AFDefault{padding:0px;}
+
+
+af|panelSplitter::horizontal-divider{
+    background-color:#8ca0aa;
+    width: 8px; 
+}
+af|panelSplitter::horizontal-icon-style,
+af|panelSplitter::horizontal-icon-style:hover,
+af|panelSplitter::horizontal-icon-style:active{
+    background:none;
+    vertical-align:middle;
+    padding-top:5px;
+}
+
+af|panelSplitter::horizontal-icon-style {
+    background-image: none; 
+}
+
+af|panelSplitter::horizontal-icon-style:active:hover {
+    background-image: none; 
+}
+
+@agent (touchScreen:none) {
+    af|panelSplitter::horizontal-icon-style:hover {
+        background: #fff; 
+    }
+    af|panelSplitter::horizontal-divider:disclosed:hover af|panelSplitter::horizontal-icon-style{
+        background-image:none;
+    }
+}
+
+af|panelSplitter::horizontal-divider:disclosed {
+    width: 8px; background-color:#8ca0aa;border:none;
+}
+
+af|panelSplitter::horizontal-divider:flow {
+    width: 8px; background-color:#8ca0aa;border:none;
+}
+
+
+af|panelSplitter::horizontal-highlighter {
+    width: 8px; background-color:#8ca0aa;border:none;
+}
+af|panelSplitter::horizontal-highlighter{
+    background-image: none; 
+}
+
+/* panelTabbed */
+/* subPanelTabbed */
+.subPanelTabbed af|panelTabbed{margin:10px;-tr-tab-bar-height:23px;}
+.subPanelTabbed af|panelTabbed::tab-text-link:selected {color:#fff;}
+.subPanelTabbed af|panelTabbed::tab-text-link {color:#ffffff;font-weight:normal;}
+.subPanelTabbed af|panelTabbed::tab-text-link:hover{color:#ffffff;}
+.subPanelTabbed af|panelTabbed::header-center {background:none;}
+.subPanelTabbed af|panelTabbed::header af|panelTabbed::tab-start {width:7px;height:23px; background:#64C1CB;}
+.subPanelTabbed af|panelTabbed::header af|panelTabbed::tab-end {width:7px;height:23px; background:#64C1CB;}
+.subPanelTabbed af|panelTabbed::header af|panelTabbed::tab-content {-tr-inhibit:background-position;background:#64C1CB;border-radius:0px;border:none;padding:2px 10px;}
+@agent ie{.subPanelTabbed af|panelTabbed::header af|panelTabbed::tab-content {-tr-inhibit:background:#64C1CB;border-radius:0px;border:none;}}
+.subPanelTabbed af|panelTabbed::header af|panelTabbed::tab:selected af|panelTabbed::tab-start {background:#1B91A5;}
+.subPanelTabbed af|panelTabbed::header af|panelTabbed::tab:selected af|panelTabbed::tab-end {background:#1B91A5;}
+.subPanelTabbed af|panelTabbed::header af|panelTabbed::tab:selected af|panelTabbed::tab-content {background:#1B91A5;border:none;}
+@agent ie{.subPanelTabbed af|panelTabbed::header af|panelTabbed::tab:selected af|panelTabbed::tab-content {background:#1B91A5;border:none;}}
+.subPanelTabbed af|panelTabbed::tab {margin-right: 5px; background-image: none;}
+.subPanelTabbed af|panelTabbed::header-end {background:none #fff;}
+.subPanelTabbed af|panelTabbed::body-start {background:none #fff;}
+.subPanelTabbed af|panelTabbed::body {background:none #fff;border-radius:0px;border:none;}
+.subPanelTabbed af|panelTabbed::body-end {background:none #fff;}
+.subPanelTabbed af|panelTabbed::footer-start{background:none transparent;}
+.subPanelTabbed af|panelTabbed::footer {background:none transparent;}
+.subPanelTabbed af|panelTabbed::footer-center {background:none transparent;}
+.subPanelTabbed af|panelTabbed::footer-end {background:none transparent;}
+    /*hover*/
+.subPanelTabbed af|panelTabbed.p_AFHoverTarget,
+.subPanelTabbed af|panelTabbed::tab-text-link:selected:hover,
+.subPanelTabbed af|panelTabbed::tab.p_AFSelected:hover af|panelTabbed::tab-content,
+.subPanelTabbed af|panelTabbed::tab.p_AFSelected:hover af|panelTabbed::tab-text-link,
+.subPanelTabbed af|panelTabbed::footer af|panelTabbed::tab:selected:hover af|panelTabbed::tab-content{color:#fff;}
+
+
+/* =commandButton
+-------------------------------------------------------------- */
+
+/* default min-btn   gray */
+af|commandButton.min-btn,
+af|goButton.min-btn{cursor:pointer;color:#fff;padding:0 8px;border:none;border-radius:0px;height:23px;background:#3db1be;}
+af|commandButton.min-btn:hover,
+af|commandButton.min-btn:focus:hover,
+af|goButton.min-btn:hover{color:#fff;border:none;background:#146c7c;}
+af|goButton.min-btn:active{color:#fff;border:none;background:#146c7c;}
+af|commandButton.min-btn:disabled,
+af|goButton.min-btn:disabled{color:#ccc;border-color:#c6c6c6;background:#f2f2f2 none;}
+
+/* red min-btn */
+af|commandButton.green-min-btn,
+af|goButton.green-min-btn{color:#fff;border-color:#3dab00;background:#e66e4c;}
+af|commandButton.green-min-btn:hover,
+af|commandButton.green-min-btn:focus:hover,
+af|goButton.green-min-btn:hover{color:#fff;border-color:#3aa300;background:#D0461E;}
+
+/* orange min-btn */
+af|commandButton.orange-min-btn,
+af|goButton.orange-min-btn{color:#fff;border-color:#ff6a03;background:#ffa600;}
+af|commandButton.orange-min-btn:hover,
+af|commandButton.orange-min-btn:focus:hover,
+af|goButton.orange-min-btn:hover{color:#fff;border-color:#ed6501;background:#ff9900;}
+
+/* blue min-btn */
+af|commandButton.blue-min-btn,
+af|goButton.blue-min-btn{color:#fff;border-color:#97caf5;border-radius:2px;background:#459fe2;}
+af|commandButton.blue-min-btn:hover,
+af|commandButton.blue-min-btn:focus:hover,
+af|goButton.blue-min-btn:hover{border-color:#5db3d6;color:#fff;background:#1E78BB;}
+
+/* default btn      orange */
+af|commandButton.btn,
+af|goButton.btn{font-size:14px;font-weight:700;padding:0 16px;cursor:pointer;height:34px;border-radius:0px;color:#fff;border:none;background:#3db1be;}
+af|commandButton.btn:hover,
+af|commandButton.btn:focus:hover,
+af|goButton.btn:hover{color:#fff;border:none;background:#146c7c;font-size:14px;font-weight:700;}
+af|commandButton.btn:active,
+af|commandButton.btn:focus,
+af|goButton.btn:active,
+af|goButton.btn:focus{font-size:14px;font-weight:700;background:#146c7c;}
+af|commandButton.btn:disabled,
+af|goButton.btn:disabled{color:#cbcbcb;border-color:#e5e5e5;background:#f2f2f2 none;}
+
+/* blue btn */
+af|commandButton.blue-btn,
+af|goButton.blue-btn{color:#fff;border-color:#449dd9;border-radius:2px;background:#459fe2;}
+af|commandButton.blue-btn:hover,
+af|commandButton.blue-btn:focus:hover,
+af|goButton.blue-btn:hover{color:#fff;border-color:#449cdb;background:#1E78BB;}
+af|commandButton.blue-btn:active,
+af|goButton.blue-btn:active{background:#1E78BB;}
+
+/* gray btn */
+af|commandButton.gray-btn,
+af|goButton.gray-btn{color:#fff;border-color:#ccc;border-radius:2px;background:#ffa600;}
+af|commandButton.gray-btn:hover,
+af|commandButton.gray-btn:focus:hover,
+af|goButton.gray-btn:hover{color:#fff;border-color:#ccc;background:#ff9900;}
+af|commandButton.gray-btn:active,
+af|goButton.gray-btn:active{border-color:#ccc;background:#ff9900;}
+
+/* red btn */
+af|commandButton.red-btn,
+af|goButton.red-btn{color:#fff;border-color:#ccc;border-radius:2px;background:#e66e4c;}
+af|commandButton.red-btn:hover,
+af|commandButton.red-btn:focus:hover,
+af|goButton.red-btn:hover{color:#fff;border-color:#ccc;background:#D0461E;}
+af|commandButton.red-btn:active,
+af|goButton.red-btn:active{border-color:#ccc;background:#D0461E;}
+
+
+/* =dialog
+
+
+-------------------------------------------------------------- */
+
+af|dialog::header-start,
+af|dialog::header,
+af|dialog::header-end{background:#3db1be;height:40px;color:#ffffff;}
+af|dialog::header{border:none;}
+af|dialog::content-start{border:none;}
+af|dialog::content-end{border-right:none;}
+af|dialog::content-start,
+af|dialog::content,
+af|dialog::content-end{background:none #fff;}
+af|dialog::footer-start,
+af|dialog::footer,
+af|dialog::footer-end{background:none #fff;}
+af|dialog::close-icon-region{width:22px;height:22px;}
+af|dialog::close-icon-style{cursor:pointer;background:url("http://10.1.8.217/project/she/images/frame/fclose.png") no-repeat 0 -22px;width:22px;height:22px;}
+af|dialog::close-icon-style:hover{cursor:pointer;background:url("http://10.1.8.217/project/she/images/frame/fclose.png") no-repeat 0 0px;width:22px;height:22px;}
+af|dialog::title{font-size:14px;color:#ffffff;}
+
+af|dialog::footer-button{cursor:pointer;color:#333;border-color:#c3c3c2;border-radius:0px;height:35px;line-height:35px;background:#efefef;}
+af|dialog::footer-button:hover{color:#fff;border-color:#aaa8a7;}
+
+
+af|dialog.dialog{border:5px solid #d6d6d6;border-radius:0px;}
+.dialog af|dialog::header-start,
+.dialog af|dialog::header,
+.dialog af|dialog::header-end{background:#3db1be;height:40px;color:#ffffff;}
+.dialog af|dialog::header{border:none;}
+.dialog af|dialog::content-start{border:none;}
+.dialog af|dialog::content-end{border-right:none;}
+.dialog af|dialog::content-start,
+.dialog af|dialog::content,
+.dialog af|dialog::content-end{background:none #fff;}
+.dialog af|dialog::footer-start,
+.dialog af|dialog::footer,
+.dialog af|dialog::footer-end{background:none #fff;}
+.dialog af|dialog::close-icon-region{width:22px;height:22px;}
+.dialog af|dialog::close-icon-style{cursor:pointer;background:url("http://10.1.8.217/project/she/images/frame/fclose.png") no-repeat 0 -22px;width:22px;height:22px;}
+.dialog af|dialog::close-icon-style:hover{cursor:pointer;background:url("http://10.1.8.217/project/she/images/frame/fclose.png") no-repeat 0 0px;width:22px;height:22px;}
+.dialog af|dialog::title{font-size:14px;color:#ffffff;}
+
+.dialog af|dialog::footer-button{cursor:pointer;color:#333;border-color:#c3c3c2;border-radius:0px;height:35px;line-height:35px;background:#efefef;}
+.dialog af|dialog::footer-button:hover{color:#fff;border-color:#aaa8a7;}
+
+
+af|dialog::close-icon-style {
+    background-image: url("http://10.1.8.217/project/she/images/frame/fclose.png"); 
+    height: 22px; 
+    width: 22px; 
+}
+
+af|inputListOfValues::search-icon-style,
+af|inputListOfValues::search-icon-style:hover,
+af|inputListOfValues::search-icon-style:active{
+  background:url("http://10.1.8.217/project/she/images/frame/search.png") no-repeat 0 0;
+}
+
+af|inputListOfValues::content {
+    height: 25px; 
+}
+
+af|menuBar,
+af|menuBar::body,
+af|menu{
+    height:35px;
+}
+af|menuBar{
+    border-bottom:solid 2px #308b96
+}
+af|menu::child-container{
+   box-shadow: none;
+    -webkit-box-shadow: none;
+    border:solid 2px #308b96;
+    margin-top:-3px;
+    border-top:none;
+}
+
+af|commandMenuItem{
+    height:33px;
+    line-height:33px;
+    margin:0 0 0 10px;
+    background-color:#ececec;
+    text-align:center;
+    border-radius: 0px;
+}
+af|commandMenuItem:hover{
+    background:#64c1cb;
+}
+af|commandMenuItem::bar-item-text:hover{
+    color:#ffffff;
+}
+
+af|menu::bar-item {
+    height: 33px; 
+    line-height:33px;
+    margin:0 0 0 10px;border-radius: 0px;
+}
+af|menu::bar-item:hover,
+af|menu::bar-item:depressed,
+af|menu::bar-item-text:hover{
+    background:#64c1cb;
+    color:#ffffff;
+}
+
+.AFErrorIcon:alias {
+    content: url("http://10.1.8.217/project/she/images/common/error.png"); 
+    background-image: url("http://10.1.8.217/project/she/images/common/error.png"); 
+}
+.AFFatalIcon:alias{
+    content: url("http://10.1.8.217/project/she/images/common/fatal.png"); 
+    background-image: url("http://10.1.8.217/project/she/images/common/fatal.png"); 
+}
+
+af|calendar::month-header-cell {
+    background-color: #e2e0e0; 
+    height: 21px; 
+    border-bottom:solid 1px #ccc;
+    margin: 0px 0px 0px 0px; 
+}
+
+af|calendar::month-grid-cell-header {
+    background-color: transparent; 
+    color: #666666; 
+    height: 20px; 
+    border: none; 
+    text-align: left; 
+    padding: 3px 0px 0px 3px; 
+}
+af|calendar::month-grid-cell:prev-month af|calendar::month-grid-cell-header{
+    background-color: transparent; 
+}
+af|calendar::month-grid-cell:next-month af|calendar::month-grid-cell-header{
+    background-color: transparent; 
+}
+af|calendar::month-grid-cell:today af|calendar::month-grid-cell-header{
+    background-color: transparent;
+}
+af|calendar::month-grid-cell:today af|calendar::month-grid-cell-header af|calendar::month-grid-cell-header-day-link{
+    background-color: transparent;
+    color:#fff;
+}
+af|calendar::month-grid-cell:active-day af|calendar::month-grid-cell-header{
+    background-color: transparent; 
+}
+af|calendar::month-grid-cell:today:active-day af|calendar::month-grid-cell-header{
+    background-color: transparent; 
+}
+
+
+af|calendar::month-grid-cell-header-day-link {
+    color: #666666; 
+}
+
+af|calendar::month-header-cell:today {
+    background-color: #3db1be; 
+    color: #ffffff; 
+    border: none; 
+}
+
+af|calendar::month-grid-cell:prev-month {
+    background-color: #9ADADC; 
+}
+
+af|calendar::month-grid-cell:next-month {
+    background-color: #9ADADC; 
+}
+
+af|calendar::month-grid-cell:today {
+    background-color: #ffA64d; 
+}
+af|calendar::month-grid-cell{
+    border-top:solid 2px #3db1be;
+}
+
+af|calendar::all-day-activity {
+    background-color: #1b91a5; 
+    background-image: none; 
+}
+
+
+af|calendar::all-day-activity-time {
+    background-image: none; 
+    background-color: #1b91a5; 
+}
+
+af|commandToolbarButton::link {
+    background-color: #3db1be; 
+}
+af|calendar af|toolbar{
+    height:50px;
+}
+af|toolbar af|button{
+    background-color:#3db1be;
+    background-image:none;
+    height:27px;
+    filter:none;
+}
+af|toolbar af|button.p_AFSelected,af|toolbar af|button.p_AFSelected:hover,
+af|toolbar af|button.p_AFDepressed,af|toolbar af|button.p_AFDepressed:hover{
+  background-image:none;
+  background-color:#146c7c;
+  height:27px;
+  border:none;
+  filter:none;
+}
+.xgr .xga{
+  padding:0 10px;
+  margin:0 1px;
+  filter:none;
+}
+@agent (touchScreen:none) {
+  af|toolbar af|button:hover{
+      background-image:none;
+      border:none;
+      filter:none;
+  }
+}
+
+af|toolbar::body {
+    height: 35px; 
+}
+
+af|toolbar af|button.p_AFTextOnly,af|toolbar af|button.p_AFTextOnly:hover,
+af|toolbar af|button.p_AFDepressed,af|toolbar af|button.p_AFTextOnly.p_AFDepressed:hover{
+    background-image: none; 
+    border: none; 
+    background-color: #3db1be; 
+    height:27px;
+    filter:none;
+}
+
+af|calendar::view {
+    margin: 20px 0px 0px 0px; 
+}
+
+af|calendar::day-header-row {
+    background-color: #E2e0e0; 
+}
+
+af|calendar::time-cell {
+    background-color: #e2e0e0; 
+}
+
+af|calendar::header-all-day-container {
+    background-color: #E2e0e0; 
+}
+
+af|calendar::time-activity-header {
+    background-color: #1b91a5; 
+    background-image: none; 
+}
+
+af|calendar::time-activity-content {
+    background-color: #1b91a5; 
+}
+
+af|calendar::time-activity-container {
+    background-color: #1b91a5; 
+    background-image: none; 
+}
+
+af|calendar::week-header-cell {
+    background-color: #e2e0e0; 
+}
+
+af|calendar::week {
+    background-color: #e2e0e0; 
+}
+
+af|calendar::week-header-cell:active-day {
+    background-color: #3db1be; 
+}
+
+af|calendar::week-header-cell:today {
+    background-color: #3db1be; 
+}
+
+af|calendar::week-header-cell:today:active-day {
+    background-color: #3db1be; 
+    color:#fff;
+}
+af|calendar::week-header-cell:today:active-day af|calendar::week-header-day-link,
+af|calendar::week-header-cell:today af|calendar::week-header-day-link,
+af|calendar::week-header-cell:today:active-day  af|calendar::week-header-day-link,{
+    color:#fff;
+}
+
+af|calendar::list-day-of-week-column {
+    background-color: #e2e0e0; 
+}
+
+af|calendar::list-cell {
+    background-color: #9adadc; 
+}
+
+af|calendar::activity-grid-column:today {
+    background-color: #9adadc; 
+}
+
+af|calendar::toolbar-list-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/list.png"); 
+    height: 14px; 
+    width: 14px; 
+}
+
+af|calendar::toolbar-list-hover-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/list.png"); 
+}
+
+af|calendar::toolbar-list-active-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/list.png"); 
+}
+
+af|calendar::toolbar-day-active-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/day.png"); 
+}
+
+af|calendar::toolbar-day-hover-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/day.png"); 
+}
+
+af|calendar::toolbar-day-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/day.png"); 
+    height: 20px; 
+    width: 20px; 
+}
+
+af|calendar::toolbar-month-active-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/month.png"); 
+}
+
+af|calendar::toolbar-month-hover-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/month.png"); 
+}
+
+af|calendar::toolbar-month-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/month.png"); 
+}
+
+af|calendar::toolbar-next-active-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/right.png"); 
+}
+
+af|calendar::toolbar-next-hover-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/right.png"); 
+}
+
+af|calendar::toolbar-next-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/right.png"); 
+}
+
+af|calendar::toolbar-prev-active-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/left.png"); 
+}
+
+af|calendar::toolbar-prev-hover-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/left.png"); 
+}
+
+af|calendar::toolbar-prev-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/left.png"); 
+}
+
+af|calendar::toolbar-week-active-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/week.png"); 
+}
+
+af|calendar::toolbar-week-hover-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/week.png"); 
+}
+
+af|calendar::toolbar-week-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/week.png"); 
+}
+.xg8{filter:none\9\0;}
+.xg8,.xg8:hover,.xg8:active,.xg8:active:hover,
+.p_AFHoverTarget{
+    filter:none;
+}
+
+af|menu::separator {
+    width: 100%; 
+}
+
+af|commandMenuItem::menu-item-icon-style {
+    width: 0px; 
+}
+
+.x167{
+    height:1px;
+    background:#ececec;
+}
+af|menu .x15i .x168{
+    height: 1px;
+    overflow: hidden;
+    background-color: #A0BBD9;
+    margin: 1px;
+    width: 100%;
+}
+
+af|goMenuItem::menu-item-icon-style {
+    width: 0px; 
+}
+
+af|commandMenuItem::menu-item-text {
+    text-align: left; 
+}
+
+af|panelSplitter::vertical-icon-style {
+    background-image: url("http://10.1.8.217/project/portal/resources/image/En/sp_up.png"); 
+    height: 9px; 
+    width: 15px; 
+    background-color: transparent; 
+}
+
+af|panelSplitter::vertical-icon-style:active:hover {
+    background-image: url("http://10.1.8.217/project/portal/resources/image/En/sp_up.png"); 
+}
+
+@agent (touchScreen:none) {
+
+    af|panelSplitter::vertical-icon-style:hover {
+        background-image: url("http://10.1.8.217/project/portal/resources/image/En/sp_up.png"); 
+    }
+
+}
+
+af|panelSplitter::vertical-collapse-icon {
+    content: url("http://10.1.8.217/project/portal/resources/image/En/sp_up.png"); 
+    height: 9px; 
+    width: 15px; 
+}
+
+af|panelSplitter::vertical-restore-icon {
+    height: 9px; 
+    width: 15px; 
+    content: url("http://10.1.8.217/project/portal/resources/image/En/sp_bottom.png"); 
+}
+
+.pan af|panelHeader::title0 {
+    background-color: RGB(124,205,214);
+}
+
+.pan af|panelHeader::title-text0 {
+   color:White;
+}
+
+.pan af|inputText:read-only::content {
+    border-bottom-width: 1px;
+    border-bottom-style: solid; 
+    border-bottom-color: Black; 
+}
+
+.pan af|inputDate:read-only::content {
+    border-bottom-color: Black; 
+    border-bottom-width: 1px; 
+    border-bottom-style: solid; 
+}

@@ -1,0 +1,107 @@
+/**ADFFaces_Skin_File / DO NOT REMOVE**/
+@namespace af "http://xmlns.oracle.com/adf/faces/rich";
+
+@namespace dvt "http://xmlns.oracle.com/dss/adf/faces";
+
+
+
+af|commandButton.gray-min-btn {
+    cursor: pointer;
+    color: #000000;
+    border-color: #c3c3c2;
+    border-radius: 2px;
+    height: 25px;
+    line-height: 20px;
+    background: url('/resources/images/front/gray-btn-bg.png');
+}
+
+af|commandButton.gray-min-btn {
+    cursor: pointer;
+    color: #000000;
+    border-color: #c3c3c2;
+    border-radius: 2px;
+    height: 25px;
+    line-height: 20px;
+    background: url('/resources/images/front/gray-btn-bg.png');
+}
+
+af|commandButton.gray-min-btn:hover {
+    border-color: #aaa8a7;
+    background: url('/resources/images/front/grayor-btn-bg-hover.png')
+}
+/* blue min-btn */
+af|commandButton.blue-min-btn {
+    cursor: pointer;
+    color: #000000;
+    border-color: #77c7ea;
+    border-radius: 2px;
+    background: url('/resources/images/front/blue-btn-bg.png');
+    height: 25px;
+    line-height: 20px;
+}
+
+af|commandButton.blue-min-btn:hover {
+    border-color: #52bae8;
+    background: url('/resources/images/front/blue-btn-bg-hover.png');
+    color: #666666;
+}
+/* green min-btn */
+af|commandButton.green-min-btn {
+    cursor: pointer;
+    color: #ffffff;
+    border-color: #389e00;
+    border-radius: 2px;
+    background: url(/resources/images/front/green-btn-bg.png);
+    height: 23px;
+    line-height: 18px;
+}
+
+af|commandButton.green-min-btn:hover {
+    background: url(/resources/images/front/green-btn-bg-hover.png);
+}
+/* orange min-btn */
+af|commandButton.orange-min-btn {
+    cursor: pointer;
+    color: #ffffff;
+    border-color: #ee6400;
+    border-radius: 2px;
+    background: url(/resources/images/front/orange-btn-bg.png);
+    height: 23px;
+    line-height: 18px;
+}
+
+af|commandButton.orange-min-btn:hover {
+    background: url(/resources/images/front/orange-btn-bg-hover.png);
+}
+
+af|commandButton.bottom_btn {
+    margin-right: 18px;
+    padding: 0 18px;
+}
+
+
+/* 使Label样式保持一致 */
+af|panelLabelAndMessage::label {
+    color: #666666;
+}
+
+/* 使非空项目前面的星号显示为红色 */
+.AFRequiredIconStyle, .xf, .x8e.p_AFRequired, .xkk.p_AFRequired {
+    color: red !important;
+}
+
+/* 使InputNumber组件样式与InputText保持一致 */
+.x27, .x28 {
+    display: none !important;
+}
+
+/* 使chome下的多行文本不可拖拽修改大小，与IE保持一致 */
+textarea{
+    outline: none;
+    resize: none;
+}
+
+/* 配合SimpleLov使用 */
+.hideAFDisclosed .p_AFDisclosed {
+    display: none;
+}

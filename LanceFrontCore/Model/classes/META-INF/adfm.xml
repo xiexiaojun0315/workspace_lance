@@ -1,0 +1,4 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<MetadataDirectory xmlns="http://xmlns.oracle.com/adfm/metainf" version="11.1.1.0.0">
+   <BusinessComponentProjectRegistry path="com/zngh/platform/front/core/model/Model.jpx"/>
+</MetadataDirectory>

@@ -1,0 +1,11 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="FrontCoreTest.jsf" id="d1">
+        <af:form id="f1">
+            <af:button text="button 1" id="b1" action="#{FrontCoreTest.b1_action}"/>
+            <af:button text="button 2" id="b2" action="#{FrontCoreTest.b2_action}"/>
+        </af:form>
+    </af:document>
+    <!--oracle-jdev-comment:preferred-managed-bean-name:FrontCoreTest-->
+</f:view>
