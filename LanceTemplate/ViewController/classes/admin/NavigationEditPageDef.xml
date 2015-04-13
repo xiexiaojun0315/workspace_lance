@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="NavigationEditPageDef"
+                Package="admin">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <page path="org.agileofm.template.view.pageDefs.TabletSupportTemplatePageDef" id="ptb1" Refresh="ifNeeded"/>
+    <iterator Binds="Navgation1" RangeSize="25" DataControl="TemplateAMDataControl" id="Navgation1Iterator"/>
+    <iterator Binds="Navgation2" RangeSize="25" DataControl="TemplateAMDataControl" id="Navgation2Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="Navgation1Iterator" id="Navgation1">
+      <nodeDefinition DefName="org.agileofm.template.model.vo.NavgationVO" Name="Navgation10">
+        <AttrNames>
+          <Item Value="Uuid"/>
+          <Item Value="Name"/>
+          <Item Value="Description"/>
+          <Item Value="NavLevel"/>
+          <Item Value="Url"/>
+          <Item Value="Icon1"/>
+          <Item Value="Icon2"/>
+          <Item Value="Icon3"/>
+          <Item Value="ShowOrder"/>
+          <Item Value="Target"/>
+          <Item Value="Deleted"/>
+          <Item Value="SysKey"/>
+          <Item Value="CreateBy"/>
+          <Item Value="CreateOn"/>
+          <Item Value="UpdateBy"/>
+          <Item Value="UpdateOn"/>
+          <Item Value="Version"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <action IterBinding="Navgation1Iterator" id="CreateInsert" RequiresUpdateModel="true" Action="createInsertRow"/>
+    <action IterBinding="Navgation1Iterator" id="Delete" RequiresUpdateModel="false" Action="removeCurrentRow"/>
+    <action id="Commit" RequiresUpdateModel="true" Action="commitTransaction" DataControl="TemplateAMDataControl"/>
+    <action id="Rollback" RequiresUpdateModel="false" Action="rollbackTransaction" DataControl="TemplateAMDataControl"/>
+    <tree IterBinding="Navgation2Iterator" id="Navgation2">
+      <nodeDefinition DefName="org.agileofm.template.model.vo.NavgationVO" Name="Navgation20">
+        <AttrNames>
+          <Item Value="Uuid"/>
+          <Item Value="Name"/>
+          <Item Value="Description"/>
+          <Item Value="NavLevel"/>
+          <Item Value="Url"/>
+          <Item Value="Icon1"/>
+          <Item Value="Icon2"/>
+          <Item Value="Icon3"/>
+          <Item Value="ShowOrder"/>
+          <Item Value="Target"/>
+          <Item Value="Deleted"/>
+          <Item Value="SysKey"/>
+          <Item Value="CreateBy"/>
+          <Item Value="CreateOn"/>
+          <Item Value="UpdateBy"/>
+          <Item Value="UpdateOn"/>
+          <Item Value="Version"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

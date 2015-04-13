@@ -1,0 +1,249 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<af:pageTemplateDef xmlns:af="http://xmlns.oracle.com/adf/faces/rich" var="attrs" definition="private"
+                    xmlns:afc="http://xmlns.oracle.com/adf/faces/rich/component" xmlns:f="http://java.sun.com/jsf/core"
+                    xmlns:trh="http://myfaces.apache.org/trinidad/html" xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle" value="#{adfBundle['org.agileofm.template.view.ViewControllerBundle']}"/>
+    <af:xmlContent>
+        <afc:component>
+            <afc:description/>
+            <afc:display-name>TabletSupportTemplate</afc:display-name>
+            <afc:facet>
+                <afc:facet-name>center</afc:facet-name>
+            </afc:facet>
+            <afc:facet>
+                <afc:facet-name>east</afc:facet-name>
+            </afc:facet>
+            <afc:facet>
+                <afc:facet-name>header</afc:facet-name>
+            </afc:facet>
+            <afc:facet>
+                <afc:facet-name>status</afc:facet-name>
+            </afc:facet>
+            <afc:facet>
+                <afc:facet-name>appNav</afc:facet-name>
+            </afc:facet>
+            <afc:facet>
+                <afc:facet-name>globalLinks</afc:facet-name>
+            </afc:facet>
+            <afc:facet>
+                <afc:facet-name>footer</afc:facet-name>
+            </afc:facet>
+            <afc:facet>
+                <afc:facet-name>content</afc:facet-name>
+            </afc:facet>
+            <afc:facet>
+                <afc:facet-name>start</afc:facet-name>
+            </afc:facet>
+            <afc:facet>
+                <afc:facet-name>end</afc:facet-name>
+            </afc:facet>
+            <afc:attribute>
+                <afc:attribute-name>pageId</afc:attribute-name>
+                <afc:attribute-class>java.lang.String</afc:attribute-class>
+            </afc:attribute>
+            <afc:attribute>
+                <afc:attribute-name>pageName</afc:attribute-name>
+                <afc:attribute-class>java.lang.String</afc:attribute-class>
+                <afc:required>
+                    false
+                </afc:required>
+            </afc:attribute>
+            <afc:attribute>
+                <afc:attribute-name>logoImagePath</afc:attribute-name>
+                <afc:attribute-class>java.lang.String</afc:attribute-class>
+            </afc:attribute>
+            <afc:attribute>
+                <afc:attribute-name>logoSmallImagePath</afc:attribute-name>
+                <afc:attribute-class>java.lang.String</afc:attribute-class>
+            </afc:attribute>
+            <afc:attribute>
+                <afc:attribute-name>logoStyleClass</afc:attribute-name>
+                <afc:attribute-class>java.lang.String</afc:attribute-class>
+            </afc:attribute>
+            <afc:attribute>
+                <afc:attribute-name>logoShortDesc</afc:attribute-name>
+                <afc:attribute-class>java.lang.String</afc:attribute-class>
+            </afc:attribute>
+            <afc:attribute>
+                <afc:attribute-name>showAppNavbar</afc:attribute-name>
+                <afc:attribute-class>boolean</afc:attribute-class>
+                <afc:default-value>true</afc:default-value>
+            </afc:attribute>
+            <afc:attribute>
+                <afc:attribute-name>brandingMaxWidth</afc:attribute-name>
+                <afc:attribute-class>java.lang.String</afc:attribute-class>
+                <afc:default-value>2048px</afc:default-value>
+            </afc:attribute>
+            <afc:attribute>
+                <afc:attribute-name>minWidth</afc:attribute-name>
+                <afc:attribute-class>java.lang.String</afc:attribute-class>
+            </afc:attribute>
+            <afc:attribute>
+                <afc:attribute-name>startWidth</afc:attribute-name>
+                <afc:attribute-class>java.lang.String</afc:attribute-class>
+                <afc:default-value>0px</afc:default-value>
+            </afc:attribute>
+            <afc:attribute>
+                <afc:attribute-name>endWidth</afc:attribute-name>
+                <afc:attribute-class>java.lang.String</afc:attribute-class>
+                <afc:default-value>0px</afc:default-value>
+            </afc:attribute>
+            <afc:attribute>
+                <afc:attribute-name>showFooter</afc:attribute-name>
+                <afc:attribute-class>boolean</afc:attribute-class>
+            </afc:attribute>
+            <afc:attribute>
+                <afc:attribute-name>
+                    parentPageName
+                </afc:attribute-name>
+                <afc:attribute-class>
+                    java.lang.String
+                </afc:attribute-class>
+                <afc:required>
+                    false
+                </afc:required>
+            </afc:attribute>
+            <afc:attribute>
+                <afc:attribute-name>
+                    parentPageId
+                </afc:attribute-name>
+                <afc:attribute-class>
+                    java.lang.String
+                </afc:attribute-class>
+            </afc:attribute>
+        </afc:component>
+    </af:xmlContent>
+    <af:panelGroupLayout id="grp1">
+        <af:resource type="css" source="/styles/tabletFirstTemplate.css"/>
+        <af:resource type="css" source="resources/css/messenger.css"/>
+        <af:resource type="css" source="resources/css/messenger-theme-future.css"/>
+        
+        <af:clientAttribute name="vpLayoutMode" value="#{OrientionManager.orientation}"/>
+        <af:button id="btnLayoutId" partialSubmit="true" visible="false"
+                   actionListener="#{OrientionManager.changeCurrentLoc}"></af:button>
+        <div id="mainArea" class="MainArea">
+            <af:declarativeComponent viewId="brandingBar.jsff" id="bBarFDC" logoImagePath="#{attrs.logoImagePath}"
+                                     logoSmallImagePath="#{attrs.logoSmallImagePath}"
+                                     logoStyleClass="#{attrs.logoStyleClass}" logoShortDesc="#{attrs.logoShortDesc}"
+                                     showAppNavbar="#{attrs.showAppNavbar}" showStatusIndicator="true"
+                                     brandingMaxWidth="2048">
+                <f:facet name="brandingTitle">
+                    <af:outputText value="后台管理系统" id="pt_ot1"/>
+                    <af:facetRef facetName="header"/>
+                </f:facet>
+                <f:facet name="appNavbar">
+                    <af:panelGroupLayout id="pgltlcon" styleClass="WBViewPersonContainerMargin" clientComponent="true"
+                                         valign="top" layout="horizontal">
+                        <af:iterator id="pt_i1" value="#{bindings.BgNavigationV1.collectionModel}" var="row" varStatus="vs"
+                                     rows="25">
+                            <af:button text="#{OrientionManager.orientation == 'screen' ? row.Name : ''}" id="pt_b1"
+                            styleClass="AFAppNavbarButton" type="radio"
+                                   icon="#{row.Icon1}"
+                                   hoverIcon="#{row.Icon2}"
+                                   depressedIcon="#{row.Icon3}"
+                                   selected="#{attrs.parentPageId == row.Uuid}"
+                            />
+                        </af:iterator>
+                    </af:panelGroupLayout>
+                </f:facet>
+                <f:facet name="globalNavbar">
+                    <af:facetRef facetName="globalLinks"/>
+                </f:facet>
+                <f:facet name="statusBar">
+                    <af:facetRef facetName="status"/>
+                </f:facet>
+            </af:declarativeComponent><af:declarativeComponent viewId="contentBody.jsff" id="cBodFDC"
+                                                               startWidth="#{attrs.startWidth}"
+                                                               endWidth="#{attrs.endWidth}" minWidth="#{attrs.minWidth}"
+                                                               brandingMaxWidth="#{attrs.brandingMaxWidth}">
+                <f:facet name="content">
+                    <af:panelSplitter id="ps2"
+                                      orientation="#{OrientionManager.orientation=='phone' ? 'vertical' : 'horizontal'}"
+                                      splitterPosition="#{OrientionManager.orientation=='phone' ? '40' : OrientionManager.orientation=='tablet'? '50' : '100' }"
+                                      disabled="true">
+                        <f:facet name="first">
+                            <af:panelGroupLayout id="pgl2"
+                                                 layout="#{OrientionManager.orientation=='phone' ? 'horizontal' : 'vertical'}"
+                                                 inlineStyle="margin-top:7px;">
+                                <af:switcher id="pt_s2" facetName="Second" defaultFacet="Second">
+                                    <f:facet name="Second">
+                                        <af:iterator id="pt_i2" value="#{bindings.BgNavigationV2.collectionModel}"
+                                                     var="row" varStatus="vs">
+                                            <af:link text="#{OrientionManager.orientation=='phone' ? row.Name : OrientionManager.orientation=='tablet'? '' : row.Name}"
+                                                     id="l5" styleClass="AFAppNavbarButton" inlineStyle="color:Black;"
+                                                     hoverIcon="#{row.Icon2}" destination="#{row.Url}"
+                                                     disabledIcon="#{row.Icon3}" icon="#{row.Icon1}"
+                                                     selected="#{attrs.pageId == row.Uuid}"/>
+                                        </af:iterator>
+                                    </f:facet>
+                                    <f:facet name="Third">
+                                        
+                                        <af:iterator id="pt_i3" value="#{bindings.BgNavigationV3.collectionModel}"
+                                                     var="row" varStatus="vs">
+                                            <af:link text="#{OrientionManager.orientation=='phone' ? row.Name : OrientionManager.orientation=='tablet'? '' : row.Name}"
+                                                     id="pt_l1" styleClass="AFAppNavbarButton"
+                                                     inlineStyle="color:Black;" hoverIcon="#{row.Icon2}"
+                                                     destination="#{row.Url}" disabledIcon="#{row.Icon3}"
+                                                     icon="#{row.Icon1}" selected="#{attrs.pageName == row.Name}"/>
+                                        </af:iterator>
+                                    </f:facet>
+                                </af:switcher>
+                                <f:facet name="separator">
+                                    <af:spacer width="10" height="10" id="s1"/>
+                                </f:facet>
+                               
+                            </af:panelGroupLayout>
+                        </f:facet>
+                        <f:facet name="second">
+                            <af:panelSplitter id="ps1" positionedFromEnd="true" disabled="true"
+                                              orientation="#{OrientionManager.orientation=='phone' ? 'vertical' : 'horizontal'}">
+                                <f:facet name="first">
+                                    <af:facetRef facetName="content"/>
+                                </f:facet>
+                                <f:facet name="second">
+                                    <af:panelSplitter id="pt_ps1" splitterPosition="10" disabled="true"
+                                                      orientation="#{OrientionManager.orientation=='phone' ? 'vertical' : 'horizontal'}">
+                                        <f:facet name="first">
+                                            <af:spacer width="10" height="10" id="pt_s1"/>
+                                        </f:facet>
+                                        <f:facet name="second">
+                                            <af:facetRef facetName="east"/>
+                                        </f:facet>
+                                    </af:panelSplitter>
+                                </f:facet>
+                            </af:panelSplitter>
+                        </f:facet>
+                    </af:panelSplitter>
+                </f:facet>
+            </af:declarativeComponent>
+        </div>
+        <div id="footerArea" class="FooterArea">
+            <af:group id="grp2">
+                <af:declarativeComponent viewId="footer.jsff" id="footFDC" showFooter="#{attrs.showFooter}"
+                                         brandingMaxWidth="2048">
+                    <f:facet name="footerBar">
+                        <af:facetRef facetName="footer"/>
+                    </f:facet>
+                </af:declarativeComponent>
+            </af:group>
+        </div>
+        <f:facet name="metaContainer">
+            <?audit suppress oracle.jdeveloper.jsp.undefined-facet?>
+            <trh:meta name="apple-mobile-web-app-capable" content="yes"/>
+            <trh:meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, minimal-ui"/>
+            <af:resource type="javascript" source="http://10.1.8.217/project/portal/resources/js/jquery-1.9.1.min.js"/>
+            <af:resource type="javascript" source="resources/js/messenger.min.js"/>
+            <af:resource type="javascript" source="resources/js/WBMediaQuery.js"/>
+            <af:resource type="javascript" source="resources/js/WBClientScript.js"/>
+            <af:resource type="javascript">
+              var mediaQueryStringArr = new Array("(max-width: 900px)", "(min-width: 900px) and (max-width:1024px)", "(min-width: 1024px)");
+              var cusLocArr = new Array("phone", "tablet", "screen");
+              wbMQ.setupMediaQuery(mediaQueryStringArr, cusLocArr, 'grp1', 'vpLayoutMode', 'screen', 'btnLayoutId');
+              
+              function alert(type){
+                $.globalMessenger().post("Your request has succeded!");
+              }
+            </af:resource>
+        </f:facet>
+    </af:panelGroupLayout>
+</af:pageTemplateDef>

@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<pageDefinition xmlns="http://xmlns.oracle.com/adfm/uimodel" version="12.1.3.2.36" id="TabletSupportTemplatePageDef"
+                Package="org.agileofm.template.view.pageDefs">
+  <parameters/>
+  <executables>
+    <variableIterator id="variables"/>
+    <iterator Binds="BgNavigationV1" RangeSize="25" DataControl="TemplateAMDataControl" id="BgNavigationV1Iterator"/>
+    <iterator Binds="BgNavigationV2" RangeSize="25" DataControl="TemplateAMDataControl" id="BgNavigationV2Iterator"/>
+    <iterator Binds="BgNavigationV3" RangeSize="25" DataControl="TemplateAMDataControl" id="BgNavigationV3Iterator"/>
+  </executables>
+  <bindings>
+    <tree IterBinding="BgNavigationV1Iterator" id="BgNavigationV1">
+      <nodeDefinition DefName="org.agileofm.template.model.vo.BgNavigationVVO" Name="BgNavigationV10">
+        <AttrNames>
+          <Item Value="Uuid"/>
+          <Item Value="ParentId"/>
+          <Item Value="Name"/>
+          <Item Value="Description"/>
+          <Item Value="NavLevel"/>
+          <Item Value="Url"/>
+          <Item Value="Icon1"/>
+          <Item Value="Icon2"/>
+          <Item Value="Icon3"/>
+          <Item Value="ShowOrder"/>
+          <Item Value="Target"/>
+          <Item Value="Deleted"/>
+          <Item Value="SysKey"/>
+          <Item Value="CreateBy"/>
+          <Item Value="CreateOn"/>
+          <Item Value="UpdateBy"/>
+          <Item Value="UpdateOn"/>
+          <Item Value="Version"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="BgNavigationV2Iterator" id="BgNavigationV2">
+      <nodeDefinition DefName="org.agileofm.template.model.vo.BgNavigationVVO" Name="BgNavigationV20">
+        <AttrNames>
+          <Item Value="Uuid"/>
+          <Item Value="ParentId"/>
+          <Item Value="Name"/>
+          <Item Value="Description"/>
+          <Item Value="NavLevel"/>
+          <Item Value="Url"/>
+          <Item Value="Icon1"/>
+          <Item Value="Icon2"/>
+          <Item Value="Icon3"/>
+          <Item Value="ShowOrder"/>
+          <Item Value="Target"/>
+          <Item Value="Deleted"/>
+          <Item Value="SysKey"/>
+          <Item Value="CreateBy"/>
+          <Item Value="CreateOn"/>
+          <Item Value="UpdateBy"/>
+          <Item Value="UpdateOn"/>
+          <Item Value="Version"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+    <tree IterBinding="BgNavigationV3Iterator" id="BgNavigationV3">
+      <nodeDefinition DefName="org.agileofm.template.model.vo.BgNavigationVVO" Name="BgNavigationV30">
+        <AttrNames>
+          <Item Value="Uuid"/>
+          <Item Value="ParentId"/>
+          <Item Value="Name"/>
+          <Item Value="Description"/>
+          <Item Value="NavLevel"/>
+          <Item Value="Url"/>
+          <Item Value="Icon1"/>
+          <Item Value="Icon2"/>
+          <Item Value="Icon3"/>
+          <Item Value="ShowOrder"/>
+          <Item Value="Target"/>
+          <Item Value="Deleted"/>
+          <Item Value="SysKey"/>
+          <Item Value="CreateBy"/>
+          <Item Value="CreateOn"/>
+          <Item Value="UpdateBy"/>
+          <Item Value="UpdateOn"/>
+          <Item Value="Version"/>
+        </AttrNames>
+      </nodeDefinition>
+    </tree>
+  </bindings>
+</pageDefinition>

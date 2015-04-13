@@ -1,0 +1,38 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich">
+    <af:document title="untitled1.jsf" id="d1">
+        <af:form id="f1">
+            <af:panelTabbed position="above" id="pt1">
+                <af:showDetailItem id="tab1" text="sffadf" disclosed="true" icon="/resources/images/organizations/100.png">
+                    <af:panelBox text="PanelBox1" id="pb1">
+                        <f:facet name="toolbar"/>
+                    </af:panelBox>
+                    <af:panelBox text="PanelBox1" id="pb2">
+                        <f:facet name="toolbar"/>
+                    </af:panelBox>
+                    <af:panelBox text="PanelBox1" id="pb3">
+                        <f:facet name="toolbar"/>
+                    </af:panelBox>
+                    <af:panelBox text="PanelBox1" id="pb4">
+                        <f:facet name="toolbar"/>
+                    </af:panelBox>
+                    <af:panelBox text="PanelBox1" id="pb5">
+                        <f:facet name="toolbar"/>
+                    </af:panelBox>
+                    <af:panelBox text="PanelBox1" id="pb6">
+                        <f:facet name="toolbar"/>
+                    </af:panelBox>
+                    <af:panelBox text="PanelBox1" id="pb7">
+                        <f:facet name="toolbar"/>
+                    </af:panelBox>
+                    <af:panelBox text="PanelBox1" id="pb8">
+                        <f:facet name="toolbar"/>
+                    </af:panelBox>
+                </af:showDetailItem>
+                <af:showDetailItem id="tab2" text="Tab Label 2"/>
+                <af:showDetailItem id="tab3" text="Tab Label 3"/>
+            </af:panelTabbed>
+        </af:form>
+    </af:document>
+</f:view>

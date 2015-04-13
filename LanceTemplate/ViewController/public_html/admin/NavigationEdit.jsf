@@ -1,0 +1,481 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<!DOCTYPE html>
+<f:view xmlns:f="http://java.sun.com/jsf/core" xmlns:af="http://xmlns.oracle.com/adf/faces/rich"
+        xmlns:c="http://java.sun.com/jsp/jstl/core">
+    <c:set var="viewcontrollerBundle" value="#{adfBundle['org.agileofm.template.view.ViewControllerBundle']}"/>
+    <af:document title="NavigationEdit.jsf" id="d1">
+        <af:messages id="m1"/>
+        <af:form id="f1">
+            <af:pageTemplate viewId="/TabletSupportTemplate.jsf" value="#{bindings.ptb1}" id="pt1">
+                <f:facet name="center"/>
+                <f:facet name="east">
+                    <af:panelBox text="PanelBox2" id="pb2" showHeader="never">
+                        <f:facet name="toolbar"/>
+                    </af:panelBox>
+                </f:facet>
+                <f:facet name="header"/>
+                <f:facet name="status"/>
+                <f:facet name="appNav"/>
+                <f:facet name="globalLinks"/>
+                <f:facet name="footer"/>
+                <f:facet name="content">
+                    <af:panelBox text="PanelBox3" id="pb1" showHeader="never">
+                        <f:facet name="toolbar"/>
+                        <af:panelTabbed position="above" id="pt2">
+                            <af:showDetailItem id="tab1"
+                                               text="#{viewcontrollerBundle._U4E00_U7EA7_U5BFC_U822A_U83DC_U5355}"
+                                               disclosed="true">
+                                <af:panelSplitter id="ps3" orientation="vertical" disabled="true" splitterPosition="40">
+                                    <f:facet name="first">
+                                        <af:panelGroupLayout id="pgl1">
+                                            <af:button actionListener="#{bindings.CreateInsert.execute}"
+                                                       text="CreateInsert" disabled="#{!bindings.CreateInsert.enabled}"
+                                                       id="b4"/>
+                                            <af:button actionListener="#{bindings.Delete.execute}" text="Delete"
+                                                       disabled="#{!bindings.Delete.enabled}" id="b5"/>
+                                            <af:button actionListener="#{bindings.Commit.execute}" text="Commit"
+                                                       disabled="false" id="b6"/>
+                                            <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                                                       disabled="false" immediate="true"
+                                                       id="b7">
+                                                <af:resetActionListener/>
+                                            </af:button>
+                                            <f:facet name="separator">
+                                                <af:spacer width="10" height="10" id="s2"/>
+                                            </f:facet>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                    <f:facet name="second">
+                                        <af:table value="#{bindings.Navgation1.collectionModel}" var="row"
+                                                  rows="#{bindings.Navgation1.rangeSize}"
+                                                  emptyText="#{bindings.Navgation1.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                  rowBandingInterval="0" fetchSize="#{bindings.Navgation1.rangeSize}"
+                                                  id="t1" partialTriggers="::b4 ::b5 ::b8 ::b9">
+                                            <af:column headerText="#{bindings.Navgation1.hints.Uuid.label}" id="c1">
+                                                <af:inputText value="#{row.bindings.Uuid.inputValue}"
+                                                              label="#{bindings.Navgation1.hints.Uuid.label}"
+                                                              required="#{bindings.Navgation1.hints.Uuid.mandatory}"
+                                                              columns="#{bindings.Navgation1.hints.Uuid.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation1.hints.Uuid.precision}"
+                                                              shortDesc="#{bindings.Navgation1.hints.Uuid.tooltip}"
+                                                              id="it1">
+                                                    <f:validator binding="#{row.bindings.Uuid.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.Name.label}" id="c2">
+                                                <af:inputText value="#{row.bindings.Name.inputValue}"
+                                                              label="#{bindings.Navgation1.hints.Name.label}"
+                                                              required="#{bindings.Navgation1.hints.Name.mandatory}"
+                                                              columns="#{bindings.Navgation1.hints.Name.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation1.hints.Name.precision}"
+                                                              shortDesc="#{bindings.Navgation1.hints.Name.tooltip}"
+                                                              id="it2">
+                                                    <f:validator binding="#{row.bindings.Name.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.Description.label}"
+                                                       id="c3">
+                                                <af:inputText value="#{row.bindings.Description.inputValue}"
+                                                              label="#{bindings.Navgation1.hints.Description.label}"
+                                                              required="#{bindings.Navgation1.hints.Description.mandatory}"
+                                                              columns="#{bindings.Navgation1.hints.Description.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation1.hints.Description.precision}"
+                                                              shortDesc="#{bindings.Navgation1.hints.Description.tooltip}"
+                                                              id="it3">
+                                                    <f:validator binding="#{row.bindings.Description.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.NavLevel.label}" id="c4">
+                                                <af:inputText value="#{row.bindings.NavLevel.inputValue}"
+                                                              label="#{bindings.Navgation1.hints.NavLevel.label}"
+                                                              required="#{bindings.Navgation1.hints.NavLevel.mandatory}"
+                                                              columns="#{bindings.Navgation1.hints.NavLevel.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation1.hints.NavLevel.precision}"
+                                                              shortDesc="#{bindings.Navgation1.hints.NavLevel.tooltip}"
+                                                              id="it4">
+                                                    <f:validator binding="#{row.bindings.NavLevel.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.Navgation1.hints.NavLevel.format}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.Url.label}" id="c5">
+                                                <af:inputText value="#{row.bindings.Url.inputValue}"
+                                                              label="#{bindings.Navgation1.hints.Url.label}"
+                                                              required="#{bindings.Navgation1.hints.Url.mandatory}"
+                                                              columns="#{bindings.Navgation1.hints.Url.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation1.hints.Url.precision}"
+                                                              shortDesc="#{bindings.Navgation1.hints.Url.tooltip}"
+                                                              id="it5">
+                                                    <f:validator binding="#{row.bindings.Url.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.Icon1.label}" id="c6">
+                                                <af:inputText value="#{row.bindings.Icon1.inputValue}"
+                                                              label="#{bindings.Navgation1.hints.Icon1.label}"
+                                                              required="#{bindings.Navgation1.hints.Icon1.mandatory}"
+                                                              columns="#{bindings.Navgation1.hints.Icon1.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation1.hints.Icon1.precision}"
+                                                              shortDesc="#{bindings.Navgation1.hints.Icon1.tooltip}"
+                                                              id="it6">
+                                                    <f:validator binding="#{row.bindings.Icon1.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.Icon2.label}" id="c7">
+                                                <af:inputText value="#{row.bindings.Icon2.inputValue}"
+                                                              label="#{bindings.Navgation1.hints.Icon2.label}"
+                                                              required="#{bindings.Navgation1.hints.Icon2.mandatory}"
+                                                              columns="#{bindings.Navgation1.hints.Icon2.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation1.hints.Icon2.precision}"
+                                                              shortDesc="#{bindings.Navgation1.hints.Icon2.tooltip}"
+                                                              id="it7">
+                                                    <f:validator binding="#{row.bindings.Icon2.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.Icon3.label}" id="c8">
+                                                <af:inputText value="#{row.bindings.Icon3.inputValue}"
+                                                              label="#{bindings.Navgation1.hints.Icon3.label}"
+                                                              required="#{bindings.Navgation1.hints.Icon3.mandatory}"
+                                                              columns="#{bindings.Navgation1.hints.Icon3.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation1.hints.Icon3.precision}"
+                                                              shortDesc="#{bindings.Navgation1.hints.Icon3.tooltip}"
+                                                              id="it8">
+                                                    <f:validator binding="#{row.bindings.Icon3.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.ShowOrder.label}"
+                                                       id="c9">
+                                                <af:inputText value="#{row.bindings.ShowOrder.inputValue}"
+                                                              label="#{bindings.Navgation1.hints.ShowOrder.label}"
+                                                              required="#{bindings.Navgation1.hints.ShowOrder.mandatory}"
+                                                              columns="#{bindings.Navgation1.hints.ShowOrder.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation1.hints.ShowOrder.precision}"
+                                                              shortDesc="#{bindings.Navgation1.hints.ShowOrder.tooltip}"
+                                                              id="it9">
+                                                    <f:validator binding="#{row.bindings.ShowOrder.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.Navgation1.hints.ShowOrder.format}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.Target.label}" id="c10">
+                                                <af:inputText value="#{row.bindings.Target.inputValue}"
+                                                              label="#{bindings.Navgation1.hints.Target.label}"
+                                                              required="#{bindings.Navgation1.hints.Target.mandatory}"
+                                                              columns="#{bindings.Navgation1.hints.Target.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation1.hints.Target.precision}"
+                                                              shortDesc="#{bindings.Navgation1.hints.Target.tooltip}"
+                                                              id="it10">
+                                                    <f:validator binding="#{row.bindings.Target.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.Navgation1.hints.Target.format}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.Deleted.label}" id="c11">
+                                                <af:inputText value="#{row.bindings.Deleted.inputValue}"
+                                                              label="#{bindings.Navgation1.hints.Deleted.label}"
+                                                              required="#{bindings.Navgation1.hints.Deleted.mandatory}"
+                                                              columns="#{bindings.Navgation1.hints.Deleted.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation1.hints.Deleted.precision}"
+                                                              shortDesc="#{bindings.Navgation1.hints.Deleted.tooltip}"
+                                                              id="it11">
+                                                    <f:validator binding="#{row.bindings.Deleted.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.Navgation1.hints.Deleted.format}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.SysKey.label}" id="c12">
+                                                <af:inputText value="#{row.bindings.SysKey.inputValue}"
+                                                              label="#{bindings.Navgation1.hints.SysKey.label}"
+                                                              required="#{bindings.Navgation1.hints.SysKey.mandatory}"
+                                                              columns="#{bindings.Navgation1.hints.SysKey.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation1.hints.SysKey.precision}"
+                                                              shortDesc="#{bindings.Navgation1.hints.SysKey.tooltip}"
+                                                              id="it12">
+                                                    <f:validator binding="#{row.bindings.SysKey.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.CreateBy.label}"
+                                                       id="c13">
+                                                <af:outputText value="#{row.CreateBy}"
+                                                               shortDesc="#{bindings.Navgation1.hints.CreateBy.tooltip}"
+                                                               id="ot1"/>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.CreateOn.label}"
+                                                       id="c14">
+                                                <af:outputText value="#{row.CreateOn}"
+                                                               shortDesc="#{bindings.Navgation1.hints.CreateOn.tooltip}"
+                                                               id="ot2">
+                                                    <af:convertDateTime pattern="#{bindings.Navgation1.hints.CreateOn.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.UpdateBy.label}"
+                                                       id="c15">
+                                                <af:outputText value="#{row.UpdateBy}"
+                                                               shortDesc="#{bindings.Navgation1.hints.UpdateBy.tooltip}"
+                                                               id="ot3"/>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.UpdateOn.label}"
+                                                       id="c16">
+                                                <af:outputText value="#{row.UpdateOn}"
+                                                               shortDesc="#{bindings.Navgation1.hints.UpdateOn.tooltip}"
+                                                               id="ot4">
+                                                    <af:convertDateTime pattern="#{bindings.Navgation1.hints.UpdateOn.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation1.hints.Version.label}" id="c17">
+                                                <af:outputText value="#{row.Version}"
+                                                               shortDesc="#{bindings.Navgation1.hints.Version.tooltip}"
+                                                               id="ot5">
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.Navgation1.hints.Version.format}"/>
+                                                </af:outputText>
+                                            </af:column>
+                                        </af:table>
+                                    </f:facet>
+                                </af:panelSplitter>
+                            </af:showDetailItem>
+                            <af:showDetailItem id="tab2"
+                                               text="#{viewcontrollerBundle._U4E8C_U7EA7_U5BFC_U822A_U83DC_U5355}"
+                                               disclosed="false">
+                                <af:panelSplitter id="ps4" orientation="vertical" disabled="true" splitterPosition="40">
+                                    <f:facet name="first">
+                                        <af:panelGroupLayout id="pgl3">
+                                            <af:button actionListener="#{bindings.CreateInsert.execute}"
+                                                       text="CreateInsert" disabled="#{!bindings.CreateInsert.enabled}"
+                                                       id="b8"/>
+                                            <af:button actionListener="#{bindings.Delete.execute}" text="Delete"
+                                                       disabled="#{!bindings.Delete.enabled}" id="b9"/>
+                                            <af:button actionListener="#{bindings.Commit.execute}" text="Commit"
+                                                       disabled="false" id="b10"/>
+                                            <af:button actionListener="#{bindings.Rollback.execute}" text="Rollback"
+                                                       disabled="false" immediate="true"
+                                                       id="b11">
+                                                <af:resetActionListener/>
+                                            </af:button>
+                                            <f:facet name="separator">
+                                                <af:spacer width="10" height="10" id="s3"/>
+                                            </f:facet>
+                                        </af:panelGroupLayout>
+                                    </f:facet>
+                                    <f:facet name="second">
+                                        <af:table value="#{bindings.Navgation2.collectionModel}" var="row"
+                                                  rows="#{bindings.Navgation2.rangeSize}"
+                                                  emptyText="#{bindings.Navgation2.viewable ? 'No data to display.' : 'Access Denied.'}"
+                                                  rowBandingInterval="0" fetchSize="#{bindings.Navgation2.rangeSize}"
+                                                  id="t2">
+                                            <af:column headerText="#{bindings.Navgation2.hints.Uuid.label}" id="c18">
+                                                <af:inputText value="#{row.bindings.Uuid.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.Uuid.label}"
+                                                              required="#{bindings.Navgation2.hints.Uuid.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.Uuid.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.Uuid.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.Uuid.tooltip}"
+                                                              id="it13">
+                                                    <f:validator binding="#{row.bindings.Uuid.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.Name.label}" id="c19">
+                                                <af:inputText value="#{row.bindings.Name.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.Name.label}"
+                                                              required="#{bindings.Navgation2.hints.Name.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.Name.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.Name.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.Name.tooltip}"
+                                                              id="it14">
+                                                    <f:validator binding="#{row.bindings.Name.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.Description.label}"
+                                                       id="c20">
+                                                <af:inputText value="#{row.bindings.Description.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.Description.label}"
+                                                              required="#{bindings.Navgation2.hints.Description.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.Description.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.Description.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.Description.tooltip}"
+                                                              id="it15">
+                                                    <f:validator binding="#{row.bindings.Description.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.NavLevel.label}"
+                                                       id="c21">
+                                                <af:inputText value="#{row.bindings.NavLevel.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.NavLevel.label}"
+                                                              required="#{bindings.Navgation2.hints.NavLevel.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.NavLevel.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.NavLevel.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.NavLevel.tooltip}"
+                                                              id="it16">
+                                                    <f:validator binding="#{row.bindings.NavLevel.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.Navgation2.hints.NavLevel.format}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.Url.label}" id="c22">
+                                                <af:inputText value="#{row.bindings.Url.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.Url.label}"
+                                                              required="#{bindings.Navgation2.hints.Url.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.Url.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.Url.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.Url.tooltip}"
+                                                              id="it17">
+                                                    <f:validator binding="#{row.bindings.Url.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.Icon1.label}" id="c23">
+                                                <af:inputText value="#{row.bindings.Icon1.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.Icon1.label}"
+                                                              required="#{bindings.Navgation2.hints.Icon1.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.Icon1.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.Icon1.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.Icon1.tooltip}"
+                                                              id="it18">
+                                                    <f:validator binding="#{row.bindings.Icon1.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.Icon2.label}" id="c24">
+                                                <af:inputText value="#{row.bindings.Icon2.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.Icon2.label}"
+                                                              required="#{bindings.Navgation2.hints.Icon2.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.Icon2.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.Icon2.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.Icon2.tooltip}"
+                                                              id="it19">
+                                                    <f:validator binding="#{row.bindings.Icon2.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.Icon3.label}" id="c25">
+                                                <af:inputText value="#{row.bindings.Icon3.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.Icon3.label}"
+                                                              required="#{bindings.Navgation2.hints.Icon3.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.Icon3.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.Icon3.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.Icon3.tooltip}"
+                                                              id="it20">
+                                                    <f:validator binding="#{row.bindings.Icon3.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.ShowOrder.label}"
+                                                       id="c26">
+                                                <af:inputText value="#{row.bindings.ShowOrder.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.ShowOrder.label}"
+                                                              required="#{bindings.Navgation2.hints.ShowOrder.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.ShowOrder.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.ShowOrder.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.ShowOrder.tooltip}"
+                                                              id="it21">
+                                                    <f:validator binding="#{row.bindings.ShowOrder.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.Navgation2.hints.ShowOrder.format}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.Target.label}" id="c27">
+                                                <af:inputText value="#{row.bindings.Target.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.Target.label}"
+                                                              required="#{bindings.Navgation2.hints.Target.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.Target.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.Target.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.Target.tooltip}"
+                                                              id="it22">
+                                                    <f:validator binding="#{row.bindings.Target.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.Navgation2.hints.Target.format}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.Deleted.label}" id="c28">
+                                                <af:inputText value="#{row.bindings.Deleted.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.Deleted.label}"
+                                                              required="#{bindings.Navgation2.hints.Deleted.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.Deleted.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.Deleted.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.Deleted.tooltip}"
+                                                              id="it23">
+                                                    <f:validator binding="#{row.bindings.Deleted.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.Navgation2.hints.Deleted.format}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.SysKey.label}" id="c29">
+                                                <af:inputText value="#{row.bindings.SysKey.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.SysKey.label}"
+                                                              required="#{bindings.Navgation2.hints.SysKey.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.SysKey.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.SysKey.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.SysKey.tooltip}"
+                                                              id="it24">
+                                                    <f:validator binding="#{row.bindings.SysKey.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.CreateBy.label}"
+                                                       id="c30">
+                                                <af:inputText value="#{row.bindings.CreateBy.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.CreateBy.label}"
+                                                              required="#{bindings.Navgation2.hints.CreateBy.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.CreateBy.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.CreateBy.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.CreateBy.tooltip}"
+                                                              id="it25">
+                                                    <f:validator binding="#{row.bindings.CreateBy.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.CreateOn.label}"
+                                                       id="c31">
+                                                <af:inputDate value="#{row.bindings.CreateOn.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.CreateOn.label}"
+                                                              required="#{bindings.Navgation2.hints.CreateOn.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.CreateOn.displayWidth}"
+                                                              shortDesc="#{bindings.Navgation2.hints.CreateOn.tooltip}"
+                                                              id="id1">
+                                                    <f:validator binding="#{row.bindings.CreateOn.validator}"/>
+                                                    <af:convertDateTime pattern="#{bindings.Navgation2.hints.CreateOn.format}"/>
+                                                </af:inputDate>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.UpdateBy.label}"
+                                                       id="c32">
+                                                <af:inputText value="#{row.bindings.UpdateBy.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.UpdateBy.label}"
+                                                              required="#{bindings.Navgation2.hints.UpdateBy.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.UpdateBy.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.UpdateBy.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.UpdateBy.tooltip}"
+                                                              id="it26">
+                                                    <f:validator binding="#{row.bindings.UpdateBy.validator}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.UpdateOn.label}"
+                                                       id="c33">
+                                                <af:inputDate value="#{row.bindings.UpdateOn.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.UpdateOn.label}"
+                                                              required="#{bindings.Navgation2.hints.UpdateOn.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.UpdateOn.displayWidth}"
+                                                              shortDesc="#{bindings.Navgation2.hints.UpdateOn.tooltip}"
+                                                              id="id2">
+                                                    <f:validator binding="#{row.bindings.UpdateOn.validator}"/>
+                                                    <af:convertDateTime pattern="#{bindings.Navgation2.hints.UpdateOn.format}"/>
+                                                </af:inputDate>
+                                            </af:column>
+                                            <af:column headerText="#{bindings.Navgation2.hints.Version.label}" id="c34">
+                                                <af:inputText value="#{row.bindings.Version.inputValue}"
+                                                              label="#{bindings.Navgation2.hints.Version.label}"
+                                                              required="#{bindings.Navgation2.hints.Version.mandatory}"
+                                                              columns="#{bindings.Navgation2.hints.Version.displayWidth}"
+                                                              maximumLength="#{bindings.Navgation2.hints.Version.precision}"
+                                                              shortDesc="#{bindings.Navgation2.hints.Version.tooltip}"
+                                                              id="it27">
+                                                    <f:validator binding="#{row.bindings.Version.validator}"/>
+                                                    <af:convertNumber groupingUsed="false"
+                                                                      pattern="#{bindings.Navgation2.hints.Version.format}"/>
+                                                </af:inputText>
+                                            </af:column>
+                                        </af:table>
+                                    </f:facet>
+                                </af:panelSplitter>
+                            </af:showDetailItem>
+                        </af:panelTabbed>
+                    </af:panelBox>
+                </f:facet>
+                <f:facet name="start"/>
+                <f:facet name="end"/>
+            </af:pageTemplate>
+        </af:form>
+    </af:document>
+</f:view>

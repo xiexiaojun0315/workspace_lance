@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Application xmlns="http://xmlns.oracle.com/adfm/application" version="12.1.3.2.36" id="DataBindings"
+             SeparateXMLFiles="false" Package="org.agileofm.template.view" ClientType="Generic">
+  <pageMap>
+    <page path="/TabletSupportTemplate.jsf" usageId="org_agileofm_template_view_TabletSupportTemplatePageDef"/>
+    <page path="/Test.jsf" usageId="org_agileofm_template_view_TestPageDef"/>
+    <page path="/Tset3.jsf" usageId="org_agileofm_template_view_Tset3PageDef"/>
+    <page path="/admin/NavigationEdit.jsf" usageId="org_agileofm_template_view_NavigationEditPageDef"/>
+  </pageMap>
+  <pageDefinitionUsages>
+    <page id="org_agileofm_template_view_TabletSupportTemplatePageDef"
+          path="org.agileofm.template.view.pageDefs.TabletSupportTemplatePageDef"/>
+    <page id="org_agileofm_template_view_TestPageDef" path="org.agileofm.template.view.pageDefs.TestPageDef"/>
+    <page id="org_agileofm_template_view_Tset3PageDef" path="org.agileofm.template.view.pageDefs.Tset3PageDef"/>
+    <page id="org_agileofm_template_view_NavigationEditPageDef" path="admin.NavigationEditPageDef"/>
+  </pageDefinitionUsages>
+  <dataControlUsages>
+    <BC4JDataControl id="TemplateAMDataControl" Package="org.agileofm.template.model"
+                     FactoryClass="oracle.adf.model.bc4j.DataControlFactoryImpl" SupportsTransactions="true"
+                     SupportsFindMode="true" SupportsRangesize="true" SupportsResetState="true"
+                     SupportsSortCollection="true" Configuration="TemplateAMLocal" syncMode="Immediate"
+                     xmlns="http://xmlns.oracle.com/adfm/datacontrol"/>
+  </dataControlUsages>
+</Application>
